@@ -1,0 +1,8 @@
+project libs ;
+
+lib hts
+  : 
+  : <link>static <file>htslib/libhts.a 
+  :
+  : <include>htslib 
+;

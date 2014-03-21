@@ -1,0 +1,11 @@
+project gamgee
+    : requirements <cxxflags>-std=c++11 <linkflags>-std=c++11 <warnings-as-errors>on 
+;
+
+use-project /gamgee/libs : lib ;
+
+# Build foghorn binaries in src
+lib gamgee 
+    : [ glob src/*.cpp ] /gamgee/libs//hts
+    : <link>static 
+    ;
