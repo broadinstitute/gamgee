@@ -1,3 +1,7 @@
 [submodule "lib/htslib"]
 	path = lib/htslib
 	url = git://github.com/MauricioCarneiro/htslib.git
+[submodule "lib/b2"]
+	path = lib/b2
+	url = git://github.com/boostorg/build.git
+	branch = master
