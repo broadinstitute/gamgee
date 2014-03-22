@@ -6,6 +6,6 @@ before_script:
   - sudo apt-get -qq install g++-4.8 valgrind 
   - export CXX="g++-4.8"
   - git submodule update --init --recursive
-  - make dependencies
+  - make travis
 script:
-  - lib/b2/b2 -a
+  - boost-build/bin/b2 -a

@@ -1,13 +1,16 @@
 lib/b2/b2:
-	@cd lib/b2 && ./bootstrap.sh && cd ../../
+	@cd lib/b2 && ./bootstrap.sh && ./b2 install --prefix=../../boost-build && cd ../../
 
 lib/htslib/libhts.a:
 	@cd lib/htslib && make lib-static && cd ../../
 
-dependencies: lib/b2/b2 lib/htslib/libhts.a
+travis: lib/b2/b2 lib/htslib/libhts.a
 	@echo "built all dependencies"
 
-clean:
-	@cd lib/htslib && make clean && rm ../b2/b2 ../b2/bjam && cd ../../
+htslib: lib/htslib/libhts.a
+	@echo "built htslib"
 
-.PHONY: dependencies
+clean:
+	@rm -rf boost-build && cd lib/htslib && make clean && rm ../b2/b2 ../b2/bjam && cd ../../
+
+.PHONY: travis
