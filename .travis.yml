@@ -16,7 +16,8 @@ install:
   - if [ "$CXX" == "clang++" ]; then TOOLSET=clang; fi
   - if [ "$CXX" == "clang++" ]; then sudo apt-get install --allow-unauthenticated -qq clang-3.4; fi
   - if [ "$CXX" == "clang++" ]; then sudo update-alternatives --install /usr/local/bin/clang++ clang++ /usr/bin/clang++-3.4 50; fi
+  - sudo apt-get install -qq libboost-test-dev
   - cd lib/boost-build && ./bootstrap.sh && ./b2 install --prefix=../../boost-build && cd ../htslib && make lib-static && cd ../../
 
 script:
-  - boost-build/bin/b2 -a toolset=$TOOLSET test
+  - boost-build/bin/b2 -a toolset=$TOOLSET 
