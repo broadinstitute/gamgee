@@ -7,5 +7,5 @@ echo "using gcc : 4.8 ;" > ~/user-config.jam
 cd lib/htslib && make lib-static && cd ../../
 
 # build boost-build
-cd lib/b2 && ./bootstrap.sh && ./b2 install --prefix=../../boost-build && cd ../../
+cd lib/boost-build && ./bootstrap.sh && ./b2 install --prefix=../../boost-build && cd ../../
 

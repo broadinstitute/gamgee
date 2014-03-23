@@ -6,4 +6,4 @@ before_script:
   - sudo apt-get -qq install g++-4.8 valgrind 
   - sh travis.sh
 script:
-  - boost-build/bin/b2 -a
+  - boost-build/bin/b2 -a 
