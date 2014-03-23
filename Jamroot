@@ -1,10 +1,15 @@
 project gamgee
-    : requirements <cxxflags>-std=c++11 <linkflags>-std=c++11 <warnings-as-errors>on 
-;
+    : requirements 
+        <cxxflags>-std=c++11 
+        <linkflags>-std=c++11 
+        <warnings-as-errors>on 
+  ;
 
-use-project /gamgee/libs : lib ;
+  use-project /gamgee/libs : lib ;
 
-lib gamgee 
+  lib gamgee 
     : [ glob src/*.cpp ] /gamgee/libs//hts
     : <link>static 
-    ;
+    :
+    : <include>src
+  ;

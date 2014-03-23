@@ -1,11 +1,5 @@
 project libs ;
 
-make htslib/libhts.a : : @make_hts_lib ;
-actions make_hts_lib
-{
-  cd htslib && make && cd - ;
-}
-
 lib hts
   : 
   : <link>static <file>htslib/libhts.a 
