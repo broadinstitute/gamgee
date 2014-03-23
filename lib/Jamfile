@@ -1,7 +1,10 @@
 project libs ;
 
+lib z ;
+lib pthread ;
+
 lib hts
-  : 
+  : z pthread
   : <link>static <file>htslib/libhts.a 
   :
   : <include>htslib 

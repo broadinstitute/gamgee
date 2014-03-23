@@ -1,9 +1,7 @@
 using testing ;
 lib boost_unit_test_framework ;
-lib z ;
-lib pthread ;
 
-run [ glob *.cpp ] /gamgee//gamgee /gamgee/libs//hts boost_unit_test_framework z pthread
+run [ glob *.cpp ] /gamgee//gamgee /gamgee/libs//hts boost_unit_test_framework 
     :
     : 
     : <define>BOOST_ALL_DYN_LINK 
