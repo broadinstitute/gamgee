@@ -7,10 +7,11 @@ using namespace foghorn;
 BOOST_AUTO_TEST_CASE( read_bam ) 
 {
     SamReader<SamIterator> reader{"testdata/test_simple.bam"};  // todo -- add sam/cram/vcf/bcf tests as well
-    int counter = 0;
+    auto counter = 0u;
     for (const auto& sam : reader) {
-        cout << sam << endl;  // todo -- substitute this for a check on the data values as we implement the Sam api
+        BOOST_CHECK_EQUAL(sam.name().substr(0, 15), "30PPJAAXX090125");
+        BOOST_CHECK_EQUAL(sam.chromosome(), 0);
         ++counter;
     }
-    BOOST_CHECK_EQUAL(counter, 33);
+    BOOST_CHECK_EQUAL(counter, 33u);
 }
