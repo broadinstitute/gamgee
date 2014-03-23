@@ -14,4 +14,4 @@
 
 # Boost build directory
 bin/
-boost-build/
+./boost-build/
