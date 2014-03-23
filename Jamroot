@@ -8,8 +8,8 @@ project gamgee
   use-project /gamgee/libs : lib ;
 
   lib gamgee 
-    : [ glob src/*.cpp ] /gamgee/libs//hts
+    : [ glob gamgee/*.cpp ] /gamgee/libs//hts
     : <link>static 
     :
-    : <include>src
+    : <include>gamgee
   ;
