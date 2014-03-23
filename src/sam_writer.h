@@ -1,5 +1,5 @@
-#ifndef __foghorn_sam_writer__
-#define __foghorn_sam_writer__
+#ifndef __gamgee_sam_writer__
+#define __gamgee_sam_writer__
 
 #include <string>
 
@@ -7,7 +7,7 @@
 #include "sam_header.h"
 #include "htslib/sam.h"
 
-namespace foghorn {
+namespace gamgee {
 
 class SamWriter {
 

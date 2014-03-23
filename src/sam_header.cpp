@@ -1,6 +1,6 @@
 #include "sam_header.h"
 
-namespace foghorn {
+namespace gamgee {
 
   SamHeader::SamHeader() :
     m_header {bam_hdr_init()}

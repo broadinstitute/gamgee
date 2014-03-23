@@ -1,6 +1,6 @@
 #include "sam_writer.h"
 
-namespace foghorn {
+namespace gamgee {
 
 SamWriter::SamWriter(const std::string& output_fname) :
   m_out_file {open_file(output_fname)}

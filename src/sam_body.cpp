@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-namespace foghorn {
+namespace gamgee {
 
   SamBody::SamBody() :
     m_body {bam_init1()}

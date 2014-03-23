@@ -1,11 +1,11 @@
-#ifndef __foghorn__sam_iterator__
-#define __foghorn__sam_iterator__
+#ifndef __gamgee__sam_iterator__
+#define __gamgee__sam_iterator__
 
 #include <fstream>
 #include "sam.h"
 #include "htslib/sam.h"
 
-namespace foghorn {
+namespace gamgee {
 
 /**
  * @brief Utility class to enable for-each style iteration in the SamReader class
@@ -70,6 +70,6 @@ class SamIterator {
     Sam fetch_next_record();    ///< makes a new (through copy) Sam object that the user is free to use/keep without having to worry about memory management
 };
 
-}  // end namespace foghorn
+}  // end namespace gamgee
 
 #endif

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-namespace foghorn {
+namespace gamgee {
 
 SamPairIterator::SamPairIterator() :
   sam_file_ptr {nullptr},

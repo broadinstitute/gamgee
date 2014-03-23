@@ -1,11 +1,11 @@
-#ifndef __foghorn__sam_pair_iterator__
-#define __foghorn__sam_pair_iterator__
+#ifndef __gamgee__sam_pair_iterator__
+#define __gamgee__sam_pair_iterator__
 
 #include <fstream>
 #include "sam.h"
 #include "htslib/sam.h"
 
-namespace foghorn {
+namespace gamgee {
 
 /**
  * @brief Utility class to enable for-each style iteration by pairs in the SamReader class
@@ -72,6 +72,6 @@ class SamPairIterator {
     Sam make_sam();                       ///< creates a sam record from the internal data
 };
 
-}  // end namespace foghorn
+}  // end namespace gamgee
 
 #endif

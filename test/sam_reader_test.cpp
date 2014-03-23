@@ -2,7 +2,7 @@
 #include "sam_reader.h"
 
 using namespace std;
-using namespace foghorn;
+using namespace gamgee;
 
 BOOST_AUTO_TEST_CASE( read_bam ) 
 {

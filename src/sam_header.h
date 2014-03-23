@@ -1,9 +1,9 @@
-#ifndef __foghorn__sam_header__
-#define __foghorn__sam_header__
+#ifndef __gamgee__sam_header__
+#define __gamgee__sam_header__
 
 #include "htslib/sam.h"
 
-namespace foghorn {
+namespace gamgee {
 
 class SamHeader {
  public:

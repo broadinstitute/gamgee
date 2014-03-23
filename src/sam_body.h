@@ -1,11 +1,11 @@
-#ifndef __foghorn__sam_body__
-#define __foghorn__sam_body__
+#ifndef __gamgee__sam_body__
+#define __gamgee__sam_body__
 
 #include <string>
 
 #include "htslib/sam.h"
 
-namespace foghorn {
+namespace gamgee {
 
 class SamBody {
  public:

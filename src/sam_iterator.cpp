@@ -3,7 +3,7 @@
 
 using namespace std;
 
-namespace foghorn {
+namespace gamgee {
 
 SamIterator::SamIterator() :
   sam_file_ptr {nullptr},

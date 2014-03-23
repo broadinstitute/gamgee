@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "sam.h"
-namespace foghorn {
+namespace gamgee {
 
 Sam::Sam(const bam_hdr_t* header, const bam1_t* body) :
   m_header {header},
@@ -28,7 +28,7 @@ Sam& Sam::operator=(const Sam& other) {
 
 
 using namespace std;
-ostream& operator<< (std::ostream& os, const foghorn::Sam& sam) {
+ostream& operator<< (std::ostream& os, const gamgee::Sam& sam) {
   os << sam.chromosome() << ":" << sam.alignment_start() << " | " << sam.mate_chromosome() << ":" << sam.mate_alignment_start();
   return os;
 }

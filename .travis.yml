@@ -19,4 +19,4 @@ install:
   - cd lib/boost-build && ./bootstrap.sh && ./b2 install --prefix=../../boost-build && cd ../htslib && make lib-static && cd ../../
 
 script:
-  - boost-build/bin/b2 -a toolset=$TOOLSET
+  - boost-build/bin/b2 -a toolset=$TOOLSET test

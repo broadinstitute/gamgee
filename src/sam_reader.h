@@ -1,5 +1,5 @@
-#ifndef foghorn__sam_reader__
-#define foghorn__sam_reader__
+#ifndef gamgee__sam_reader__
+#define gamgee__sam_reader__
 
 #include <string>
 #include <iostream>
@@ -8,7 +8,7 @@
 #include "sam_iterator.h"
 #include "htslib/sam.h"  // fix this ! 
 
-namespace foghorn {
+namespace gamgee {
 
 /**
  * @brief Utility class to read a SAM/BAM/CRAM file with an appropriate Sam iterator from a stream 
@@ -83,4 +83,4 @@ class SamReader {
 
 }  // end of namespace
 
-#endif /* defined(__foghorn__sam_iterator__) */
+#endif /* defined(__gamgee__sam_iterator__) */

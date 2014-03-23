@@ -1,5 +1,5 @@
-#ifndef __foghorn__sam__
-#define __foghorn__sam__
+#ifndef __gamgee__sam__
+#define __gamgee__sam__
 
 #include <string>
 
@@ -7,7 +7,7 @@
 #include "sam_header.h"
 #include "sam_body.h"
 
-namespace foghorn {
+namespace gamgee {
 
 /**
  * @brief Utility class to hold one Sam record.
@@ -87,6 +87,6 @@ class Sam {
  * The output checks whether the record has quality scores. If it does, it outputs a sam record,
  * otherwise it outputs a fasta record.
  */
-std::ostream& operator<< (std::ostream& os, const foghorn::Sam& sam);
+std::ostream& operator<< (std::ostream& os, const gamgee::Sam& sam);
 
-#endif /* defined(__foghorn__sam__) */
+#endif /* defined(__gamgee__sam__) */
