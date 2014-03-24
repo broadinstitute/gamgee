@@ -11,5 +11,5 @@ project gamgee
     : [ glob gamgee/*.cpp ] /gamgee/libs//hts
     : <link>static 
     :
-    : <include>gamgee
+    : <include>.
   ;
