@@ -1,10 +1,19 @@
 project libs ;
 
+path-constant htslib_dir : htslib ;
+
 lib z ;
 
-lib hts
-  : z 
-  : <link>static <file>htslib/libhts.a <threading>multi
+actions external-make
+{
+  cd $(htslib_dir) && make lib-static
+}
+
+make libhts.a : : @external-make : <location>htslib ;
+
+alias hts
+  : libhts.a z 
+  : <link>static <threading>multi
   :
   : <include>htslib 
 ;
