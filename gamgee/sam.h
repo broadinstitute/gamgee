@@ -10,9 +10,7 @@
 namespace gamgee {
 
 /**
- * @brief Utility class to hold one Sam record.
- *
- * we make a copy of the incoming record so we can handle all memory management inside this class 
+ * @brief Utility class to manipulate a Sam record.
  */
 class Sam {
  public:
