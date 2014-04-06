@@ -47,8 +47,8 @@ class Sam {
   bool supplementary()   const { return m_body.supplementary();   }
 
   // modify flags
-  void mark_as_duplicate()   { m_body.mark_as_duplicate();}
-  void unmark_as_duplicate() { m_body.unmark_as_duplicate();}
+  void set_duplicate()     { m_body.set_duplicate();     }
+  void set_not_duplicate() { m_body.set_not_duplicate(); }
 
   bool empty() const { return m_body.empty(); }
 
