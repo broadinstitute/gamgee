@@ -8,8 +8,7 @@ using namespace gamgee;
 BOOST_AUTO_TEST_CASE( sam_body_simple_members ) {
   const auto chr = 5u;
   const auto aln = 1000u;
-  for (auto s : SamReader<SamIterator> {"testdata/test_simple.bam"}) {  // should be replaced by mock sam_body
-    auto record = s.body();
+  for (auto record : SamReader<SamIterator> {"testdata/test_simple.bam"}) {  // should be replaced by mock sam_body
     record.set_chromosome(chr);
     BOOST_CHECK_EQUAL(record.chromosome(), chr);
     record.set_alignment_start(aln);
@@ -24,8 +23,7 @@ BOOST_AUTO_TEST_CASE( sam_body_simple_members ) {
 
 BOOST_AUTO_TEST_CASE( sam_body_flags ) 
 {
-  for (auto s : SamReader<SamIterator> {"testdata/test_simple.bam"}) {  // should be replaced by mock sam_body
-    auto record = s.body();
+  for (auto record : SamReader<SamIterator> {"testdata/test_simple.bam"}) {  // should be replaced by mock sam_body
     record.set_paired();
     BOOST_CHECK(record.paired());
     record.set_not_paired();

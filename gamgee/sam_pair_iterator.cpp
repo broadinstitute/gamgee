@@ -68,7 +68,7 @@ pair<Sam,Sam> SamPairIterator::fetch_next_pair() {
   if (!read_sam()) 
     return make_pair(Sam{}, Sam{});
   const auto read1 = Sam {sam_header_ptr, sam_record_ptr};
-  if (read1.unpaired() || !read_sam())
+  if (!read1.paired() || !read_sam())
     return make_pair(read1, Sam{});
   const auto read2 = Sam {sam_header_ptr, sam_record_ptr};
   return make_pair(read1, Sam{sam_header_ptr, sam_record_ptr});

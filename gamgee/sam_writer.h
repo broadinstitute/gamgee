@@ -26,10 +26,10 @@ class SamWriter {
    * @param sam_record   Sam record to extract the header from
    * @param output_fname file to write to. The default is stdout  (as defined by htslib)
    */
-  SamWriter(const Sam& sam_record, const std::string& output_fname = "-");
+  SamWriter(const SamHeader& header, const std::string& output_fname = "-");
 
-  void add_record(const Sam& sam_record);
-  void add_header(const Sam& sam_record);
+  void add_record(const SamBody& sam_record);
+  void add_header(const SamHeader& sam_record);
 
   ~SamWriter();
 
