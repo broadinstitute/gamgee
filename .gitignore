@@ -14,4 +14,11 @@
 
 # Boost build directory
 bin/
-./boost-build/
+
+# swap and temporary files
+.swp
+.ycm_extra_conf.pyc
+.DS_Store
+
+# doxygen directory
+dox/
