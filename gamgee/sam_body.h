@@ -16,20 +16,28 @@ class SamBody {
   SamBody& operator=(const SamBody& other);
   ~SamBody();
 
-  // alignment fields
-  std::string name()              const { return std::string{bam_get_qname(m_body)}; }
-  uint32_t chromosome()           const { return m_body->core.tid; }
-  uint32_t alignment_start()      const { return m_body->core.pos+1; }
+  // getters for non-variable length fields (things outside of the data member)
+  uint32_t chromosome()           const { return m_body->core.tid;     }
+  uint32_t alignment_start()      const { return m_body->core.pos+1;   }
   uint32_t alignment_stop()       const { return bam_endpos(m_body)+1; }
   uint32_t unclipped_start()      const ;
   uint32_t unclipped_stop()       const ;
-  uint32_t mate_chromosome()      const { return m_body->core.mtid; }
+  uint32_t mate_chromosome()      const { return m_body->core.mtid;   }
   uint32_t mate_alignment_start() const { return m_body->core.mpos+1; }
   uint32_t mate_alignment_stop()  const ;                             // not implemented -- requires new mate cigar tag!
   uint32_t mate_unclipped_start() const { return alignment_start(); } // dummy implementation -- requires new mate cigar tag!
   uint32_t mate_unclipped_stop()  const ;                             // not implemented -- requires new mate cigar tag!
 
-  // check flags 
+  // modify non-variable length fields (things outside of the data member)
+  void set_chromosome(const uint32_t chr)           { m_body->core.tid = chr; }
+  void set_alignment_start(const uint32_t start)      { m_body->core.pos = start-1; }  // incoming alignment is 1-based, storing 0-based
+  void set_mate_chromosome(const uint32_t mchr)      { m_body->core.mtid = mchr; }
+  void set_mate_alignment_start(const uint32_t mstart) { m_body->core.mpos = mstart - 1; } // incoming alignment is 1-based, storing 0-based
+ 
+  // getters for fields inside the data field
+  std::string name()              const { return std::string{bam_get_qname(m_body)}; }
+
+  // getters for flags 
   bool paired()          const { return m_body->core.flag & BAM_FPAIRED;        }
   bool properly_paired() const { return m_body->core.flag & BAM_FPROPER_PAIR;   }
   bool unmapped()        const { return m_body->core.flag & BAM_FUNMAP;         }
@@ -42,8 +50,24 @@ class SamBody {
   bool supplementary()   const { return m_body->core.flag & BAM_FSUPPLEMENTARY; }
 
   // modify flags
-  void mark_as_duplicate() {m_body->core.flag |= BAM_FDUP;}
-  void unmark_as_duplicate() {m_body->core.flag &= ~BAM_FDUP;}
+  void set_paired()            { m_body->core.flag |= BAM_FPAIRED;         }
+  void set_not_paired()        { m_body->core.flag &= ~BAM_FPAIRED;        }
+  void set_unmapped()          { m_body->core.flag |= BAM_FUNMAP;          }
+  void set_not_unmapped()      { m_body->core.flag &= ~BAM_FUNMAP;         }
+  void set_next_unmapped()     { m_body->core.flag |= BAM_FMUNMAP;         }
+  void set_not_next_unmapped() { m_body->core.flag &= ~BAM_FMUNMAP;        }
+  void set_first()             { m_body->core.flag |= BAM_FREAD1;          }
+  void set_not_first()         { m_body->core.flag &= ~BAM_FREAD1;         }
+  void set_last()              { m_body->core.flag |= BAM_FREAD2;          }
+  void set_not_last()          { m_body->core.flag &= ~BAM_FREAD2;         }
+  void set_secondary()         { m_body->core.flag |= BAM_FSECONDARY;      }
+  void set_not_secondary()     { m_body->core.flag &= ~BAM_FSECONDARY;     }
+  void set_fail()              { m_body->core.flag |= BAM_FQCFAIL;         }
+  void set_not_fail()          { m_body->core.flag &= ~BAM_FQCFAIL;        }
+  void set_duplicate()         { m_body->core.flag |= BAM_FDUP;            }
+  void set_not_duplicate()     { m_body->core.flag &= ~BAM_FDUP;           }
+  void set_supplementary()     { m_body->core.flag |= BAM_FSUPPLEMENTARY;  }
+  void set_not_supplementary() { m_body->core.flag &= ~BAM_FSUPPLEMENTARY; }
 
   bool empty() const { return m_body->m_data == 0; }
 
