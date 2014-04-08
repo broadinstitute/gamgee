@@ -47,11 +47,14 @@
             Build prerequisites
         </h3>
         <p>In order to build Gamgee you need <a href="http://www.boost.org/boost-build2/">Boost.Build V2</a> installed in your system.
-           Follow the installation steps in this page so you can use <i>bjam</i> before installing Gamgee.</p>
+           Follow the installation steps below so you can use <i>b2</i> to build Gamgee.</p>
 
-            <h4>Installing Boost.Build V2 on Ubuntu (12.04 LTS or later)</h4>
-            <p>Run the following command to install Boost.Build V2:</p>
-            <pre><code>apt-get install libboost-dev</code></pre>
+            <h4>Installing Boost.Build V2 from source</h4>
+            <p>Run the following commands to checkout and install Boost.Build V2:</p>
+            <pre><code>git clone https://github.com/boostorg/build.git
+cd build
+./bootstrap.sh
+sudo ./b2 install</code></pre>
         <h3>
             Download and installation
         </h3>
@@ -60,7 +63,7 @@
             Once installed Boost.Build V2, run the following commands to install Gamgee:
         </p>
 
-        <pre><code>$ git clone https://github.com/mauriciocarneiro/gamgee.git<br>$ cd gamgee<br>$ bjam gamgee</code></pre>
+        <pre><code>$ git clone https://github.com/mauriciocarneiro/gamgee.git<br>$ cd gamgee<br>$ b2 gamgee</code></pre>
 
         <h3>
             <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span
