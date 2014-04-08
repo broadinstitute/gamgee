@@ -3,9 +3,6 @@
 Gamgee
 ======
 
-A C++ interface for HTSLIB (samtools/htslib).
-=======
-
 A C++ interface for key next generation sequencing file formats. This library
 provides an API for handilng SAM, BAM, CRAM, VCF, BCF, BED, intervals and
 interval_list files.
