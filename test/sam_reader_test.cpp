@@ -6,7 +6,7 @@ using namespace gamgee;
 
 BOOST_AUTO_TEST_CASE( read_bam ) 
 {
-    SamReader<SamIterator> reader{"testdata/test_simple.bam"};  // todo -- add sam/cram/vcf/bcf tests as well
+    SingleSamReader reader{"testdata/test_simple.bam"};  // todo -- add sam/cram/vcf/bcf tests as well
     auto counter = 0u;
     for (const auto& sam : reader) {
         BOOST_CHECK_EQUAL(sam.name().substr(0, 15), "30PPJAAXX090125");

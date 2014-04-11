@@ -1,9 +1,11 @@
 #ifndef __gamgee__sam_pair_iterator__
 #define __gamgee__sam_pair_iterator__
 
-#include <fstream>
 #include "sam.h"
+
 #include "htslib/sam.h"
+
+#include <fstream>
 
 namespace gamgee {
 
