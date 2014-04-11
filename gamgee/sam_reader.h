@@ -1,12 +1,15 @@
 #ifndef gamgee__sam_reader__
 #define gamgee__sam_reader__
 
+#include "sam_iterator.h"
+#include "sam_pair_iterator.h"
+
+#include "htslib/sam.h"
+
 #include <string>
 #include <iostream>
 #include <fstream>
 
-#include "sam_iterator.h"
-#include "htslib/sam.h"  // fix this ! 
 
 namespace gamgee {
 
@@ -17,7 +20,7 @@ namespace gamgee {
  * This class is designed to parse the file in for-each loops with the following signature:
  *
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * for (auto record : SamReader<SamIterator>(filename))
+ * for (auto record : SamReader<SamIterator>{filename})
  *   do_something_with_sam(record);
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
@@ -25,7 +28,13 @@ namespace gamgee {
  * or passing in an empty string for a filename, like so:
  * 
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * for (auto pair : SamReader<SamPairIterator>())
+ * for (auto pair : SamReader<SamPairIterator>{})
+ *   do_something_with_pair(pair);
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *
+ * Most iterators have aliases definied by this module so you can use it like so:
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * for (auto pair : SingleSamReader{})
  *   do_something_with_pair(pair);
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
@@ -80,6 +89,9 @@ class SamReader {
     samFile *sam_file_ptr;     ///< pointer to the internal file structure of the sam/bam/cram file
     bam_hdr_t *sam_header_ptr; ///< pointer to the internal header structure of the sam/bam/cram file
 };
+
+using SingleSamReader = SamReader<SamIterator>;
+using PairSamReader = SamReader<SamPairIterator>;
 
 }  // end of namespace
 
