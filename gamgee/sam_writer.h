@@ -17,7 +17,7 @@ class SamWriter {
     *
     * @param output_fname file to write to. The default is stdout (as defined by htslib)
     */
-  explicit SamWriter(const std::string& output_fname = "-");
+  explicit SamWriter(const std::string& output_fname = "-", const bool binary = true);
 
   /**
    * @brief Creates a new SamWriter with the header extracted from a Sam record and 
@@ -26,7 +26,7 @@ class SamWriter {
    * @param sam_record   Sam record to extract the header from
    * @param output_fname file to write to. The default is stdout  (as defined by htslib)
    */
-  SamWriter(const SamHeader& header, const std::string& output_fname = "-");
+  explicit SamWriter(const SamHeader& header, const std::string& output_fname = "-", const bool binary = true);
 
   void add_record(const SamBody& sam_record);
   void add_header(const SamHeader& sam_record);
@@ -37,7 +37,7 @@ class SamWriter {
   htsFile* m_out_file;
   SamHeader m_header;
 
-  static htsFile* open_file(const std::string& output_fname);
+  static htsFile* open_file(const std::string& output_fname, const std::string& binary);
 
 };
 
