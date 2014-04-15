@@ -42,6 +42,8 @@ class SamBody {
   bool properly_paired() const { return m_body->core.flag & BAM_FPROPER_PAIR;   }
   bool unmapped()        const { return m_body->core.flag & BAM_FUNMAP;         }
   bool next_unmapped()   const { return m_body->core.flag & BAM_FMUNMAP;        }
+  bool reverse()         const { return m_body->core.flag & BAM_FREVERSE;       }
+  bool next_reverse()    const { return m_body->core.flag & BAM_FMREVERSE;      }
   bool first()           const { return m_body->core.flag & BAM_FREAD1;         }
   bool last()            const { return m_body->core.flag & BAM_FREAD2;         }
   bool secondary()       const { return m_body->core.flag & BAM_FSECONDARY;     }
@@ -56,6 +58,10 @@ class SamBody {
   void set_not_unmapped()      { m_body->core.flag &= ~BAM_FUNMAP;         }
   void set_next_unmapped()     { m_body->core.flag |= BAM_FMUNMAP;         }
   void set_not_next_unmapped() { m_body->core.flag &= ~BAM_FMUNMAP;        }
+  void set_reverse()           { m_body->core.flag |= BAM_FREVERSE;        }
+  void set_not_reverse()       { m_body->core.flag &= ~BAM_FREVERSE;       }
+  void set_next_reverse()      { m_body->core.flag |= BAM_FMREVERSE;       }
+  void set_not_next_reverse()  { m_body->core.flag &= ~BAM_FMREVERSE;      }
   void set_first()             { m_body->core.flag |= BAM_FREAD1;          }
   void set_not_first()         { m_body->core.flag &= ~BAM_FREAD1;         }
   void set_last()              { m_body->core.flag |= BAM_FREAD2;          }

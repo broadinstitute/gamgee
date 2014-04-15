@@ -36,6 +36,14 @@ BOOST_AUTO_TEST_CASE( sam_body_flags )
     BOOST_CHECK(record.next_unmapped());
     record.set_not_next_unmapped();
     BOOST_CHECK(!record.next_unmapped());
+    record.set_reverse();
+    BOOST_CHECK(record.reverse());
+    record.set_not_reverse();
+    BOOST_CHECK(!record.reverse());
+    record.set_next_reverse();
+    BOOST_CHECK(record.next_reverse());
+    record.set_not_next_reverse();
+    BOOST_CHECK(!record.next_reverse());
     record.set_first();
     BOOST_CHECK(record.first());
     record.set_not_first();
