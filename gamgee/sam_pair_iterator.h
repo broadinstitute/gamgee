@@ -6,6 +6,7 @@
 #include "htslib/sam.h"
 
 #include <fstream>
+#include <queue>
 
 namespace gamgee {
 
@@ -64,6 +65,7 @@ class SamPairIterator {
     ~SamPairIterator();
     
   private:
+    std::queue<Sam> supp_alignments;      ///< queue to hold the supplementary alignments temporarily while processing the pairs
     samFile * sam_file_ptr;               ///< pointer to the sam file
     bam_hdr_t * sam_header_ptr;           ///< pointer to the sam header
     bam1_t * sam_record_ptr;              ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
