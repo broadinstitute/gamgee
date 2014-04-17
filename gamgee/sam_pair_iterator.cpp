@@ -4,6 +4,7 @@
 #include "htslib/sam.h"
 
 #include <iostream>
+#include <memory>
 #include <queue>
 
 using namespace std;
@@ -66,25 +67,34 @@ Sam SamPairIterator::make_sam() {
   return Sam {sam_header_ptr, sam_record_ptr};
 }
 
+Sam SamPairIterator::next_primary_alignment() {
+  supp_alignments.emplace(bam_dup1(sam_record_ptr));
+  while (read_sam() && not_primary()) 
+    supp_alignments.emplace(bam_dup1(sam_record_ptr));
+  return make_sam();
+}
+
+pair<Sam,Sam> SamPairIterator::next_supplementary_alignment() {
+  const auto read = Sam{sam_header_ptr, supp_alignments.front().get()};
+  supp_alignments.pop();
+  return make_pair(read, Sam{});
+}
+
+bool SamPairIterator::not_primary() const {
+  return sam_record_ptr->core.flag & BAM_FSECONDARY || sam_record_ptr->core.flag & BAM_FSUPPLEMENTARY;
+}
+
 pair<Sam,Sam> SamPairIterator::fetch_next_pair() {
-  if (!supp_alignments.empty()) {
-    const Sam read = supp_alignments.front();
-    supp_alignments.pop();
-    return make_pair(read, Sam{});
-  }
-  if (!read_sam()) 
-    return make_pair(Sam{}, Sam{});
-  const auto read1 = Sam {sam_header_ptr, sam_record_ptr};
-  if (!read1.paired() || read1.secondary() || read1.supplementary() || !read_sam())
+  if (!supp_alignments.empty())                        // pending supplementary alignments have priority
+    return next_supplementary_alignment();
+  if (!read_sam())
+    return make_pair(Sam{}, Sam{});                    // we have reached the end of file
+  const auto read1 = make_sam();
+  if (not_primary() || !read1.paired() || !read_sam()) // unpaired reads go in immediately and by themselves
     return make_pair(read1, Sam{});
-  const auto read2 = Sam {sam_header_ptr, sam_record_ptr};
-  // clog << "FETCH: " << read1.unmapped() << read1.secondary() << read1.supplementary() << read2.unmapped() << read2.secondary() << read2.supplementary() << "\t" << read1.name() << "\t" << read2.name() << endl;
-  if (!read2.secondary() && !read2.supplementary())
-    return make_pair(read1, read2);
-  supp_alignments.push(read2);
-  while (read_sam() && (sam_record_ptr->core.flag & BAM_FSECONDARY || sam_record_ptr->core.flag & BAM_FSUPPLEMENTARY)) 
-    supp_alignments.push(Sam{sam_header_ptr, sam_record_ptr});
-  return make_pair(read1, Sam{sam_header_ptr, sam_record_ptr});
+  if (!not_primary())                                  // proper paired alignments return here
+    return make_pair(read1, make_sam());
+  return make_pair(read1, next_primary_alignment());   // still haven't found the second primary alignment so search for it while pushing all the secondary/supplementary alignments to the queue
 }
 
 }
