@@ -17,23 +17,23 @@ class SamBody {
   ~SamBody();
 
   // getters for non-variable length fields (things outside of the data member)
-  uint32_t chromosome()           const { return m_body->core.tid;     }
-  uint32_t alignment_start()      const { return m_body->core.pos+1;   }
-  uint32_t alignment_stop()       const { return bam_endpos(m_body)+1; }
+  uint32_t chromosome()           const { return uint32_t(m_body->core.tid);     }
+  uint32_t alignment_start()      const { return uint32_t(m_body->core.pos+1);   }
+  uint32_t alignment_stop()       const { return uint32_t(bam_endpos(m_body)+1); }
   uint32_t unclipped_start()      const ;
   uint32_t unclipped_stop()       const ;
-  uint32_t mate_chromosome()      const { return m_body->core.mtid;   }
-  uint32_t mate_alignment_start() const { return m_body->core.mpos+1; }
-  uint32_t mate_alignment_stop()  const ;                             // not implemented -- requires new mate cigar tag!
-  uint32_t mate_unclipped_start() const { return alignment_start(); } // dummy implementation -- requires new mate cigar tag!
-  uint32_t mate_unclipped_stop()  const ;                             // not implemented -- requires new mate cigar tag!
+  uint32_t mate_chromosome()      const { return uint32_t(m_body->core.mtid);    }
+  uint32_t mate_alignment_start() const { return uint32_t(m_body->core.mpos+1);  }
+  uint32_t mate_alignment_stop()  const ;                                          // not implemented -- requires new mate cigar tag!
+  uint32_t mate_unclipped_start() const { return alignment_start();              } // dummy implementation -- requires new mate cigar tag!
+  uint32_t mate_unclipped_stop()  const ;                                          // not implemented -- requires new mate cigar tag!
 
   // modify non-variable length fields (things outside of the data member)
-  void set_chromosome(const uint32_t chr)           { m_body->core.tid = chr; }
-  void set_alignment_start(const uint32_t start)      { m_body->core.pos = start-1; }  // incoming alignment is 1-based, storing 0-based
-  void set_mate_chromosome(const uint32_t mchr)      { m_body->core.mtid = mchr; }
-  void set_mate_alignment_start(const uint32_t mstart) { m_body->core.mpos = mstart - 1; } // incoming alignment is 1-based, storing 0-based
- 
+  void set_chromosome(const uint32_t chr)              { m_body->core.tid  = int32_t(chr);        }
+  void set_alignment_start(const uint32_t start)       { m_body->core.pos  = int32_t(start-1);    } // incoming alignment is 1-based, storing 0-based
+  void set_mate_chromosome(const uint32_t mchr)        { m_body->core.mtid = int32_t(mchr);       }
+  void set_mate_alignment_start(const uint32_t mstart) { m_body->core.mpos = int32_t(mstart - 1); } // incoming alignment is 1-based, storing 0-based
+
   // getters for fields inside the data field
   std::string name()              const { return std::string{bam_get_qname(m_body)}; }
 
