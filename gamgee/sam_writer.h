@@ -12,19 +12,21 @@ namespace gamgee {
 class SamWriter {
 
  public: 
-   /**
-    * @brief Creates a new SamWriter using the specified output file name
-    *
-    * @param output_fname file to write to. The default is stdout (as defined by htslib)
-    */
+
+  /**
+   * @brief Creates a new SamWriter using the specified output file name
+   * @param output_fname file to write to. The default is stdout (as defined by htslib)
+   * @param binary whether the output should be in BAM (true) or SAM format (false) 
+   * @note the header is copied and managed internally
+   */
   explicit SamWriter(const std::string& output_fname = "-", const bool binary = true);
 
   /**
-   * @brief Creates a new SamWriter with the header extracted from a Sam record and 
-   * using the specified output file name
-   *
-   * @param sam_record   Sam record to extract the header from
+   * @brief Creates a new SamWriter with the header extracted from a Sam record and using the specified output file name
+   * @param header       SamHeader object to make a copy from
    * @param output_fname file to write to. The default is stdout  (as defined by htslib)
+   * @param binary whether the output should be in BAM (true) or SAM format (false) 
+   * @note the header is copied and managed internally
    */
   explicit SamWriter(const SamHeader& header, const std::string& output_fname = "-", const bool binary = true);
 
@@ -38,6 +40,7 @@ class SamWriter {
   SamHeader m_header;
 
   static htsFile* open_file(const std::string& output_fname, const std::string& binary);
+  void write_header() const;
 
 };
 

@@ -22,3 +22,6 @@ bin/
 
 # doxygen directory
 dox/
+
+# vim temporaries
+*.swp

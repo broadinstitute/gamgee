@@ -5,7 +5,7 @@
 
 #include "htslib/sam.h"
 
-#include <fstream>
+#include <memory>
 
 namespace gamgee {
 
@@ -26,7 +26,7 @@ class SamIterator {
      * @param sam_file_ptr   pointer to a sam file opened via the sam_open() macro from htslib
      * @param sam_header_ptr pointer to a sam file header created with the sam_hdr_read() macro from htslib
      */
-    SamIterator(samFile * sam_file_ptr, bam_hdr_t * sam_header_ptr);
+    SamIterator(samFile* sam_file_ptr, const std::shared_ptr<bam_hdr_t>& sam_header_ptr);
 
     /**
      * @brief a SamIterator move constructor guarantees all objects will have the same state.
@@ -48,7 +48,7 @@ class SamIterator {
      *
      * @return a persistent Sam object independent from the iterator (a copy of the iterator's object)
      */
-    Sam operator*();
+    Sam& operator*();
 
     /**
      * @brief pre-fetches the next record and tests for end of file
@@ -56,7 +56,7 @@ class SamIterator {
      * @return a reference to the object (it can be const& because this return value should only be used 
      *         by the for-each loop to check for the eof)
      */
-    Sam operator++();
+    Sam& operator++();
 
     /**
      * @brief takes care of all the memory allocations of the htslib sam reader interface
@@ -64,12 +64,12 @@ class SamIterator {
     ~SamIterator();
     
   private:
-    samFile * sam_file_ptr;     ///< pointer to the sam file
-    bam_hdr_t * sam_header_ptr; ///< pointer to the sam header
-    bam1_t * sam_record_ptr;    ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
-    Sam sam_record;             ///< temporary record to hold between fetch (operator++) and serve (operator*)
-    
-    Sam fetch_next_record();    ///< makes a new (through copy) Sam object that the user is free to use/keep without having to worry about memory management
+    samFile * m_sam_file_ptr;                    ///< pointer to the sam file
+    std::shared_ptr<bam_hdr_t> m_sam_header_ptr; ///< pointer to the sam header
+    bam1_t * m_sam_record_ptr;                   ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
+    Sam m_sam_record;                            ///< temporary record to hold between fetch (operator++) and serve (operator*)
+
+    Sam fetch_next_record();                     ///< makes a new (through copy) Sam object that the user is free to use/keep without having to worry about memory management
 };
 
 }  // end namespace gamgee

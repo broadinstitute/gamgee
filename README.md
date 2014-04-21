@@ -3,6 +3,8 @@
 Gamgee
 ======
 
+Project website: http://mauriciocarneiro.github.io/gamgee/
+
 A C++ interface for key next generation sequencing file formats. This library
 provides an API for handilng SAM, BAM, CRAM, VCF, BCF, BED, intervals and
 interval_list files.
