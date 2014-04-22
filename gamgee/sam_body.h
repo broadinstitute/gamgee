@@ -10,7 +10,7 @@ namespace gamgee {
 class SamBody {
  public:
   explicit SamBody();
-  SamBody(const bam1_t* body);
+  SamBody(bam1_t* body);
   SamBody(const SamBody& other);
   SamBody(SamBody&& other);
   SamBody& operator=(const SamBody& other);
@@ -77,8 +77,12 @@ class SamBody {
 
   bool empty() const { return m_body->m_data == 0; }
 
+  void make_internal_copy();
  private:
   bam1_t* m_body;
+  bool m_must_destroy_body;
+
+  void copy_internal_record(const bam1_t*);
 
   friend class SamWriter;
 };

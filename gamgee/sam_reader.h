@@ -3,12 +3,14 @@
 
 #include "sam_iterator.h"
 #include "sam_pair_iterator.h"
+#include "hts_memory.h"
 
 #include "htslib/sam.h"
 
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <memory>
 
 
 namespace gamgee {
@@ -49,16 +51,20 @@ class SamReader {
      * @param filename the name of the sam file
      */
     SamReader(const std::string& filename) :
-      sam_file_ptr {sam_open(filename.empty() ? "-" : filename.c_str(), "r")},
-      sam_header_ptr {sam_hdr_read(sam_file_ptr)}
+      m_sam_file_ptr {sam_open(filename.empty() ? "-" : filename.c_str(), "r")},
+      m_sam_header_ptr {sam_hdr_read(m_sam_file_ptr), HeaderDeleter()}
+    {}
+
+    SamReader(SamReader&& other) :
+      m_sam_file_ptr {std::move(other.m_sam_file_ptr)},
+      m_sam_header_ptr {std::move(other.m_sam_header_ptr)}
     {}
 
     /**
      * @brief closes the file stream if there is one (in case we are reading a sam file)
      */
     ~SamReader() {
-      sam_close(sam_file_ptr);
-      bam_hdr_destroy(sam_header_ptr);
+      sam_close(m_sam_file_ptr);
     }
 
     /**
@@ -73,7 +79,7 @@ class SamReader {
      * @return a ITERATOR ready to start parsing the file
      */
     ITERATOR begin() {
-      return ITERATOR{sam_file_ptr, sam_header_ptr};
+      return ITERATOR{m_sam_file_ptr, m_sam_header_ptr};
     }
 
     /**
@@ -85,9 +91,11 @@ class SamReader {
       return ITERATOR{};
     }
 
+    inline SamHeader header() { return SamHeader{m_sam_header_ptr.get()}; }
+
   private:
-    samFile *sam_file_ptr;     ///< pointer to the internal file structure of the sam/bam/cram file
-    bam_hdr_t *sam_header_ptr; ///< pointer to the internal header structure of the sam/bam/cram file
+    samFile* m_sam_file_ptr;                           ///< pointer to the internal file structure of the sam/bam/cram file
+    const std::shared_ptr<bam_hdr_t> m_sam_header_ptr; ///< pointer to the internal header structure of the sam/bam/cram file
 };
 
 using SingleSamReader = SamReader<SamIterator>;

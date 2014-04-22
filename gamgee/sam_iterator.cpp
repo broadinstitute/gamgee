@@ -1,56 +1,55 @@
 #include "sam_iterator.h"
 #include "sam.h"
+#include "hts_memory.h"
 
 using namespace std;
 
 namespace gamgee {
 
 SamIterator::SamIterator() :
-  sam_file_ptr {nullptr},
-  sam_header_ptr {nullptr},
-  sam_record_ptr {nullptr}
+  m_sam_file_ptr {nullptr},
+  m_sam_header_ptr {nullptr},
+  m_sam_record_ptr {nullptr}
 {}
 
-SamIterator::SamIterator(samFile * sam_file_ptr_, bam_hdr_t * sam_header_ptr_) : 
-  sam_file_ptr {sam_file_ptr_},
-  sam_header_ptr {sam_header_ptr_},
-  sam_record_ptr {bam_init1()},     ///< important to initialize the record buffer in the constructor so we can reuse it across the iterator
-  sam_record {fetch_next_record()}
+SamIterator::SamIterator(samFile * sam_file_ptr, const std::shared_ptr<bam_hdr_t>& sam_header_ptr) : 
+  m_sam_file_ptr {sam_file_ptr},
+  m_sam_header_ptr {sam_header_ptr},
+  m_sam_record_ptr {bam_init1()},     ///< important to initialize the record buffer in the constructor so we can reuse it across the iterator
+  m_sam_record {fetch_next_record()}
 {}
 
 SamIterator::SamIterator(SamIterator&& original) :
-  sam_file_ptr {original.sam_file_ptr},
-  sam_header_ptr {original.sam_header_ptr},
-  sam_record_ptr {original.sam_record_ptr},
-  sam_record {original.sam_record}
+  m_sam_file_ptr   {move(original.m_sam_file_ptr)},
+  m_sam_header_ptr {move(original.m_sam_header_ptr)},
+  m_sam_record_ptr {move(original.m_sam_record_ptr)},
+  m_sam_record     {move(original.m_sam_record)}
 {}
 
 SamIterator::~SamIterator() {
-  bam_destroy1(sam_record_ptr);
-  sam_file_ptr = nullptr;
-  sam_header_ptr = nullptr;
+  bam_destroy1(m_sam_record_ptr);
+  m_sam_file_ptr = nullptr;
 }
 
-Sam SamIterator::operator*() {
-  return sam_record;
+Sam& SamIterator::operator*() {
+  return m_sam_record;
 }
 
-Sam SamIterator::operator++() {
-  sam_record = fetch_next_record();
-  return sam_record;
+Sam& SamIterator::operator++() {
+  m_sam_record = fetch_next_record();
+  return m_sam_record;
 }
 
 bool SamIterator::operator!=(const SamIterator& rhs) {
-  return sam_file_ptr != rhs.sam_file_ptr;
+  return m_sam_file_ptr != rhs.m_sam_file_ptr;
 }
 
 Sam SamIterator::fetch_next_record() {
-  if (sam_read1(sam_file_ptr, sam_header_ptr, sam_record_ptr) < 0) {
-    sam_file_ptr = nullptr;
-    sam_header_ptr = nullptr;  // can only nullify these two because the SamReader is responsible for freeing them. 
+  if (sam_read1(m_sam_file_ptr, m_sam_header_ptr.get(), m_sam_record_ptr) < 0) {
+    m_sam_file_ptr = nullptr;
     return Sam{};
   }
-  return Sam{sam_header_ptr, sam_record_ptr};
+  return Sam{m_sam_record_ptr, m_sam_header_ptr};
 }
 
 }

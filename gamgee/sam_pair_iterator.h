@@ -2,6 +2,7 @@
 #define __gamgee__sam_pair_iterator__
 
 #include "sam.h"
+#include "hts_memory.h"
 
 #include "htslib/sam.h"
 
@@ -10,20 +11,6 @@
 #include <memory>
 
 namespace gamgee {
-
-  /**
-   * @brief private namespace to contain htslib specific wrappers
-   */
-  namespace hts {
-    /** 
-     * @brief a functor object to delete a bam1 pointer 
-     * 
-     * used by the unique_ptr queue used in the paired reader
-     */
-    struct BamDeleter {
-      void operator()(bam1_t* p) const { bam_destroy1(p); }
-    };
-  }
 
 /**
  * @brief Utility class to enable for-each style iteration by pairs in the SamReader class
@@ -42,12 +29,12 @@ class SamPairIterator {
      * @param sam_file_ptr   pointer to a sam file opened via the sam_open() macro from htslib
      * @param sam_header_ptr pointer to a sam file header created with the sam_hdr_read() macro from htslib
      */
-    SamPairIterator(samFile * sam_file_ptr, bam_hdr_t * sam_header_ptr);
+    SamPairIterator(samFile * sam_file_ptr, const std::shared_ptr<bam_hdr_t>& sam_header_ptr);
 
     /**
      * @brief a SamPairIterator move constructor guarantees all objects will have the same state.
      */
-    SamPairIterator(SamPairIterator&&);
+    SamPairIterator(SamPairIterator&& other);
     
     /**
      * @brief inequality operator (needed by for-each loop)
@@ -80,21 +67,20 @@ class SamPairIterator {
     ~SamPairIterator();
     
   private:
+    using SamPtrQueue = std::queue<std::unique_ptr<bam1_t, BamDeleter>>;
 
-    using SamPtrQueue = std::queue<std::unique_ptr<bam1_t, hts::BamDeleter>>;
+    SamPtrQueue m_supp_alignments;                     ///< queue to hold the supplementary alignments temporarily while processing the pairs
+    samFile * m_sam_file_ptr;                          ///< pointer to the sam file
+    const std::shared_ptr<bam_hdr_t> m_sam_header_ptr; ///< pointer to the sam header
+    bam1_t * m_sam_record_ptr1;                        ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
+    bam1_t * m_sam_record_ptr2;                        ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
+    std::pair<Sam,Sam> m_sam_records;                  ///< temporary record to hold between fetch (operator++) and serve (operator*)
 
-    SamPtrQueue supp_alignments;          ///< queue to hold the supplementary alignments temporarily while processing the pairs
-    samFile * sam_file_ptr;               ///< pointer to the sam file
-    bam_hdr_t * sam_header_ptr;           ///< pointer to the sam header
-    bam1_t * sam_record_ptr;              ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
-    std::pair<Sam,Sam> sam_records;       ///< temporary record to hold between fetch (operator++) and serve (operator*)
-
-    std::pair<Sam,Sam> fetch_next_pair(); ///< makes a new (through copy) pair of Sam objects that the user is free to use/keep without having to worry about memory management
-    bool read_sam();                      ///< reads a sam record and checks for the end-of-file invalidating the file and header pointers if necessary
-    Sam make_sam();                       ///< creates a sam record from the internal data
-    Sam next_primary_alignment();
+    std::pair<Sam,Sam> fetch_next_pair();              ///< makes a new (through copy) pair of Sam objects that the user is free to use/keep without having to worry about memory management
+    bool read_sam(bam1_t* record_ptr);                 ///< reads a sam record and checks for the end-of-file invalidating the file and header pointers if necessary
+    Sam make_sam(bam1_t* record_ptr);                  ///< creates a sam record from the internal data
+    Sam next_primary_alignment(bam1_t* record_ptr);
     std::pair<Sam,Sam> next_supplementary_alignment();
-    bool not_primary() const;
 };
 
 }  // end namespace gamgee
