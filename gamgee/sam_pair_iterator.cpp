@@ -70,7 +70,7 @@ Sam SamPairIterator::make_sam(bam1_t* record_ptr) {
 }
 
 static bool primary(bam1_t* record_ptr) {
-  return record_ptr->core.flag & BAM_FSECONDARY || record_ptr->core.flag & BAM_FSUPPLEMENTARY;
+  return !(record_ptr->core.flag & BAM_FSECONDARY) && !(record_ptr->core.flag & BAM_FSUPPLEMENTARY);
 }
 
 Sam SamPairIterator::next_primary_alignment(bam1_t* record_ptr) {

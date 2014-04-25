@@ -2,6 +2,7 @@
 #define __gamgee__sam_body__
 
 #include <string>
+#include <iostream>
 
 #include "htslib/sam.h"
 
@@ -74,6 +75,8 @@ class SamBody {
   void set_not_duplicate()     { m_body->core.flag &= ~BAM_FDUP;           }
   void set_supplementary()     { m_body->core.flag |= BAM_FSUPPLEMENTARY;  }
   void set_not_supplementary() { m_body->core.flag &= ~BAM_FSUPPLEMENTARY; }
+
+  void debug() const {std::cout << "\t" << m_body << " | " << m_body->m_data << std::endl;}
 
   bool empty() const { return m_body->m_data == 0; }
 
