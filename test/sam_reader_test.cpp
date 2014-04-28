@@ -1,5 +1,6 @@
+#include "sam_reader.h"
+
 #include <boost/test/unit_test.hpp>
-#include "../gamgee/sam_reader.h"
 
 using namespace std;
 using namespace gamgee;

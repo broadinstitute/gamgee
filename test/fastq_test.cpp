@@ -1,5 +1,5 @@
-#include "../gamgee/fastq.h"
-#include "../gamgee/fastq_reader.h"
+#include "fastq.h"
+#include "fastq_reader.h"
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp> 
