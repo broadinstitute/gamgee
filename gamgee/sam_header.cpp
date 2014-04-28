@@ -24,10 +24,10 @@ namespace gamgee {
     bam_hdr_destroy(m_header);
   }
 
-  SamHeader& SamHeader::operator=(const SamHeader& other) {
-    // TODO: add check for self assignment!
-    bam_hdr_destroy(m_header);
+  SamHeader& SamHeader::operator=(const SamHeader other) {
+    bam_hdr_t* tmp = m_header;
     m_header = bam_hdr_dup(other.m_header);
+    bam_hdr_destroy(tmp);
     return *this;
   }
 

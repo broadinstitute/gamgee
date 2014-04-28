@@ -12,7 +12,7 @@ class SamHeader {
   SamHeader(const bam_hdr_t* header);
   SamHeader(const SamHeader& other);
   SamHeader(SamHeader&& other);
-  SamHeader& operator=(const SamHeader& other);
+  SamHeader& operator=(const SamHeader other);
   ~SamHeader();
 
  private:
