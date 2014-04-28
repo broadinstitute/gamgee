@@ -6,7 +6,7 @@ lib z ;
 
 actions external-make
 {
-  cd "$(htslib_dir)" && make lib-static
+  cd "$(htslib_dir)" && make clean && make lib-static
 }
 
 make libhts.a : : @external-make : <location>htslib ;
