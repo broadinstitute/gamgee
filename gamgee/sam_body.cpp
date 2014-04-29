@@ -1,69 +1,80 @@
 #include "htslib/sam.h"
-
 #include "sam_body.h"
+#include "hts_memory.h"
 
 #include <iostream>
+
+using namespace std;
 
 namespace gamgee {
 
 /**
- * @brief creates an empty sam record and allocates memory for all the fields 
- * @note This constructor gives the object full ownership of the allocated memory. 
+ * @brief creates an empty sam record and allocates new htslib memory for all the fields
+ *
+ * @note the copy will have exclusive ownership over the newly-allocated htslib memory
+ *       until a data field (cigar, bases, etc.) is accessed, after which it will be
+ *       shared via reference counting with the Cigar, etc. objects
  */
 SamBody::SamBody() :
-  m_body {bam_init1()},
-  m_must_destroy_body {true}
+  m_body {make_shared_bam(bam_init1())}
 {}
 
 /**
- * @brief creates a sam record that points to the htslib memory already allocated
- * @warning this constructor takes no ownership of the allocated data and is intended for higher performance in the usual case. If you need to take ownership of the data, call the copy_internal_record() member function.
+ * @brief creates a sam record that points to htslib memory already allocated
+ *
+ * @note the resulting SamBody shares ownership of the pre-allocated memory via shared_ptr
+ *       reference counting
  */
-SamBody::SamBody(bam1_t* body) :
-  m_body {body},
-  m_must_destroy_body {false}
+SamBody::SamBody(const shared_ptr<bam1_t>& body) :
+  m_body { body }
 {}
 
 /**
- * @brief deep copy of the given sam record
- * @note This constructor gives the object full ownership of the allocated memory. 
+ * @brief creates a deep copy of a sam record
+ *
+ * @note the copy will have exclusive ownership over the newly-allocated htslib memory
+ *       until a data field (cigar, bases, etc.) is accessed, after which it will be
+ *       shared via reference counting with the Cigar, etc. objects
  */
 SamBody::SamBody(const SamBody& other) :
-  m_body {bam_init1()},
-  m_must_destroy_body{true}
-{
-  bam_copy1(m_body, other.m_body);
-}
+  m_body { make_shared_bam(bam_deep_copy(other.m_body.get())) }
+{}
 
 /**
- * @brief takes over the ownership status of the other object as is (whether or not it owned anything)
+ * @brief moves a sam record, transferring ownership of the underlying htslib memory
  */
 SamBody::SamBody(SamBody&& other) :
-  m_body {other.m_body},
-  m_must_destroy_body {other.m_must_destroy_body}
-{
-  other.m_body = nullptr;
-}
+  m_body { move(other.m_body) }
+{}
 
 /**
- * @brief deep copy of the given sam record
- * @note This constructor gives the object full ownership of the allocated memory and appropriately 
- * manages any already existing internal data.
+ * @brief creates a deep copy of a sam record
+ *
+ * @note the copy will have exclusive ownership over the newly-allocated htslib memory
+ *       until a data field (cigar, bases, etc.) is accessed, after which it will be
+ *       shared via reference counting with the Cigar, etc. objects
  */
 SamBody& SamBody::operator=(const SamBody& other) {
-  if (!m_must_destroy_body)             ///< if this record was only pointing to someone else's body before, we need to allocate it's own
-    copy_internal_record(other.m_body);
-  else                                  ///< but if it already held it's own data, we can just copy over it
-    bam_copy1(m_body, other.m_body);
+  if ( &other != this ) {
+    // shared_ptr assignment will take care of decrementing the reference count for the
+    // old managed object (and destroying it if necessary)
+    m_body = make_shared_bam(bam_deep_copy(other.m_body.get()));
+  }
+
   return *this;
 }
 
 /**
- * @brief destroys all htslib internal data if we own it
+ * @brief moves a sam record, transferring ownership of the underlying htslib memory
  */
-SamBody::~SamBody() {
-  if (m_must_destroy_body)
-    bam_destroy1(m_body);
+SamBody& SamBody::operator=(SamBody&& other) {
+  if ( &other != this ) {
+    // shared_ptr assignment will take care of decrementing the reference count for the
+    // old managed object (and destroying it if necessary)
+    m_body = move(other.m_body);
+  }
+
+  return *this;
 }
 
 /**
@@ -78,10 +89,10 @@ SamBody::~SamBody() {
  */
 uint32_t SamBody::unclipped_start() const {
   auto pos = alignment_start();
-  const auto* cigar = bam_get_cigar(m_body);
+  const auto* cigar = bam_get_cigar(m_body.get());
   for (auto i = 0u; i != m_body->core.n_cigar; ++i) {
     const auto op = bam_cigar_op(cigar[i]);
-    if (op == BAM_CSOFT_CLIP || op == BAM_CHARD_CLIP) 
+    if (op == BAM_CSOFT_CLIP || op == BAM_CHARD_CLIP)
       pos -= bam_cigar_oplen(cigar[i]);
     else
       break;
@@ -101,7 +112,7 @@ uint32_t SamBody::unclipped_start() const {
  */
 uint32_t SamBody::unclipped_stop() const {
   auto pos = alignment_stop();
-  const auto* cigar = bam_get_cigar(m_body);
+  const auto* cigar = bam_get_cigar(m_body.get());
   for (auto i = int{m_body->core.n_cigar - 1}; i >= 0; --i) {
     const auto op = bam_cigar_op(cigar[i]);
     if (op == BAM_CSOFT_CLIP || op == BAM_CHARD_CLIP)
@@ -111,28 +122,6 @@ uint32_t SamBody::unclipped_stop() const {
   }
   return pos;
 }
-
-/** 
- * @brief takes ownership of the objects inside the record
- *
- * particularly useful if you are using an iterator (hence storing only weak
- * pointers to their data) and for some record you decide to keep it beyond
- * it's lifetime during the iteration. This function will create internal
- * copies of the data and destroy it accordingly when the object goes out of
- * scope (destructor)
- */
-void SamBody::make_internal_copy() { 
-  if (m_must_destroy_body)  
-    return;                     ///< we already own it!
-  copy_internal_record(m_body);
-}
-
-void SamBody::copy_internal_record(const bam1_t* record) {
-  m_body = bam_init1();
-  bam_copy1(m_body, record);
-  m_must_destroy_body = true; ///< takes ownership of the memory and tells the destructor so
-}
-
 
 }
 

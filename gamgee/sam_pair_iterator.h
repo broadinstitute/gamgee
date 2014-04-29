@@ -67,19 +67,19 @@ class SamPairIterator {
     ~SamPairIterator();
     
   private:
-    using SamPtrQueue = std::queue<std::unique_ptr<bam1_t, BamDeleter>>;
+    using SamPtrQueue = std::queue<std::shared_ptr<bam1_t>>;
 
     SamPtrQueue m_supp_alignments;                     ///< queue to hold the supplementary alignments temporarily while processing the pairs
     samFile * m_sam_file_ptr;                          ///< pointer to the sam file
     const std::shared_ptr<bam_hdr_t> m_sam_header_ptr; ///< pointer to the sam header
-    bam1_t * m_sam_record_ptr1;                        ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
-    bam1_t * m_sam_record_ptr2;                        ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
+    std::shared_ptr<bam1_t> m_sam_record_ptr1;         ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
+    std::shared_ptr<bam1_t> m_sam_record_ptr2;         ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
     std::pair<Sam,Sam> m_sam_records;                  ///< temporary record to hold between fetch (operator++) and serve (operator*)
 
     std::pair<Sam,Sam> fetch_next_pair();              ///< makes a new (through copy) pair of Sam objects that the user is free to use/keep without having to worry about memory management
-    bool read_sam(bam1_t* record_ptr);                 ///< reads a sam record and checks for the end-of-file invalidating the file and header pointers if necessary
-    Sam make_sam(bam1_t* record_ptr);                  ///< creates a sam record from the internal data
-    Sam next_primary_alignment(bam1_t* record_ptr);
+    bool read_sam(std::shared_ptr<bam1_t>& record_ptr);                 ///< reads a sam record and checks for the end-of-file invalidating the file and header pointers if necessary
+    Sam make_sam(std::shared_ptr<bam1_t>& record_ptr);                  ///< creates a sam record from the internal data
+    Sam next_primary_alignment(std::shared_ptr<bam1_t>& record_ptr);
     std::pair<Sam,Sam> next_supplementary_alignment();
 };
 

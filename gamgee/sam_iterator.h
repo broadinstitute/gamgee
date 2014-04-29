@@ -66,10 +66,10 @@ class SamIterator {
   private:
     samFile * m_sam_file_ptr;                    ///< pointer to the sam file
     std::shared_ptr<bam_hdr_t> m_sam_header_ptr; ///< pointer to the sam header
-    bam1_t * m_sam_record_ptr;                   ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
+    std::shared_ptr<bam1_t> m_sam_record_ptr;    ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
     Sam m_sam_record;                            ///< temporary record to hold between fetch (operator++) and serve (operator*)
 
-    Sam fetch_next_record();                     ///< makes a new (through copy) Sam object that the user is free to use/keep without having to worry about memory management
+    Sam fetch_next_record();                     ///< fetches next Sam record into existing htslib memory without making a copy
 };
 
 }  // end namespace gamgee

@@ -1,26 +1,33 @@
 #ifndef __gamgee__sam_body__
 #define __gamgee__sam_body__
 
+#include "htslib/sam.h"
+#include "cigar.h"
+#include "read_bases.h"
+#include "base_quals.h"
+
 #include <string>
 #include <iostream>
-
-#include "htslib/sam.h"
+#include <memory>
 
 namespace gamgee {
 
 class SamBody {
  public:
   explicit SamBody();
-  SamBody(bam1_t* body);
+  explicit SamBody(const std::shared_ptr<bam1_t>& body);
   SamBody(const SamBody& other);
   SamBody(SamBody&& other);
   SamBody& operator=(const SamBody& other);
-  ~SamBody();
+  SamBody& operator=(SamBody&& other);
+
+  // Default destruction is sufficient, since our shared_ptr will handle deallocation
+  ~SamBody() = default;
 
   // getters for non-variable length fields (things outside of the data member)
   uint32_t chromosome()           const { return uint32_t(m_body->core.tid);     }
   uint32_t alignment_start()      const { return uint32_t(m_body->core.pos+1);   }
-  uint32_t alignment_stop()       const { return uint32_t(bam_endpos(m_body)+1); }
+  uint32_t alignment_stop()       const { return uint32_t(bam_endpos(m_body.get())+1); }
   uint32_t unclipped_start()      const ;
   uint32_t unclipped_stop()       const ;
   uint32_t mate_chromosome()      const { return uint32_t(m_body->core.mtid);    }
@@ -36,7 +43,11 @@ class SamBody {
   void set_mate_alignment_start(const uint32_t mstart) { m_body->core.mpos = int32_t(mstart - 1); } // incoming alignment is 1-based, storing 0-based
 
   // getters for fields inside the data field
-  std::string name()              const { return std::string{bam_get_qname(m_body)}; }
+  std::string name()     const { return std::string{bam_get_qname(m_body.get())}; }
+  // the objects returned by following getters will share underlying htslib memory with this object
+  ReadBases bases()      const { return ReadBases{m_body}; }
+  BaseQuals base_quals() const { return BaseQuals{m_body}; }
+  Cigar cigar()          const { return Cigar{m_body}; }
 
   // getters for flags 
   bool paired()          const { return m_body->core.flag & BAM_FPAIRED;        }
@@ -76,16 +87,12 @@ class SamBody {
   void set_supplementary()     { m_body->core.flag |= BAM_FSUPPLEMENTARY;  }
   void set_not_supplementary() { m_body->core.flag &= ~BAM_FSUPPLEMENTARY; }
 
-  void debug() const {std::cout << "\t" << m_body << " | " << m_body->m_data << std::endl;}
+  void debug() const {std::cout << "\t" << m_body.get() << " | " << m_body->m_data << std::endl;}
 
   bool empty() const { return m_body->m_data == 0; }
 
-  void make_internal_copy();
  private:
-  bam1_t* m_body;
-  bool m_must_destroy_body;
-
-  void copy_internal_record(const bam1_t*);
+  std::shared_ptr<bam1_t> m_body;
 
   friend class SamWriter;
 };
