@@ -1,5 +1,6 @@
 #include "sam_pair_iterator.h"
 #include "sam.h"
+#include "utils/hts_memory.h"
 
 #include "htslib/sam.h"
 
@@ -21,8 +22,8 @@ SamPairIterator::SamPairIterator() :
 SamPairIterator::SamPairIterator(samFile * sam_file_ptr, const std::shared_ptr<bam_hdr_t>& sam_header_ptr) : 
   m_sam_file_ptr    {sam_file_ptr},
   m_sam_header_ptr  {sam_header_ptr},
-  m_sam_record_ptr1 {make_shared_bam(bam_init1())}, ///< important to initialize the record buffer in the constructor so we can reuse it across the iterator
-  m_sam_record_ptr2 {make_shared_bam(bam_init1())}, ///< important to initialize the record buffer in the constructor so we can reuse it across the iterator
+  m_sam_record_ptr1 {utils::make_shared_sam(bam_init1())}, ///< important to initialize the record buffer in the constructor so we can reuse it across the iterator
+  m_sam_record_ptr2 {utils::make_shared_sam(bam_init1())}, ///< important to initialize the record buffer in the constructor so we can reuse it across the iterator
   m_sam_records     {fetch_next_pair()} ///< important queue must be initialized *before* we call fetch_next_pair. Order matters
 {}
 
@@ -34,10 +35,6 @@ SamPairIterator::SamPairIterator(SamPairIterator&& original) :
   m_sam_records     {move(original.m_sam_records)}
 {
   original.m_sam_file_ptr = nullptr;
-}
-
-SamPairIterator::~SamPairIterator() {
-  m_sam_file_ptr = nullptr;
 }
 
 pair<Sam,Sam> SamPairIterator::operator*() {
@@ -70,9 +67,9 @@ static bool primary(shared_ptr<bam1_t>& record_ptr) {
 }
 
 Sam SamPairIterator::next_primary_alignment(shared_ptr<bam1_t>& record_ptr) {
-  m_supp_alignments.push(make_shared_bam(bam_deep_copy(record_ptr.get())));
+  m_supp_alignments.push(utils::make_shared_sam(utils::sam_deep_copy(record_ptr.get())));
   while (read_sam(record_ptr) && !primary(record_ptr))
-    m_supp_alignments.push(make_shared_bam(bam_deep_copy(record_ptr.get())));
+    m_supp_alignments.push(utils::make_shared_sam(utils::sam_deep_copy(record_ptr.get())));
   return make_sam(record_ptr);
 }
 

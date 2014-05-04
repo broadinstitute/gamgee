@@ -8,22 +8,26 @@
 
 namespace gamgee {
 
-// Order of the operators in this enum must match the order in BAM_CIGAR_STR from htslib/sam.h
+/**
+ * @brief comprehensive list of valid cigar operators
+ * @note order of the operators in this enum must match the order in BAM_CIGAR_STR from htslib/sam.h
+ */
 enum class CigarOperator { M, I, D, N, S, H, P, EQ, X, B };
 
+/**
+ * @brief Utility class to manage the memory of the cigar structure
+ */
 class Cigar {
-public:
+ public:
   explicit Cigar(const std::shared_ptr<bam1_t>& sam_record);
   Cigar(const Cigar& other);
-  Cigar(Cigar&& other);
+  Cigar(Cigar&& other) noexcept;
   Cigar& operator=(const Cigar& other);
-  Cigar& operator=(Cigar&& other);
+  Cigar& operator=(Cigar&& other) noexcept;
+  ~Cigar() = default; ///< default destruction is sufficient, since our shared_ptr will handle deallocation
 
-  // Default destruction is sufficient, since our shared_ptr will handle deallocation
-  ~Cigar() = default;
-
-  uint32_t operator[](const uint32_t index) const;
-  uint32_t size() const { return m_num_cigar_elements; }
+  uint32_t operator[](const uint32_t index) const;       ///< use freely as you would an array. @note currently implemented as read only
+  uint32_t size() const { return m_num_cigar_elements; } ///< number of base qualities in the container
   std::string to_string() const;
 
   /**
@@ -40,17 +44,12 @@ public:
     return bam_cigar_oplen(cigar_element);
   }
 
-private:
-  // Sam record containing our cigar, potentially co-owned by multiple other objects
-  std::shared_ptr<bam1_t> m_sam_record;
+ private:
+  std::shared_ptr<bam1_t> m_sam_record;   ///< sam record containing our cigar, potentially co-owned by multiple other objects
+  uint32_t* m_cigar;                      ///< pointer to the start of the cigar in m_sam_record, cached for efficiency
+  uint32_t m_num_cigar_elements;          ///< number of elements in our cigar
 
-  // Pointer to the start of the cigar in m_sam_record, cached for efficiency
-  uint32_t* m_cigar;
-
-  // Number of elements in our cigar
-  uint32_t m_num_cigar_elements;
-
-  static const char cigar_ops_as_chars[];
+  static const char cigar_ops_as_chars[]; ///< static lookup table to convert CigarOperator enum values to chars.
 };
 
 }

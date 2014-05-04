@@ -2,7 +2,6 @@
 #define __gamgee__sam_pair_iterator__
 
 #include "sam.h"
-#include "hts_memory.h"
 
 #include "htslib/sam.h"
 
@@ -61,11 +60,6 @@ class SamPairIterator {
      */
     std::pair<Sam,Sam> operator++();
 
-    /**
-     * @brief takes care of all the memory allocations of the htslib sam reader interface
-     */
-    ~SamPairIterator();
-    
   private:
     using SamPtrQueue = std::queue<std::shared_ptr<bam1_t>>;
 

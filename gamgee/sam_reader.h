@@ -3,7 +3,7 @@
 
 #include "sam_iterator.h"
 #include "sam_pair_iterator.h"
-#include "hts_memory.h"
+#include "utils/hts_memory.h"
 
 #include "htslib/sam.h"
 
@@ -22,7 +22,7 @@ namespace gamgee {
  * This class is designed to parse the file in for-each loops with the following signature:
  *
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * for (auto record : SamReader<SamIterator>{filename})
+ * for (auto& record : SamReader<SamIterator>{filename})
  *   do_something_with_sam(record);
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
@@ -30,13 +30,13 @@ namespace gamgee {
  * or passing in an empty string for a filename, like so:
  * 
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * for (auto pair : SamReader<SamPairIterator>{})
+ * for (auto& pair : SamReader<SamPairIterator>{})
  *   do_something_with_pair(pair);
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
  * Most iterators have aliases definied by this module so you can use it like so:
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * for (auto pair : SingleSamReader{})
+ * for (auto& pair : SingleSamReader{})
  *   do_something_with_pair(pair);
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
@@ -52,7 +52,7 @@ class SamReader {
      */
     SamReader(const std::string& filename) :
       m_sam_file_ptr {sam_open(filename.empty() ? "-" : filename.c_str(), "r")},
-      m_sam_header_ptr { make_shared_bam_header(sam_hdr_read(m_sam_file_ptr)) }
+      m_sam_header_ptr { utils::make_shared_sam_header(sam_hdr_read(m_sam_file_ptr)) }
     {}
 
     SamReader(SamReader&& other) :

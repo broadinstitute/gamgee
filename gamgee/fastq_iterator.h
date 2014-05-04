@@ -25,11 +25,6 @@ class FastqIterator {
   FastqIterator(std::istream* in);
 
   /**
-    * @brief nullifies the stream pointer, making sure the object is not iterable anymore
-    */
-  ~FastqIterator();
-  
-  /**
     * @brief a FastqIterator should never be copied as the underlying stream can only be
     * manipulated by one object.
     */

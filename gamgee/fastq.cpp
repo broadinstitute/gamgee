@@ -1,5 +1,5 @@
 #include "fastq.h"
-#include "utils.h"
+#include "utils/utils.h"
 
 #include <iostream>
 

@@ -58,11 +58,6 @@ class SamIterator {
      */
     Sam& operator++();
 
-    /**
-     * @brief takes care of all the memory allocations of the htslib sam reader interface
-     */
-    ~SamIterator();
-    
   private:
     samFile * m_sam_file_ptr;                    ///< pointer to the sam file
     std::shared_ptr<bam_hdr_t> m_sam_header_ptr; ///< pointer to the sam header

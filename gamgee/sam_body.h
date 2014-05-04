@@ -12,14 +12,17 @@
 
 namespace gamgee {
 
+/**
+ * @brief utility class to hold a sam record
+ */
 class SamBody {
  public:
-  explicit SamBody();
+  SamBody();
   explicit SamBody(const std::shared_ptr<bam1_t>& body);
   SamBody(const SamBody& other);
-  SamBody(SamBody&& other);
+  SamBody(SamBody&& other) noexcept;
   SamBody& operator=(const SamBody& other);
-  SamBody& operator=(SamBody&& other);
+  SamBody& operator=(SamBody&& other) noexcept;
 
   // Default destruction is sufficient, since our shared_ptr will handle deallocation
   ~SamBody() = default;

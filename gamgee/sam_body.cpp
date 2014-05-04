@@ -1,6 +1,6 @@
 #include "htslib/sam.h"
 #include "sam_body.h"
-#include "hts_memory.h"
+#include "utils/hts_memory.h"
 
 #include <iostream>
 
@@ -16,7 +16,7 @@ namespace gamgee {
  *       shared via reference counting with the Cigar, etc. objects
  */
 SamBody::SamBody() :
-  m_body {make_shared_bam(bam_init1())}
+  m_body {utils::make_shared_sam(bam_init1())}
 {}
 
 /**
@@ -25,7 +25,7 @@ SamBody::SamBody() :
  * @note the resulting SamBody shares ownership of the pre-allocated memory via shared_ptr
  *       reference counting
  */
-SamBody::SamBody(const shared_ptr<bam1_t>& body) :
+SamBody::SamBody(const std::shared_ptr<bam1_t>& body) :
   m_body { body }
 {}
 
@@ -37,13 +37,13 @@ SamBody::SamBody(const shared_ptr<bam1_t>& body) :
  *       shared via reference counting with the Cigar, etc. objects
  */
 SamBody::SamBody(const SamBody& other) :
-  m_body { make_shared_bam(bam_deep_copy(other.m_body.get())) }
+  m_body { utils::make_shared_sam(utils::sam_deep_copy(other.m_body.get())) }
 {}
 
 /**
  * @brief moves a sam record, transferring ownership of the underlying htslib memory
  */
-SamBody::SamBody(SamBody&& other) :
+SamBody::SamBody(SamBody&& other) noexcept :
   m_body { move(other.m_body) }
 {}
 
@@ -55,25 +55,19 @@ SamBody::SamBody(SamBody&& other) :
  *       shared via reference counting with the Cigar, etc. objects
  */
 SamBody& SamBody::operator=(const SamBody& other) {
-  if ( &other != this ) {
-    // shared_ptr assignment will take care of decrementing the reference count for the
-    // old managed object (and destroying it if necessary)
-    m_body = make_shared_bam(bam_deep_copy(other.m_body.get()));
-  }
-
+  if ( &other == this )  
+    return *this;
+  m_body = utils::make_shared_sam(utils::sam_deep_copy(other.m_body.get())); ///< shared_ptr assignment will take care of deallocating old sam record if necessary
   return *this;
 }
 
 /**
  * @brief moves a sam record, transferring ownership of the underlying htslib memory
  */
-SamBody& SamBody::operator=(SamBody&& other) {
-  if ( &other != this ) {
-    // shared_ptr assignment will take care of decrementing the reference count for the
-    // old managed object (and destroying it if necessary)
-    m_body = move(other.m_body);
-  }
-
+SamBody& SamBody::operator=(SamBody&& other) noexcept {
+  if ( &other == this ) 
+    return *this;
+  m_body = move(other.m_body); ///< shared_ptr assignment will take care of decrementing the reference count for the old managed object (and destroying it if necessary)
   return *this;
 }
 
