@@ -18,8 +18,12 @@ namespace gamgee {
 class Sam : public SamBody {
  public:
   explicit Sam() = default;
-  Sam(bam1_t* body, const std::shared_ptr<bam_hdr_t>& header) noexcept : SamBody{body}, m_header{header} {}
-  SamHeader header() { return SamHeader{m_header.get()};}
+  explicit Sam(const std::shared_ptr<bam1_t>& body, const std::shared_ptr<bam_hdr_t>& header) noexcept : SamBody{body}, m_header{header} {}
+  SamHeader header() {
+    // TODO: return a reference to a singleton SamHeader object instead of constructing a new one each time,
+    //       since we're already sharing the underlying htslib memory
+    return SamHeader{m_header};
+  }
 
  private:
   std::shared_ptr<bam_hdr_t> m_header;

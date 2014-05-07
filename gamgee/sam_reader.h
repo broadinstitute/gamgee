@@ -52,7 +52,7 @@ class SamReader {
      */
     SamReader(const std::string& filename) :
       m_sam_file_ptr {sam_open(filename.empty() ? "-" : filename.c_str(), "r")},
-      m_sam_header_ptr {sam_hdr_read(m_sam_file_ptr), HeaderDeleter()}
+      m_sam_header_ptr { make_shared_bam_header(sam_hdr_read(m_sam_file_ptr)) }
     {}
 
     SamReader(SamReader&& other) :
@@ -91,7 +91,7 @@ class SamReader {
       return ITERATOR{};
     }
 
-    inline SamHeader header() { return SamHeader{m_sam_header_ptr.get()}; }
+    inline SamHeader header() { return SamHeader{m_sam_header_ptr}; }
 
   private:
     samFile* m_sam_file_ptr;                           ///< pointer to the internal file structure of the sam/bam/cram file

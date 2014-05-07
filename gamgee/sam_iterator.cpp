@@ -12,10 +12,10 @@ SamIterator::SamIterator() :
   m_sam_record_ptr {nullptr}
 {}
 
-SamIterator::SamIterator(samFile * sam_file_ptr, const std::shared_ptr<bam_hdr_t>& sam_header_ptr) : 
+SamIterator::SamIterator(samFile * sam_file_ptr, const shared_ptr<bam_hdr_t>& sam_header_ptr) :
   m_sam_file_ptr {sam_file_ptr},
   m_sam_header_ptr {sam_header_ptr},
-  m_sam_record_ptr {bam_init1()},     ///< important to initialize the record buffer in the constructor so we can reuse it across the iterator
+  m_sam_record_ptr {make_shared_bam(bam_init1())},      ///< important to initialize the record buffer in the constructor so we can reuse it across the iterator
   m_sam_record {fetch_next_record()}
 {}
 
@@ -27,7 +27,6 @@ SamIterator::SamIterator(SamIterator&& original) :
 {}
 
 SamIterator::~SamIterator() {
-  bam_destroy1(m_sam_record_ptr);
   m_sam_file_ptr = nullptr;
 }
 
@@ -45,7 +44,9 @@ bool SamIterator::operator!=(const SamIterator& rhs) {
 }
 
 Sam SamIterator::fetch_next_record() {
-  if (sam_read1(m_sam_file_ptr, m_sam_header_ptr.get(), m_sam_record_ptr) < 0) {
+  // WARNING: we're reusing the existing htslib memory, so users should be aware that all
+  // objects from the previous iteration are now stale unless a deep copy has been performed
+  if (sam_read1(m_sam_file_ptr, m_sam_header_ptr.get(), m_sam_record_ptr.get()) < 0) {
     m_sam_file_ptr = nullptr;
     return Sam{};
   }

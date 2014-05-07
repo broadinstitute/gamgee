@@ -21,26 +21,22 @@ SamPairIterator::SamPairIterator() :
 SamPairIterator::SamPairIterator(samFile * sam_file_ptr, const std::shared_ptr<bam_hdr_t>& sam_header_ptr) : 
   m_sam_file_ptr    {sam_file_ptr},
   m_sam_header_ptr  {sam_header_ptr},
-  m_sam_record_ptr1 {bam_init1()}, ///< important to initialize the record buffer in the constructor so we can reuse it across the iterator
-  m_sam_record_ptr2 {bam_init1()}, ///< important to initialize the record buffer in the constructor so we can reuse it across the iterator
+  m_sam_record_ptr1 {make_shared_bam(bam_init1())}, ///< important to initialize the record buffer in the constructor so we can reuse it across the iterator
+  m_sam_record_ptr2 {make_shared_bam(bam_init1())}, ///< important to initialize the record buffer in the constructor so we can reuse it across the iterator
   m_sam_records     {fetch_next_pair()} ///< important queue must be initialized *before* we call fetch_next_pair. Order matters
 {}
 
 SamPairIterator::SamPairIterator(SamPairIterator&& original) :
   m_sam_file_ptr    {original.m_sam_file_ptr},
   m_sam_header_ptr  {move(original.m_sam_header_ptr)},
-  m_sam_record_ptr1 {original.m_sam_record_ptr1},
-  m_sam_record_ptr2 {original.m_sam_record_ptr2},
+  m_sam_record_ptr1 {move(original.m_sam_record_ptr1)},
+  m_sam_record_ptr2 {move(original.m_sam_record_ptr2)},
   m_sam_records     {move(original.m_sam_records)}
 {
   original.m_sam_file_ptr = nullptr;
-  original.m_sam_record_ptr1 = nullptr;
-  original.m_sam_record_ptr2 = nullptr;
 }
 
 SamPairIterator::~SamPairIterator() {
-  bam_destroy1(m_sam_record_ptr1);
-  bam_destroy1(m_sam_record_ptr2);
   m_sam_file_ptr = nullptr;
 }
 
@@ -57,32 +53,31 @@ bool SamPairIterator::operator!=(const SamPairIterator& rhs) {
   return m_sam_file_ptr != rhs.m_sam_file_ptr;
 }
 
-bool SamPairIterator::read_sam(bam1_t* record_ptr) {
-  if (sam_read1(m_sam_file_ptr, m_sam_header_ptr.get(), record_ptr) < 0) {
+bool SamPairIterator::read_sam(shared_ptr<bam1_t>& record_ptr) {
+  if (sam_read1(m_sam_file_ptr, m_sam_header_ptr.get(), record_ptr.get()) < 0) {
     m_sam_file_ptr = nullptr;
     return false;
   }
   return true;
 }
 
-Sam SamPairIterator::make_sam(bam1_t* record_ptr) {
+Sam SamPairIterator::make_sam(shared_ptr<bam1_t>& record_ptr) {
   return Sam {record_ptr, m_sam_header_ptr};
 }
 
-static bool primary(bam1_t* record_ptr) {
+static bool primary(shared_ptr<bam1_t>& record_ptr) {
   return !(record_ptr->core.flag & BAM_FSECONDARY) && !(record_ptr->core.flag & BAM_FSUPPLEMENTARY);
 }
 
-Sam SamPairIterator::next_primary_alignment(bam1_t* record_ptr) {
-  m_supp_alignments.emplace(bam_dup1(record_ptr));
-  while (read_sam(record_ptr) && !primary(record_ptr)) 
-    m_supp_alignments.emplace(bam_dup1(record_ptr));
+Sam SamPairIterator::next_primary_alignment(shared_ptr<bam1_t>& record_ptr) {
+  m_supp_alignments.push(make_shared_bam(bam_deep_copy(record_ptr.get())));
+  while (read_sam(record_ptr) && !primary(record_ptr))
+    m_supp_alignments.push(make_shared_bam(bam_deep_copy(record_ptr.get())));
   return make_sam(record_ptr);
 }
 
 pair<Sam,Sam> SamPairIterator::next_supplementary_alignment() {
-  auto read = Sam{m_supp_alignments.front().get(), m_sam_header_ptr};
-  read.make_internal_copy(); ///< todo -- we have to make a copy here because the queue doesn't keep track of the memory allocated for the sam_record_ptr. Make a copy just for now, but we need a better mechanism here
+  const auto read = Sam{m_supp_alignments.front(), m_sam_header_ptr};
   m_supp_alignments.pop();
   return make_pair(read, Sam{});
 }

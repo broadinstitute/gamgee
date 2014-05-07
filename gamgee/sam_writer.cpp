@@ -24,7 +24,7 @@ void SamWriter::add_header(const SamHeader& header) {
 }
 
 void SamWriter::add_record(const SamBody& body) { 
-  sam_write1(m_out_file, m_header.m_header, body.m_body); 
+  sam_write1(m_out_file, m_header.m_header.get(), body.m_body.get());
 }
 
 htsFile* SamWriter::open_file(const std::string& output_fname, const std::string& mode) {
@@ -32,7 +32,7 @@ htsFile* SamWriter::open_file(const std::string& output_fname, const std::string
 }
 
 void SamWriter::write_header() const {
-  sam_hdr_write(m_out_file, m_header.m_header); 
+  sam_hdr_write(m_out_file, m_header.m_header.get());
 }
 
 
