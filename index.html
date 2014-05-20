@@ -18,8 +18,7 @@
     <header>
         <h1 class="header">Gamgee</h1>
 
-        <p class="header">A C++ interface for HTSLIB (samtools/htslib), the core of the <a href="http://samtools.sourceforge.net/">SAMtools</a>
-            SAM manipulation utility</p>
+        <p class="header">A C++14 library for manipulation of high throughput genomics file formats</p>
 
         <ul>
             <li class="download"><a class="buttons" href="https://github.com/MauricioCarneiro/gamgee/zipball/master">Download
@@ -37,51 +36,91 @@
     </header>
     <section>
         <h3>
-            <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to Gamgee home</h3>
-        <p>
-            Gamgee is a C++ interface for HTSLIB (samtools/htslib). It provides an easier, memory-safe and object-oriented way to access the high performance
-            HTSLIB features. Gamgee is designed to keep the original performance of HTSLIB while providing nicer and safer interfaces.
-        </p>
-
-        <h3>
-            Build prerequisites
-        </h3>
-        <p>In order to build Gamgee you need <a href="http://www.boost.org/boost-build2/">Boost.Build V2</a> installed in your system.
-           Follow the installation steps below so you can use <i>b2</i> to build Gamgee.</p>
-
-            <h4>Installing Boost.Build V2 from source</h4>
-            <p>Run the following commands to checkout and install Boost.Build V2:</p>
-            <pre><code>git clone https://github.com/boostorg/build.git
-cd build
-./bootstrap.sh
-sudo ./b2 install</code></pre>
-        <h3>
-            Download and installation
+          <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>What is Gamgee
         </h3>
 
         <p>
-            Once installed Boost.Build V2, run the following commands to install Gamgee:
+            <a href="https://travis-ci.org/MauricioCarneiro/gamgee">
+                <img src="https://camo.githubusercontent.com/10e45f22723f620b8894fd9c5a516aef8078c59d/68747470733a2f2f7472617669732d63692e6f72672f4d6175726963696f4361726e6569726f2f67616d6765652e7376673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://travis-ci.org/MauricioCarneiro/gamgee.svg?branch=master" style="max-width:100%;">
+            </a>
         </p>
 
-        <pre><code>$ git clone https://github.com/mauriciocarneiro/gamgee.git<br>$ cd gamgee<br>$ b2 gamgee</code></pre>
+        <p>
+            Gamgee is a free open source C++14 library for the main file
+            formats in genomics.  Currently it supports reading and writing of
+            SAM, BAM, CRAM, VCF, BCF, FASTA, FASTQ files.  Gamgee is designed
+            for high performance traversals of these files. It provides a
+            selection of iterators and utility functions to load the entire
+            file to memory.
+
+            Gamgee uses <a href="http://semver.org/">semantic versioning 2.0</a> 
+            The API is free to change until version 1.x is released.
+        </p>
+
+        <h3>Dependencies</h3>
+        <p>
+            To build gamgee you will need a C++14 capable compiler. Currently
+            Gamgee is tested on GCC-4.9 or Clang 3.4. 
+        </p>
+
+        <p>
+            Gamgee dependes on the <a href="http://www.boost.org/">Boost
+            Libraries</a>, including <a
+            href="http://www.boost.org/boost-build2/">Boost.Build V2</a>
+            installed in your system.  If your operating system has a package
+            manager, simply install the full boost library or download them
+            separately and install from source.
+        </p>
+
+        <h3>Building Gamgee</h3>
+
+        <p>To build gamgee simply use b2 in the clone directory</p>
+
+        <pre><code>$ git clone https://github.com/mauriciocarneiro/gamgee.git<br>$ cd gamgee<br>$ b2</code></pre>
+
+        <p>To run tests in Gamgee simply run from the git clone root:</p>
+
+        <pre><code>$ b2 test</code></pre>
+
+        <p> You can specify a specific compiler with the toolset argument to b2.</p>
+        
+        <pre><code>$ b2 toolset=clang</code></pre>
+
+        <p> You can force-build all sources even if there are no changes (this is the only way to force a rebuild of the submodules) with: 
+        
+        <pre><code>$ b2 -a</code></pre>
+
+        <p> You can use multiple threads to build faster with -j N where N is the number of threads you want to use. Here is a typical command:
+        
+        <pre><code>$ b2 -aj4 test</code></pre>
 
         <h3>
-            <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span
-                    class="octicon octicon-link"></span></a>Author</h3>
-
-        <p>Gamgee is a project of Mauricio Carneiro (<a href="https://github.com/blog/821" class="user-mention">@mauriciocarneiro</a>), Team Leader
-           of the Broad Institute's <a href="http://www.broadinstitute.org/gatk/">GATK</a>.</p>
-            <p>Please visit <a href="http://www.broadinstitute.org/bios/mauricio-carneiro">http://www.broadinstitute.org/bios/mauricio-carneiro</a>
-            for more information.</p>
-
-        <h3>
-            Useful links
+            <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Author
         </h3>
-        <ul>
-            <li>GATK: <a href="http://www.broadinstitute.org/gatk/">http://www.broadinstitute.org/gatk/</a></li>
-            <li>SAMtools: <a href="http://samtools.sourceforge.net/">http://samtools.sourceforge.net/</a></li>
-            <li>HTSLIB: <a href="https://github.com/samtools/htslib/">https://github.com/samtools/htslib</a></li>
-        </ul>
+
+        <p>Gamgee is maitained by <a href="http://mauriciocarneiro.github.io/">Mauricio Carneiro</a>(<a href="https://github.com/MauricioCarneiro" class="user-mention">@mauriciocarneiro</a>) </p>
+
+        <h3>Contributing to Gamgee</h3>
+        <p> 
+            To contribute to Gamgee, simply fork this repository, make your
+            suggested changes and open a pull request. Your pull request will
+            be evaluated by the maintainers of the library and the code-review
+            will happen in the pull-request interface of Github.
+        </p>
+
+        <p>
+            When you fork this repository you are also automatically set up to have
+            continuous integration builds happening at <a
+            href="www.travis-ci.org">travis-ci</a>. You can use the travis badge in
+            the README.md file in your forked project's github page to go directly to
+            travis-ci and see the build of your code. Only builds with a <i>passing</i> 
+            status will be considered for code review.
+        </p>
+
+        <p>
+            Every functionality added to Gamgee should have an accompanying unit
+            test added in the test directory. 
+        </p>
     </section>
     <footer>
         <p>
