@@ -8,7 +8,7 @@ project gamgee
   use-project /gamgee/libs : lib ;
 
   lib gamgee 
-    : [ glob gamgee/*.cpp ] /gamgee/libs//hts
+    : [ glob-tree *.cpp : .git test lib bin dox build ] /gamgee/libs//hts
     : <link>static 
     :
     : <include>.

@@ -7,17 +7,18 @@
 
 namespace gamgee {
 
+/**
+ * @brief Utility class to hold the header of a sam file
+ */
 class SamHeader {
  public:
   explicit SamHeader();
-  SamHeader(const std::shared_ptr<bam_hdr_t>& header);
+  explicit SamHeader(const std::shared_ptr<bam_hdr_t>& header);
   SamHeader(const SamHeader& other);
-  SamHeader(SamHeader&& other);
+  SamHeader(SamHeader&& other) noexcept;
   SamHeader& operator=(const SamHeader& other);
-  SamHeader& operator=(SamHeader&& other);
-
-  // Default destruction is sufficient, since our shared_ptr will handle deallocation
-  ~SamHeader() = default;
+  SamHeader& operator=(SamHeader&& other) noexcept;
+  ~SamHeader() = default; ///< Default destruction is sufficient, since our shared_ptr will handle deallocation
 
  private:
   std::shared_ptr<bam_hdr_t> m_header;

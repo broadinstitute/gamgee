@@ -28,10 +28,6 @@ FastqIterator::FastqIterator(std::istream* in) :
   m_element = fetch_next_element();
 }
 
-FastqIterator::~FastqIterator() {
-  m_input_stream = nullptr;
-}
-
 FastqIterator::FastqIterator(FastqIterator&& original) {
   m_input_stream          = original.m_input_stream;
   m_element               = move(original.m_element);

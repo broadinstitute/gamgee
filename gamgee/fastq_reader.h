@@ -16,7 +16,7 @@ namespace gamgee {
  * This class is designed to parse fastq files in for-each loops with the following signature:
  *
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * for (Fastq& record : FastqReader(filename))
+ * for (auto& record : FastqReader(filename))
  *   do_something_with_fastq(record);
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
@@ -24,7 +24,7 @@ namespace gamgee {
  * stream in the constructor, like so:
  * 
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * for (Fastq& record : FastqReader(&std::cin))
+ * for (auto& record : FastqReader(&std::cin))
  *   do_something_with_fastq(record);
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
