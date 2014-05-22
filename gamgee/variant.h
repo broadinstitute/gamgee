@@ -30,6 +30,8 @@ class Variant {
   uint32_t n_samples()       const {return uint32_t(m_body->n_sample);}
   uint32_t n_alleles()       const {return uint32_t(m_body->n_allele);}
 
+  std::vector<uint8_t> genotype_quals() const;
+
  private:
   std::shared_ptr<bcf_hdr_t> m_header;
   std::shared_ptr<bcf1_t> m_body;

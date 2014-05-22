@@ -56,6 +56,12 @@ Variant& Variant::operator=(Variant&& other) noexcept {
   return *this;
 }
 
+vector<uint8_t> Variant::genotype_quals() const {
+  const auto fmt = bcf_get_fmt(m_header.get(), m_body.get(), "GQ");     
+  if (fmt == nullptr) ///< if the format is missing or the GQ tag is missing, return an empty vector
+    return vector<uint8_t>{};
+  return vector<uint8_t>(fmt->p, fmt->p + fmt->p_len); 
+}
 
 }
 
