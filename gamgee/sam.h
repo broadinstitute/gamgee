@@ -2,7 +2,9 @@
 #define __gamgee__sam__
 
 #include "sam_header.h"
-#include "sam_body.h"
+#include "read_bases.h"
+#include "base_quals.h"
+#include "cigar.h"
 
 #include "htslib/sam.h"
 
@@ -14,16 +16,87 @@ namespace gamgee {
 /**
  * @brief Utility class to manipulate a Sam record.
  */
-class Sam : public SamBody {
+class Sam {
  public:
-  explicit Sam() = default;
-  explicit Sam(const std::shared_ptr<bam1_t>& body, const std::shared_ptr<bam_hdr_t>& header) noexcept : SamBody{body}, m_header{header} {}
-  SamHeader header() {
-    return SamHeader{m_header}; ///< TODO: return a reference to a singleton SamHeader object instead of constructing a new one each time, since we're already sharing the underlying htslib memory
-  }
+  Sam() = default;
+  explicit Sam(const std::shared_ptr<bam_hdr_t>& header, const std::shared_ptr<bam1_t>& body) noexcept;
+  Sam(const Sam& other);
+  Sam(Sam&& other) noexcept;
+  Sam& operator=(const Sam& other);
+  Sam& operator=(Sam&& other) noexcept;
+
+  SamHeader header() { return SamHeader{m_header}; }
+
+  // getters for non-variable length fields (things outside of the data member)
+  uint32_t chromosome()           const { return uint32_t(m_body->core.tid);     }
+  uint32_t alignment_start()      const { return uint32_t(m_body->core.pos+1);   }
+  uint32_t alignment_stop()       const { return uint32_t(bam_endpos(m_body.get())+1); }
+  uint32_t unclipped_start()      const ;
+  uint32_t unclipped_stop()       const ;
+  uint32_t mate_chromosome()      const { return uint32_t(m_body->core.mtid);    }
+  uint32_t mate_alignment_start() const { return uint32_t(m_body->core.mpos+1);  }
+  uint32_t mate_alignment_stop()  const ;                                          // not implemented -- requires new mate cigar tag!
+  uint32_t mate_unclipped_start() const { return alignment_start();              } // dummy implementation -- requires new mate cigar tag!
+  uint32_t mate_unclipped_stop()  const ;                                          // not implemented -- requires new mate cigar tag!
+
+  // modify non-variable length fields (things outside of the data member)
+  void set_chromosome(const uint32_t chr)              { m_body->core.tid  = int32_t(chr);        }
+  void set_alignment_start(const uint32_t start)       { m_body->core.pos  = int32_t(start-1);    } // incoming alignment is 1-based, storing 0-based
+  void set_mate_chromosome(const uint32_t mchr)        { m_body->core.mtid = int32_t(mchr);       }
+  void set_mate_alignment_start(const uint32_t mstart) { m_body->core.mpos = int32_t(mstart - 1); } // incoming alignment is 1-based, storing 0-based
+
+  // getters for fields inside the data field
+  std::string name()     const { return std::string{bam_get_qname(m_body.get())}; }
+  // the objects returned by following getters will share underlying htslib memory with this object
+  ReadBases bases()      const { return ReadBases{m_body}; }
+  BaseQuals base_quals() const { return BaseQuals{m_body}; }
+  Cigar cigar()          const { return Cigar{m_body}; }
+
+  // getters for flags 
+  bool paired()          const { return m_body->core.flag & BAM_FPAIRED;        }
+  bool properly_paired() const { return m_body->core.flag & BAM_FPROPER_PAIR;   }
+  bool unmapped()        const { return m_body->core.flag & BAM_FUNMAP;         }
+  bool next_unmapped()   const { return m_body->core.flag & BAM_FMUNMAP;        }
+  bool reverse()         const { return m_body->core.flag & BAM_FREVERSE;       }
+  bool next_reverse()    const { return m_body->core.flag & BAM_FMREVERSE;      }
+  bool first()           const { return m_body->core.flag & BAM_FREAD1;         }
+  bool last()            const { return m_body->core.flag & BAM_FREAD2;         }
+  bool secondary()       const { return m_body->core.flag & BAM_FSECONDARY;     }
+  bool fail()            const { return m_body->core.flag & BAM_FQCFAIL;        }
+  bool duplicate()       const { return m_body->core.flag & BAM_FDUP;           }
+  bool supplementary()   const { return m_body->core.flag & BAM_FSUPPLEMENTARY; }
+
+  // modify flags
+  void set_paired()            { m_body->core.flag |= BAM_FPAIRED;         }
+  void set_not_paired()        { m_body->core.flag &= ~BAM_FPAIRED;        }
+  void set_unmapped()          { m_body->core.flag |= BAM_FUNMAP;          }
+  void set_not_unmapped()      { m_body->core.flag &= ~BAM_FUNMAP;         }
+  void set_next_unmapped()     { m_body->core.flag |= BAM_FMUNMAP;         }
+  void set_not_next_unmapped() { m_body->core.flag &= ~BAM_FMUNMAP;        }
+  void set_reverse()           { m_body->core.flag |= BAM_FREVERSE;        }
+  void set_not_reverse()       { m_body->core.flag &= ~BAM_FREVERSE;       }
+  void set_next_reverse()      { m_body->core.flag |= BAM_FMREVERSE;       }
+  void set_not_next_reverse()  { m_body->core.flag &= ~BAM_FMREVERSE;      }
+  void set_first()             { m_body->core.flag |= BAM_FREAD1;          }
+  void set_not_first()         { m_body->core.flag &= ~BAM_FREAD1;         }
+  void set_last()              { m_body->core.flag |= BAM_FREAD2;          }
+  void set_not_last()          { m_body->core.flag &= ~BAM_FREAD2;         }
+  void set_secondary()         { m_body->core.flag |= BAM_FSECONDARY;      }
+  void set_not_secondary()     { m_body->core.flag &= ~BAM_FSECONDARY;     }
+  void set_fail()              { m_body->core.flag |= BAM_FQCFAIL;         }
+  void set_not_fail()          { m_body->core.flag &= ~BAM_FQCFAIL;        }
+  void set_duplicate()         { m_body->core.flag |= BAM_FDUP;            }
+  void set_not_duplicate()     { m_body->core.flag &= ~BAM_FDUP;           }
+  void set_supplementary()     { m_body->core.flag |= BAM_FSUPPLEMENTARY;  }
+  void set_not_supplementary() { m_body->core.flag &= ~BAM_FSUPPLEMENTARY; }
+
+  bool empty() const { return m_body == nullptr; }
 
  private:
   std::shared_ptr<bam_hdr_t> m_header;
+  std::shared_ptr<bam1_t> m_body;
+
+  friend class SamWriter;
 };
 
 }  // end of namespace

@@ -1,6 +1,6 @@
 #include <boost/test/unit_test.hpp>
 #include <vector>
-#include "sam_body.h"
+#include "sam.h"
 #include "sam_reader.h"
 
 using namespace std;

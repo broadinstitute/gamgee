@@ -17,6 +17,7 @@ namespace gamgee {
  */
 class VariantHeader {
  public:
+  VariantHeader() = default; ///< initializes a null header @warning if you need to create a VariantHeader from scratch, use the builder instead
   explicit VariantHeader(const std::shared_ptr<bcf_hdr_t>& header) : m_header{header} {} ///< @brief simple constructor that takes shared ownership of a header object
   VariantHeader(const VariantHeader& other);
   VariantHeader(VariantHeader&& other) noexcept;
