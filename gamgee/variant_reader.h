@@ -30,13 +30,13 @@ namespace gamgee {
  * or passing in an empty string for a filename, like so:
  * 
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * for (auto& record : VariantReader<VariantIterator>{})
+ * for (auto& record : VariantReader<VariantIterator>{filename})
  *   do_something_with_record(record);
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
  * Most iterators have aliases defined by this module so you can use it like so:
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * for (auto& record : SingleVariantReader{})
+ * for (auto& record : SingleVariantReader{filename})
  *   do_something_with_record(record);
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
