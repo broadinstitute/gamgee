@@ -25,3 +25,6 @@ dox/
 
 # vim temporaries
 *.swp
+
+# Haroopad temporaries
+*.bak
