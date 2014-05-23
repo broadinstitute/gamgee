@@ -18,6 +18,8 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
       BOOST_CHECK_EQUAL(record.n_alleles(), truth_n_alleles[record_counter]);
       BOOST_CHECK_EQUAL(record.n_samples(), 3);
       BOOST_CHECK_EQUAL(record.qual(), 0);
+      auto v = record.genotype_quals();
+      for_each(v.begin(), v.end(), [](uint32_t x){BOOST_CHECK_EQUAL(x, 35);});
       ++record_counter;
     }
     BOOST_CHECK_EQUAL(record_counter, 5u);
