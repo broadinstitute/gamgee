@@ -28,46 +28,45 @@ class Sam {
   SamHeader header() { return SamHeader{m_header}; }
 
   // getters for non-variable length fields (things outside of the data member)
-  uint32_t chromosome()           const { return uint32_t(m_body->core.tid);     }
-  uint32_t alignment_start()      const { return uint32_t(m_body->core.pos+1);   }
-  uint32_t alignment_stop()       const { return uint32_t(bam_endpos(m_body.get())+1); }
+  uint32_t chromosome()           const { return uint32_t(m_body->core.tid);     }       ///< @brief returns the integer representation of the chromosome. Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). Similar to Picards getReferenceIndex()
+  uint32_t alignment_start()      const { return uint32_t(m_body->core.pos+1);   }       ///< @brief returns a (1-based and inclusive) alignment start position (as you would see in a Sam file). @note the internal encoding is 0-based to mimic that of the BAM files.
+  uint32_t alignment_stop()       const { return uint32_t(bam_endpos(m_body.get())+1); } ///< @brief returns a (1-based and inclusive) alignment stop position (as you would see in a Sam file). @note the internal encoding is 0-based to mimic that of the BAM files.
   uint32_t unclipped_start()      const ;
   uint32_t unclipped_stop()       const ;
-  uint32_t mate_chromosome()      const { return uint32_t(m_body->core.mtid);    }
-  uint32_t mate_alignment_start() const { return uint32_t(m_body->core.mpos+1);  }
-  uint32_t mate_alignment_stop()  const ;                                          // not implemented -- requires new mate cigar tag!
-  uint32_t mate_unclipped_start() const { return alignment_start();              } // dummy implementation -- requires new mate cigar tag!
-  uint32_t mate_unclipped_stop()  const ;                                          // not implemented -- requires new mate cigar tag!
+  uint32_t mate_chromosome()      const { return uint32_t(m_body->core.mtid);    }       ///< @brief returns the integer representation of the mate's chromosome. Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). Similar to Picards getMateReferenceIndex()
+  uint32_t mate_alignment_start() const { return uint32_t(m_body->core.mpos+1);  }       ///< @brief returns a (1-based and inclusive) mate's alignment start position (as you would see in a Sam file). @note the internal encoding is 0-based to mimic that of the BAM files.
+  uint32_t mate_alignment_stop()  const ;                                                ///< @brief returns a (1-based and inclusive) mate'salignment stop position (as you would see in a Sam file). @note the internal encoding is 0-based to mimic that of the BAM files. @warning not implemented -- requires new mate cigar tag!
+  uint32_t mate_unclipped_start() const { return alignment_start();              }       ///< @warning dummy implementation -- requires new mate cigar tag!
+  uint32_t mate_unclipped_stop()  const ;                                                ///< @warning not implemented -- requires new mate cigar tag!
 
   // modify non-variable length fields (things outside of the data member)
-  void set_chromosome(const uint32_t chr)              { m_body->core.tid  = int32_t(chr);        }
-  void set_alignment_start(const uint32_t start)       { m_body->core.pos  = int32_t(start-1);    } // incoming alignment is 1-based, storing 0-based
-  void set_mate_chromosome(const uint32_t mchr)        { m_body->core.mtid = int32_t(mchr);       }
-  void set_mate_alignment_start(const uint32_t mstart) { m_body->core.mpos = int32_t(mstart - 1); } // incoming alignment is 1-based, storing 0-based
+  void set_chromosome(const uint32_t chr)              { m_body->core.tid  = int32_t(chr);        } ///< @brief simple setter for the chromosome index. Index is 0-based.
+  void set_alignment_start(const uint32_t start)       { m_body->core.pos  = int32_t(start-1);    } ///< @brief simple setter for the alignment start. @warning You should use (1-based and inclusive) alignment but internally this is stored 0-based to simplify BAM conversion.
+  void set_mate_chromosome(const uint32_t mchr)        { m_body->core.mtid = int32_t(mchr);       } ///< @brief simple setter for the mate's chromosome index. Index is 0-based.
+  void set_mate_alignment_start(const uint32_t mstart) { m_body->core.mpos = int32_t(mstart - 1); } ///< @brief simple setter for the mate's alignment start. @warning You should use (1-based and inclusive) alignment but internally this is stored 0-based to simplify BAM conversion.
 
   // getters for fields inside the data field
-  std::string name()     const { return std::string{bam_get_qname(m_body.get())}; }
-  // the objects returned by following getters will share underlying htslib memory with this object
-  ReadBases bases()      const { return ReadBases{m_body}; }
-  BaseQuals base_quals() const { return BaseQuals{m_body}; }
-  Cigar cigar()          const { return Cigar{m_body}; }
+  std::string name()     const { return std::string{bam_get_qname(m_body.get())}; } ///< @brief returns the read name
+  ReadBases bases()      const { return ReadBases{m_body}; }                        ///< @brief returns the read bases @warning the objects returned by this member function will share underlying htslib memory with this object
+  BaseQuals base_quals() const { return BaseQuals{m_body}; }                        ///< @brief returns the base qualities @warning the objects returned by this member function will share underlying htslib memory with this object
+  Cigar cigar()          const { return Cigar{m_body}; }                            ///< @brief returns the cigar @warning the objects returned by this member function will share underlying htslib memory with this object
 
   // getters for flags 
-  bool paired()          const { return m_body->core.flag & BAM_FPAIRED;        }
-  bool properly_paired() const { return m_body->core.flag & BAM_FPROPER_PAIR;   }
-  bool unmapped()        const { return m_body->core.flag & BAM_FUNMAP;         }
-  bool next_unmapped()   const { return m_body->core.flag & BAM_FMUNMAP;        }
-  bool reverse()         const { return m_body->core.flag & BAM_FREVERSE;       }
-  bool next_reverse()    const { return m_body->core.flag & BAM_FMREVERSE;      }
-  bool first()           const { return m_body->core.flag & BAM_FREAD1;         }
-  bool last()            const { return m_body->core.flag & BAM_FREAD2;         }
-  bool secondary()       const { return m_body->core.flag & BAM_FSECONDARY;     }
-  bool fail()            const { return m_body->core.flag & BAM_FQCFAIL;        }
-  bool duplicate()       const { return m_body->core.flag & BAM_FDUP;           }
-  bool supplementary()   const { return m_body->core.flag & BAM_FSUPPLEMENTARY; }
+  bool paired()          const { return m_body->core.flag & BAM_FPAIRED;        } ///< @brief whether or not this read is paired
+  bool properly_paired() const { return m_body->core.flag & BAM_FPROPER_PAIR;   } ///< @brief whether or not this read is properly paired (see definition in BAM spec)
+  bool unmapped()        const { return m_body->core.flag & BAM_FUNMAP;         } ///< @brief whether or not this read is unmapped
+  bool next_unmapped()   const { return m_body->core.flag & BAM_FMUNMAP;        } ///< @brief whether or not the next read is unmapped
+  bool reverse()         const { return m_body->core.flag & BAM_FREVERSE;       } ///< @brief whether or not this read is from the reverse strand
+  bool next_reverse()    const { return m_body->core.flag & BAM_FMREVERSE;      } ///< @brief whether or not the next read is from the reverse strand
+  bool first()           const { return m_body->core.flag & BAM_FREAD1;         } ///< @brief whether or not this read is the first read in a pair (or multiple pairs)
+  bool last()            const { return m_body->core.flag & BAM_FREAD2;         } ///< @brief whether or not this read is the last read in a pair (or multiple pairs)
+  bool secondary()       const { return m_body->core.flag & BAM_FSECONDARY;     } ///< @brief whether or not this read is a secondary alignment (see definition in BAM spec)
+  bool fail()            const { return m_body->core.flag & BAM_FQCFAIL;        } ///< @brief whether or not this read is marked as failing vendor (sequencer) quality control
+  bool duplicate()       const { return m_body->core.flag & BAM_FDUP;           } ///< @brief whether or not this read is a duplicate
+  bool supplementary()   const { return m_body->core.flag & BAM_FSUPPLEMENTARY; } ///< @brief whether or not this read is a supplementary alignment (see definition in the BAM spec) 
 
   // modify flags
-  void set_paired()            { m_body->core.flag |= BAM_FPAIRED;         }
+  void set_paired()            { m_body->core.flag |= BAM_FPAIRED;         } 
   void set_not_paired()        { m_body->core.flag &= ~BAM_FPAIRED;        }
   void set_unmapped()          { m_body->core.flag |= BAM_FUNMAP;          }
   void set_not_unmapped()      { m_body->core.flag &= ~BAM_FUNMAP;         }
@@ -90,13 +89,13 @@ class Sam {
   void set_supplementary()     { m_body->core.flag |= BAM_FSUPPLEMENTARY;  }
   void set_not_supplementary() { m_body->core.flag &= ~BAM_FSUPPLEMENTARY; }
 
-  bool empty() const { return m_body == nullptr; }
+  bool empty() const { return m_body == nullptr; } ///< @brief whether or not this Sam object is empty, meaning that the internal memory has not been initialized (i.e. a Sam object initialized with Sam()).
 
  private:
-  std::shared_ptr<bam_hdr_t> m_header;
-  std::shared_ptr<bam1_t> m_body;
+  std::shared_ptr<bam_hdr_t> m_header; ///< htslib pointer to the header structure
+  std::shared_ptr<bam1_t> m_body;      ///< htslib pointer to the sam body structure
 
-  friend class SamWriter;
+  friend class SamWriter; ///< allows the writer to access the guts of the object
 };
 
 }  // end of namespace
