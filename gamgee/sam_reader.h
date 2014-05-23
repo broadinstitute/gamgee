@@ -30,13 +30,13 @@ namespace gamgee {
  * or passing in an empty string for a filename, like so:
  * 
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * for (auto& pair : SamReader<SamPairIterator>{})
+ * for (auto& pair : SamReader<SamPairIterator>{filename})
  *   do_something_with_pair(pair);
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
  * Most iterators have aliases definied by this module so you can use it like so:
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * for (auto& pair : SingleSamReader{})
+ * for (auto& pair : SingleSamReader{filename})
  *   do_something_with_pair(pair);
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */

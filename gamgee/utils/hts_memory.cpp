@@ -9,7 +9,7 @@ namespace utils {
 
 /**
   * @brief wraps a pre-allocated bam1_t in a shared_ptr with correct deleter
-  * @param bam_ptr an htslib raw bam pointer
+  * @param sam_ptr an htslib raw bam pointer
   */
 shared_ptr<bam1_t> make_shared_sam(bam1_t* sam_ptr) {
   return shared_ptr<bam1_t>(sam_ptr, SamBodyDeleter());
@@ -17,7 +17,7 @@ shared_ptr<bam1_t> make_shared_sam(bam1_t* sam_ptr) {
 
 /**
   * @brief wraps a pre-allocated bam_hdr_t in a shared_ptr with correct deleter
-  * @param bam_header_ptr an htslib raw bam header pointer
+  * @param sam_header_ptr an htslib raw bam header pointer
   */
 shared_ptr<bam_hdr_t> make_shared_sam_header(bam_hdr_t* sam_header_ptr) {
   return shared_ptr<bam_hdr_t>(sam_header_ptr, SamHeaderDeleter());

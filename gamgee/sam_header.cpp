@@ -6,13 +6,6 @@ using namespace std;
 namespace gamgee {
 
   /**
-   * @brief creates an empty SamHeader, allocating new htslib memory
-   */
-  SamHeader::SamHeader() :
-    m_header { utils::make_shared_sam_header(bam_hdr_init()) }
-  {}
-
-  /**
    * @brief creates a SamHeader object that points to htslib memory already allocated
    *
    * @note the resulting SamHeader object shares ownership of the pre-allocated memory via

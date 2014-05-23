@@ -17,12 +17,12 @@ namespace gamgee {
  */
 class VariantHeader {
  public:
-  VariantHeader() = default; ///< initializes a null header @warning if you need to create a VariantHeader from scratch, use the builder instead
-  explicit VariantHeader(const std::shared_ptr<bcf_hdr_t>& header) : m_header{header} {} ///< @brief simple constructor that takes shared ownership of a header object
-  VariantHeader(const VariantHeader& other);
-  VariantHeader(VariantHeader&& other) noexcept;
-  VariantHeader& operator=(const VariantHeader& other); 
-  VariantHeader& operator=(VariantHeader&& other) noexcept; ///< @brief move assignment operator 
+  VariantHeader() = default;                                                             ///< @brief initializes a null VariantHeader @warning if you need to create a VariantHeader from scratch, use the builder instead
+  explicit VariantHeader(const std::shared_ptr<bcf_hdr_t>& header) : m_header{header} {} ///< @brief creates a VariantHeader given htslib object. @note used by all iterators
+  VariantHeader(const VariantHeader& other);                                             ///< @brief makes a deep copy of a VariantHeader. Shared pointers maintain state to all other associated objects correctly.
+  VariantHeader(VariantHeader&& other) noexcept;                                         ///< @brief moves VariantHeader accordingly. Shared pointers maintain state to all other associated objects correctly.
+  VariantHeader& operator=(const VariantHeader& other);                                  ///< @brief deep copy assignment of a VariantHeader. Shared pointers maintain state to all other associated objects correctly.
+  VariantHeader& operator=(VariantHeader&& other) noexcept;                              ///< @brief move assignment of a VariantHeader. Shared pointers maintain state to all other associated objects correctly.
   ~VariantHeader() = default;
 
   /**
