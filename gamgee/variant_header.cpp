@@ -15,7 +15,7 @@ using namespace std;
 /**
  * @brief simple function to plow through all the hrec's and find the ones that match the type tag
  */
-vector<string> find_fields_of_type(bcf_hdr_t* h, int type) {
+static vector<string> find_fields_of_type(bcf_hdr_t* h, int type) {
   auto result = vector<string>{};
   for (auto i = 0; i != h->nhrec; ++i) {
     if (h->hrec[i]->type == type)
