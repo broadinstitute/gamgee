@@ -43,7 +43,7 @@ class SamWriter {
    * @brief Adds a record to the file stream
    * @param body the record
    */
-  void add_record(const SamBody& body);
+  void add_record(const Sam& body);
 
   /**
    * @brief Adds a header to the file stream.

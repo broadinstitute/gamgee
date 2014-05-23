@@ -47,7 +47,7 @@ Sam SamIterator::fetch_next_record() {
     m_sam_file_ptr = nullptr;
     return Sam{};
   }
-  return Sam{m_sam_record_ptr, m_sam_header_ptr};
+  return Sam{m_sam_header_ptr, m_sam_record_ptr};
 }
 
 }

@@ -43,7 +43,7 @@ class VariantWriter {
    * @brief Adds a record to the file stream
    * @param body the record
    */
-  void add_record(const VariantBody& body);
+  void add_record(const Variant& body);
 
   /**
    * @brief Adds a header to the file stream.

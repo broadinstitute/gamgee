@@ -23,7 +23,7 @@ void SamWriter::add_header(const SamHeader& header) {
   write_header();
 }
 
-void SamWriter::add_record(const SamBody& body) { 
+void SamWriter::add_record(const Sam& body) { 
   sam_write1(m_out_file, m_header.m_header.get(), body.m_body.get());
 }
 

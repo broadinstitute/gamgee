@@ -23,7 +23,7 @@ void VariantWriter::add_header(const VariantHeader& header) {
   write_header();
 }
 
-void VariantWriter::add_record(const VariantBody& body) { 
+void VariantWriter::add_record(const Variant& body) { 
   bcf_write1(m_out_file, m_header.m_header.get(), body.m_body.get());
 }
 

@@ -47,7 +47,7 @@ Variant VariantIterator::fetch_next_record() {
     m_variant_file_ptr = nullptr;
     return Variant{};
   }
-  return Variant{m_variant_record_ptr, m_variant_header_ptr};
+  return Variant{m_variant_header_ptr, m_variant_record_ptr};
 }
 
 }

@@ -1,5 +1,5 @@
 #include "htslib/sam.h"
-#include "sam_body.h"
+#include "sam.h"
 #include "utils/hts_memory.h"
 
 #include <iostream>
@@ -9,24 +9,14 @@ using namespace std;
 namespace gamgee {
 
 /**
- * @brief creates an empty sam record and allocates new htslib memory for all the fields
- *
- * @note the copy will have exclusive ownership over the newly-allocated htslib memory
- *       until a data field (cigar, bases, etc.) is accessed, after which it will be
- *       shared via reference counting with the Cigar, etc. objects
- */
-SamBody::SamBody() :
-  m_body {utils::make_shared_sam(bam_init1())}
-{}
-
-/**
  * @brief creates a sam record that points to htslib memory already allocated
  *
- * @note the resulting SamBody shares ownership of the pre-allocated memory via shared_ptr
+ * @note the resulting Sam shares ownership of the pre-allocated memory via shared_ptr
  *       reference counting
  */
-SamBody::SamBody(const std::shared_ptr<bam1_t>& body) :
-  m_body { body }
+Sam::Sam(const std::shared_ptr<bam_hdr_t>& header, const std::shared_ptr<bam1_t>& body) noexcept :
+  m_header {header},
+  m_body {body}
 {}
 
 /**
@@ -36,14 +26,16 @@ SamBody::SamBody(const std::shared_ptr<bam1_t>& body) :
  *       until a data field (cigar, bases, etc.) is accessed, after which it will be
  *       shared via reference counting with the Cigar, etc. objects
  */
-SamBody::SamBody(const SamBody& other) :
+Sam::Sam(const Sam& other) :
+  m_header { utils::make_shared_sam_header(utils::sam_header_deep_copy(other.m_header.get())) },
   m_body { utils::make_shared_sam(utils::sam_deep_copy(other.m_body.get())) }
 {}
 
 /**
  * @brief moves a sam record, transferring ownership of the underlying htslib memory
  */
-SamBody::SamBody(SamBody&& other) noexcept :
+Sam::Sam(Sam&& other) noexcept :
+  m_header { move(other.m_header) },
   m_body { move(other.m_body) }
 {}
 
@@ -54,20 +46,22 @@ SamBody::SamBody(SamBody&& other) noexcept :
  *       until a data field (cigar, bases, etc.) is accessed, after which it will be
  *       shared via reference counting with the Cigar, etc. objects
  */
-SamBody& SamBody::operator=(const SamBody& other) {
+Sam& Sam::operator=(const Sam& other) {
   if ( &other == this )  
     return *this;
-  m_body = utils::make_shared_sam(utils::sam_deep_copy(other.m_body.get())); ///< shared_ptr assignment will take care of deallocating old sam record if necessary
+  m_header = utils::make_shared_sam_header(utils::sam_header_deep_copy(other.m_header.get())); ///< shared_ptr assignment will take care of deallocating old sam record if necessary
+  m_body = utils::make_shared_sam(utils::sam_deep_copy(other.m_body.get()));                   ///< shared_ptr assignment will take care of deallocating old sam record if necessary
   return *this;
 }
 
 /**
  * @brief moves a sam record, transferring ownership of the underlying htslib memory
  */
-SamBody& SamBody::operator=(SamBody&& other) noexcept {
+Sam& Sam::operator=(Sam&& other) noexcept {
   if ( &other == this ) 
     return *this;
-  m_body = move(other.m_body); ///< shared_ptr assignment will take care of decrementing the reference count for the old managed object (and destroying it if necessary)
+  m_header = move(other.m_header); ///< shared_ptr assignment will take care of decrementing the reference count for the old managed object (and destroying it if necessary)
+  m_body = move(other.m_body);     ///< shared_ptr assignment will take care of decrementing the reference count for the old managed object (and destroying it if necessary)
   return *this;
 }
 
@@ -81,7 +75,7 @@ SamBody& SamBody::operator=(SamBody&& other) noexcept {
  * Invalid to call on an unmapped read.
  * Invalid to call with cigar = null
  */
-uint32_t SamBody::unclipped_start() const {
+uint32_t Sam::unclipped_start() const {
   auto pos = alignment_start();
   const auto* cigar = bam_get_cigar(m_body.get());
   for (auto i = 0u; i != m_body->core.n_cigar; ++i) {
@@ -104,7 +98,7 @@ uint32_t SamBody::unclipped_start() const {
  * Invalid to call on an unmapped read.
  * Invalid to call with cigar = null
  */
-uint32_t SamBody::unclipped_stop() const {
+uint32_t Sam::unclipped_stop() const {
   auto pos = alignment_stop();
   const auto* cigar = bam_get_cigar(m_body.get());
   for (auto i = int{m_body->core.n_cigar - 1}; i >= 0; --i) {

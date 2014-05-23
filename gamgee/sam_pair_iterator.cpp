@@ -59,7 +59,7 @@ bool SamPairIterator::read_sam(shared_ptr<bam1_t>& record_ptr) {
 }
 
 Sam SamPairIterator::make_sam(shared_ptr<bam1_t>& record_ptr) {
-  return Sam {record_ptr, m_sam_header_ptr};
+  return Sam {m_sam_header_ptr, record_ptr};
 }
 
 static bool primary(shared_ptr<bam1_t>& record_ptr) {
@@ -74,7 +74,7 @@ Sam SamPairIterator::next_primary_alignment(shared_ptr<bam1_t>& record_ptr) {
 }
 
 pair<Sam,Sam> SamPairIterator::next_supplementary_alignment() {
-  const auto read = Sam{m_supp_alignments.front(), m_sam_header_ptr};
+  const auto read = Sam{m_sam_header_ptr, m_supp_alignments.front()};
   m_supp_alignments.pop();
   return make_pair(read, Sam{});
 }
