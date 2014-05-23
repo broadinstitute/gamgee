@@ -18,12 +18,12 @@ namespace gamgee {
  */
 class Sam {
  public:
-  Sam() = default;
-  explicit Sam(const std::shared_ptr<bam_hdr_t>& header, const std::shared_ptr<bam1_t>& body) noexcept;
-  Sam(const Sam& other);
-  Sam(Sam&& other) noexcept;
-  Sam& operator=(const Sam& other);
-  Sam& operator=(Sam&& other) noexcept;
+  Sam() = default;                                                                                      ///< @brief initializes a null Sam @note this is only used internally by the iterators @warning if you need to create a Variant from scratch, use the builder instead
+  explicit Sam(const std::shared_ptr<bam_hdr_t>& header, const std::shared_ptr<bam1_t>& body) noexcept; ///< @brief creates a Sam given htslib objects. @note used by all iterators
+  Sam(const Sam& other);                                                                                ///< @brief makes a deep copy of a Sam and it's header. Shared pointers maintain state to all other associated objects correctly.
+  Sam(Sam&& other) noexcept;                                                                            ///< @brief moves Sam and it's header accordingly. Shared pointers maintain state to all other associated objects correctly.
+  Sam& operator=(const Sam& other);                                                                     ///< @brief deep copy assignment of a Sam and it's header. Shared pointers maintain state to all other associated objects correctly.
+  Sam& operator=(Sam&& other) noexcept;                                                                 ///< @brief move assignment of a Sam and it's header. Shared pointers maintain state to all other associated objects correctly.
 
   SamHeader header() { return SamHeader{m_header}; }
 

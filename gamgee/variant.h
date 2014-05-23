@@ -15,12 +15,12 @@ namespace gamgee {
  */
 class Variant {
  public:
-  Variant() = default; ///< initializes a null header @warning if you need to create a Variant from scratch, use the builder instead
-  explicit Variant(const std::shared_ptr<bcf_hdr_t>& header, const std::shared_ptr<bcf1_t>& body) noexcept;
-  Variant(const Variant& other);
-  Variant(Variant&& other) noexcept;
-  Variant& operator=(const Variant& other);
-  Variant& operator=(Variant&& other) noexcept;
+  Variant() = default;                                                                                      ///< @brief initializes a null Variant @note this is only used internally by the iterators @warning if you need to create a Variant from scratch, use the builder instead
+  explicit Variant(const std::shared_ptr<bcf_hdr_t>& header, const std::shared_ptr<bcf1_t>& body) noexcept; ///< @brief creates a Variant given htslib objects. @note used by all iterators
+  Variant(const Variant& other);                                                                            ///< @brief makes a deep copy of a Variant and it's header. Shared pointers maintain state to all other associated objects correctly.
+  Variant(Variant&& other) noexcept;                                                                        ///< @brief moves Variant and it's header accordingly. Shared pointers maintain state to all other associated objects correctly.
+  Variant& operator=(const Variant& other);                                                                 ///< @brief deep copy assignment of a Variant and it's header. Shared pointers maintain state to all other associated objects correctly.
+  Variant& operator=(Variant&& other) noexcept;                                                             ///< @brief move assignment of a Variant and it's header. Shared pointers maintain state to all other associated objects correctly.
 
   VariantHeader header() const { return VariantHeader{m_header}; }
 
