@@ -4,6 +4,7 @@
 #include <string>
 #include <memory>
 #include <vector>
+#include <sstream>
 
 namespace gamgee {
 
@@ -57,6 +58,15 @@ std::unique_ptr<T> make_unique(Args&&... args);
  * manipulate it in a vector<string> to maintain data contiguity and improve usability
  */
 std::vector<std::string> hts_string_array_to_vector(const char * const * const string_array, const uint32_t array_size);
+
+/**
+ * @brief checks that an index is within min_index to max_index
+ * @param index the index to check
+ * @param max_index the maximum valid index
+ * @param min_index the minimum valid index (typically 0 for array boundaries, but can be arbitrary for pointer checks)
+ * @exception throws an out_of_bounds exception if index is out of limits
+ */
+void check_boundaries(const int index, const int max_index, const int min_index = 0);
 
 
 } // end utils namespace

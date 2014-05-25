@@ -1,4 +1,6 @@
 #include "variant.h"
+#include "variant_field.h"
+#include "variant_field_value.h"
 #include "utils/hts_memory.h"
 
 #include "htslib/vcf.h"
@@ -56,12 +58,20 @@ Variant& Variant::operator=(Variant&& other) noexcept {
   return *this;
 }
 
-vector<uint8_t> Variant::genotype_quals() const {
+VariantField<VariantFieldValue<int32_t>> Variant::genotype_quals() const {
   const auto fmt = bcf_get_fmt(m_header.get(), m_body.get(), "GQ");     
-  if (fmt == nullptr) ///< if the format is missing or the GQ tag is missing, return an empty vector
-    return vector<uint8_t>{};
-  return vector<uint8_t>(fmt->p, fmt->p + fmt->p_len); 
+  if (fmt == nullptr) ///< if the variant is missing or the GQ tag is missing, return an empty VariantField
+    return VariantField<VariantFieldValue<int32_t>>{};
+  return VariantField<VariantFieldValue<int32_t>>{m_body, fmt};
 }
+
+VariantField<VariantFieldValue<int32_t>> Variant::phred_likelihoods() const {
+  const auto fmt = bcf_get_fmt(m_header.get(), m_body.get(), "PL");     
+  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty VariantField
+    return VariantField<VariantFieldValue<int32_t>>{};
+  return VariantField<VariantFieldValue<int32_t>>{m_body, fmt};
+}
+
 
 }
 

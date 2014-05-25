@@ -6,7 +6,8 @@ lib z ;
 
 actions external-make
 {
-  cd "$(htslib_dir)" && make clean && make lib-static
+  echo "Rebuilding htslib...";
+  cd "$(htslib_dir)" && make clean > /dev/null 2> /dev/null && make lib-static > /dev/null 2> /dev/null
 }
 
 make libhts.a : : @external-make : <location>htslib ;

@@ -18,8 +18,12 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
       BOOST_CHECK_EQUAL(record.n_alleles(), truth_n_alleles[record_counter]);
       BOOST_CHECK_EQUAL(record.n_samples(), 3);
       BOOST_CHECK_EQUAL(record.qual(), 0);
-      auto v = record.genotype_quals();
-      for_each(v.begin(), v.end(), [](uint32_t x){BOOST_CHECK_EQUAL(x, 35);});
+      const auto gqs = record.genotype_quals();
+      BOOST_CHECK_EQUAL(gqs[1][0], 35); // checking random access operators
+      for_each(gqs.begin(), gqs.end(), [](const VariantFieldValue<int32_t>& x) { BOOST_CHECK_EQUAL(x[0], 35); });
+      const auto pls = record.phred_likelihoods();
+      for(const auto sample_pl : pls) 
+        BOOST_CHECK_EQUAL(sample_pl[1], 0);
       ++record_counter;
     }
     BOOST_CHECK_EQUAL(record_counter, 5u);

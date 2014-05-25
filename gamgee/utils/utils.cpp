@@ -63,6 +63,14 @@ std::vector<std::string> hts_string_array_to_vector(const char * const * const s
   return result;
 }
 
+void check_boundaries(const int index, const int max_index, const int min_index) {
+  if (index < min_index || index > max_index) {
+    std::stringstream error_message {};  ///< @todo update this to auto when gcc-4.9 is available on travis-ci
+    error_message << "The index requested is out of range: " << index << " the maximum index is " << max_index << " and the minimum is " << min_index << std::endl;
+    throw std::out_of_range(error_message.str());
+  }
+}
+
 
 }
 }

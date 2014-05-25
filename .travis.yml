@@ -9,15 +9,15 @@ compiler:
   - clang
 
 before_install:
-  - if [ "$CXX" == "g++" ]; then sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test; fi
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
   - if [ "$CXX" == "clang++" ]; then sudo add-apt-repository -y ppa:h-rayflood/llvm; fi
   - sudo add-apt-repository -y ppa:boost-latest/ppa
   - sudo apt-get -qq update
   - git clone https://github.com/boostorg/build.git
 
 install:
+  - sudo apt-get install -qq g++-4.8
   - if [ "$CXX" == "g++" ]; then TOOLSET=gcc; fi
-  - if [ "$CXX" == "g++" ]; then sudo apt-get install -qq g++-4.8; fi
   - if [ "$CXX" == "g++" ]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50; fi
   - if [ "$CXX" == "clang++" ]; then TOOLSET=clang; fi
   - if [ "$CXX" == "clang++" ]; then sudo apt-get install --allow-unauthenticated -qq clang-3.4; fi
