@@ -3,6 +3,7 @@
 
 #include <string>
 #include <stdexcept>
+#include <sstream>
 
 using namespace std;
 
@@ -76,10 +77,57 @@ BaseQuals& BaseQuals::operator=(BaseQuals&& other) noexcept {
   */
 uint8_t BaseQuals::operator[](const uint32_t index) const {
   if ( index >= m_num_quals )
-    throw out_of_range(string("Index ") + to_string(index) + " out of range in BaseQuals::operator[]");
+    throw out_of_range(string("Index ") + std::to_string(index) + " out of range in BaseQuals::operator[]");
 
   return m_quals[index];
 }
 
+/**
+ * @brief access and/or modify an individual base quality by index
+ *
+ * @return base quality at the specified index as an unsigned byte
+ */
+uint8_t& BaseQuals::operator[](const uint32_t index) {
+  if ( index >= m_num_quals )
+    throw out_of_range(string("Index ") + std::to_string(index) + " out of range in BaseQuals::operator[]");
+
+  return m_quals[index];
+}
+
+/**
+ * @brief check whether this object contains the same base qualities as another BaseQuals object
+ */
+bool BaseQuals::operator==(const BaseQuals& other) const {
+  if ( m_num_quals != other.m_num_quals )
+    return false;
+
+  for ( auto i = 0u; i < m_num_quals; ++i ) {
+    if ( m_quals[i] != other.m_quals[i] )
+      return false;
+  }
+
+  return true;
+}
+
+/**
+ * @brief check whether this object does not contain the same base qualities as another BaseQuals object
+ */
+bool BaseQuals::operator!=(const BaseQuals& other) const {
+  return !(*this == other);
+}
+
+/**
+ * @brief produce a string representation of the base qualities in this object
+ */
+std::string BaseQuals::to_string() const {
+  stringstream stream;
+
+  for ( auto i = 0; i < m_num_quals; ++i ) {
+    stream << int(m_quals[i]);
+    if ( i < m_num_quals - 1 )
+      stream << " ";
+  }
+  return stream.str();
+}
 
 } // end of namespace gamgee

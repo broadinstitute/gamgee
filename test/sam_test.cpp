@@ -135,3 +135,90 @@ BOOST_AUTO_TEST_CASE( sam_body_flags )
     break;  // only do this to one read
   }
 }
+
+BOOST_AUTO_TEST_CASE( sam_in_place_base_quals_modification ) {
+  auto read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  auto read_quals = read.base_quals();
+  auto expected_quals = vector<uint8_t>{4, 33, 50, 42, 34, 31};
+
+  read_quals[0] = 4;
+  read_quals[2] = 50;
+  read_quals[3] = 42;
+
+  for ( auto i = 0; i < expected_quals.size(); ++i ) {
+    BOOST_CHECK_EQUAL(read_quals[i], expected_quals[i]);
+  }
+}
+
+BOOST_AUTO_TEST_CASE( sam_in_place_bases_modification ) {
+  auto read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  auto read_bases = read.bases();
+  auto expected_bases = vector<Base>{ Base::N, Base::C, Base::G, Base::C, Base::T, Base::C, Base::A, Base::N, Base::N, Base::T, Base::T, Base::A, Base::A };
+
+  // These test modification of the lower 4 bits only, upper 4 bits only, and both upper and lower bits
+  read_bases.set_base(0, Base::N);
+  read_bases.set_base(2, Base::G);
+  read_bases.set_base(5, Base::C);
+  read_bases.set_base(7, Base::N);
+  read_bases.set_base(8, Base::N);
+  read_bases.set_base(9, Base::T);
+
+  for ( auto i = 0; i < expected_bases.size(); ++i ) {
+    BOOST_CHECK_EQUAL(int(read_bases[i]), int(expected_bases[i]));
+  }
+}
+
+BOOST_AUTO_TEST_CASE( sam_in_place_cigar_modification ) {
+  auto read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  auto read_cigar = read.cigar();
+
+  read_cigar[0] = Cigar::make_cigar_element(30, CigarOperator::I);
+
+  BOOST_CHECK_EQUAL(read_cigar[0], Cigar::make_cigar_element(30, CigarOperator::I));
+}
+
+BOOST_AUTO_TEST_CASE( sam_read_tags ) {
+  const auto read1 = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  const auto read2 = *(SingleSamReader{"testdata/test_paired.bam"}.begin());
+
+  const auto read1_pg_tag = read1.string_tag("PG");
+  BOOST_CHECK_EQUAL(read1_pg_tag.name(), "PG");
+  BOOST_CHECK_EQUAL(read1_pg_tag.value(), "0");
+  BOOST_CHECK_EQUAL(read1_pg_tag.is_present(), true);
+
+  const auto read1_rg_tag = read1.string_tag("RG");
+  BOOST_CHECK_EQUAL(read1_rg_tag.name(), "RG");
+  BOOST_CHECK_EQUAL(read1_rg_tag.value(), "exampleBAM.bam");
+  BOOST_CHECK_EQUAL(read1_rg_tag.is_present(), true);
+
+  const auto read1_sm_tag = read1.string_tag("SM");
+  BOOST_CHECK_EQUAL(read1_sm_tag.name(), "SM");
+  BOOST_CHECK_EQUAL(read1_sm_tag.value(), "exampleBAM.bam");
+  BOOST_CHECK_EQUAL(read1_sm_tag.is_present(), true);
+
+  const auto read1_nonexistent_tag = read1.integer_tag("DR");
+  BOOST_CHECK_EQUAL(read1_nonexistent_tag.is_present(), false);
+
+  const auto read2_nm_tag = read2.integer_tag("NM");
+  BOOST_CHECK_EQUAL(read2_nm_tag.name(), "NM");
+  BOOST_CHECK_EQUAL(read2_nm_tag.value(), 0);
+  BOOST_CHECK_EQUAL(read2_nm_tag.is_present(), true);
+
+  const auto read2_md_tag = read2.string_tag("MD");
+  BOOST_CHECK_EQUAL(read2_md_tag.name(), "MD");
+  BOOST_CHECK_EQUAL(read2_md_tag.value(), "76");
+  BOOST_CHECK_EQUAL(read2_md_tag.is_present(), true);
+
+  const auto read2_as_tag = read2.integer_tag("AS");
+  BOOST_CHECK_EQUAL(read2_as_tag.name(), "AS");
+  BOOST_CHECK_EQUAL(read2_as_tag.value(), 76);
+  BOOST_CHECK_EQUAL(read2_as_tag.is_present(), true);
+
+  const auto read2_xs_tag = read2.integer_tag("XS");
+  BOOST_CHECK_EQUAL(read2_xs_tag.name(), "XS");
+  BOOST_CHECK_EQUAL(read2_xs_tag.value(), 0);
+  BOOST_CHECK_EQUAL(read2_xs_tag.is_present(), true);
+
+  const auto read2_nonexistent_tag = read2.integer_tag("FB");
+  BOOST_CHECK_EQUAL(read2_nonexistent_tag.is_present(), false);
+}

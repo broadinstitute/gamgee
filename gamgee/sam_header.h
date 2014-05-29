@@ -27,6 +27,7 @@ class SamHeader {
   std::shared_ptr<bam_hdr_t> m_header;
 
   friend class SamWriter;
+  friend class SamBuilder;
 };
 
 }

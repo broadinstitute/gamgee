@@ -5,6 +5,7 @@
 #include "read_bases.h"
 #include "base_quals.h"
 #include "cigar.h"
+#include "sam_tag.h"
 
 #include "htslib/sam.h"
 
@@ -40,6 +41,7 @@ class Sam {
   uint32_t mate_unclipped_stop()  const ;                                                ///< @warning not implemented -- requires new mate cigar tag!
 
   // modify non-variable length fields (things outside of the data member)
+  // TODO: provide setter for TLEN (core.isize)?
   void set_chromosome(const uint32_t chr)              { m_body->core.tid  = int32_t(chr);        } ///< @brief simple setter for the chromosome index. Index is 0-based.
   void set_alignment_start(const uint32_t start)       { m_body->core.pos  = int32_t(start-1);    } ///< @brief simple setter for the alignment start. @warning You should use (1-based and inclusive) alignment but internally this is stored 0-based to simplify BAM conversion.
   void set_mate_chromosome(const uint32_t mchr)        { m_body->core.mtid = int32_t(mchr);       } ///< @brief simple setter for the mate's chromosome index. Index is 0-based.
@@ -47,9 +49,15 @@ class Sam {
 
   // getters for fields inside the data field
   std::string name()     const { return std::string{bam_get_qname(m_body.get())}; } ///< @brief returns the read name
+  Cigar cigar()          const { return Cigar{m_body}; }                            ///< @brief returns the cigar @warning the objects returned by this member function will share underlying htslib memory with this object
   ReadBases bases()      const { return ReadBases{m_body}; }                        ///< @brief returns the read bases @warning the objects returned by this member function will share underlying htslib memory with this object
   BaseQuals base_quals() const { return BaseQuals{m_body}; }                        ///< @brief returns the base qualities @warning the objects returned by this member function will share underlying htslib memory with this object
-  Cigar cigar()          const { return Cigar{m_body}; }                            ///< @brief returns the cigar @warning the objects returned by this member function will share underlying htslib memory with this object
+
+  // getters for tagged values within the aux part of the data field
+  SamTag<int32_t> integer_tag(const std::string& tag_name) const;    ///< @brief retrieve an integer-valued tag by name
+  SamTag<double> double_tag(const std::string& tag_name) const;      ///< @brief retrieve an double/float-valued tag by name
+  SamTag<char> char_tag(const std::string& tag_name) const;          ///< @brief retrieve a char-valued tag by name
+  SamTag<std::string> string_tag(const std::string& tag_name) const; ///< @brief retrieve a string-valued tag by name
 
   // getters for flags 
   bool paired()          const { return m_body->core.flag & BAM_FPAIRED;        } ///< @brief whether or not this read is paired
@@ -96,6 +104,7 @@ class Sam {
   std::shared_ptr<bam1_t> m_body;      ///< htslib pointer to the sam body structure
 
   friend class SamWriter; ///< allows the writer to access the guts of the object
+  friend class SamBuilder; ///< builder needs access to the internals in order to build efficiently
 };
 
 }  // end of namespace

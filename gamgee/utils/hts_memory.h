@@ -58,7 +58,7 @@ bam_hdr_t* sam_header_deep_copy(bam_hdr_t* original);
 bcf1_t* variant_deep_copy(bcf1_t* original); 
 bcf_hdr_t* variant_header_deep_copy(bcf_hdr_t* original);
 
-
+bam1_t* sam_shallow_copy(bam1_t* original);
 
 }
 }

@@ -14,6 +14,8 @@ namespace gamgee {
  */
 enum class CigarOperator { M, I, D, N, S, H, P, EQ, X, B };
 
+using CigarElement = uint32_t;
+
 /**
  * @brief Utility class to manage the memory of the cigar structure
  */
@@ -26,22 +28,33 @@ class Cigar {
   Cigar& operator=(Cigar&& other) noexcept;
   ~Cigar() = default; ///< default destruction is sufficient, since our shared_ptr will handle deallocation
 
-  uint32_t operator[](const uint32_t index) const;       ///< use freely as you would an array. @note currently implemented as read only
+  CigarElement operator[](const uint32_t index) const;       ///< use freely as you would an array.
+  CigarElement& operator[](const uint32_t index);            ///< use freely as you would an array
   uint32_t size() const { return m_num_cigar_elements; } ///< number of base qualities in the container
-  std::string to_string() const;
+  bool operator==(const Cigar& other) const;  ///< check for equality with another Cigar
+  bool operator!=(const Cigar& other) const;  ///< check for inequality with another Cigar
+  std::string to_string() const;  ///< produce a string representation of this Cigar
 
   /**
    * @brief gets the operator of an individual cigar element
    */
-  inline static CigarOperator cigar_op(const uint32_t cigar_element) {
+  inline static CigarOperator cigar_op(const CigarElement cigar_element) {
     return static_cast<CigarOperator>(bam_cigar_op(cigar_element));
   }
 
   /**
    * @brief gets the length of an individual cigar element
    */
-  inline static uint32_t cigar_oplen(const uint32_t cigar_element) {
+  inline static uint32_t cigar_oplen(const CigarElement cigar_element) {
     return bam_cigar_oplen(cigar_element);
+  }
+
+  /**
+   * @brief creates an encoded htslib cigar element suitable for direct insertion into a Cigar
+   *        out of a length and a CigarOperator
+   */
+  inline static CigarElement make_cigar_element(const uint32_t oplen, const CigarOperator op) {
+    return (oplen << BAM_CIGAR_SHIFT) | static_cast<uint32_t>(op);
   }
 
  private:
@@ -50,6 +63,8 @@ class Cigar {
   uint32_t m_num_cigar_elements;          ///< number of elements in our cigar
 
   static const char cigar_ops_as_chars[]; ///< static lookup table to convert CigarOperator enum values to chars.
+
+  friend class SamBuilder; ///< builder needs access to the internals in order to build efficiently
 };
 
 }
