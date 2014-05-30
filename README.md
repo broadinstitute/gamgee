@@ -33,11 +33,11 @@ Gamgee currently has the following dependencies as git submodules:
 For that reason, cloning Gamgee includes an extra step: 
 
     $ hub clone mauriciocarneiro/gamgee (simple git clone also works)
-    $ git submodule update --init --recursive
+    $ git submodule update --init --recursive --remote
 
 Every time you do a pull (or fetch/rebase) and notice that the *.gitmodule* file has changed, you need to update your submodules accordingly like so:
 
-    $ git submodule update --recursive
+    $ git submodule update --recursive --remote
 
 Using git submodules to handle dependency management is currently an experiment. We may choose to move away from this structure in the near future, so stay tuned.
 
