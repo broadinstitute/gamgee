@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/MauricioCarneiro/gamgee.svg?branch=master)](https://travis-ci.org/MauricioCarneiro/gamgee)
+[![Build Status](https://travis-ci.org/broadinstitute/gamgee.svg?branch=master)](https://travis-ci.org/broadinstitute/gamgee)
 
 
 Gamgee
