@@ -1,3 +1,4 @@
 [submodule "lib/htslib"]
 	path = lib/htslib
 	url = git://github.com/MauricioCarneiro/htslib.git
+  branch = develop
