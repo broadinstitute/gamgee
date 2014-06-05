@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['g',['G',['../namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49adfcf28d0734569a6a693bc8194de62bf',1,'gamgee']]]
+  ['float',['FLOAT',['../namespacegamgee.html#a7bb1b03c8f20388c7ebd5ea12bddef14ae738c26bf4ce1037fa81b039a915cbf6',1,'gamgee']]]
 ];

@@ -86,7 +86,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">gamgee Namespace Reference</div>  </div>
 </div><!--header-->
@@ -138,6 +139,18 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html">Variant</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility class to manipulate a <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record.  <a href="classgamgee_1_1_variant.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_field.html">VariantField</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class template to hold the values of a specific <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a>'s format field for all samples.  <a href="classgamgee_1_1_variant_field.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">iterator for <a class="el" href="classgamgee_1_1_variant_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">VariantField</a> objects.  <a href="classgamgee_1_1_variant_field_iterator.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class template to hold the values a format field for a particular sample.  <a href="classgamgee_1_1_variant_field_value.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_field_value_iterator.html">VariantFieldValueIterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">iterator for FormatFieldGenericValue objects.  <a href="classgamgee_1_1_variant_field_value_iterator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility class to hold a variant header.  <a href="classgamgee_1_1_variant_header.html#details">More...</a><br /></td></tr>
@@ -194,6 +207,37 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:ab33f4f3d734f661e6917eb693df3aa49"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple enum to hold all valid bases in the SAM format  <a href="namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49">More...</a><br /></td></tr>
 <tr class="separator:ab33f4f3d734f661e6917eb693df3aa49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bb1b03c8f20388c7ebd5ea12bddef14"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a7bb1b03c8f20388c7ebd5ea12bddef14">FormatFieldType</a> { <br />
+&#160;&#160;<a class="el" href="namespacegamgee.html#a7bb1b03c8f20388c7ebd5ea12bddef14abc0b1e8b63f3f00318eee5aeabc14255">FormatFieldType::NIL</a> = 0, 
+<a class="el" href="namespacegamgee.html#a7bb1b03c8f20388c7ebd5ea12bddef14aee9d73311ff0658494edfff14c3ec1e3">FormatFieldType::INT8</a> = 1, 
+<a class="el" href="namespacegamgee.html#a7bb1b03c8f20388c7ebd5ea12bddef14a5f90af42814c0a419d715d43ae54fd7a">FormatFieldType::INT16</a> = 2, 
+<a class="el" href="namespacegamgee.html#a7bb1b03c8f20388c7ebd5ea12bddef14a6495adba09844fac8eeb0aba86e6f1bf">FormatFieldType::INT32</a> = 3, 
+<br />
+&#160;&#160;<a class="el" href="namespacegamgee.html#a7bb1b03c8f20388c7ebd5ea12bddef14ae738c26bf4ce1037fa81b039a915cbf6">FormatFieldType::FLOAT</a> = 5, 
+<a class="el" href="namespacegamgee.html#a7bb1b03c8f20388c7ebd5ea12bddef14a63b588d5559f64f89a416e656880b949">FormatFieldType::STRING</a> = 7
+<br />
+ }</td></tr>
+<tr class="memdesc:a7bb1b03c8f20388c7ebd5ea12bddef14"><td class="mdescLeft">&#160;</td><td class="mdescRight">an enumeration of the types in htslib for the format field values  <a href="namespacegamgee.html#a7bb1b03c8f20388c7ebd5ea12bddef14">More...</a><br /></td></tr>
+<tr class="separator:a7bb1b03c8f20388c7ebd5ea12bddef14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a388340e086c2504c3be5580448dd6690"><td class="memTemplParams" colspan="2">template&lt;class TYPE &gt; </td></tr>
+<tr class="memitem:a388340e086c2504c3be5580448dd6690"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; TYPE &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a388340e086c2504c3be5580448dd6690">operator+</a> (const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; TYPE &gt; &amp;it, const int n)</td></tr>
+<tr class="memdesc:a388340e086c2504c3be5580448dd6690"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple operation for random advances (back and forward) on the iterator  <a href="#a388340e086c2504c3be5580448dd6690">More...</a><br /></td></tr>
+<tr class="separator:a388340e086c2504c3be5580448dd6690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23eb9c4218be72cb2b553944f480abf4"><td class="memTemplParams" colspan="2">template&lt;class TYPE &gt; </td></tr>
+<tr class="memitem:a23eb9c4218be72cb2b553944f480abf4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; TYPE &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a23eb9c4218be72cb2b553944f480abf4">operator+</a> (const int n, const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; TYPE &gt; &amp;it)</td></tr>
+<tr class="memdesc:a23eb9c4218be72cb2b553944f480abf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple operation for random advances (back and forward) on the iterator  <a href="#a23eb9c4218be72cb2b553944f480abf4">More...</a><br /></td></tr>
+<tr class="separator:a23eb9c4218be72cb2b553944f480abf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10f32b04b5c76e9d5aee5c99afbe6792"><td class="memTemplParams" colspan="2">template&lt;class TYPE &gt; </td></tr>
+<tr class="memitem:a10f32b04b5c76e9d5aee5c99afbe6792"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; TYPE &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a10f32b04b5c76e9d5aee5c99afbe6792">operator-</a> (const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; TYPE &gt; &amp;it, const int n)</td></tr>
+<tr class="memdesc:a10f32b04b5c76e9d5aee5c99afbe6792"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple operation for random advances (back and forward) on the iterator  <a href="#a10f32b04b5c76e9d5aee5c99afbe6792">More...</a><br /></td></tr>
+<tr class="separator:a10f32b04b5c76e9d5aee5c99afbe6792"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a874095b17dd6b1fff582c1fc6b8d84b7"><td class="memTemplParams" colspan="2">template&lt;class TYPE &gt; </td></tr>
+<tr class="memitem:a874095b17dd6b1fff582c1fc6b8d84b7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; TYPE &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a874095b17dd6b1fff582c1fc6b8d84b7">operator-</a> (const int n, const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; TYPE &gt; &amp;it)</td></tr>
+<tr class="memdesc:a874095b17dd6b1fff582c1fc6b8d84b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple operation for random advances (back and forward) on the iterator  <a href="#a874095b17dd6b1fff582c1fc6b8d84b7">More...</a><br /></td></tr>
+<tr class="separator:a874095b17dd6b1fff582c1fc6b8d84b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a class="anchor" id="aa7286f2e8ef592ae858c97b6f9045d0c"></a>
@@ -313,10 +357,200 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a7bb1b03c8f20388c7ebd5ea12bddef14"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacegamgee.html#a7bb1b03c8f20388c7ebd5ea12bddef14">gamgee::FormatFieldType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>an enumeration of the types in htslib for the format field values </p>
+<dl class="section note"><dt>Note</dt><dd>these must match the order in the htslib defines in htslib/vcf.h </dd></dl>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a7bb1b03c8f20388c7ebd5ea12bddef14abc0b1e8b63f3f00318eee5aeabc14255"></a>NIL&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7bb1b03c8f20388c7ebd5ea12bddef14aee9d73311ff0658494edfff14c3ec1e3"></a>INT8&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7bb1b03c8f20388c7ebd5ea12bddef14a5f90af42814c0a419d715d43ae54fd7a"></a>INT16&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7bb1b03c8f20388c7ebd5ea12bddef14a6495adba09844fac8eeb0aba86e6f1bf"></a>INT32&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7bb1b03c8f20388c7ebd5ea12bddef14ae738c26bf4ce1037fa81b039a915cbf6"></a>FLOAT&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7bb1b03c8f20388c7ebd5ea12bddef14a63b588d5559f64f89a416e656880b949"></a>STRING&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a388340e086c2504c3be5580448dd6690"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt;TYPE&gt;&amp; gamgee::operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const VariantFieldIterator&lt; TYPE &gt; &amp;&#160;</td>
+          <td class="paramname"><em>it</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>simple operation for random advances (back and forward) on the iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="a23eb9c4218be72cb2b553944f480abf4"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt;TYPE&gt;&amp; gamgee::operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VariantFieldIterator&lt; TYPE &gt; &amp;&#160;</td>
+          <td class="paramname"><em>it</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>simple operation for random advances (back and forward) on the iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="a10f32b04b5c76e9d5aee5c99afbe6792"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt;TYPE&gt;&amp; gamgee::operator- </td>
+          <td>(</td>
+          <td class="paramtype">const VariantFieldIterator&lt; TYPE &gt; &amp;&#160;</td>
+          <td class="paramname"><em>it</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>simple operation for random advances (back and forward) on the iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="a874095b17dd6b1fff582c1fc6b8d84b7"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt;TYPE&gt;&amp; gamgee::operator- </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VariantFieldIterator&lt; TYPE &gt; &amp;&#160;</td>
+          <td class="paramname"><em>it</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>simple operation for random advances (back and forward) on the iterator </p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 5 2014 18:19:26 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 5 2014 18:53:31 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -64,6 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -138,9 +139,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a093b25862a15ebb982fa683fc3298662"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a093b25862a15ebb982fa683fc3298662">n_alleles</a> () const </td></tr>
 <tr class="memdesc:a093b25862a15ebb982fa683fc3298662"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of alleles in this <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record  <a href="#a093b25862a15ebb982fa683fc3298662">More...</a><br /></td></tr>
 <tr class="separator:a093b25862a15ebb982fa683fc3298662"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc6835f681e962f8397c7e0374ef9ec2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#adc6835f681e962f8397c7e0374ef9ec2">genotype_quals</a> () const </td></tr>
-<tr class="memdesc:adc6835f681e962f8397c7e0374ef9ec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a vector with a copy of all the GQ values for all samples contiguously in memory.  <a href="#adc6835f681e962f8397c7e0374ef9ec2">More...</a><br /></td></tr>
-<tr class="separator:adc6835f681e962f8397c7e0374ef9ec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6778edaff78a604b35c5fd8a72648fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_field.html">VariantField</a><br class="typebreak" />
+&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; int32_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#ab6778edaff78a604b35c5fd8a72648fa">genotype_quals</a> () const </td></tr>
+<tr class="memdesc:ab6778edaff78a604b35c5fd8a72648fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns an iterable object with a pointer to all the GQ values for all samples contiguously in memory.  <a href="#ab6778edaff78a604b35c5fd8a72648fa">More...</a><br /></td></tr>
+<tr class="separator:ab6778edaff78a604b35c5fd8a72648fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa99137158bbc1fa375b342edb89e2db2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_field.html">VariantField</a><br class="typebreak" />
+&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; int32_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#aa99137158bbc1fa375b342edb89e2db2">phred_likelihoods</a> () const </td></tr>
+<tr class="separator:aa99137158bbc1fa375b342edb89e2db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -315,12 +320,12 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 </div>
 </div>
-<a class="anchor" id="adc6835f681e962f8397c7e0374ef9ec2"></a>
+<a class="anchor" id="ab6778edaff78a604b35c5fd8a72648fa"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt; uint8_t &gt; gamgee::Variant::genotype_quals </td>
+          <td class="memname"><a class="el" href="classgamgee_1_1_variant_field.html">VariantField</a>&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; int32_t &gt; &gt; gamgee::Variant::genotype_quals </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -328,8 +333,8 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
       </table>
 </div><div class="memdoc">
 
-<p>returns a vector with a copy of all the GQ values for all samples contiguously in memory. </p>
-<p>&lt; if the format is missing or the GQ tag is missing, return an empty vector </p>
+<p>returns an iterable object with a pointer to all the GQ values for all samples contiguously in memory. </p>
+<p>&lt; if the variant is missing or the GQ tag is missing, return an empty <a class="el" href="classgamgee_1_1_variant_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">VariantField</a> </p>
 
 </div>
 </div>
@@ -461,6 +466,22 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 </div>
 </div>
+<a class="anchor" id="aa99137158bbc1fa375b342edb89e2db2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_variant_field.html">VariantField</a>&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; int32_t &gt; &gt; gamgee::Variant::phred_likelihoods </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>&lt; if the variant is missing or the PL tag is missing, return an empty <a class="el" href="classgamgee_1_1_variant_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">VariantField</a> </p>
+
+</div>
+</div>
 <a class="anchor" id="a894fc2a03eadc32b829baa73a9de003e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -514,7 +535,7 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 5 2014 18:19:26 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 5 2014 18:53:31 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
