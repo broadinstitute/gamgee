@@ -1,8 +1,8 @@
 project gamgee
     : requirements 
-        <cxxflags>-std=c++11 
-        <linkflags>-std=c++11 
-        <warnings-as-errors>on 
+        <cxxflags>-std=c++1y
+        <linkflags>-std=c++1y
+        <warnings-as-errors>on
   ;
 
   use-project /gamgee/libs : lib ;
