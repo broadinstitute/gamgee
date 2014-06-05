@@ -7,13 +7,17 @@ using namespace gamgee;
 
 BOOST_AUTO_TEST_CASE( single_window_readers ) {
   const auto& filename = "testdata/test_simple.bam";
-  auto window_count = 0;
-  int32_t record_count = 0;
+  auto record_count = 0;
+  std::vector<int32_t> actual_record_counts = {};
 
   /*
-  Full contract TBD. Do windows overlap-- or end at-- start and end of contig?
+  Full contract TBD.
+  > Do windows overlap-- or end at-- start and end of contig?
+  > Assuming we're 1-based, does this code have any off-by-one errors?
+
   Currently expected windows in testdata/test_simple.bam with window 20k, step 10k:
 
+  200
   255
   257
   10399
@@ -88,9 +92,17 @@ BOOST_AUTO_TEST_CASE( single_window_readers ) {
   */
 
   for (const auto& sam_window : SingleSamWindowReader{filename, 20000, 10000}) {
-    ++window_count;
-    record_count += sam_window.m_size;
+    int32_t window_record_count = 0;
+    for (const auto& sam : sam_window) {
+      window_record_count++;
+    }
+    actual_record_counts.push_back(window_record_count);
+    record_count += window_record_count;
   }
-  BOOST_CHECK_EQUAL(window_count, 10);
+
+  std::vector<int32_t> expected_record_counts = {5, 7, 8, 7, 10, 8, 2, 4, 8, 4};
+  BOOST_CHECK_EQUAL_COLLECTIONS(
+      actual_record_counts.begin(), actual_record_counts.end(),
+      expected_record_counts.begin(), expected_record_counts.end());
   BOOST_CHECK_EQUAL(record_count, 63);
 }

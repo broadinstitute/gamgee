@@ -6,7 +6,15 @@
 
 namespace gamgee {
 
-SamWindow::SamWindow() {
+SamWindow::SamWindow() :
+    m_sam_header_ptr{nullptr} {
+  m_head = nullptr;
+  m_tail = nullptr;
+  m_size = 0;
+}
+
+SamWindow::SamWindow(const std::shared_ptr<bam_hdr_t>& sam_header_ptr) :
+    m_sam_header_ptr{sam_header_ptr} {
   m_head = nullptr;
   m_tail = nullptr;
   m_size = 0;
@@ -37,12 +45,12 @@ std::shared_ptr<bam1_t> SamWindow::dequeue_record() {
 void SamWindow::enqueue_record(std::shared_ptr<bam1_t> sam_record_ptr) {
   if (m_tail == nullptr) {
     m_head = new SamWindowNode{};
-    m_head->sam_record_ptr = sam_record_ptr;
+    m_head->sam_record_ptr = std::shared_ptr<bam1_t>(bam_deep_copy(sam_record_ptr.get()));
     m_head->next = nullptr;
     m_tail = m_head;
   } else {
     m_tail->next = new SamWindowNode{};
-    m_tail->next->sam_record_ptr = sam_record_ptr;
+    m_tail->next->sam_record_ptr = std::shared_ptr<bam1_t>(bam_deep_copy(sam_record_ptr.get()));
     m_tail->next->next = nullptr;
     m_tail = m_tail->next;
   }
@@ -51,6 +59,18 @@ void SamWindow::enqueue_record(std::shared_ptr<bam1_t> sam_record_ptr) {
 
 bool SamWindow::is_empty() {
   return m_size == 0;
+}
+
+int32_t SamWindow::size() const {
+  return m_size;
+}
+
+SamWindowNodeIterator SamWindow::begin() const {
+  return SamWindowNodeIterator{m_head, m_sam_header_ptr};
+}
+
+SamWindowNodeIterator SamWindow::end() const {
+  return SamWindowNodeIterator{};
 }
 
 } /* namespace gamgee */
