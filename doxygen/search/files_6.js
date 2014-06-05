@@ -1,24 +1,5 @@
 var searchData=
 [
-  ['f_2ecpp',['f.cpp',['../f_8cpp.html',1,'']]],
-  ['fastq_2ecpp',['fastq.cpp',['../fastq_8cpp.html',1,'']]],
-  ['fastq_2eh',['fastq.h',['../fastq_8h.html',1,'']]],
-  ['fastq_5fiterator_2ecpp',['fastq_iterator.cpp',['../fastq__iterator_8cpp.html',1,'']]],
-  ['fastq_5fiterator_2eh',['fastq_iterator.h',['../fastq__iterator_8h.html',1,'']]],
-  ['fastq_5freader_2ecpp',['fastq_reader.cpp',['../fastq__reader_8cpp.html',1,'']]],
-  ['fastq_5freader_2eh',['fastq_reader.h',['../fastq__reader_8h.html',1,'']]],
-  ['feature_2epy',['feature.py',['../feature_8py.html',1,'']]],
-  ['feature_5fcxxflags_2epy',['feature_cxxflags.py',['../feature__cxxflags_8py.html',1,'']]],
-  ['filent_2ec',['filent.c',['../filent_8c.html',1,'']]],
-  ['filesys_2ec',['filesys.c',['../filesys_8c.html',1,'']]],
-  ['filesys_2eh',['filesys.h',['../filesys_8h.html',1,'']]],
-  ['fileunix_2ec',['fileunix.c',['../fileunix_8c.html',1,'']]],
-  ['finalize_2ec',['finalize.c',['../finalize_8c.html',1,'']]],
-  ['foo_2ecpp',['foo.cpp',['../foo_8cpp.html',1,'']]],
-  ['foo_2epy',['foo.py',['../foo_8py.html',1,'']]],
-  ['frames_2ec',['frames.c',['../frames_8c.html',1,'']]],
-  ['frames_2eh',['frames.h',['../frames_8h.html',1,'']]],
-  ['free_5ffeatures_5frequest_2epy',['free_features_request.py',['../free__features__request_8py.html',1,'']]],
-  ['function_2ec',['function.c',['../function_8c.html',1,'']]],
-  ['function_2eh',['function.h',['../function_8h.html',1,'']]]
+  ['utils_2ecpp',['utils.cpp',['../utils_8cpp.html',1,'']]],
+  ['utils_2eh',['utils.h',['../utils_8h.html',1,'']]]
 ];

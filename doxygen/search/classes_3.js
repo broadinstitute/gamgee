@@ -1,30 +1,4 @@
 var searchData=
 [
-  ['c',['C',['../class_c.html',1,'']]],
-  ['cache_5fline',['cache_line',['../structcache__line.html',1,'']]],
-  ['cached',['cached',['../classutil_1_1cached.html',1,'util']]],
-  ['canvas',['Canvas',['../class_canvas.html',1,'']]],
-  ['casttargetclass',['CastTargetClass',['../classtools_1_1cast_1_1_cast_target_class.html',1,'tools::cast']]],
-  ['ccompilinggenerator',['CCompilingGenerator',['../classtools_1_1builtin_1_1_c_compiling_generator.html',1,'tools::builtin']]],
-  ['checktargetbuildsworker',['CheckTargetBuildsWorker',['../classbuild_1_1configure_1_1_check_target_builds_worker.html',1,'build::configure']]],
-  ['chr_5fdata',['chr_data',['../structchr__data.html',1,'']]],
-  ['cigar',['Cigar',['../classgamgee_1_1_cigar.html',1,'gamgee']]],
-  ['cleanup',['CleanUp',['../class_clean_up.html',1,'']]],
-  ['closure',['closure',['../structclosure.html',1,'']]],
-  ['codezeroptr',['CodeZeroPtr',['../struct_code_zero_ptr.html',1,'']]],
-  ['commonscanner',['CommonScanner',['../classbuild_1_1scanner_1_1_common_scanner.html',1,'build::scanner']]],
-  ['compileaction',['CompileAction',['../classtools_1_1builtin_1_1_compile_action.html',1,'tools::builtin']]],
-  ['compiler',['compiler',['../structcompiler.html',1,'']]],
-  ['complexarraydescriptor',['ComplexArrayDescriptor',['../struct_complex_descriptor_1_1_complex_array_descriptor.html',1,'ComplexDescriptor']]],
-  ['complexdescriptor',['ComplexDescriptor',['../union_complex_descriptor.html',1,'']]],
-  ['concatenation',['Concatenation',['../struct_cord_rep_1_1_concatenation.html',1,'CordRep']]],
-  ['configurations',['Configurations',['../classtools_1_1common_1_1_configurations.html',1,'tools::common']]],
-  ['context',['Context',['../classbuild_1_1errors_1_1_context.html',1,'build::errors']]],
-  ['cord_5fec_5fstruct',['CORD_ec_struct',['../struct_c_o_r_d__ec__struct.html',1,'']]],
-  ['cord_5ffill_5fdata',['CORD_fill_data',['../struct_c_o_r_d__fill__data.html',1,'']]],
-  ['cord_5fpe',['CORD_pe',['../struct_c_o_r_d__pe.html',1,'']]],
-  ['cord_5fpos',['CORD_Pos',['../struct_c_o_r_d___pos.html',1,'']]],
-  ['cordrep',['CordRep',['../union_cord_rep.html',1,'']]],
-  ['counts',['COUNTS',['../struct_c_o_u_n_t_s.html',1,'']]],
-  ['cscanner',['CScanner',['../classtools_1_1builtin_1_1_c_scanner.html',1,'tools::builtin']]]
+  ['htsfiledeleter',['HtsFileDeleter',['../structgamgee_1_1utils_1_1_hts_file_deleter.html',1,'gamgee::utils']]]
 ];

@@ -64,7 +64,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -73,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -126,13 +125,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6d8314d991ae7839b08da76dbc2925fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc2c3ba62fdfaf5d55cb7da7e1f908f3"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_read_bases.html#abc2c3ba62fdfaf5d55cb7da7e1f908f3">size</a> () const </td></tr>
 <tr class="separator:abc2c3ba62fdfaf5d55cb7da7e1f908f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af30b8f81073f583fd5e2cc38afd92876"><td class="memItemLeft" align="right" valign="top"><a class="el" href="strings_8h.html#ad5629a6456deb7d0338d634236565499">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_read_bases.html#af30b8f81073f583fd5e2cc38afd92876">to_string</a> () const </td></tr>
+<tr class="memitem:af30b8f81073f583fd5e2cc38afd92876"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_read_bases.html#af30b8f81073f583fd5e2cc38afd92876">to_string</a> () const </td></tr>
 <tr class="memdesc:af30b8f81073f583fd5e2cc38afd92876"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of base qualities in the container  <a href="#af30b8f81073f583fd5e2cc38afd92876">More...</a><br /></td></tr>
 <tr class="separator:af30b8f81073f583fd5e2cc38afd92876"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utility class to handle the memory management of the sam record object for read bases. </p>
-<p>This class uses Base to represent the bases <a class="el" href="class_a.html">A</a>,<a class="el" href="class_c.html">C</a>,G,T,N so we can get byte by byte correspondence with the underlying compressed memory model.</p>
+<p>This class uses Base to represent the bases A,C,G,T,N so we can get byte by byte correspondence with the underlying compressed memory model.</p>
 <dl class="section note"><dt>Note</dt><dd>Any functionality lost because of this should be made available by the <a class="el" href="classgamgee_1_1_read_bases.html" title="Utility class to handle the memory management of the sam record object for read bases. ">ReadBases</a> class. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="acb41dd049c1fb231ee6f72b55195de53"></a>
@@ -335,7 +334,7 @@ Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structstring.html">string</a> gamgee::ReadBases::to_string </td>
+          <td class="memname">string gamgee::ReadBases::to_string </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -355,7 +354,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 5 2014 15:05:00 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 5 2014 15:36:35 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

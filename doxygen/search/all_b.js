@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['k',['k',['../namespacebuild__system.html#af9d2e1bacf49fade6952cc6901a6dc13',1,'build_system']]],
-  ['key',['key',['../structbi.html#a5e304932f92c6ff9907010b0599ece7b',1,'bi::key()'],['../structps__map__entry.html#a37f70c86ff5f27e6f04a8d5978cf752e',1,'ps_map_entry::key()'],['../structfixed__variable.html#afad117a4413e393c6ec53d5d3faeeb6c',1,'fixed_variable::key()'],['../structpath__key__entry.html#a57303a22cf3ee8446e545f4c8be25436',1,'path_key_entry::key()']]],
-  ['key_5fcreate',['key_create',['../specific_8h.html#adbd1980ce0c586265a1afcc7f1ec476f',1,'specific.h']]],
-  ['keyword',['keyword',['../structkeyword.html',1,'keyword'],['../struct___y_y_s_t_y_p_e.html#ab50a046f46fed177e75e75ca03468210',1,'_YYSTYPE::keyword()']]],
-  ['keywords',['keywords',['../scan_8c.html#aaa11ef0eced2b552270648876ebfc74d',1,'scan.c']]]
+  ['n',['N',['../namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139a8d9c307cb7f3c4a32822a51922d1ceaa',1,'gamgee::N()'],['../namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49a8d9c307cb7f3c4a32822a51922d1ceaa',1,'gamgee::N()']]],
+  ['n_5falleles',['n_alleles',['../classgamgee_1_1_variant.html#a093b25862a15ebb982fa683fc3298662',1,'gamgee::Variant']]],
+  ['n_5fsamples',['n_samples',['../classgamgee_1_1_variant.html#a1f9c3c41edcfbeb0600b6f602ed35de1',1,'gamgee::Variant::n_samples()'],['../classgamgee_1_1_variant_header.html#aeedbe07ffb000dcba041d8d0c0d9d53d',1,'gamgee::VariantHeader::n_samples()']]],
+  ['name',['name',['../classgamgee_1_1_fastq.html#af664bfffd53f9b011929a200c90eeda1',1,'gamgee::Fastq::name()'],['../classgamgee_1_1_sam.html#a2ce2293b869bde4965964b55a7ccd101',1,'gamgee::Sam::name()']]],
+  ['next_5freverse',['next_reverse',['../classgamgee_1_1_sam.html#a484e6de325450c628ea61ccf22577e58',1,'gamgee::Sam']]],
+  ['next_5funmapped',['next_unmapped',['../classgamgee_1_1_sam.html#a9030e6f7dfd25480f595fd4387e596b3',1,'gamgee::Sam']]]
 ];
