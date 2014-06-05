@@ -12,7 +12,7 @@ The implementation is currently imcomplete, but is under development. The APIs
 are free to change until we reach version 1. 
 
 * Project website: http://broadinstitute.github.io/gamgee/
-* Developer docs: http://www.broadinstitute.org/~gsa-engineering/gamgee/index.html
+* Developer docs: http://broadinstitute.github.io/gamgee/doxygen/
 
 
 
