@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>Gamgee: gamgee/read_bases.cpp File Reference</title>
+<title>Gamgee: gamgee/utils/format_field_type.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,26 +82,60 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_20d51cb71d3c0820fd93cf6c11d93896.html">gamgee</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_20d51cb71d3c0820fd93cf6c11d93896.html">gamgee</a></li><li class="navelem"><a class="el" href="dir_f0af9e56cf6abefa9f035afe018e88cc.html">utils</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">read_bases.cpp File Reference</div>  </div>
+<div class="title">format_field_type.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="read__bases_8h_source.html">read_bases.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="hts__memory_8h_source.html">utils/hts_memory.h</a>&quot;</code><br />
-<code>#include &lt;string&gt;</code><br />
-<code>#include &lt;sstream&gt;</code><br />
+<div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;stdexcept&gt;</code><br />
-</div><table class="memberdecls">
+<code>#include &lt;cstring&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+</div>
+<p><a href="format__field__type_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacegamgee"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html">gamgee</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacegamgee_1_1utils"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html">gamgee::utils</a></td></tr>
+<tr class="memdesc:namespacegamgee_1_1utils"><td class="mdescLeft">&#160;</td><td class="mdescRight">utility functions for the gamgee library <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ad2ff3899c9a5fd0e59985b2b6663e476"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476">gamgee::utils::FormatFieldType</a> { <br />
+&#160;&#160;<a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476abc0b1e8b63f3f00318eee5aeabc14255">gamgee::utils::FormatFieldType::NIL</a> = 0, 
+<a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476aee9d73311ff0658494edfff14c3ec1e3">gamgee::utils::FormatFieldType::INT8</a> = 1, 
+<a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476a5f90af42814c0a419d715d43ae54fd7a">gamgee::utils::FormatFieldType::INT16</a> = 2, 
+<a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476a6495adba09844fac8eeb0aba86e6f1bf">gamgee::utils::FormatFieldType::INT32</a> = 3, 
+<br />
+&#160;&#160;<a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476ae738c26bf4ce1037fa81b039a915cbf6">gamgee::utils::FormatFieldType::FLOAT</a> = 5, 
+<a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476a63b588d5559f64f89a416e656880b949">gamgee::utils::FormatFieldType::STRING</a> = 7
+<br />
+ }</td></tr>
+<tr class="memdesc:ad2ff3899c9a5fd0e59985b2b6663e476"><td class="mdescLeft">&#160;</td><td class="mdescRight">an enumeration of the types in htslib for the format field values  <a href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476">More...</a><br /></td></tr>
+<tr class="separator:ad2ff3899c9a5fd0e59985b2b6663e476"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a5e97f0ad88440531250c794004c4d0b7"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a5e97f0ad88440531250c794004c4d0b7">gamgee::utils::convert_data_to_integer</a> (const uint8_t *data_ptr, const int index, const uint8_t num_bytes_per_value, const FormatFieldType &amp;type)</td></tr>
+<tr class="memdesc:a5e97f0ad88440531250c794004c4d0b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">converts the value in an index from the byte array into VALUE_TYPE  <a href="#a5e97f0ad88440531250c794004c4d0b7">More...</a><br /></td></tr>
+<tr class="separator:a5e97f0ad88440531250c794004c4d0b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad40b12d74f28de6f92cc6bbc5a7806f7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ad40b12d74f28de6f92cc6bbc5a7806f7">gamgee::utils::convert_data_to_float</a> (const uint8_t *data_ptr, int index, const uint8_t num_bytes_per_value, const FormatFieldType &amp;type)</td></tr>
+<tr class="separator:ad40b12d74f28de6f92cc6bbc5a7806f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cd293de30028f5d3749f14abf8bcda7"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a9cd293de30028f5d3749f14abf8bcda7">gamgee::utils::convert_data_to_string</a> (const uint8_t *data_ptr, int index, const uint8_t num_bytes_per_value, const FormatFieldType &amp;type)</td></tr>
+<tr class="separator:a9cd293de30028f5d3749f14abf8bcda7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2856e252a3c4dad4f1464fb79ffeda53"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a2856e252a3c4dad4f1464fb79ffeda53">gamgee::utils::size_for_type</a> (const FormatFieldType &amp;type)</td></tr>
+<tr class="memdesc:a2856e252a3c4dad4f1464fb79ffeda53"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of bytes for a given FormatFieldType  <a href="#a2856e252a3c4dad4f1464fb79ffeda53">More...</a><br /></td></tr>
+<tr class="separator:a2856e252a3c4dad4f1464fb79ffeda53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

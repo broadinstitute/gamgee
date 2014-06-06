@@ -6,5 +6,5 @@ var searchData=
   ['name',['name',['../classgamgee_1_1_fastq.html#af664bfffd53f9b011929a200c90eeda1',1,'gamgee::Fastq::name()'],['../classgamgee_1_1_sam.html#a2ce2293b869bde4965964b55a7ccd101',1,'gamgee::Sam::name()']]],
   ['next_5freverse',['next_reverse',['../classgamgee_1_1_sam.html#a484e6de325450c628ea61ccf22577e58',1,'gamgee::Sam']]],
   ['next_5funmapped',['next_unmapped',['../classgamgee_1_1_sam.html#a9030e6f7dfd25480f595fd4387e596b3',1,'gamgee::Sam']]],
-  ['nil',['NIL',['../namespacegamgee.html#a7bb1b03c8f20388c7ebd5ea12bddef14abc0b1e8b63f3f00318eee5aeabc14255',1,'gamgee']]]
+  ['nil',['NIL',['../namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476abc0b1e8b63f3f00318eee5aeabc14255',1,'gamgee::utils']]]
 ];

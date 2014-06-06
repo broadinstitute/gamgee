@@ -88,6 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">gamgee::utils Namespace Reference</div>  </div>
@@ -115,8 +116,33 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a bcf_hdr_t pointer  <a href="structgamgee_1_1utils_1_1_variant_header_deleter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ad2ff3899c9a5fd0e59985b2b6663e476"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476">FormatFieldType</a> { <br />
+&#160;&#160;<a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476abc0b1e8b63f3f00318eee5aeabc14255">FormatFieldType::NIL</a> = 0, 
+<a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476aee9d73311ff0658494edfff14c3ec1e3">FormatFieldType::INT8</a> = 1, 
+<a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476a5f90af42814c0a419d715d43ae54fd7a">FormatFieldType::INT16</a> = 2, 
+<a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476a6495adba09844fac8eeb0aba86e6f1bf">FormatFieldType::INT32</a> = 3, 
+<br />
+&#160;&#160;<a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476ae738c26bf4ce1037fa81b039a915cbf6">FormatFieldType::FLOAT</a> = 5, 
+<a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476a63b588d5559f64f89a416e656880b949">FormatFieldType::STRING</a> = 7
+<br />
+ }</td></tr>
+<tr class="memdesc:ad2ff3899c9a5fd0e59985b2b6663e476"><td class="mdescLeft">&#160;</td><td class="mdescRight">an enumeration of the types in htslib for the format field values  <a href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476">More...</a><br /></td></tr>
+<tr class="separator:ad2ff3899c9a5fd0e59985b2b6663e476"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a5e97f0ad88440531250c794004c4d0b7"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a5e97f0ad88440531250c794004c4d0b7">convert_data_to_integer</a> (const uint8_t *data_ptr, const int index, const uint8_t num_bytes_per_value, const <a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476">FormatFieldType</a> &amp;type)</td></tr>
+<tr class="memdesc:a5e97f0ad88440531250c794004c4d0b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">converts the value in an index from the byte array into VALUE_TYPE  <a href="#a5e97f0ad88440531250c794004c4d0b7">More...</a><br /></td></tr>
+<tr class="separator:a5e97f0ad88440531250c794004c4d0b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad40b12d74f28de6f92cc6bbc5a7806f7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ad40b12d74f28de6f92cc6bbc5a7806f7">convert_data_to_float</a> (const uint8_t *data_ptr, int index, const uint8_t num_bytes_per_value, const <a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476">FormatFieldType</a> &amp;type)</td></tr>
+<tr class="separator:ad40b12d74f28de6f92cc6bbc5a7806f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cd293de30028f5d3749f14abf8bcda7"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a9cd293de30028f5d3749f14abf8bcda7">convert_data_to_string</a> (const uint8_t *data_ptr, int index, const uint8_t num_bytes_per_value, const <a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476">FormatFieldType</a> &amp;type)</td></tr>
+<tr class="separator:a9cd293de30028f5d3749f14abf8bcda7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2856e252a3c4dad4f1464fb79ffeda53"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a2856e252a3c4dad4f1464fb79ffeda53">size_for_type</a> (const <a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476">FormatFieldType</a> &amp;type)</td></tr>
+<tr class="memdesc:a2856e252a3c4dad4f1464fb79ffeda53"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of bytes for a given FormatFieldType  <a href="#a2856e252a3c4dad4f1464fb79ffeda53">More...</a><br /></td></tr>
+<tr class="separator:a2856e252a3c4dad4f1464fb79ffeda53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5e4c2a62b4e2544996e8b0193e5c31a"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; bam1_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ae5e4c2a62b4e2544996e8b0193e5c31a">make_shared_sam</a> (bam1_t *sam_ptr)</td></tr>
 <tr class="memdesc:ae5e4c2a62b4e2544996e8b0193e5c31a"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated bam1_t in a shared_ptr with correct deleter  <a href="#ae5e4c2a62b4e2544996e8b0193e5c31a">More...</a><br /></td></tr>
 <tr class="separator:ae5e4c2a62b4e2544996e8b0193e5c31a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,7 +195,45 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>utility functions for the gamgee library </p>
 <p>This namespace includes typical functors and templates for DNA sequence manipulation as well as low level routines for htslib memory management </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="ad2ff3899c9a5fd0e59985b2b6663e476"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476">gamgee::utils::FormatFieldType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>an enumeration of the types in htslib for the format field values </p>
+<dl class="section note"><dt>Note</dt><dd>these must match the order in the htslib defines in htslib/vcf.h </dd></dl>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="ad2ff3899c9a5fd0e59985b2b6663e476abc0b1e8b63f3f00318eee5aeabc14255"></a>NIL&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ad2ff3899c9a5fd0e59985b2b6663e476aee9d73311ff0658494edfff14c3ec1e3"></a>INT8&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ad2ff3899c9a5fd0e59985b2b6663e476a5f90af42814c0a419d715d43ae54fd7a"></a>INT16&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ad2ff3899c9a5fd0e59985b2b6663e476a6495adba09844fac8eeb0aba86e6f1bf"></a>INT32&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ad2ff3899c9a5fd0e59985b2b6663e476ae738c26bf4ce1037fa81b039a915cbf6"></a>FLOAT&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ad2ff3899c9a5fd0e59985b2b6663e476a63b588d5559f64f89a416e656880b949"></a>STRING&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a68e799fdc7eb14f8784ac77618a87a8f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -307,6 +371,158 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad40b12d74f28de6f92cc6bbc5a7806f7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float gamgee::utils::convert_data_to_float </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>data_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>num_bytes_per_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const FormatFieldType &amp;&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+
+</div>
+</div>
+<a class="anchor" id="a5e97f0ad88440531250c794004c4d0b7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t gamgee::utils::convert_data_to_integer </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>data_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>num_bytes_per_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const FormatFieldType &amp;&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>converts the value in an index from the byte array into VALUE_TYPE </p>
+<p>The byte array's underlying data representation is record specific, meaning that even numbers (like Integer) can be represented multiple ways across registers (some with uint8_t others with uint32_t...) dictated by the the maximum value in the field.</p>
+<p>This member function provides correct index location and appropriately creates a new value of VALUE_TYPE to return to the user.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Will</td><td>throw std::invalid_argument exception if trying to create a string out of a numeric format or vice-versa. All numeric type conversions are internally truncated or expanded accordingly. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9cd293de30028f5d3749f14abf8bcda7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gamgee::utils::convert_data_to_string </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>data_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>num_bytes_per_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const FormatFieldType &amp;&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
 
 </div>
 </div>
@@ -529,6 +745,32 @@ template&lt;typename T , typename... Args&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a2856e252a3c4dad4f1464fb79ffeda53"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gamgee::utils::size_for_type </td>
+          <td>(</td>
+          <td class="paramtype">const FormatFieldType &amp;&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>returns the number of bytes for a given FormatFieldType </p>
+
+</div>
+</div>
 <a class="anchor" id="abda68bdd51970574b703657971cba5da"></a>
 <div class="memitem">
 <div class="memproto">
@@ -580,7 +822,7 @@ template&lt;typename T , typename... Args&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 5 2014 21:06:59 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 6 2014 06:03:07 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

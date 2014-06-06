@@ -114,15 +114,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae3af99d656c09b3c16f535e26469aecf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_field_iterator.html#ae3af99d656c09b3c16f535e26469aecf">VariantFieldIterator</a> (const std::shared_ptr&lt; bcf1_t &gt; &amp;body, const bcf_fmt_t *const format_ptr, bool end_iterator=false)</td></tr>
 <tr class="memdesc:ae3af99d656c09b3c16f535e26469aecf"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple constructor used by <a class="el" href="classgamgee_1_1_variant_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">VariantField</a> to create an iterator  <a href="#ae3af99d656c09b3c16f535e26469aecf">More...</a><br /></td></tr>
 <tr class="separator:ae3af99d656c09b3c16f535e26469aecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a217ea95aa51b26365f2dccd55a53fedb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_field_iterator.html#a217ea95aa51b26365f2dccd55a53fedb">VariantFieldIterator</a> (const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a> &amp;other)=delete</td></tr>
-<tr class="memdesc:a217ea95aa51b26365f2dccd55a53fedb"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy is not allowed in this iterator. Use move constructor instead.  <a href="#a217ea95aa51b26365f2dccd55a53fedb">More...</a><br /></td></tr>
-<tr class="separator:a217ea95aa51b26365f2dccd55a53fedb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3493c1a87d2d18d1f6717a10e2e55771"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_field_iterator.html#a3493c1a87d2d18d1f6717a10e2e55771">VariantFieldIterator</a> (const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a> &amp;other)</td></tr>
+<tr class="memdesc:a3493c1a87d2d18d1f6717a10e2e55771"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy constructor is only meant for internal STL functions use. It makes a shallow copy of the underlying object which is sufficient for an iterator, but not exactly what a user would expect (user should expect copy constructors to make deep copies). But a deep copied iterator makes no sense.  <a href="#a3493c1a87d2d18d1f6717a10e2e55771">More...</a><br /></td></tr>
+<tr class="separator:a3493c1a87d2d18d1f6717a10e2e55771"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a367521947de1b2d2dc6b633a6715c383"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_field_iterator.html#a367521947de1b2d2dc6b633a6715c383">VariantFieldIterator</a> (<a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a> &amp;&amp;other) noexcept</td></tr>
 <tr class="memdesc:a367521947de1b2d2dc6b633a6715c383"><td class="mdescLeft">&#160;</td><td class="mdescRight">safely moves the data from one <a class="el" href="classgamgee_1_1_variant_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">VariantField</a> to a new one without making any copies  <a href="#a367521947de1b2d2dc6b633a6715c383">More...</a><br /></td></tr>
 <tr class="separator:a367521947de1b2d2dc6b633a6715c383"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adea41399d91e2a0c574beb15f9c29273"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_field_iterator.html#adea41399d91e2a0c574beb15f9c29273">operator=</a> (const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a> &amp;other)=delete</td></tr>
-<tr class="memdesc:adea41399d91e2a0c574beb15f9c29273"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy is not allowed in this iterator. Use move constructor instead.  <a href="#adea41399d91e2a0c574beb15f9c29273">More...</a><br /></td></tr>
-<tr class="separator:adea41399d91e2a0c574beb15f9c29273"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad87a9c2c863b254c15bffaad1099eaad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_field_iterator.html#ad87a9c2c863b254c15bffaad1099eaad">operator=</a> (const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a> &amp;other)</td></tr>
+<tr class="memdesc:ad87a9c2c863b254c15bffaad1099eaad"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy constructor is only meant for internal STL functions use. It makes a shallow copy of the underlying object which is sufficient for an iterator, but not exactly what a user would expect (user should expect copy constructors to make deep copies). But a deep copied iterator makes no sense.  <a href="#ad87a9c2c863b254c15bffaad1099eaad">More...</a><br /></td></tr>
+<tr class="separator:ad87a9c2c863b254c15bffaad1099eaad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8edcc58414007690052f49fc938b9c06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_field_iterator.html#a8edcc58414007690052f49fc938b9c06">operator=</a> (<a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a> &amp;&amp;other) noexcept</td></tr>
 <tr class="memdesc:a8edcc58414007690052f49fc938b9c06"><td class="mdescLeft">&#160;</td><td class="mdescRight">safely moves the data from one <a class="el" href="classgamgee_1_1_variant_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">VariantField</a> to a new one without making any copies  <a href="#a8edcc58414007690052f49fc938b9c06">More...</a><br /></td></tr>
 <tr class="separator:a8edcc58414007690052f49fc938b9c06"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -227,7 +227,7 @@ template&lt;class TYPE &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a217ea95aa51b26365f2dccd55a53fedb"></a>
+<a class="anchor" id="a3493c1a87d2d18d1f6717a10e2e55771"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -246,12 +246,13 @@ template&lt;class TYPE &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>copy is not allowed in this iterator. Use move constructor instead. </p>
+<p>copy constructor is only meant for internal STL functions use. It makes a shallow copy of the underlying object which is sufficient for an iterator, but not exactly what a user would expect (user should expect copy constructors to make deep copies). But a deep copied iterator makes no sense. </p>
+<dl class="section warning"><dt>Warning</dt><dd>does not deep copy the underlying data! (but the copied iterator will be able to navigate independentely). </dd></dl>
 
 </div>
 </div>
@@ -532,7 +533,7 @@ template&lt;class TYPE &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="adea41399d91e2a0c574beb15f9c29273"></a>
+<a class="anchor" id="ad87a9c2c863b254c15bffaad1099eaad"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -551,12 +552,13 @@ template&lt;class TYPE &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>copy is not allowed in this iterator. Use move constructor instead. </p>
+<p>copy constructor is only meant for internal STL functions use. It makes a shallow copy of the underlying object which is sufficient for an iterator, but not exactly what a user would expect (user should expect copy constructors to make deep copies). But a deep copied iterator makes no sense. </p>
+<dl class="section warning"><dt>Warning</dt><dd>does not deep copy the underlying data! (but the copied iterator will be able to navigate independentely). </dd></dl>
 
 </div>
 </div>
@@ -726,7 +728,7 @@ template&lt;class TYPE &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 5 2014 21:06:59 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 6 2014 06:03:07 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

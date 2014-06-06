@@ -42,5 +42,6 @@ var searchData=
   ['set_5fsupplementary',['set_supplementary',['../classgamgee_1_1_sam.html#ae8807efc0162d88a5218ba118e142f10',1,'gamgee::Sam']]],
   ['set_5funmapped',['set_unmapped',['../classgamgee_1_1_sam.html#a4c0f1a7e4096eea1dc32c8e3fa821356',1,'gamgee::Sam']]],
   ['size',['size',['../classgamgee_1_1_base_quals.html#ac591c924385edf52e88dcec143450091',1,'gamgee::BaseQuals::size()'],['../classgamgee_1_1_cigar.html#a761e526c7f7ad64252e2dcafc8b899d5',1,'gamgee::Cigar::size()'],['../classgamgee_1_1_read_bases.html#abc2c3ba62fdfaf5d55cb7da7e1f908f3',1,'gamgee::ReadBases::size()'],['../classgamgee_1_1_variant_field.html#a358785bc074d34f40f90117ffb2692d2',1,'gamgee::VariantField::size()']]],
+  ['size_5ffor_5ftype',['size_for_type',['../namespacegamgee_1_1utils.html#a2856e252a3c4dad4f1464fb79ffeda53',1,'gamgee::utils']]],
   ['supplementary',['supplementary',['../classgamgee_1_1_sam.html#acf736ec4c4416223110a74b640f7037d',1,'gamgee::Sam']]]
 ];

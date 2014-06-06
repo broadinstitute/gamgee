@@ -15,5 +15,8 @@ var searchData=
   ['compilation_5fdatabase_5ffolder',['compilation_database_folder',['../_8ycm__extra__conf_8py.html#a6a4d7e96c7bc9093b406af626b7936a2',1,'.ycm_extra_conf.py']]],
   ['complement',['complement',['../namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b',1,'gamgee::utils::complement(std::string &amp;sequence)'],['../namespacegamgee_1_1utils.html#a7a60af0f48035150f82481f2547c57e9',1,'gamgee::utils::complement(const std::string &amp;sequence)'],['../namespacegamgee_1_1utils.html#ab9002b9228221fb6a03d04e48424e318',1,'gamgee::utils::complement(const char base)']]],
   ['complement_5fbase',['complement_base',['../namespacegamgee_1_1utils.html#afa77e0e092d799249e1843b35b6fc33a',1,'gamgee::utils']]],
-  ['contigs',['contigs',['../classgamgee_1_1_variant_header.html#a140e73391d648e7db856d7ee0c90876d',1,'gamgee::VariantHeader']]]
+  ['contigs',['contigs',['../classgamgee_1_1_variant_header.html#a140e73391d648e7db856d7ee0c90876d',1,'gamgee::VariantHeader']]],
+  ['convert_5fdata_5fto_5ffloat',['convert_data_to_float',['../namespacegamgee_1_1utils.html#ad40b12d74f28de6f92cc6bbc5a7806f7',1,'gamgee::utils']]],
+  ['convert_5fdata_5fto_5finteger',['convert_data_to_integer',['../namespacegamgee_1_1utils.html#a5e97f0ad88440531250c794004c4d0b7',1,'gamgee::utils']]],
+  ['convert_5fdata_5fto_5fstring',['convert_data_to_string',['../namespacegamgee_1_1utils.html#a9cd293de30028f5d3749f14abf8bcda7',1,'gamgee::utils']]]
 ];
