@@ -59,17 +59,36 @@ Variant& Variant::operator=(Variant&& other) noexcept {
 }
 
 VariantField<VariantFieldValue<int32_t>> Variant::genotype_quals() const {
-  const auto fmt = bcf_get_fmt(m_header.get(), m_body.get(), "GQ");     
-  if (fmt == nullptr) ///< if the variant is missing or the GQ tag is missing, return an empty VariantField
+  return generic_integer_format_field("GQ");
+}
+
+VariantField<VariantFieldValue<int32_t>> Variant::phred_likelihoods() const {
+  return generic_integer_format_field("PL");
+}
+
+VariantField<VariantFieldValue<int32_t>> Variant::generic_integer_format_field(const std::string& tag) const {
+  const auto fmt = find_format_field_by_tag(tag);
+  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty VariantField
     return VariantField<VariantFieldValue<int32_t>>{};
   return VariantField<VariantFieldValue<int32_t>>{m_body, fmt};
 }
 
-VariantField<VariantFieldValue<int32_t>> Variant::phred_likelihoods() const {
-  const auto fmt = bcf_get_fmt(m_header.get(), m_body.get(), "PL");     
+VariantField<VariantFieldValue<float>> Variant::generic_float_format_field(const std::string& tag) const {
+  const auto fmt = find_format_field_by_tag(tag);
   if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty VariantField
-    return VariantField<VariantFieldValue<int32_t>>{};
-  return VariantField<VariantFieldValue<int32_t>>{m_body, fmt};
+    return VariantField<VariantFieldValue<float>>{};
+  return VariantField<VariantFieldValue<float>>{m_body, fmt};
+}
+
+VariantField<VariantFieldValue<std::string>> Variant::generic_string_format_field(const std::string& tag) const {
+  const auto fmt = find_format_field_by_tag(tag);
+  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty VariantField
+    return VariantField<VariantFieldValue<string>>{};
+  return VariantField<VariantFieldValue<string>>{m_body, fmt};
+}
+
+inline bcf_fmt_t* Variant::find_format_field_by_tag(const string& tag) const {
+  return bcf_get_fmt(m_header.get(), m_body.get(), tag.c_str());     
 }
 
 

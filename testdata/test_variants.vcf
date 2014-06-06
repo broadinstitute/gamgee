@@ -1,14 +1,16 @@
 ##fileformat=VCFv4.1
-##FILTER=<ID=PASS,Description="All filters passed">
-##contig=<ID=1,Length=300000000,Description="the first chromosome">
+##FILTER=<ID=PASS,Description=All filters passed>
+##contig=<ID=1,Length=300000000,Description=the first chromosome>
 ##contig=<ID=20,Length=64000000>
 ##contig=<ID=22,Length=120000000>
-##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
-##FORMAT=<ID=GQ,Number=1,Type=Integer,Description="Genotype quality">
-##FORMAT=<ID=PL,Number=G,Type=Integer,Description="Phred scaled relative Likelihoods of the genotypes">
+##FORMAT=<ID=GT,Number=1,Type=String,Description=Genotype>
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description=Genotype quality>
+##FORMAT=<ID=PL,Number=G,Type=Integer,Description=Phred scaled relative Likelihoods of the genotypes>
+##FORMAT=<ID=AF,Number=2,Type=Float,Description=Arbitrary float field with 2 values (test purposes only)>
+##FORMAT=<ID=AS,Number=1,Type=String,Description=Arbitrary string field with 2 values (test purposes only)>
 #CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	NA12878	NA12891	NA12892
-1	10000000	.	T	C	.	.	.	GT:GQ:PL	0/1:35:10,0,100	0/0:35:10,0,1000	1/1:35:10,0,100
-20	10001000	.	GG	AA	.	.	.	GT:GQ:PL	0/1:35:10,0,100	0/0:35:10,0,100	1/1:35:10,0,100
-20	10002000	.	TAGT:GQA	T	.	.	.	GT:GQ:PL	0/1:35:10,0,100	0/0:35:10,0,2000000000	1/1:35:10,0,100
-20	10003000	.	A	AGCT	.	.	.	GT:GQ:PL	0/1:35:10,0,100	0/0:35:10,0,100	1/1:35:10,0,100
-22	10004000	.	GAT	G,GATAT	.	.	.	GT:GQ:PL	0/1:35:10,0,100	0/0:35:10,0,100	1/1:35:10,0,100
+1	10000000	.	T	C	.	.	.	GT:GQ:PL:AF:AS	0/1:35:10,0,100:3.1,2.2:ABA	0/0:35:10,0,1000:3.1,2.2:ABA	1/1:35:10,0,100:3.1,2.2:ABA
+20	10001000	.	GG	AA	.	.	.	GT:GQ:PL:AF:AS	0/1:35:10,0,100:3.1,2.2:ABA	0/0:35:10,0,100:3.1,2.2:ABA	1/1:35:10,0,100:3.1,2.2:ABA
+20	10002000	.	TAGTGQA	T	.	.	.	GT:GQ:PL:AF:AS	0/1:35:10,0,100:3.1,2.2:ABA	0/0:35:10,0,2000000000:3.1,2.2:ABA	1/1:35:10,0,100:3.1,2.2:ABA
+20	10003000	.	A	AGCT	.	.	.	GT:GQ:PL:AF:AS	0/1:35:10,0,100:3.1,2.2:ABA	0/0:35:10,0,100:3.1,2.2:ABA	1/1:35:10,0,100:3.1,2.2:ABA
+22	10004000	.	GAT	G,GATAT	.	.	.	GT:GQ:PL:AF:AS	0/1:35:10,0,100,2,4,8:3.1,2.2:ABA	0/0:35:10,0,100,2,4,8:3.1,2.2:ABA	1/1:35:10,0,100,2,4,8:3.1,2.2:ABA

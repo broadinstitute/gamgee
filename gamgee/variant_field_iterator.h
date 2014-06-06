@@ -1,5 +1,5 @@
-#ifndef __gamgee__format_field_iterator__
-#define __gamgee__format_field_iterator__ 
+#ifndef __gamgee__variant_field_iterator__
+#define __gamgee__variant_field_iterator__ 
 
 #include "utils/utils.h"
 
@@ -46,10 +46,19 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
   {}
 
   /**
-   * @brief copy is not allowed in this iterator. Use move constructor instead.
+   * @brief copy constructor is only meant for internal STL functions use. It makes a shallow copy
+   * of the underlying object which is sufficient for an iterator, but not exactly what a user would
+   * expect (user should expect copy constructors to make deep copies). But a deep copied iterator
+   * makes no sense.
+   * @warning does not deep copy the underlying data! (but the copied iterator will be able to
+   * navigate independentely). 
    */
-  VariantFieldIterator(const VariantFieldIterator& other) = delete;
-
+  VariantFieldIterator(const VariantFieldIterator& other) :
+    m_body {other.m_body},
+    m_format_ptr {other.m_format_ptr},
+    m_data_ptr {other.m_data_ptr}
+  {}
+      
   /**
    * @brief safely moves the data from one VariantField to a new one without making any copies
    * @param other another VariantField object
@@ -63,7 +72,14 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
   /**
    * @copydoc VariantFieldIterator::VariantFieldIterator(const VariantFieldIterator&)
    */
-  VariantFieldIterator& operator=(const VariantFieldIterator& other) = delete;
+  VariantFieldIterator& operator=(const VariantFieldIterator& other) {
+    if (&this == other)
+      return *this;
+    m_body = other.m_body;
+    m_format_ptr = other.m_format_ptr;
+    m_data_ptr = other.m_data_ptr;
+    return *this;
+  }
 
   /**
    * @copydoc VariantFieldIterator::VariantFieldIterator(VariantFieldIterator&&)
@@ -177,13 +193,13 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
    */
   TYPE operator[](const uint32_t sample) const {
     utils::check_boundaries(sample, m_body->n_sample);
-    return TYPE{m_body, m_format_ptr, m_data_ptr + (sample * m_body->n_sample)};
+    return TYPE{m_body, m_format_ptr, m_format_ptr->p + (sample * m_body->n_sample)};
   }
 
  private:
-  std::shared_ptr<bcf1_t> m_body; ///< shared ownership of the Variant record memory so it stays alive while this object is in scope
-  const bcf_fmt_t* const m_format_ptr;           ///< pointer to the format_field in the body so we can access the tag's information 
-  uint8_t* m_data_ptr;            ///< pointer to m_body structure where the data for this particular type is located.
+  std::shared_ptr<bcf1_t> m_body;      ///< shared ownership of the Variant record memory so it stays alive while this object is in scope
+  const bcf_fmt_t* const m_format_ptr; ///< pointer to the format_field in the body so we can access the tag's information
+  uint8_t* m_data_ptr;                 ///< pointer to m_body structure where the data for this particular type is located.
 
 };
 
