@@ -33,13 +33,21 @@ class Variant {
   uint32_t n_samples()       const {return uint32_t(m_body->n_sample);} ///< @brief returns the number of samples in this Variant record
   uint32_t n_alleles()       const {return uint32_t(m_body->n_allele);} ///< @brief returns the number of alleles in this Variant record
 
+  // standard format field getters
   VariantField<VariantFieldValue<int32_t>> genotype_quals() const;   ///< @brief returns an iterable object with a pointer to all the GQ values for all samples contiguously in memory.
   VariantField<VariantFieldValue<int32_t>> phred_likelihoods() const;
+
+  // generic format field getters
+  VariantField<VariantFieldValue<int32_t>> generic_integer_format_field(const std::string& tag) const;
+  VariantField<VariantFieldValue<float>> generic_float_format_field(const std::string& tag) const;
+  VariantField<VariantFieldValue<std::string>> generic_string_format_field(const std::string& tag) const;
 
 
  private:
   std::shared_ptr<bcf_hdr_t> m_header; ///< @brief htslib variant header pointer
   std::shared_ptr<bcf1_t> m_body;      ///< @brief htslib variant body pointer
+
+  inline bcf_fmt_t* find_format_field_by_tag(const std::string& tag) const;
 
   friend class VariantWriter;
 };

@@ -1,5 +1,5 @@
-#ifndef __gamgee__format_field__
-#define __gamgee__format_field__
+#ifndef __gamgee__variant_field__
+#define __gamgee__variant_field__
 
 #include <iostream>
 
