@@ -12,6 +12,10 @@
 #include <memory>
 
 namespace gamgee {
+/** 
+ * @brief simple enum to keep the indices of the genotypes in the PL field of diploid individuals
+ */
+enum class DiploidPLGenotype { HOM_REF = 0, HET = 1, HOM_VAR = 2};
 
 /**
  * @brief Utility class to manipulate a Variant record.
@@ -34,13 +38,16 @@ class Variant {
   uint32_t n_alleles()       const {return uint32_t(m_body->n_allele);} ///< @brief returns the number of alleles in this Variant record
 
   // standard format field getters
-  VariantField<VariantFieldValue<int32_t>> genotype_quals() const;   ///< @brief returns an iterable object with a pointer to all the GQ values for all samples contiguously in memory.
-  VariantField<VariantFieldValue<int32_t>> phred_likelihoods() const;
+  bool is_hom_ref(const uint32_t sample_index) const;                   ///< @brief whether or not the sample in sample_index is hom_ref @warning current implementation is solely based on PL (this will be changed in the future)
+  bool is_het(const uint32_t sample_index) const;                       ///< @brief whether or not the sample in sample_index is het @warning current implementation is solely based on PL (this will be changed in the future)
+  bool is_hom_var(const uint32_t sample_index) const;                   ///< @brief whether or not the sample in sample_index is hom_var @warning current implementation is solely based on PL (this will be changed in the future)
+  VariantField<VariantFieldValue<int32_t>> genotype_quals() const;      ///< @brief returns a random access object with all the GQ values for all samples contiguously in memory.
+  VariantField<VariantFieldValue<int32_t>> phred_likelihoods() const;   ///< @brief returns a random access object with all the PL values for all samples contiguous in memory.
 
   // generic format field getters
-  VariantField<VariantFieldValue<int32_t>> generic_integer_format_field(const std::string& tag) const;
-  VariantField<VariantFieldValue<float>> generic_float_format_field(const std::string& tag) const;
-  VariantField<VariantFieldValue<std::string>> generic_string_format_field(const std::string& tag) const;
+  VariantField<VariantFieldValue<int32_t>> generic_integer_format_field(const std::string& tag) const;    ///< @brief returns a random access object with all the values in a give foramt field tag in integer format for all samples contiguous in memory.
+  VariantField<VariantFieldValue<float>> generic_float_format_field(const std::string& tag) const;        ///< @brief returns a random access object with all the values in a give foramt field tag in float format for all samples contiguous in memory.
+  VariantField<VariantFieldValue<std::string>> generic_string_format_field(const std::string& tag) const; ///< @brief returns a random access object with all the values in a give foramt field tag in string format for all samples contiguous in memory. @warning not working at the moment due to bug in htslib
 
 
  private:
@@ -48,6 +55,7 @@ class Variant {
   std::shared_ptr<bcf1_t> m_body;      ///< @brief htslib variant body pointer
 
   inline bcf_fmt_t* find_format_field_by_tag(const std::string& tag) const;
+  inline bool is_this_genotype(const DiploidPLGenotype& genotype, const uint32_t sample_index) const;
 
   friend class VariantWriter;
 };
