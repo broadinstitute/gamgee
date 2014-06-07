@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['formatfieldtype',['FormatFieldType',['../namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476',1,'gamgee::utils']]]
+  ['diploidplgenotype',['DiploidPLGenotype',['../namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75',1,'gamgee']]]
 ];
