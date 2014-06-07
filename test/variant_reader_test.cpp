@@ -18,17 +18,27 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
       BOOST_CHECK_EQUAL(record.n_alleles(), truth_n_alleles[record_counter]);
       BOOST_CHECK_EQUAL(record.n_samples(), 3);
       BOOST_CHECK_EQUAL(record.qual(), 0);
+
+      // testing genotype_quals accessors
       const auto gqs = record.genotype_quals();
       BOOST_CHECK_EQUAL(gqs[1][0], 35); // checking random access operators
       for_each(gqs.begin(), gqs.end(), [](const VariantFieldValue<int32_t>& x) { BOOST_CHECK_EQUAL(x[0], 35); }); // testing std library functional call at the samples level
+
+      // testing phred_likelihoods accessors
       const auto pls = record.phred_likelihoods();
+      BOOST_CHECK_EQUAL(pls[0][0], 10); // testing random access
+      BOOST_CHECK_EQUAL(pls[1][1], 10);
+      BOOST_CHECK_EQUAL(pls[2][2], 0);
       for(const auto& sample_pl : pls) { // testing for-each iteration at the samples level
-        BOOST_CHECK_EQUAL(sample_pl[1], 0);
-        const auto miss = count_if(sample_pl.begin(), sample_pl.end(), [](const auto& x) { return x > 10; }); // testing std library functional call at the sample value level
-        BOOST_CHECK_EQUAL(miss, 1);
+        BOOST_CHECK_EQUAL(1, count_if(sample_pl.begin(), sample_pl.end(), [](const auto& x) { return x == 0; })); // testing std library functional call at the sample value level
         for(const auto& value_pl : sample_pl)  // testing for-each iteration at the sample value level
           BOOST_CHECK_EQUAL(value_pl, value_pl); // I just want to make sure that this level of iteration is supported, the values don't matter anymore at this point
       }
+      
+      // check genotype accessors
+      BOOST_CHECK(record.is_hom_ref(1));
+      BOOST_CHECK(record.is_het(0));
+      BOOST_CHECK(record.is_hom_var(2));
       
       // test generic FLOAT
       const auto af = record.generic_float_format_field("AF");
@@ -47,7 +57,7 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
       //   BOOST_CHECK_EQUAL(s[0], "ABA");
       //   BOOST_CHECK_EQUAL(s[1], "CATE");
       // }
-      //
+      
       ++record_counter;
     }
     BOOST_CHECK_EQUAL(record_counter, 5u);

@@ -58,6 +58,23 @@ Variant& Variant::operator=(Variant&& other) noexcept {
   return *this;
 }
 
+bool Variant::is_this_genotype(const DiploidPLGenotype& genotype, const uint32_t sample_index) const {
+  const auto pl = phred_likelihoods();
+  return !pl.empty() && pl[sample_index][static_cast<int32_t>(genotype)] == 0;
+}
+
+bool Variant::is_hom_ref(const uint32_t sample_index) const {
+  return is_this_genotype(DiploidPLGenotype::HOM_REF, sample_index);
+}
+
+bool Variant::is_het(const uint32_t sample_index) const {
+  return is_this_genotype(DiploidPLGenotype::HET, sample_index);
+}
+
+bool Variant::is_hom_var(const uint32_t sample_index) const {
+  return is_this_genotype(DiploidPLGenotype::HOM_VAR, sample_index);
+}
+
 VariantField<VariantFieldValue<int32_t>> Variant::genotype_quals() const {
   return generic_integer_format_field("GQ");
 }
