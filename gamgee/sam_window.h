@@ -40,6 +40,6 @@ class SamWindow {
 
 };
 
-}  // end namespace gamgee
+}
 
 #endif

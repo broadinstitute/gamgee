@@ -1,7 +1,3 @@
-/*
- * sam_window_node_iterator.cpp
- */
-
 #include "sam_window_node_iterator.h"
 
 namespace gamgee {
@@ -16,10 +12,6 @@ SamWindowNodeIterator::SamWindowNodeIterator(SamWindowNode* sam_window_node_ptr,
 m_sam_header_ptr{sam_header_ptr},
 m_sam_window_node_ptr{sam_window_node_ptr} {
   m_sam_record = fetch_next_record();
-}
-
-SamWindowNodeIterator::~SamWindowNodeIterator() {
-  m_sam_window_node_ptr = nullptr;
 }
 
 bool SamWindowNodeIterator::operator!=(SamWindowNodeIterator& rhs) {
@@ -45,4 +37,4 @@ Sam SamWindowNodeIterator::fetch_next_record() {
   }
 }
 
-} /* namespace gamgee */
+}

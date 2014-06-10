@@ -1,7 +1,3 @@
-/*
- * sam_window_node_iterator.h
- */
-
 #ifndef __gamgee__sam_window_node_iterator__
 #define __gamgee__sam_window_node_iterator__
 
@@ -15,7 +11,6 @@ class SamWindowNodeIterator {
   public:
     SamWindowNodeIterator();
     SamWindowNodeIterator(SamWindowNode* sam_window_node_ptr, const std::shared_ptr<bam_hdr_t>& sam_header_ptr);
-    ~SamWindowNodeIterator();
 
     bool operator!=(SamWindowNodeIterator& rhs);
     Sam& operator*();
@@ -29,6 +24,6 @@ class SamWindowNodeIterator {
     Sam fetch_next_record();
 };
 
-} /* namespace gamgee */
+}
 
 #endif

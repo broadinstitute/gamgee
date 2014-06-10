@@ -12,10 +12,8 @@
 class SamWindowNode {
   public:
     SamWindowNode();
-    ~SamWindowNode();
     SamWindowNode* next;
     std::shared_ptr<bam1_t> sam_record_ptr;
 };
 
 #endif
-

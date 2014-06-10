@@ -3,6 +3,7 @@
 
 #include "sam_iterator.h"
 #include "sam_pair_iterator.h"
+#include "sam_window_iterator.h"
 #include "hts_memory.h"
 
 #include "htslib/sam.h"
@@ -52,7 +53,16 @@ class SamReader {
      */
     SamReader(const std::string& filename) :
       m_sam_file_ptr {sam_open(filename.empty() ? "-" : filename.c_str(), "r")},
-      m_sam_header_ptr { make_shared_bam_header(sam_hdr_read(m_sam_file_ptr)) }
+      m_sam_header_ptr { make_shared_bam_header(sam_hdr_read(m_sam_file_ptr)) },
+      m_window_size{400}, // TODO: Where does gamgee put shared constants? Also used in the WindowSamIterator three args constructor.
+      m_step_size{100}
+    {}
+
+    SamReader(const std::string& filename, uint32_t window_size, uint32_t step_size) :
+      m_sam_file_ptr {sam_open(filename.empty() ? "-" : filename.c_str(), "r")},
+      m_sam_header_ptr { make_shared_bam_header(sam_hdr_read(m_sam_file_ptr)) },
+      m_window_size{window_size},
+      m_step_size{step_size}
     {}
 
     SamReader(SamReader&& other) :
@@ -96,10 +106,13 @@ class SamReader {
   private:
     samFile* m_sam_file_ptr;                           ///< pointer to the internal file structure of the sam/bam/cram file
     const std::shared_ptr<bam_hdr_t> m_sam_header_ptr; ///< pointer to the internal header structure of the sam/bam/cram file
+    const uint32_t m_window_size;                      ///< window size, only for window iterators
+    const uint32_t m_step_size;                        ///< step size, only for window iterators
 };
 
 using SingleSamReader = SamReader<SamIterator>;
 using PairSamReader = SamReader<SamPairIterator>;
+using WindowSamReader = SamReader<SamWindowIterator>;
 
 }  // end of namespace
 

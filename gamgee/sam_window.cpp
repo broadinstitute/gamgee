@@ -1,23 +1,21 @@
-/*
- * sam_window.cpp
- */
-
 #include "sam_window.h"
 
 namespace gamgee {
 
 SamWindow::SamWindow() :
-    m_sam_header_ptr{nullptr} {
-  m_head = nullptr;
-  m_tail = nullptr;
-  m_size = 0;
+  m_sam_header_ptr{nullptr},
+  m_head{nullptr},
+  m_tail{nullptr},
+  m_size{0}
+{
 }
 
 SamWindow::SamWindow(const std::shared_ptr<bam_hdr_t>& sam_header_ptr) :
-    m_sam_header_ptr{sam_header_ptr} {
-  m_head = nullptr;
-  m_tail = nullptr;
-  m_size = 0;
+  m_sam_header_ptr{sam_header_ptr},
+  m_head{nullptr},
+  m_tail{nullptr},
+  m_size{0}
+{
 }
 
 SamWindow::~SamWindow() {
@@ -73,4 +71,4 @@ SamWindowNodeIterator SamWindow::end() const {
   return SamWindowNodeIterator{};
 }
 
-} /* namespace gamgee */
+}
