@@ -108,4 +108,4 @@ using SingleVariantReader = VariantReader<VariantIterator>;
 
 }  // end of namespace
 
-#endif /* defined(__gamgee__variant_iterator__) */
+#endif /* defined(__gamgee__variant_reader__) */
