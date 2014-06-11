@@ -4,6 +4,7 @@
 #include "htslib/sam.h"
 
 #include <memory>
+#include <string>
 
 namespace gamgee {
 
@@ -18,6 +19,9 @@ class SamHeader {
   SamHeader(SamHeader&& other) noexcept;                        ///< @brief moves SamHeader accordingly. Shared pointers maintain state to all other associated objects correctly.
   SamHeader& operator=(const SamHeader& other);                 ///< @brief deep copy assignment of a SamHeader. Shared pointers maintain state to all other associated objects correctly.
   SamHeader& operator=(SamHeader&& other) noexcept;             ///< @brief move assignment of a SamHeader. Shared pointers maintain state to all other associated objects correctly.
+  uint32_t sequence_length(const std::string& sequence_name);   ///< @brief Returns the length of the given sequence as stored in the @SQ tag in the BAM header.
+  uint32_t sequence_length(const uint32_t sequence_index);      ///< @brief Returns the length of the given sequence as stored in the @SQ tag in the BAM header.
+  std::string sequence_name(const uint32_t sequence_index);	    ///< @brief Returns the sequence name for the sequence with the given zero-based index
 
  private:
   std::shared_ptr<bam_hdr_t> m_header;
