@@ -11,6 +11,7 @@ var searchData=
   ['samwriter',['SamWriter',['../classgamgee_1_1_sam_writer.html#a78751633b0d969df35fa159dffadcd5c',1,'gamgee::SamWriter::SamWriter(const std::string &amp;output_fname=&quot;-&quot;, const bool binary=true)'],['../classgamgee_1_1_sam_writer.html#a900f50a6e06d06796c1a472278bb8b9b',1,'gamgee::SamWriter::SamWriter(const SamHeader &amp;header, const std::string &amp;output_fname=&quot;-&quot;, const bool binary=true)']]],
   ['secondary',['secondary',['../classgamgee_1_1_sam.html#a411d15574da51bce292697b670cc47d7',1,'gamgee::Sam']]],
   ['sequence',['sequence',['../classgamgee_1_1_fastq.html#acca851d9e72b446b7f02a52ac226e190',1,'gamgee::Fastq']]],
+  ['sequence_5flength',['sequence_length',['../classgamgee_1_1_sam_header.html#a3cfc31b4cca5a4d156379da5055053ab',1,'gamgee::SamHeader']]],
   ['set_5falignment_5fstart',['set_alignment_start',['../classgamgee_1_1_sam.html#affbd4462ca45a2ab5af0708e55ecffbf',1,'gamgee::Sam']]],
   ['set_5fchromosome',['set_chromosome',['../classgamgee_1_1_sam.html#ae8eae6bf547ae838870c7ee8e38dc25c',1,'gamgee::Sam']]],
   ['set_5fcomment',['set_comment',['../classgamgee_1_1_fastq.html#a0beb505ee5dbfdcc174591f5849fb84d',1,'gamgee::Fastq']]],

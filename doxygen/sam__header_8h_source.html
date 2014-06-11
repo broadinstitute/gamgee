@@ -96,34 +96,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;htslib/sam.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>gamgee {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classgamgee_1_1_sam_header.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a> {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classgamgee_1_1_sam_header.html#ae574918f1e695cca21d2688bb0c34e2b">SamHeader</a>() = <span class="keywordflow">default</span>;                               </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classgamgee_1_1_sam_header.html#ae574918f1e695cca21d2688bb0c34e2b">SamHeader</a>(<span class="keyword">const</span> std::shared_ptr&lt;bam_hdr_t&gt;&amp; header); </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <a class="code" href="classgamgee_1_1_sam_header.html#ae574918f1e695cca21d2688bb0c34e2b">SamHeader</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a>&amp; other);                            </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <a class="code" href="classgamgee_1_1_sam_header.html#ae574918f1e695cca21d2688bb0c34e2b">SamHeader</a>(<a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a>&amp;&amp; other) noexcept;                        </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a>&amp; <a class="code" href="classgamgee_1_1_sam_header.html#a5490e7ebcf604dca12524d015b9f869f">operator=</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a>&amp; other);                 </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a>&amp; <a class="code" href="classgamgee_1_1_sam_header.html#a5490e7ebcf604dca12524d015b9f869f">operator=</a>(<a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a>&amp;&amp; other) noexcept;             </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  std::shared_ptr&lt;bam_hdr_t&gt; m_header;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classgamgee_1_1_sam_header.html#aceb0e064174204e66199adc94aa54246">   25</a></span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classgamgee_1_1_sam_writer.html">SamWriter</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif </span></div>
-<div class="ttc" id="classgamgee_1_1_sam_header_html"><div class="ttname"><a href="classgamgee_1_1_sam_header.html">gamgee::SamHeader</a></div><div class="ttdoc">Utility class to hold the header of a sam file. </div><div class="ttdef"><b>Definition:</b> sam_header.h:13</div></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>gamgee {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classgamgee_1_1_sam_header.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classgamgee_1_1_sam_header.html#ae574918f1e695cca21d2688bb0c34e2b">SamHeader</a>() = <span class="keywordflow">default</span>;                               </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classgamgee_1_1_sam_header.html#ae574918f1e695cca21d2688bb0c34e2b">SamHeader</a>(<span class="keyword">const</span> std::shared_ptr&lt;bam_hdr_t&gt;&amp; header); </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <a class="code" href="classgamgee_1_1_sam_header.html#ae574918f1e695cca21d2688bb0c34e2b">SamHeader</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a>&amp; other);                            </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="classgamgee_1_1_sam_header.html#ae574918f1e695cca21d2688bb0c34e2b">SamHeader</a>(<a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a>&amp;&amp; other) noexcept;                        </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a>&amp; <a class="code" href="classgamgee_1_1_sam_header.html#a5490e7ebcf604dca12524d015b9f869f">operator=</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a>&amp; other);                 </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a>&amp; <a class="code" href="classgamgee_1_1_sam_header.html#a5490e7ebcf604dca12524d015b9f869f">operator=</a>(<a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a>&amp;&amp; other) noexcept;             </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  uint32_t <a class="code" href="classgamgee_1_1_sam_header.html#a3cfc31b4cca5a4d156379da5055053ab">sequence_length</a>(<span class="keyword">const</span> std::string&amp; sequence_name);   </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  std::shared_ptr&lt;bam_hdr_t&gt; m_header;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classgamgee_1_1_sam_header.html#aceb0e064174204e66199adc94aa54246">   27</a></span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classgamgee_1_1_sam_writer.html">SamWriter</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif </span></div>
+<div class="ttc" id="classgamgee_1_1_sam_header_html"><div class="ttname"><a href="classgamgee_1_1_sam_header.html">gamgee::SamHeader</a></div><div class="ttdoc">Utility class to hold the header of a sam file. </div><div class="ttdef"><b>Definition:</b> sam_header.h:14</div></div>
 <div class="ttc" id="classgamgee_1_1_sam_writer_html"><div class="ttname"><a href="classgamgee_1_1_sam_writer.html">gamgee::SamWriter</a></div><div class="ttdoc">utility class to write out a SAM/BAM/CRAM file to any stream </div><div class="ttdef"><b>Definition:</b> sam_writer.h:16</div></div>
 <div class="ttc" id="classgamgee_1_1_sam_header_html_a5490e7ebcf604dca12524d015b9f869f"><div class="ttname"><a href="classgamgee_1_1_sam_header.html#a5490e7ebcf604dca12524d015b9f869f">gamgee::SamHeader::operator=</a></div><div class="ttdeci">SamHeader &amp; operator=(const SamHeader &amp;other)</div><div class="ttdoc">deep copy assignment of a SamHeader. Shared pointers maintain state to all other associated objects c...</div><div class="ttdef"><b>Definition:</b> sam_header.cpp:39</div></div>
 <div class="ttc" id="classgamgee_1_1_sam_header_html_ae574918f1e695cca21d2688bb0c34e2b"><div class="ttname"><a href="classgamgee_1_1_sam_header.html#ae574918f1e695cca21d2688bb0c34e2b">gamgee::SamHeader::SamHeader</a></div><div class="ttdeci">SamHeader()=default</div><div class="ttdoc">initializes a null SamHeader </div></div>
+<div class="ttc" id="classgamgee_1_1_sam_header_html_a3cfc31b4cca5a4d156379da5055053ab"><div class="ttname"><a href="classgamgee_1_1_sam_header.html#a3cfc31b4cca5a4d156379da5055053ab">gamgee::SamHeader::sequence_length</a></div><div class="ttdeci">uint32_t sequence_length(const std::string &amp;sequence_name)</div><div class="ttdoc">Returns the length of the given sequence as stored in the  tag in the BAM header. ...</div><div class="ttdef"><b>Definition:</b> sam_header.cpp:56</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 7 2014 01:36:50 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 11 2014 19:28:54 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
