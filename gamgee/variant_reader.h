@@ -81,7 +81,7 @@ class VariantReader {
    *
    * @return a ITERATOR ready to start parsing the file
    */
-  ITERATOR begin() {
+  ITERATOR begin() const {
     return ITERATOR{m_variant_file_ptr, m_variant_header_ptr};
   }
 
@@ -90,14 +90,14 @@ class VariantReader {
    *
    * @return a ITERATOR that will match the end status of the iterator at the end of the stream
    */
-  ITERATOR end() {
+  ITERATOR end() const {
     return ITERATOR{};
   }
 
   /**
    * @brief returns the variant header of the file being read
    */
-  inline VariantHeader header() { return VariantHeader{m_variant_header_ptr}; }
+  inline VariantHeader header() const { return VariantHeader{m_variant_header_ptr}; }
 
  private:
   vcfFile* m_variant_file_ptr;                           ///< pointer to the internal file structure of the variant/bam/cram file
