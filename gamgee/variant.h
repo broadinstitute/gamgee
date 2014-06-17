@@ -10,6 +10,7 @@
 
 #include <string>
 #include <memory>
+#include <vector>
 
 namespace gamgee {
 /** 
@@ -48,6 +49,12 @@ class Variant {
   VariantField<VariantFieldValue<int32_t>> generic_integer_format_field(const std::string& tag) const;    ///< @brief returns a random access object with all the values in a give foramt field tag in integer format for all samples contiguous in memory.
   VariantField<VariantFieldValue<float>> generic_float_format_field(const std::string& tag) const;        ///< @brief returns a random access object with all the values in a give foramt field tag in float format for all samples contiguous in memory.
   VariantField<VariantFieldValue<std::string>> generic_string_format_field(const std::string& tag) const; ///< @brief returns a random access object with all the values in a give foramt field tag in string format for all samples contiguous in memory. @warning not working at the moment due to bug in htslib
+
+  // generic info field getters
+  std::vector<int32_t> generic_integer_info_field(const std::string& tag) const;    ///< @brief returns a random access object with all the values in a given info field tag in integer format for all samples contiguous in memory.
+  std::vector<float> generic_float_info_field(const std::string& tag) const;        ///< @brief returns a random access object with all the values in a given info field tag in float format for all samples contiguous in memory.
+  std::vector<std::string> generic_string_info_field(const std::string& tag) const; ///< @brief returns a random access object with all the values in a given info field tag in string format for all samples contiguous in memory.
+  std::vector<bool> generic_boolean_info_field(const std::string& tag) const;       ///< @brief returns a random access object with all the values in a given info field tag in boolean format for all samples contiguous in memory.
 
 
  private:

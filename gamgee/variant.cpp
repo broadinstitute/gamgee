@@ -108,6 +108,58 @@ inline bcf_fmt_t* Variant::find_format_field_by_tag(const string& tag) const {
   return bcf_get_fmt(m_header.get(), m_body.get(), tag.c_str());     
 }
 
+std::vector<int32_t> Variant::generic_integer_info_field(const std::string& tag) const {
+  int32_t *mem = (int32_t *)malloc(sizeof(int32_t)); // bcf_get_info_values writes without realloc the when count returns with 1;
+  int32_t count = 1;
+  const auto info_result = bcf_get_info_int32(m_header.get(), m_body.get(), tag.c_str(), &mem, &count);
+  if (info_result < 0) {
+    return std::vector<int32_t>{}; // return empty for all errors, even asking for the wrong type
+  }
+  std::vector<int32_t> results = std::vector<int32_t>{};
+  for (auto i = 0; i < count; i++) {
+    results.push_back(mem[i]);
+  }
+  delete(mem);
+  return results;
+}
+
+std::vector<float> Variant::generic_float_info_field(const std::string& tag) const {
+  float *mem = (float *)malloc(sizeof(float)); // bcf_get_info_values writes without realloc the when count returns with 1;
+  int32_t count = 1;
+  const auto info_result = bcf_get_info_float(m_header.get(), m_body.get(), tag.c_str(), &mem, &count);
+  if (info_result < 0) {
+    return std::vector<float>{}; // return empty for all errors, even asking for the wrong type
+  }
+  std::vector<float> results = std::vector<float>{};
+  for (auto i = 0; i < count; i++) {
+    results.push_back(mem[i]);
+  }
+  delete(mem);
+  return results;
+}
+
+std::vector<std::string> Variant::generic_string_info_field(const std::string& tag) const {
+  char* mem = (char*)malloc(0);
+  int32_t count = 0;
+  const auto info_result = bcf_get_info_string(m_header.get(), m_body.get(), tag.c_str(), &mem, &count);
+  if (info_result < 0) {
+    return std::vector<string>{}; // return empty for all errors, even asking for the wrong type
+  }
+  std::vector<string> results = std::vector<string>{};
+  results.push_back(std::string{mem});
+  delete(mem);
+  return results;
+}
+
+std::vector<bool> Variant::generic_boolean_info_field(const std::string& tag) const {
+  const auto info_result = bcf_get_info_flag(m_header.get(), m_body.get(), tag.c_str(), NULL, NULL);
+  if (info_result < 0) {
+    return std::vector<bool>{}; // return empty for all errors, even asking for the wrong type
+  }
+  std::vector<bool> results = std::vector<bool>{};
+  results.push_back(info_result == 1);
+  return results;
+}
 
 }
 
