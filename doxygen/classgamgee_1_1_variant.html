@@ -169,6 +169,18 @@ Public Member Functions</h2></td></tr>
 &lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#aca6f969c4ad2111899804796a9dffa8e">generic_string_format_field</a> (const std::string &amp;tag) const </td></tr>
 <tr class="memdesc:aca6f969c4ad2111899804796a9dffa8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a random access object with all the values in a give foramt field tag in string format for all samples contiguous in memory.  <a href="#aca6f969c4ad2111899804796a9dffa8e">More...</a><br /></td></tr>
 <tr class="separator:aca6f969c4ad2111899804796a9dffa8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8ef4ca0715319c7abb06074e510ab7a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#ab8ef4ca0715319c7abb06074e510ab7a">generic_integer_info_field</a> (const std::string &amp;tag) const </td></tr>
+<tr class="memdesc:ab8ef4ca0715319c7abb06074e510ab7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a random access object with all the values in a given info field tag in integer format for all samples contiguous in memory.  <a href="#ab8ef4ca0715319c7abb06074e510ab7a">More...</a><br /></td></tr>
+<tr class="separator:ab8ef4ca0715319c7abb06074e510ab7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e6b21c0c206069a70dba97add91ae79"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a2e6b21c0c206069a70dba97add91ae79">generic_float_info_field</a> (const std::string &amp;tag) const </td></tr>
+<tr class="memdesc:a2e6b21c0c206069a70dba97add91ae79"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a random access object with all the values in a given info field tag in float format for all samples contiguous in memory.  <a href="#a2e6b21c0c206069a70dba97add91ae79">More...</a><br /></td></tr>
+<tr class="separator:a2e6b21c0c206069a70dba97add91ae79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af86522f92d843d6922b273fdb2b5d39b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#af86522f92d843d6922b273fdb2b5d39b">generic_string_info_field</a> (const std::string &amp;tag) const </td></tr>
+<tr class="memdesc:af86522f92d843d6922b273fdb2b5d39b"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a random access object with all the values in a given info field tag in string format for all samples contiguous in memory.  <a href="#af86522f92d843d6922b273fdb2b5d39b">More...</a><br /></td></tr>
+<tr class="separator:af86522f92d843d6922b273fdb2b5d39b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaef3ac0c8bc4457b6cdb0e0b52c79e5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#aaaef3ac0c8bc4457b6cdb0e0b52c79e5">generic_boolean_info_field</a> (const std::string &amp;tag) const </td></tr>
+<tr class="memdesc:aaaef3ac0c8bc4457b6cdb0e0b52c79e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a random access object with all the values in a given info field tag in boolean format for all samples contiguous in memory.  <a href="#aaaef3ac0c8bc4457b6cdb0e0b52c79e5">More...</a><br /></td></tr>
+<tr class="separator:aaaef3ac0c8bc4457b6cdb0e0b52c79e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -343,6 +355,24 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 </div>
 </div>
+<a class="anchor" id="aaaef3ac0c8bc4457b6cdb0e0b52c79e5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; bool &gt; gamgee::Variant::generic_boolean_info_field </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>tag</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns a random access object with all the values in a given info field tag in boolean format for all samples contiguous in memory. </p>
+
+</div>
+</div>
 <a class="anchor" id="af6e164067495e6177b41474b3e671d71"></a>
 <div class="memitem">
 <div class="memproto">
@@ -359,6 +389,24 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 <p>returns a random access object with all the values in a give foramt field tag in float format for all samples contiguous in memory. </p>
 <p>&lt; if the variant is missing or the PL tag is missing, return an empty <a class="el" href="classgamgee_1_1_variant_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">VariantField</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="a2e6b21c0c206069a70dba97add91ae79"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; float &gt; gamgee::Variant::generic_float_info_field </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>tag</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns a random access object with all the values in a given info field tag in float format for all samples contiguous in memory. </p>
 
 </div>
 </div>
@@ -381,6 +429,24 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 </div>
 </div>
+<a class="anchor" id="ab8ef4ca0715319c7abb06074e510ab7a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; int32_t &gt; gamgee::Variant::generic_integer_info_field </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>tag</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns a random access object with all the values in a given info field tag in integer format for all samples contiguous in memory. </p>
+
+</div>
+</div>
 <a class="anchor" id="aca6f969c4ad2111899804796a9dffa8e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -398,6 +464,24 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 <p>returns a random access object with all the values in a give foramt field tag in string format for all samples contiguous in memory. </p>
 <dl class="section warning"><dt>Warning</dt><dd>not working at the moment due to bug in htslib </dd></dl>
 <p>&lt; if the variant is missing or the PL tag is missing, return an empty <a class="el" href="classgamgee_1_1_variant_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">VariantField</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="af86522f92d843d6922b273fdb2b5d39b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; gamgee::Variant::generic_string_info_field </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>tag</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns a random access object with all the values in a given info field tag in string format for all samples contiguous in memory. </p>
 
 </div>
 </div>
@@ -673,7 +757,7 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 16 2014 17:54:45 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 17 2014 22:25:53 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
