@@ -109,44 +109,33 @@ inline bcf_fmt_t* Variant::find_format_field_by_tag(const string& tag) const {
 }
 
 std::vector<int32_t> Variant::generic_integer_info_field(const std::string& tag) const {
-  int32_t *mem = (int32_t *)malloc(sizeof(int32_t)); // bcf_get_info_values writes without realloc the when count returns with 1;
-  int32_t count = 1;
-  const auto info_result = bcf_get_info_int32(m_header.get(), m_body.get(), tag.c_str(), &mem, &count);
-  if (info_result < 0) {
-    return std::vector<int32_t>{}; // return empty for all errors, even asking for the wrong type
-  }
-  std::vector<int32_t> results = std::vector<int32_t>{};
-  for (auto i = 0; i < count; i++) {
-    results.push_back(mem[i]);
-  }
-  delete(mem);
-  return results;
+  return generic_info_field<int32_t>(tag, BCF_HT_INT);
 }
 
 std::vector<float> Variant::generic_float_info_field(const std::string& tag) const {
-  float *mem = (float *)malloc(sizeof(float)); // bcf_get_info_values writes without realloc the when count returns with 1;
-  int32_t count = 1;
-  const auto info_result = bcf_get_info_float(m_header.get(), m_body.get(), tag.c_str(), &mem, &count);
+  return generic_info_field<float>(tag, BCF_HT_REAL);
+}
+
+template <typename TYPE> inline std::vector<TYPE> Variant::generic_info_field(const std::string& tag, const int type) const {
+  auto mem = (TYPE *)malloc(sizeof(TYPE)); // bcf_get_info_values writes without realloc when count returns with 1;
+  auto count = 1;
+  const auto info_result = bcf_get_info_values(m_header.get(), m_body.get(), tag.c_str(), (void**)&mem, &count, type);
   if (info_result < 0) {
-    return std::vector<float>{}; // return empty for all errors, even asking for the wrong type
+    return std::vector<TYPE>{}; // return empty for all errors, even asking for the wrong type
   }
-  std::vector<float> results = std::vector<float>{};
-  for (auto i = 0; i < count; i++) {
-    results.push_back(mem[i]);
-  }
+  const auto results = std::vector<TYPE>(mem, mem + count); // int32_t and floats returned as arrays
   delete(mem);
   return results;
 }
 
 std::vector<std::string> Variant::generic_string_info_field(const std::string& tag) const {
-  char* mem = (char*)malloc(0);
-  int32_t count = 0;
+  auto mem = (char*)malloc(0);
+  auto count = 0;
   const auto info_result = bcf_get_info_string(m_header.get(), m_body.get(), tag.c_str(), &mem, &count);
   if (info_result < 0) {
     return std::vector<string>{}; // return empty for all errors, even asking for the wrong type
   }
-  std::vector<string> results = std::vector<string>{};
-  results.push_back(std::string{mem});
+  const auto results = std::vector<string>{std::string{mem}}; // strings returned as a single string
   delete(mem);
   return results;
 }
@@ -156,10 +145,8 @@ std::vector<bool> Variant::generic_boolean_info_field(const std::string& tag) co
   if (info_result < 0) {
     return std::vector<bool>{}; // return empty for all errors, even asking for the wrong type
   }
-  std::vector<bool> results = std::vector<bool>{};
-  results.push_back(info_result == 1);
+  const auto results = std::vector<bool>{info_result == 1}; // flags are returned only in the return value
   return results;
 }
 
 }
-
