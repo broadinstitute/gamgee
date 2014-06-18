@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <algorithm>
 
 #include <iostream>
 
@@ -71,6 +72,11 @@ vector<string> VariantHeader::info_fields() const {
 
 vector<string> VariantHeader::format_fields() const {
   return find_fields_of_type(m_header.get(), BCF_HL_FMT);
+}
+
+bool VariantHeader::has_format_field(const string field) const {
+  const auto& fields = format_fields();
+  return find(fields.begin(), fields.end(), field) != fields.end();
 }
 
 }
