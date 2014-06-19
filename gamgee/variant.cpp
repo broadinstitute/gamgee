@@ -117,6 +117,7 @@ std::vector<float> Variant::generic_float_info_field(const std::string& tag) con
 }
 
 template <typename TYPE> inline std::vector<TYPE> Variant::generic_info_field(const std::string& tag, const int type) const {
+  // Using malloc instead of new since bcf_get_info_values does realloc: http://www.stroustrup.com/bs_faq2.html#realloc
   auto mem = (TYPE *)malloc(sizeof(TYPE)); // bcf_get_info_values writes without realloc when count returns with 1;
   auto count = 1;
   const auto info_result = bcf_get_info_values(m_header.get(), m_body.get(), tag.c_str(), (void**)&mem, &count, type);
@@ -124,11 +125,12 @@ template <typename TYPE> inline std::vector<TYPE> Variant::generic_info_field(co
     return std::vector<TYPE>{}; // return empty for all errors, even asking for the wrong type
   }
   const auto results = std::vector<TYPE>(mem, mem + count); // int32_t and floats returned as arrays
-  delete(mem);
+  free(mem);
   return results;
 }
 
 std::vector<std::string> Variant::generic_string_info_field(const std::string& tag) const {
+  // Using malloc instead of new since bcf_get_info_values does realloc: http://www.stroustrup.com/bs_faq2.html#realloc
   auto mem = (char*)malloc(0);
   auto count = 0;
   const auto info_result = bcf_get_info_string(m_header.get(), m_body.get(), tag.c_str(), &mem, &count);
@@ -136,7 +138,7 @@ std::vector<std::string> Variant::generic_string_info_field(const std::string& t
     return std::vector<string>{}; // return empty for all errors, even asking for the wrong type
   }
   const auto results = std::vector<string>{std::string{mem}}; // strings returned as a single string
-  delete(mem);
+  free(mem);
   return results;
 }
 
