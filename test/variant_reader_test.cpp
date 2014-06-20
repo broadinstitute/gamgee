@@ -58,6 +58,22 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
       //   BOOST_CHECK_EQUAL(s[1], "CATE");
       // }
       
+      const auto validated_actual = record.generic_boolean_info_field("VALIDATED");
+      const auto validated_expected = std::vector<bool>{record_counter == 0};
+      BOOST_CHECK_EQUAL_COLLECTIONS(validated_actual.begin(), validated_actual.end(), validated_expected.begin(), validated_expected.end());
+
+      const auto an = record.generic_integer_info_field("AN");
+      BOOST_CHECK_EQUAL(an.size(), 1);
+      BOOST_CHECK_EQUAL(an[0], 6);
+
+      const auto af_actual = record.generic_float_info_field("AF");
+      const auto af_expected = record_counter == 4 ? std::vector<float>{0.5, 0} : std::vector<float>{0.5};
+      BOOST_CHECK_EQUAL_COLLECTIONS(af_actual.begin(), af_actual.end(), af_expected.begin(), af_expected.end());
+
+      const auto desc_actual = record.generic_string_info_field("DESC");
+      const auto desc_expected = record_counter == 0 ? std::vector<string>{"Test1,Test2"} : std::vector<string>{};
+      BOOST_CHECK_EQUAL_COLLECTIONS(desc_actual.begin(), desc_actual.end(), desc_expected.begin(), desc_expected.end());
+
       ++record_counter;
     }
     BOOST_CHECK_EQUAL(record_counter, 5u);

@@ -10,6 +10,7 @@
 
 #include <string>
 #include <memory>
+#include <vector>
 
 namespace gamgee {
 /** 
@@ -49,12 +50,20 @@ class Variant {
   VariantField<VariantFieldValue<float>> generic_float_format_field(const std::string& tag) const;        ///< @brief returns a random access object with all the values in a give foramt field tag in float format for all samples contiguous in memory.
   VariantField<VariantFieldValue<std::string>> generic_string_format_field(const std::string& tag) const; ///< @brief returns a random access object with all the values in a give foramt field tag in string format for all samples contiguous in memory. @warning not working at the moment due to bug in htslib
 
+  // generic info field getters
+  // NOTE: Errors in the return info field type are currently returned as empty vectors, not exceptions.
+  std::vector<int32_t> generic_integer_info_field(const std::string& tag) const;    ///< @brief returns a random access object with all the values in a given info field tag in integer format for all samples contiguous in memory.
+  std::vector<float> generic_float_info_field(const std::string& tag) const;        ///< @brief returns a random access object with all the values in a given info field tag in float format for all samples contiguous in memory.
+  std::vector<std::string> generic_string_info_field(const std::string& tag) const; ///< @brief returns a random access object with all the values in a given info field tag in string format for all samples contiguous in memory.
+  std::vector<bool> generic_boolean_info_field(const std::string& tag) const;       ///< @brief returns a random access object with all the values in a given info field tag in boolean format for all samples contiguous in memory.
+
 
  private:
   std::shared_ptr<bcf_hdr_t> m_header; ///< @brief htslib variant header pointer
   std::shared_ptr<bcf1_t> m_body;      ///< @brief htslib variant body pointer
 
   inline bcf_fmt_t* find_format_field_by_tag(const std::string& tag) const;
+  template <typename TYPE> inline std::vector<TYPE> generic_info_field(const std::string& tag, const int type) const;
   inline bool is_this_genotype(const DiploidPLGenotype& genotype, const uint32_t sample_index) const;
 
   friend class VariantWriter;
