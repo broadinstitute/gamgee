@@ -37,5 +37,8 @@ BOOST_AUTO_TEST_CASE( variant_header_builder_simple_building ) {
   check_fields(vh.filters(), filters);
   check_fields(vh.info_fields(), infos);
   check_fields(vh.format_fields(), formats);
+  BOOST_CHECK(vh.has_format_field("GQ") == true);
+  BOOST_CHECK(vh.has_format_field("DP") == true);
+  BOOST_CHECK(vh.has_format_field("BLAH") == false);
 }
 

@@ -36,6 +36,7 @@ class VariantHeader {
   std::vector<std::string> contigs()       const; ///< @brief builds a vector with the contigs 
   std::vector<std::string> info_fields()   const; ///< @brief builds a vector with the info fields 
   std::vector<std::string> format_fields() const; ///< @brief builds a vector with the format fields
+  bool has_format_field(const std::string)        const; ///< @brief checks if format field has the given field
 
   void advanced_merge_header(const VariantHeader& other) { bcf_hdr_combine(other.m_header.get(), m_header.get()); }
 
