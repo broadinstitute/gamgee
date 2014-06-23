@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['make_5fcigar_5felement',['make_cigar_element',['../classgamgee_1_1_cigar.html#a7314cf95ecb9b08a94ffce8aa1e976ab',1,'gamgee::Cigar']]],
   ['make_5fshared_5fsam',['make_shared_sam',['../namespacegamgee_1_1utils.html#ae5e4c2a62b4e2544996e8b0193e5c31a',1,'gamgee::utils']]],
   ['make_5fshared_5fsam_5fheader',['make_shared_sam_header',['../namespacegamgee_1_1utils.html#a72ad0cc418281effcdb1abd1a077761e',1,'gamgee::utils']]],
   ['make_5fshared_5fvariant',['make_shared_variant',['../namespacegamgee_1_1utils.html#a22e4ba8eb2a8667becd53d5f10fad35f',1,'gamgee::utils']]],

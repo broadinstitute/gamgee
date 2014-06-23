@@ -91,6 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classgamgee_1_1_cigar-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">gamgee::Cigar Class Reference</div>  </div>
@@ -122,24 +123,42 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aacb5a081f09996ed7ca1b325b212294e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#aacb5a081f09996ed7ca1b325b212294e">~Cigar</a> ()=default</td></tr>
 <tr class="memdesc:aacb5a081f09996ed7ca1b325b212294e"><td class="mdescLeft">&#160;</td><td class="mdescRight">default destruction is sufficient, since our shared_ptr will handle deallocation  <a href="#aacb5a081f09996ed7ca1b325b212294e">More...</a><br /></td></tr>
 <tr class="separator:aacb5a081f09996ed7ca1b325b212294e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01913162c01a0ec482bb53e9b45728c2"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#a01913162c01a0ec482bb53e9b45728c2">operator[]</a> (const uint32_t index) const </td></tr>
-<tr class="memdesc:a01913162c01a0ec482bb53e9b45728c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">use freely as you would an array.  <a href="#a01913162c01a0ec482bb53e9b45728c2">More...</a><br /></td></tr>
-<tr class="separator:a01913162c01a0ec482bb53e9b45728c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac09e9f480419c59027e3236d04ce00e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4">CigarElement</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#aac09e9f480419c59027e3236d04ce00e">operator[]</a> (const uint32_t index) const </td></tr>
+<tr class="memdesc:aac09e9f480419c59027e3236d04ce00e"><td class="mdescLeft">&#160;</td><td class="mdescRight">use freely as you would an array.  <a href="#aac09e9f480419c59027e3236d04ce00e">More...</a><br /></td></tr>
+<tr class="separator:aac09e9f480419c59027e3236d04ce00e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d3773644558e76fdf105b2c33d6fe14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4">CigarElement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#a0d3773644558e76fdf105b2c33d6fe14">operator[]</a> (const uint32_t index)</td></tr>
+<tr class="memdesc:a0d3773644558e76fdf105b2c33d6fe14"><td class="mdescLeft">&#160;</td><td class="mdescRight">use freely as you would an array  <a href="#a0d3773644558e76fdf105b2c33d6fe14">More...</a><br /></td></tr>
+<tr class="separator:a0d3773644558e76fdf105b2c33d6fe14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a761e526c7f7ad64252e2dcafc8b899d5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#a761e526c7f7ad64252e2dcafc8b899d5">size</a> () const </td></tr>
 <tr class="memdesc:a761e526c7f7ad64252e2dcafc8b899d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of base qualities in the container  <a href="#a761e526c7f7ad64252e2dcafc8b899d5">More...</a><br /></td></tr>
 <tr class="separator:a761e526c7f7ad64252e2dcafc8b899d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e2ebd83a5ff318c287242037658c49d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#a4e2ebd83a5ff318c287242037658c49d">operator==</a> (const <a class="el" href="classgamgee_1_1_cigar.html">Cigar</a> &amp;other) const </td></tr>
+<tr class="memdesc:a4e2ebd83a5ff318c287242037658c49d"><td class="mdescLeft">&#160;</td><td class="mdescRight">check for equality with another <a class="el" href="classgamgee_1_1_cigar.html" title="Utility class to manage the memory of the cigar structure. ">Cigar</a>  <a href="#a4e2ebd83a5ff318c287242037658c49d">More...</a><br /></td></tr>
+<tr class="separator:a4e2ebd83a5ff318c287242037658c49d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25b9c4ee895eba6964883851ba6434d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#a25b9c4ee895eba6964883851ba6434d3">operator!=</a> (const <a class="el" href="classgamgee_1_1_cigar.html">Cigar</a> &amp;other) const </td></tr>
+<tr class="memdesc:a25b9c4ee895eba6964883851ba6434d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">check for inequality with another <a class="el" href="classgamgee_1_1_cigar.html" title="Utility class to manage the memory of the cigar structure. ">Cigar</a>  <a href="#a25b9c4ee895eba6964883851ba6434d3">More...</a><br /></td></tr>
+<tr class="separator:a25b9c4ee895eba6964883851ba6434d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a2f18fe4bdf85b12f641b2d56dad656"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#a2a2f18fe4bdf85b12f641b2d56dad656">to_string</a> () const </td></tr>
-<tr class="memdesc:a2a2f18fe4bdf85b12f641b2d56dad656"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a string representation of this cigar  <a href="#a2a2f18fe4bdf85b12f641b2d56dad656">More...</a><br /></td></tr>
+<tr class="memdesc:a2a2f18fe4bdf85b12f641b2d56dad656"><td class="mdescLeft">&#160;</td><td class="mdescRight">produce a string representation of this <a class="el" href="classgamgee_1_1_cigar.html" title="Utility class to manage the memory of the cigar structure. ">Cigar</a>  <a href="#a2a2f18fe4bdf85b12f641b2d56dad656">More...</a><br /></td></tr>
 <tr class="separator:a2a2f18fe4bdf85b12f641b2d56dad656"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a82d0bca8ed699b5ee8c6fe39f481a891"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139">CigarOperator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#a82d0bca8ed699b5ee8c6fe39f481a891">cigar_op</a> (const uint32_t cigar_element)</td></tr>
-<tr class="memdesc:a82d0bca8ed699b5ee8c6fe39f481a891"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets the operator of an individual cigar element  <a href="#a82d0bca8ed699b5ee8c6fe39f481a891">More...</a><br /></td></tr>
-<tr class="separator:a82d0bca8ed699b5ee8c6fe39f481a891"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0179f72ddc1bf17ad831dad2522e4af"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#ae0179f72ddc1bf17ad831dad2522e4af">cigar_oplen</a> (const uint32_t cigar_element)</td></tr>
-<tr class="memdesc:ae0179f72ddc1bf17ad831dad2522e4af"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets the length of an individual cigar element  <a href="#ae0179f72ddc1bf17ad831dad2522e4af">More...</a><br /></td></tr>
-<tr class="separator:ae0179f72ddc1bf17ad831dad2522e4af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a006cfbb4b6187c8a09f84240071c38f6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139">CigarOperator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#a006cfbb4b6187c8a09f84240071c38f6">cigar_op</a> (const <a class="el" href="namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4">CigarElement</a> cigar_element)</td></tr>
+<tr class="memdesc:a006cfbb4b6187c8a09f84240071c38f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets the operator of an individual cigar element  <a href="#a006cfbb4b6187c8a09f84240071c38f6">More...</a><br /></td></tr>
+<tr class="separator:a006cfbb4b6187c8a09f84240071c38f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afabc7802c54abc14ea8c6a8e577b7894"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#afabc7802c54abc14ea8c6a8e577b7894">cigar_oplen</a> (const <a class="el" href="namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4">CigarElement</a> cigar_element)</td></tr>
+<tr class="memdesc:afabc7802c54abc14ea8c6a8e577b7894"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets the length of an individual cigar element  <a href="#afabc7802c54abc14ea8c6a8e577b7894">More...</a><br /></td></tr>
+<tr class="separator:afabc7802c54abc14ea8c6a8e577b7894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7314cf95ecb9b08a94ffce8aa1e976ab"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4">CigarElement</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#a7314cf95ecb9b08a94ffce8aa1e976ab">make_cigar_element</a> (const uint32_t oplen, const <a class="el" href="namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139">CigarOperator</a> op)</td></tr>
+<tr class="memdesc:a7314cf95ecb9b08a94ffce8aa1e976ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates an encoded htslib cigar element suitable for direct insertion into a <a class="el" href="classgamgee_1_1_cigar.html" title="Utility class to manage the memory of the cigar structure. ">Cigar</a> out of a length and a CigarOperator  <a href="#a7314cf95ecb9b08a94ffce8aa1e976ab">More...</a><br /></td></tr>
+<tr class="separator:a7314cf95ecb9b08a94ffce8aa1e976ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a894c01d44cb439141bca646766e23137"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#a894c01d44cb439141bca646766e23137">SamBuilder</a></td></tr>
+<tr class="memdesc:a894c01d44cb439141bca646766e23137"><td class="mdescLeft">&#160;</td><td class="mdescRight">builder needs access to the internals in order to build efficiently  <a href="#a894c01d44cb439141bca646766e23137">More...</a><br /></td></tr>
+<tr class="separator:a894c01d44cb439141bca646766e23137"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utility class to manage the memory of the cigar structure. </p>
@@ -242,7 +261,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a82d0bca8ed699b5ee8c6fe39f481a891"></a>
+<a class="anchor" id="a006cfbb4b6187c8a09f84240071c38f6"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -252,7 +271,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">static <a class="el" href="namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139">CigarOperator</a> gamgee::Cigar::cigar_op </td>
           <td>(</td>
-          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4">CigarElement</a>&#160;</td>
           <td class="paramname"><em>cigar_element</em></td><td>)</td>
           <td></td>
         </tr>
@@ -268,7 +287,7 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ae0179f72ddc1bf17ad831dad2522e4af"></a>
+<a class="anchor" id="afabc7802c54abc14ea8c6a8e577b7894"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -278,7 +297,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">static uint32_t gamgee::Cigar::cigar_oplen </td>
           <td>(</td>
-          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4">CigarElement</a>&#160;</td>
           <td class="paramname"><em>cigar_element</em></td><td>)</td>
           <td></td>
         </tr>
@@ -291,6 +310,60 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>gets the length of an individual cigar element </p>
+
+</div>
+</div>
+<a class="anchor" id="a7314cf95ecb9b08a94ffce8aa1e976ab"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4">CigarElement</a> gamgee::Cigar::make_cigar_element </td>
+          <td>(</td>
+          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramname"><em>oplen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139">CigarOperator</a>&#160;</td>
+          <td class="paramname"><em>op</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates an encoded htslib cigar element suitable for direct insertion into a <a class="el" href="classgamgee_1_1_cigar.html" title="Utility class to manage the memory of the cigar structure. ">Cigar</a> out of a length and a CigarOperator </p>
+
+</div>
+</div>
+<a class="anchor" id="a25b9c4ee895eba6964883851ba6434d3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::Cigar::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_cigar.html">Cigar</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>check for inequality with another <a class="el" href="classgamgee_1_1_cigar.html" title="Utility class to manage the memory of the cigar structure. ">Cigar</a> </p>
 
 </div>
 </div>
@@ -341,12 +414,30 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a01913162c01a0ec482bb53e9b45728c2"></a>
+<a class="anchor" id="a4e2ebd83a5ff318c287242037658c49d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t gamgee::Cigar::operator[] </td>
+          <td class="memname">bool gamgee::Cigar::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_cigar.html">Cigar</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>check for equality with another <a class="el" href="classgamgee_1_1_cigar.html" title="Utility class to manage the memory of the cigar structure. ">Cigar</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="aac09e9f480419c59027e3236d04ce00e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4">CigarElement</a> gamgee::Cigar::operator[] </td>
           <td>(</td>
           <td class="paramtype">const uint32_t&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
@@ -357,8 +448,27 @@ Static Public Member Functions</h2></td></tr>
 
 <p>use freely as you would an array. </p>
 <p>access an individual cigar element by index</p>
-<dl class="section note"><dt>Note</dt><dd>currently implemented as read only</dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>cigar element at the specified index as an encoded uint32_t. use <a class="el" href="classgamgee_1_1_cigar.html#a82d0bca8ed699b5ee8c6fe39f481a891" title="gets the operator of an individual cigar element ">cigar_op()</a> and <a class="el" href="classgamgee_1_1_cigar.html#ae0179f72ddc1bf17ad831dad2522e4af" title="gets the length of an individual cigar element ">cigar_oplen()</a> to unpack the cigar operator and length </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>cigar element at the specified index as an encoded uint32_t. use <a class="el" href="classgamgee_1_1_cigar.html#a006cfbb4b6187c8a09f84240071c38f6" title="gets the operator of an individual cigar element ">cigar_op()</a> and <a class="el" href="classgamgee_1_1_cigar.html#afabc7802c54abc14ea8c6a8e577b7894" title="gets the length of an individual cigar element ">cigar_oplen()</a> to unpack the cigar operator and length </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0d3773644558e76fdf105b2c33d6fe14"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4">CigarElement</a> &amp; gamgee::Cigar::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>use freely as you would an array </p>
+<p>access and/or modify an individual cigar element by index</p>
+<dl class="section return"><dt>Returns</dt><dd>cigar element at the specified index as an encoded uint32_t. use <a class="el" href="classgamgee_1_1_cigar.html#a006cfbb4b6187c8a09f84240071c38f6" title="gets the operator of an individual cigar element ">cigar_op()</a> and <a class="el" href="classgamgee_1_1_cigar.html#afabc7802c54abc14ea8c6a8e577b7894" title="gets the length of an individual cigar element ">cigar_oplen()</a> to unpack the cigar operator and length </dd></dl>
 
 </div>
 </div>
@@ -400,7 +510,31 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>produce a string representation of this <a class="el" href="classgamgee_1_1_cigar.html" title="Utility class to manage the memory of the cigar structure. ">Cigar</a> </p>
 <p>returns a string representation of this cigar </p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a class="anchor" id="a894c01d44cb439141bca646766e23137"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classgamgee_1_1_sam_builder.html">SamBuilder</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>builder needs access to the internals in order to build efficiently </p>
 
 </div>
 </div>
@@ -411,7 +545,7 @@ Static Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 21 2014 05:10:32 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 23 2014 06:37:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

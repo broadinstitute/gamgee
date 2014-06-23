@@ -167,6 +167,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae3be1d904aaf34bca9a2cf92c7f04a32"><td class="memItemLeft" align="right" valign="top">bcf_hdr_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ae3be1d904aaf34bca9a2cf92c7f04a32">variant_header_deep_copy</a> (bcf_hdr_t *original)</td></tr>
 <tr class="memdesc:ae3be1d904aaf34bca9a2cf92c7f04a32"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a deep copy of an existing bcf_hdr_t  <a href="#ae3be1d904aaf34bca9a2cf92c7f04a32">More...</a><br /></td></tr>
 <tr class="separator:ae3be1d904aaf34bca9a2cf92c7f04a32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46f10b16d5788f247dc8dd3ded7e029a"><td class="memItemLeft" align="right" valign="top">bam1_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a46f10b16d5788f247dc8dd3ded7e029a">sam_shallow_copy</a> (bam1_t *original)</td></tr>
+<tr class="memdesc:a46f10b16d5788f247dc8dd3ded7e029a"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a shallow copy of an existing bam1_t: copies core fields but not the data buffer or fields related to the size of the data buffer  <a href="#a46f10b16d5788f247dc8dd3ded7e029a">More...</a><br /></td></tr>
+<tr class="separator:a46f10b16d5788f247dc8dd3ded7e029a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa77e0e092d799249e1843b35b6fc33a"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#afa77e0e092d799249e1843b35b6fc33a">complement_base</a> (const char base)</td></tr>
 <tr class="separator:afa77e0e092d799249e1843b35b6fc33a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af406bde810c85ea1749461ed137ab59b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">complement</a> (std::string &amp;sequence)</td></tr>
@@ -745,6 +748,24 @@ template&lt;typename T , typename... Args&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a46f10b16d5788f247dc8dd3ded7e029a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bam1_t * gamgee::utils::sam_shallow_copy </td>
+          <td>(</td>
+          <td class="paramtype">bam1_t *&#160;</td>
+          <td class="paramname"><em>original</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>creates a shallow copy of an existing bam1_t: copies core fields but not the data buffer or fields related to the size of the data buffer </p>
+
+</div>
+</div>
 <a class="anchor" id="a2856e252a3c4dad4f1464fb79ffeda53"></a>
 <div class="memitem">
 <div class="memproto">
@@ -822,7 +843,7 @@ template&lt;typename T , typename... Args&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 21 2014 05:10:32 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 23 2014 06:37:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -133,13 +133,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;bcf1_t* <a class="code" href="namespacegamgee_1_1utils.html#abda68bdd51970574b703657971cba5da">variant_deep_copy</a>(bcf1_t* original); </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;bcf_hdr_t* <a class="code" href="namespacegamgee_1_1utils.html#ae3be1d904aaf34bca9a2cf92c7f04a32">variant_header_deep_copy</a>(bcf_hdr_t* original);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;bam1_t* <a class="code" href="namespacegamgee_1_1utils.html#a46f10b16d5788f247dc8dd3ded7e029a">sam_shallow_copy</a>(bam1_t* original);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="structgamgee_1_1utils_1_1_hts_file_deleter_html_abc3960aa24113ece6cf5e2e2989ee430"><div class="ttname"><a href="structgamgee_1_1utils_1_1_hts_file_deleter.html#abc3960aa24113ece6cf5e2e2989ee430">gamgee::utils::HtsFileDeleter::operator()</a></div><div class="ttdeci">void operator()(htsFile *p) const </div><div class="ttdef"><b>Definition:</b> hts_memory.h:18</div></div>
+<div class="ttc" id="namespacegamgee_1_1utils_html_a46f10b16d5788f247dc8dd3ded7e029a"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a46f10b16d5788f247dc8dd3ded7e029a">gamgee::utils::sam_shallow_copy</a></div><div class="ttdeci">bam1_t * sam_shallow_copy(bam1_t *original)</div><div class="ttdoc">creates a shallow copy of an existing bam1_t: copies core fields but not the data buffer or fields re...</div><div class="ttdef"><b>Definition:</b> hts_memory.cpp:79</div></div>
 <div class="ttc" id="structgamgee_1_1utils_1_1_sam_header_deleter_html"><div class="ttname"><a href="structgamgee_1_1utils_1_1_sam_header_deleter.html">gamgee::utils::SamHeaderDeleter</a></div><div class="ttdoc">a functor object to delete a bam_hdr_t pointer </div><div class="ttdef"><b>Definition:</b> hts_memory.h:33</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a2732369bc67b236fbe94bcaba720d170"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a2732369bc67b236fbe94bcaba720d170">gamgee::utils::make_shared_variant_header</a></div><div class="ttdeci">shared_ptr&lt; bcf_hdr_t &gt; make_shared_variant_header(bcf_hdr_t *bcf_hdr_ptr)</div><div class="ttdoc">wraps a pre-allocated bcf_hdr_t in a shared_ptr with correct deleter </div><div class="ttdef"><b>Definition:</b> hts_memory.cpp:38</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_aff3f8e11f250d80c1546a1d45a3aac83"><div class="ttname"><a href="namespacegamgee_1_1utils.html#aff3f8e11f250d80c1546a1d45a3aac83">gamgee::utils::sam_header_deep_copy</a></div><div class="ttdeci">bam_hdr_t * sam_header_deep_copy(bam_hdr_t *original)</div><div class="ttdoc">creates a deep copy of an existing bam_hdr_t </div><div class="ttdef"><b>Definition:</b> hts_memory.cpp:54</div></div>
@@ -160,7 +161,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 21 2014 05:10:32 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 23 2014 06:37:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

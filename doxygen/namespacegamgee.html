@@ -121,6 +121,12 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html">Sam</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility class to manipulate a <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> record.  <a href="classgamgee_1_1_sam.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_builder.html">SamBuilder</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">class to build <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> objects from existing data or from scratch  <a href="classgamgee_1_1_sam_builder.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_builder_data_field.html">SamBuilderDataField</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">class to hold encoded byte arrays for individual data fields (cigar, bases, etc.) during building of a <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a>  <a href="classgamgee_1_1_sam_builder_data_field.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_header.html">SamHeader</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility class to hold the header of a sam file.  <a href="classgamgee_1_1_sam_header.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,6 +138,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_reader.html">SamReader</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility class to read a SAM/BAM/CRAM file with an appropriate <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> iterator from a stream (e.g. file, stdin, ...) in a for-each loop.  <a href="classgamgee_1_1_sam_reader.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_tag.html">SamTag</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">class to represent a <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> TAG:TYPE:VALUE entry  <a href="classgamgee_1_1_sam_tag.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_writer.html">SamWriter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">utility class to write out a SAM/BAM/CRAM file to any stream  <a href="classgamgee_1_1_sam_writer.html#details">More...</a><br /></td></tr>
@@ -169,6 +178,8 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:a49c55b29731ee8e3f0e80a29fd5718b4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4">CigarElement</a> = uint32_t</td></tr>
+<tr class="separator:a49c55b29731ee8e3f0e80a29fd5718b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16ea322e9da7062215c1e9512baa49eb"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a16ea322e9da7062215c1e9512baa49eb">SingleSamReader</a> = <a class="el" href="classgamgee_1_1_sam_reader.html">SamReader</a>&lt; <a class="el" href="classgamgee_1_1_sam_iterator.html">SamIterator</a> &gt;</td></tr>
 <tr class="separator:a16ea322e9da7062215c1e9512baa49eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7286f2e8ef592ae858c97b6f9045d0c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#aa7286f2e8ef592ae858c97b6f9045d0c">PairSamReader</a> = <a class="el" href="classgamgee_1_1_sam_reader.html">SamReader</a>&lt; <a class="el" href="classgamgee_1_1_sam_pair_iterator.html">SamPairIterator</a> &gt;</td></tr>
@@ -214,6 +225,18 @@ Enumerations</h2></td></tr>
 <tr class="separator:acea451c2c3a6601c111c7be6cfa9ca75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
+<a class="anchor" id="a49c55b29731ee8e3f0e80a29fd5718b4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4">gamgee::CigarElement</a> = typedef uint32_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="aa7286f2e8ef592ae858c97b6f9045d0c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -364,7 +387,7 @@ Enumerations</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 21 2014 05:10:32 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 23 2014 06:37:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
