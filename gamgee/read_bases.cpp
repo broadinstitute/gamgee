@@ -83,6 +83,42 @@ namespace gamgee {
   }
 
   /**
+   * @brief set an individual base at the given index to the specified value
+   *
+   * @note there's no way to implement this using non-const operator[], since
+   *       we can't return a reference to a half-byte in memory
+   */
+  void ReadBases::set_base(const uint32_t index, const Base base) {
+    if ( index >= m_num_bases )
+      throw out_of_range(string("Index ") + std::to_string(index) + " out of range in ReadBases::set_base");
+
+    m_bases[index >> 1] &= ~(0xF << ((~index & 1) << 2));   ///< zero out previous 4-bit base encoding
+    m_bases[index >> 1] |= static_cast<uint8_t>(base) << ((~index & 1) << 2);  ///< insert new 4-bit base encoding
+  }
+
+  /**
+   * @brief check whether this object contains the same bases as another ReadBases object
+   */
+  bool ReadBases::operator==(const ReadBases& other) const {
+    if ( m_num_bases != other.m_num_bases )
+      return false;
+
+    for ( auto i = 0u; i < m_num_bases; ++i ) {
+      if ( (*this)[i] != other[i] )
+        return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * @brief check whether this object does not contain the same bases as another ReadBases object
+   */
+  bool ReadBases::operator!=(const ReadBases& other) const {
+    return !(*this == other);
+  }
+
+  /**
    * @brief returns a string representation of the bases in this read
    */
   string ReadBases::to_string() const {

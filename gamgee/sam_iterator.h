@@ -46,7 +46,7 @@ class SamIterator {
     /**
      * @brief dereference operator (needed by for-each loop)
      *
-     * @return a persistent Sam object independent from the iterator (a copy of the iterator's object)
+     * @return a Sam object by reference, valid until the next record is fetched (the iterator re-uses memory at each iteration)
      */
     Sam& operator*();
 

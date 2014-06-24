@@ -81,11 +81,40 @@ Cigar& Cigar::operator=(Cigar&& other) noexcept {
   * @return cigar element at the specified index as an encoded uint32_t. use cigar_op() and
   *         cigar_oplen() to unpack the cigar operator and length
   */
-uint32_t Cigar::operator[](const uint32_t index) const {
+CigarElement Cigar::operator[](const uint32_t index) const {
   if ( index >= m_num_cigar_elements )
     throw out_of_range(string("Index ") + std::to_string(index) + " out of range in Cigar::operator[]");
   return m_cigar[index];
 }
+
+/**
+  * @brief access and/or modify an individual cigar element by index
+  *
+  * @return cigar element at the specified index as an encoded uint32_t. use cigar_op() and
+  *         cigar_oplen() to unpack the cigar operator and length
+  */
+CigarElement& Cigar::operator[](const uint32_t index) {
+  if ( index >= m_num_cigar_elements )
+    throw out_of_range(string("Index ") + std::to_string(index) + " out of range in Cigar::operator[]");
+  return m_cigar[index];
+}
+
+bool Cigar::operator==(const Cigar& other) const {
+  if ( m_num_cigar_elements != other.m_num_cigar_elements )
+    return false;
+
+  for ( auto i = 0u; i < m_num_cigar_elements; ++i ) {
+    if ( m_cigar[i] != other.m_cigar[i] )
+      return false;
+  }
+
+  return true;
+}
+
+bool Cigar::operator!=(const Cigar& other) const {
+  return !(*this == other);
+}
+
 
 /**
   * @brief returns a string representation of this cigar

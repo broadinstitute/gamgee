@@ -71,6 +71,26 @@ bcf_hdr_t* variant_header_deep_copy(bcf_hdr_t* original) {
   return bcf_hdr_dup(original);
 }
 
+/**
+ * @brief creates a shallow copy of an existing bam1_t: copies
+ *        core fields but not the data buffer or fields related
+ *        to the size of the data buffer
+ */
+bam1_t* sam_shallow_copy(bam1_t* original) {
+  bam1_t* new_read = bam_init1();
+
+  // Copy full struct contents, then zero out fields related to the data
+  *new_read = *original;
+
+  new_read->data = nullptr;
+  new_read->l_data = 0;
+  new_read->m_data = 0;
+  new_read->core.l_qname = 0;
+  new_read->core.l_qseq = 0;
+  new_read->core.n_cigar = 0;
+
+  return new_read;
+}
 
 
 }

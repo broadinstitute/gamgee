@@ -33,8 +33,11 @@ public:
   ~ReadBases() = default; ///< default destruction is sufficient, since our shared_ptr will handle deallocation
 
   Base operator[](const uint32_t index) const;   ///< use freely as you would an array. @note currently implemented as read only
+  void set_base(const uint32_t index, const Base base);  ///< modify a base at a specific index
   uint32_t size() const { return m_num_bases; }; ///< number of base qualities in the container
-  std::string to_string() const;
+  bool operator==(const ReadBases& other) const; ///< check for equality with another ReadBases object
+  bool operator!=(const ReadBases& other) const; ///< check for inequality with another ReadBases object
+  std::string to_string() const;  ///< produce a string representation of the bases in this object
 
 private:
   std::shared_ptr<bam1_t> m_sam_record; ///< sam record containing our bases, potentially co-owned by multiple other objects
@@ -42,6 +45,8 @@ private:
   uint32_t m_num_bases;                 ///< number of bases in our sam record
 
   static const std::map<Base, const char*> base_to_string_map; ///< @brief simple lookup table to convert Base enum values to chars. 
+
+  friend class SamBuilder; ///< builder needs access to the internals in order to build efficiently
 };
 
 }
