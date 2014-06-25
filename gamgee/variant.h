@@ -5,6 +5,7 @@
 #include "variant_field.h"
 #include "variant_field_value.h"
 #include "variant_filters.h"
+#include "boost/dynamic_bitset.hpp"
 
 #include "htslib/sam.h"
 
@@ -64,6 +65,21 @@ class Variant {
   std::vector<std::string> generic_string_info_field(const std::string& tag) const;                                   ///< @brief returns a random access object with all the values in a given info field tag in string format for all samples contiguous in memory.
   std::vector<bool> generic_boolean_info_field(const std::string& tag) const;                                         ///< @brief returns a random access object with all the values in a given info field tag in boolean format for all samples contiguous in memory.
 
+  // template functions declared and defined here
+  template <class FF_TYPE>
+  static boost::dynamic_bitset<> select_if(                          ///< returns a bitset indicating the samples selected according to unary predicate.
+      const VariantFieldIterator<VariantFieldValue<FF_TYPE>>& first, ///< Iterator to the initial position in a sequence. The range includes the element pointed by first.
+      const VariantFieldIterator<VariantFieldValue<FF_TYPE>>& last,  ///< Iterator to the last position in a sequence. The range does not include the element pointed by last.
+      const std::function<bool (const VariantFieldValue<FF_TYPE>&)> pred)  ///< Unary predicate function that accepts an element in range [first, last) as argument and returns a value convertible to bool. The value returned indicates whether the element is considered a match in the context of this function. @note The function shall not modify its argument. @note This can either be a function pointer or a function object.
+  {
+    const auto n_samples = last - first;
+    auto selected_samples = boost::dynamic_bitset<>(n_samples);
+    auto it = first;
+    for (auto i = 0u; i < n_samples; i++) {
+      selected_samples[i] = pred(*it++);
+    }
+    return selected_samples;
+  }
 
  private:
   std::shared_ptr<bcf_hdr_t> m_header;                                                                                ///< @brief htslib variant header pointer
