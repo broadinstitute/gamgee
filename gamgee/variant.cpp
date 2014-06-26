@@ -58,6 +58,14 @@ Variant& Variant::operator=(Variant&& other) noexcept {
   return *this;
 }
 
+VariantFilters Variant::filters() const {
+  return VariantFilters{m_header, m_body};
+}
+
+bool Variant::has_filter(const std::string& filter) const {
+  return bcf_has_filter(m_header.get(), m_body.get(), const_cast<char*>(filter.c_str())) > 0; // have to cast away the constness here for the C api to work. But the promise still remains as the C function is not modifying the string.
+}
+
 bool Variant::is_this_genotype(const DiploidPLGenotype& genotype, const uint32_t sample_index) const {
   const auto pl = phred_likelihoods();
   return !pl.empty() && pl[sample_index][static_cast<int32_t>(genotype)] == 0;
