@@ -10,5 +10,6 @@ var searchData=
   ['hts_5fmemory_2ecpp',['hts_memory.cpp',['../hts__memory_8cpp.html',1,'']]],
   ['hts_5fmemory_2eh',['hts_memory.h',['../hts__memory_8h.html',1,'']]],
   ['hts_5fstring_5farray_5fto_5fvector',['hts_string_array_to_vector',['../namespacegamgee_1_1utils.html#aa3f1ec8c7415419a0e1c57c8255873a9',1,'gamgee::utils']]],
-  ['htsfiledeleter',['HtsFileDeleter',['../structgamgee_1_1utils_1_1_hts_file_deleter.html',1,'gamgee::utils']]]
+  ['htsfiledeleter',['HtsFileDeleter',['../structgamgee_1_1utils_1_1_hts_file_deleter.html',1,'gamgee::utils']]],
+  ['htslib_5ffilter_5fname',['htslib_filter_name',['../namespacegamgee_1_1utils.html#a7e1092478e0b19aa3887ff5ee6c82cb9',1,'gamgee::utils']]]
 ];

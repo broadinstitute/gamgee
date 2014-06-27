@@ -170,6 +170,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a46f10b16d5788f247dc8dd3ded7e029a"><td class="memItemLeft" align="right" valign="top">bam1_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a46f10b16d5788f247dc8dd3ded7e029a">sam_shallow_copy</a> (bam1_t *original)</td></tr>
 <tr class="memdesc:a46f10b16d5788f247dc8dd3ded7e029a"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a shallow copy of an existing bam1_t: copies core fields but not the data buffer or fields related to the size of the data buffer  <a href="#a46f10b16d5788f247dc8dd3ded7e029a">More...</a><br /></td></tr>
 <tr class="separator:a46f10b16d5788f247dc8dd3ded7e029a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e1092478e0b19aa3887ff5ee6c82cb9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a7e1092478e0b19aa3887ff5ee6c82cb9">htslib_filter_name</a> (bcf_hdr_t *header, bcf1_t *body, int index)</td></tr>
+<tr class="memdesc:a7e1092478e0b19aa3887ff5ee6c82cb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">helper function to translate an index into a string in the filter list  <a href="#a7e1092478e0b19aa3887ff5ee6c82cb9">More...</a><br /></td></tr>
+<tr class="separator:a7e1092478e0b19aa3887ff5ee6c82cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa77e0e092d799249e1843b35b6fc33a"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#afa77e0e092d799249e1843b35b6fc33a">complement_base</a> (const char base)</td></tr>
 <tr class="separator:afa77e0e092d799249e1843b35b6fc33a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af406bde810c85ea1749461ed137ab59b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">complement</a> (std::string &amp;sequence)</td></tr>
@@ -558,6 +561,48 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a7e1092478e0b19aa3887ff5ee6c82cb9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gamgee::utils::htslib_filter_name </td>
+          <td>(</td>
+          <td class="paramtype">bcf_hdr_t *&#160;</td>
+          <td class="paramname"><em>header</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bcf1_t *&#160;</td>
+          <td class="paramname"><em>body</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>helper function to translate an index into a string in the filter list </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">header</td><td>a <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a> htslib pointer </td></tr>
+    <tr><td class="paramname">body</td><td>a <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> htslib pointer </td></tr>
+    <tr><td class="paramname">index</td><td>the index of the filter you want access to </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ae5e4c2a62b4e2544996e8b0193e5c31a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -843,7 +888,7 @@ template&lt;typename T , typename... Args&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jun 27 2014 19:32:53 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 27 2014 20:30:27 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
