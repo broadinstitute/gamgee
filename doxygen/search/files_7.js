@@ -6,8 +6,6 @@ var searchData=
   ['variant_5ffield_5fiterator_2eh',['variant_field_iterator.h',['../variant__field__iterator_8h.html',1,'']]],
   ['variant_5ffield_5fvalue_2eh',['variant_field_value.h',['../variant__field__value_8h.html',1,'']]],
   ['variant_5ffield_5fvalue_5fiterator_2eh',['variant_field_value_iterator.h',['../variant__field__value__iterator_8h.html',1,'']]],
-  ['variant_5ffilters_2eh',['variant_filters.h',['../variant__filters_8h.html',1,'']]],
-  ['variant_5ffilters_5fiterator_2eh',['variant_filters_iterator.h',['../variant__filters__iterator_8h.html',1,'']]],
   ['variant_5fheader_2ecpp',['variant_header.cpp',['../variant__header_8cpp.html',1,'']]],
   ['variant_5fheader_2eh',['variant_header.h',['../variant__header_8h.html',1,'']]],
   ['variant_5fheader_5fbuilder_2ecpp',['variant_header_builder.cpp',['../variant__header__builder_8cpp.html',1,'']]],
