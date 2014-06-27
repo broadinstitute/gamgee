@@ -6,6 +6,7 @@
 ##FILTER=<ID=PASS,Description=All filters passed>
 ##FILTER=<ID=LOW_QUAL,Description=Low quality call>
 ##FILTER=<ID=MISSED,Description=Missed by the variant caller>
+##FILTER=<ID=NOT_DEFINED,Description=Undefined filter>
 ##contig=<ID=1,Length=300000000,Description=the first chromosome>
 ##contig=<ID=20,Length=64000000>
 ##contig=<ID=22,Length=120000000>
