@@ -139,6 +139,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a093b25862a15ebb982fa683fc3298662"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a093b25862a15ebb982fa683fc3298662">n_alleles</a> () const </td></tr>
 <tr class="memdesc:a093b25862a15ebb982fa683fc3298662"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of alleles in this <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record  <a href="#a093b25862a15ebb982fa683fc3298662">More...</a><br /></td></tr>
 <tr class="separator:a093b25862a15ebb982fa683fc3298662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52a8562b1b0ed982d08c9fd09cb50353"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_filters.html">VariantFilters</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a52a8562b1b0ed982d08c9fd09cb50353">filters</a> () const </td></tr>
+<tr class="memdesc:a52a8562b1b0ed982d08c9fd09cb50353"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a vector-like object with all the filters for this record  <a href="#a52a8562b1b0ed982d08c9fd09cb50353">More...</a><br /></td></tr>
+<tr class="separator:a52a8562b1b0ed982d08c9fd09cb50353"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada7dc841eb57e7744a77c08a7aef877a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#ada7dc841eb57e7744a77c08a7aef877a">has_filter</a> (const std::string &amp;filter) const </td></tr>
+<tr class="memdesc:ada7dc841eb57e7744a77c08a7aef877a"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks for the existence of a filter in this record  <a href="#ada7dc841eb57e7744a77c08a7aef877a">More...</a><br /></td></tr>
+<tr class="separator:ada7dc841eb57e7744a77c08a7aef877a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdc4afce81dd8817db593cde57790f7d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#abdc4afce81dd8817db593cde57790f7d">is_hom_ref</a> (const uint32_t sample_index) const </td></tr>
 <tr class="memdesc:abdc4afce81dd8817db593cde57790f7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">whether or not the sample in sample_index is hom_ref  <a href="#abdc4afce81dd8817db593cde57790f7d">More...</a><br /></td></tr>
 <tr class="separator:abdc4afce81dd8817db593cde57790f7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -181,9 +187,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aaaef3ac0c8bc4457b6cdb0e0b52c79e5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#aaaef3ac0c8bc4457b6cdb0e0b52c79e5">generic_boolean_info_field</a> (const std::string &amp;tag) const </td></tr>
 <tr class="memdesc:aaaef3ac0c8bc4457b6cdb0e0b52c79e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a random access object with all the values in a given info field tag in boolean format for all samples contiguous in memory.  <a href="#aaaef3ac0c8bc4457b6cdb0e0b52c79e5">More...</a><br /></td></tr>
 <tr class="separator:aaaef3ac0c8bc4457b6cdb0e0b52c79e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab185b177d16ea5f85e9c5aa307b2a287"><td class="memTemplParams" colspan="2">template&lt;class FF_TYPE &gt; </td></tr>
-<tr class="memitem:ab185b177d16ea5f85e9c5aa307b2a287"><td class="memTemplItemLeft" align="right" valign="top">boost::dynamic_bitset&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#ab185b177d16ea5f85e9c5aa307b2a287">select_if</a> (const <a class="el" href="classgamgee_1_1_variant_field.html">VariantField</a>&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt;&gt; &amp;sample_fields, const std::function&lt; bool(<a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt;)&gt; &amp;func) const </td></tr>
-<tr class="separator:ab185b177d16ea5f85e9c5aa307b2a287"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -358,6 +361,23 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 </div>
 </div>
+<a class="anchor" id="a52a8562b1b0ed982d08c9fd09cb50353"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_variant_filters.html">VariantFilters</a> gamgee::Variant::filters </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns a vector-like object with all the filters for this record </p>
+
+</div>
+</div>
 <a class="anchor" id="aaaef3ac0c8bc4457b6cdb0e0b52c79e5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -502,6 +522,24 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 </div><div class="memdoc">
 
 <p>returns a random access object with all the GQ values for all samples contiguously in memory. </p>
+
+</div>
+</div>
+<a class="anchor" id="ada7dc841eb57e7744a77c08a7aef877a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::Variant::has_filter </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filter</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>checks for the existence of a filter in this record </p>
 
 </div>
 </div>
@@ -732,42 +770,6 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 </div>
 </div>
-<a class="anchor" id="ab185b177d16ea5f85e9c5aa307b2a287"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class FF_TYPE &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">boost::dynamic_bitset gamgee::Variant::select_if </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_field.html">VariantField</a>&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt;&gt; &amp;&#160;</td>
-          <td class="paramname"><em>sample_fields</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::function&lt; bool(<a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt;)&gt; &amp;&#160;</td>
-          <td class="paramname"><em>func</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
 <a class="anchor" id="a24da1ae869010cf623de7749910a86e2"></a>
 <div class="memitem">
@@ -796,7 +798,7 @@ template&lt;class FF_TYPE &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jun 27 2014 02:48:43 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 27 2014 19:32:53 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

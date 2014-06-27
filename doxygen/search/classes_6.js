@@ -6,6 +6,8 @@ var searchData=
   ['variantfielditerator',['VariantFieldIterator',['../classgamgee_1_1_variant_field_iterator.html',1,'gamgee']]],
   ['variantfieldvalue',['VariantFieldValue',['../classgamgee_1_1_variant_field_value.html',1,'gamgee']]],
   ['variantfieldvalueiterator',['VariantFieldValueIterator',['../classgamgee_1_1_variant_field_value_iterator.html',1,'gamgee']]],
+  ['variantfilters',['VariantFilters',['../classgamgee_1_1_variant_filters.html',1,'gamgee']]],
+  ['variantfiltersiterator',['VariantFiltersIterator',['../classgamgee_1_1_variant_filters_iterator.html',1,'gamgee']]],
   ['variantheader',['VariantHeader',['../classgamgee_1_1_variant_header.html',1,'gamgee']]],
   ['variantheaderbuilder',['VariantHeaderBuilder',['../classgamgee_1_1_variant_header_builder.html',1,'gamgee']]],
   ['variantheaderdeleter',['VariantHeaderDeleter',['../structgamgee_1_1utils_1_1_variant_header_deleter.html',1,'gamgee::utils']]],
