@@ -92,6 +92,9 @@ bam1_t* sam_shallow_copy(bam1_t* original) {
   return new_read;
 }
 
+std::string htslib_filter_name(bcf_hdr_t* header, bcf1_t* body, int index) { 
+  return std::string{bcf_hdr_int2id(header, BCF_DT_ID, body->d.flt[index])};
+} 
 
 }
 }

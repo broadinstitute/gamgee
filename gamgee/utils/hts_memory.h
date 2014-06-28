@@ -60,6 +60,14 @@ bcf_hdr_t* variant_header_deep_copy(bcf_hdr_t* original);
 
 bam1_t* sam_shallow_copy(bam1_t* original);
 
+/**
+ * @brief helper function to translate an index into a string in the filter list 
+ * @param header a VariantHeader htslib pointer
+ * @param body a Variant htslib pointer
+ * @param index the index of the filter you want access to
+ */
+std::string htslib_filter_name(bcf_hdr_t* header, bcf1_t* body, int index);
+
 }
 }
 
