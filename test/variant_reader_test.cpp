@@ -96,3 +96,25 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
   }
 }
 
+BOOST_AUTO_TEST_CASE( single_variant_reader_sites_only )  
+{
+  for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{}})  // exclude all samples (sites-only)
+    BOOST_CHECK(record.phred_likelihoods().empty());
+}
+
+BOOST_AUTO_TEST_CASE( single_variant_reader_including )  
+{
+  for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{"NA12878"}}) // include only NA12878
+    BOOST_CHECK_EQUAL(record.phred_likelihoods().size(), 1);
+  for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{"NA12878", "NA12892"}}) // include both these samples
+    BOOST_CHECK_EQUAL(record.phred_likelihoods().size(), 2);
+}
+
+BOOST_AUTO_TEST_CASE( single_variant_reader_excluding )  
+{
+  for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{"NA12891"}, false})  // exclude only NA12891
+    BOOST_CHECK_EQUAL(record.phred_likelihoods().size(), 2);
+  for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{"NA12891", "NA12878"}, false})  // exclude both these samples
+    BOOST_CHECK_EQUAL(record.phred_likelihoods().size(), 1);
+}
+

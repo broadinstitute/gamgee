@@ -141,9 +141,9 @@ class VariantField {
     return VariantFieldIterator<TYPE>{m_body, m_format_ptr, true};
   }
 
-  uint32_t size() const { return m_body->n_sample; }   ///< @brief the number of values in this VariantField @note this will always be the number of samples in the Variant record, which you can obtain once from it and not repeatedly for every VariantField)
-  uint32_t n_samples() const { return size(); }        ///< @brief just an alias to size() to simplify interfaces
-  bool empty() const { return m_body == nullptr; } ///< @brief checks if the object is empty. @note empty objects are returned when the requested field is missing
+  uint32_t size() const { return empty() ? 0 : m_body->n_sample; } ///< @brief the number of values in this VariantField @note this will always be the number of samples in the Variant record, which you can obtain once from it and not repeatedly for every VariantField)
+  uint32_t n_samples() const { return size(); }                    ///< @brief just an alias to size() to simplify interfaces
+  uint32_t empty() const { return m_body == nullptr; }             ///< @brief checks if the object is empty. @note empty objects are returned when the requested field is missing
 
  private:
   const std::shared_ptr<bcf1_t> m_body; ///< shared ownership of the Variant record memory so it stays alive while this object is in scope
