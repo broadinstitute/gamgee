@@ -122,7 +122,7 @@ bool BaseQuals::operator!=(const BaseQuals& other) const {
 std::string BaseQuals::to_string() const {
   stringstream stream;
 
-  for ( auto i = 0; i < m_num_quals; ++i ) {
+  for ( auto i = 0u; i < m_num_quals; ++i ) {
     stream << int(m_quals[i]);
     if ( i < m_num_quals - 1 )
       stream << " ";

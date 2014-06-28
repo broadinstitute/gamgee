@@ -357,7 +357,7 @@ void SamBuilder::validate() const {
     throw logic_error("Missing one or more required data fields (name, cigar, bases, or base qualities)");
 
   // Make sure the sequence length implied by the cigar matches the actual sequence length
-  if ( bam_cigar2qlen(m_cigar.num_elements(), (const uint32_t*)m_cigar.raw_data_ptr()) != m_bases.num_elements() )
+  if ( bam_cigar2qlen(m_cigar.num_elements(), (const uint32_t*)m_cigar.raw_data_ptr()) != static_cast<int32_t>(m_bases.num_elements()) )
     throw logic_error("Cigar operations and number of bases do not match");
 
   // Make sure the number of base qualities matches the number of bases

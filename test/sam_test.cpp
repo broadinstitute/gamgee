@@ -145,7 +145,7 @@ BOOST_AUTO_TEST_CASE( sam_in_place_base_quals_modification ) {
   read_quals[2] = 50;
   read_quals[3] = 42;
 
-  for ( auto i = 0; i < expected_quals.size(); ++i ) {
+  for ( auto i = 0u; i < expected_quals.size(); ++i ) {
     BOOST_CHECK_EQUAL(read_quals[i], expected_quals[i]);
   }
 }
@@ -163,7 +163,7 @@ BOOST_AUTO_TEST_CASE( sam_in_place_bases_modification ) {
   read_bases.set_base(8, Base::N);
   read_bases.set_base(9, Base::T);
 
-  for ( auto i = 0; i < expected_bases.size(); ++i ) {
+  for ( auto i = 0u; i < expected_bases.size(); ++i ) {
     BOOST_CHECK_EQUAL(int(read_bases[i]), int(expected_bases[i]));
   }
 }
