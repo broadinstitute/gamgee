@@ -1,7 +1,6 @@
 #include "variant_header.h"
 #include "utils/hts_memory.h"
 #include "utils/utils.h"
-#include "missing.h"
 
 #include <string>
 #include <vector>
@@ -24,6 +23,15 @@ static vector<string> find_fields_of_type(bcf_hdr_t* h, int type) {
       result.emplace_back(*(h->hrec[i]->vals));
   }
   return result;
+}
+
+static uint32_t count_fields_of_type(const bcf_hdr_t* h, const int type) {
+  auto count = 0u;
+  for ( auto i = 0; i != h->nhrec; ++i ) {
+    if ( h->hrec[i]->type == type )
+      ++count;
+  }
+  return count;
 }
 
 VariantHeader::VariantHeader(const VariantHeader& other) :
@@ -88,16 +96,32 @@ vector<string> VariantHeader::chromosomes() const {
   return find_fields_of_type(m_header.get(), BCF_HL_CTG);
 }
 
+uint32_t VariantHeader::n_chromosomes() const {
+  return count_fields_of_type(m_header.get(), BCF_HL_CTG);
+}
+
 vector<string> VariantHeader::filters() const {
   return find_fields_of_type(m_header.get(), BCF_HL_FLT);
+}
+
+uint32_t VariantHeader::n_filters() const {
+  return count_fields_of_type(m_header.get(), BCF_HL_FLT);
 }
 
 vector<string> VariantHeader::shared_fields() const {
   return find_fields_of_type(m_header.get(), BCF_HL_INFO);
 }
 
+uint32_t VariantHeader::n_shared_fields() const {
+  return count_fields_of_type(m_header.get(), BCF_HL_INFO);
+}
+
 vector<string> VariantHeader::individual_fields() const {
   return find_fields_of_type(m_header.get(), BCF_HL_FMT);
+}
+
+uint32_t VariantHeader::n_individual_fields() const {
+  return count_fields_of_type(m_header.get(), BCF_HL_FMT);
 }
 
 uint8_t VariantHeader::shared_field_type(const std::string& tag) const {
@@ -114,31 +138,6 @@ uint8_t VariantHeader::individual_field_type(const std::string& tag) const {
 
 uint8_t VariantHeader::individual_field_type(const int32_t index) const {
   return bcf_hdr_id2type(m_header.get(), BCF_HL_FMT, index);
-}
-
-bool VariantHeader::has_filter(const string& field) const {
-  const auto& fields = filters();
-  return find(fields.begin(), fields.end(), field) != fields.end();
-}
-
-bool VariantHeader::has_shared_field(const string& field) const {
-  const auto& fields = shared_fields();
-  return find(fields.begin(), fields.end(), field) != fields.end();
-}
-
-bool VariantHeader::has_individual_field(const string& field) const {
-  const auto& fields = individual_fields();
-  return find(fields.begin(), fields.end(), field) != fields.end();
-}
-
-int32_t VariantHeader::field_index(const string& tag) const { 
-  const auto index = bcf_hdr_id2int(m_header.get(), BCF_DT_ID, tag.c_str());
-  return index >= 0 ? index : missing_values::int32;
-}
-
-int32_t VariantHeader::sample_index(const string& tag) const {
-  const auto index = bcf_hdr_id2int(m_header.get(), BCF_DT_SAMPLE, tag.c_str());
-  return index >= 0 ? index : missing_values::int32;
 }
 
 }
