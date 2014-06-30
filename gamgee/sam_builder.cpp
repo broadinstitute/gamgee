@@ -320,7 +320,9 @@ Sam SamBuilder::build() const {
 
   // Calculate the bin using the same method as htslib
   sam_body_ptr->core.bin = hts_reg2bin(sam_body_ptr->core.pos, sam_body_ptr->core.pos + sam_body_ptr->core.l_qseq, 14, 5);
-  // TODO: we don't currently explicitly handle TLEN (core.isize)
+  // Always set the TLEN field to 0 (which in the SAM spec means that the information is unavailable),
+  // since we generally can't calculate this
+  sam_body_ptr->core.isize = 0;
 
   return Sam{ m_core_read.m_header, new_sam_body };
 }
@@ -342,7 +344,9 @@ Sam SamBuilder::one_time_build() {
 
   // Calculate the bin using the same method as htslib
   sam_body_ptr->core.bin = hts_reg2bin(sam_body_ptr->core.pos, sam_body_ptr->core.pos + sam_body_ptr->core.l_qseq, 14, 5);
-  // TODO: we don't currently explicitly handle TLEN (core.isize)
+  // Always set the TLEN field to 0 (which in the SAM spec means that the information is unavailable),
+  // since we generally can't calculate this
+  sam_body_ptr->core.isize = 0;
 
   // Move m_core_read itself out to the caller, invalidating this builder
   return move(m_core_read);
