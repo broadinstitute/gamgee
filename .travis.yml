@@ -28,5 +28,4 @@ script:
   - b2 -a toolset=$TOOLSET test
 
 after_success:
-  - if [ "$CXX" == "clang++" ] && [ "$TRAVIS_BRANCH" == "master" ]; then echo -e "Downloading latest Doxygen..." && wget https://github.com/doxygen/doxygen/archive/Release_1_8_7.tar.gz -O $HOME/doxygen-1.8.7.tgz && pushd $HOME && tar xzf doxygen-1.8.7.tgz && cd $HOME/doxygen-Release_1_8_7 && ./configure > /dev/null && make > /dev/null && sudo make install > /dev/null && popd && sudo rm -rf build && doxygen; fi
-  - if [ "$CXX" == "clang++" ] && [ "$TRAVIS_BRANCH" == "master" ]; then echo -e "Publishing doxygen...\n" && git config --global user.email "travis@travis-ci.org" && git config --global user.name "travis-ci" && git clone --branch=gh-pages https://${GH_TOKEN}@github.com/broadinstitute/gamgee gh-pages && cd gh-pages && rm -rf doxygen/ && mv ../dox/html doxygen/ && git add doxygen/ && git commit -am "Latest doxygen documentation on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed" && git push origin gh-pages && echo -e "Published doxygen.\n"; fi
+  - if [ "$CXX" == "clang++" ] && [ "$TRAVIS_BRANCH" == "master" ]; then sh .travis_scripts/update_website_dox.sh ${GH_TOKEN} ${TRAVIS_BUILD_NUMBER}; fi
