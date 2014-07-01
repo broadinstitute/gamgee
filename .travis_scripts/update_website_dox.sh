@@ -9,7 +9,6 @@ echo -e "Downloading latest Doxygen...";
   make > /dev/null;
   sudo make install > /dev/null;
   cd ${HOME}/build/broadinstitute/gamgee;
-  sudo rm -rf build;
   doxygen
 
 echo -e "Publishing doxygen...\n";
