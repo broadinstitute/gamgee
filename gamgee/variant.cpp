@@ -59,12 +59,12 @@ Variant& Variant::operator=(Variant&& other) noexcept {
 }
 
 std::string Variant::ref() const {
-  bcf_unpack(m_body.get(), BCF_UN_ALL);
+  bcf_unpack(m_body.get(), BCF_UN_STR);
   return n_alleles() > 0 ?  string{m_body.get()->d.allele[0]} : string{}; 
 }
 
 std::vector<std::string> Variant::alt() const {
-  bcf_unpack(m_body.get(), BCF_UN_ALL);
+  bcf_unpack(m_body.get(), BCF_UN_STR);
   const auto n_all = n_alleles();
   return n_all > 1 ? utils::hts_string_array_to_vector(m_body.get()->d.allele+1, n_all-1) : vector<string>{}; // skip the first allele because it's the ref
 }
