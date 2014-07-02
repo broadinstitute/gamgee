@@ -90,6 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="classgamgee_1_1_variant-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -193,6 +194,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aaaef3ac0c8bc4457b6cdb0e0b52c79e5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#aaaef3ac0c8bc4457b6cdb0e0b52c79e5">generic_boolean_info_field</a> (const std::string &amp;tag) const </td></tr>
 <tr class="memdesc:aaaef3ac0c8bc4457b6cdb0e0b52c79e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a random access object with all the values in a given info field tag in boolean format for all samples contiguous in memory.  <a href="#aaaef3ac0c8bc4457b6cdb0e0b52c79e5">More...</a><br /></td></tr>
 <tr class="separator:aaaef3ac0c8bc4457b6cdb0e0b52c79e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:aafc8e9a81eb300917704e7badd8e2057"><td class="memTemplParams" colspan="2">template&lt;class FF_TYPE &gt; </td></tr>
+<tr class="memitem:aafc8e9a81eb300917704e7badd8e2057"><td class="memTemplItemLeft" align="right" valign="top">static boost::dynamic_bitset&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#aafc8e9a81eb300917704e7badd8e2057">select_if</a> (const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt;&gt; &amp;first, const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt;&gt; &amp;last, const std::function&lt; bool(const <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt; &amp;)&gt; pred)</td></tr>
+<tr class="separator:aafc8e9a81eb300917704e7badd8e2057"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -810,6 +817,59 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 </div>
 </div>
+<a class="anchor" id="aafc8e9a81eb300917704e7badd8e2057"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class FF_TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static boost::dynamic_bitset gamgee::Variant::select_if </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>last</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; bool(const <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt; &amp;)&gt;&#160;</td>
+          <td class="paramname"><em>pred</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">first</td><td>returns a bitset indicating the samples selected according to unary predicate. iterator to the initial position in a sequence. The range includes the element pointed by first. </td></tr>
+    <tr><td class="paramname">last</td><td>iterator to the last position in a sequence. The range does not include the element pointed by last. </td></tr>
+    <tr><td class="paramname">pred</td><td>Unary predicate function that accepts an element in the range as argument and returns a value convertible to bool. The value returned indicates whether the element is considered a match in the context of this function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>The function shall not modify its argument. </dd>
+<dd>
+This can either be a function pointer or a function object. </dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
 <a class="anchor" id="a24da1ae869010cf623de7749910a86e2"></a>
 <div class="memitem">
@@ -838,7 +898,7 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 2 2014 18:00:07 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 2 2014 20:42:45 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
