@@ -14,7 +14,9 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
   const auto truth_n_alleles = vector<uint32_t>{2, 2, 2, 2, 3};
   const auto truth_filter_first = vector<string>{"PASS", "PASS", "LOW_QUAL", "NOT_DEFINED", "PASS"};
   const auto truth_filter_size = vector<uint32_t>{1,1,1,1,2};
-  for (const auto& filename : {"testdata/test_variants.vcf"}) {
+  const auto truth_ref = vector<string>{"T", "GG", "TAGTGQA", "A", "GAT"};
+  const vector< vector<string> > truth_alt = {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"}};
+    for (const auto& filename : {"testdata/test_variants.vcf"}) {
     auto record_counter = 0u;
     for (const auto& record : SingleVariantReader{filename}) {
       BOOST_CHECK_EQUAL(record.chromosome(), truth_contigs[record_counter]);
@@ -23,6 +25,10 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
       BOOST_CHECK_EQUAL(record.n_samples(), 3);
       BOOST_CHECK_EQUAL(record.qual(), 0);
       BOOST_CHECK(record.has_filter(truth_filter_first[record_counter])); // check the has_filter member function
+      BOOST_CHECK_EQUAL(record.ref(), truth_ref[record_counter]);
+
+      auto alt = record.alt();
+      BOOST_CHECK_EQUAL_COLLECTIONS(alt.begin(), alt.end(), truth_alt[record_counter].begin(), truth_alt[record_counter].end());
 
       // check that absent filters are really absent
       const auto absent_filter = record.has_filter("LOW_QUAL");
