@@ -12,5 +12,6 @@ var searchData=
   ['advanced_5fadd_5farbitrary_5fline',['advanced_add_arbitrary_line',['../classgamgee_1_1_variant_header_builder.html#a12a804a946b257a976bc9ba974820e3e',1,'gamgee::VariantHeaderBuilder']]],
   ['advanced_5fmerge_5fheader',['advanced_merge_header',['../classgamgee_1_1_variant_header.html#ac47788376bfeb8ff015a6d6f7037b805',1,'gamgee::VariantHeader']]],
   ['alignment_5fstart',['alignment_start',['../classgamgee_1_1_sam.html#a9aff91f1994ab40103c49c5334511a63',1,'gamgee::Sam::alignment_start()'],['../classgamgee_1_1_variant.html#a88256aaf7d75e08cfdc6b896719f9420',1,'gamgee::Variant::alignment_start()']]],
-  ['alignment_5fstop',['alignment_stop',['../classgamgee_1_1_sam.html#a7eeda0d08aecf8037c0c2050d5634dc2',1,'gamgee::Sam']]]
+  ['alignment_5fstop',['alignment_stop',['../classgamgee_1_1_sam.html#a7eeda0d08aecf8037c0c2050d5634dc2',1,'gamgee::Sam']]],
+  ['alt',['alt',['../classgamgee_1_1_variant.html#ad8143e5766f4cb45c5ad9fa08bc8f7cb',1,'gamgee::Variant']]]
 ];

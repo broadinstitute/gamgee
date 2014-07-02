@@ -139,6 +139,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a093b25862a15ebb982fa683fc3298662"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a093b25862a15ebb982fa683fc3298662">n_alleles</a> () const </td></tr>
 <tr class="memdesc:a093b25862a15ebb982fa683fc3298662"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of alleles in this <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record  <a href="#a093b25862a15ebb982fa683fc3298662">More...</a><br /></td></tr>
 <tr class="separator:a093b25862a15ebb982fa683fc3298662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a5d1e31d3c567bf372bae48449d9b52"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a5a5d1e31d3c567bf372bae48449d9b52">ref</a> () const </td></tr>
+<tr class="memdesc:a5a5d1e31d3c567bf372bae48449d9b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the ref allele in this <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record  <a href="#a5a5d1e31d3c567bf372bae48449d9b52">More...</a><br /></td></tr>
+<tr class="separator:a5a5d1e31d3c567bf372bae48449d9b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8143e5766f4cb45c5ad9fa08bc8f7cb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#ad8143e5766f4cb45c5ad9fa08bc8f7cb">alt</a> () const </td></tr>
+<tr class="memdesc:ad8143e5766f4cb45c5ad9fa08bc8f7cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the vectors of alt alleles in this <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record  <a href="#ad8143e5766f4cb45c5ad9fa08bc8f7cb">More...</a><br /></td></tr>
+<tr class="separator:ad8143e5766f4cb45c5ad9fa08bc8f7cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52a8562b1b0ed982d08c9fd09cb50353"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_filters.html">VariantFilters</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a52a8562b1b0ed982d08c9fd09cb50353">filters</a> () const </td></tr>
 <tr class="memdesc:a52a8562b1b0ed982d08c9fd09cb50353"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a vector-like object with all the filters for this record  <a href="#a52a8562b1b0ed982d08c9fd09cb50353">More...</a><br /></td></tr>
 <tr class="separator:a52a8562b1b0ed982d08c9fd09cb50353"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -333,6 +339,23 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 <p>returns a 1-based alignment start position (as you would see in a VCF file). </p>
 <dl class="section note"><dt>Note</dt><dd>the internal encoding is 0-based to mimic that of the BCF files. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad8143e5766f4cb45c5ad9fa08bc8f7cb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; gamgee::Variant::alt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the vectors of alt alleles in this <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record </p>
 
 </div>
 </div>
@@ -770,6 +793,23 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 </div>
 </div>
+<a class="anchor" id="a5a5d1e31d3c567bf372bae48449d9b52"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gamgee::Variant::ref </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the ref allele in this <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record </p>
+
+</div>
+</div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
 <a class="anchor" id="a24da1ae869010cf623de7749910a86e2"></a>
 <div class="memitem">
@@ -798,7 +838,7 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 2 2014 02:18:47 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 2 2014 13:54:42 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
