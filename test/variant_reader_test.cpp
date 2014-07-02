@@ -1,6 +1,7 @@
 #include "variant.h"
 #include "variant_filters.h"
 #include "variant_reader.h"
+#include "is_missing.h"
 
 #include <boost/test/unit_test.hpp>
 
@@ -14,9 +15,10 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
   const auto truth_n_alleles = vector<uint32_t>{2, 2, 2, 2, 3};
   const auto truth_filter_first = vector<string>{"PASS", "PASS", "LOW_QUAL", "NOT_DEFINED", "PASS"};
   const auto truth_filter_size = vector<uint32_t>{1,1,1,1,2};
+  const auto truth_quals = vector<float>{80,8.4,-1,-1,-1};
   const auto truth_ref = vector<string>{"T", "GG", "TAGTGQA", "A", "GAT"};
   const vector< vector<string> > truth_alt = {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"}};
-    for (const auto& filename : {"testdata/test_variants.vcf", "testdata/test_variants.bcf"}) {
+  for (const auto& filename : {"testdata/test_variants.vcf", "testdata/test_variants.bcf"}) {
     auto record_counter = 0u;
     for (const auto& record : SingleVariantReader{filename}) {
       BOOST_CHECK_EQUAL(record.ref(), truth_ref[record_counter]);
@@ -24,8 +26,14 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
       BOOST_CHECK_EQUAL(record.alignment_start(), truth_alignment_starts[record_counter]);
       BOOST_CHECK_EQUAL(record.n_alleles(), truth_n_alleles[record_counter]);
       BOOST_CHECK_EQUAL(record.n_samples(), 3);
-      BOOST_CHECK_EQUAL(record.qual(), 0);
       BOOST_CHECK(record.has_filter(truth_filter_first[record_counter])); // check the has_filter member function
+
+
+      // check for quals (whether missing or parsed)
+      if (truth_quals[record_counter] < 0) 
+        BOOST_CHECK(is_missing(record.qual()));
+      else 
+        BOOST_CHECK_EQUAL(record.qual(), truth_quals[record_counter]);
 
       auto alt = record.alt();
       BOOST_CHECK_EQUAL_COLLECTIONS(alt.begin(), alt.end(), truth_alt[record_counter].begin(), truth_alt[record_counter].end());

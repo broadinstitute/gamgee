@@ -35,7 +35,7 @@ class Variant {
 
   uint32_t chromosome()      const {return uint32_t(m_body->rid);}                                                    ///< @brief returns the integer representation of the chromosome. Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). Similar to Picards getReferenceIndex()
   uint32_t alignment_start() const {return uint32_t(m_body->pos+1);}                                                  ///< @brief returns a 1-based alignment start position (as you would see in a VCF file). @note the internal encoding is 0-based to mimic that of the BCF files.
-  uint32_t qual()            const {return uint32_t(m_body->qual);}                                                   ///< @brief returns the Phred scaled site qual (probability that the site is not reference). See VCF spec.
+  float    qual()            const {return m_body->qual;}                                                             ///< @brief returns the Phred scaled site qual (probability that the site is not reference). See VCF spec.
   uint32_t n_samples()       const {return uint32_t(m_body->n_sample);}                                               ///< @brief returns the number of samples in this Variant record
   uint32_t n_alleles()       const {return uint32_t(m_body->n_allele);}                                               ///< @brief returns the number of alleles in this Variant record
 
@@ -65,17 +65,16 @@ class Variant {
   std::vector<std::string> generic_string_info_field(const std::string& tag) const;                                   ///< @brief returns a random access object with all the values in a given info field tag in string format for all samples contiguous in memory.
   std::vector<bool> generic_boolean_info_field(const std::string& tag) const;                                         ///< @brief returns a random access object with all the values in a given info field tag in boolean format for all samples contiguous in memory.
 
-  // template functions declared and defined here
   template <class FF_TYPE>
-  static boost::dynamic_bitset<> select_if(                          ///< returns a bitset indicating the samples selected according to unary predicate.
-      const VariantFieldIterator<VariantFieldValue<FF_TYPE>>& first, ///< Iterator to the initial position in a sequence. The range includes the element pointed by first.
-      const VariantFieldIterator<VariantFieldValue<FF_TYPE>>& last,  ///< Iterator to the last position in a sequence. The range does not include the element pointed by last.
-      const std::function<bool (const VariantFieldValue<FF_TYPE>&)> pred)  ///< Unary predicate function that accepts an element in range [first, last) as argument and returns a value convertible to bool. The value returned indicates whether the element is considered a match in the context of this function. @note The function shall not modify its argument. @note This can either be a function pointer or a function object.
+  static boost::dynamic_bitset<> select_if(                                                                           ///< returns a bitset indicating the samples selected according to unary predicate.
+      const VariantFieldIterator<VariantFieldValue<FF_TYPE>>& first,                                                  ///< Iterator to the initial position in a sequence. The range includes the element pointed by first.
+      const VariantFieldIterator<VariantFieldValue<FF_TYPE>>& last,                                                   ///< Iterator to the last position in a sequence. The range does not include the element pointed by last.
+      const std::function<bool (const VariantFieldValue<FF_TYPE>& value)> pred)                                       ///< Unary predicate function that accepts an element in range [first, last) as argument and returns a value convertible to bool. The value returned indicates whether the element is considered a match in the context of this function. @note The function shall not modify its argument. @note This can either be a function pointer or a function object.
   {
     const auto n_samples = last - first;
     auto selected_samples = boost::dynamic_bitset<>(n_samples);
     auto it = first;
-    for (auto i = 0u; i < n_samples; i++) {
+    for (auto i = 0; i < n_samples; i++) {
       selected_samples[i] = pred(*it++);
     }
     return selected_samples;
