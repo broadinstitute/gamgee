@@ -131,9 +131,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a88256aaf7d75e08cfdc6b896719f9420"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a88256aaf7d75e08cfdc6b896719f9420">alignment_start</a> () const </td></tr>
 <tr class="memdesc:a88256aaf7d75e08cfdc6b896719f9420"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a 1-based alignment start position (as you would see in a VCF file).  <a href="#a88256aaf7d75e08cfdc6b896719f9420">More...</a><br /></td></tr>
 <tr class="separator:a88256aaf7d75e08cfdc6b896719f9420"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaebe7023dddd5dcaeb09b51b5241899e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#aaebe7023dddd5dcaeb09b51b5241899e">qual</a> () const </td></tr>
-<tr class="memdesc:aaebe7023dddd5dcaeb09b51b5241899e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the Phred scaled site qual (probability that the site is not reference). See VCF spec.  <a href="#aaebe7023dddd5dcaeb09b51b5241899e">More...</a><br /></td></tr>
-<tr class="separator:aaebe7023dddd5dcaeb09b51b5241899e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a894fc2a03eadc32b829baa73a9de003e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a894fc2a03eadc32b829baa73a9de003e">qual</a> () const </td></tr>
+<tr class="memdesc:a894fc2a03eadc32b829baa73a9de003e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the Phred scaled site qual (probability that the site is not reference). See VCF spec.  <a href="#a894fc2a03eadc32b829baa73a9de003e">More...</a><br /></td></tr>
+<tr class="separator:a894fc2a03eadc32b829baa73a9de003e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f9c3c41edcfbeb0600b6f602ed35de1"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a1f9c3c41edcfbeb0600b6f602ed35de1">n_samples</a> () const </td></tr>
 <tr class="memdesc:a1f9c3c41edcfbeb0600b6f602ed35de1"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of samples in this <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record  <a href="#a1f9c3c41edcfbeb0600b6f602ed35de1">More...</a><br /></td></tr>
 <tr class="separator:a1f9c3c41edcfbeb0600b6f602ed35de1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -197,8 +197,9 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a7e616e50450595c03eb2f6ee13762613"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a7e616e50450595c03eb2f6ee13762613">missing_value</a> (const float value)</td></tr>
-<tr class="separator:a7e616e50450595c03eb2f6ee13762613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafc8e9a81eb300917704e7badd8e2057"><td class="memTemplParams" colspan="2">template&lt;class FF_TYPE &gt; </td></tr>
+<tr class="memitem:aafc8e9a81eb300917704e7badd8e2057"><td class="memTemplItemLeft" align="right" valign="top">static boost::dynamic_bitset&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#aafc8e9a81eb300917704e7badd8e2057">select_if</a> (const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt;&gt; &amp;first, const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt;&gt; &amp;last, const std::function&lt; bool(const <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt; &amp;)&gt; pred)</td></tr>
+<tr class="separator:aafc8e9a81eb300917704e7badd8e2057"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -652,30 +653,6 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 </div>
 </div>
-<a class="anchor" id="a7e616e50450595c03eb2f6ee13762613"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static bool gamgee::Variant::missing_value </td>
-          <td>(</td>
-          <td class="paramtype">const float&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="a093b25862a15ebb982fa683fc3298662"></a>
 <div class="memitem">
 <div class="memproto">
@@ -798,7 +775,7 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 </div>
 </div>
-<a class="anchor" id="aaebe7023dddd5dcaeb09b51b5241899e"></a>
+<a class="anchor" id="a894fc2a03eadc32b829baa73a9de003e"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -806,7 +783,7 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float gamgee::Variant::qual </td>
+          <td class="memname">uint32_t gamgee::Variant::qual </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -840,6 +817,59 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 </div>
 </div>
+<a class="anchor" id="aafc8e9a81eb300917704e7badd8e2057"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class FF_TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static boost::dynamic_bitset gamgee::Variant::select_if </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>last</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; bool(const <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt; &amp;)&gt;&#160;</td>
+          <td class="paramname"><em>pred</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">first</td><td>returns a bitset indicating the samples selected according to unary predicate. Iterator to the initial position in a sequence. The range includes the element pointed by first. </td></tr>
+    <tr><td class="paramname">last</td><td>Iterator to the last position in a sequence. The range does not include the element pointed by last. </td></tr>
+    <tr><td class="paramname">pred</td><td>Unary predicate function that accepts an element in range [first, last) as argument and returns a value convertible to bool. The value returned indicates whether the element is considered a match in the context of this function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>The function shall not modify its argument. </dd>
+<dd>
+This can either be a function pointer or a function object. </dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
 <a class="anchor" id="a24da1ae869010cf623de7749910a86e2"></a>
 <div class="memitem">
@@ -868,7 +898,7 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 2 2014 21:38:52 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 3 2014 17:53:35 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -11,6 +11,5 @@ var searchData=
   ['mate_5falignment_5fstop',['mate_alignment_stop',['../classgamgee_1_1_sam.html#a761094dcd5cc88b231313157f8f3b6b5',1,'gamgee::Sam']]],
   ['mate_5fchromosome',['mate_chromosome',['../classgamgee_1_1_sam.html#a2e0a18025638149d8c25216ebd12e7ec',1,'gamgee::Sam']]],
   ['mate_5funclipped_5fstart',['mate_unclipped_start',['../classgamgee_1_1_sam.html#a0153411640fb83c7f1b3b09d6d0e078f',1,'gamgee::Sam']]],
-  ['mate_5funclipped_5fstop',['mate_unclipped_stop',['../classgamgee_1_1_sam.html#a55b020b715aaaf7e301032d7bffd2a3e',1,'gamgee::Sam']]],
-  ['missing_5fvalue',['missing_value',['../classgamgee_1_1_variant.html#a7e616e50450595c03eb2f6ee13762613',1,'gamgee::Variant']]]
+  ['mate_5funclipped_5fstop',['mate_unclipped_stop',['../classgamgee_1_1_sam.html#a55b020b715aaaf7e301032d7bffd2a3e',1,'gamgee::Sam']]]
 ];
