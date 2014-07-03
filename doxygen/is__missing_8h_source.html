@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>Gamgee: gamgee/sam_builder_data_field.cpp File Reference</title>
+<title>Gamgee: gamgee/is_missing.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,21 +86,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
-<div class="title">sam_builder_data_field.cpp File Reference</div>  </div>
+<div class="title">is_missing.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="sam__builder__data__field_8h_source.html">sam_builder_data_field.h</a>&quot;</code><br />
-<code>#include &lt;cstring&gt;</code><br />
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:namespacegamgee"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html">gamgee</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-</div><!-- contents -->
+<a href="is__missing_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __gamgee__is_missing__</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __gamgee__is_missing__</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>gamgee {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="namespacegamgee.html#acc5d4d19fee9f9120dda2ccbec882388">    8</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespacegamgee.html#acc5d4d19fee9f9120dda2ccbec882388">is_missing</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> value) { <span class="keywordflow">return</span> isnan(value) == 1; } </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="namespacegamgee_html_acc5d4d19fee9f9120dda2ccbec882388"><div class="ttname"><a href="namespacegamgee.html#acc5d4d19fee9f9120dda2ccbec882388">gamgee::is_missing</a></div><div class="ttdeci">bool is_missing(const float value)</div><div class="ttdoc">checks whether or not a float value returned by a Variant field is missing </div><div class="ttdef"><b>Definition:</b> is_missing.h:8</div></div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated on Thu Jul 3 2014 20:27:47 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
