@@ -98,7 +98,7 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
    * @param n how much to advance (negative numbers to go the other direction)
    * @warning there is no boundary check in this operator
    */
-  VariantFieldIterator& operator+=(const int n) {
+  VariantFieldIterator& operator+=(const int n) noexcept {
     m_data_ptr += n * m_format_ptr->size;
     return *this;
   }
@@ -106,7 +106,7 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
   /**
    * @copydoc VariantFieldIterator::operator+=(int)
    */
-  VariantFieldIterator& operator-=(const int n) {
+  VariantFieldIterator& operator-=(const int n) noexcept {
     m_data_ptr -= n * m_format_ptr->size;
     return *this;
   }
@@ -163,25 +163,49 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
   }
 
   /**
-   * @brief advances to the next sample
+   * @brief Prefix increment. Advances to the next sample
    * @note mainly designed for iterators
-   * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way.
+   * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result with end(). This is the STL way.
    * @return a reference to the start of the values of the next sample
    */
-  TYPE operator++() noexcept {
-    m_data_ptr += m_format_ptr->size;
-    return TYPE{m_body, m_format_ptr, m_data_ptr};
+  VariantFieldIterator& operator++() noexcept {
+    operator+=(1);
+    return *this;
   }
 
   /**
-   * @brief advances to the previous sample
+   * @brief Postfix increment. Advances to the next sample
    * @note mainly designed for iterators
-   * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way.
+   * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result with end(). This is the STL way.
+   * @return the value of the start of the same sample.
+   */
+  VariantFieldIterator operator++(int) noexcept {
+    auto const tmp = VariantFieldIterator(*this);
+    operator++();
+    return tmp;
+  }
+
+  /**
+   * @brief Prefix increment.  Reverses to the previous sample.
+   * @note mainly designed for iterators
+   * @warning does not check for bounds exception, you should verify whether or not you've reached the beginning by comparing the result with begin(). This is the STL way.
    * @return a reference to the start of the values of the previous sample
    */
-  TYPE operator--() {
-    m_data_ptr -= m_format_ptr->size;
-    return TYPE{m_body, m_format_ptr, m_data_ptr};
+  VariantFieldIterator& operator--() noexcept {
+    operator-=(1);
+    return *this;
+  }
+
+  /**
+   * @brief Postfix increment.  Reverses to the previous sample.
+   * @note mainly designed for iterators
+   * @warning does not check for bounds exception, you should verify whether or not you've reached the beginning by comparing the result with begin(). This is the STL way.
+   * @return the value of the start of the same sample.
+   */
+  VariantFieldIterator& operator--(int) noexcept {
+    auto const tmp = VariantFieldIterator(*this);
+    operator--();
+    return tmp;
   }
 
   /**
@@ -196,13 +220,22 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
     return TYPE{m_body, m_format_ptr, m_format_ptr->p + (sample * m_body->n_sample)};
   }
 
+  /**
+   * @brief Difference between two iterators as an integer.
+   * @note Useful as a substitute for size() when only begin() and end() are available.
+   * @returns the number of iterator steps between [first, last) where last is the current VariantFieldIterator.
+   * @param first is the iterator the position of which is to be subtracted from the position of the current iterator.
+   */
+  int32_t  operator-(const VariantFieldIterator<TYPE>& first) const {
+    return static_cast<int32_t>(m_data_ptr - first.m_data_ptr);
+  }
+
  private:
   std::shared_ptr<bcf1_t> m_body;      ///< shared ownership of the Variant record memory so it stays alive while this object is in scope
   const bcf_fmt_t* const m_format_ptr; ///< pointer to the format_field in the body so we can access the tag's information
   uint8_t* m_data_ptr;                 ///< pointer to m_body structure where the data for this particular type is located.
 
 };
-
 
 }
 
