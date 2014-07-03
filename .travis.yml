@@ -1,10 +1,11 @@
 language: cpp
 
 env:
-  global: 
-    - secure: "gFJsmma5duxLv+bcn5Qvq6M9r3w0XZZ/GVlolSX3t3rlyqyGwEiN71F7+8Rtv+pzgUaMELKuA8JO+x6ZpOCnMCa/RB/TV6KJrZ31UPfV7BJjt6QzWWPMlkT+3i+pM3PUVoN1zTojz+SE9pMhyILeIx+23S/8mHGXmmIW1Es001I="
+  global:
+    - secure: gFJsmma5duxLv+bcn5Qvq6M9r3w0XZZ/GVlolSX3t3rlyqyGwEiN71F7+8Rtv+pzgUaMELKuA8JO+x6ZpOCnMCa/RB/TV6KJrZ31UPfV7BJjt6QzWWPMlkT+3i+pM3PUVoN1zTojz+SE9pMhyILeIx+23S/8mHGXmmIW1Es001I=
+    - secure: Sb3uSRvYdqEnh9sQngr5W+WbrodlZjW7cIg2ZAECj1IabZc4rn4Xp4+vmLiCjRCl5p6idL515ELLG4OYv5joqM/XtY7mIzCbHkaxs81+3PBroGezgW6gxWqLDtwoI76aonk3QHkD38L2uMKhZADUxK3K4l9fmauSrivz2TPU6Rw=
 
-compiler: 
+compiler:
   - clang
 
 before_install:
@@ -16,10 +17,11 @@ before_install:
 install:
   - if [ "$CXX" == "g++" ]; then TOOLSET=gcc; sh .travis_scripts/gcc.sh; fi
   - if [ "$CXX" == "clang++" ]; then TOOLSET=clang; sh .travis_scripts/clang.sh; fi
-  - sh .travis_scripts/boost.sh
+  - sh .travis_scripts/boost.sh ${TOOLSET}
 
 script:
-  - b2 -a toolset=$TOOLSET test
+  - b2 -a toolset=$TOOLSET test cxxflags=--coverage linkflags=--coverage
 
 after_success:
   - if [ "$CXX" == "clang++" ] && [ "$TRAVIS_BRANCH" == "master" ]; then sh .travis_scripts/update_website_dox.sh ${GH_TOKEN} ${TRAVIS_BUILD_NUMBER}; fi
+  - if [ "$CXX" == "clang++" ]; then sh .travis_scripts/coveralls.sh ${COVERALLS_TOKEN}; fi
