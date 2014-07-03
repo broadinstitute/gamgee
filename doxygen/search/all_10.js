@@ -42,6 +42,7 @@ var searchData=
   ['samwriter',['SamWriter',['../classgamgee_1_1_sam.html#aceb0e064174204e66199adc94aa54246',1,'gamgee::Sam::SamWriter()'],['../classgamgee_1_1_sam_header.html#aceb0e064174204e66199adc94aa54246',1,'gamgee::SamHeader::SamWriter()'],['../classgamgee_1_1_sam_writer.html#a78751633b0d969df35fa159dffadcd5c',1,'gamgee::SamWriter::SamWriter(const std::string &amp;output_fname=&quot;-&quot;, const bool binary=true)'],['../classgamgee_1_1_sam_writer.html#a900f50a6e06d06796c1a472278bb8b9b',1,'gamgee::SamWriter::SamWriter(const SamHeader &amp;header, const std::string &amp;output_fname=&quot;-&quot;, const bool binary=true)']]],
   ['samwriter',['SamWriter',['../classgamgee_1_1_sam_writer.html',1,'gamgee']]],
   ['secondary',['secondary',['../classgamgee_1_1_sam.html#a411d15574da51bce292697b670cc47d7',1,'gamgee::Sam']]],
+  ['select_5fif',['select_if',['../classgamgee_1_1_variant.html#aafc8e9a81eb300917704e7badd8e2057',1,'gamgee::Variant']]],
   ['sequence',['sequence',['../classgamgee_1_1_fastq.html#acca851d9e72b446b7f02a52ac226e190',1,'gamgee::Fastq']]],
   ['sequence_5flength',['sequence_length',['../classgamgee_1_1_sam_header.html#a3cfc31b4cca5a4d156379da5055053ab',1,'gamgee::SamHeader::sequence_length(const std::string &amp;sequence_name)'],['../classgamgee_1_1_sam_header.html#aa69418c7a5e291cc1c65ad8de39b5a5e',1,'gamgee::SamHeader::sequence_length(const uint32_t sequence_index)']]],
   ['sequence_5fname',['sequence_name',['../classgamgee_1_1_sam_header.html#ab534cda42977f66eed0918aa07a392b5',1,'gamgee::SamHeader']]],
