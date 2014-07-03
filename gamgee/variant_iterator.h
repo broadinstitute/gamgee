@@ -21,7 +21,7 @@ class VariantIterator {
   VariantIterator();
 
   /**
-   * @brief initializes a new iterator based on an input stream (e.g. sam/a file, stdin, ...)
+   * @brief initializes a new iterator based on an input stream (e.g. a vcf/bcf file, stdin, ...)
    *
    * @param variant_file_ptr   pointer to a vcf/bcf file opened via the bcf_open() macro from htslib
    * @param variant_header_ptr shared pointer to a vcf/bcf file header created with the bcf_hdr_read() macro from htslib
@@ -59,7 +59,7 @@ class VariantIterator {
   Variant& operator++();
 
  private:
-  vcfFile * m_variant_file_ptr;                    ///< pointer to the sam file
+  vcfFile * m_variant_file_ptr;                    ///< pointer to the vcf/bcf file
   std::shared_ptr<bcf_hdr_t> m_variant_header_ptr; ///< pointer to the variant header
   std::shared_ptr<bcf1_t> m_variant_record_ptr;    ///< pointer to the internal structure of the variant record. Useful to only allocate it once.
   Variant m_variant_record;                        ///< temporary record to hold between fetch (operator++) and serve (operator*)
