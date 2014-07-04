@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/broadinstitute/gamgee.svg?branch=master)](https://travis-ci.org/broadinstitute/gamgee)
+[![Coverage Status](https://coveralls.io/repos/broadinstitute/gamgee/badge.png)](https://coveralls.io/r/broadinstitute/gamgee)
 
 
 Gamgee
