@@ -16,7 +16,7 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
   const auto truth_filter_size = vector<uint32_t>{1,1,1,1,2};
   const auto truth_quals = vector<float>{80,8.4,-1,-1,-1};
   const auto truth_ref = vector<string>{"T", "GG", "TAGTGQA", "A", "GAT"};
-  const vector< vector<string> > truth_alt = {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"}};
+  const vector< vector<string>> truth_alt = {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"}};
   for (const auto& filename : {"testdata/test_variants.vcf", "testdata/test_variants.bcf"}) {
     auto record_counter = 0u;
     for (const auto& record : SingleVariantReader{filename}) {
