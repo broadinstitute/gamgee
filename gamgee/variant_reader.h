@@ -1,5 +1,5 @@
-#ifndef gamgee__variant_reader__
-#define gamgee__variant_reader__
+#ifndef __gamgee__variant_reader__
+#define __gamgee__variant_reader__
 
 #include "variant_header.h"
 #include "variant_iterator.h"

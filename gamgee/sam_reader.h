@@ -1,5 +1,5 @@
-#ifndef gamgee__sam_reader__
-#define gamgee__sam_reader__
+#ifndef __gamgee__sam_reader__
+#define __gamgee__sam_reader__
 
 #include "sam_iterator.h"
 #include "sam_pair_iterator.h"
@@ -103,4 +103,4 @@ using PairSamReader = SamReader<SamPairIterator>;
 
 }  // end of namespace
 
-#endif /* defined(__gamgee__sam_iterator__) */
+#endif /* defined(__gamgee__sam_reader__) */
