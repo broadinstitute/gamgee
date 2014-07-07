@@ -1,5 +1,5 @@
-#ifndef gamgee__variant_field_value_iterator__
-#define gamgee__variant_field_value_iterator__
+#ifndef __gamgee__variant_field_value_iterator__
+#define __gamgee__variant_field_value_iterator__
 
 #include "utils/format_field_type.h"
 

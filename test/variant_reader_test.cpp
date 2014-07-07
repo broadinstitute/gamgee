@@ -1,5 +1,4 @@
 #include "variant.h"
-#include "variant_filters.h"
 #include "variant_reader.h"
 #include "is_missing.h"
 
