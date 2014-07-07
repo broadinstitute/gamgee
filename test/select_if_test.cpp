@@ -25,7 +25,6 @@ BOOST_AUTO_TEST_CASE( select_if ) {
     dynamic_bitset<>(string("100"))};
   for (const auto& filename : {"testdata/test_variants_02.vcf"}) {
     const auto reader = SingleVariantReader{filename};
-    const auto n_samples = reader.header().n_samples();
     auto record_idx = 0u;
     for (const auto& record : SingleVariantReader{filename}) {
       const auto g_quals = record.genotype_quals();
@@ -36,10 +35,7 @@ BOOST_AUTO_TEST_CASE( select_if ) {
       const auto comput_pl_select = Variant::select_if<int32_t>(p_likes.begin(), p_likes.end(), hom_ref);
       const auto actual_gq_select = actual_gq_selects[record_idx];
       const auto actual_pl_select = actual_pl_selects[record_idx];
-      for (auto samp_idx = 0u; samp_idx < n_samples; ++samp_idx) {
-        BOOST_CHECK_EQUAL(comput_gq_select[samp_idx], actual_gq_select[samp_idx]);
-        BOOST_CHECK_EQUAL(comput_pl_select[samp_idx], actual_pl_select[samp_idx]);
-      }
+      BOOST_CHECK(comput_pl_select == actual_pl_select);
       ++record_idx;
     }
     BOOST_CHECK_EQUAL(record_idx, 5u);
