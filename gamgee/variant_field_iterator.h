@@ -227,7 +227,7 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
    * @param first is the iterator the position of which is to be subtracted from the position of the current iterator.
    */
   int32_t  operator-(const VariantFieldIterator<TYPE>& first) const {
-    return static_cast<int32_t>(m_data_ptr - first.m_data_ptr);
+    return static_cast<int32_t>(m_data_ptr - first.m_data_ptr)/m_format_ptr->size;
   }
 
  private:
