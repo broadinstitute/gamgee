@@ -1,6 +1,7 @@
 #include "variant.h"
 #include "variant_field.h"
 #include "variant_field_value.h"
+#include "genotype_field_value.h"
 #include "utils/hts_memory.h"
 #include "utils/utils.h"
 
@@ -168,6 +169,13 @@ std::vector<bool> Variant::generic_boolean_info_field(const std::string& tag) co
   }
   const auto results = std::vector<bool>{info_result == 1}; // flags are returned only in the return value
   return results;
+}
+
+VariantField<GenotypeFieldValue> Variant::phred_likelihoods_field() const {
+  const auto fmt = bcf_get_fmt(m_header.get(), m_body.get(), "PL");
+  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty VariantField
+    return VariantField<GenotypeFieldValue>{};
+  return VariantField<GenotypeFieldValue>{m_body, fmt};
 }
 
 }
