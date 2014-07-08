@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['genotypefieldvalue',['GenotypeFieldValue',['../classgamgee_1_1_genotype_field_value.html',1,'gamgee']]],
-  ['genotypefieldvalueiterator',['GenotypeFieldValueIterator',['../classgamgee_1_1_genotype_field_value_iterator.html',1,'gamgee']]]
+  ['htsfiledeleter',['HtsFileDeleter',['../structgamgee_1_1utils_1_1_hts_file_deleter.html',1,'gamgee::utils']]]
 ];
