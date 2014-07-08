@@ -6,6 +6,8 @@
 #include "variant_field_value.h"
 #include "variant_filters.h"
 #include "boost/dynamic_bitset.hpp"
+#include "genotype_field_value.h"
+#include "diploid_pl_genotype.h"
 
 #include "htslib/sam.h"
 
@@ -14,11 +16,6 @@
 #include <vector>
 
 namespace gamgee {
-/** 
- * @brief simple enum to keep the indices of the genotypes in the PL field of diploid individuals
- */
-enum class DiploidPLGenotype { HOM_REF = 0, HET = 1, HOM_VAR = 2};
-
 /**
  * @brief Utility class to manipulate a Variant record.
  */
@@ -57,6 +54,8 @@ class Variant {
   VariantField<VariantFieldValue<int32_t>> generic_integer_format_field(const std::string& tag) const;                ///< @brief returns a random access object with all the values in a give foramt field tag in integer format for all samples contiguous in memory.
   VariantField<VariantFieldValue<float>> generic_float_format_field(const std::string& tag) const;                    ///< @brief returns a random access object with all the values in a give foramt field tag in float format for all samples contiguous in memory.
   VariantField<VariantFieldValue<std::string>> generic_string_format_field(const std::string& tag) const;             ///< @brief returns a random access object with all the values in a give foramt field tag in string format for all samples contiguous in memory. @warning not working at the moment due to bug in htslib
+
+  VariantField<GenotypeFieldValue> phred_likelihoods_field() const;
 
   // generic info field getters
   // NOTE: Errors in the return info field type are currently returned as empty vectors, not exceptions.

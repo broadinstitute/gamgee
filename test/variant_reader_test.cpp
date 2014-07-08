@@ -69,6 +69,22 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
       BOOST_CHECK(record.is_het(0));
       BOOST_CHECK(record.is_hom_var(2));
       
+      const auto pls_field = record.phred_likelihoods_field();
+      BOOST_CHECK_EQUAL(pls_field[0][0], 10);
+      BOOST_CHECK_EQUAL(pls_field[1][1], 10);
+      BOOST_CHECK_EQUAL(pls_field[2][2], 0);
+
+      // check genotype accessors
+      BOOST_CHECK(pls_field[1].is_hom_ref());
+      BOOST_CHECK(pls_field[0].is_het());
+      BOOST_CHECK(pls_field[2].is_hom_var());
+
+      for(const auto& sample_pl : pls_field) { // testing for-each iteration at the samples level
+        BOOST_CHECK_EQUAL(1, count_if(sample_pl.begin(), sample_pl.end(), [](const auto& x) { return x == 0; })); // testing std library functional call at the sample value level
+        for(const auto& value_pl : sample_pl)  // testing for-each iteration at the sample value level
+          BOOST_CHECK_EQUAL(value_pl, value_pl); // I just want to make sure that this level of iteration is supported, the values don't matter anymore at this point
+      }
+
       // test generic FLOAT
       const auto af = record.generic_float_format_field("AF");
       for_each(af.begin(), af.end(), [](const auto& s) {BOOST_CHECK_CLOSE(s[1], 2.2, 0.001);}); // checking float std library functional call at the samples level
