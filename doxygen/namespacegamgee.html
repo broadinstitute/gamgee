@@ -116,6 +116,10 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_fastq_reader.html">FastqReader</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility class to read many <a class="el" href="classgamgee_1_1_fastq.html" title="Utility class to hold one FastA or FastQ record. ">Fastq</a> records from a stream (e.g. <a class="el" href="classgamgee_1_1_fastq.html" title="Utility class to hold one FastA or FastQ record. ">Fastq</a> file, stdin, ...) in a for-each loop in a for-each loop.  <a href="classgamgee_1_1_fastq_reader.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype_field_value.html">GenotypeFieldValue</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype_field_value_iterator.html">GenotypeFieldValueIterator</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_read_bases.html">ReadBases</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility class to handle the memory management of the sam record object for read bases.  <a href="classgamgee_1_1_read_bases.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -213,6 +217,12 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a7487e27a3a8cc7205591dfb467de3139"><td class="mdescLeft">&#160;</td><td class="mdescRight">comprehensive list of valid cigar operators  <a href="namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139">More...</a><br /></td></tr>
 <tr class="separator:a7487e27a3a8cc7205591dfb467de3139"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acea451c2c3a6601c111c7be6cfa9ca75"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75">DiploidPLGenotype</a> { <a class="el" href="namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75aeabe5de140c3cafc05190e91f2f150a5">DiploidPLGenotype::HOM_REF</a> = 0, 
+<a class="el" href="namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75a0ab7f9d03ee3503ccca933fa498414ad">DiploidPLGenotype::HET</a> = 1, 
+<a class="el" href="namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75a46226a303b65d0b265550d36d68a6e32">DiploidPLGenotype::HOM_VAR</a> = 2
+ }</td></tr>
+<tr class="memdesc:acea451c2c3a6601c111c7be6cfa9ca75"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple enum to keep the indices of the genotypes in the PL field of diploid individuals  <a href="namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75">More...</a><br /></td></tr>
+<tr class="separator:acea451c2c3a6601c111c7be6cfa9ca75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab33f4f3d734f661e6917eb693df3aa49"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49">Base</a> { <br />
 &#160;&#160;<a class="el" href="namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49a7fc56270e7a70fa81a5935b72eacbe29">Base::A</a> = 1, 
 <a class="el" href="namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49a0d61f8370cad1d412f80b84d143e1257">Base::C</a> = 2, 
@@ -224,12 +234,6 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:ab33f4f3d734f661e6917eb693df3aa49"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple enum to hold all valid bases in the SAM format  <a href="namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49">More...</a><br /></td></tr>
 <tr class="separator:ab33f4f3d734f661e6917eb693df3aa49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acea451c2c3a6601c111c7be6cfa9ca75"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75">DiploidPLGenotype</a> { <a class="el" href="namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75aeabe5de140c3cafc05190e91f2f150a5">DiploidPLGenotype::HOM_REF</a> = 0, 
-<a class="el" href="namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75a0ab7f9d03ee3503ccca933fa498414ad">DiploidPLGenotype::HET</a> = 1, 
-<a class="el" href="namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75a46226a303b65d0b265550d36d68a6e32">DiploidPLGenotype::HOM_VAR</a> = 2
- }</td></tr>
-<tr class="memdesc:acea451c2c3a6601c111c7be6cfa9ca75"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple enum to keep the indices of the genotypes in the PL field of diploid individuals  <a href="namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75">More...</a><br /></td></tr>
-<tr class="separator:acea451c2c3a6601c111c7be6cfa9ca75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -419,7 +423,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 7 2014 21:58:25 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jul 8 2014 12:13:30 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

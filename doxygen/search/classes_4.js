@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['readbases',['ReadBases',['../classgamgee_1_1_read_bases.html',1,'gamgee']]]
+  ['htsfiledeleter',['HtsFileDeleter',['../structgamgee_1_1utils_1_1_hts_file_deleter.html',1,'gamgee::utils']]]
 ];
