@@ -25,7 +25,7 @@ class VariantHeaderBuilder {
   VariantHeaderBuilder(VariantHeaderBuilder&& other) noexcept;
   VariantHeaderBuilder(const VariantHeaderBuilder& other) = delete; ///< @brief explicitly forbid copying of a builder
 
-  void add_contig(const std::string& id, const std::string& length = "", const std::string& url = "", const std::string& extra = "");
+  void add_chromosome(const std::string& id, const std::string& length = "", const std::string& url = "", const std::string& extra = "");
   void add_filter(const std::string& id, const std::string& description = "", const std::string& extra = "");
   void add_info_field(const std::string& id, const std::string& number, const std::string& type, const std::string& description = "", const std::string& source = "", const std::string& version = "", const std::string& extra = "");
   void add_format_field(const std::string& id, const std::string& number, const std::string& type, const std::string& description = "", const std::string& extra = "");
