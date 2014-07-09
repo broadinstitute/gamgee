@@ -1,7 +1,11 @@
 #include <boost/test/unit_test.hpp>
-#include <vector>
+
 #include "sam.h"
 #include "sam_reader.h"
+#include "sam_builder.h"
+#include "is_missing.h"
+
+#include <vector>
 
 using namespace std;
 using namespace gamgee;
@@ -219,6 +223,68 @@ BOOST_AUTO_TEST_CASE( sam_read_tags ) {
   BOOST_CHECK_EQUAL(read2_xs_tag.value(), 0);
   BOOST_CHECK_EQUAL(read2_xs_tag.is_present(), true);
 
-  const auto read2_nonexistent_tag = read2.integer_tag("FB");
-  BOOST_CHECK_EQUAL(read2_nonexistent_tag.is_present(), false);
+  // check integer, char and float tags
+  const auto read1_za_tag = read1.double_tag("ZA");
+  BOOST_CHECK_EQUAL(read1_za_tag.name(), "ZA");
+  BOOST_CHECK(read1_za_tag.value() >= 2.3 - 0.001 && read1_za_tag.value() <= 2.3 + 0.001);
+  BOOST_CHECK_EQUAL(read1_za_tag.is_present(), true);
+  const auto read1_zb_tag = read1.integer_tag("ZB");
+  BOOST_CHECK_EQUAL(read1_zb_tag.name(), "ZB");
+  BOOST_CHECK_EQUAL(read1_zb_tag.value(), 23);
+  BOOST_CHECK_EQUAL(read1_zb_tag.is_present(), true);
+  const auto read1_zc_tag = read1.char_tag("ZC");
+  BOOST_CHECK_EQUAL(read1_zc_tag.name(), "ZC");
+  BOOST_CHECK_EQUAL(read1_zc_tag.value(), 't');
+  BOOST_CHECK_EQUAL(read1_zc_tag.is_present(), true);
+
+  // check is_missing functionality on missing tags
+  const auto read2_nonexistent_string_tag = read2.string_tag("PP");
+  BOOST_CHECK_EQUAL(read2_nonexistent_string_tag.is_present(), false);
+  BOOST_CHECK(is_missing(read2_nonexistent_string_tag));
+  const auto read2_nonexistent_integer_tag = read2.integer_tag("PP");
+  BOOST_CHECK_EQUAL(read2_nonexistent_integer_tag.is_present(), false);
+  BOOST_CHECK(is_missing(read2_nonexistent_integer_tag));
+  const auto read2_nonexistent_double_tag = read2.double_tag("PP");
+  BOOST_CHECK_EQUAL(read2_nonexistent_double_tag.is_present(), false);
+  BOOST_CHECK(is_missing(read2_nonexistent_double_tag));
+  const auto read2_nonexistent_char_tag = read2.char_tag("PP");
+  BOOST_CHECK_EQUAL(read2_nonexistent_char_tag.is_present(), false);
+  BOOST_CHECK(is_missing(read2_nonexistent_string_tag));
+
+  const auto not_a_char_tag = read1.char_tag("ZB");     // ZB is an integer tag
+  BOOST_CHECK(is_missing(not_a_char_tag));              // this should yield "not a char" which is equal to a missing value
+  const auto not_a_string_tag = read1.string_tag("ZB"); // ZB is an integer tag
+  BOOST_CHECK(is_missing(not_a_string_tag));            // this should yield "not a char" which is equal to a missing value
+}
+
+BOOST_AUTO_TEST_CASE( sam_copy_constructor ) {
+  const auto read1 = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  auto read2 = read1; // copy read1
+  read2.set_alignment_start(5000);
+  BOOST_CHECK(read1.alignment_start() != read2.alignment_start());
+  read2 = read1; // copy assignment test 
+  BOOST_CHECK(read1.alignment_start() == read2.alignment_start());
+  read2.set_alignment_start(1);
+  read2 = read2; // check self assignment
+  BOOST_CHECK_EQUAL(read2.alignment_start(), 1);
+}
+
+void check_read_alignment_starts_and_stops(const Sam& read, const uint32_t astart, const uint32_t astop, const uint32_t ustart, const uint32_t ustop) {
+  BOOST_CHECK_EQUAL(read.alignment_start(), astart);
+  BOOST_CHECK_EQUAL(read.alignment_stop(), astop);
+  BOOST_CHECK_EQUAL(read.unclipped_start(), ustart);
+  BOOST_CHECK_EQUAL(read.unclipped_stop(), ustop);
+}
+
+BOOST_AUTO_TEST_CASE( sam_unclipped_start_and_stop ) {
+  const auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
+  auto builder = SamBuilder{header, false};
+  const auto sam1 = builder.set_chromosome(0).set_alignment_start(100).set_cigar("20M").build();  // these are not complete reads, they only work for testing purposes!
+  const auto sam2 = builder.set_chromosome(0).set_alignment_start(100).set_cigar("5S15M").build(); 
+  const auto sam3 = builder.set_chromosome(0).set_alignment_start(100).set_cigar("15M5S").build(); 
+  const auto sam4 = builder.set_chromosome(0).set_alignment_start(100).set_cigar("5S10M5S").build(); 
+  check_read_alignment_starts_and_stops(sam1, 100, 120, 100, 120);
+  check_read_alignment_starts_and_stops(sam2, 100, 115, 95, 115);
+  check_read_alignment_starts_and_stops(sam3, 100, 115, 100, 120);
+  check_read_alignment_starts_and_stops(sam4, 100, 110, 95, 115);
 }
