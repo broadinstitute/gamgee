@@ -21,8 +21,8 @@ BOOST_AUTO_TEST_CASE( variant_header_builder_simple_building ) {
   auto builder = VariantHeaderBuilder{};
   builder.add_source("Gamgee api test");
   builder.advanced_add_arbitrary_line("##unused=<XX=AA,Description=\"Unused generic\">");
-  for (const auto& contig : chromosomes) 
-    builder.add_contig(contig, "234");
+  for (const auto& chromosome : chromosomes) 
+    builder.add_chromosome(chromosome, "234");
   for (const auto& sample : samples)
     builder.add_sample(sample);
   for (const auto& filter : filters) 
