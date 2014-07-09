@@ -31,15 +31,12 @@ BOOST_AUTO_TEST_CASE( sam_body_simple_members_by_reference ) {
     record.set_mate_alignment_start(aln);
     BOOST_CHECK_EQUAL(record.mate_alignment_start(), aln);
 
-    // TODO: more comprehensive tests for variable-length data fields once setters are in place
     const auto actual_cigar = record.cigar();
     BOOST_CHECK_EQUAL(actual_cigar.to_string(), expected_cigar);
     BOOST_CHECK_EQUAL(actual_cigar.size(), expected_cigar_size);
     BOOST_CHECK_EQUAL(static_cast<int>(Cigar::cigar_op(actual_cigar[0])), static_cast<int>(expected_cigar_element_operator));
     BOOST_CHECK_EQUAL(Cigar::cigar_oplen(actual_cigar[0]), expected_cigar_element_length);
-
     BOOST_CHECK_EQUAL(record.bases().to_string(), expected_bases);
-
     const auto actual_quals = record.base_quals();
     BOOST_CHECK_EQUAL(actual_quals.size(), expected_quals.size());
     for ( auto i = 0u; i < actual_quals.size(); ++i ) {
@@ -226,7 +223,7 @@ BOOST_AUTO_TEST_CASE( sam_read_tags ) {
   // check integer, char and float tags
   const auto read1_za_tag = read1.double_tag("ZA");
   BOOST_CHECK_EQUAL(read1_za_tag.name(), "ZA");
-  BOOST_CHECK(read1_za_tag.value() >= 2.3 - 0.001 && read1_za_tag.value() <= 2.3 + 0.001);
+  BOOST_CHECK_CLOSE(read1_za_tag.value(), 2.3, 0.001);
   BOOST_CHECK_EQUAL(read1_za_tag.is_present(), true);
   const auto read1_zb_tag = read1.integer_tag("ZB");
   BOOST_CHECK_EQUAL(read1_zb_tag.name(), "ZB");
@@ -251,6 +248,7 @@ BOOST_AUTO_TEST_CASE( sam_read_tags ) {
   BOOST_CHECK_EQUAL(read2_nonexistent_char_tag.is_present(), false);
   BOOST_CHECK(is_missing(read2_nonexistent_string_tag));
 
+  // miising value due to type mismatches
   const auto not_a_char_tag = read1.char_tag("ZB");     // ZB is an integer tag
   BOOST_CHECK(is_missing(not_a_char_tag));              // this should yield "not a char" which is equal to a missing value
   const auto not_a_string_tag = read1.string_tag("ZB"); // ZB is an integer tag
@@ -263,10 +261,13 @@ BOOST_AUTO_TEST_CASE( sam_copy_constructor ) {
   read2.set_alignment_start(5000);
   BOOST_CHECK(read1.alignment_start() != read2.alignment_start());
   read2 = read1; // copy assignment test 
-  BOOST_CHECK(read1.alignment_start() == read2.alignment_start());
+  BOOST_CHECK_EQUAL(read1.alignment_start(), read2.alignment_start());
   read2.set_alignment_start(1);
   read2 = read2; // check self assignment
   BOOST_CHECK_EQUAL(read2.alignment_start(), 1);
+  auto read3 = read1; // check that variable length data field modifications don't affect the original record
+  read3.base_quals()[0] = 90;
+  BOOST_CHECK(read1.base_quals()[0] != read3.base_quals()[0]);
 }
 
 void check_read_alignment_starts_and_stops(const Sam& read, const uint32_t astart, const uint32_t astop, const uint32_t ustart, const uint32_t ustop) {

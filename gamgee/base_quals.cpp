@@ -1,5 +1,6 @@
 #include "base_quals.h"
 #include "utils/hts_memory.h"
+#include "utils/utils.h"
 
 #include <string>
 #include <stdexcept>
@@ -76,9 +77,7 @@ BaseQuals& BaseQuals::operator=(BaseQuals&& other) noexcept {
   * @return base quality at the specified index as an unsigned byte
   */
 uint8_t BaseQuals::operator[](const uint32_t index) const {
-  if ( index >= m_num_quals )
-    throw out_of_range(string("Index ") + std::to_string(index) + " out of range in BaseQuals::operator[]");
-
+  utils::check_boundaries(index, m_num_quals);
   return m_quals[index];
 }
 
@@ -88,9 +87,7 @@ uint8_t BaseQuals::operator[](const uint32_t index) const {
  * @return base quality at the specified index as an unsigned byte
  */
 uint8_t& BaseQuals::operator[](const uint32_t index) {
-  if ( index >= m_num_quals )
-    throw out_of_range(string("Index ") + std::to_string(index) + " out of range in BaseQuals::operator[]");
-
+  utils::check_boundaries(index, m_num_quals);
   return m_quals[index];
 }
 
