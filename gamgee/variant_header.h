@@ -33,7 +33,7 @@ class VariantHeader {
 
   std::vector<std::string> filters()       const; ///< @brief builds a vector with the filters 
   std::vector<std::string> samples()       const; ///< @brief builds a vector with the names of the samples 
-  std::vector<std::string> contigs()       const; ///< @brief builds a vector with the contigs 
+  std::vector<std::string> chromosomes()   const; ///< @brief builds a vector with the contigs 
   std::vector<std::string> info_fields()   const; ///< @brief builds a vector with the info fields 
   std::vector<std::string> format_fields() const; ///< @brief builds a vector with the format fields
   bool has_format_field(const std::string)        const; ///< @brief checks if format field has the given field

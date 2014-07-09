@@ -13,15 +13,15 @@ void check_fields(T actual, T truth) {
 }
 
 BOOST_AUTO_TEST_CASE( variant_header_builder_simple_building ) {
-  const auto samples = vector<string>{"S1", "S292", "S30034"}; 
-  const auto contigs = vector<string>{"chr1", "chr2", "chr3", "chr4"}; 
-  const auto filters = vector<string>{"LOW_QUAL", "PASS", "VQSR_FAILED"};
-  const auto infos   = vector<string>{"DP", "MQ", "RankSum"};
-  const auto formats = vector<string>{"GQ", "PL", "DP"};
+  const auto samples     = vector<string>{"S1", "S292", "S30034"};
+  const auto chromosomes = vector<string>{"chr1", "chr2", "chr3", "chr4"};
+  const auto filters     = vector<string>{"LOW_QUAL", "PASS", "VQSR_FAILED"};
+  const auto infos       = vector<string>{"DP", "MQ", "RankSum"};
+  const auto formats     = vector<string>{"GQ", "PL", "DP"};
   auto builder = VariantHeaderBuilder{};
   builder.add_source("Gamgee api test");
   builder.advanced_add_arbitrary_line("##unused=<XX=AA,Description=\"Unused generic\">");
-  for (const auto& contig : contigs) 
+  for (const auto& contig : chromosomes) 
     builder.add_contig(contig, "234");
   for (const auto& sample : samples)
     builder.add_sample(sample);
@@ -32,7 +32,7 @@ BOOST_AUTO_TEST_CASE( variant_header_builder_simple_building ) {
   for (const auto& format : formats) 
     builder.add_format_field(format, "13", "Float", "nothing", "goat=shank");
   const auto vh = builder.build();
-  check_fields(vh.contigs(), contigs);
+  check_fields(vh.chromosomes(), chromosomes);
   check_fields(vh.samples(), samples);
   check_fields(vh.filters(), filters);
   check_fields(vh.info_fields(), infos);

@@ -58,7 +58,7 @@ vector<string> VariantHeader::samples() const {
   return utils::hts_string_array_to_vector(m_header->samples, uint32_t(bcf_hdr_nsamples(m_header)));
 }
 
-vector<string> VariantHeader::contigs() const {
+vector<string> VariantHeader::chromosomes() const {
   return find_fields_of_type(m_header.get(), BCF_HL_CTG);
 }
 
