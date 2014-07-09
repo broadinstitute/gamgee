@@ -7,7 +7,7 @@ var searchData=
   ['is_5fhet',['is_het',['../classgamgee_1_1_variant.html#a325ab99a97feb6d604e5a434587c3c6d',1,'gamgee::Variant']]],
   ['is_5fhom_5fref',['is_hom_ref',['../classgamgee_1_1_variant.html#abdc4afce81dd8817db593cde57790f7d',1,'gamgee::Variant']]],
   ['is_5fhom_5fvar',['is_hom_var',['../classgamgee_1_1_variant.html#ac0bb4581939fe6e0820c7e6dab11009d',1,'gamgee::Variant']]],
-  ['is_5fmissing',['is_missing',['../namespacegamgee.html#acc5d4d19fee9f9120dda2ccbec882388',1,'gamgee']]],
+  ['is_5fmissing',['is_missing',['../namespacegamgee.html#acc5d4d19fee9f9120dda2ccbec882388',1,'gamgee::is_missing(const float value)'],['../namespacegamgee.html#a78453a59d6846dfa789cec0ceba81e78',1,'gamgee::is_missing(const SamTag&lt; T &gt; &amp;tag)']]],
   ['is_5fpresent',['is_present',['../classgamgee_1_1_sam_tag.html#a39d46470fff37d2247848f06aae80dfc',1,'gamgee::SamTag']]],
   ['isheaderfile',['IsHeaderFile',['../_8ycm__extra__conf_8py.html#a38a706def8307cce6e9348c3379274bd',1,'.ycm_extra_conf.py']]]
 ];
