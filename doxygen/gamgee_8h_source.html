@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>Gamgee: gamgee/variant_writer.h File Reference</title>
+<title>Gamgee: gamgee/gamgee.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,35 +86,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
-<div class="title">variant_writer.h File Reference</div>  </div>
+<div class="title">gamgee.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;string&gt;</code><br />
-<code>#include &quot;<a class="el" href="variant_8h_source.html">variant.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="variant__header_8h_source.html">variant_header.h</a>&quot;</code><br />
-<code>#include &quot;htslib/vcf.h&quot;</code><br />
-</div>
-<p><a href="variant__writer_8h_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_writer.html">gamgee::VariantWriter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">utility class to write out a SAM/BAM/CRAM file to any stream  <a href="classgamgee_1_1_variant_writer.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:namespacegamgee"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html">gamgee</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-</div><!-- contents -->
+<a href="gamgee_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __gamgee__gamgee__</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __gamgee__gamgee__</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sam_8h.html">sam.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sam__reader_8h.html">sam_reader.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sam__writer_8h.html">sam_writer.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sam__builder_8h.html">sam_builder.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="variant_8h.html">variant.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="variant__reader_8h.html">variant_reader.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="variant__writer_8h.html">variant_writer.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="variant__header__builder_8h.html">variant_header_builder.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fastq_8h.html">fastq.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fastq__reader_8h.html">fastq_reader.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="is__missing_8h.html">is_missing.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* __gamgee__gamgee__ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="sam_8h_html"><div class="ttname"><a href="sam_8h.html">sam.h</a></div></div>
+<div class="ttc" id="fastq_8h_html"><div class="ttname"><a href="fastq_8h.html">fastq.h</a></div></div>
+<div class="ttc" id="sam__reader_8h_html"><div class="ttname"><a href="sam__reader_8h.html">sam_reader.h</a></div></div>
+<div class="ttc" id="is__missing_8h_html"><div class="ttname"><a href="is__missing_8h.html">is_missing.h</a></div></div>
+<div class="ttc" id="fastq__reader_8h_html"><div class="ttname"><a href="fastq__reader_8h.html">fastq_reader.h</a></div></div>
+<div class="ttc" id="variant_8h_html"><div class="ttname"><a href="variant_8h.html">variant.h</a></div></div>
+<div class="ttc" id="sam__builder_8h_html"><div class="ttname"><a href="sam__builder_8h.html">sam_builder.h</a></div></div>
+<div class="ttc" id="sam__writer_8h_html"><div class="ttname"><a href="sam__writer_8h.html">sam_writer.h</a></div></div>
+<div class="ttc" id="variant__header__builder_8h_html"><div class="ttname"><a href="variant__header__builder_8h.html">variant_header_builder.h</a></div></div>
+<div class="ttc" id="variant__writer_8h_html"><div class="ttname"><a href="variant__writer_8h.html">variant_writer.h</a></div></div>
+<div class="ttc" id="variant__reader_8h_html"><div class="ttname"><a href="variant__reader_8h.html">variant_reader.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 9 2014 16:59:18 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 9 2014 16:59:17 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
