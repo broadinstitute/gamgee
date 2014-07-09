@@ -1,7 +1,7 @@
 var searchData=
 [
   ['a',['A',['../namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49a7fc56270e7a70fa81a5935b72eacbe29',1,'gamgee']]],
-  ['add_5fcontig',['add_contig',['../classgamgee_1_1_variant_header_builder.html#a6299bb4b8ca26ff3541bc01e0efc0789',1,'gamgee::VariantHeaderBuilder']]],
+  ['add_5fchromosome',['add_chromosome',['../classgamgee_1_1_variant_header_builder.html#a8a502a5e5c264c0a6de404b9714dd5e2',1,'gamgee::VariantHeaderBuilder']]],
   ['add_5ffilter',['add_filter',['../classgamgee_1_1_variant_header_builder.html#a740a8a4d4389eb708eb0c69f237dc574',1,'gamgee::VariantHeaderBuilder']]],
   ['add_5fformat_5ffield',['add_format_field',['../classgamgee_1_1_variant_header_builder.html#a4b6dcbe622838c7e324078bf8f87188c',1,'gamgee::VariantHeaderBuilder']]],
   ['add_5fheader',['add_header',['../classgamgee_1_1_sam_writer.html#ac66a75aef5a280ffad72d6e6a48e55a0',1,'gamgee::SamWriter::add_header()'],['../classgamgee_1_1_variant_writer.html#a3cda74c0dac195ac22c52dbf2a7dd3e2',1,'gamgee::VariantWriter::add_header()']]],
