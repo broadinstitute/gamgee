@@ -66,7 +66,28 @@ std::vector<std::string> hts_string_array_to_vector(const char * const * const s
  * @param min_index the minimum valid index (typically 0 for array boundaries, but can be arbitrary for pointer checks)
  * @exception throws an out_of_bounds exception if index is out of limits
  */
-void check_boundaries(const int index, const int max_index, const int min_index = 0);
+inline void check_boundaries(const int index, const int max_index, const int min_index = 0) {
+  if (index < min_index || index > max_index) {
+    std::stringstream error_message {};  ///< @todo update this to auto when gcc-4.9 is available on travis-ci
+    error_message << "The index requested is out of range: " << index << " the maximum index is " << max_index << " and the minimum is " << min_index << std::endl;
+    throw std::out_of_range(error_message.str());
+  }
+}
+
+
+/**
+ * @brief checks that an index is greater than max_index
+ * @param index the index to check
+ * @param max_index the maximum valid index
+ * @exception throws an out_of_bounds exception if index is out of limits
+ */
+inline void check_max_boundary(const uint32_t index, const uint32_t max_index) {
+  if (index > max_index) {
+    std::stringstream error_message {};  ///< @todo update this to auto when gcc-4.9 is available on travis-ci
+    error_message << "The index requested is out of range: " << index << " the maximum index is " << max_index << std::endl;
+    throw std::out_of_range(error_message.str());
+  }
+}
 
 
 } // end utils namespace
