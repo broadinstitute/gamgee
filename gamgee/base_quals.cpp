@@ -77,7 +77,7 @@ BaseQuals& BaseQuals::operator=(BaseQuals&& other) noexcept {
   * @return base quality at the specified index as an unsigned byte
   */
 uint8_t BaseQuals::operator[](const uint32_t index) const {
-  utils::check_boundaries(index, m_num_quals);
+  utils::check_max_boundary(index, m_num_quals-1);
   return m_quals[index];
 }
 
@@ -87,7 +87,7 @@ uint8_t BaseQuals::operator[](const uint32_t index) const {
  * @return base quality at the specified index as an unsigned byte
  */
 uint8_t& BaseQuals::operator[](const uint32_t index) {
-  utils::check_boundaries(index, m_num_quals);
+  utils::check_max_boundary(index, m_num_quals-1);
   return m_quals[index];
 }
 
