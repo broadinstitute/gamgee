@@ -184,10 +184,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a740716d2b795a26787bf1000ae62ddb2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a740716d2b795a26787bf1000ae62ddb2">reverse_complement</a> (const std::string &amp;sequence)</td></tr>
 <tr class="memdesc:a740716d2b795a26787bf1000ae62ddb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates the reverse complement of a sequence  <a href="#a740716d2b795a26787bf1000ae62ddb2">More...</a><br /></td></tr>
 <tr class="separator:a740716d2b795a26787bf1000ae62ddb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f12c987c441cacb120ab7bc25489ccd"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
-<tr class="memitem:a9f12c987c441cacb120ab7bc25489ccd"><td class="memTemplItemLeft" align="right" valign="top">std::unique_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a9f12c987c441cacb120ab7bc25489ccd">make_unique</a> (Args &amp;&amp;...args)</td></tr>
-<tr class="memdesc:a9f12c987c441cacb120ab7bc25489ccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">herb sutter's implementation of make unique  <a href="#a9f12c987c441cacb120ab7bc25489ccd">More...</a><br /></td></tr>
-<tr class="separator:a9f12c987c441cacb120ab7bc25489ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3f1ec8c7415419a0e1c57c8255873a9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#aa3f1ec8c7415419a0e1c57c8255873a9">hts_string_array_to_vector</a> (const char *const *const string_array, const uint32_t array_size)</td></tr>
 <tr class="memdesc:aa3f1ec8c7415419a0e1c57c8255873a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">converts an array of c-strings into a vector&lt;string&gt;  <a href="#aa3f1ec8c7415419a0e1c57c8255873a9">More...</a><br /></td></tr>
 <tr class="separator:aa3f1ec8c7415419a0e1c57c8255873a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,6 +196,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a8dc2f050e5f381a43d332c2b12171f66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a8dc2f050e5f381a43d332c2b12171f66">check_max_boundary</a> (const uint32_t index, const uint32_t max_index)</td></tr>
 <tr class="memdesc:a8dc2f050e5f381a43d332c2b12171f66"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks that an index is greater than max_index  <a href="#a8dc2f050e5f381a43d332c2b12171f66">More...</a><br /></td></tr>
 <tr class="separator:a8dc2f050e5f381a43d332c2b12171f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3993f3188fb1d3bd6337a36a53efb442"><td class="memTemplParams" colspan="2">template&lt;typename... T&gt; </td></tr>
+<tr class="memitem:a3993f3188fb1d3bd6337a36a53efb442"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a3993f3188fb1d3bd6337a36a53efb442">zip</a> (const T &amp;...containers) -&gt; boost::iterator_range&lt; boost::zip_iterator&lt; decltype(boost::make_tuple(std::begin(containers)...))&gt;&gt;</td></tr>
+<tr class="memdesc:a3993f3188fb1d3bd6337a36a53efb442"><td class="mdescLeft">&#160;</td><td class="mdescRight">utility method to zip iterators together with simpler syntax than boost  <a href="#a3993f3188fb1d3bd6337a36a53efb442">More...</a><br /></td></tr>
+<tr class="separator:a3993f3188fb1d3bd6337a36a53efb442"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>utility functions for the gamgee library </p>
@@ -760,27 +760,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9f12c987c441cacb120ab7bc25489ccd"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , typename... Args&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unique_ptr&lt; T &gt; gamgee::utils::make_unique </td>
-          <td>(</td>
-          <td class="paramtype">Args &amp;&amp;...&#160;</td>
-          <td class="paramname"><em>args</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>herb sutter's implementation of make unique </p>
-<dl class="section note"><dt>Note</dt><dd>this is going to become standard in C++14, we can drop this as soon as gcc 4.9 and clang 3.5 are released </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="a740716d2b795a26787bf1000ae62ddb2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -946,10 +925,36 @@ template&lt;typename T , typename... Args&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a3993f3188fb1d3bd6337a36a53efb442"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto gamgee::utils::zip </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;...&#160;</td>
+          <td class="paramname"><em>containers</em></td><td>)</td>
+          <td> -&gt; boost::iterator_range&lt;boost::zip_iterator&lt;decltype(boost::make_tuple(std::begin(containers)...))&gt;&gt;
+</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>utility method to zip iterators together with simpler syntax than boost </p>
+<p>This is a wrapper over boost's zip_iterator interface to simplify the usage of zip iterators especially in for each loops. This function enables the following syntax:</p>
+<div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> tup : <a class="code" href="namespacegamgee_1_1utils.html#a3993f3188fb1d3bd6337a36a53efb442">zip</a>(a, b, c, d) {</div>
+<div class="line">  ... <span class="comment">// use tup values as a boost::tuple</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><p>for more details look at boost's zip_iterator documentation. </p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jul 11 2014 19:01:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jul 11 2014 19:04:39 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

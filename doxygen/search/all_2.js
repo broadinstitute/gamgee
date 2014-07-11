@@ -7,7 +7,7 @@ var searchData=
   ['chop',['chop',['../classgamgee_1_1_fastq.html#a7194ef6a3e1799b6e0dbc4817c61455d',1,'gamgee::Fastq']]],
   ['chromosome',['chromosome',['../classgamgee_1_1_sam.html#ac6b0aa48ad5673b617d11b97950e4e91',1,'gamgee::Sam::chromosome()'],['../classgamgee_1_1_variant.html#ae7ff7ad4733aaa8c66a65993b1ae6fa9',1,'gamgee::Variant::chromosome()']]],
   ['chromosomes',['chromosomes',['../classgamgee_1_1_variant_header.html#a636d949964cad4438e133da1639cd87e',1,'gamgee::VariantHeader']]],
-  ['cigar',['Cigar',['../classgamgee_1_1_cigar.html#a877e40f18e0301cd5a7fd79009e8d793',1,'gamgee::Cigar::Cigar(const std::shared_ptr&lt; bam1_t &gt; &amp;sam_record)'],['../classgamgee_1_1_cigar.html#ad5b1007650ff371984e1c453b5d36a0f',1,'gamgee::Cigar::Cigar(const Cigar &amp;other)'],['../classgamgee_1_1_cigar.html#a7c691f65cbb6e11044c17947e8899aa8',1,'gamgee::Cigar::Cigar(Cigar &amp;&amp;other) noexcept'],['../classgamgee_1_1_sam.html#a3f83688f6ff250f0d2110dfa6e0f6d86',1,'gamgee::Sam::cigar()']]],
+  ['cigar',['cigar',['../classgamgee_1_1_sam.html#a3f83688f6ff250f0d2110dfa6e0f6d86',1,'gamgee::Sam::cigar()'],['../classgamgee_1_1_cigar.html#a877e40f18e0301cd5a7fd79009e8d793',1,'gamgee::Cigar::Cigar(const std::shared_ptr&lt; bam1_t &gt; &amp;sam_record)'],['../classgamgee_1_1_cigar.html#ad5b1007650ff371984e1c453b5d36a0f',1,'gamgee::Cigar::Cigar(const Cigar &amp;other)'],['../classgamgee_1_1_cigar.html#a7c691f65cbb6e11044c17947e8899aa8',1,'gamgee::Cigar::Cigar(Cigar &amp;&amp;other) noexcept']]],
   ['cigar',['Cigar',['../classgamgee_1_1_cigar.html',1,'gamgee']]],
   ['cigar_2ecpp',['cigar.cpp',['../cigar_8cpp.html',1,'']]],
   ['cigar_2eh',['cigar.h',['../cigar_8h.html',1,'']]],
