@@ -58,6 +58,13 @@ class VariantIterator {
    */
   Variant& operator++();
 
+  /**
+   * @brief returns whether the iterator has no additional records
+   *
+   * @return true if the the iterator has no additional records
+   */
+  bool empty();
+
  private:
   vcfFile * m_variant_file_ptr;                    ///< pointer to the vcf/bcf file
   std::shared_ptr<bcf_hdr_t> m_variant_header_ptr; ///< pointer to the variant header

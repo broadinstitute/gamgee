@@ -38,6 +38,11 @@ Variant& VariantIterator::operator++() {
 bool VariantIterator::operator!=(const VariantIterator& rhs) {
   return m_variant_file_ptr != rhs.m_variant_file_ptr;
 }
+
+bool VariantIterator::empty() {
+  return m_variant_file_ptr == nullptr;
+}
+
 /**
  * @brief pre-fetches the next variant record
  * @warning we're reusing the existing htslib memory, so users should be aware that all objects from the previous iteration are now stale unless a deep copy has been performed
