@@ -1,6 +1,9 @@
 #ifndef __gamgee_utils__
 #define __gamgee_utils__
 
+#include <boost/iterator/zip_iterator.hpp>
+#include <boost/range.hpp>
+
 #include <string>
 #include <memory>
 #include <vector>
@@ -45,13 +48,6 @@ std::string complement(std::string& sequence);
 char complement (const char base);
 
 /**
- * @brief herb sutter's implementation of make unique
- * @note this is going to become standard in C++14, we can drop this as soon as gcc 4.9 and clang 3.5 are released
- */
-template<typename T, typename... Args>
-std::unique_ptr<T> make_unique(Args&&... args);
-
-/**
  * @brief converts an array of c-strings into a vector<string>
  * 
  * Useful in many hts structs where a list of names is stored as a char** and we want to 
@@ -87,6 +83,28 @@ inline void check_max_boundary(const uint32_t index, const uint32_t max_index) {
     error_message << "The index requested is out of range: " << index << " the maximum index is " << max_index << std::endl;
     throw std::out_of_range(error_message.str());
   }
+}
+
+/**
+ * @brief utility method to zip iterators together with simpler syntax than boost
+ *
+ * This is a wrapper over boost's zip_iterator interface to simplify the usage of zip
+ * iterators especially in for each loops. This function enables the following syntax:
+ * 
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * for (const auto tup : zip(a, b, c, d) {
+ *   ... // use tup values as a boost::tuple
+ * }
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *
+ * for more details look at boost's zip_iterator documentation.
+ */
+template <typename... T>
+auto zip(const T&... containers) -> boost::iterator_range<boost::zip_iterator<decltype(boost::make_tuple(std::begin(containers)...))>>
+{
+    auto zip_begin = boost::make_zip_iterator(boost::make_tuple(std::begin(containers)...));
+    auto zip_end = boost::make_zip_iterator(boost::make_tuple(std::end(containers)...));
+    return boost::make_iterator_range(zip_begin, zip_end);
 }
 
 
