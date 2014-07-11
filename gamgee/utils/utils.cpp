@@ -50,11 +50,6 @@ std::string reverse_complement(const std::string& sequence) {
   return rev;
 }
 
-template<typename T, typename... Args>
-std::unique_ptr<T> make_unique(Args&&... args) { 
-  return std::unique_ptr<T>(new T(std::forward<Args>(args)...)); 
-}
-
 std::vector<std::string> hts_string_array_to_vector(const char * const * const string_array, const uint32_t array_size) {
   auto result = std::vector<std::string>{};
   result.reserve(array_size);
