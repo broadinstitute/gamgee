@@ -123,7 +123,7 @@ class VariantField {
    * @return the value if it is a basic type (e.g. GQ, GL), or a specific object if it is a complex type (e.g. PL, AD,...)
    */
   TYPE operator[](const uint32_t sample) const {
-    utils::check_boundaries(sample, m_body->n_sample-1);
+    utils::check_max_boundary(sample, m_body->n_sample);
     return TYPE{m_body, m_format_ptr, m_format_ptr->p + (sample * m_format_ptr->size)}; 
   }
 

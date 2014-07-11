@@ -110,7 +110,7 @@ class VariantFieldValue {
    * @return the value in that index
    */
   VALUE_TYPE operator[](const uint32_t index) const {
-    utils::check_boundaries(index, m_format_ptr->n - 1);
+    utils::check_max_boundary(index, m_format_ptr->n);
     return convert_from_byte_array(index); 
   }
 
