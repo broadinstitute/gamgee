@@ -52,14 +52,14 @@ class MultipleVariantIterator {
    *
    * @return a reference to the iterator's Variant vector
    */
-  std::vector<Variant>& operator*();
+  std::vector<std::shared_ptr<Variant>>& operator*();
 
   /**
    * @brief advances the iterator, fetching the next vector
    *
    * @return a reference to the iterator's Variant vector
    */
-  std::vector<Variant>& operator++();
+  std::vector<std::shared_ptr<Variant>>& operator++();
 
  private:
   // fetches the next Variant vector
@@ -75,7 +75,7 @@ class MultipleVariantIterator {
   std::priority_queue<std::shared_ptr<VariantIterator>, std::vector<std::shared_ptr<VariantIterator>>, Comparator> m_queue;
 
   // caches next Variant vector
-  std::vector<Variant> m_variant_vector;
+  std::vector<std::shared_ptr<Variant>> m_variant_vector;
 };
 
 }  // end namespace gamgee

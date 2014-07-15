@@ -23,11 +23,11 @@ MultipleVariantIterator::MultipleVariantIterator(MultipleVariantIterator&& origi
   m_variant_vector {std::move(original.m_variant_vector)}
 {}
 
-std::vector<Variant>& MultipleVariantIterator::operator*() {
+std::vector<std::shared_ptr<Variant>>& MultipleVariantIterator::operator*() {
   return m_variant_vector;
 }
 
-std::vector<Variant>& MultipleVariantIterator::operator++() {
+std::vector<std::shared_ptr<Variant>>& MultipleVariantIterator::operator++() {
   fetch_next_vector();
   return m_variant_vector;
 }
@@ -55,14 +55,14 @@ void MultipleVariantIterator::fetch_next_vector() {
 
   while (!m_queue.empty()) {
     const auto top_iterator = m_queue.top();
-    const auto& variant = **top_iterator;
+    const auto& variant_ptr = std::make_shared<Variant>(**top_iterator);
 
-    if (!m_variant_vector.empty() && !(variant.chromosome() == current_chrom && variant.alignment_start() == current_start))
+    if (!m_variant_vector.empty() && !(variant_ptr->chromosome() == current_chrom && variant_ptr->alignment_start() == current_start))
       break;
     else {
-      m_variant_vector.push_back(variant);
-      current_chrom = variant.chromosome();
-      current_start = variant.alignment_start();
+      m_variant_vector.push_back(variant_ptr);
+      current_chrom = variant_ptr->chromosome();
+      current_start = variant_ptr->alignment_start();
 
       m_queue.pop();
       top_iterator->operator++();
