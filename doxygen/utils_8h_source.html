@@ -116,7 +116,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;std::vector&lt;std::string&gt; <a class="code" href="namespacegamgee_1_1utils.html#aa3f1ec8c7415419a0e1c57c8255873a9">hts_string_array_to_vector</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> * <span class="keyword">const</span> string_array, <span class="keyword">const</span> uint32_t array_size);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#a68e799fdc7eb14f8784ac77618a87a8f">   65</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespacegamgee_1_1utils.html#a68e799fdc7eb14f8784ac77618a87a8f">check_boundaries</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> index, <span class="keyword">const</span> <span class="keywordtype">int</span> max_index, <span class="keyword">const</span> <span class="keywordtype">int</span> min_index = 0) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordflow">if</span> (index &lt; min_index || index &gt;= max_index) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordflow">if</span> (index &lt; min_index || index &gt; max_index) {</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    std::stringstream error_message {};  </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    error_message &lt;&lt; <span class="stringliteral">&quot;The index requested is out of range: &quot;</span> &lt;&lt; index &lt;&lt; <span class="stringliteral">&quot; the maximum index is &quot;</span> &lt;&lt; max_index &lt;&lt; <span class="stringliteral">&quot; and the minimum is &quot;</span> &lt;&lt; min_index &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">throw</span> std::out_of_range(error_message.str());</div>
@@ -125,7 +125,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#a8dc2f050e5f381a43d332c2b12171f66">   80</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespacegamgee_1_1utils.html#a8dc2f050e5f381a43d332c2b12171f66">check_max_boundary</a>(<span class="keyword">const</span> uint32_t index, <span class="keyword">const</span> uint32_t max_index) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordflow">if</span> (index &gt;= max_index) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordflow">if</span> (index &gt; max_index) {</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    std::stringstream error_message {};  </div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    error_message &lt;&lt; <span class="stringliteral">&quot;The index requested is out of range: &quot;</span> &lt;&lt; index &lt;&lt; <span class="stringliteral">&quot; the maximum index is &quot;</span> &lt;&lt; max_index &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">throw</span> std::out_of_range(error_message.str());</div>
@@ -155,7 +155,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 15 2014 15:57:35 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 16 2014 18:23:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

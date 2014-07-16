@@ -292,7 +292,8 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 </div><div class="memdoc">
 
 <p>makes a deep copy of a <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> and it's header. Shared pointers maintain state to all other associated objects correctly. </p>
-<p>creates a deep copy of a variant record and header </p>
+<p>creates a deep copy of a variant record</p>
+<dl class="section note"><dt>Note</dt><dd>does not perform a deep copy of the variant header </dd></dl>
 
 </div>
 </div>
@@ -726,7 +727,7 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>the parameter is passed by copy so we can maintain the strong exception safety guarantee </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>does not perform a deep copy of the variant header </dd></dl>
 <p>&lt; shared_ptr assignment will take care of deallocating old record if necessary</p>
 <p>&lt; shared_ptr assignment will take care of deallocating old record if necessary </p>
 
@@ -901,7 +902,7 @@ This can either be a function pointer or a function object. </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 15 2014 15:57:35 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 16 2014 18:23:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
