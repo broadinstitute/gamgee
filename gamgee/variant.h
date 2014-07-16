@@ -30,6 +30,7 @@ class Variant {
   Variant(Variant&& other) noexcept;                                                                                  ///< @brief moves Variant and it's header accordingly. Shared pointers maintain state to all other associated objects correctly.
   Variant& operator=(const Variant& other);                                                                           ///< @brief deep copy assignment of a Variant and it's header. Shared pointers maintain state to all other associated objects correctly.
   Variant& operator=(Variant&& other) noexcept;                                                                       ///< @brief move assignment of a Variant and it's header. Shared pointers maintain state to all other associated objects correctly.
+  ~Variant() noexcept { }
 
   VariantHeader header() const { return VariantHeader{m_header}; }
 
