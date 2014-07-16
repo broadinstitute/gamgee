@@ -62,7 +62,7 @@ void MultipleVariantIterator::fetch_next_vector() {
     else {
       current_chrom = variant.chromosome();
       current_start = variant.alignment_start();
-      m_variant_vector.push_back(std::make_shared<Variant>(std::move(variant)));
+      m_variant_vector.push_back(std::move(std::make_shared<Variant>(std::move(variant))));
       m_queue.pop();
       top_iterator->operator++();
       if (! top_iterator->empty())
