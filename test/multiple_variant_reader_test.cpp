@@ -40,8 +40,7 @@ BOOST_AUTO_TEST_CASE( multi_variant_reader )
   MultipleVariantReader<MultipleVariantIterator> reader{{"testdata/test_variants.vcf", "testdata/test_variants.bcf"}, false};
   auto position_counter = 0u;
   for (const auto& vec : reader) {
-    for (const auto& variant_ptr : vec) {
-      const auto record = *variant_ptr;
+    for (const auto& record : vec) {
       BOOST_CHECK_EQUAL(record.ref(), truth_ref[position_counter]);
       BOOST_CHECK_EQUAL(record.chromosome(), truth_contigs[position_counter]);
       BOOST_CHECK_EQUAL(record.alignment_start(), truth_alignment_starts[position_counter]);
