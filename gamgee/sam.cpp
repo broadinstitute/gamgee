@@ -25,9 +25,12 @@ Sam::Sam(const std::shared_ptr<bam_hdr_t>& header, const std::shared_ptr<bam1_t>
  * @note the copy will have exclusive ownership over the newly-allocated htslib memory
  *       until a data field (cigar, bases, etc.) is accessed, after which it will be
  *       shared via reference counting with the Cigar, etc. objects
+ * @note does not perform a deep copy of the sam header; to copy the header,
+ *       first get it via the header() function and then copy it via the usual C++
+ *       semantics
  */
 Sam::Sam(const Sam& other) :
-  m_header { utils::make_shared_sam_header(utils::sam_header_deep_copy(other.m_header.get())) },
+  m_header { other.m_header },
   m_body { utils::make_shared_sam(utils::sam_deep_copy(other.m_body.get())) }
 {}
 
@@ -45,12 +48,15 @@ Sam::Sam(Sam&& other) noexcept :
  * @note the copy will have exclusive ownership over the newly-allocated htslib memory
  *       until a data field (cigar, bases, etc.) is accessed, after which it will be
  *       shared via reference counting with the Cigar, etc. objects
+ * @note does not perform a deep copy of the sam header; to copy the header,
+ *       first get it via the header() function and then copy it via the usual C++
+ *       semantics
  */
 Sam& Sam::operator=(const Sam& other) {
   if ( &other == this )  
     return *this;
-  m_header = utils::make_shared_sam_header(utils::sam_header_deep_copy(other.m_header.get())); ///< shared_ptr assignment will take care of deallocating old sam record if necessary
-  m_body = utils::make_shared_sam(utils::sam_deep_copy(other.m_body.get()));                   ///< shared_ptr assignment will take care of deallocating old sam record if necessary
+  m_header = other.m_header;      ///< shared_ptr assignment will take care of deallocating old sam record if necessary
+  m_body = utils::make_shared_sam(utils::sam_deep_copy(other.m_body.get()));     ///< shared_ptr assignment will take care of deallocating old sam record if necessary
   return *this;
 }
 

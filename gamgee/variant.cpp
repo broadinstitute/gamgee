@@ -19,10 +19,14 @@ Variant::Variant(const std::shared_ptr<bcf_hdr_t>& header, const std::shared_ptr
 {}
 
 /**
- * @brief creates a deep copy of a variant record and header
+ * @brief creates a deep copy of a variant record
+ *
+ * @note does not perform a deep copy of the variant header; to copy the header,
+ *       first get it via the header() function and then copy it via the usual C++
+ *       semantics
  */
 Variant::Variant(const Variant& other) :
-  m_header {utils::make_shared_variant_header(utils::variant_header_deep_copy(other.m_header.get()))},
+  m_header {other.m_header},
   m_body {utils::make_shared_variant(utils::variant_deep_copy(other.m_body.get()))}
 {}
 
@@ -37,13 +41,15 @@ Variant::Variant(Variant&& other) noexcept :
 /**
  * @brief creates a deep copy of a variant record
  * @param other the Variant to be copied
- * @note the parameter is passed by copy so we can maintain the strong exception safety guarantee
+ * @note does not perform a deep copy of the variant header; to copy the header,
+ *       first get it via the header() function and then copy it via the usual C++
+ *       semantics
  */
 Variant& Variant::operator=(const Variant& other) {
   if ( &other == this )  
     return *this;
-  m_body = utils::make_shared_variant(utils::variant_deep_copy(other.m_body.get()));                   ///< shared_ptr assignment will take care of deallocating old record if necessary
-  m_header = utils::make_shared_variant_header(utils::variant_header_deep_copy(other.m_header.get())); ///< shared_ptr assignment will take care of deallocating old record if necessary
+  m_header = other.m_header;    ///< shared_ptr assignment will take care of deallocating old record if necessary
+  m_body = utils::make_shared_variant(utils::variant_deep_copy(other.m_body.get()));  ///< shared_ptr assignment will take care of deallocating old record if necessary
   return *this;
 }
 
