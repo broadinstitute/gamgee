@@ -55,15 +55,14 @@ void MultipleVariantIterator::fetch_next_vector() {
 
   while (!m_queue.empty()) {
     const auto top_iterator = m_queue.top();
-    const auto& variant_ptr = std::make_shared<Variant>(**top_iterator);
+    const auto& variant = **top_iterator;
 
-    if (!m_variant_vector.empty() && !(variant_ptr->chromosome() == current_chrom && variant_ptr->alignment_start() == current_start))
+    if (!m_variant_vector.empty() && !(variant.chromosome() == current_chrom && variant.alignment_start() == current_start))
       break;
     else {
-      m_variant_vector.push_back(variant_ptr);
-      current_chrom = variant_ptr->chromosome();
-      current_start = variant_ptr->alignment_start();
-
+      current_chrom = variant.chromosome();
+      current_start = variant.alignment_start();
+      m_variant_vector.push_back(std::make_shared<Variant>(std::move(variant)));
       m_queue.pop();
       top_iterator->operator++();
       if (! top_iterator->empty())
