@@ -293,7 +293,7 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 <p>makes a deep copy of a <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> and it's header. Shared pointers maintain state to all other associated objects correctly. </p>
 <p>creates a deep copy of a variant record</p>
-<dl class="section note"><dt>Note</dt><dd>does not perform a deep copy of the variant header </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>does not perform a deep copy of the variant header; to copy the header, first get it via the <a class="el" href="classgamgee_1_1_variant.html#adcf70d251726d37a8a5b7fc3e5ffa0f3">header()</a> function and then copy it via the usual C++ semantics </dd></dl>
 
 </div>
 </div>
@@ -727,7 +727,7 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>does not perform a deep copy of the variant header </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>does not perform a deep copy of the variant header; to copy the header, first get it via the <a class="el" href="classgamgee_1_1_variant.html#adcf70d251726d37a8a5b7fc3e5ffa0f3">header()</a> function and then copy it via the usual C++ semantics </dd></dl>
 <p>&lt; shared_ptr assignment will take care of deallocating old record if necessary</p>
 <p>&lt; shared_ptr assignment will take care of deallocating old record if necessary </p>
 
@@ -902,7 +902,7 @@ This can either be a function pointer or a function object. </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 16 2014 18:23:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 17 2014 16:05:25 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
