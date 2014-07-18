@@ -56,31 +56,15 @@ char complement (const char base);
 std::vector<std::string> hts_string_array_to_vector(const char * const * const string_array, const uint32_t array_size);
 
 /**
- * @brief checks that an index is within min_index to max_index
- * @param index the index to check
- * @param max_index the maximum valid index
- * @param min_index the minimum valid index (typically 0 for array boundaries, but can be arbitrary for pointer checks)
+ * @brief checks that an index is greater than or equal to size
+ * @param index the index between 0 and size to check
+ * @param size one past the maximum valid index
  * @exception throws an out_of_bounds exception if index is out of limits
  */
-inline void check_boundaries(const int index, const int max_index, const int min_index = 0) {
-  if (index < min_index || index > max_index) {
+inline void check_max_boundary(const uint32_t index, const uint32_t size) {
+  if (index >= size) {
     std::stringstream error_message {};  ///< @todo update this to auto when gcc-4.9 is available on travis-ci
-    error_message << "The index requested is out of range: " << index << " the maximum index is " << max_index << " and the minimum is " << min_index << std::endl;
-    throw std::out_of_range(error_message.str());
-  }
-}
-
-
-/**
- * @brief checks that an index is greater than max_index
- * @param index the index to check
- * @param max_index the maximum valid index
- * @exception throws an out_of_bounds exception if index is out of limits
- */
-inline void check_max_boundary(const uint32_t index, const uint32_t max_index) {
-  if (index > max_index) {
-    std::stringstream error_message {};  ///< @todo update this to auto when gcc-4.9 is available on travis-ci
-    error_message << "The index requested is out of range: " << index << " the maximum index is " << max_index << std::endl;
+    error_message << "Index:  " << index << " must be less than " << size << std::endl;
     throw std::out_of_range(error_message.str());
   }
 }
