@@ -191,7 +191,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ab9002b9228221fb6a03d04e48424e318"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates the complement of a base  <a href="#ab9002b9228221fb6a03d04e48424e318">More...</a><br /></td></tr>
 <tr class="separator:ab9002b9228221fb6a03d04e48424e318"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f228e0091b6df37b21d4a58c7ad372c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">check_max_boundary</a> (const uint32_t index, const uint32_t size)</td></tr>
-<tr class="memdesc:a0f228e0091b6df37b21d4a58c7ad372c"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks that an index is greater than size  <a href="#a0f228e0091b6df37b21d4a58c7ad372c">More...</a><br /></td></tr>
+<tr class="memdesc:a0f228e0091b6df37b21d4a58c7ad372c"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks that an index is greater than or equal to size  <a href="#a0f228e0091b6df37b21d4a58c7ad372c">More...</a><br /></td></tr>
 <tr class="separator:a0f228e0091b6df37b21d4a58c7ad372c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3993f3188fb1d3bd6337a36a53efb442"><td class="memTemplParams" colspan="2">template&lt;typename... T&gt; </td></tr>
 <tr class="memitem:a3993f3188fb1d3bd6337a36a53efb442"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a3993f3188fb1d3bd6337a36a53efb442">zip</a> (const T &amp;...containers) -&gt; boost::iterator_range&lt; boost::zip_iterator&lt; decltype(boost::make_tuple(std::begin(containers)...))&gt;&gt;</td></tr>
@@ -272,10 +272,10 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>checks that an index is greater than size </p>
+<p>checks that an index is greater than or equal to size </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>the index to check </td></tr>
+    <tr><td class="paramname">index</td><td>the index between 0 and size to check </td></tr>
     <tr><td class="paramname">size</td><td>one past the maximum valid index </td></tr>
   </table>
   </dd>
@@ -894,7 +894,7 @@ template&lt;typename... T&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jul 18 2014 20:08:08 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jul 18 2014 20:09:16 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
