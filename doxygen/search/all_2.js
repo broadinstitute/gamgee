@@ -2,7 +2,7 @@ var searchData=
 [
   ['c',['C',['../namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49a0d61f8370cad1d412f80b84d143e1257',1,'gamgee']]],
   ['char_5ftag',['char_tag',['../classgamgee_1_1_sam.html#a1271912c9905795941b4dd14d02196a6',1,'gamgee::Sam']]],
-  ['check_5fmax_5fboundary',['check_max_boundary',['../namespacegamgee_1_1utils.html#abedffa4cc3fd6d8e5d263b52c458838e',1,'gamgee::utils']]],
+  ['check_5fmax_5fboundary',['check_max_boundary',['../namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c',1,'gamgee::utils']]],
   ['chop',['chop',['../classgamgee_1_1_fastq.html#a7194ef6a3e1799b6e0dbc4817c61455d',1,'gamgee::Fastq']]],
   ['chromosome',['chromosome',['../classgamgee_1_1_sam.html#ac6b0aa48ad5673b617d11b97950e4e91',1,'gamgee::Sam::chromosome()'],['../classgamgee_1_1_variant.html#ae7ff7ad4733aaa8c66a65993b1ae6fa9',1,'gamgee::Variant::chromosome()']]],
   ['chromosomes',['chromosomes',['../classgamgee_1_1_variant_header.html#a636d949964cad4438e133da1639cd87e',1,'gamgee::VariantHeader']]],
