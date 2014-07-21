@@ -83,6 +83,10 @@ class Variant {
   SharedField<float> shared_field_as_float(const int32_t index) const;           ///< same as float_shared_field but will attempt to convert underlying data to float if possible. @warning creates a new object but makes no copies of the underlying values.
   SharedField<std::string> shared_field_as_string(const int32_t index) const;    ///< same as string_shared_field but will attempt to convert underlying data to string if possible. @warning creates a new object but makes no copies of the underlying values.
 
+  // nasty temporary hacks for Joel
+  inline void set_alignment_start(const int32_t start) { m_body->pos = start - 1; }
+  inline void set_alignment_stop(const int32_t end) { m_body->rlen = end - m_body->pos; }
+
   /**
    * @brief functional-style set logic operations for variant field vectors
    *
