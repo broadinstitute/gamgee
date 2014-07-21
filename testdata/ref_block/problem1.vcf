@@ -1,0 +1,21 @@
+##fileformat=VCFv4.1
+##ALT=<ID=NON_REF,Description="Represents any possible alternative allele at this location">
+##FILTER=<ID=LowQual,Description="Low quality">
+##FORMAT=<ID=AD,Number=.,Type=Integer,Description="Allelic depths for the ref and alt alleles in the order listed">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Approximate read depth (reads with MQ=255 or with bad mates are filtered)">
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description="Genotype Quality">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=MIN_DP,Number=1,Type=Integer,Description="Minimum DP observed within the GVCF block">
+##FORMAT=<ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+##FORMAT=<ID=SB,Number=4,Type=Integer,Description="Per-sample component statistics which comprise the Fisher's Exact Test to detect strand bias.">
+##contig=<ID=1,length=249250621>
+##reference=Homo_sapiens_assembly19.fasta
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	PROBLEM_SAMPLE
+1	11140505	.	C	<NON_REF>	.	.	END=11140609	GT:DP:GQ:MIN_DP:PL	0/0:102:99:64:0,117,1755
+1	11140610	.	G	<NON_REF>	.	.	END=11140610	GT:DP:GQ:MIN_DP:PL	0/0:65:0:65:0,0,1851
+1	11140611	.	A	<NON_REF>	.	.	END=11140619	GT:DP:GQ:MIN_DP:PL	0/0:83:69:82:0,60,900
+1	11140620	.	AACACACAC	A,AAC,AACACACACAC,<NON_REF>	0.01	.	.	GT:AD:DP:GQ:PL:SB	0/3:20,0,0,5,0:25:9:198,444,4343,424,3388,3263,0,1715,1379,2412,9,694,634,502,457:6,14,3,2
+1	11140621	.	ACACACAC	A,AACACAC,AAC,<NON_REF>	142.73	.	.	GT:AD:DP:GQ:PL:SB	0/2:41,0,10,2,0:53:99:204,420,4129,0,2639,2527,217,3164,2429,3061,180,2736,2400,2563,2525:18,23,2,8
+1	11140623	.	ACACAC	A,AAC,<NON_REF>	0	.	.	GT:AD:DP:GQ:PL:SB	0/0:46,3,7,0:56:58:0,127,3660,58,2726,2688,145,2832,2670,2756:0,0,0,0
+1	11140629	.	A	<NON_REF>	.	.	END=11140658	GT:DP:GQ:MIN_DP:PL	0/0:76:99:73:0,120,1800
+1	11140768	.	A	<NON_REF>	.	.	END=11141021	GT:DP:GQ:MIN_DP:PL	0/0:127:99:93:0,120,1800
