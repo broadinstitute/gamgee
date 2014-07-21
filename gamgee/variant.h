@@ -56,9 +56,9 @@ class Variant {
   VariantField<VariantFieldValue<int32_t>> phred_likelihoods() const;                                                 ///< @brief returns a random access object with all the PL values for all samples contiguous in memory.
 
   // generic format field getters
-  VariantField<VariantFieldValue<int32_t>> generic_integer_format_field(const std::string& tag) const;                ///< @brief returns a random access object with all the values in a give foramt field tag in integer format for all samples contiguous in memory.
-  VariantField<VariantFieldValue<float>> generic_float_format_field(const std::string& tag) const;                    ///< @brief returns a random access object with all the values in a give foramt field tag in float format for all samples contiguous in memory.
-  VariantField<VariantFieldValue<std::string>> generic_string_format_field(const std::string& tag) const;             ///< @brief returns a random access object with all the values in a give foramt field tag in string format for all samples contiguous in memory. @warning not working at the moment due to bug in htslib
+  VariantField<VariantFieldValue<int32_t>> generic_integer_format_field(const std::string& tag) const;                ///< @brief returns a random access object with all the values in a given format field tag in integer format for all samples contiguous in memory.
+  VariantField<VariantFieldValue<float>> generic_float_format_field(const std::string& tag) const;                    ///< @brief returns a random access object with all the values in a given format field tag in float format for all samples contiguous in memory.
+  VariantField<VariantFieldValue<std::string>> generic_string_format_field(const std::string& tag) const;             ///< @brief returns a random access object with all the values in a given format field tag in string format for all samples contiguous in memory. @warning not working at the moment due to bug in htslib
 
   VariantField<Genotype> genotypes() const;                                                                           ///< @brief returns a random access object with all the values in a given GT tag for all samples contiguous in memory. @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested.
 
