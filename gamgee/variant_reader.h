@@ -68,8 +68,18 @@ class VariantReader {
     m_variant_file_ptr {bcf_open(filename.empty() ? "-" : filename.c_str(), "r")},
     m_variant_header_ptr { utils::make_shared_variant_header(bcf_hdr_read(m_variant_file_ptr)) }
   {
-    const auto sample_list = convert_sample_names_to_htslib_format(samples, include);
-    bcf_hdr_set_samples(m_variant_header_ptr.get(), sample_list, false);
+    if (samples.empty() && include) // exclude all samples
+      bcf_hdr_set_samples(m_variant_header_ptr.get(), NULL, false);
+
+    else if (samples.empty() && !include) // keep all samples
+      bcf_hdr_set_samples(m_variant_header_ptr.get(), "-", false);
+
+    else { // select some samples
+      auto sample_list = include ? std::string{} : std::string{"^"};
+      std::for_each(samples.begin(), samples.end(), [&sample_list](const auto& s) { sample_list += s + ","; });
+      sample_list.erase(sample_list.size() - 1);
+      bcf_hdr_set_samples(m_variant_header_ptr.get(), sample_list.c_str(), false);
+    }
   }
 
   /**
@@ -119,21 +129,6 @@ class VariantReader {
  private:
   vcfFile* m_variant_file_ptr;                           ///< pointer to the internal file structure of the variant/bam/cram file
   const std::shared_ptr<bcf_hdr_t> m_variant_header_ptr; ///< pointer to the internal header structure of the variant/bam/cram file
-
-  /**
-   * @brief converts a vector of sample names into a comma separated string. 
-   * @param include whether the samples are to be included or excluded (^). 
-   * @return the appropriate htslib string
-   */
-  const char* convert_sample_names_to_htslib_format(const std::vector<std::string>& samples, const bool include) {
-    if (samples.empty() && include)
-      return include ? nullptr : "-"; // htslib asks for NULL if you want to exclude all samples or "-" if you want to include all samples
-
-    auto sample_list = include ? std::string{} : std::string{"^"};
-    std::for_each(samples.begin(), samples.end(), [&sample_list](const auto& s) { sample_list += s + ","; });
-    sample_list.erase(sample_list.size() - 1);
-    return sample_list.c_str();
-  }
 
 };
 
