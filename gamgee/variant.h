@@ -39,6 +39,7 @@ class Variant {
   uint32_t n_samples()       const {return uint32_t(m_body->n_sample);}                                               ///< @brief returns the number of samples in this Variant record
   uint32_t n_alleles()       const {return uint32_t(m_body->n_allele);}                                               ///< @brief returns the number of alleles in this Variant record
 
+  std::string id() const;                                                                                             ///< @brief returns the variant id field (typically dbsnp id)
   std::string ref() const;                                                                                            ///< @brief returns the ref allele in this Variant record
   std::vector<std::string> alt() const;                                                                               ///< @brief returns the vectors of alt alleles in this Variant record
 
