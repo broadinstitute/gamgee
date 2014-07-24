@@ -64,6 +64,11 @@ Variant& Variant::operator=(Variant&& other) noexcept {
   return *this;
 }
 
+std::string Variant::id () const {
+  bcf_unpack(m_body.get(), BCF_UN_STR);
+  return std::string{m_body->d.id};
+}
+
 std::string Variant::ref() const {
   bcf_unpack(m_body.get(), BCF_UN_STR);
   return n_alleles() > 0 ?  string{m_body.get()->d.allele[0]} : string{}; 

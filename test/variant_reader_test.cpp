@@ -16,6 +16,7 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
   const auto truth_filter_size = vector<uint32_t>{1,1,1,1,2};
   const auto truth_quals = vector<float>{80,8.4,-1,-1,-1};
   const auto truth_ref = vector<string>{"T", "GG", "TAGTGQA", "A", "GAT"};
+  const auto truth_id = vector<string>{"db2342", "rs837472", ".", ".", "."};
   const vector< vector<string>> truth_alt = {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"}};
   for (const auto& filename : {"testdata/test_variants.vcf", "testdata/test_variants.bcf"}) {
     auto record_counter = 0u;
@@ -25,6 +26,7 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
       BOOST_CHECK_EQUAL(record.alignment_start(), truth_alignment_starts[record_counter]);
       BOOST_CHECK_EQUAL(record.n_alleles(), truth_n_alleles[record_counter]);
       BOOST_CHECK_EQUAL(record.n_samples(), 3);
+      BOOST_CHECK_EQUAL(record.id(), truth_id[record_counter]);
       BOOST_CHECK(record.has_filter(truth_filter_first[record_counter])); // check the has_filter member function
 
 
