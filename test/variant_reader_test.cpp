@@ -112,22 +112,40 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
 BOOST_AUTO_TEST_CASE( single_variant_reader_sites_only )  
 {
   for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{}})  // exclude all samples (sites-only)
-    BOOST_CHECK(record.phred_likelihoods().empty());
+    BOOST_CHECK_EQUAL(record.n_samples(), 0);
+}
+
+BOOST_AUTO_TEST_CASE( single_variant_reader_include_all_samples ) 
+{
+  for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{}, false})  // include all samples by setting include == false and passing an empty list
+    BOOST_CHECK_EQUAL(record.n_samples(), 3);
 }
 
 BOOST_AUTO_TEST_CASE( single_variant_reader_including )  
 {
   for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{"NA12878"}}) // include only NA12878
-    BOOST_CHECK_EQUAL(record.phred_likelihoods().size(), 1);
+    BOOST_CHECK_EQUAL(record.n_samples(), 1);
   for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{"NA12878", "NA12892"}}) // include both these samples
-    BOOST_CHECK_EQUAL(record.phred_likelihoods().size(), 2);
+    BOOST_CHECK_EQUAL(record.n_samples(), 2);
 }
 
 BOOST_AUTO_TEST_CASE( single_variant_reader_excluding )  
 {
   for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{"NA12891"}, false})  // exclude only NA12891
-    BOOST_CHECK_EQUAL(record.phred_likelihoods().size(), 2);
+    BOOST_CHECK_EQUAL(record.n_samples(), 2);
   for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{"NA12891", "NA12878"}, false})  // exclude both these samples
-    BOOST_CHECK_EQUAL(record.phred_likelihoods().size(), 1);
+    BOOST_CHECK_EQUAL(record.n_samples(), 1);
 }
 
+BOOST_AUTO_TEST_CASE( single_variant_reader_missing_data )
+{
+  for (const auto& record : SingleVariantReader{"testdata/test_variants_missing_data.vcf", vector<string>{"0001A","0002A","0003A","0004A","0005A","0006A","0007A"}}){ // include 7 samples
+    BOOST_CHECK_EQUAL(record.n_samples(), 7); 
+  }
+  for (const auto& record : SingleVariantReader{"testdata/test_variants_missing_data.vcf", vector<string>{"0007B", "0008A", "0009A", "0009B"}, false}){ // exclude 4 samples
+    BOOST_CHECK_EQUAL(record.n_samples(), 7); 
+  }
+  for (const auto& record : SingleVariantReader{"testdata/test_variants_missing_data.vcf"}){ // include all 11 samples
+    BOOST_CHECK_EQUAL(record.n_samples(), 11); 
+  }
+}
