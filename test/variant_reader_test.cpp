@@ -117,6 +117,17 @@ BOOST_AUTO_TEST_CASE( single_variant_reader_sites_only )
     BOOST_CHECK_EQUAL(record.n_samples(), 0);
 }
 
+BOOST_AUTO_TEST_CASE( missing_id_field )  
+{
+  const auto truth_missing = vector<bool>{false, false, true, true, true};
+  auto i = 0u;
+  for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf"}) 
+    BOOST_CHECK_EQUAL(is_missing(record.id()), truth_missing[i++]); // check that the missing and non-missing values in the vcf actually return the right missingness
+  BOOST_CHECK(is_missing(""));                                      // check that an empty string is missing
+  BOOST_CHECK(!is_missing("arBItrary_vaLue"));                      // check that a non-empty string is not missing
+}
+
+
 BOOST_AUTO_TEST_CASE( single_variant_reader_include_all_samples ) 
 {
   for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{}, false})  // include all samples by setting include == false and passing an empty list
