@@ -90,8 +90,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">multiple_variant_reader.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="multiple__variant__reader_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __gamgee__multiple_variant_reader__</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __gamgee__multiple_variant_reader__</span></div>
+<a href="multiple__variant__reader_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef gamgee__multiple_variant_reader__guard</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define gamgee__multiple_variant_reader__guard</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;htslib/vcf.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
@@ -161,7 +161,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}  <span class="comment">// end namespace gamgee</span></div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* defined(__gamgee__multiple_variant_reader__) */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* defined(gamgee__multiple_variant_reader__guard) */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="classgamgee_1_1_multiple_variant_reader_html_aca73a6ff24becbc2ec346adb58d31fec"><div class="ttname"><a href="classgamgee_1_1_multiple_variant_reader.html#aca73a6ff24becbc2ec346adb58d31fec">gamgee::MultipleVariantReader::MultipleVariantReader</a></div><div class="ttdeci">MultipleVariantReader(const std::vector&lt; std::string &gt; &amp;filenames, const bool validate_headers=true)</div><div class="ttdoc">enables reading records in multiple files (vcf or bcf) </div><div class="ttdef"><b>Definition:</b> multiple_variant_reader.h:39</div></div>
 <div class="ttc" id="classgamgee_1_1_multiple_variant_reader_html_aa72374881aac63ecc2795750ac39f895"><div class="ttname"><a href="classgamgee_1_1_multiple_variant_reader.html#aa72374881aac63ecc2795750ac39f895">gamgee::MultipleVariantReader::begin</a></div><div class="ttdeci">ITERATOR begin() const </div><div class="ttdoc">creates an ITERATOR pointing at the start of the input streams (needed by for-each loop) ...</div><div class="ttdef"><b>Definition:</b> multiple_variant_reader.h:83</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a2732369bc67b236fbe94bcaba720d170"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a2732369bc67b236fbe94bcaba720d170">gamgee::utils::make_shared_variant_header</a></div><div class="ttdeci">shared_ptr&lt; bcf_hdr_t &gt; make_shared_variant_header(bcf_hdr_t *bcf_hdr_ptr)</div><div class="ttdoc">wraps a pre-allocated bcf_hdr_t in a shared_ptr with correct deleter </div><div class="ttdef"><b>Definition:</b> hts_memory.cpp:38</div></div>
@@ -179,7 +179,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jul 25 2014 20:28:46 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jul 25 2014 21:07:47 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

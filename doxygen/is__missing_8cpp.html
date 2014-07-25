@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>Gamgee: gamgee/fastq.cpp File Reference</title>
+<title>Gamgee: gamgee/is_missing.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -90,12 +90,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">fastq.cpp File Reference</div>  </div>
+<div class="title">is_missing.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="fastq_8h_source.html">fastq.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="utils_8h_source.html">utils/utils.h</a>&quot;</code><br />
-<code>#include &lt;iostream&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="is__missing_8h_source.html">is_missing.h</a>&quot;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -104,40 +103,10 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5063305233e4dd366707d347d8ccfc72"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fastq_8cpp.html#a5063305233e4dd366707d347d8ccfc72">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classgamgee_1_1_fastq.html">gamgee::Fastq</a> &amp;fq)</td></tr>
-<tr class="memdesc:a5063305233e4dd366707d347d8ccfc72"><td class="mdescLeft">&#160;</td><td class="mdescRight">outputs the fastq record in fastq format.  <a href="#a5063305233e4dd366707d347d8ccfc72">More...</a><br /></td></tr>
-<tr class="separator:a5063305233e4dd366707d347d8ccfc72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc5d4d19fee9f9120dda2ccbec882388"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#acc5d4d19fee9f9120dda2ccbec882388">gamgee::is_missing</a> (const float value)</td></tr>
+<tr class="memdesc:acc5d4d19fee9f9120dda2ccbec882388"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks whether or not a float value returned by a <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> field is missing  <a href="#acc5d4d19fee9f9120dda2ccbec882388">More...</a><br /></td></tr>
+<tr class="separator:acc5d4d19fee9f9120dda2ccbec882388"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a5063305233e4dd366707d347d8ccfc72"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>os</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classgamgee_1_1_fastq.html">gamgee::Fastq</a> &amp;&#160;</td>
-          <td class="paramname"><em>fq</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>outputs the fastq record in fastq format. </p>
-<p>The output checks whether the record has quality scores. If it does, it outputs a fastq record, otherwise it outputs a fasta record. </p>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
