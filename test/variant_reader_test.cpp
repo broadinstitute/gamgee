@@ -7,6 +7,8 @@
 using namespace std;
 using namespace gamgee;
 
+constexpr auto FLOAT_COMPARISON_THRESHOLD = 0.0001f;
+
 boost::dynamic_bitset<> high_qual_hets(const Variant& record) {  // filter all hets that have GQ > 20
   const auto genotypes = record.genotypes(); // a "vector-like" with the genotypes of all samples in this record
   const auto gqs = record.genotype_quals(); // a "vector-like" with all the GQs of all samples in this record
@@ -15,192 +17,220 @@ boost::dynamic_bitset<> high_qual_hets(const Variant& record) {  // filter all h
   return hets & pass_gqs; // returns a bit set with all the samples that are het and have gq > 20
 }
 
+void check_variant_basic_api(const Variant& record, const uint32_t truth_index, const vector<string>& truth_ref, const vector<uint32_t>& truth_chromosome, const vector<uint32_t>& truth_alignment_starts, const vector<uint32_t>& truth_n_alleles, const vector<string>& truth_id) {
+  BOOST_CHECK_EQUAL(record.ref(), truth_ref[truth_index]);
+  BOOST_CHECK_EQUAL(record.chromosome(), truth_chromosome[truth_index]);
+  BOOST_CHECK_EQUAL(record.alignment_start(), truth_alignment_starts[truth_index]);
+  BOOST_CHECK_EQUAL(record.n_alleles(), truth_n_alleles[truth_index]);
+  BOOST_CHECK_EQUAL(record.n_samples(), 3);
+  BOOST_CHECK_EQUAL(record.id(), truth_id[truth_index]);
+}
+
+
+void check_quals_api(const Variant& record, const uint32_t truth_index, const vector<float>& truth_quals) {
+  if (truth_quals[truth_index] < 0) 
+    BOOST_CHECK(is_missing(record.qual()));
+  else 
+    BOOST_CHECK_EQUAL(record.qual(), truth_quals[truth_index]); 
+}
+
+void check_alt_api(const Variant& record, const uint32_t truth_index, const vector<vector<string>>& truth_alt) {
+  auto alt = record.alt();
+  BOOST_CHECK_EQUAL_COLLECTIONS(alt.begin(), alt.end(), truth_alt[truth_index].begin(), truth_alt[truth_index].end());
+}
+
+void check_filters_api(const Variant& record, const uint32_t truth_index, const vector<string>& truth_filter_name, const vector<uint32_t>& truth_filter_size) {
+  BOOST_CHECK(record.has_filter(truth_filter_name[truth_index])); // check the has_filter member function
+  const auto low_qual_filter_present = record.has_filter("LOW_QUAL");
+  if (truth_index == 2)
+    BOOST_CHECK(low_qual_filter_present == true);
+  else
+    BOOST_CHECK(low_qual_filter_present == false);
+  const auto filters = record.filters(); 
+  BOOST_CHECK_EQUAL(filters.size(), truth_filter_size[truth_index]); // checking size member function
+  BOOST_CHECK_EQUAL(filters[0], truth_filter_name[truth_index]);  // checking random access
+  BOOST_CHECK_EQUAL(count_if(filters.begin(), filters.end(), [](const auto x){return x == x;}), truth_filter_size[truth_index]); // checking iteration in functional style
+}
+
+void check_genotype_quals_api(const Variant& record) {
+  const auto gqs = record.genotype_quals();
+  BOOST_CHECK_EQUAL(gqs[1][0], 35); // checking random access operators
+  for_each(gqs.begin(), gqs.end(), [](const VariantFieldValue<int32_t>& x) { BOOST_CHECK_EQUAL(x[0], 35); }); // testing std library functional call at the samples level
+}
+
+void check_phred_likelihoods_api(const Variant& record) {
+  // testing phred_likelihoods accessors
+  const auto pls = record.phred_likelihoods();
+  BOOST_CHECK_EQUAL(pls[0][0], 10); // testing random access
+  BOOST_CHECK_EQUAL(pls[1][1], 10);
+  BOOST_CHECK_EQUAL(pls[2][2], 0);
+  for(const auto& sample_pl : pls) { // testing for-each iteration at the samples level
+    BOOST_CHECK_EQUAL(1, count_if(sample_pl.begin(), sample_pl.end(), [](const auto& x) { return x == 0; })); // testing std library functional call at the sample value level
+    for(const auto& value_pl : sample_pl)  // testing for-each iteration at the sample value level
+      BOOST_CHECK_EQUAL(value_pl, value_pl); // I just want to make sure that this level of iteration is supported, the values don't matter anymore at this point
+  }
+}      
+
+void check_format_field_api(const Variant& record, const uint32_t truth_index, const vector<vector<uint32_t>>& truth_gq, const vector<float>& truth_af, const vector<vector<vector<uint32_t>>>& truth_pl, const vector<vector<string>>& truth_as) {
+  const auto gq_int    = record.generic_integer_format_field("GQ");
+  const auto gq_float  = record.generic_float_format_field("GQ");
+  const auto gq_string = record.generic_string_format_field("GQ");
+  const auto af_int    = record.generic_integer_format_field("AF");
+  const auto af_float  = record.generic_float_format_field("AF");
+  const auto af_string = record.generic_string_format_field("AF");
+  const auto pl_int    = record.generic_integer_format_field("PL");
+  const auto pl_float  = record.generic_float_format_field("PL");
+  const auto pl_string = record.generic_string_format_field("PL");
+  const auto as_int    = record.generic_integer_format_field("AS"); // this is a string field, we should be able to create the object but not access it's elements due to lazy initialization
+  const auto as_float  = record.generic_float_format_field("AS");   // this is a string field, we should be able to create the object but not access it's elements due to lazy initialization
+  const auto as_string = record.generic_string_format_field("AS");
+  for(auto i=0u; i != record.n_samples(); ++i) {
+    BOOST_CHECK_EQUAL(gq_int[i][0], truth_gq[truth_index][i]);
+    BOOST_CHECK_CLOSE(gq_float[i][0], float(truth_gq[truth_index][i]), FLOAT_COMPARISON_THRESHOLD);
+    BOOST_CHECK_EQUAL(gq_string[i][0], to_string(truth_gq[truth_index][i]));
+    BOOST_REQUIRE_EQUAL(af_int[i].size(), truth_af.size()); // require otherwise next line may segfault
+    for (auto j=0u; j!= af_int[i].size(); ++j) {
+      BOOST_CHECK_EQUAL(af_int[i][j], int32_t(truth_af[j]));
+      BOOST_CHECK_CLOSE(af_float[i][j], truth_af[j], FLOAT_COMPARISON_THRESHOLD);
+      BOOST_CHECK_EQUAL(af_string[i][j], to_string(truth_af[j]));
+    }
+    BOOST_REQUIRE_EQUAL(pl_int[i].size(), truth_pl[truth_index][i].size()); // require otherwise next line may segfault
+    for (auto j=0u; j!= pl_int[i].size(); ++j) { 
+      BOOST_CHECK_EQUAL(pl_int[i][j], truth_pl[truth_index][i][j]);
+      BOOST_CHECK_CLOSE(pl_float[i][j], float(truth_pl[truth_index][i][j]), FLOAT_COMPARISON_THRESHOLD);
+      BOOST_CHECK_EQUAL(pl_string[i][j], to_string(truth_pl[truth_index][i][j]));
+    }
+    BOOST_CHECK_EQUAL(as_string[i][0], truth_as[truth_index][i]);
+  }
+  BOOST_CHECK_THROW(as_float[0][0], invalid_argument); 
+  BOOST_CHECK_THROW(as_int[0][0], invalid_argument); 
+}
+
+void check_info_field_api(const Variant& record, const uint32_t truth_index) {
+  const auto validated_actual = record.generic_boolean_info_field("VALIDATED");
+  const auto validated_expected = std::vector<bool>{truth_index == 0};
+  BOOST_CHECK_EQUAL_COLLECTIONS(validated_actual.begin(), validated_actual.end(), validated_expected.begin(), validated_expected.end());
+  const auto an = record.generic_integer_info_field("AN");
+  BOOST_CHECK_EQUAL(an.size(), 1);
+  BOOST_CHECK_EQUAL(an[0], 6);
+  const auto af_actual = record.generic_float_info_field("AF");
+  const auto af_expected = truth_index == 4 ? std::vector<float>{0.5, 0} : std::vector<float>{0.5};
+  BOOST_CHECK_EQUAL_COLLECTIONS(af_actual.begin(), af_actual.end(), af_expected.begin(), af_expected.end());
+  const auto desc_actual = record.generic_string_info_field("DESC");
+  const auto desc_expected = truth_index == 0 ? std::vector<string>{"Test1,Test2"} : std::vector<string>{};
+  BOOST_CHECK_EQUAL_COLLECTIONS(desc_actual.begin(), desc_actual.end(), desc_expected.begin(), desc_expected.end());
+}
+
+void check_genotype_api(const Variant& record, const uint32_t truth_index, const boost::dynamic_bitset<>& truth_high_quality_hets, const vector<string>& truth_ref, const vector<vector<string>>& truth_alt) {
+  BOOST_CHECK_EQUAL(high_qual_hets(record), truth_high_quality_hets);
+  const auto gt_for_all_samples = record.genotypes();
+  BOOST_CHECK(gt_for_all_samples[1].is_hom_ref());
+  BOOST_CHECK(gt_for_all_samples[0].is_het());
+  BOOST_CHECK(gt_for_all_samples[2].is_hom_var());
+  for (const auto& gt_for_single_sample: gt_for_all_samples) {
+    BOOST_CHECK_EQUAL(gt_for_single_sample.size(), 2);
+    const auto alleles = gt_for_single_sample.alleles_strings();
+    const auto allele_keys = gt_for_single_sample.alleles_keys();
+    BOOST_CHECK_EQUAL(gt_for_single_sample.allele_string(0), alleles[0]);
+    BOOST_CHECK_EQUAL(gt_for_single_sample.allele_string(1), alleles[1]);
+    BOOST_CHECK_EQUAL(gt_for_single_sample.allele_key(0), allele_keys[0]);
+    BOOST_CHECK_EQUAL(gt_for_single_sample.allele_key(1), allele_keys[1]);
+    BOOST_CHECK_EQUAL(gt_for_single_sample[0], allele_keys[0]);
+    BOOST_CHECK_EQUAL(gt_for_single_sample[1], allele_keys[1]);
+    BOOST_CHECK(!is_missing(gt_for_single_sample));
+    BOOST_CHECK_EQUAL(gt_for_single_sample.size(), 2);
+    if (gt_for_single_sample.is_het()) {
+      BOOST_CHECK(!gt_for_single_sample.is_hom_ref());
+      BOOST_CHECK(!gt_for_single_sample.is_hom_var());
+      BOOST_CHECK_NE(allele_keys[0], allele_keys[1]);
+      BOOST_CHECK_EQUAL(allele_keys[0], 0);
+      BOOST_CHECK_EQUAL(allele_keys[1], 1);
+      BOOST_CHECK_NE(alleles[0], alleles[1]);
+      BOOST_CHECK_EQUAL(alleles[0], truth_ref[truth_index]);
+      BOOST_CHECK_EQUAL(alleles[1], truth_alt[truth_index][0]);
+      BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00000001);
+    }
+    if (gt_for_single_sample.is_hom_ref()) {
+      BOOST_CHECK(!gt_for_single_sample.is_het());
+      BOOST_CHECK(!gt_for_single_sample.is_hom_var());
+      BOOST_CHECK_EQUAL(allele_keys[0], allele_keys[1]);
+      BOOST_CHECK_EQUAL(allele_keys[0], 0);
+      BOOST_CHECK_EQUAL(allele_keys[1], 0);
+      BOOST_CHECK_EQUAL(alleles[0], alleles[1]);
+      BOOST_CHECK_EQUAL(alleles[0], truth_ref[truth_index]);
+      BOOST_CHECK_EQUAL(alleles[1], truth_ref[truth_index]);
+      BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00000000);
+    }
+    if (gt_for_single_sample.is_hom_var()) {
+      BOOST_CHECK(!gt_for_single_sample.is_het());
+      BOOST_CHECK(!gt_for_single_sample.is_hom_ref());
+      BOOST_CHECK_EQUAL(allele_keys[0], allele_keys[1]);
+      BOOST_CHECK_EQUAL(allele_keys[0], 1);
+      BOOST_CHECK_EQUAL(allele_keys[1], 1);
+      BOOST_CHECK_EQUAL(alleles[0], alleles[1]);
+      BOOST_CHECK_EQUAL(alleles[0], truth_alt[truth_index][0]);
+      BOOST_CHECK_EQUAL(alleles[1], truth_alt[truth_index][0]);
+      BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00010001);
+    }
+    if (truth_index == 0) {
+      BOOST_CHECK(gt_for_all_samples[0] == gt_for_all_samples[0]);
+      BOOST_CHECK(!(gt_for_all_samples[0] != gt_for_all_samples[0]));
+      BOOST_CHECK(gt_for_all_samples[0] != gt_for_all_samples[1]);
+      BOOST_CHECK(!(gt_for_all_samples[0] == gt_for_all_samples[1]));
+      BOOST_CHECK(gt_for_all_samples[0][1] == gt_for_all_samples[2][0]);
+      BOOST_CHECK(!(gt_for_all_samples[0][1] != gt_for_all_samples[2][0]));
+      BOOST_CHECK(gt_for_all_samples[0][1] == gt_for_all_samples[0][1]);
+      BOOST_CHECK(!(gt_for_all_samples[0][1] != gt_for_all_samples[0][1]));
+      BOOST_CHECK(gt_for_all_samples[0][1] != gt_for_all_samples[1][0]);
+      BOOST_CHECK(!(gt_for_all_samples[0][1] == gt_for_all_samples[1][0]));
+    }
+  }
+}
+
 BOOST_AUTO_TEST_CASE( single_variant_reader ) 
 {
-  const auto truth_contigs = vector<uint32_t>{0, 1, 1, 1, 2};
-  const auto truth_alignment_starts = vector<uint32_t>{10000000, 10001000, 10002000, 10003000, 10004000};
-  const auto truth_n_alleles = vector<uint32_t>{2, 2, 2, 2, 3};
-  const auto truth_filter_first = vector<string>{"PASS", "PASS", "LOW_QUAL", "NOT_DEFINED", "PASS"};
-  const auto truth_filter_size = vector<uint32_t>{1,1,1,1,2};
-  const auto truth_quals = vector<float>{80,8.4,-1,-1,-1};
-  const auto truth_ref = vector<string>{"T", "GG", "TAGTGQA", "A", "GAT"};
-  const auto truth_id = vector<string>{"db2342", "rs837472", ".", ".", "."};
-  const vector< vector<string>> truth_alt = {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"}};
+  const auto truth_chromosome        = vector<uint32_t>{0, 1, 1, 1, 2};
+  const auto truth_alignment_starts  = vector<uint32_t>{10000000, 10001000, 10002000, 10003000, 10004000};
+  const auto truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 3};
+  const auto truth_filter_name       = vector<string>{"PASS", "PASS", "LOW_QUAL", "NOT_DEFINED", "PASS"};
+  const auto truth_filter_size       = vector<uint32_t>{1,1,1,1,2};
+  const auto truth_quals             = vector<float>{80,8.4,-1,-1,-1};
+  const auto truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "A", "GAT"};
+  const auto truth_alt               = vector< vector<string>> {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"}};
   const auto truth_high_quality_hets = boost::dynamic_bitset<>{std::string{"001"}};
+  const auto truth_id                = vector<string>{"db2342", "rs837472", ".", ".", "."};
+  const auto truth_gq                = vector<vector<uint32_t>>{{35,35,35}, {35,35,35}, {35,35,35}, {35,35,35}, {35,35,35}};
+  const auto truth_af                = vector<float> { 3.1,2.2 };
+  const auto truth_pl                = vector<vector<vector<uint32_t>>>{
+    {{10,0,100      }, {0,10,1000      }, {10,100,0}      },
+    {{10,0,100      }, {0,10,100       }, {10,100,0}      },
+    {{10,0,100      }, {0,10,2000000000}, {10,100,0}      },
+    {{10,0,100      }, {0,10,100       }, {10,100,0}      },
+    {{10,0,100,2,4,8}, {0,10,100,2,4,8 }, {10,100,0,2,4,8}}
+  };
+  const auto truth_as                = vector<vector<string>>{ 
+    {"ABA","CA","XISPAFORRO"}, 
+    {"ABA","ABA","ABA"}, 
+    {"ABA","ABA","ABA"}, 
+    {"ABA","ABA","ABA"}, 
+    {"ABA","ABA","ABA"} 
+  };
+
   for (const auto& filename : {"testdata/test_variants.vcf", "testdata/test_variants.bcf"}) {
-    auto record_counter = 0u;
+    auto truth_index = 0u;
     for (const auto& record : SingleVariantReader{filename}) {
-      BOOST_CHECK_EQUAL(record.ref(), truth_ref[record_counter]);
-      BOOST_CHECK_EQUAL(record.chromosome(), truth_contigs[record_counter]);
-      BOOST_CHECK_EQUAL(record.alignment_start(), truth_alignment_starts[record_counter]);
-      BOOST_CHECK_EQUAL(record.n_alleles(), truth_n_alleles[record_counter]);
-      BOOST_CHECK_EQUAL(record.n_samples(), 3);
-      BOOST_CHECK_EQUAL(record.id(), truth_id[record_counter]);
-      BOOST_CHECK(record.has_filter(truth_filter_first[record_counter])); // check the has_filter member function
-
-
-      // check for quals (whether missing or parsed)
-      if (truth_quals[record_counter] < 0) 
-        BOOST_CHECK(is_missing(record.qual()));
-      else 
-        BOOST_CHECK_EQUAL(record.qual(), truth_quals[record_counter]);
-
-      auto alt = record.alt();
-      BOOST_CHECK_EQUAL_COLLECTIONS(alt.begin(), alt.end(), truth_alt[record_counter].begin(), truth_alt[record_counter].end());
-
-      // check that absent filters are really absent
-      const auto absent_filter = record.has_filter("LOW_QUAL");
-      if (record_counter != 2)
-        BOOST_CHECK(absent_filter == false);
-
-      // test filters getter api
-      const auto filters = record.filters(); 
-      BOOST_CHECK_EQUAL(filters.size(), truth_filter_size[record_counter]); // checking size member function
-      BOOST_CHECK_EQUAL(filters[0], truth_filter_first[record_counter]);  // checking random access
-      BOOST_CHECK_EQUAL(count_if(filters.begin(), filters.end(), [](const auto x){return x == x;}), truth_filter_size[record_counter]); // checking iteration in functional style
-
-      // testing genotype_quals accessors
-      const auto gqs = record.genotype_quals();
-      BOOST_CHECK_EQUAL(gqs[1][0], 35); // checking random access operators
-      for_each(gqs.begin(), gqs.end(), [](const VariantFieldValue<int32_t>& x) { BOOST_CHECK_EQUAL(x[0], 35); }); // testing std library functional call at the samples level
-
-      // testing phred_likelihoods accessors
-      const auto pls = record.phred_likelihoods();
-      BOOST_CHECK_EQUAL(pls[0][0], 10); // testing random access
-      BOOST_CHECK_EQUAL(pls[1][1], 10);
-      BOOST_CHECK_EQUAL(pls[2][2], 0);
-      for(const auto& sample_pl : pls) { // testing for-each iteration at the samples level
-        BOOST_CHECK_EQUAL(1, count_if(sample_pl.begin(), sample_pl.end(), [](const auto& x) { return x == 0; })); // testing std library functional call at the sample value level
-        for(const auto& value_pl : sample_pl)  // testing for-each iteration at the sample value level
-          BOOST_CHECK_EQUAL(value_pl, value_pl); // I just want to make sure that this level of iteration is supported, the values don't matter anymore at this point
-      }
-      
-      // check genotype accessors
-      BOOST_CHECK(record.is_hom_ref(1));
-      BOOST_CHECK(record.is_het(0));
-      BOOST_CHECK(record.is_hom_var(2));
-      
-      // test generic FLOAT
-      const auto af = record.generic_float_format_field("AF");
-      for_each(af.begin(), af.end(), [](const auto& s) {BOOST_CHECK_CLOSE(s[1], 2.2, 0.001);}); // checking float std library functional call at the samples level
-      for (const auto& s : af) {
-        for_each(s.begin(), s.end(), [](const auto& x) {BOOST_CHECK_EQUAL(x,x);}); // checking float std library functional call at the sample value level
-        BOOST_CHECK_CLOSE(s[0], 3.1, 0.001);
-        BOOST_CHECK_CLOSE(s[1], 2.2, 0.001);
-      }
-
-      // test generic STRING (disabled because it is not working!)
-      // const auto as = record.generic_string_format_field("AS");
-      // for_each(as.begin(), as.end(), [](const auto& s) {BOOST_CHECK_EQUAL(s[1], "CATE");}); // checking string std library functional call at the samples level
-      // for (const auto& s : as) {
-      //   for_each(s.begin(), s.end(), [](const auto& x) {BOOST_CHECK_EQUAL(x,x);}); // checking string std library functional call at the sample value level
-      //   BOOST_CHECK_EQUAL(s[0], "ABA");
-      //   BOOST_CHECK_EQUAL(s[1], "CATE");
-      // }
-      
-      const auto validated_actual = record.generic_boolean_info_field("VALIDATED");
-      const auto validated_expected = std::vector<bool>{record_counter == 0};
-      BOOST_CHECK_EQUAL_COLLECTIONS(validated_actual.begin(), validated_actual.end(), validated_expected.begin(), validated_expected.end());
-
-      const auto an = record.generic_integer_info_field("AN");
-      BOOST_CHECK_EQUAL(an.size(), 1);
-      BOOST_CHECK_EQUAL(an[0], 6);
-
-      const auto af_actual = record.generic_float_info_field("AF");
-      const auto af_expected = record_counter == 4 ? std::vector<float>{0.5, 0} : std::vector<float>{0.5};
-      BOOST_CHECK_EQUAL_COLLECTIONS(af_actual.begin(), af_actual.end(), af_expected.begin(), af_expected.end());
-
-      const auto desc_actual = record.generic_string_info_field("DESC");
-      const auto desc_expected = record_counter == 0 ? std::vector<string>{"Test1,Test2"} : std::vector<string>{};
-      BOOST_CHECK_EQUAL_COLLECTIONS(desc_actual.begin(), desc_actual.end(), desc_expected.begin(), desc_expected.end());
-
-      BOOST_CHECK_EQUAL(high_qual_hets(record), truth_high_quality_hets);
-
-      const auto gt_for_all_samples = record.genotypes();
-
-      BOOST_CHECK(gt_for_all_samples[1].is_hom_ref());
-      BOOST_CHECK(gt_for_all_samples[0].is_het());
-      BOOST_CHECK(gt_for_all_samples[2].is_hom_var());
-
-      for (const auto& gt_for_single_sample: gt_for_all_samples) {
-        BOOST_CHECK_EQUAL(gt_for_single_sample.size(), 2);
-
-        const auto alleles = gt_for_single_sample.alleles_strings();
-        const auto allele_keys = gt_for_single_sample.alleles_keys();
-
-        BOOST_CHECK_EQUAL(gt_for_single_sample.allele_string(0), alleles[0]);
-        BOOST_CHECK_EQUAL(gt_for_single_sample.allele_string(1), alleles[1]);
-        BOOST_CHECK_EQUAL(gt_for_single_sample.allele_key(0), allele_keys[0]);
-        BOOST_CHECK_EQUAL(gt_for_single_sample.allele_key(1), allele_keys[1]);
-        BOOST_CHECK_EQUAL(gt_for_single_sample[0], allele_keys[0]);
-        BOOST_CHECK_EQUAL(gt_for_single_sample[1], allele_keys[1]);
-
-        BOOST_CHECK(!is_missing(gt_for_single_sample));
-        BOOST_CHECK_EQUAL(gt_for_single_sample.size(), 2);
-
-        if (gt_for_single_sample.is_het()) {
-          BOOST_CHECK(!gt_for_single_sample.is_hom_ref());
-          BOOST_CHECK(!gt_for_single_sample.is_hom_var());
-
-          BOOST_CHECK_NE(allele_keys[0], allele_keys[1]);
-          BOOST_CHECK_EQUAL(allele_keys[0], 0);
-          BOOST_CHECK_EQUAL(allele_keys[1], 1);
-
-          BOOST_CHECK_NE(alleles[0], alleles[1]);
-          BOOST_CHECK_EQUAL(alleles[0], truth_ref[record_counter]);
-          BOOST_CHECK_EQUAL(alleles[1], truth_alt[record_counter][0]);
-
-          BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00000001);
-        }
-
-        if (gt_for_single_sample.is_hom_ref()) {
-          BOOST_CHECK(!gt_for_single_sample.is_het());
-          BOOST_CHECK(!gt_for_single_sample.is_hom_var());
-
-          BOOST_CHECK_EQUAL(allele_keys[0], allele_keys[1]);
-          BOOST_CHECK_EQUAL(allele_keys[0], 0);
-          BOOST_CHECK_EQUAL(allele_keys[1], 0);
-
-          BOOST_CHECK_EQUAL(alleles[0], alleles[1]);
-          BOOST_CHECK_EQUAL(alleles[0], truth_ref[record_counter]);
-          BOOST_CHECK_EQUAL(alleles[1], truth_ref[record_counter]);
-
-          BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00000000);
-        }
-
-        if (gt_for_single_sample.is_hom_var()) {
-          BOOST_CHECK(!gt_for_single_sample.is_het());
-          BOOST_CHECK(!gt_for_single_sample.is_hom_ref());
-
-          BOOST_CHECK_EQUAL(allele_keys[0], allele_keys[1]);
-          BOOST_CHECK_EQUAL(allele_keys[0], 1);
-          BOOST_CHECK_EQUAL(allele_keys[1], 1);
-
-          BOOST_CHECK_EQUAL(alleles[0], alleles[1]);
-          BOOST_CHECK_EQUAL(alleles[0], truth_alt[record_counter][0]);
-          BOOST_CHECK_EQUAL(alleles[1], truth_alt[record_counter][0]);
-
-          BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00010001);
-        }
-
-        if (record_counter == 0) {
-          BOOST_CHECK(gt_for_all_samples[0] == gt_for_all_samples[0]);
-          BOOST_CHECK(!(gt_for_all_samples[0] != gt_for_all_samples[0]));
-          BOOST_CHECK(gt_for_all_samples[0] != gt_for_all_samples[1]);
-          BOOST_CHECK(!(gt_for_all_samples[0] == gt_for_all_samples[1]));
-
-          BOOST_CHECK(gt_for_all_samples[0][1] == gt_for_all_samples[2][0]);
-          BOOST_CHECK(!(gt_for_all_samples[0][1] != gt_for_all_samples[2][0]));
-          BOOST_CHECK(gt_for_all_samples[0][1] == gt_for_all_samples[0][1]);
-          BOOST_CHECK(!(gt_for_all_samples[0][1] != gt_for_all_samples[0][1]));
-          BOOST_CHECK(gt_for_all_samples[0][1] != gt_for_all_samples[1][0]);
-          BOOST_CHECK(!(gt_for_all_samples[0][1] == gt_for_all_samples[1][0]));
-        }
-      }
-
-      ++record_counter;
+      check_variant_basic_api(record, truth_index, truth_ref, truth_chromosome, truth_alignment_starts, truth_n_alleles, truth_id);
+      check_quals_api(record, truth_index, truth_quals);
+      check_alt_api(record, truth_index, truth_alt);
+      check_filters_api(record, truth_index, truth_filter_name, truth_filter_size);
+      check_genotype_quals_api(record);
+      check_phred_likelihoods_api(record);
+      check_format_field_api(record, truth_index, truth_gq, truth_af, truth_pl, truth_as);
+      check_info_field_api(record, truth_index);
+      check_genotype_api(record, truth_index, truth_high_quality_hets, truth_ref, truth_alt);
+      ++truth_index;
     }
-    BOOST_CHECK_EQUAL(record_counter, 5u);
+    BOOST_CHECK_EQUAL(truth_index, 5u);
   }
 }
 

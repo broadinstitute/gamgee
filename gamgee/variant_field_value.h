@@ -63,7 +63,7 @@ class VariantFieldValue {
     m_body {body},
     m_format_ptr {format_ptr},
     m_data_ptr {data_ptr},
-    m_num_bytes {utils::size_for_type(static_cast<utils::FormatFieldType>(format_ptr->type))}
+    m_num_bytes {utils::size_for_type(static_cast<utils::FormatFieldType>(format_ptr->type), format_ptr)}
   {}
 
   /**
@@ -127,6 +127,8 @@ class VariantFieldValue {
   VariantFieldValueIterator<VALUE_TYPE> end() const {
     return VariantFieldValueIterator<VALUE_TYPE>{m_body, m_data_ptr + m_format_ptr->size, m_num_bytes, static_cast<utils::FormatFieldType>(m_format_ptr->type)};
   }
+
+  uint32_t size() const { return m_format_ptr->n; } ///< @brief the number of values in this VariantFieldValue (values per sample)
 
  private:
   const std::shared_ptr<bcf1_t> m_body;

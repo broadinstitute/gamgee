@@ -21,7 +21,7 @@ bool Genotype::operator==(const Genotype& other) const {
   const auto count = size();
   if (count != other.size())
     return false;
-  for (auto i = 0; i < count; i++) {
+  for (auto i = 0u; i != count; ++i) {
     if (allele_key(i) != other.allele_key(i)) {
       return false;
     }
@@ -66,7 +66,7 @@ uint32_t Genotype::fast_diploid_key_generation() const {
 
 bool Genotype::is_missing() const {
   const auto count = size();
-  for (auto i = 0; i < count; i++) {
+  for (auto i = 0u; i != count; ++i) {
     if (!utils::allele_missing(m_format_ptr, m_data_ptr, i)) {
       return false;
     }
