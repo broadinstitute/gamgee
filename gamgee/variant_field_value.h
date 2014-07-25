@@ -164,4 +164,4 @@ std::string VariantFieldValue<std::string>::convert_from_byte_array(int index) c
 
 }
 
-#endif
+#endif // gamgee__variant_field_value__guard
