@@ -12,5 +12,14 @@ var searchData=
   ['advanced_5fmerge_5fheader',['advanced_merge_header',['../classgamgee_1_1_variant_header.html#ac47788376bfeb8ff015a6d6f7037b805',1,'gamgee::VariantHeader']]],
   ['alignment_5fstart',['alignment_start',['../classgamgee_1_1_sam.html#a9aff91f1994ab40103c49c5334511a63',1,'gamgee::Sam::alignment_start()'],['../classgamgee_1_1_variant.html#a88256aaf7d75e08cfdc6b896719f9420',1,'gamgee::Variant::alignment_start()']]],
   ['alignment_5fstop',['alignment_stop',['../classgamgee_1_1_sam.html#a7eeda0d08aecf8037c0c2050d5634dc2',1,'gamgee::Sam']]],
+  ['allele_5fcount',['allele_count',['../classgamgee_1_1_genotype_utils.html#a7417e2f5e27ca837b7024bde58a96d2a',1,'gamgee::GenotypeUtils']]],
+  ['allele_5fkey',['allele_key',['../classgamgee_1_1_genotype.html#abc3307ba31fda7dfec9653a703ff0716',1,'gamgee::Genotype::allele_key()'],['../classgamgee_1_1_genotype_utils.html#aa39c7ca79f2f6ff8d241b70006216a26',1,'gamgee::GenotypeUtils::allele_key()']]],
+  ['allele_5fkey_5fto_5fstring',['allele_key_to_string',['../classgamgee_1_1_genotype_utils.html#abac8c9169e3dbce49723b4e5a3869979',1,'gamgee::GenotypeUtils']]],
+  ['allele_5fkeys',['allele_keys',['../classgamgee_1_1_genotype_utils.html#af1dd90daa49459ee055accbaa8d71160',1,'gamgee::GenotypeUtils']]],
+  ['allele_5fmissing',['allele_missing',['../classgamgee_1_1_genotype_utils.html#a3e7ca9f69406d74e19b1fd4dc221d734',1,'gamgee::GenotypeUtils']]],
+  ['allele_5fstring',['allele_string',['../classgamgee_1_1_genotype.html#aa770dc86ecf6c0c162861d60b849db8a',1,'gamgee::Genotype']]],
+  ['allele_5fstrings',['allele_strings',['../classgamgee_1_1_genotype_utils.html#a73eb7d4004bceb2862ef01b7c1cf5d48',1,'gamgee::GenotypeUtils']]],
+  ['alleles_5fkeys',['alleles_keys',['../classgamgee_1_1_genotype.html#a5819332e7a04990de26b3107b7cd1528',1,'gamgee::Genotype']]],
+  ['alleles_5fstrings',['alleles_strings',['../classgamgee_1_1_genotype.html#a3443d1d745bd1d4425f4c43cf1dda367',1,'gamgee::Genotype']]],
   ['alt',['alt',['../classgamgee_1_1_variant.html#ad8143e5766f4cb45c5ad9fa08bc8f7cb',1,'gamgee::Variant']]]
 ];

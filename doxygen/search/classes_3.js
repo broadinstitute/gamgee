@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['headerexception',['HeaderException',['../classgamgee_1_1_multiple_variant_reader_1_1_header_exception.html',1,'gamgee::MultipleVariantReader']]],
-  ['htsfiledeleter',['HtsFileDeleter',['../structgamgee_1_1utils_1_1_hts_file_deleter.html',1,'gamgee::utils']]]
+  ['genotype',['Genotype',['../classgamgee_1_1_genotype.html',1,'gamgee']]],
+  ['genotypeutils',['GenotypeUtils',['../classgamgee_1_1_genotype_utils.html',1,'gamgee']]]
 ];
