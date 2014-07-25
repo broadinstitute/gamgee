@@ -1,5 +1,5 @@
-#ifndef __gamgee__sam_pair_iterator__
-#define __gamgee__sam_pair_iterator__
+#ifndef gamgee__sam_pair_iterator__guard
+#define gamgee__sam_pair_iterator__guard
 
 #include "sam.h"
 
@@ -79,4 +79,4 @@ class SamPairIterator {
 
 }  // end namespace gamgee
 
-#endif
+#endif // gamgee__sam_pair_iterator__guard

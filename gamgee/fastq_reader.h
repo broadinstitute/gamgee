@@ -1,5 +1,5 @@
-#ifndef __foghorn__fastq_reader__
-#define __foghorn__fastq_reader__
+#ifndef gamgee__fastq_reader__guard
+#define gamgee__fastq_reader__guard
 
 #include "fastq_iterator.h"
 
@@ -88,4 +88,4 @@ private:
 
 }  // end of namespace
 
-#endif /* defined(__foghorn__fastq_iterator__) */
+#endif // gamgee__fastq_reader__guard

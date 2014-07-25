@@ -1,5 +1,5 @@
-#ifndef __gamgee__variant_field_value__
-#define __gamgee__variant_field_value__
+#ifndef gamgee__variant_field_value__guard
+#define gamgee__variant_field_value__guard
 
 #include "variant_field_value_iterator.h"
 #include "utils/hts_memory.h"

@@ -1,5 +1,5 @@
-#ifndef __gamgee__base_quals__
-#define __gamgee__base_quals__
+#ifndef gamgee__base_quals__guard
+#define gamgee__base_quals__guard
 
 #include "htslib/sam.h"
 
@@ -36,4 +36,4 @@ class BaseQuals {
 
 }
 
-#endif /* __gamgee__base_quals__ */
+#endif /* gamgee__base_quals__guard */

@@ -1,5 +1,5 @@
-#ifndef __foghorn__fastq__
-#define __foghorn__fastq__
+#ifndef gamgee__fastq__guard
+#define gamgee__fastq__guard
 
 #include <string>
 
@@ -72,4 +72,4 @@ class Fastq {
 */
 std::ostream& operator<< (std::ostream& os, const gamgee::Fastq& fq);
 
-#endif /* defined(__foghorn__fastq__) */
+#endif // gamgee__fastq__guard 

@@ -1,5 +1,5 @@
-#ifndef __gamgee__sam_tag__
-#define __gamgee__sam_tag__
+#ifndef gamgee__sam_tag__guard
+#define gamgee__sam_tag__guard
 
 #include <string>
 
@@ -55,4 +55,4 @@ class SamTag {
 
 }
 
-#endif // __gamgee__sam_tag__
+#endif // gamgee__sam_tag__guard

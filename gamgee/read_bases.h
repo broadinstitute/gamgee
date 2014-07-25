@@ -1,5 +1,5 @@
-#ifndef __gamgee__read_bases__
-#define __gamgee__read_bases__
+#ifndef gamgee__read_bases__guard
+#define gamgee__read_bases__guard
 
 #include "htslib/sam.h"
 
@@ -51,4 +51,4 @@ private:
 
 }
 
-#endif /* __gamgee__read_bases__ */
+#endif /* gamgee__read_bases__guard */

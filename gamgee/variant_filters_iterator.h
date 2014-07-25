@@ -1,5 +1,5 @@
-#ifndef __gamgee__variant_filters_iterator__
-#define __gamgee__variant_filters_iterator__
+#ifndef gamgee__variant_filters_iterator__guard
+#define gamgee__variant_filters_iterator__guard
 
 #include "variant_filters.h"
 #include "utils/hts_memory.h"
@@ -51,4 +51,4 @@ class VariantFiltersIterator : public std::iterator<std::random_access_iterator_
 
 }
 
-#endif
+#endif // gamgee__variant_filters_iterator__guard

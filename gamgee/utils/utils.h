@@ -1,5 +1,5 @@
-#ifndef __gamgee_utils__
-#define __gamgee_utils__
+#ifndef gamgee__utils__guard
+#define gamgee__utils__guard
 
 #include <boost/iterator/zip_iterator.hpp>
 #include <boost/range.hpp>
@@ -95,4 +95,4 @@ auto zip(const T&... containers) -> boost::iterator_range<boost::zip_iterator<de
 } // end utils namespace
 } // end gamgee namespace
 
-#endif
+#endif // gamgee__utils__guard

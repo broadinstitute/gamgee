@@ -1,5 +1,5 @@
-#ifndef __gamgee__variant_reader__
-#define __gamgee__variant_reader__
+#ifndef gamgee__variant_reader__guard
+#define gamgee__variant_reader__guard
 
 #include "variant_header.h"
 #include "variant_iterator.h"
@@ -136,4 +136,4 @@ using SingleVariantReader = VariantReader<VariantIterator>;
 
 }  // end of namespace
 
-#endif /* defined(__gamgee__variant_reader__) */
+#endif /* defined(gamgee__variant_reader__guard) */

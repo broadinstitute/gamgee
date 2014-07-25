@@ -1,5 +1,5 @@
-#ifndef __gamgee_sam_writer__
-#define __gamgee_sam_writer__
+#ifndef gamgee__sam_writer__guard
+#define gamgee__sam_writer__guard
 
 #include <string>
 
@@ -62,4 +62,5 @@ class SamWriter {
 };
 
 }
-#endif 
+
+#endif // gamgee__sam_writer__guard

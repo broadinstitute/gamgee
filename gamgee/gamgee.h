@@ -1,5 +1,5 @@
-#ifndef __gamgee__gamgee__
-#define __gamgee__gamgee__
+#ifndef gamgee__gamgee__guard
+#define gamgee__gamgee__guard
 
 #include "sam.h"
 #include "sam_reader.h"
@@ -16,4 +16,4 @@
 
 #include "is_missing.h"
 
-#endif  /* __gamgee__gamgee__ */
+#endif  /* gamgee__gamgee__guard */

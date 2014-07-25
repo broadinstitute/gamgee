@@ -1,5 +1,5 @@
-#ifndef __gamgee__sam_iterator__
-#define __gamgee__sam_iterator__
+#ifndef gamgee__sam_iterator__guard
+#define gamgee__sam_iterator__guard
 
 #include "sam.h"
 
@@ -69,4 +69,4 @@ class SamIterator {
 
 }  // end namespace gamgee
 
-#endif
+#endif // gamgee__sam_iterator__guard

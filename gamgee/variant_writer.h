@@ -1,5 +1,5 @@
-#ifndef __gamgee_variant_writer__
-#define __gamgee_variant_writer__
+#ifndef gamgee__variant_writer__guard
+#define gamgee__variant_writer__guard
 
 #include <string>
 
@@ -62,4 +62,5 @@ class VariantWriter {
 };
 
 }
-#endif 
+
+#endif // gamgee__variant_writer__guard

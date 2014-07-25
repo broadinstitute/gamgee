@@ -1,5 +1,5 @@
-#ifndef __gamgee__sam_builder_data_field__
-#define __gamgee__sam_builder_data_field__
+#ifndef gamgee__sam_builder_data_field__guard
+#define gamgee__sam_builder_data_field__guard
 
 #include <memory>
 
@@ -46,4 +46,4 @@ class SamBuilderDataField {
 
 }
 
-#endif /* __gamgee__sam_builder_data_field__ */
+#endif /* gamgee__sam_builder_data_field__guard */

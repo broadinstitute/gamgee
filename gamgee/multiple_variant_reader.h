@@ -1,5 +1,5 @@
-#ifndef __gamgee__multiple_variant_reader__
-#define __gamgee__multiple_variant_reader__
+#ifndef gamgee__multiple_variant_reader__guard
+#define gamgee__multiple_variant_reader__guard
 
 #include "htslib/vcf.h"
 
@@ -119,4 +119,4 @@ class MultipleVariantReader {
 
 }  // end namespace gamgee
 
-#endif /* defined(__gamgee__multiple_variant_reader__) */
+#endif /* defined(gamgee__multiple_variant_reader__guard) */

@@ -1,5 +1,5 @@
-#ifndef __gamgee__variant_field_iterator__
-#define __gamgee__variant_field_iterator__ 
+#ifndef gamgee__variant_field_iterator__guard
+#define gamgee__variant_field_iterator__guard 
 
 #include "utils/utils.h"
 
@@ -239,4 +239,4 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
 
 }
 
-#endif
+#endif // gamgee__variant_field_iterator__guard

@@ -1,5 +1,5 @@
-#ifndef __gamgee__sam_builder__
-#define __gamgee__sam_builder__
+#ifndef gamgee__sam_builder__guard
+#define gamgee__sam_builder__guard
 
 #include "sam.h"
 #include "sam_builder_data_field.h"
@@ -135,4 +135,4 @@ class SamBuilder {
 }
 
 
-#endif /* __gamgee__sam_builder__ */
+#endif /* gamgee__sam_builder__guard */

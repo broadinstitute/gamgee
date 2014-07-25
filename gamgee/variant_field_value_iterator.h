@@ -1,5 +1,5 @@
-#ifndef __gamgee__variant_field_value_iterator__
-#define __gamgee__variant_field_value_iterator__
+#ifndef gamgee__variant_field_value_iterator__guard
+#define gamgee__variant_field_value_iterator__guard
 
 #include "utils/format_field_type.h"
 
@@ -233,4 +233,4 @@ std::string VariantFieldValueIterator<std::string>::convert_from_byte_array(cons
 
 };
 
-#endif
+#endif // gamgee__variant_field_value_iterator__guard

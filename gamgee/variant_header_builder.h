@@ -1,5 +1,5 @@
-#ifndef __gamgee__variant_header_builder__
-#define __gamgee__variant_header_builder__
+#ifndef gamgee__variant_header_builder__guard
+#define gamgee__variant_header_builder__guard
 
 #include "utils/utils.h"
 #include "variant_header.h"
@@ -43,4 +43,4 @@ class VariantHeaderBuilder {
 
 }
 
-#endif
+#endif // gamgee__variant_header_builder__guard

@@ -1,5 +1,5 @@
-#ifndef __gamgee__cigar__
-#define __gamgee__cigar__
+#ifndef gamgee__cigar__guard
+#define gamgee__cigar__guard
 
 #include "htslib/sam.h"
 
@@ -69,4 +69,4 @@ class Cigar {
 
 }
 
-#endif /* __gamgee__cigar__ */
+#endif /* gamgee__cigar__guard */
