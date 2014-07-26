@@ -3,6 +3,8 @@ project gamgee
         <cxxflags>-std=c++1y
         <linkflags>-std=c++1y
         <warnings-as-errors>on
+    : default-build
+        <variant>release
   ;
 
   use-project /gamgee/libs : lib ;
@@ -10,6 +12,6 @@ project gamgee
   lib gamgee 
     : [ glob-tree *.cpp : .git test lib bin dox build ] /gamgee/libs//hts
     : <link>static 
-    :
+    : 
     : <include>.
   ;
