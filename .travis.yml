@@ -15,13 +15,13 @@ before_install:
   - sudo apt-get -qq update;
 
 install:
-  - if [ "$CXX" == "g++" ]; then TOOLSET=gcc; sh .travis_scripts/gcc.sh; fi
-  - if [ "$CXX" == "clang++" ]; then TOOLSET=clang; sh .travis_scripts/clang.sh; fi
-  - sh .travis_scripts/boost.sh ${TOOLSET}
+  - if [ "$CXX" == "g++" ]; then .travis_scripts/gcc.sh; fi
+  - if [ "$CXX" == "clang++" ]; then .travis_scripts/clang.sh; fi
+  - .travis_scripts/boost.sh
 
 script:
-  - b2 -a toolset=$TOOLSET test cxxflags=--coverage linkflags=--coverage
+  - b2 -a toolset=${CC} test cxxflags=--coverage linkflags=--coverage
 
 after_success:
-  - if [ "$CXX" == "clang++" ] && [ "$TRAVIS_BRANCH" == "master" ]; then sh .travis_scripts/update_website_dox.sh ${GH_TOKEN} ${TRAVIS_BUILD_NUMBER}; fi
-  - if [ "$CXX" == "clang++" ]; then sh .travis_scripts/coveralls.sh ${COVERALLS_TOKEN}; fi
+  - .travis_scripts/update_website_dox.sh 
+  - .travis_scripts/coveralls.sh 
