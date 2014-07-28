@@ -1,5 +1,5 @@
-#ifndef __gamgee__variant_field__
-#define __gamgee__variant_field__
+#ifndef gamgee__variant_field__guard
+#define gamgee__variant_field__guard
 
 #include <iostream>
 
@@ -153,4 +153,4 @@ class VariantField {
 
 }
 
-#endif
+#endif // gamgee__variant_field__guard

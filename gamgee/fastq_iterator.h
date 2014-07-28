@@ -1,5 +1,5 @@
-#ifndef __foghorn__fastq_iterator__
-#define __foghorn__fastq_iterator__
+#ifndef gamgee__fastq_iterator__guard
+#define gamgee__fastq_iterator__guard
 
 
 #include "fastq.h"
@@ -76,4 +76,4 @@ class FastqIterator {
 
 }  // end namespace gamgee
 
-#endif
+#endif // gamgee__fastq_iterator__guard

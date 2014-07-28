@@ -1,5 +1,5 @@
-#ifndef __gamgee__sam__
-#define __gamgee__sam__
+#ifndef gamgee__sam__guard
+#define gamgee__sam__guard
 
 #include "sam_header.h"
 #include "read_bases.h"
@@ -109,4 +109,4 @@ class Sam {
 
 }  // end of namespace
 
-#endif /* defined(__gamgee__sam__) */
+#endif /* defined(gamgee__sam__guard) */

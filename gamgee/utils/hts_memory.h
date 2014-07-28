@@ -1,5 +1,5 @@
-#ifndef __gamgee_hts_memory__
-#define __gamgee_hts_memory__
+#ifndef gamgee__hts_memory__guard
+#define gamgee__hts_memory__guard
 
 #include "htslib/sam.h"
 #include "htslib/vcf.h"
@@ -71,4 +71,4 @@ std::string htslib_filter_name(bcf_hdr_t* header, bcf1_t* body, int index);
 }
 }
 
-#endif
+#endif // gamgee__hts_memory__guard

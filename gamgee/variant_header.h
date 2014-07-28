@@ -1,5 +1,5 @@
-#ifndef __gamgee__variant_header__
-#define __gamgee__variant_header__
+#ifndef gamgee__variant_header__guard
+#define gamgee__variant_header__guard
 
 #include "htslib/vcf.h"
 
@@ -48,4 +48,4 @@ class VariantHeader {
 
 }
 
-#endif
+#endif // gamgee__variant_header__guard

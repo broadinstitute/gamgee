@@ -1,5 +1,5 @@
-#ifndef __gamgee__is_missing__
-#define __gamgee__is_missing__
+#ifndef gamgee__is_missing__guard
+#define gamgee__is_missing__guard
 
 #include "sam_tag.h"
 
@@ -16,4 +16,4 @@ bool is_missing(const SamTag<T>& tag) { return !tag.is_present(); }             
 
 }
 
-#endif
+#endif // gamgee__is_missing__guard

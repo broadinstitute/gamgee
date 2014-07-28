@@ -1,5 +1,5 @@
-#ifndef __gamgee__variant_field_utils__
-#define __gamgee__variant_field_utils__
+#ifndef gamgee__format_field_type__guard
+#define gamgee__format_field_type__guard
 
 #include <string>
 #include <stdexcept>
@@ -115,4 +115,4 @@ inline uint8_t size_for_type(const FormatFieldType& type) {
 } // end namespace utils
 } // end namespace gamgee
 
-#endif
+#endif // gamgee__format_field_type__guard

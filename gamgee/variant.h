@@ -1,5 +1,5 @@
-#ifndef __gamgee__variant__
-#define __gamgee__variant__
+#ifndef gamgee__variant__guard
+#define gamgee__variant__guard
 
 #include "variant_header.h"
 #include "variant_field.h"
@@ -97,4 +97,4 @@ class Variant {
 
 }  // end of namespace
 
-#endif /* defined(__gamgee__variant__) */
+#endif /* defined(gamgee__variant__guard) */

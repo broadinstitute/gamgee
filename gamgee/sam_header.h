@@ -1,5 +1,5 @@
-#ifndef __gamgee__sam_header__
-#define __gamgee__sam_header__
+#ifndef gamgee__sam_header__guard
+#define gamgee__sam_header__guard
 
 #include "htslib/sam.h"
 
@@ -31,4 +31,4 @@ class SamHeader {
 };
 
 }
-#endif 
+#endif // gamgee__sam_header__guard

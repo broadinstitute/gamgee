@@ -1,5 +1,5 @@
-#ifndef __gamgee__multiple_variant_iterator__
-#define __gamgee__multiple_variant_iterator__
+#ifndef gamgee__multiple_variant_iterator__guard
+#define gamgee__multiple_variant_iterator__guard
 
 #include "htslib/vcf.h"
 
@@ -80,4 +80,4 @@ class MultipleVariantIterator {
 
 }  // end namespace gamgee
 
-#endif	// __gamgee__multiple_variant_iterator__
+#endif	// gamgee__multiple_variant_iterator__guard

@@ -1,5 +1,5 @@
-#ifndef __gamgee__variant_iterator__
-#define __gamgee__variant_iterator__
+#ifndef gamgee__variant_iterator__guard
+#define gamgee__variant_iterator__guard
 
 #include "variant.h"
 
@@ -76,4 +76,4 @@ class VariantIterator {
 
 }  // end namespace gamgee
 
-#endif
+#endif // gamgee__variant_iterator__guard

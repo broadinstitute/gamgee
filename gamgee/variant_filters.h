@@ -1,5 +1,5 @@
-#ifndef __gamgee__variant_filters__
-#define __gamgee__variant_filters__
+#ifndef gamgee__variant_filters__guard
+#define gamgee__variant_filters__guard
 
 #include "variant_filters_iterator.h"
 #include "utils/hts_memory.h"
@@ -58,4 +58,4 @@ class VariantFilters {
 
 }
 
-#endif
+#endif // gamgee__variant_filters__guard
