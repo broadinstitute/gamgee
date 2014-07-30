@@ -31,8 +31,10 @@ BOOST_AUTO_TEST_CASE( select_if ) {
       const auto p_likes = record.phred_likelihoods();
       const auto high_gq = [](const VariantFieldValue<int32_t>& x) { return x[0] >= GQ_THRESH; };
       const auto hom_ref = [](const VariantFieldValue<int32_t>& x) { return x[0] == 0; };
-      const auto comput_gq_select = Variant::select_if<int32_t>(g_quals.begin(), g_quals.end(), high_gq);
-      const auto comput_pl_select = Variant::select_if<int32_t>(p_likes.begin(), p_likes.end(), hom_ref);
+      const auto comput_gq_select = Variant::select_if<VariantFieldValue<int32_t>>(g_quals.begin(), g_quals.end(), high_gq);
+      const auto comput_pl_select = Variant::select_if<VariantFieldValue<int32_t>>(p_likes.begin(), p_likes.end(), hom_ref);
+      BOOST_CHECK_EQUAL(comput_gq_select.size(), 3);
+      BOOST_CHECK_EQUAL(comput_pl_select.size(), 3);
       const auto actual_gq_select = actual_gq_selects[record_idx];
       const auto actual_pl_select = actual_pl_selects[record_idx];
       BOOST_CHECK(comput_pl_select == actual_pl_select);

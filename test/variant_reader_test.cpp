@@ -7,6 +7,14 @@
 using namespace std;
 using namespace gamgee;
 
+boost::dynamic_bitset<> high_qual_hets(const Variant& record) {  // filter all hets that have GQ > 20
+  const auto genotypes = record.genotypes(); // a "vector-like" with the genotypes of all samples in this record
+  const auto gqs = record.genotype_quals(); // a "vector-like" with all the GQs of all samples in this record
+  const auto hets = Variant::select_if<Genotype>(genotypes.begin(), genotypes.end(), [](const auto& g) { return g.is_het(); }); // returns a bit set with all hets marked with 1's
+  const auto pass_gqs = Variant::select_if<VariantFieldValue<int32_t>>(gqs.begin(), gqs.end(), [](const auto& gq) { return gq[0] > 20; }); // returns a bit set with every sample with gq > 20 marked with 1's
+  return hets & pass_gqs; // returns a bit set with all the samples that are het and have gq > 20
+}
+
 BOOST_AUTO_TEST_CASE( single_variant_reader ) 
 {
   const auto truth_contigs = vector<uint32_t>{0, 1, 1, 1, 2};
@@ -18,6 +26,7 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
   const auto truth_ref = vector<string>{"T", "GG", "TAGTGQA", "A", "GAT"};
   const auto truth_id = vector<string>{"db2342", "rs837472", ".", ".", "."};
   const vector< vector<string>> truth_alt = {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"}};
+  const auto truth_high_quality_hets = boost::dynamic_bitset<>{std::string{"001"}};
   for (const auto& filename : {"testdata/test_variants.vcf", "testdata/test_variants.bcf"}) {
     auto record_counter = 0u;
     for (const auto& record : SingleVariantReader{filename}) {
@@ -105,6 +114,90 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
       const auto desc_expected = record_counter == 0 ? std::vector<string>{"Test1,Test2"} : std::vector<string>{};
       BOOST_CHECK_EQUAL_COLLECTIONS(desc_actual.begin(), desc_actual.end(), desc_expected.begin(), desc_expected.end());
 
+      BOOST_CHECK_EQUAL(high_qual_hets(record), truth_high_quality_hets);
+
+      const auto gt_for_all_samples = record.genotypes();
+
+      BOOST_CHECK(gt_for_all_samples[1].is_hom_ref());
+      BOOST_CHECK(gt_for_all_samples[0].is_het());
+      BOOST_CHECK(gt_for_all_samples[2].is_hom_var());
+
+      for (const auto& gt_for_single_sample: gt_for_all_samples) {
+        BOOST_CHECK_EQUAL(gt_for_single_sample.size(), 2);
+
+        const auto alleles = gt_for_single_sample.alleles_strings();
+        const auto allele_keys = gt_for_single_sample.alleles_keys();
+
+        BOOST_CHECK_EQUAL(gt_for_single_sample.allele_string(0), alleles[0]);
+        BOOST_CHECK_EQUAL(gt_for_single_sample.allele_string(1), alleles[1]);
+        BOOST_CHECK_EQUAL(gt_for_single_sample.allele_key(0), allele_keys[0]);
+        BOOST_CHECK_EQUAL(gt_for_single_sample.allele_key(1), allele_keys[1]);
+        BOOST_CHECK_EQUAL(gt_for_single_sample[0], allele_keys[0]);
+        BOOST_CHECK_EQUAL(gt_for_single_sample[1], allele_keys[1]);
+
+        BOOST_CHECK(!is_missing(gt_for_single_sample));
+        BOOST_CHECK_EQUAL(gt_for_single_sample.size(), 2);
+
+        if (gt_for_single_sample.is_het()) {
+          BOOST_CHECK(!gt_for_single_sample.is_hom_ref());
+          BOOST_CHECK(!gt_for_single_sample.is_hom_var());
+
+          BOOST_CHECK_NE(allele_keys[0], allele_keys[1]);
+          BOOST_CHECK_EQUAL(allele_keys[0], 0);
+          BOOST_CHECK_EQUAL(allele_keys[1], 1);
+
+          BOOST_CHECK_NE(alleles[0], alleles[1]);
+          BOOST_CHECK_EQUAL(alleles[0], truth_ref[record_counter]);
+          BOOST_CHECK_EQUAL(alleles[1], truth_alt[record_counter][0]);
+
+          BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00000001);
+        }
+
+        if (gt_for_single_sample.is_hom_ref()) {
+          BOOST_CHECK(!gt_for_single_sample.is_het());
+          BOOST_CHECK(!gt_for_single_sample.is_hom_var());
+
+          BOOST_CHECK_EQUAL(allele_keys[0], allele_keys[1]);
+          BOOST_CHECK_EQUAL(allele_keys[0], 0);
+          BOOST_CHECK_EQUAL(allele_keys[1], 0);
+
+          BOOST_CHECK_EQUAL(alleles[0], alleles[1]);
+          BOOST_CHECK_EQUAL(alleles[0], truth_ref[record_counter]);
+          BOOST_CHECK_EQUAL(alleles[1], truth_ref[record_counter]);
+
+          BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00000000);
+        }
+
+        if (gt_for_single_sample.is_hom_var()) {
+          BOOST_CHECK(!gt_for_single_sample.is_het());
+          BOOST_CHECK(!gt_for_single_sample.is_hom_ref());
+
+          BOOST_CHECK_EQUAL(allele_keys[0], allele_keys[1]);
+          BOOST_CHECK_EQUAL(allele_keys[0], 1);
+          BOOST_CHECK_EQUAL(allele_keys[1], 1);
+
+          BOOST_CHECK_EQUAL(alleles[0], alleles[1]);
+          BOOST_CHECK_EQUAL(alleles[0], truth_alt[record_counter][0]);
+          BOOST_CHECK_EQUAL(alleles[1], truth_alt[record_counter][0]);
+
+          BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00010001);
+        }
+
+        if (record_counter == 0) {
+          BOOST_CHECK(gt_for_all_samples[0] == gt_for_all_samples[0]);
+          BOOST_CHECK(!(gt_for_all_samples[0] != gt_for_all_samples[0]));
+          BOOST_CHECK(gt_for_all_samples[0] != gt_for_all_samples[1]);
+          BOOST_CHECK(!(gt_for_all_samples[0] == gt_for_all_samples[1]));
+
+          BOOST_CHECK(gt_for_all_samples[0][1] == gt_for_all_samples[2][0]);
+          BOOST_CHECK(!(gt_for_all_samples[0][1] != gt_for_all_samples[2][0]));
+          BOOST_CHECK(gt_for_all_samples[0][1] == gt_for_all_samples[0][1]);
+          BOOST_CHECK(!(gt_for_all_samples[0][1] != gt_for_all_samples[0][1]));
+          BOOST_CHECK(gt_for_all_samples[0][1] != gt_for_all_samples[1][0]);
+          BOOST_CHECK(!(gt_for_all_samples[0][1] == gt_for_all_samples[1][0]));
+        }
+      }
+
       ++record_counter;
     }
     BOOST_CHECK_EQUAL(record_counter, 5u);
@@ -160,5 +253,16 @@ BOOST_AUTO_TEST_CASE( single_variant_reader_missing_data )
   }
   for (const auto& record : SingleVariantReader{"testdata/test_variants_missing_data.vcf"}){ // include all 11 samples
     BOOST_CHECK_EQUAL(record.n_samples(), 11); 
+    const auto gt_for_all_samples = record.genotypes();
+    for (const auto& gt_for_single_sample: gt_for_all_samples) {
+      BOOST_CHECK(is_missing(gt_for_single_sample));
+      BOOST_CHECK_EQUAL(gt_for_single_sample.size(), 2);
+      BOOST_CHECK(is_missing(gt_for_single_sample.allele_string(0)));
+      BOOST_CHECK(is_missing(gt_for_single_sample.allele_string(1)));
+      BOOST_CHECK(is_missing(gt_for_single_sample.allele_key(0)));
+      BOOST_CHECK(is_missing(gt_for_single_sample.allele_key(1)));
+      BOOST_CHECK(is_missing(gt_for_single_sample[0]));
+      BOOST_CHECK(is_missing(gt_for_single_sample[1]));
+    }
   }
 }

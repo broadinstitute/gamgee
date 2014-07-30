@@ -181,4 +181,12 @@ std::vector<bool> Variant::generic_boolean_info_field(const std::string& tag) co
   return results;
 }
 
+VariantField<Genotype> Variant::genotypes() const {
+  // bcf_get_fmt() will unpack the record if necessary
+  const auto fmt = bcf_get_fmt(m_header.get(), m_body.get(), "GT");
+  if (fmt == nullptr) ///< if the variant is missing or the GT tag is missing, return an empty VariantField
+    return VariantField<Genotype>{};
+  return VariantField<Genotype>{m_body, fmt};
+}
+
 }
