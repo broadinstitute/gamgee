@@ -122,15 +122,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a40f4725f03235f3bd10af8ffb45a82ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_sam_header.html">SamHeader</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_header.html#a40f4725f03235f3bd10af8ffb45a82ba">operator=</a> (<a class="el" href="classgamgee_1_1_sam_header.html">SamHeader</a> &amp;&amp;other) noexcept</td></tr>
 <tr class="memdesc:a40f4725f03235f3bd10af8ffb45a82ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">move assignment of a <a class="el" href="classgamgee_1_1_sam_header.html" title="Utility class to hold the header of a sam file. ">SamHeader</a>. Shared pointers maintain state to all other associated objects correctly.  <a href="#a40f4725f03235f3bd10af8ffb45a82ba">More...</a><br /></td></tr>
 <tr class="separator:a40f4725f03235f3bd10af8ffb45a82ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cfc31b4cca5a4d156379da5055053ab"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_header.html#a3cfc31b4cca5a4d156379da5055053ab">sequence_length</a> (const std::string &amp;<a class="el" href="classgamgee_1_1_sam_header.html#ab534cda42977f66eed0918aa07a392b5">sequence_name</a>)</td></tr>
-<tr class="memdesc:a3cfc31b4cca5a4d156379da5055053ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the length of the given sequence as stored in the  tag in the BAM header.  <a href="#a3cfc31b4cca5a4d156379da5055053ab">More...</a><br /></td></tr>
-<tr class="separator:a3cfc31b4cca5a4d156379da5055053ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa69418c7a5e291cc1c65ad8de39b5a5e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_header.html#aa69418c7a5e291cc1c65ad8de39b5a5e">sequence_length</a> (const uint32_t sequence_index)</td></tr>
-<tr class="memdesc:aa69418c7a5e291cc1c65ad8de39b5a5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the length of the given sequence as stored in the  tag in the BAM header.  <a href="#aa69418c7a5e291cc1c65ad8de39b5a5e">More...</a><br /></td></tr>
-<tr class="separator:aa69418c7a5e291cc1c65ad8de39b5a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab534cda42977f66eed0918aa07a392b5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_header.html#ab534cda42977f66eed0918aa07a392b5">sequence_name</a> (const uint32_t sequence_index)</td></tr>
-<tr class="memdesc:ab534cda42977f66eed0918aa07a392b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the sequence name for the sequence with the given zero-based index.  <a href="#ab534cda42977f66eed0918aa07a392b5">More...</a><br /></td></tr>
-<tr class="separator:ab534cda42977f66eed0918aa07a392b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39a0ecd985816eb13d72eaaee0b630fe"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_header.html#a39a0ecd985816eb13d72eaaee0b630fe">n_sequences</a> () const </td></tr>
+<tr class="memdesc:a39a0ecd985816eb13d72eaaee0b630fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of reference sequences in the header.  <a href="#a39a0ecd985816eb13d72eaaee0b630fe">More...</a><br /></td></tr>
+<tr class="separator:a39a0ecd985816eb13d72eaaee0b630fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab45e67fe3fcdd7641754164982570be4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_header.html#ab45e67fe3fcdd7641754164982570be4">sequence_length</a> (const std::string &amp;<a class="el" href="classgamgee_1_1_sam_header.html#ac6d0450d0e2aa8963c11b1a5078924b3">sequence_name</a>) const </td></tr>
+<tr class="memdesc:ab45e67fe3fcdd7641754164982570be4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the length of the given reference sequence as stored in the  tag in the BAM header.  <a href="#ab45e67fe3fcdd7641754164982570be4">More...</a><br /></td></tr>
+<tr class="separator:ab45e67fe3fcdd7641754164982570be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acde5d26eac3109b98b3d3f8feb5aef8a"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_header.html#acde5d26eac3109b98b3d3f8feb5aef8a">sequence_length</a> (const uint32_t sequence_index) const </td></tr>
+<tr class="memdesc:acde5d26eac3109b98b3d3f8feb5aef8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the length of the given reference sequence as stored in the  tag in the BAM header.  <a href="#acde5d26eac3109b98b3d3f8feb5aef8a">More...</a><br /></td></tr>
+<tr class="separator:acde5d26eac3109b98b3d3f8feb5aef8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6d0450d0e2aa8963c11b1a5078924b3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_header.html#ac6d0450d0e2aa8963c11b1a5078924b3">sequence_name</a> (const uint32_t sequence_index) const </td></tr>
+<tr class="memdesc:ac6d0450d0e2aa8963c11b1a5078924b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the sequence name for the sequence with the given zero-based index.  <a href="#ac6d0450d0e2aa8963c11b1a5078924b3">More...</a><br /></td></tr>
+<tr class="separator:ac6d0450d0e2aa8963c11b1a5078924b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -246,6 +249,31 @@ the resulting <a class="el" href="classgamgee_1_1_sam_header.html" title="Utilit
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a39a0ecd985816eb13d72eaaee0b630fe"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gamgee::SamHeader::n_sequences </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the number of reference sequences in the header. </p>
+
+</div>
+</div>
 <a class="anchor" id="a5490e7ebcf604dca12524d015b9f869f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -293,7 +321,7 @@ the resulting <a class="el" href="classgamgee_1_1_sam_header.html" title="Utilit
 
 </div>
 </div>
-<a class="anchor" id="a3cfc31b4cca5a4d156379da5055053ab"></a>
+<a class="anchor" id="ab45e67fe3fcdd7641754164982570be4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -302,48 +330,62 @@ the resulting <a class="el" href="classgamgee_1_1_sam_header.html" title="Utilit
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>sequence_name</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns the length of the given sequence as stored in the  tag in the BAM header. </p>
-<p>Returns the length of the given sequence as stored in the  tag in the BAM header, or 0 if the sequence name is not found.</p>
-<p>Returns the length of the given sequence as stored in the  tag in the BAM header. </p>
+<p>Returns the length of the given reference sequence as stored in the  tag in the BAM header. </p>
+<p>Returns the length of the given sequence as stored in the  tag in the BAM header, or 0 if the sequence name is not found. </p>
 
 </div>
 </div>
-<a class="anchor" id="aa69418c7a5e291cc1c65ad8de39b5a5e"></a>
+<a class="anchor" id="acde5d26eac3109b98b3d3f8feb5aef8a"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint32_t gamgee::SamHeader::sequence_length </td>
           <td>(</td>
           <td class="paramtype">const uint32_t&#160;</td>
           <td class="paramname"><em>sequence_index</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Returns the length of the given sequence as stored in the  tag in the BAM header. </p>
-<p>Returns the sequence name for the sequence with the given zero-based index. </p>
+<p>Returns the length of the given reference sequence as stored in the  tag in the BAM header. </p>
 
 </div>
 </div>
-<a class="anchor" id="ab534cda42977f66eed0918aa07a392b5"></a>
+<a class="anchor" id="ac6d0450d0e2aa8963c11b1a5078924b3"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::string gamgee::SamHeader::sequence_name </td>
           <td>(</td>
           <td class="paramtype">const uint32_t&#160;</td>
           <td class="paramname"><em>sequence_index</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Returns the sequence name for the sequence with the given zero-based index. </p>
@@ -398,7 +440,7 @@ the resulting <a class="el" href="classgamgee_1_1_sam_header.html" title="Utilit
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 28 2014 20:50:48 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 30 2014 14:30:26 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
