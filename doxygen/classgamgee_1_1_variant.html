@@ -185,6 +185,9 @@ Public Member Functions</h2></td></tr>
 &lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#aca6f969c4ad2111899804796a9dffa8e">generic_string_format_field</a> (const std::string &amp;tag) const </td></tr>
 <tr class="memdesc:aca6f969c4ad2111899804796a9dffa8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a random access object with all the values in a give foramt field tag in string format for all samples contiguous in memory.  <a href="#aca6f969c4ad2111899804796a9dffa8e">More...</a><br /></td></tr>
 <tr class="separator:aca6f969c4ad2111899804796a9dffa8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c27796607b68948b11895c54c5244ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_field.html">VariantField</a>&lt; <a class="el" href="classgamgee_1_1_genotype.html">Genotype</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a2c27796607b68948b11895c54c5244ba">genotypes</a> () const </td></tr>
+<tr class="memdesc:a2c27796607b68948b11895c54c5244ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a random access object with all the values in a given GT tag for all samples contiguous in memory.  <a href="#a2c27796607b68948b11895c54c5244ba">More...</a><br /></td></tr>
+<tr class="separator:a2c27796607b68948b11895c54c5244ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8ef4ca0715319c7abb06074e510ab7a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#ab8ef4ca0715319c7abb06074e510ab7a">generic_integer_info_field</a> (const std::string &amp;tag) const </td></tr>
 <tr class="memdesc:ab8ef4ca0715319c7abb06074e510ab7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a random access object with all the values in a given info field tag in integer format for all samples contiguous in memory.  <a href="#ab8ef4ca0715319c7abb06074e510ab7a">More...</a><br /></td></tr>
 <tr class="separator:ab8ef4ca0715319c7abb06074e510ab7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,10 +203,10 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a6cc42352fe331c944d9f3dba5b7a7b94"><td class="memTemplParams" colspan="2">template&lt;class FF_TYPE &gt; </td></tr>
-<tr class="memitem:a6cc42352fe331c944d9f3dba5b7a7b94"><td class="memTemplItemLeft" align="right" valign="top">static boost::dynamic_bitset&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a6cc42352fe331c944d9f3dba5b7a7b94">select_if</a> (const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt;&gt; &amp;first, const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt;&gt; &amp;last, const std::function&lt; bool(const <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt; &amp;value)&gt; pred)</td></tr>
-<tr class="memdesc:a6cc42352fe331c944d9f3dba5b7a7b94"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a bitset indicating the samples selected according to unary predicate.  <a href="#a6cc42352fe331c944d9f3dba5b7a7b94">More...</a><br /></td></tr>
-<tr class="separator:a6cc42352fe331c944d9f3dba5b7a7b94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad65b9a367d6fe1f7cda3e7f240c72c09"><td class="memTemplParams" colspan="2">template&lt;class FF &gt; </td></tr>
+<tr class="memitem:ad65b9a367d6fe1f7cda3e7f240c72c09"><td class="memTemplItemLeft" align="right" valign="top">static boost::dynamic_bitset&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#ad65b9a367d6fe1f7cda3e7f240c72c09">select_if</a> (const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; FF &gt; &amp;first, const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; FF &gt; &amp;last, const std::function&lt; bool(const FF &amp;value)&gt; pred)</td></tr>
+<tr class="memdesc:ad65b9a367d6fe1f7cda3e7f240c72c09"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a bitset indicating the samples selected according to unary predicate.  <a href="#ad65b9a367d6fe1f7cda3e7f240c72c09">More...</a><br /></td></tr>
+<tr class="separator:ad65b9a367d6fe1f7cda3e7f240c72c09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -560,6 +563,27 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 </div>
 </div>
+<a class="anchor" id="a2c27796607b68948b11895c54c5244ba"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_variant_field.html">VariantField</a>&lt; <a class="el" href="classgamgee_1_1_genotype.html">Genotype</a> &gt; gamgee::Variant::genotypes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns a random access object with all the values in a given GT tag for all samples contiguous in memory. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Only int8_t GT fields have been tested. </dd>
+<dd>
+Missing GT fields are untested. </dd></dl>
+<p>&lt; if the variant is missing or the GT tag is missing, return an empty <a class="el" href="classgamgee_1_1_variant_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">VariantField</a> </p>
+
+</div>
+</div>
 <a class="anchor" id="ada7dc841eb57e7744a77c08a7aef877a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -839,11 +863,11 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 </div>
 </div>
-<a class="anchor" id="a6cc42352fe331c944d9f3dba5b7a7b94"></a>
+<a class="anchor" id="ad65b9a367d6fe1f7cda3e7f240c72c09"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class FF_TYPE &gt; </div>
+template&lt;class FF &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -851,19 +875,19 @@ template&lt;class FF_TYPE &gt; </div>
         <tr>
           <td class="memname">static boost::dynamic_bitset gamgee::Variant::select_if </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt;&gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; FF &gt; &amp;&#160;</td>
           <td class="paramname"><em>first</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt;&gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator</a>&lt; FF &gt; &amp;&#160;</td>
           <td class="paramname"><em>last</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::function&lt; bool(const <a class="el" href="classgamgee_1_1_variant_field_value.html">VariantFieldValue</a>&lt; FF_TYPE &gt; &amp;value)&gt;&#160;</td>
+          <td class="paramtype">const std::function&lt; bool(const FF &amp;value)&gt;&#160;</td>
           <td class="paramname"><em>pred</em>&#160;</td>
         </tr>
         <tr>
@@ -922,7 +946,7 @@ This can either be a function pointer or a function object. </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 30 2014 14:30:26 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 30 2014 18:18:47 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

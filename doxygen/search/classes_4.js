@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['multiplevariantiterator',['MultipleVariantIterator',['../classgamgee_1_1_multiple_variant_iterator.html',1,'gamgee']]],
-  ['multiplevariantreader',['MultipleVariantReader',['../classgamgee_1_1_multiple_variant_reader.html',1,'gamgee']]]
+  ['headerexception',['HeaderException',['../classgamgee_1_1_multiple_variant_reader_1_1_header_exception.html',1,'gamgee::MultipleVariantReader']]],
+  ['htsfiledeleter',['HtsFileDeleter',['../structgamgee_1_1utils_1_1_hts_file_deleter.html',1,'gamgee::utils']]]
 ];
