@@ -53,7 +53,7 @@ namespace gamgee {
    * @brief Returns the length of the given sequence as stored in the @SQ tag in the BAM header, or 0 if the sequence
    * name is not found.
    */
-  uint32_t SamHeader::sequence_length(const std::string& sequence_name)  {
+  uint32_t SamHeader::sequence_length(const std::string& sequence_name) const {
 	  auto c = sequence_name.c_str();
 	  for (int i = 0; i < m_header->n_targets; i++) {
 		  if (strcmp(c,m_header->target_name[i]) == 0) {
@@ -61,16 +61,6 @@ namespace gamgee {
 		  }
 	  }
 	  return 0;
-  }
-
-  ///< @brief Returns the length of the given sequence as stored in the @SQ tag in the BAM header.
-  uint32_t SamHeader::sequence_length(const uint32_t sequence_index) {
-	  return m_header->target_len[sequence_index];
-  }
-
-  ///< @brief Returns the sequence name for the sequence with the given zero-based index
-  std::string SamHeader::sequence_name(const uint32_t sequence_index) {
-	  return std::string(m_header->target_name[sequence_index]);
   }
 
 }
