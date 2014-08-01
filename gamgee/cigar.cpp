@@ -1,5 +1,6 @@
 #include "cigar.h"
 #include "utils/hts_memory.h"
+#include "utils/utils.h"
 
 #include <string>
 #include <sstream>
@@ -58,8 +59,7 @@ Cigar& Cigar::operator=(const Cigar& other) {
   *         cigar_oplen() to unpack the cigar operator and length
   */
 CigarElement Cigar::operator[](const uint32_t index) const {
-  if ( index >= m_num_cigar_elements )
-    throw out_of_range(string("Index ") + std::to_string(index) + " out of range in Cigar::operator[]");
+  utils::check_max_boundary(index, m_num_cigar_elements);
   return m_cigar[index];
 }
 
@@ -70,8 +70,7 @@ CigarElement Cigar::operator[](const uint32_t index) const {
   *         cigar_oplen() to unpack the cigar operator and length
   */
 CigarElement& Cigar::operator[](const uint32_t index) {
-  if ( index >= m_num_cigar_elements )
-    throw out_of_range(string("Index ") + std::to_string(index) + " out of range in Cigar::operator[]");
+  utils::check_max_boundary(index, m_num_cigar_elements);
   return m_cigar[index];
 }
 
