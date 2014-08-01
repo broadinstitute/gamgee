@@ -387,6 +387,7 @@ BOOST_AUTO_TEST_CASE( set_illegal_cigar ) {
 
   // Should throw an exception, since the cigar is invalid
   BOOST_CHECK_THROW(builder.set_cigar("3F"), logic_error);
+  BOOST_CHECK_THROW(builder.set_cigar(""), invalid_argument);
 }
 
 BOOST_AUTO_TEST_CASE( set_mismatching_bases_and_quals ) {
