@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>Gamgee: Member List</title>
+<title>Gamgee: gamgee/utils/format_field_type.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,8 +40,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -62,10 +62,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
-      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
-      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -84,24 +82,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacegamgee.html">gamgee</a></li><li class="navelem"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html">MultipleVariantIterator</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_20d51cb71d3c0820fd93cf6c11d93896.html">gamgee</a></li><li class="navelem"><a class="el" href="dir_f0af9e56cf6abefa9f035afe018e88cc.html">utils</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">gamgee::MultipleVariantIterator Member List</div>  </div>
+<div class="title">format_field_type.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>This is the complete list of members for <a class="el" href="classgamgee_1_1_multiple_variant_iterator.html">gamgee::MultipleVariantIterator</a>, including all inherited members.</p>
-<table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#afc06be010061f3b2fea15dac17d286f0">MultipleVariantIterator</a>()</td><td class="entry"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html">gamgee::MultipleVariantIterator</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#a05bdea4c2fdc12575df848defa3a4760">MultipleVariantIterator</a>(const std::vector&lt; vcfFile * &gt; variant_files, const std::shared_ptr&lt; bcf_hdr_t &gt; variant_header)</td><td class="entry"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html">gamgee::MultipleVariantIterator</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#aca91a09d88d1e4ee98508dbd27ffd810">MultipleVariantIterator</a>(MultipleVariantIterator &amp;&amp;)</td><td class="entry"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html">gamgee::MultipleVariantIterator</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#a7d945e028d26616ae3d51181ea75d64b">operator!=</a>(const MultipleVariantIterator &amp;rhs)</td><td class="entry"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html">gamgee::MultipleVariantIterator</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#a2c80d49abf8b402e9df02e7000a099e2">operator*</a>()</td><td class="entry"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html">gamgee::MultipleVariantIterator</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#a6e508940eb0d39b7ebc75c7abc256573">operator++</a>()</td><td class="entry"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html">gamgee::MultipleVariantIterator</a></td><td class="entry"></td></tr>
-</table></div><!-- contents -->
+<div class="textblock"><code>#include &quot;<a class="el" href="format__field__type_8h_source.html">format_field_type.h</a>&quot;</code><br />
+<code>#include &quot;htslib/vcf.h&quot;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;stdexcept&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacegamgee"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html">gamgee</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacegamgee_1_1utils"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html">gamgee::utils</a></td></tr>
+<tr class="memdesc:namespacegamgee_1_1utils"><td class="mdescLeft">&#160;</td><td class="mdescRight">utility functions for the gamgee library <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a5e97f0ad88440531250c794004c4d0b7"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a5e97f0ad88440531250c794004c4d0b7">gamgee::utils::convert_data_to_integer</a> (const uint8_t *data_ptr, const int index, const uint8_t num_bytes_per_value, const FormatFieldType &amp;type)</td></tr>
+<tr class="memdesc:a5e97f0ad88440531250c794004c4d0b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">converts the value in an index from the byte array into VALUE_TYPE  <a href="#a5e97f0ad88440531250c794004c4d0b7">More...</a><br /></td></tr>
+<tr class="separator:a5e97f0ad88440531250c794004c4d0b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e311a6e54eb6bb586924d5109206c8e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a1e311a6e54eb6bb586924d5109206c8e">gamgee::utils::convert_data_to_float</a> (const uint8_t *data_ptr, const int index, const uint8_t num_bytes_per_value, const FormatFieldType &amp;type)</td></tr>
+<tr class="separator:a1e311a6e54eb6bb586924d5109206c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a175b96f16641108cac41f2c299e76e98"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a175b96f16641108cac41f2c299e76e98">gamgee::utils::convert_data_to_string</a> (const uint8_t *data_ptr, const int index, const uint8_t num_bytes_per_value, const FormatFieldType &amp;type)</td></tr>
+<tr class="separator:a175b96f16641108cac41f2c299e76e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00dda0cfbfdf4b93dbf133552ae52f79"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a00dda0cfbfdf4b93dbf133552ae52f79">gamgee::utils::size_for_type</a> (const FormatFieldType &amp;type, const bcf_fmt_t *const format_ptr)</td></tr>
+<tr class="memdesc:a00dda0cfbfdf4b93dbf133552ae52f79"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of bytes for a given FormatFieldType  <a href="#a00dda0cfbfdf4b93dbf133552ae52f79">More...</a><br /></td></tr>
+<tr class="separator:a00dda0cfbfdf4b93dbf133552ae52f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated on Fri Aug 1 2014 02:47:56 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
