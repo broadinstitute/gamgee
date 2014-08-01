@@ -34,17 +34,6 @@ namespace gamgee {
   {}
 
   /**
-   * @brief moves a ReadBases object, transferring ownership of the underlying htslib memory
-   */
-  ReadBases::ReadBases(ReadBases&& other) noexcept :
-    m_sam_record { move(other.m_sam_record) },
-    m_bases { other.m_bases },
-    m_num_bases { other.m_num_bases }
-  {
-    other.m_bases = nullptr;
-  }
-
-  /**
    * @brief creates a deep copy of a ReadBases object
    *
    * @note the copy will have exclusive ownership over the newly-allocated htslib memory
@@ -54,19 +43,6 @@ namespace gamgee {
       return *this;
     m_sam_record = utils::make_shared_sam(utils::sam_deep_copy(other.m_sam_record.get())); ///< shared_ptr assignment will take care of deallocating old sam record if necessary
     m_bases = bam_get_seq(m_sam_record.get());
-    m_num_bases = other.m_num_bases;
-    return *this;
-  }
-
-  /**
-   * @brief moves a ReadBases object, transferring ownership of the underlying htslib memory
-   */
-  ReadBases& ReadBases::operator=(ReadBases&& other) noexcept {
-    if ( &other == this )  
-      return *this;
-    m_sam_record = move(other.m_sam_record); ///< shared_ptr assignment will take care of deallocating old sam record if necessary
-    m_bases = other.m_bases;
-    other.m_bases = nullptr;
     m_num_bases = other.m_num_bases;
     return *this;
   }
