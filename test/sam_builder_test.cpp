@@ -379,6 +379,12 @@ BOOST_AUTO_TEST_CASE( build_multiple_reads ) {
   BOOST_CHECK_EQUAL(second_read.alignment_start(), 142);
   BOOST_CHECK_EQUAL(second_read.mate_alignment_start(), 199);
 }
+BOOST_AUTO_TEST_CASE( set_illegal_base_quals ) {
+  auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
+  auto builder = SamBuilder{header};
+  builder.set_name("foo").set_bases("ACT").set_cigar("3M");
+  BOOST_CHECK_THROW(builder.set_base_quals({2, 255, 256}), invalid_argument); // 256 is too big for a quality score
+}
 
 BOOST_AUTO_TEST_CASE( set_illegal_cigar ) {
   auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
@@ -438,7 +444,7 @@ BOOST_AUTO_TEST_CASE( build_without_validation ) {
 BOOST_AUTO_TEST_CASE( builder_move_constructor ) {
   auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
   auto builder1 = SamBuilder{header};
-  const auto read1 = builder1.set_name("TEST_READ").set_cigar("1M").set_bases("A").set_base_quals({24}).build();
+  const auto read1 = builder1.set_name("TEST_READ").set_cigar("1M").set_bases("A").set_base_quals(initializer_list<uint8_t>{24}).build();
   auto builder2 = std::move(builder1);
   const auto read2 = builder2.build();
   BOOST_CHECK_EQUAL(read1.name(), read2.name()); // the sheer fact that we can run this means the move constructor worked. Checking these just to make sure.
