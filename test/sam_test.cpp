@@ -195,6 +195,8 @@ BOOST_AUTO_TEST_CASE( sam_cigar_copy_and_move_constructors ) {
   auto cigar_tmp = std::move(cigar);                              // take ownership of cigar's memory so we can play around with cigar again
   cigar = std::move(cigar_move);                                  // we should be back to the original again!
   BOOST_CHECK(cigar == read.cigar());
+  cigar = cigar;                                                  // check self assignment
+  BOOST_CHECK(cigar == read.cigar());
 }
 
 BOOST_AUTO_TEST_CASE( invalid_cigar_access ) {
