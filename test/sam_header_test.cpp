@@ -24,4 +24,5 @@ BOOST_AUTO_TEST_CASE( sam_header_constructors ) {
   header1 = header2;                       // copy assignment
   const auto header4 = std::move(header1); // transfer header1's memory somewhere else so we can reuse it for move assignment
   header1 = std::move(header3);            // move assignment
+  header1 = header1;                       // self assignment
 }
