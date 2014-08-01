@@ -205,6 +205,15 @@ BOOST_AUTO_TEST_CASE( invalid_cigar_access ) {
   BOOST_CHECK_THROW(cigar[std::numeric_limits<uint32_t>::max()], out_of_range); 
 }
 
+BOOST_AUTO_TEST_CASE( comparing_different_cigars ) {
+  const auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
+  auto builder = SamBuilder{header};
+  builder.set_name("bla").set_bases("actg").set_base_quals({4,24,3,3});
+  const auto read1 = builder.set_cigar("4M").build();
+  const auto read2 = builder.set_cigar("2M1I1M").build();
+  BOOST_CHECK(read1.cigar() != read2.cigar());
+}
+
 BOOST_AUTO_TEST_CASE( sam_read_tags ) {
   const auto read1 = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
   const auto read2 = *(SingleSamReader{"testdata/test_paired.bam"}.begin());
