@@ -204,7 +204,9 @@ BOOST_AUTO_TEST_CASE( invalid_cigar_access ) {
   auto cigar = read.cigar();
   BOOST_CHECK_THROW(cigar[cigar.size()] = 3, out_of_range); 
   BOOST_CHECK_THROW(cigar[cigar.size()], out_of_range); 
-  BOOST_CHECK_THROW(cigar[std::numeric_limits<uint32_t>::max()], out_of_range); 
+  auto x = 2; // just a random variable to assign to so we can test the const version of operator[]
+  BOOST_CHECK_THROW(x = cigar[std::numeric_limits<uint32_t>::max()], out_of_range); 
+  x++; // using it otherwise compiler will complain
 }
 
 BOOST_AUTO_TEST_CASE( comparing_different_cigars ) {
@@ -221,19 +223,19 @@ BOOST_AUTO_TEST_CASE( sam_base_quals_copy_and_move_constructors ) {
   auto bq = read.base_quals();
   auto bq_copy = bq;
   bq_copy[0] = 99;
-  BOOST_CHECK(bq_copy != bq);                               // check that modifying the copy doesn't affect the original
-  auto bq_move = std::move(bq);                             // move construct a new bq
+  BOOST_CHECK(bq_copy != bq);           // check that modifying the copy doesn't affect the original
+  auto bq_move = std::move(bq);         // move construct a new bq
   bq_move[0] = 90;
-  BOOST_CHECK(bq_move != bq_copy);                          // check that modifying the moved one doesn't affect the copy
-  bq = bq_copy;                                             // check the copy assignment now that bq has been moved to move_bq
-  BOOST_CHECK(bq == bq_copy);                               // check that the bq is now the same as the bq_copy
-  BOOST_CHECK(bq != bq_move);                               // check that the bq is not the same as the moved one
+  BOOST_CHECK(bq_move != bq_copy);      // check that modifying the moved one doesn't affect the copy
+  bq = bq_copy;                         // check the copy assignment now that bq has been moved to move_bq
+  BOOST_CHECK(bq == bq_copy);           // check that the bq is now the same as the bq_copy
+  BOOST_CHECK(bq != bq_move);           // check that the bq is not the same as the moved one
   bq[0] = 93;
-  BOOST_CHECK(bq != bq_copy);                               // check that modifying the copied version doesn't affect the original
-  auto bq_tmp = std::move(bq);                              // take ownership of bq's memory so we can play around with bq again
-  bq = std::move(bq_move);                                  // we should be back to the original again!
+  BOOST_CHECK(bq != bq_copy);           // check that modifying the copied version doesn't affect the original
+  auto bq_tmp = std::move(bq);          // take ownership of bq's memory so we can play around with bq again
+  bq = std::move(bq_move);              // we should be back to the original again!
   BOOST_CHECK(bq == read.base_quals());
-  bq = bq;                                                  // check self assignment
+  bq = bq;                              // check self assignment
   BOOST_CHECK(bq == read.base_quals());
 }
 
