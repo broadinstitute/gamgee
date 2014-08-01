@@ -23,9 +23,9 @@ class Cigar {
  public:
   explicit Cigar(const std::shared_ptr<bam1_t>& sam_record);
   Cigar(const Cigar& other);
-  Cigar(Cigar&& other) noexcept;
+  Cigar(Cigar&& other) = default;
   Cigar& operator=(const Cigar& other);
-  Cigar& operator=(Cigar&& other) noexcept;
+  Cigar& operator=(Cigar&& other) = default;
   ~Cigar() = default; ///< default destruction is sufficient, since our shared_ptr will handle deallocation
 
   CigarElement operator[](const uint32_t index) const;       ///< use freely as you would an array.

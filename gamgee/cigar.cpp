@@ -38,17 +38,6 @@ Cigar::Cigar(const Cigar& other) :
 {}
 
 /**
-  * @brief moves a Cigar object, transferring ownership of the underlying htslib memory
-  */
-Cigar::Cigar(Cigar&& other) noexcept :
-  m_sam_record { move(other.m_sam_record) },
-  m_cigar { other.m_cigar },
-  m_num_cigar_elements { other.m_num_cigar_elements }
-{
-  other.m_cigar = nullptr;
-}
-
-/**
   * @brief creates a deep copy of a Cigar object
   *
   * @note the copy will have exclusive ownership over the newly-allocated htslib memory
@@ -58,19 +47,6 @@ Cigar& Cigar::operator=(const Cigar& other) {
     return *this; 
   m_sam_record = utils::make_shared_sam(utils::sam_deep_copy(other.m_sam_record.get())); ///< shared_ptr assignment will take care of deallocating old sam record if necessary
   m_cigar = bam_get_cigar(m_sam_record.get());
-  m_num_cigar_elements = other.m_num_cigar_elements;
-  return *this;
-}
-
-/**
-  * @brief moves a Cigar object, transferring ownership of the underlying htslib memory
-  */
-Cigar& Cigar::operator=(Cigar&& other) noexcept {
-  if ( &other == this )  
-    return *this;
-  m_sam_record = move(other.m_sam_record);
-  m_cigar = other.m_cigar;
-  other.m_cigar = nullptr;
   m_num_cigar_elements = other.m_num_cigar_elements;
   return *this;
 }
