@@ -248,7 +248,7 @@ BOOST_AUTO_TEST_CASE( comparing_different_base_quals ) {
   BOOST_CHECK(read1.base_quals() != read2.base_quals());
 }
 
-BOOST_AUTO_TEST_CASE( sam_bases_copy_and_move_constructors ) {
+BOOST_AUTO_TEST_CASE( sam_read_bases_copy_and_move_constructors ) {
   auto read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
   auto bases = read.bases();
   auto bases_copy = bases;
@@ -269,13 +269,20 @@ BOOST_AUTO_TEST_CASE( sam_bases_copy_and_move_constructors ) {
   BOOST_CHECK(bases == read.bases());
 }
 
-BOOST_AUTO_TEST_CASE( comparing_different_bases ) {
+BOOST_AUTO_TEST_CASE( comparing_different_read_bases ) {
   const auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
   auto builder = SamBuilder{header};
   builder.set_name("bla").set_base_quals({4,4,3,2}).set_cigar("4M");
   const auto read1 = builder.set_bases("acgt").build();
   const auto read2 = builder.set_bases("act").set_cigar("3M").set_base_quals({4,4,3}).build(); // subtly different...
   BOOST_CHECK(read1.bases() != read2.bases());
+}
+
+BOOST_AUTO_TEST_CASE( invalid_read_bases_access ) {
+  auto read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  auto bases = read.bases();
+  BOOST_CHECK_THROW(bases[bases.size()], out_of_range); 
+  BOOST_CHECK_THROW(bases[std::numeric_limits<uint32_t>::max()], out_of_range); 
 }
 
 BOOST_AUTO_TEST_CASE( sam_read_tags ) {
