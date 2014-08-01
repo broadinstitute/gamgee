@@ -34,17 +34,6 @@ BaseQuals::BaseQuals(const BaseQuals& other) :
 {}
 
 /**
-  * @brief moves a BaseQuals object, transferring ownership of the underlying htslib memory
-  */
-BaseQuals::BaseQuals(BaseQuals&& other) noexcept :
-  m_sam_record { move(other.m_sam_record) },
-  m_quals { other.m_quals },
-  m_num_quals { other.m_num_quals }
-{
-  other.m_quals = nullptr;
-}
-
-/**
   * @brief creates a deep copy of a BaseQuals object
   *
   * @note the copy will have exclusive ownership over the newly-allocated htslib memory
@@ -54,19 +43,6 @@ BaseQuals& BaseQuals::operator=(const BaseQuals& other) {
     return *this;
   m_sam_record = utils::make_shared_sam(utils::sam_deep_copy(other.m_sam_record.get())); ///< shared_ptr assignment will take care of deallocating old sam record if necessary
   m_quals = bam_get_qual(m_sam_record.get()); 
-  m_num_quals = other.m_num_quals;
-  return *this;
-}
-
-/**
-  * @brief moves a BaseQuals object, transferring ownership of the underlying htslib memory
-  */
-BaseQuals& BaseQuals::operator=(BaseQuals&& other) noexcept {
-  if ( &other == this )  
-    return *this;
-  m_sam_record = move(other.m_sam_record); ///< shared_ptr assignment will take care of deallocating old sam record if necessary
-  m_quals = other.m_quals;
-  other.m_quals = nullptr;
   m_num_quals = other.m_num_quals;
   return *this;
 }
