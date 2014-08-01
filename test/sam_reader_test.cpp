@@ -32,8 +32,8 @@ BOOST_AUTO_TEST_CASE( paired_readers ) {
         read_counter += 2;
       }
     }
-    BOOST_CHECK_EQUAL(secondary_alignments, 5u);
-    BOOST_CHECK_EQUAL(read_counter, 42u);
+    BOOST_CHECK_EQUAL(secondary_alignments, 7u);
+    BOOST_CHECK_EQUAL(read_counter, 44u);
   }
 }
 

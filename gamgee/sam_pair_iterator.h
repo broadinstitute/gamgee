@@ -33,7 +33,7 @@ class SamPairIterator {
     /**
      * @brief a SamPairIterator move constructor guarantees all objects will have the same state.
      */
-    SamPairIterator(SamPairIterator&& other);
+    SamPairIterator(SamPairIterator&& other) = default;
     
     /**
      * @brief inequality operator (needed by for-each loop)
