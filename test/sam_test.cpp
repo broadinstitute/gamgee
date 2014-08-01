@@ -239,6 +239,45 @@ BOOST_AUTO_TEST_CASE( sam_base_quals_copy_and_move_constructors ) {
   BOOST_CHECK(bq == read.base_quals());
 }
 
+BOOST_AUTO_TEST_CASE( comparing_different_base_quals ) {
+  const auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
+  auto builder = SamBuilder{header};
+  builder.set_name("bla").set_bases("actg").set_cigar("4M");
+  const auto read1 = builder.set_base_quals({4,4,3,2}).build();
+  const auto read2 = builder.set_bases("act").set_cigar("3M").set_base_quals({4,4,3}).build(); // subtly different...
+  BOOST_CHECK(read1.base_quals() != read2.base_quals());
+}
+
+BOOST_AUTO_TEST_CASE( sam_bases_copy_and_move_constructors ) {
+  auto read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  auto bases = read.bases();
+  auto bases_copy = bases;
+  bases_copy.set_base(0, Base::C);
+  BOOST_CHECK(bases_copy != bases);           // check that modifying the copy doesn't affect the original
+  auto bases_move = std::move(bases);         // move construct a new bases
+  bases_move.set_base(0, Base::N);
+  BOOST_CHECK(bases_move != bases_copy);      // check that modifying the moved one doesn't affect the copy
+  bases = bases_copy;                         // check the copy assignment now that bases has been moved to move_bases
+  BOOST_CHECK(bases == bases_copy);           // check that the bases is now the same as the bases_copy
+  BOOST_CHECK(bases != bases_move);           // check that the bases is not the same as the moved one
+  bases.set_base(0, Base::T);
+  BOOST_CHECK(bases != bases_copy);           // check that modifying the copied version doesn't affect the original
+  auto bases_tmp = std::move(bases);          // take ownership of bases's memory so we can play around with bases again
+  bases = std::move(bases_move);              // we should be back to the original again!
+  BOOST_CHECK(bases == read.bases());
+  bases = bases;                              // check self assignment
+  BOOST_CHECK(bases == read.bases());
+}
+
+BOOST_AUTO_TEST_CASE( comparing_different_bases ) {
+  const auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
+  auto builder = SamBuilder{header};
+  builder.set_name("bla").set_base_quals({4,4,3,2}).set_cigar("4M");
+  const auto read1 = builder.set_bases("acgt").build();
+  const auto read2 = builder.set_bases("act").set_cigar("3M").set_base_quals({4,4,3}).build(); // subtly different...
+  BOOST_CHECK(read1.bases() != read2.bases());
+}
+
 BOOST_AUTO_TEST_CASE( sam_read_tags ) {
   const auto read1 = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
   const auto read2 = *(SingleSamReader{"testdata/test_paired.bam"}.begin());
