@@ -178,6 +178,17 @@ BOOST_AUTO_TEST_CASE( sam_in_place_cigar_modification ) {
   BOOST_CHECK_EQUAL(read_cigar[0], Cigar::make_cigar_element(30, CigarOperator::I));
 }
 
+BOOST_AUTO_TEST_CASE( sam_cigar_copy_and_move_constructors ) {
+  auto read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  auto cigar = read.cigar();
+  auto cigar_copy = cigar;
+  cigar_copy[0] = Cigar::make_cigar_element(3, CigarOperator::M); 
+  BOOST_CHECK(cigar_copy != cigar); // check that modifying the copy doesn't affect the original
+  auto cigar_move = std::move(cigar);
+  cigar_move[0] = Cigar::make_cigar_element(1, CigarOperator::D); 
+  BOOST_CHECK(cigar_move != cigar_copy); // check that modifying the moved one doesn't affect the copy 
+}
+
 BOOST_AUTO_TEST_CASE( sam_read_tags ) {
   const auto read1 = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
   const auto read2 = *(SingleSamReader{"testdata/test_paired.bam"}.begin());
