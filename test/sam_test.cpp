@@ -183,18 +183,26 @@ BOOST_AUTO_TEST_CASE( sam_cigar_copy_and_move_constructors ) {
   auto cigar = read.cigar();
   auto cigar_copy = cigar;
   cigar_copy[0] = Cigar::make_cigar_element(3, CigarOperator::M); 
-  BOOST_CHECK(cigar_copy != cigar); // check that modifying the copy doesn't affect the original
-  auto cigar_move = std::move(cigar); // move construct a new cigar
-  cigar_move[0] = Cigar::make_cigar_element(1, CigarOperator::D);  
-  BOOST_CHECK(cigar_move != cigar_copy); // check that modifying the moved one doesn't affect the copy 
-  cigar = cigar_copy; // check the copy assignment now that cigar has been moved to move_cigar
-  BOOST_CHECK(cigar == cigar_copy); // check that the cigar is now the same as the cigar_copy
-  BOOST_CHECK(cigar != cigar_move); // check that the cigar is not the same as the moved one
+  BOOST_CHECK(cigar_copy != cigar);                               // check that modifying the copy doesn't affect the original
+  auto cigar_move = std::move(cigar);                             // move construct a new cigar
+  cigar_move[0] = Cigar::make_cigar_element(1, CigarOperator::D);
+  BOOST_CHECK(cigar_move != cigar_copy);                          // check that modifying the moved one doesn't affect the copy
+  cigar = cigar_copy;                                             // check the copy assignment now that cigar has been moved to move_cigar
+  BOOST_CHECK(cigar == cigar_copy);                               // check that the cigar is now the same as the cigar_copy
+  BOOST_CHECK(cigar != cigar_move);                               // check that the cigar is not the same as the moved one
   cigar[0] = Cigar::make_cigar_element(2, CigarOperator::N);
-  BOOST_CHECK(cigar != cigar_copy); // check that modifying the copied version doesn't affect the original 
-  auto cigar_tmp = std::move(cigar); // take ownership of cigar's memory so we can play around with cigar again
-  cigar = std::move(cigar_move); // we should be back to the original again!
+  BOOST_CHECK(cigar != cigar_copy);                               // check that modifying the copied version doesn't affect the original
+  auto cigar_tmp = std::move(cigar);                              // take ownership of cigar's memory so we can play around with cigar again
+  cigar = std::move(cigar_move);                                  // we should be back to the original again!
   BOOST_CHECK(cigar == read.cigar());
+}
+
+BOOST_AUTO_TEST_CASE( invalid_cigar_access ) {
+  auto read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  auto cigar = read.cigar();
+  BOOST_CHECK_THROW(cigar[cigar.size()] = 3, out_of_range); 
+  BOOST_CHECK_THROW(cigar[cigar.size()], out_of_range); 
+  BOOST_CHECK_THROW(cigar[std::numeric_limits<uint32_t>::max()], out_of_range); 
 }
 
 BOOST_AUTO_TEST_CASE( sam_read_tags ) {
