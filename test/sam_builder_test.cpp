@@ -430,3 +430,14 @@ BOOST_AUTO_TEST_CASE( build_without_validation ) {
   BOOST_CHECK_EQUAL(read.base_quals().to_string(), "1 2 3");
 }
 
+BOOST_AUTO_TEST_CASE( builder_move_constructor ) {
+  auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
+  auto builder1 = SamBuilder{header};
+  const auto read1 = builder1.set_name("TEST_READ").set_cigar("1M").set_bases("A").set_base_quals({24}).build();
+  auto builder2 = std::move(builder1);
+  const auto read2 = builder2.build();
+  BOOST_CHECK_EQUAL(read1.name(), read2.name()); // the sheer fact that we can run this means the move constructor worked. Checking these just to make sure.
+  BOOST_CHECK(read1.cigar()      == read2.cigar());
+  BOOST_CHECK(read1.bases()      == read2.bases());
+  BOOST_CHECK(read1.base_quals() == read2.base_quals());
+}
