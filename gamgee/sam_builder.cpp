@@ -67,23 +67,6 @@ SamBuilder::SamBuilder(const SamHeader& header, const Sam& starting_read, const 
 {}
 
 /**
- * @brief move an existing builder's state into this object
- */
-SamBuilder& SamBuilder::operator=(SamBuilder&& other) noexcept {
-  if ( &other == this )
-    return *this;
-
-  m_core_read = move(other.m_core_read);
-  m_name = move(other.m_name);
-  m_cigar = move(other.m_cigar);
-  m_bases = move(other.m_bases);
-  m_base_quals = move(other.m_base_quals);
-  m_tags = move(other.m_tags);
-  m_validate_on_build = other.m_validate_on_build;
-  return *this;
-}
-
-/**
  * @brief set the read's QNAME to the specified value
  */
 SamBuilder& SamBuilder::set_name(const std::string& new_name) {

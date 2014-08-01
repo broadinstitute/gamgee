@@ -63,7 +63,7 @@ class SamBuilder {
 
   // SamBuilders are moveable but not copyable, and use default destruction
   SamBuilder(SamBuilder&& other) = default;
-  SamBuilder& operator=(SamBuilder&& other) noexcept;
+  SamBuilder& operator=(SamBuilder&& other) = default;
   SamBuilder(const SamBuilder& other) = delete;
   SamBuilder& operator=(const SamBuilder& other) = delete;
   ~SamBuilder() = default;
