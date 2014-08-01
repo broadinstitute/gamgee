@@ -386,8 +386,10 @@ BOOST_AUTO_TEST_CASE( set_illegal_cigar ) {
   builder.set_name("foo").set_bases("ACT").set_base_quals({1, 2, 3});
 
   // Should throw an exception, since the cigar is invalid
-  BOOST_CHECK_THROW(builder.set_cigar("3F"), logic_error);
-  BOOST_CHECK_THROW(builder.set_cigar(""), invalid_argument);
+  BOOST_CHECK_THROW(builder.set_cigar("3F"), logic_error);       // F is not a cigar operator
+  BOOST_CHECK_THROW(builder.set_cigar(""), invalid_argument);    // empty cigar
+  BOOST_CHECK_THROW(builder.set_cigar("100"), invalid_argument); // missing operator
+  BOOST_CHECK_THROW(builder.set_cigar("M100"), invalid_argument); // operator in front of the element length
 }
 
 BOOST_AUTO_TEST_CASE( set_mismatching_bases_and_quals ) {
