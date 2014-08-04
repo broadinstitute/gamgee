@@ -29,9 +29,24 @@ class SamIterator {
     SamIterator(samFile* sam_file_ptr, const std::shared_ptr<bam_hdr_t>& sam_header_ptr);
 
     /**
+     * @brief no copy construction/assignment allowed for readers and iterators
+     */
+    SamIterator(SamIterator&) = delete;
+
+    /**
      * @brief a SamIterator move constructor guarantees all objects will have the same state.
      */
-    SamIterator(SamIterator&&);
+    SamIterator(SamIterator&&) = default;
+    
+    /**
+     * @copydoc SamIterator(SamIterator&)
+     */
+    SamIterator& operator=(SamIterator&) = delete;
+
+    /**
+     * @copydoc SamIterator(SamIterator&&)
+     */
+    SamIterator& operator=(SamIterator&&) = default;
     
     /**
      * @brief inequality operator (needed by for-each loop)

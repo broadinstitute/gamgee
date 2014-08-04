@@ -55,22 +55,46 @@ class SamReader {
       m_sam_header_ptr { utils::make_shared_sam_header(sam_hdr_read(m_sam_file_ptr)) }
     {}
 
+    /**
+     * @brief no copy construction/assignment allowed for iterators and readers
+     */
+    SamReader(SamReader& other) = delete;
+
+    /**
+     * @brief simple move assignment/construction 
+     *
+     * we need a custom move constructor here because we need to set the file pointer to nullptr
+     * otherwise the destructor will try to close the dangling pointer.
+     */
     SamReader(SamReader&& other) :
       m_sam_file_ptr {std::move(other.m_sam_file_ptr)},
       m_sam_header_ptr {std::move(other.m_sam_header_ptr)}
-    {}
+    {
+      other.m_sam_file_ptr = nullptr;
+    }
+
+    /**
+     * @copydoc SamReader(SamReader&)
+     */
+    SamReader& operator=(SamReader& other) = delete;
+
+    /**
+     * @copydoc SamReader(SamReader&&)
+     */
+    SamReader& operator=(SamReader&& other) {
+      m_sam_file_ptr = std::move(other.m_sam_file_ptr);
+      m_sam_header_ptr = std::move(other.m_sam_header_ptr);
+      other.m_sam_file_ptr = nullptr;
+      return *this;
+    }
 
     /**
      * @brief closes the file stream if there is one (in case we are reading a sam file)
      */
     ~SamReader() {
-      sam_close(m_sam_file_ptr);
+      if (m_sam_file_ptr) 
+        sam_close(m_sam_file_ptr);
     }
-
-    /**
-     * @brief a SamReader cannot be copied safely, as it is iterating over a stream.
-     */
-    SamReader(const SamReader&) = delete;
 
     /**
      * @brief creates a ITERATOR pointing at the start of the input stream (needed by for-each
@@ -94,8 +118,8 @@ class SamReader {
     inline SamHeader header() { return SamHeader{m_sam_header_ptr}; }
 
   private:
-    samFile* m_sam_file_ptr;                           ///< pointer to the internal file structure of the sam/bam/cram file
-    const std::shared_ptr<bam_hdr_t> m_sam_header_ptr; ///< pointer to the internal header structure of the sam/bam/cram file
+    samFile* m_sam_file_ptr;                     ///< pointer to the internal file structure of the sam/bam/cram file
+    std::shared_ptr<bam_hdr_t> m_sam_header_ptr; ///< pointer to the internal header structure of the sam/bam/cram file
 };
 
 using SingleSamReader = SamReader<SamIterator>;
