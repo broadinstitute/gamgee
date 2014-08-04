@@ -15,7 +15,7 @@ BOOST_AUTO_TEST_CASE( sam_header ) {
   BOOST_CHECK_EQUAL(1, header.n_sequences());
 }
 
-// Need a way to modify the header in between these copies/moves to make sure these are working properly!
+/** @todo Need a way to modify the header in between these copies/moves to make sure these are working properly! */
 BOOST_AUTO_TEST_CASE( sam_header_constructors ) {
   auto reader = SingleSamReader{"testdata/test_simple.bam"};
   auto header1 = reader.header();
