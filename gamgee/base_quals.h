@@ -14,9 +14,9 @@ class BaseQuals {
  public:
   explicit BaseQuals(const std::shared_ptr<bam1_t>& sam_record);
   BaseQuals(const BaseQuals& other);
-  BaseQuals(BaseQuals&& other) noexcept;
+  BaseQuals(BaseQuals&& other) = default;
   BaseQuals& operator=(const BaseQuals& other);
-  BaseQuals& operator=(BaseQuals&& other) noexcept;
+  BaseQuals& operator=(BaseQuals&& other) = default;
   ~BaseQuals() = default; ///< Default destruction is sufficient, since our shared_ptr will handle deallocation
 
   uint8_t operator[](const uint32_t index) const; ///< use freely as you would an array.

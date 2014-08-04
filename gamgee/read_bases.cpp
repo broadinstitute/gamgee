@@ -1,5 +1,6 @@
 #include "read_bases.h"
 #include "utils/hts_memory.h"
+#include "utils/utils.h"
 
 #include <string>
 #include <sstream>
@@ -34,17 +35,6 @@ namespace gamgee {
   {}
 
   /**
-   * @brief moves a ReadBases object, transferring ownership of the underlying htslib memory
-   */
-  ReadBases::ReadBases(ReadBases&& other) noexcept :
-    m_sam_record { move(other.m_sam_record) },
-    m_bases { other.m_bases },
-    m_num_bases { other.m_num_bases }
-  {
-    other.m_bases = nullptr;
-  }
-
-  /**
    * @brief creates a deep copy of a ReadBases object
    *
    * @note the copy will have exclusive ownership over the newly-allocated htslib memory
@@ -59,26 +49,12 @@ namespace gamgee {
   }
 
   /**
-   * @brief moves a ReadBases object, transferring ownership of the underlying htslib memory
-   */
-  ReadBases& ReadBases::operator=(ReadBases&& other) noexcept {
-    if ( &other == this )  
-      return *this;
-    m_sam_record = move(other.m_sam_record); ///< shared_ptr assignment will take care of deallocating old sam record if necessary
-    m_bases = other.m_bases;
-    other.m_bases = nullptr;
-    m_num_bases = other.m_num_bases;
-    return *this;
-  }
-
-  /**
    * @brief access an individual base by index
    *
    * @return base at the specified index as an enumerated value
    */
   Base ReadBases::operator[](const uint32_t index) const {
-    if ( index >= m_num_bases )
-      throw out_of_range(string("Index ") + std::to_string(index) + " out of range in ReadBases::operator[]");
+    utils::check_max_boundary(index, m_num_bases);
     return static_cast<Base>(bam_seqi(m_bases, index));
   }
 
@@ -89,9 +65,7 @@ namespace gamgee {
    *       we can't return a reference to a half-byte in memory
    */
   void ReadBases::set_base(const uint32_t index, const Base base) {
-    if ( index >= m_num_bases )
-      throw out_of_range(string("Index ") + std::to_string(index) + " out of range in ReadBases::set_base");
-
+    utils::check_max_boundary(index, m_num_bases);
     m_bases[index >> 1] &= ~(0xF << ((~index & 1) << 2));   ///< zero out previous 4-bit base encoding
     m_bases[index >> 1] |= static_cast<uint8_t>(base) << ((~index & 1) << 2);  ///< insert new 4-bit base encoding
   }

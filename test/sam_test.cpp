@@ -178,6 +178,113 @@ BOOST_AUTO_TEST_CASE( sam_in_place_cigar_modification ) {
   BOOST_CHECK_EQUAL(read_cigar[0], Cigar::make_cigar_element(30, CigarOperator::I));
 }
 
+BOOST_AUTO_TEST_CASE( sam_cigar_copy_and_move_constructors ) {
+  auto read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  auto cigar = read.cigar();
+  auto cigar_copy = cigar;
+  cigar_copy[0] = Cigar::make_cigar_element(3, CigarOperator::M); 
+  BOOST_CHECK(cigar_copy != cigar);                               // check that modifying the copy doesn't affect the original
+  auto cigar_move = std::move(cigar);                             // move construct a new cigar
+  cigar_move[0] = Cigar::make_cigar_element(1, CigarOperator::D);
+  BOOST_CHECK(cigar_move != cigar_copy);                          // check that modifying the moved one doesn't affect the copy
+  cigar = cigar_copy;                                             // check the copy assignment now that cigar has been moved to move_cigar
+  BOOST_CHECK(cigar == cigar_copy);                               // check that the cigar is now the same as the cigar_copy
+  BOOST_CHECK(cigar != cigar_move);                               // check that the cigar is not the same as the moved one
+  cigar[0] = Cigar::make_cigar_element(2, CigarOperator::N);
+  BOOST_CHECK(cigar != cigar_copy);                               // check that modifying the copied version doesn't affect the original
+  auto cigar_tmp = std::move(cigar);                              // take ownership of cigar's memory so we can play around with cigar again
+  cigar = std::move(cigar_move);                                  // we should be back to the original again!
+  BOOST_CHECK(cigar == read.cigar());
+  cigar = cigar;                                                  // check self assignment
+  BOOST_CHECK(cigar == read.cigar());
+}
+
+BOOST_AUTO_TEST_CASE( invalid_cigar_access ) {
+  auto read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  auto cigar = read.cigar();
+  BOOST_CHECK_THROW(cigar[cigar.size()] = 3, out_of_range); 
+  BOOST_CHECK_THROW(cigar[cigar.size()], out_of_range); 
+  auto x = 2; // just a random variable to assign to so we can test the const version of operator[]
+  BOOST_CHECK_THROW(x = cigar[std::numeric_limits<uint32_t>::max()], out_of_range); 
+  x++; // using it otherwise compiler will complain
+}
+
+BOOST_AUTO_TEST_CASE( comparing_different_cigars ) {
+  const auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
+  auto builder = SamBuilder{header};
+  builder.set_name("bla").set_bases("actg").set_base_quals({4,24,3,3});
+  const auto read1 = builder.set_cigar("4M").build();
+  const auto read2 = builder.set_cigar("2M1I1M").build();
+  BOOST_CHECK(read1.cigar() != read2.cigar());
+}
+
+BOOST_AUTO_TEST_CASE( sam_base_quals_copy_and_move_constructors ) {
+  auto read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  auto bq = read.base_quals();
+  auto bq_copy = bq;
+  bq_copy[0] = 99;
+  BOOST_CHECK(bq_copy != bq);           // check that modifying the copy doesn't affect the original
+  auto bq_move = std::move(bq);         // move construct a new bq
+  bq_move[0] = 90;
+  BOOST_CHECK(bq_move != bq_copy);      // check that modifying the moved one doesn't affect the copy
+  bq = bq_copy;                         // check the copy assignment now that bq has been moved to move_bq
+  BOOST_CHECK(bq == bq_copy);           // check that the bq is now the same as the bq_copy
+  BOOST_CHECK(bq != bq_move);           // check that the bq is not the same as the moved one
+  bq[0] = 93;
+  BOOST_CHECK(bq != bq_copy);           // check that modifying the copied version doesn't affect the original
+  auto bq_tmp = std::move(bq);          // take ownership of bq's memory so we can play around with bq again
+  bq = std::move(bq_move);              // we should be back to the original again!
+  BOOST_CHECK(bq == read.base_quals());
+  bq = bq;                              // check self assignment
+  BOOST_CHECK(bq == read.base_quals());
+}
+
+BOOST_AUTO_TEST_CASE( comparing_different_base_quals ) {
+  const auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
+  auto builder = SamBuilder{header};
+  builder.set_name("bla").set_bases("actg").set_cigar("4M");
+  const auto read1 = builder.set_base_quals({4,4,3,2}).build();
+  const auto read2 = builder.set_bases("act").set_cigar("3M").set_base_quals({4,4,3}).build(); // subtly different...
+  BOOST_CHECK(read1.base_quals() != read2.base_quals());
+}
+
+BOOST_AUTO_TEST_CASE( sam_read_bases_copy_and_move_constructors ) {
+  auto read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  auto bases = read.bases();
+  auto bases_copy = bases;
+  bases_copy.set_base(0, Base::C);
+  BOOST_CHECK(bases_copy != bases);           // check that modifying the copy doesn't affect the original
+  auto bases_move = std::move(bases);         // move construct a new bases
+  bases_move.set_base(0, Base::N);
+  BOOST_CHECK(bases_move != bases_copy);      // check that modifying the moved one doesn't affect the copy
+  bases = bases_copy;                         // check the copy assignment now that bases has been moved to move_bases
+  BOOST_CHECK(bases == bases_copy);           // check that the bases is now the same as the bases_copy
+  BOOST_CHECK(bases != bases_move);           // check that the bases is not the same as the moved one
+  bases.set_base(0, Base::T);
+  BOOST_CHECK(bases != bases_copy);           // check that modifying the copied version doesn't affect the original
+  auto bases_tmp = std::move(bases);          // take ownership of bases's memory so we can play around with bases again
+  bases = std::move(bases_move);              // we should be back to the original again!
+  BOOST_CHECK(bases == read.bases());
+  bases = bases;                              // check self assignment
+  BOOST_CHECK(bases == read.bases());
+}
+
+BOOST_AUTO_TEST_CASE( comparing_different_read_bases ) {
+  const auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
+  auto builder = SamBuilder{header};
+  builder.set_name("bla").set_base_quals({4,4,3,2}).set_cigar("4M");
+  const auto read1 = builder.set_bases("acgt").build();
+  const auto read2 = builder.set_bases("act").set_cigar("3M").set_base_quals({4,4,3}).build(); // subtly different...
+  BOOST_CHECK(read1.bases() != read2.bases());
+}
+
+BOOST_AUTO_TEST_CASE( invalid_read_bases_access ) {
+  auto read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  auto bases = read.bases();
+  BOOST_CHECK_THROW(bases[bases.size()], out_of_range); 
+  BOOST_CHECK_THROW(bases[std::numeric_limits<uint32_t>::max()], out_of_range); 
+}
+
 BOOST_AUTO_TEST_CASE( sam_read_tags ) {
   const auto read1 = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
   const auto read2 = *(SingleSamReader{"testdata/test_paired.bam"}.begin());

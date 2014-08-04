@@ -31,9 +31,24 @@ class SamPairIterator {
     SamPairIterator(samFile * sam_file_ptr, const std::shared_ptr<bam_hdr_t>& sam_header_ptr);
 
     /**
+     * @brief no copy construction/assignment allowed in readers or iterators
+     */
+    SamPairIterator(SamPairIterator& other) = delete;
+
+    /**
      * @brief a SamPairIterator move constructor guarantees all objects will have the same state.
      */
-    SamPairIterator(SamPairIterator&& other);
+    SamPairIterator(SamPairIterator&& other) = default;
+
+    /**
+     * @copydoc SamPairIterator(SamPairIterator&)
+     */
+    SamPairIterator& operator=(SamPairIterator& other) = delete;
+    
+    /**
+     * @copydoc SamPairIterator(SamPairIterator&&)
+     */
+    SamPairIterator& operator=(SamPairIterator&& other) = default;
     
     /**
      * @brief inequality operator (needed by for-each loop)

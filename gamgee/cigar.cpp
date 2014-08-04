@@ -1,5 +1,6 @@
 #include "cigar.h"
 #include "utils/hts_memory.h"
+#include "utils/utils.h"
 
 #include <string>
 #include <sstream>
@@ -38,17 +39,6 @@ Cigar::Cigar(const Cigar& other) :
 {}
 
 /**
-  * @brief moves a Cigar object, transferring ownership of the underlying htslib memory
-  */
-Cigar::Cigar(Cigar&& other) noexcept :
-  m_sam_record { move(other.m_sam_record) },
-  m_cigar { other.m_cigar },
-  m_num_cigar_elements { other.m_num_cigar_elements }
-{
-  other.m_cigar = nullptr;
-}
-
-/**
   * @brief creates a deep copy of a Cigar object
   *
   * @note the copy will have exclusive ownership over the newly-allocated htslib memory
@@ -63,27 +53,13 @@ Cigar& Cigar::operator=(const Cigar& other) {
 }
 
 /**
-  * @brief moves a Cigar object, transferring ownership of the underlying htslib memory
-  */
-Cigar& Cigar::operator=(Cigar&& other) noexcept {
-  if ( &other == this )  
-    return *this;
-  m_sam_record = move(other.m_sam_record);
-  m_cigar = other.m_cigar;
-  other.m_cigar = nullptr;
-  m_num_cigar_elements = other.m_num_cigar_elements;
-  return *this;
-}
-
-/**
   * @brief access an individual cigar element by index
   *
   * @return cigar element at the specified index as an encoded uint32_t. use cigar_op() and
   *         cigar_oplen() to unpack the cigar operator and length
   */
 CigarElement Cigar::operator[](const uint32_t index) const {
-  if ( index >= m_num_cigar_elements )
-    throw out_of_range(string("Index ") + std::to_string(index) + " out of range in Cigar::operator[]");
+  utils::check_max_boundary(index, m_num_cigar_elements);
   return m_cigar[index];
 }
 
@@ -94,8 +70,7 @@ CigarElement Cigar::operator[](const uint32_t index) const {
   *         cigar_oplen() to unpack the cigar operator and length
   */
 CigarElement& Cigar::operator[](const uint32_t index) {
-  if ( index >= m_num_cigar_elements )
-    throw out_of_range(string("Index ") + std::to_string(index) + " out of range in Cigar::operator[]");
+  utils::check_max_boundary(index, m_num_cigar_elements);
   return m_cigar[index];
 }
 

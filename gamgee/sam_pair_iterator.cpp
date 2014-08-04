@@ -27,16 +27,6 @@ SamPairIterator::SamPairIterator(samFile * sam_file_ptr, const std::shared_ptr<b
   m_sam_records     {fetch_next_pair()} ///< important queue must be initialized *before* we call fetch_next_pair. Order matters
 {}
 
-SamPairIterator::SamPairIterator(SamPairIterator&& original) :
-  m_sam_file_ptr    {original.m_sam_file_ptr},
-  m_sam_header_ptr  {move(original.m_sam_header_ptr)},
-  m_sam_record_ptr1 {move(original.m_sam_record_ptr1)},
-  m_sam_record_ptr2 {move(original.m_sam_record_ptr2)},
-  m_sam_records     {move(original.m_sam_records)}
-{
-  original.m_sam_file_ptr = nullptr;
-}
-
 pair<Sam,Sam> SamPairIterator::operator*() {
   return m_sam_records;
 }

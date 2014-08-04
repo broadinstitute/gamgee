@@ -27,9 +27,9 @@ class ReadBases {
 public:
   explicit ReadBases(const std::shared_ptr<bam1_t>& sam_record);
   ReadBases(const ReadBases& other);
-  ReadBases(ReadBases&& other) noexcept;
+  ReadBases(ReadBases&& other) = default;
   ReadBases& operator=(const ReadBases& other);
-  ReadBases& operator=(ReadBases&& other) noexcept;
+  ReadBases& operator=(ReadBases&& other) = default;
   ~ReadBases() = default; ///< default destruction is sufficient, since our shared_ptr will handle deallocation
 
   Base operator[](const uint32_t index) const;   ///< use freely as you would an array. @note currently implemented as read only

@@ -379,6 +379,12 @@ BOOST_AUTO_TEST_CASE( build_multiple_reads ) {
   BOOST_CHECK_EQUAL(second_read.alignment_start(), 142);
   BOOST_CHECK_EQUAL(second_read.mate_alignment_start(), 199);
 }
+BOOST_AUTO_TEST_CASE( set_illegal_base_quals ) {
+  auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
+  auto builder = SamBuilder{header};
+  builder.set_name("foo").set_bases("ACT").set_cigar("3M");
+  BOOST_CHECK_THROW(builder.set_base_quals({2, 255, 256}), invalid_argument); // 256 is too big for a quality score
+}
 
 BOOST_AUTO_TEST_CASE( set_illegal_cigar ) {
   auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
@@ -386,7 +392,12 @@ BOOST_AUTO_TEST_CASE( set_illegal_cigar ) {
   builder.set_name("foo").set_bases("ACT").set_base_quals({1, 2, 3});
 
   // Should throw an exception, since the cigar is invalid
-  BOOST_CHECK_THROW(builder.set_cigar("3F"), logic_error);
+  BOOST_CHECK_THROW(builder.set_cigar("3F"), invalid_argument);// F is not a cigar operator
+  BOOST_CHECK_THROW(builder.set_cigar(""), invalid_argument);  // empty cigar
+  BOOST_CHECK_THROW(builder.set_cigar("3"), invalid_argument); // missing operator
+  BOOST_CHECK_THROW(builder.set_cigar("M3"), invalid_argument);// operator in front of the element length
+  BOOST_CHECK_THROW(builder.set_cigar("3í"), invalid_argument);// operator is > 128 in ascii table
+  BOOST_CHECK_THROW(builder.set_cigar("100M").build(), logic_error);// there are only 3 bases
 }
 
 BOOST_AUTO_TEST_CASE( set_mismatching_bases_and_quals ) {
@@ -430,3 +441,30 @@ BOOST_AUTO_TEST_CASE( build_without_validation ) {
   BOOST_CHECK_EQUAL(read.base_quals().to_string(), "1 2 3");
 }
 
+BOOST_AUTO_TEST_CASE( builder_move_constructor ) {
+  auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
+  auto builder1 = SamBuilder{header};
+  const auto read1 = builder1.set_name("TEST_READ").set_cigar("1M").set_bases("A").set_base_quals(initializer_list<uint8_t>{24}).build();
+  auto builder2 = std::move(builder1);
+  const auto read2 = builder2.build();
+  BOOST_CHECK_EQUAL(read1.name(), read2.name()); // the sheer fact that we can run this means the move constructor worked. Checking these just to make sure.
+  BOOST_CHECK(read1.cigar()      == read2.cigar());
+  BOOST_CHECK(read1.bases()      == read2.bases());
+  BOOST_CHECK(read1.base_quals() == read2.base_quals());
+  builder1 = std::move(builder2);     // check move assignment
+  const auto read3 = builder1.build();
+  BOOST_CHECK_EQUAL(read1.name(), read3.name()); // the sheer fact that we can run this means the move constructor worked. Checking these just to make sure.
+  BOOST_CHECK(read1.cigar()      == read3.cigar());
+  BOOST_CHECK(read1.bases()      == read3.bases());
+  BOOST_CHECK(read1.base_quals() == read3.base_quals());
+}
+
+BOOST_AUTO_TEST_CASE( builder_starting_read_constructor ) {
+  auto reader = SingleSamReader{"testdata/test_simple.bam"};
+  auto original_read = *reader.begin();
+  const auto header = reader.header();
+  const auto builder = SamBuilder{header, original_read};
+  original_read.set_unmapped();      // modifying the original read does not modify the reads created by the builder even during the build process.
+  const auto read = builder.build(); // create a read (basically a copy of the original read)
+  BOOST_CHECK(!read.unmapped());
+}

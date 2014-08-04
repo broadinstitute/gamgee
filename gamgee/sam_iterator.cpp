@@ -19,13 +19,6 @@ SamIterator::SamIterator(samFile * sam_file_ptr, const std::shared_ptr<bam_hdr_t
   m_sam_record {fetch_next_record()}
 {}
 
-SamIterator::SamIterator(SamIterator&& original) :
-  m_sam_file_ptr   {move(original.m_sam_file_ptr)},
-  m_sam_header_ptr {move(original.m_sam_header_ptr)},
-  m_sam_record_ptr {move(original.m_sam_record_ptr)},
-  m_sam_record     {move(original.m_sam_record)}
-{}
-
 Sam& SamIterator::operator*() {
   return m_sam_record;
 }

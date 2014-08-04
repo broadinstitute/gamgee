@@ -62,8 +62,8 @@ class SamBuilder {
   explicit SamBuilder(const SamHeader& header, const Sam& starting_read, const bool validate_on_build = true); ///< @brief create a Sam starting with an existing read, and manually set the header to a custom value
 
   // SamBuilders are moveable but not copyable, and use default destruction
-  SamBuilder(SamBuilder&& other) noexcept;
-  SamBuilder& operator=(SamBuilder&& other) noexcept;
+  SamBuilder(SamBuilder&& other) = default;
+  SamBuilder& operator=(SamBuilder&& other) = default;
   SamBuilder(const SamBuilder& other) = delete;
   SamBuilder& operator=(const SamBuilder& other) = delete;
   ~SamBuilder() = default;

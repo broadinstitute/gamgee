@@ -165,6 +165,7 @@ std::vector<std::string> Variant::generic_string_info_field(const std::string& t
   auto count = 0;
   const auto info_result = bcf_get_info_string(m_header.get(), m_body.get(), tag.c_str(), &mem, &count);
   if (info_result < 0) {
+    free(mem);
     return std::vector<string>{}; // return empty for all errors, even asking for the wrong type
   }
   const auto results = std::vector<string>{std::string{mem}}; // strings returned as a single string

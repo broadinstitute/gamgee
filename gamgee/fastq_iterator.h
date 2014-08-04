@@ -33,7 +33,7 @@ class FastqIterator {
   /**
     * @brief a FastqIterator move constructor guarantees all objects will have the same state.
     */
-  FastqIterator(FastqIterator&&);
+  FastqIterator(FastqIterator&&) = default;
   
   /**
     * @brief inequality operator (needed by for-each loop)
