@@ -453,10 +453,10 @@ BOOST_AUTO_TEST_CASE( builder_move_constructor ) {
   BOOST_CHECK(read1.base_quals() == read2.base_quals());
   builder1 = std::move(builder2);     // check move assignment
   const auto read3 = builder1.build();
-  BOOST_CHECK_EQUAL(read1.name(), read2.name()); // the sheer fact that we can run this means the move constructor worked. Checking these just to make sure.
-  BOOST_CHECK(read1.cigar()      == read2.cigar());
-  BOOST_CHECK(read1.bases()      == read2.bases());
-  BOOST_CHECK(read1.base_quals() == read2.base_quals());
+  BOOST_CHECK_EQUAL(read1.name(), read3.name()); // the sheer fact that we can run this means the move constructor worked. Checking these just to make sure.
+  BOOST_CHECK(read1.cigar()      == read3.cigar());
+  BOOST_CHECK(read1.bases()      == read3.bases());
+  BOOST_CHECK(read1.base_quals() == read3.base_quals());
 }
 
 BOOST_AUTO_TEST_CASE( builder_starting_read_constructor ) {
