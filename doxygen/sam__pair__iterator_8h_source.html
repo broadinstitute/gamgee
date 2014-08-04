@@ -110,45 +110,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classgamgee_1_1_sam_pair_iterator.html#acd4852c72c6a2446ace3a9eba90f344e">SamPairIterator</a>(samFile * sam_file_ptr, <span class="keyword">const</span> std::shared_ptr&lt;bam_hdr_t&gt;&amp; sam_header_ptr);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classgamgee_1_1_sam_pair_iterator.html#acd4852c72c6a2446ace3a9eba90f344e">SamPairIterator</a>(<a class="code" href="classgamgee_1_1_sam_pair_iterator.html">SamPairIterator</a>&amp;&amp; other);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgamgee_1_1_sam_pair_iterator.html#a84719cbe040399a57e2cfe211a7582a8">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_sam_pair_iterator.html">SamPairIterator</a>&amp; rhs);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    std::pair&lt;Sam,Sam&gt; <a class="code" href="classgamgee_1_1_sam_pair_iterator.html#ae182e0b8e10fee874b4c31203270d5be">operator*</a>();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::pair&lt;Sam,Sam&gt; <a class="code" href="classgamgee_1_1_sam_pair_iterator.html#a3d20e8446daff178e5938d175463ff68">operator++</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classgamgee_1_1_sam_pair_iterator.html#acd4852c72c6a2446ace3a9eba90f344e">SamPairIterator</a>(<a class="code" href="classgamgee_1_1_sam_pair_iterator.html">SamPairIterator</a>&amp; other) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classgamgee_1_1_sam_pair_iterator.html#acd4852c72c6a2446ace3a9eba90f344e">SamPairIterator</a>(<a class="code" href="classgamgee_1_1_sam_pair_iterator.html">SamPairIterator</a>&amp;&amp; other) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="classgamgee_1_1_sam_pair_iterator.html">SamPairIterator</a>&amp; <a class="code" href="classgamgee_1_1_sam_pair_iterator.html#a80d751c717da0e631c0a390853e7c14f">operator=</a>(<a class="code" href="classgamgee_1_1_sam_pair_iterator.html">SamPairIterator</a>&amp; other) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="classgamgee_1_1_sam_pair_iterator.html">SamPairIterator</a>&amp; <a class="code" href="classgamgee_1_1_sam_pair_iterator.html#a80d751c717da0e631c0a390853e7c14f">operator=</a>(<a class="code" href="classgamgee_1_1_sam_pair_iterator.html">SamPairIterator</a>&amp;&amp; other) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgamgee_1_1_sam_pair_iterator.html#a84719cbe040399a57e2cfe211a7582a8">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_sam_pair_iterator.html">SamPairIterator</a>&amp; rhs);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">using</span> SamPtrQueue = std::queue&lt;std::shared_ptr&lt;bam1_t&gt;&gt;;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    SamPtrQueue m_supp_alignments;                     </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    samFile * m_sam_file_ptr;                          </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">const</span> std::shared_ptr&lt;bam_hdr_t&gt; m_sam_header_ptr; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    std::shared_ptr&lt;bam1_t&gt; m_sam_record_ptr1;         </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    std::shared_ptr&lt;bam1_t&gt; m_sam_record_ptr2;         </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    std::pair&lt;Sam,Sam&gt; m_sam_records;                  </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::pair&lt;Sam,Sam&gt; fetch_next_pair();              </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">bool</span> read_sam(std::shared_ptr&lt;bam1_t&gt;&amp; record_ptr);                 </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="classgamgee_1_1_sam.html">Sam</a> make_sam(std::shared_ptr&lt;bam1_t&gt;&amp; record_ptr);                  </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="classgamgee_1_1_sam.html">Sam</a> next_primary_alignment(std::shared_ptr&lt;bam1_t&gt;&amp; record_ptr);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    std::pair&lt;Sam,Sam&gt; next_supplementary_alignment();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}  <span class="comment">// end namespace gamgee</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#endif // gamgee__sam_pair_iterator__guard</span></div>
-<div class="ttc" id="classgamgee_1_1_sam_pair_iterator_html_a3d20e8446daff178e5938d175463ff68"><div class="ttname"><a href="classgamgee_1_1_sam_pair_iterator.html#a3d20e8446daff178e5938d175463ff68">gamgee::SamPairIterator::operator++</a></div><div class="ttdeci">std::pair&lt; Sam, Sam &gt; operator++()</div><div class="ttdoc">pre-fetches the next record and tests for end of file </div><div class="ttdef"><b>Definition:</b> sam_pair_iterator.cpp:44</div></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    std::pair&lt;Sam,Sam&gt; <a class="code" href="classgamgee_1_1_sam_pair_iterator.html#ae182e0b8e10fee874b4c31203270d5be">operator*</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    std::pair&lt;Sam,Sam&gt; <a class="code" href="classgamgee_1_1_sam_pair_iterator.html#a3d20e8446daff178e5938d175463ff68">operator++</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">using</span> SamPtrQueue = std::queue&lt;std::shared_ptr&lt;bam1_t&gt;&gt;;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    SamPtrQueue m_supp_alignments;                     </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    samFile * m_sam_file_ptr;                          </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">const</span> std::shared_ptr&lt;bam_hdr_t&gt; m_sam_header_ptr; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::shared_ptr&lt;bam1_t&gt; m_sam_record_ptr1;         </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    std::shared_ptr&lt;bam1_t&gt; m_sam_record_ptr2;         </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::pair&lt;Sam,Sam&gt; m_sam_records;                  </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::pair&lt;Sam,Sam&gt; fetch_next_pair();              </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">bool</span> read_sam(std::shared_ptr&lt;bam1_t&gt;&amp; record_ptr);                 </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="classgamgee_1_1_sam.html">Sam</a> make_sam(std::shared_ptr&lt;bam1_t&gt;&amp; record_ptr);                  </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="classgamgee_1_1_sam.html">Sam</a> next_primary_alignment(std::shared_ptr&lt;bam1_t&gt;&amp; record_ptr);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    std::pair&lt;Sam,Sam&gt; next_supplementary_alignment();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}  <span class="comment">// end namespace gamgee</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif // gamgee__sam_pair_iterator__guard</span></div>
+<div class="ttc" id="classgamgee_1_1_sam_pair_iterator_html_a3d20e8446daff178e5938d175463ff68"><div class="ttname"><a href="classgamgee_1_1_sam_pair_iterator.html#a3d20e8446daff178e5938d175463ff68">gamgee::SamPairIterator::operator++</a></div><div class="ttdeci">std::pair&lt; Sam, Sam &gt; operator++()</div><div class="ttdoc">pre-fetches the next record and tests for end of file </div><div class="ttdef"><b>Definition:</b> sam_pair_iterator.cpp:34</div></div>
 <div class="ttc" id="sam_8h_html"><div class="ttname"><a href="sam_8h.html">sam.h</a></div></div>
-<div class="ttc" id="classgamgee_1_1_sam_pair_iterator_html_ae182e0b8e10fee874b4c31203270d5be"><div class="ttname"><a href="classgamgee_1_1_sam_pair_iterator.html#ae182e0b8e10fee874b4c31203270d5be">gamgee::SamPairIterator::operator*</a></div><div class="ttdeci">std::pair&lt; Sam, Sam &gt; operator*()</div><div class="ttdoc">dereference operator (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> sam_pair_iterator.cpp:40</div></div>
-<div class="ttc" id="classgamgee_1_1_sam_pair_iterator_html_a84719cbe040399a57e2cfe211a7582a8"><div class="ttname"><a href="classgamgee_1_1_sam_pair_iterator.html#a84719cbe040399a57e2cfe211a7582a8">gamgee::SamPairIterator::operator!=</a></div><div class="ttdeci">bool operator!=(const SamPairIterator &amp;rhs)</div><div class="ttdoc">inequality operator (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> sam_pair_iterator.cpp:49</div></div>
+<div class="ttc" id="classgamgee_1_1_sam_pair_iterator_html_ae182e0b8e10fee874b4c31203270d5be"><div class="ttname"><a href="classgamgee_1_1_sam_pair_iterator.html#ae182e0b8e10fee874b4c31203270d5be">gamgee::SamPairIterator::operator*</a></div><div class="ttdeci">std::pair&lt; Sam, Sam &gt; operator*()</div><div class="ttdoc">dereference operator (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> sam_pair_iterator.cpp:30</div></div>
+<div class="ttc" id="classgamgee_1_1_sam_pair_iterator_html_a84719cbe040399a57e2cfe211a7582a8"><div class="ttname"><a href="classgamgee_1_1_sam_pair_iterator.html#a84719cbe040399a57e2cfe211a7582a8">gamgee::SamPairIterator::operator!=</a></div><div class="ttdeci">bool operator!=(const SamPairIterator &amp;rhs)</div><div class="ttdoc">inequality operator (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> sam_pair_iterator.cpp:39</div></div>
+<div class="ttc" id="classgamgee_1_1_sam_pair_iterator_html_a80d751c717da0e631c0a390853e7c14f"><div class="ttname"><a href="classgamgee_1_1_sam_pair_iterator.html#a80d751c717da0e631c0a390853e7c14f">gamgee::SamPairIterator::operator=</a></div><div class="ttdeci">SamPairIterator &amp; operator=(SamPairIterator &amp;other)=delete</div><div class="ttdoc">no copy construction/assignment allowed in readers or iterators </div></div>
 <div class="ttc" id="classgamgee_1_1_sam_html"><div class="ttname"><a href="classgamgee_1_1_sam.html">gamgee::Sam</a></div><div class="ttdoc">Utility class to manipulate a Sam record. </div><div class="ttdef"><b>Definition:</b> sam.h:20</div></div>
 <div class="ttc" id="classgamgee_1_1_sam_pair_iterator_html_acd4852c72c6a2446ace3a9eba90f344e"><div class="ttname"><a href="classgamgee_1_1_sam_pair_iterator.html#acd4852c72c6a2446ace3a9eba90f344e">gamgee::SamPairIterator::SamPairIterator</a></div><div class="ttdeci">SamPairIterator()</div><div class="ttdoc">creates an empty iterator (used for the end() method) </div><div class="ttdef"><b>Definition:</b> sam_pair_iterator.cpp:15</div></div>
 <div class="ttc" id="classgamgee_1_1_sam_pair_iterator_html"><div class="ttname"><a href="classgamgee_1_1_sam_pair_iterator.html">gamgee::SamPairIterator</a></div><div class="ttdoc">Utility class to enable for-each style iteration by pairs in the SamReader class. ...</div><div class="ttdef"><b>Definition:</b> sam_pair_iterator.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 1 2014 02:47:56 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 4 2014 19:51:37 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
