@@ -120,11 +120,11 @@ uint32_t Sam::unclipped_stop() const {
 /**
  * @brief retrieve an integer-valued tag by name
  *
- * @note returns a SamTag with is_present() == false if the read has no tag by this name
+ * @note returns a SamTag with is_missing() == true if the read has no tag by this name
  */
 SamTag<int32_t> Sam::integer_tag(const std::string& tag_name) const {
   const auto aux_ptr = bam_aux_get(m_body.get(), tag_name.c_str());
-  return aux_ptr == nullptr ? SamTag<int32_t>(tag_name, 0, false) :
+  return aux_ptr == nullptr ? SamTag<int32_t>(tag_name, 0, true) :
                               SamTag<int32_t>(tag_name, bam_aux2i(aux_ptr));
 
   // TODO: htslib bam_aux2i() returns 0 if the tag is not of integer type,
@@ -134,11 +134,11 @@ SamTag<int32_t> Sam::integer_tag(const std::string& tag_name) const {
 /**
  * @brief retrieve a double/float-valued tag by name
  *
- * @note returns a SamTag with is_present() == false if the read has no tag by this name
+ * @note returns a SamTag with is_missing() == true if the read has no tag by this name
  */
 SamTag<double> Sam::double_tag(const std::string& tag_name) const {
   const auto aux_ptr = bam_aux_get(m_body.get(), tag_name.c_str());
-  return aux_ptr == nullptr ? SamTag<double>(tag_name, 0.0, false) :
+  return aux_ptr == nullptr ? SamTag<double>(tag_name, 0.0, true) :
                               SamTag<double>(tag_name, bam_aux2f(aux_ptr));
 
   // TODO: htslib bam_aux2f() returns 0.0 if the tag is not of double/float type,
@@ -148,16 +148,16 @@ SamTag<double> Sam::double_tag(const std::string& tag_name) const {
 /**
  * @brief retrieve a char-valued tag by name
  *
- * @note returns a SamTag with is_present() == false if the read has no tag by this name
+ * @note returns a SamTag with is_missing() == true if the read has no tag by this name
  */
 SamTag<char> Sam::char_tag(const std::string& tag_name) const {
   const auto aux_ptr = bam_aux_get(m_body.get(), tag_name.c_str());
   if ( aux_ptr == nullptr )  // tag doesn't exist
-    return SamTag<char>(tag_name, '\0', false);
+    return SamTag<char>(tag_name, '\0', true);
 
   const auto char_val = bam_aux2A(aux_ptr);
   if ( char_val == '\0' )    // tag not of char type
-    return SamTag<char>(tag_name, '\0', false);
+    return SamTag<char>(tag_name, '\0', true);
 
   return SamTag<char>(tag_name, char_val);
 }
@@ -165,16 +165,16 @@ SamTag<char> Sam::char_tag(const std::string& tag_name) const {
 /**
  * @brief retrieve a string-valued tag by name
  *
- * @note returns a SamTag with is_present() == false if the read has no tag by this name
+ * @note returns a SamTag with is_missing() == true if the read has no tag by this name
  */
 SamTag<std::string> Sam::string_tag(const std::string& tag_name) const {
   const auto aux_ptr = bam_aux_get(m_body.get(), tag_name.c_str());
   if ( aux_ptr == nullptr )  // tag doesn't exist
-    return SamTag<string>(tag_name, "", false);
+    return SamTag<string>(tag_name, "", true);
 
   const auto str_ptr = bam_aux2Z(aux_ptr);
   if ( str_ptr == nullptr )  // tag not of string type
-    return SamTag<string>(tag_name, "", false);
+    return SamTag<string>(tag_name, "", true);
 
   return SamTag<string>(tag_name, string{str_ptr});
 }

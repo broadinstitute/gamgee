@@ -24,9 +24,6 @@ inline bool is_missing (const int32_t value) { return value == missing_values::i
 inline bool is_missing (const std::string& value) { return value.empty() || value == missing_values::string_dot;}                  ///< @brief Returns true if value is missing.
 inline bool is_missing (const char* value) { return value == missing_values::string_empty || value == missing_values::string_dot;} ///< @brief Returns true if value is missing.
 
-template<class T>
-inline bool is_missing(const SamTag<T>& tag) { return !tag.is_present(); }                                                         ///< @brief checks whether or not a SamTag is missing
-
 /**
  * @brief Returns true if value is missing.
  * @tparam MISSING_TYPE any class that implements the is_missing() as a public member function.
