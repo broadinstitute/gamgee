@@ -224,25 +224,26 @@ void check_genotype_api(const Variant& record, const uint32_t truth_index) {
   }
 }
 
-BOOST_AUTO_TEST_CASE( single_variant_reader ) 
-{
+void generic_variant_reader_test(const std::function<void(const Variant&, const uint32_t)>& fun) {
   for (const auto& filename : {"testdata/test_variants.vcf", "testdata/test_variants.bcf"}) {
     auto truth_index = 0u;
     for (const auto& record : SingleVariantReader{filename}) {
-      check_variant_basic_api(record, truth_index);
-      check_quals_api(record, truth_index);
-      check_alt_api(record, truth_index);
-      check_filters_api(record, truth_index);
-      check_genotype_quals_api(record,truth_index);
-      check_phred_likelihoods_api(record, truth_index);
-      check_individual_field_api(record, truth_index);
-      check_shared_field_api(record, truth_index);
-      check_genotype_api(record, truth_index);
+      fun(record, truth_index);
       ++truth_index;
     }
-    BOOST_CHECK_EQUAL(truth_index, 5u);
   }
 }
+
+BOOST_AUTO_TEST_CASE( basic_api )             { generic_variant_reader_test(check_variant_basic_api);     }
+BOOST_AUTO_TEST_CASE( quals_api )             { generic_variant_reader_test(check_quals_api);             }
+BOOST_AUTO_TEST_CASE( alt_api )               { generic_variant_reader_test(check_alt_api);               }
+BOOST_AUTO_TEST_CASE( filters_api )           { generic_variant_reader_test(check_filters_api);           }
+BOOST_AUTO_TEST_CASE( genotype_quals_api )    { generic_variant_reader_test(check_genotype_quals_api);    }
+BOOST_AUTO_TEST_CASE( phred_likelihoods_api ) { generic_variant_reader_test(check_phred_likelihoods_api); }
+BOOST_AUTO_TEST_CASE( individual_fields_api ) { generic_variant_reader_test(check_individual_field_api);  }
+BOOST_AUTO_TEST_CASE( shared_fields_api )     { generic_variant_reader_test(check_shared_field_api);      }
+BOOST_AUTO_TEST_CASE( genotype_api )          { generic_variant_reader_test(check_genotype_api);          }
+
 
 BOOST_AUTO_TEST_CASE( single_variant_reader_sites_only )  
 {

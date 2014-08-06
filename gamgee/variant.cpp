@@ -81,6 +81,7 @@ std::vector<std::string> Variant::alt() const {
 }
 
 VariantFilters Variant::filters() const {
+  bcf_unpack(m_body.get(), BCF_UN_FLT);
   return VariantFilters{m_header, m_body};
 }
 
