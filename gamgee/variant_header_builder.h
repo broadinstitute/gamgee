@@ -27,8 +27,8 @@ class VariantHeaderBuilder {
 
   void add_chromosome(const std::string& id, const std::string& length = "", const std::string& url = "", const std::string& extra = "");
   void add_filter(const std::string& id, const std::string& description = "", const std::string& extra = "");
-  void add_info_field(const std::string& id, const std::string& number, const std::string& type, const std::string& description = "", const std::string& source = "", const std::string& version = "", const std::string& extra = "");
-  void add_format_field(const std::string& id, const std::string& number, const std::string& type, const std::string& description = "", const std::string& extra = "");
+  void add_shared_field(const std::string& id, const std::string& number, const std::string& type, const std::string& description = "", const std::string& source = "", const std::string& version = "", const std::string& extra = "");
+  void add_individual_field(const std::string& id, const std::string& number, const std::string& type, const std::string& description = "", const std::string& extra = "");
   void add_sample(const std::string& sample);
   void add_source(const std::string& source);
 

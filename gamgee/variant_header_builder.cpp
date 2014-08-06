@@ -43,7 +43,7 @@ void VariantHeaderBuilder::add_filter(const string& id, const string& descriptio
   bcf_hdr_append(m_header.get(), s.c_str());
 }
 
-void VariantHeaderBuilder::add_info_field(const string& id, const string& number, const string& type, const string& description, const string& source, const string& version, const string& extra) {
+void VariantHeaderBuilder::add_shared_field(const string& id, const string& number, const string& type, const string& description, const string& source, const string& version, const string& extra) {
   auto s = string{"##INFO=<ID=" + id};
   s.append(required_parameter("number=", number));
   s.append(required_parameter("type=", type));
@@ -55,7 +55,7 @@ void VariantHeaderBuilder::add_info_field(const string& id, const string& number
   bcf_hdr_append(m_header.get(), s.c_str());
 }
 
-void VariantHeaderBuilder::add_format_field(const string& id, const string& number, const string& type, const string& description, const string& extra) {
+void VariantHeaderBuilder::add_individual_field(const string& id, const string& number, const string& type, const string& description, const string& extra) {
   auto s = string{"##FORMAT=<ID=" + id};
   s.append(required_parameter("number=", number));
   s.append(required_parameter("type=", type));

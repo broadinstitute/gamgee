@@ -108,19 +108,19 @@ void check_phred_likelihoods_api(const Variant& record, const uint32_t truth_ind
   }
 }      
 
-void check_format_field_api(const Variant& record, const uint32_t truth_index) {
-  const auto gq_int    = record.generic_integer_format_field("GQ");
-  const auto gq_float  = record.generic_float_format_field("GQ");
-  const auto gq_string = record.generic_string_format_field("GQ");
-  const auto af_int    = record.generic_integer_format_field("AF");
-  const auto af_float  = record.generic_float_format_field("AF");
-  const auto af_string = record.generic_string_format_field("AF");
-  const auto pl_int    = record.generic_integer_format_field("PL");
-  const auto pl_float  = record.generic_float_format_field("PL");
-  const auto pl_string = record.generic_string_format_field("PL");
-  const auto as_int    = record.generic_integer_format_field("AS"); // this is a string field, we should be able to create the object but not access it's elements due to lazy initialization
-  const auto as_float  = record.generic_float_format_field("AS");   // this is a string field, we should be able to create the object but not access it's elements due to lazy initialization
-  const auto as_string = record.generic_string_format_field("AS");
+void check_individual_field_api(const Variant& record, const uint32_t truth_index) {
+  const auto gq_int    = record.integer_individual_field("GQ");
+  const auto gq_float  = record.float_individual_field("GQ");
+  const auto gq_string = record.string_individual_field("GQ");
+  const auto af_int    = record.integer_individual_field("AF");
+  const auto af_float  = record.float_individual_field("AF");
+  const auto af_string = record.string_individual_field("AF");
+  const auto pl_int    = record.integer_individual_field("PL");
+  const auto pl_float  = record.float_individual_field("PL");
+  const auto pl_string = record.string_individual_field("PL");
+  const auto as_int    = record.integer_individual_field("AS"); // this is a string field, we should be able to create the object but not access it's elements due to lazy initialization
+  const auto as_float  = record.float_individual_field("AS");   // this is a string field, we should be able to create the object but not access it's elements due to lazy initialization
+  const auto as_string = record.string_individual_field("AS");
   for(auto i=0u; i != record.n_samples(); ++i) {
     BOOST_CHECK_EQUAL(gq_int[i][0], truth_gq[truth_index][i]);
     BOOST_CHECK_CLOSE(gq_float[i][0], float(truth_gq[truth_index][i]), FLOAT_COMPARISON_THRESHOLD);
@@ -143,17 +143,17 @@ void check_format_field_api(const Variant& record, const uint32_t truth_index) {
   BOOST_CHECK_THROW(as_int[0][0], invalid_argument); 
 }
 
-void check_info_field_api(const Variant& record, const uint32_t truth_index) {
-  const auto validated_actual = record.generic_boolean_info_field("VALIDATED");
+void check_shared_field_api(const Variant& record, const uint32_t truth_index) {
+  const auto validated_actual = record.boolean_shared_field("VALIDATED");
   const auto validated_expected = std::vector<bool>{truth_index == 0};
   BOOST_CHECK_EQUAL_COLLECTIONS(validated_actual.begin(), validated_actual.end(), validated_expected.begin(), validated_expected.end());
-  const auto an = record.generic_integer_info_field("AN");
+  const auto an = record.integer_shared_field("AN");
   BOOST_CHECK_EQUAL(an.size(), 1);
   BOOST_CHECK_EQUAL(an[0], 6);
-  const auto af_actual = record.generic_float_info_field("AF");
+  const auto af_actual = record.float_shared_field("AF");
   const auto af_expected = truth_index == 4 ? std::vector<float>{0.5, 0} : std::vector<float>{0.5};
   BOOST_CHECK_EQUAL_COLLECTIONS(af_actual.begin(), af_actual.end(), af_expected.begin(), af_expected.end());
-  const auto desc_actual = record.generic_string_info_field("DESC");
+  const auto desc_actual = record.string_shared_field("DESC");
   const auto desc_expected = truth_index == 0 ? std::vector<string>{"Test1,Test2"} : std::vector<string>{};
   BOOST_CHECK_EQUAL_COLLECTIONS(desc_actual.begin(), desc_actual.end(), desc_expected.begin(), desc_expected.end());
 }
@@ -235,8 +235,8 @@ BOOST_AUTO_TEST_CASE( single_variant_reader )
       check_filters_api(record, truth_index);
       check_genotype_quals_api(record,truth_index);
       check_phred_likelihoods_api(record, truth_index);
-      check_format_field_api(record, truth_index);
-      check_info_field_api(record, truth_index);
+      check_individual_field_api(record, truth_index);
+      check_shared_field_api(record, truth_index);
       check_genotype_api(record, truth_index);
       ++truth_index;
     }
@@ -337,8 +337,8 @@ BOOST_AUTO_TEST_CASE( mutliple_variant_reader_test ) {
       check_filters_api(record, truth_index);
       check_genotype_quals_api(record,truth_index);
       check_phred_likelihoods_api(record, truth_index);
-      check_format_field_api(record, truth_index);
-      check_info_field_api(record, truth_index);
+      check_individual_field_api(record, truth_index);
+      check_shared_field_api(record, truth_index);
       check_genotype_api(record, truth_index);
     }
     ++truth_index;
