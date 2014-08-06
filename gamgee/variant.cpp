@@ -88,65 +88,48 @@ bool Variant::has_filter(const std::string& filter) const {
   return bcf_has_filter(m_header.get(), m_body.get(), const_cast<char*>(filter.c_str())) > 0; // have to cast away the constness here for the C api to work. But the promise still remains as the C function is not modifying the string.
 }
 
-bool Variant::is_this_genotype(const DiploidPLGenotype& genotype, const uint32_t sample_index) const {
-  const auto pl = phred_likelihoods();
-  return !pl.empty() && pl[sample_index][static_cast<int32_t>(genotype)] == 0;
-}
-
-bool Variant::is_hom_ref(const uint32_t sample_index) const {
-  return is_this_genotype(DiploidPLGenotype::HOM_REF, sample_index);
-}
-
-bool Variant::is_het(const uint32_t sample_index) const {
-  return is_this_genotype(DiploidPLGenotype::HET, sample_index);
-}
-
-bool Variant::is_hom_var(const uint32_t sample_index) const {
-  return is_this_genotype(DiploidPLGenotype::HOM_VAR, sample_index);
-}
-
 VariantField<VariantFieldValue<int32_t>> Variant::genotype_quals() const {
-  return generic_integer_format_field("GQ");
+  return integer_individual_field("GQ");
 }
 
 VariantField<VariantFieldValue<int32_t>> Variant::phred_likelihoods() const {
-  return generic_integer_format_field("PL");
+  return integer_individual_field("PL");
 }
 
-VariantField<VariantFieldValue<int32_t>> Variant::generic_integer_format_field(const std::string& tag) const {
-  const auto fmt = find_format_field_by_tag(tag);
+VariantField<VariantFieldValue<int32_t>> Variant::integer_individual_field(const std::string& tag) const {
+  const auto fmt = find_individual_field_by_tag(tag);
   if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty VariantField
     return VariantField<VariantFieldValue<int32_t>>{};
   return VariantField<VariantFieldValue<int32_t>>{m_body, fmt};
 }
 
-VariantField<VariantFieldValue<float>> Variant::generic_float_format_field(const std::string& tag) const {
-  const auto fmt = find_format_field_by_tag(tag);
+VariantField<VariantFieldValue<float>> Variant::float_individual_field(const std::string& tag) const {
+  const auto fmt = find_individual_field_by_tag(tag);
   if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty VariantField
     return VariantField<VariantFieldValue<float>>{};
   return VariantField<VariantFieldValue<float>>{m_body, fmt};
 }
 
-VariantField<VariantFieldValue<std::string>> Variant::generic_string_format_field(const std::string& tag) const {
-  const auto fmt = find_format_field_by_tag(tag);
+VariantField<VariantFieldValue<std::string>> Variant::string_individual_field(const std::string& tag) const {
+  const auto fmt = find_individual_field_by_tag(tag);
   if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty VariantField
     return VariantField<VariantFieldValue<string>>{};
   return VariantField<VariantFieldValue<string>>{m_body, fmt};
 }
 
-inline bcf_fmt_t* Variant::find_format_field_by_tag(const string& tag) const {
+inline bcf_fmt_t* Variant::find_individual_field_by_tag(const string& tag) const {
   return bcf_get_fmt(m_header.get(), m_body.get(), tag.c_str());     
 }
 
-std::vector<int32_t> Variant::generic_integer_info_field(const std::string& tag) const {
-  return generic_info_field<int32_t>(tag, BCF_HT_INT);
+std::vector<int32_t> Variant::integer_shared_field(const std::string& tag) const {
+  return shared_field<int32_t>(tag, BCF_HT_INT);
 }
 
-std::vector<float> Variant::generic_float_info_field(const std::string& tag) const {
-  return generic_info_field<float>(tag, BCF_HT_REAL);
+std::vector<float> Variant::float_shared_field(const std::string& tag) const {
+  return shared_field<float>(tag, BCF_HT_REAL);
 }
 
-template <typename TYPE> inline std::vector<TYPE> Variant::generic_info_field(const std::string& tag, const int type) const {
+template <typename TYPE> inline std::vector<TYPE> Variant::shared_field(const std::string& tag, const int type) const {
   // Using malloc instead of new since bcf_get_info_values does realloc: http://www.stroustrup.com/bs_faq2.html#realloc
   auto mem = (TYPE *)malloc(sizeof(TYPE)); // bcf_get_info_values writes without realloc when count returns with 1;
   auto count = 1;
@@ -159,7 +142,7 @@ template <typename TYPE> inline std::vector<TYPE> Variant::generic_info_field(co
   return results;
 }
 
-std::vector<std::string> Variant::generic_string_info_field(const std::string& tag) const {
+std::vector<std::string> Variant::string_shared_field(const std::string& tag) const {
   // Using malloc instead of new since bcf_get_info_values does realloc: http://www.stroustrup.com/bs_faq2.html#realloc
   auto mem = (char*)malloc(0);
   auto count = 0;
@@ -173,7 +156,7 @@ std::vector<std::string> Variant::generic_string_info_field(const std::string& t
   return results;
 }
 
-std::vector<bool> Variant::generic_boolean_info_field(const std::string& tag) const {
+std::vector<bool> Variant::boolean_shared_field(const std::string& tag) const {
   const auto info_result = bcf_get_info_flag(m_header.get(), m_body.get(), tag.c_str(), NULL, NULL);
   if (info_result < 0) {
     return std::vector<bool>{}; // return empty for all errors, even asking for the wrong type

@@ -66,16 +66,16 @@ vector<string> VariantHeader::filters() const {
   return find_fields_of_type(m_header.get(), BCF_HL_FLT);
 }
 
-vector<string> VariantHeader::info_fields() const {
+vector<string> VariantHeader::shared_fields() const {
   return find_fields_of_type(m_header.get(), BCF_HL_INFO);
 }
 
-vector<string> VariantHeader::format_fields() const {
+vector<string> VariantHeader::individual_fields() const {
   return find_fields_of_type(m_header.get(), BCF_HL_FMT);
 }
 
-bool VariantHeader::has_format_field(const string field) const {
-  const auto& fields = format_fields();
+bool VariantHeader::has_individual_field(const string field) const {
+  const auto& fields = individual_fields();
   return find(fields.begin(), fields.end(), field) != fields.end();
 }
 
