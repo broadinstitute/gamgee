@@ -74,19 +74,19 @@ class Genotype{
    * @return True if this GT is a het.
    * @note only for diploids.
    */
-  bool is_het() const;
+  bool het() const;
   /**
    * @brief Checks if this genotype vector is a homozygous call that is non-reference.
    * @return True if this GT is a hom var.
    * @note only for diploids, returns false otherwise.
    */
-  bool is_hom_var() const;
+  bool hom_var() const;
   /**
    * @brief Checks if this genotype vector is a homozygous call that is reference.
    * @return True if this GT is a hom ref.
    * @note only for diploids, returns false otherwise.
    */
-  bool is_hom_ref() const;
+  bool hom_ref() const;
   /**
    * @brief A bit encoding for the first two alleles.
    * @return A bit encoding for the first two alleles.
@@ -99,7 +99,7 @@ class Genotype{
    * @return True if all alleles are missing.
    * @warning Missing GT fields are untested.
    */
-  bool is_missing() const;
+  bool missing() const;
 
   // referencing alleles inside a sample's genotype
   /**

@@ -29,7 +29,7 @@ bool Genotype::operator==(const Genotype& other) const {
   return true;
 }
 
-bool Genotype::is_het() const {
+bool Genotype::het() const {
   if (size() != 2) {
     return false;
   }
@@ -38,7 +38,7 @@ bool Genotype::is_het() const {
   return (allele_1 != allele_2);
 }
 
-bool Genotype::is_hom_var() const {
+bool Genotype::hom_var() const {
   if (size() != 2) {
     return false;
   }
@@ -49,7 +49,7 @@ bool Genotype::is_hom_var() const {
   return allele_1 == allele_2;
 }
 
-bool Genotype::is_hom_ref() const {
+bool Genotype::hom_ref() const {
   if (size() != 2) {
     return false;
   }
@@ -64,7 +64,7 @@ uint32_t Genotype::fast_diploid_key_generation() const {
   return (allele_key(0) << 16) | allele_key(1);
 }
 
-bool Genotype::is_missing() const {
+bool Genotype::missing() const {
   const auto count = size();
   for (auto i = 0u; i != count; ++i) {
     if (!utils::allele_missing(m_format_ptr, m_data_ptr, i)) {

@@ -11,16 +11,16 @@ namespace gamgee {
 template<class TAG_TYPE>
 class SamTag {
  public:
-  explicit SamTag(const std::string& name, const TAG_TYPE& value, const bool is_missing = false) :
+  explicit SamTag(const std::string& name, const TAG_TYPE& value, const bool missing = false) :
     m_name { name },
     m_value { value },
-    m_is_missing { is_missing }
+    m_missing { missing }
   {}
 
-  explicit SamTag(const std::string& name, TAG_TYPE&& value, const bool is_missing = false) :
+  explicit SamTag(const std::string& name, TAG_TYPE&& value, const bool missing = false) :
     m_name { name },
     m_value { std::move(value) },
-    m_is_missing { is_missing }
+    m_missing { missing }
   {}
 
   SamTag(const SamTag& other) = default;
@@ -31,12 +31,12 @@ class SamTag {
 
   std::string name() const { return m_name; }
   TAG_TYPE value() const { return m_value; }
-  bool is_missing() const { return m_is_missing; }
+  bool missing() const { return m_missing; }
 
  private:
   std::string m_name;
   TAG_TYPE m_value;
-  bool m_is_missing;
+  bool m_missing;
 };
 
 }

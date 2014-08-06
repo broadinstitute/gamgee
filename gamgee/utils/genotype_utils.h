@@ -4,7 +4,7 @@
 #include "hts_memory.h"
 #include "utils.h"
 #include "format_field_type.h"
-#include "../is_missing.h"
+#include "../missing.h"
 
 #include "htslib/vcf.h"
 
