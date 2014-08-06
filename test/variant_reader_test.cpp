@@ -1,5 +1,7 @@
 #include "variant.h"
 #include "variant_reader.h"
+#include "multiple_variant_reader.h"
+#include "multiple_variant_iterator.h"
 #include "is_missing.h"
 
 #include <boost/test/unit_test.hpp>
@@ -9,6 +11,36 @@ using namespace gamgee;
 
 constexpr auto FLOAT_COMPARISON_THRESHOLD = 0.0001f;
 
+const auto truth_chromosome        = vector<uint32_t>{0, 1, 1, 1, 2};
+const auto truth_alignment_starts  = vector<uint32_t>{10000000, 10001000, 10002000, 10003000, 10004000};
+const auto truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 3};
+const auto truth_filter_name       = vector<string>{"PASS", "PASS", "LOW_QUAL", "NOT_DEFINED", "PASS"};
+const auto truth_filter_size       = vector<uint32_t>{1,1,1,1,2};
+const auto truth_quals             = vector<float>{80,8.4,-1,-1,-1};
+const auto truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "A", "GAT"};
+const auto truth_alt               = vector< vector<string>> {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"}};
+const auto truth_high_quality_hets = boost::dynamic_bitset<>{std::string{"001"}};
+const auto truth_id                = vector<string>{"db2342", "rs837472", ".", ".", "."};
+const auto truth_gq                = vector<vector<uint32_t>>{{25,12,650}, {35,35,35}, {35,35,35}, {35,35,35}, {35,35,35}};
+const auto truth_af                = vector<float> { 3.1,2.2 };
+const auto truth_pl                = vector<vector<vector<uint32_t>>>{
+  {{10,0,100      }, {0,10,1000      }, {10,100,0}      },
+  {{10,0,100      }, {0,10,100       }, {10,100,0}      },
+  {{10,0,100      }, {0,10,2000000000}, {10,100,0}      },
+  {{10,0,100      }, {0,10,100       }, {10,100,0}      },
+  {{10,0,100,2,4,8}, {0,10,100,2,4,8 }, {10,100,0,2,4,8}}
+};
+const auto truth_as                = vector<vector<string>>{ 
+  {"ABA","CA","XISPAFORRO"}, 
+  {"ABA","ABA","ABA"}, 
+  {"ABA","ABA","ABA"}, 
+  {"ABA","ABA","ABA"}, 
+  {"ABA","ABA","ABA"} 
+};
+
+
+
+
 boost::dynamic_bitset<> high_qual_hets(const Variant& record) {  // filter all hets that have GQ > 20
   const auto genotypes = record.genotypes(); // a "vector-like" with the genotypes of all samples in this record
   const auto gqs = record.genotype_quals(); // a "vector-like" with all the GQs of all samples in this record
@@ -17,7 +49,7 @@ boost::dynamic_bitset<> high_qual_hets(const Variant& record) {  // filter all h
   return hets & pass_gqs; // returns a bit set with all the samples that are het and have gq > 20
 }
 
-void check_variant_basic_api(const Variant& record, const uint32_t truth_index, const vector<string>& truth_ref, const vector<uint32_t>& truth_chromosome, const vector<uint32_t>& truth_alignment_starts, const vector<uint32_t>& truth_n_alleles, const vector<string>& truth_id) {
+void check_variant_basic_api(const Variant& record, const uint32_t truth_index) {
   BOOST_CHECK_EQUAL(record.ref(), truth_ref[truth_index]);
   BOOST_CHECK_EQUAL(record.chromosome(), truth_chromosome[truth_index]);
   BOOST_CHECK_EQUAL(record.alignment_start(), truth_alignment_starts[truth_index]);
@@ -27,19 +59,19 @@ void check_variant_basic_api(const Variant& record, const uint32_t truth_index, 
 }
 
 
-void check_quals_api(const Variant& record, const uint32_t truth_index, const vector<float>& truth_quals) {
+void check_quals_api(const Variant& record, const uint32_t truth_index) {
   if (truth_quals[truth_index] < 0) 
     BOOST_CHECK(is_missing(record.qual()));
   else 
     BOOST_CHECK_EQUAL(record.qual(), truth_quals[truth_index]); 
 }
 
-void check_alt_api(const Variant& record, const uint32_t truth_index, const vector<vector<string>>& truth_alt) {
+void check_alt_api(const Variant& record, const uint32_t truth_index) {
   auto alt = record.alt();
   BOOST_CHECK_EQUAL_COLLECTIONS(alt.begin(), alt.end(), truth_alt[truth_index].begin(), truth_alt[truth_index].end());
 }
 
-void check_filters_api(const Variant& record, const uint32_t truth_index, const vector<string>& truth_filter_name, const vector<uint32_t>& truth_filter_size) {
+void check_filters_api(const Variant& record, const uint32_t truth_index) {
   BOOST_CHECK(record.has_filter(truth_filter_name[truth_index])); // check the has_filter member function
   const auto low_qual_filter_present = record.has_filter("LOW_QUAL");
   if (truth_index == 2)
@@ -52,18 +84,23 @@ void check_filters_api(const Variant& record, const uint32_t truth_index, const 
   BOOST_CHECK_EQUAL(count_if(filters.begin(), filters.end(), [](const auto x){return x == x;}), truth_filter_size[truth_index]); // checking iteration in functional style
 }
 
-void check_genotype_quals_api(const Variant& record) {
+void check_genotype_quals_api(const Variant& record, const uint32_t truth_index) {
   const auto gqs = record.genotype_quals();
-  BOOST_CHECK_EQUAL(gqs[1][0], 35); // checking random access operators
-  for_each(gqs.begin(), gqs.end(), [](const VariantFieldValue<int32_t>& x) { BOOST_CHECK_EQUAL(x[0], 35); }); // testing std library functional call at the samples level
+  // direct access
+  for (auto i = 0u; i != record.n_samples(); ++i) 
+    BOOST_CHECK_EQUAL(gqs[i][0], truth_gq[truth_index][i]);
+  // functional style access
+  auto i = 0;
+  for_each(gqs.begin(), gqs.end(), [&truth_index, &i](const VariantFieldValue<int32_t>& x) { BOOST_CHECK_EQUAL(x[0], truth_gq[truth_index][i++]); }); // testing std library functional call at the samples level
 }
 
-void check_phred_likelihoods_api(const Variant& record) {
-  // testing phred_likelihoods accessors
+void check_phred_likelihoods_api(const Variant& record, const uint32_t truth_index) {
   const auto pls = record.phred_likelihoods();
-  BOOST_CHECK_EQUAL(pls[0][0], 10); // testing random access
-  BOOST_CHECK_EQUAL(pls[1][1], 10);
-  BOOST_CHECK_EQUAL(pls[2][2], 0);
+  // direct access
+  for(auto i = 0u; i != record.n_samples(); ++i) 
+    for (auto j = 0u; j != pls[i].size(); ++j) 
+      BOOST_CHECK_EQUAL(pls[i][j], truth_pl[truth_index][i][j]);
+  // functional style access
   for(const auto& sample_pl : pls) { // testing for-each iteration at the samples level
     BOOST_CHECK_EQUAL(1, count_if(sample_pl.begin(), sample_pl.end(), [](const auto& x) { return x == 0; })); // testing std library functional call at the sample value level
     for(const auto& value_pl : sample_pl)  // testing for-each iteration at the sample value level
@@ -71,7 +108,7 @@ void check_phred_likelihoods_api(const Variant& record) {
   }
 }      
 
-void check_format_field_api(const Variant& record, const uint32_t truth_index, const vector<vector<uint32_t>>& truth_gq, const vector<float>& truth_af, const vector<vector<vector<uint32_t>>>& truth_pl, const vector<vector<string>>& truth_as) {
+void check_format_field_api(const Variant& record, const uint32_t truth_index) {
   const auto gq_int    = record.generic_integer_format_field("GQ");
   const auto gq_float  = record.generic_float_format_field("GQ");
   const auto gq_string = record.generic_string_format_field("GQ");
@@ -121,7 +158,7 @@ void check_info_field_api(const Variant& record, const uint32_t truth_index) {
   BOOST_CHECK_EQUAL_COLLECTIONS(desc_actual.begin(), desc_actual.end(), desc_expected.begin(), desc_expected.end());
 }
 
-void check_genotype_api(const Variant& record, const uint32_t truth_index, const boost::dynamic_bitset<>& truth_high_quality_hets, const vector<string>& truth_ref, const vector<vector<string>>& truth_alt) {
+void check_genotype_api(const Variant& record, const uint32_t truth_index) {
   BOOST_CHECK_EQUAL(high_qual_hets(record), truth_high_quality_hets);
   const auto gt_for_all_samples = record.genotypes();
   BOOST_CHECK(gt_for_all_samples[1].is_hom_ref());
@@ -189,45 +226,18 @@ void check_genotype_api(const Variant& record, const uint32_t truth_index, const
 
 BOOST_AUTO_TEST_CASE( single_variant_reader ) 
 {
-  const auto truth_chromosome        = vector<uint32_t>{0, 1, 1, 1, 2};
-  const auto truth_alignment_starts  = vector<uint32_t>{10000000, 10001000, 10002000, 10003000, 10004000};
-  const auto truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 3};
-  const auto truth_filter_name       = vector<string>{"PASS", "PASS", "LOW_QUAL", "NOT_DEFINED", "PASS"};
-  const auto truth_filter_size       = vector<uint32_t>{1,1,1,1,2};
-  const auto truth_quals             = vector<float>{80,8.4,-1,-1,-1};
-  const auto truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "A", "GAT"};
-  const auto truth_alt               = vector< vector<string>> {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"}};
-  const auto truth_high_quality_hets = boost::dynamic_bitset<>{std::string{"001"}};
-  const auto truth_id                = vector<string>{"db2342", "rs837472", ".", ".", "."};
-  const auto truth_gq                = vector<vector<uint32_t>>{{35,35,35}, {35,35,35}, {35,35,35}, {35,35,35}, {35,35,35}};
-  const auto truth_af                = vector<float> { 3.1,2.2 };
-  const auto truth_pl                = vector<vector<vector<uint32_t>>>{
-    {{10,0,100      }, {0,10,1000      }, {10,100,0}      },
-    {{10,0,100      }, {0,10,100       }, {10,100,0}      },
-    {{10,0,100      }, {0,10,2000000000}, {10,100,0}      },
-    {{10,0,100      }, {0,10,100       }, {10,100,0}      },
-    {{10,0,100,2,4,8}, {0,10,100,2,4,8 }, {10,100,0,2,4,8}}
-  };
-  const auto truth_as                = vector<vector<string>>{ 
-    {"ABA","CA","XISPAFORRO"}, 
-    {"ABA","ABA","ABA"}, 
-    {"ABA","ABA","ABA"}, 
-    {"ABA","ABA","ABA"}, 
-    {"ABA","ABA","ABA"} 
-  };
-
   for (const auto& filename : {"testdata/test_variants.vcf", "testdata/test_variants.bcf"}) {
     auto truth_index = 0u;
     for (const auto& record : SingleVariantReader{filename}) {
-      check_variant_basic_api(record, truth_index, truth_ref, truth_chromosome, truth_alignment_starts, truth_n_alleles, truth_id);
-      check_quals_api(record, truth_index, truth_quals);
-      check_alt_api(record, truth_index, truth_alt);
-      check_filters_api(record, truth_index, truth_filter_name, truth_filter_size);
-      check_genotype_quals_api(record);
-      check_phred_likelihoods_api(record);
-      check_format_field_api(record, truth_index, truth_gq, truth_af, truth_pl, truth_as);
+      check_variant_basic_api(record, truth_index);
+      check_quals_api(record, truth_index);
+      check_alt_api(record, truth_index);
+      check_filters_api(record, truth_index);
+      check_genotype_quals_api(record,truth_index);
+      check_phred_likelihoods_api(record, truth_index);
+      check_format_field_api(record, truth_index);
       check_info_field_api(record, truth_index);
-      check_genotype_api(record, truth_index, truth_high_quality_hets, truth_ref, truth_alt);
+      check_genotype_api(record, truth_index);
       ++truth_index;
     }
     BOOST_CHECK_EQUAL(truth_index, 5u);
@@ -294,5 +304,43 @@ BOOST_AUTO_TEST_CASE( single_variant_reader_missing_data )
       BOOST_CHECK(is_missing(gt_for_single_sample[0]));
       BOOST_CHECK(is_missing(gt_for_single_sample[1]));
     }
+  }
+}
+
+BOOST_AUTO_TEST_CASE( multi_variant_reader_validation )
+{
+  const std::vector<std::string> filenames1{"testdata/test_variants.vcf", "testdata/extra_header.vcf"};
+  const std::vector<std::string> filenames2{"testdata/test_variants.vcf", "testdata/missing_header.vcf"};
+
+  // validate mismatched headers by default
+  for (const auto filenames_v : {filenames1, filenames2})
+    BOOST_CHECK_THROW(
+      auto reader = MultipleVariantReader<MultipleVariantIterator>(filenames_v),
+      std::runtime_error
+      // this does not work for some reason
+      // MultipleVariantReader::HeaderException
+    );
+
+  // don't validate mismatched headers
+  for (const auto filenames_v : {filenames1, filenames2})
+    auto reader = MultipleVariantReader<MultipleVariantIterator>(filenames_v, false);
+}
+
+BOOST_AUTO_TEST_CASE( mutliple_variant_reader_test ) {
+  auto truth_index = 0u;
+  const auto reader = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants.bcf"}, false};
+  for (const auto& vec : reader) {
+    for (const auto& record : vec) {
+      check_variant_basic_api(record, truth_index);
+      check_quals_api(record, truth_index);
+      check_alt_api(record, truth_index);
+      check_filters_api(record, truth_index);
+      check_genotype_quals_api(record,truth_index);
+      check_phred_likelihoods_api(record, truth_index);
+      check_format_field_api(record, truth_index);
+      check_info_field_api(record, truth_index);
+      check_genotype_api(record, truth_index);
+    }
+    ++truth_index;
   }
 }

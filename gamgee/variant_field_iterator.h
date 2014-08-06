@@ -217,7 +217,7 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
    */
   TYPE operator[](const uint32_t sample) const {
     utils::check_max_boundary(sample, m_body->n_sample);
-    return TYPE{m_body, m_format_ptr, m_format_ptr->p + (sample * m_body->n_sample)};
+    return TYPE{m_body, m_format_ptr, m_format_ptr->p + (sample * m_format_ptr->size)};
   }
 
   /**
