@@ -71,7 +71,7 @@ class VariantIterator {
   std::shared_ptr<bcf1_t> m_variant_record_ptr;    ///< pointer to the internal structure of the variant record. Useful to only allocate it once.
   Variant m_variant_record;                        ///< temporary record to hold between fetch (operator++) and serve (operator*)
 
-  Variant fetch_next_record();                     ///< fetches next Variant record into existing htslib memory without making a copy
+  void fetch_next_record();                        ///< fetches next Variant record into existing htslib memory without making a copy
 };
 
 }  // end namespace gamgee
