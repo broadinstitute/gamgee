@@ -80,6 +80,7 @@ var searchData=
   ['set_5fsequence',['set_sequence',['../classgamgee_1_1_fastq.html#af6ab94bd63e51eb9114a5cceb50d4740',1,'gamgee::Fastq']]],
   ['set_5fsupplementary',['set_supplementary',['../classgamgee_1_1_sam.html#ae8807efc0162d88a5218ba118e142f10',1,'gamgee::Sam::set_supplementary()'],['../classgamgee_1_1_sam_builder.html#aa6dbbcb082e955f33ed13477de4e45b2',1,'gamgee::SamBuilder::set_supplementary()']]],
   ['set_5funmapped',['set_unmapped',['../classgamgee_1_1_sam.html#a4c0f1a7e4096eea1dc32c8e3fa821356',1,'gamgee::Sam::set_unmapped()'],['../classgamgee_1_1_sam_builder.html#a423eb365a96fe9d3a670031c51b8f347',1,'gamgee::SamBuilder::set_unmapped()']]],
+  ['shared_5ffields',['shared_fields',['../classgamgee_1_1_variant_header.html#a1068a7fdb23dc67166a8df908cdc2116',1,'gamgee::VariantHeader']]],
   ['singlesamreader',['SingleSamReader',['../namespacegamgee.html#a16ea322e9da7062215c1e9512baa49eb',1,'gamgee']]],
   ['singlevariantreader',['SingleVariantReader',['../namespacegamgee.html#a9fb9354407ff91cd6b2a1e748b985891',1,'gamgee']]],
   ['size',['size',['../classgamgee_1_1_base_quals.html#ac591c924385edf52e88dcec143450091',1,'gamgee::BaseQuals::size()'],['../classgamgee_1_1_cigar.html#a761e526c7f7ad64252e2dcafc8b899d5',1,'gamgee::Cigar::size()'],['../classgamgee_1_1_genotype.html#af5c9fc27656bda0a716982f073d5f794',1,'gamgee::Genotype::size()'],['../classgamgee_1_1_read_bases.html#abc2c3ba62fdfaf5d55cb7da7e1f908f3',1,'gamgee::ReadBases::size()'],['../classgamgee_1_1_variant_field.html#a358785bc074d34f40f90117ffb2692d2',1,'gamgee::VariantField::size()'],['../classgamgee_1_1_variant_field_value.html#a723a9e2b857bde8412b5e3ddf4f9ef8e',1,'gamgee::VariantFieldValue::size()'],['../classgamgee_1_1_variant_filters.html#a6d5e75bc8eaf6b5e1c1b47d59b12088a',1,'gamgee::VariantFilters::size()'],['../classgamgee_1_1_variant_filters_iterator.html#af0367b1310a6735219c8cede5f27529f',1,'gamgee::VariantFiltersIterator::size()']]],
@@ -88,6 +89,8 @@ var searchData=
   ['string',['STRING',['../namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476a63b588d5559f64f89a416e656880b949',1,'gamgee::utils']]],
   ['string_5fdot',['string_dot',['../namespacegamgee_1_1missing__values.html#ae4abf96097fd03be084479871201ff83',1,'gamgee::missing_values']]],
   ['string_5fempty',['string_empty',['../namespacegamgee_1_1missing__values.html#a6242a9906efbe8b441e098b94095ffa7',1,'gamgee::missing_values']]],
+  ['string_5findividual_5ffield',['string_individual_field',['../classgamgee_1_1_variant.html#a7d5a3b9ed64b289438449694c46eff4f',1,'gamgee::Variant']]],
+  ['string_5fshared_5ffield',['string_shared_field',['../classgamgee_1_1_variant.html#a94cfc91f41890bb45e3a60921550f197',1,'gamgee::Variant']]],
   ['string_5ftag',['string_tag',['../classgamgee_1_1_sam.html#a36a261d2f72624c206c73dcf23874a52',1,'gamgee::Sam']]],
   ['supplementary',['supplementary',['../classgamgee_1_1_sam.html#acf736ec4c4416223110a74b640f7037d',1,'gamgee::Sam']]]
 ];
