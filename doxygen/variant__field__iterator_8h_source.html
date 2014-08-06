@@ -205,7 +205,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
 <div class="line"><a name="l00218"></a><span class="lineno"><a class="line" href="classgamgee_1_1_variant_field_iterator.html#aa72226b99b5238754c4118d822e3b8dd">  218</a></span>&#160;  TYPE <a class="code" href="classgamgee_1_1_variant_field_iterator.html#aa72226b99b5238754c4118d822e3b8dd">operator[]</a>(<span class="keyword">const</span> uint32_t sample)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <a class="code" href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">utils::check_max_boundary</a>(sample, m_body-&gt;n_sample);</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordflow">return</span> TYPE{m_body, m_format_ptr, m_format_ptr-&gt;p + (sample * m_body-&gt;n_sample)};</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordflow">return</span> TYPE{m_body, m_format_ptr, m_format_ptr-&gt;p + (sample * m_format_ptr-&gt;size)};</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  }</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
 <div class="line"><a name="l00229"></a><span class="lineno"><a class="line" href="classgamgee_1_1_variant_field_iterator.html#a4b427360143bb075eea2ff14edcdeae3">  229</a></span>&#160;  int32_t  <a class="code" href="classgamgee_1_1_variant_field_iterator.html#a4b427360143bb075eea2ff14edcdeae3">operator-</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_variant_field_iterator.html">VariantFieldIterator&lt;TYPE&gt;</a>&amp; first)<span class="keyword"> const </span>{</div>
@@ -248,7 +248,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 5 2014 18:53:00 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 6 2014 18:15:06 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
