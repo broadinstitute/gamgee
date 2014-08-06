@@ -36,6 +36,11 @@ class MultipleVariantIterator {
   MultipleVariantIterator(MultipleVariantIterator&&);
 
   /**
+   * @brief a MultipleVariantIterator cannot be copied safely, as it is iterating over streams.
+   */
+  MultipleVariantIterator(const MultipleVariantIterator&) = delete;
+
+  /**
    * @brief pseudo-inequality operator (needed by for-each loop)
    *
    * NOTE: this method does the minimal work necessary to determine that we have reached the end of iteration.
