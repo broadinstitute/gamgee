@@ -327,7 +327,7 @@ Sam SamBuilder::one_time_build() {
  */
 void SamBuilder::validate() const {
   // Make sure required data fields have been set
-  if ( m_name.is_empty() || m_cigar.is_empty() || m_bases.is_empty() || m_base_quals.is_empty() )
+  if ( m_name.empty() || m_cigar.empty() || m_bases.empty() || m_base_quals.empty() )
     throw logic_error("Missing one or more required data fields (name, cigar, bases, or base qualities)");
 
   // Make sure the sequence length implied by the cigar matches the actual sequence length
