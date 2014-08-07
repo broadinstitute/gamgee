@@ -35,6 +35,8 @@ class VariantFieldValueIterator : public std::iterator<std::random_access_iterat
    * @brief simple constructor
    * @param body a pointer to the bcf1_t data structure to be held as a shared pointer
    * @param data_ptr the byte array containing the value(s) for this sample
+   * @param num_bytes number of bytes in each value
+   * @param type the encoding of the value 
    * @note this constructor is probably only used by VariantFieldValue::begin() and
    * VariantFieldValue::end()
    */

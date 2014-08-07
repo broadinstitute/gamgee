@@ -50,7 +50,7 @@ namespace gamgee {
   }
 
   /**
-   * @brief Returns the length of the given sequence as stored in the @SQ tag in the BAM header, or 0 if the sequence
+   * @brief Returns the length of the given sequence as stored in the \@SQ tag in the BAM header, or 0 if the sequence
    * name is not found.
    */
   uint32_t SamHeader::sequence_length(const std::string& sequence_name) const {

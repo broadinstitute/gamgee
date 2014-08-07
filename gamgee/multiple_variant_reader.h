@@ -34,7 +34,7 @@ class MultipleVariantReader {
    * @brief enables reading records in multiple files (vcf or bcf)
    *
    * @param filenames the names of the variant files
-   * @param should we validate that the header files have identical chromosomes?  default = true
+   * @param validate_headers should we validate that the header files have identical chromosomes?  default = true
    */
   MultipleVariantReader(const std::vector<std::string>& filenames, const bool validate_headers = true) :
     m_variant_files { },

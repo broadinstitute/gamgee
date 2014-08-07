@@ -62,7 +62,7 @@ class VariantReader {
    *
    * @param filename the name of the variant file
    * @param samples the list of samples you want included/excluded from your iteration
-   * @param whether you want these samples to be included or excluded from your iteration.
+   * @param include whether you want these samples to be included or excluded from your iteration.
    */
   VariantReader(const std::string& filename, const std::vector<std::string>& samples, const bool include = true) :
     m_variant_file_ptr {bcf_open(filename.empty() ? "-" : filename.c_str(), "r")},

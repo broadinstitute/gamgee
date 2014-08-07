@@ -93,7 +93,7 @@ using namespace std;
   /**
    * @brief Returns the genotype allele string from this line.
    * @param body The shared memory variant "line" from a vcf, or bcf.
-   * @param allele_key_index The integer representation of the allele within this "line".
+   * @param key_index The integer representation of the allele within this "line".
    * @return The genotype allele string from this line.
    * @warning Only int8_t GT fields have been tested.
    */
