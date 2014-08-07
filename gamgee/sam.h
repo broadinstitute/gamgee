@@ -49,15 +49,15 @@ class Sam {
 
   // getters for fields inside the data field
   std::string name()     const { return std::string{bam_get_qname(m_body.get())}; } ///< @brief returns the read name
-  Cigar cigar()          const { return Cigar{m_body}; }                            ///< @brief returns the cigar @warning the objects returned by this member function will share underlying htslib memory with this object
-  ReadBases bases()      const { return ReadBases{m_body}; }                        ///< @brief returns the read bases @warning the objects returned by this member function will share underlying htslib memory with this object
-  BaseQuals base_quals() const { return BaseQuals{m_body}; }                        ///< @brief returns the base qualities @warning the objects returned by this member function will share underlying htslib memory with this object
+  Cigar cigar()          const { return Cigar{m_body}; }                            ///< @brief returns the cigar. @warning the objects returned by this member function will share underlying htslib memory with this object. @warning creates an object but doesn't copy the underlying values.
+  ReadBases bases()      const { return ReadBases{m_body}; }                        ///< @brief returns the read bases. @warning the objects returned by this member function will share underlying htslib memory with this object. @warning creates an object but doesn't copy the underlying values.
+  BaseQuals base_quals() const { return BaseQuals{m_body}; }                        ///< @brief returns the base qualities. @warning the objects returned by this member function will share underlying htslib memory with this object. @warning creates an object but doesn't copy the underlying values. 
 
   // getters for tagged values within the aux part of the data field
-  SamTag<int32_t> integer_tag(const std::string& tag_name) const;    ///< @brief retrieve an integer-valued tag by name
-  SamTag<double> double_tag(const std::string& tag_name) const;      ///< @brief retrieve an double/float-valued tag by name
-  SamTag<char> char_tag(const std::string& tag_name) const;          ///< @brief retrieve a char-valued tag by name
-  SamTag<std::string> string_tag(const std::string& tag_name) const; ///< @brief retrieve a string-valued tag by name
+  SamTag<int32_t> integer_tag(const std::string& tag_name) const;    ///< @brief retrieve an integer-valued tag by name. @warning creates an object but doesn't copy the underlying values.
+  SamTag<double> double_tag(const std::string& tag_name) const;      ///< @brief retrieve an double/float-valued tag by name. @warning creates an object but doesn't copy the underlying values.
+  SamTag<char> char_tag(const std::string& tag_name) const;          ///< @brief retrieve a char-valued tag by name. @warning creates an object but doesn't copy the underlying values.
+  SamTag<std::string> string_tag(const std::string& tag_name) const; ///< @brief retrieve a string-valued tag by name. @warning creates an object but doesn't copy the underlying values.
 
   // getters for flags 
   bool paired()          const { return m_body->core.flag & BAM_FPAIRED;        } ///< @brief whether or not this read is paired
