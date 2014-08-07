@@ -3,7 +3,7 @@
 #include "sam.h"
 #include "sam_reader.h"
 #include "sam_builder.h"
-#include "is_missing.h"
+#include "missing.h"
 
 #include <vector>
 
@@ -292,74 +292,74 @@ BOOST_AUTO_TEST_CASE( sam_read_tags ) {
   const auto read1_pg_tag = read1.string_tag("PG");
   BOOST_CHECK_EQUAL(read1_pg_tag.name(), "PG");
   BOOST_CHECK_EQUAL(read1_pg_tag.value(), "0");
-  BOOST_CHECK_EQUAL(read1_pg_tag.is_missing(), false);
+  BOOST_CHECK_EQUAL(read1_pg_tag.missing(), false);
 
   const auto read1_rg_tag = read1.string_tag("RG");
   BOOST_CHECK_EQUAL(read1_rg_tag.name(), "RG");
   BOOST_CHECK_EQUAL(read1_rg_tag.value(), "exampleBAM.bam");
-  BOOST_CHECK_EQUAL(read1_rg_tag.is_missing(), false);
+  BOOST_CHECK_EQUAL(read1_rg_tag.missing(), false);
 
   const auto read1_sm_tag = read1.string_tag("SM");
   BOOST_CHECK_EQUAL(read1_sm_tag.name(), "SM");
   BOOST_CHECK_EQUAL(read1_sm_tag.value(), "exampleBAM.bam");
-  BOOST_CHECK_EQUAL(read1_sm_tag.is_missing(), false);
+  BOOST_CHECK_EQUAL(read1_sm_tag.missing(), false);
 
   const auto read1_nonexistent_tag = read1.integer_tag("DR");
-  BOOST_CHECK_EQUAL(read1_nonexistent_tag.is_missing(), true);
+  BOOST_CHECK_EQUAL(read1_nonexistent_tag.missing(), true);
 
   const auto read2_nm_tag = read2.integer_tag("NM");
   BOOST_CHECK_EQUAL(read2_nm_tag.name(), "NM");
   BOOST_CHECK_EQUAL(read2_nm_tag.value(), 0);
-  BOOST_CHECK_EQUAL(read2_nm_tag.is_missing(), false);
+  BOOST_CHECK_EQUAL(read2_nm_tag.missing(), false);
 
   const auto read2_md_tag = read2.string_tag("MD");
   BOOST_CHECK_EQUAL(read2_md_tag.name(), "MD");
   BOOST_CHECK_EQUAL(read2_md_tag.value(), "76");
-  BOOST_CHECK_EQUAL(read2_md_tag.is_missing(), false);
+  BOOST_CHECK_EQUAL(read2_md_tag.missing(), false);
 
   const auto read2_as_tag = read2.integer_tag("AS");
   BOOST_CHECK_EQUAL(read2_as_tag.name(), "AS");
   BOOST_CHECK_EQUAL(read2_as_tag.value(), 76);
-  BOOST_CHECK_EQUAL(read2_as_tag.is_missing(), false);
+  BOOST_CHECK_EQUAL(read2_as_tag.missing(), false);
 
   const auto read2_xs_tag = read2.integer_tag("XS");
   BOOST_CHECK_EQUAL(read2_xs_tag.name(), "XS");
   BOOST_CHECK_EQUAL(read2_xs_tag.value(), 0);
-  BOOST_CHECK_EQUAL(read2_xs_tag.is_missing(), false);
+  BOOST_CHECK_EQUAL(read2_xs_tag.missing(), false);
 
   // check integer, char and float tags
   const auto read1_za_tag = read1.double_tag("ZA");
   BOOST_CHECK_EQUAL(read1_za_tag.name(), "ZA");
   BOOST_CHECK_CLOSE(read1_za_tag.value(), 2.3, 0.001);
-  BOOST_CHECK_EQUAL(read1_za_tag.is_missing(), false);
+  BOOST_CHECK_EQUAL(read1_za_tag.missing(), false);
   const auto read1_zb_tag = read1.integer_tag("ZB");
   BOOST_CHECK_EQUAL(read1_zb_tag.name(), "ZB");
   BOOST_CHECK_EQUAL(read1_zb_tag.value(), 23);
-  BOOST_CHECK_EQUAL(read1_zb_tag.is_missing(), false);
+  BOOST_CHECK_EQUAL(read1_zb_tag.missing(), false);
   const auto read1_zc_tag = read1.char_tag("ZC");
   BOOST_CHECK_EQUAL(read1_zc_tag.name(), "ZC");
   BOOST_CHECK_EQUAL(read1_zc_tag.value(), 't');
-  BOOST_CHECK_EQUAL(read1_zc_tag.is_missing(), false);
+  BOOST_CHECK_EQUAL(read1_zc_tag.missing(), false);
 
-  // check is_missing functionality on missing tags
+  // check missing functionality on missing tags
   const auto read2_nonexistent_string_tag = read2.string_tag("PP");
-  BOOST_CHECK_EQUAL(read2_nonexistent_string_tag.is_missing(), true);
-  BOOST_CHECK(is_missing(read2_nonexistent_string_tag));
+  BOOST_CHECK_EQUAL(read2_nonexistent_string_tag.missing(), true);
+  BOOST_CHECK(missing(read2_nonexistent_string_tag));
   const auto read2_nonexistent_integer_tag = read2.integer_tag("PP");
-  BOOST_CHECK_EQUAL(read2_nonexistent_integer_tag.is_missing(), true);
-  BOOST_CHECK(is_missing(read2_nonexistent_integer_tag));
+  BOOST_CHECK_EQUAL(read2_nonexistent_integer_tag.missing(), true);
+  BOOST_CHECK(missing(read2_nonexistent_integer_tag));
   const auto read2_nonexistent_double_tag = read2.double_tag("PP");
-  BOOST_CHECK_EQUAL(read2_nonexistent_double_tag.is_missing(), true);
-  BOOST_CHECK(is_missing(read2_nonexistent_double_tag));
+  BOOST_CHECK_EQUAL(read2_nonexistent_double_tag.missing(), true);
+  BOOST_CHECK(missing(read2_nonexistent_double_tag));
   const auto read2_nonexistent_char_tag = read2.char_tag("PP");
-  BOOST_CHECK_EQUAL(read2_nonexistent_char_tag.is_missing(), true);
-  BOOST_CHECK(is_missing(read2_nonexistent_string_tag));
+  BOOST_CHECK_EQUAL(read2_nonexistent_char_tag.missing(), true);
+  BOOST_CHECK(missing(read2_nonexistent_string_tag));
 
   // missing value due to type mismatches
   const auto not_a_char_tag = read1.char_tag("ZB");     // ZB is an integer tag
-  BOOST_CHECK(is_missing(not_a_char_tag));              // this should yield "not a char" which is equal to a missing value
+  BOOST_CHECK(missing(not_a_char_tag));              // this should yield "not a char" which is equal to a missing value
   const auto not_a_string_tag = read1.string_tag("ZB"); // ZB is an integer tag
-  BOOST_CHECK(is_missing(not_a_string_tag));            // this should yield "not a char" which is equal to a missing value
+  BOOST_CHECK(missing(not_a_string_tag));            // this should yield "not a char" which is equal to a missing value
 }
 
 BOOST_AUTO_TEST_CASE( sam_copy_constructor ) {

@@ -32,7 +32,7 @@ class SamBuilderDataField {
   const uint8_t* raw_data_ptr() const { return m_data.get(); }  ///< gets a raw pointer to the data buffer
   uint32_t num_bytes() const { return m_num_bytes; }            ///< number of bytes in the data buffer
   uint32_t num_elements() const { return m_num_elements; }      ///< number of elements (cigar operations, bases, etc.) in the data buffer
-  bool is_empty() const { return m_num_bytes == 0; }            ///< does this field have any data?
+  bool empty() const { return m_num_bytes == 0; }               ///< does this field have any data?
 
   void update(const void* copy_source, const uint32_t bytes_to_copy, const uint32_t num_elements);                   ///<  @brief update the field by copying data from a raw pointer (takes no ownership of copy_source)
   void update(std::unique_ptr<uint8_t[]>&& move_source, const uint32_t source_bytes, const uint32_t num_elements);   ///<  @brief update the field by moving an existing unique_ptr into it and taking ownership (without copying the existing data)

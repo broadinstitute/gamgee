@@ -120,7 +120,7 @@ uint32_t Sam::unclipped_stop() const {
 /**
  * @brief retrieve an integer-valued tag by name
  *
- * @note returns a SamTag with is_missing() == true if the read has no tag by this name
+ * @note returns a SamTag with missing() == true if the read has no tag by this name
  */
 SamTag<int32_t> Sam::integer_tag(const std::string& tag_name) const {
   const auto aux_ptr = bam_aux_get(m_body.get(), tag_name.c_str());
@@ -134,7 +134,7 @@ SamTag<int32_t> Sam::integer_tag(const std::string& tag_name) const {
 /**
  * @brief retrieve a double/float-valued tag by name
  *
- * @note returns a SamTag with is_missing() == true if the read has no tag by this name
+ * @note returns a SamTag with missing() == true if the read has no tag by this name
  */
 SamTag<double> Sam::double_tag(const std::string& tag_name) const {
   const auto aux_ptr = bam_aux_get(m_body.get(), tag_name.c_str());
@@ -148,7 +148,7 @@ SamTag<double> Sam::double_tag(const std::string& tag_name) const {
 /**
  * @brief retrieve a char-valued tag by name
  *
- * @note returns a SamTag with is_missing() == true if the read has no tag by this name
+ * @note returns a SamTag with missing() == true if the read has no tag by this name
  */
 SamTag<char> Sam::char_tag(const std::string& tag_name) const {
   const auto aux_ptr = bam_aux_get(m_body.get(), tag_name.c_str());
@@ -165,7 +165,7 @@ SamTag<char> Sam::char_tag(const std::string& tag_name) const {
 /**
  * @brief retrieve a string-valued tag by name
  *
- * @note returns a SamTag with is_missing() == true if the read has no tag by this name
+ * @note returns a SamTag with missing() == true if the read has no tag by this name
  */
 SamTag<std::string> Sam::string_tag(const std::string& tag_name) const {
   const auto aux_ptr = bam_aux_get(m_body.get(), tag_name.c_str());

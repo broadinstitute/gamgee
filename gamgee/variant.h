@@ -85,7 +85,6 @@ class Variant {
 
   inline bcf_fmt_t* find_individual_field_by_tag(const std::string& tag) const;
   template <typename TYPE> inline std::vector<TYPE> shared_field(const std::string& tag, const int type) const;
-  inline bool is_this_genotype(const DiploidPLGenotype& genotype, const uint32_t sample_index) const;
 
   friend class VariantWriter;
 };

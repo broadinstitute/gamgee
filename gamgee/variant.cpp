@@ -130,7 +130,8 @@ std::vector<float> Variant::float_shared_field(const std::string& tag) const {
   return shared_field<float>(tag, BCF_HT_REAL);
 }
 
-template <typename TYPE> inline std::vector<TYPE> Variant::shared_field(const std::string& tag, const int type) const {
+template <typename TYPE> 
+inline std::vector<TYPE> Variant::shared_field(const std::string& tag, const int type) const {
   // Using malloc instead of new since bcf_get_info_values does realloc: http://www.stroustrup.com/bs_faq2.html#realloc
   auto mem = (TYPE *)malloc(sizeof(TYPE)); // bcf_get_info_values writes without realloc when count returns with 1;
   auto count = 1;
