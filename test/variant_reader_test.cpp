@@ -156,6 +156,11 @@ void check_shared_field_api(const Variant& record, const uint32_t truth_index) {
   const auto desc_actual = record.string_shared_field("DESC");
   const auto desc_expected = truth_index == 0 ? std::vector<string>{"Test1,Test2"} : std::vector<string>{};
   BOOST_CHECK_EQUAL_COLLECTIONS(desc_actual.begin(), desc_actual.end(), desc_expected.begin(), desc_expected.end());
+  BOOST_CHECK(missing(record.boolean_shared_field("NON_EXISTING")));
+  BOOST_CHECK(missing(record.integer_shared_field("NON_EXISTING")));
+  BOOST_CHECK(missing(record.float_shared_field("NON_EXISTING")));  
+  BOOST_CHECK(missing(record.string_shared_field("NON_EXISTING"))); 
+  if (truth_index != 0) BOOST_CHECK(missing(desc_actual)); // testing a missing field that is actually present in the header
 }
 
 void check_genotype_api(const Variant& record, const uint32_t truth_index) {
