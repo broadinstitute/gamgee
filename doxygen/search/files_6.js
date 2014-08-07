@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['multiple_5fvariant_5fiterator_2ecpp',['multiple_variant_iterator.cpp',['../multiple__variant__iterator_8cpp.html',1,'']]],
-  ['multiple_5fvariant_5fiterator_2eh',['multiple_variant_iterator.h',['../multiple__variant__iterator_8h.html',1,'']]],
-  ['multiple_5fvariant_5freader_2eh',['multiple_variant_reader.h',['../multiple__variant__reader_8h.html',1,'']]]
+  ['read_5fbases_2ecpp',['read_bases.cpp',['../read__bases_8cpp.html',1,'']]],
+  ['read_5fbases_2eh',['read_bases.h',['../read__bases_8h.html',1,'']]]
 ];
