@@ -4,6 +4,7 @@
 #include "sam_tag.h"
 #include "htslib/vcf.h"
 
+#include <vector>
 #include <string>
 #include <cmath>
 
@@ -33,6 +34,15 @@ template <class MISSING_TYPE>
 inline bool missing(const MISSING_TYPE& value) {
   return value.missing();
 }
+
+/**
+ * Missing overload for functions that return a vector of values. It only applies if the entire vector is missing.
+ * @tparam VALUE any type that can be fit into a container. Any type, really.
+ * @param v any vector
+ * @return true if the vector is empty (therefore the value that was returned is missing)
+ */
+template <class VALUE>
+inline bool missing(const std::vector<VALUE>& v) { return v.empty(); }
 
 }
 
