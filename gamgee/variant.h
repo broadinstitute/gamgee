@@ -4,6 +4,7 @@
 #include "variant_header.h"
 #include "variant_field.h"
 #include "variant_field_value.h"
+#include "shared_field.h"
 #include "variant_filters.h"
 #include "boost/dynamic_bitset.hpp"
 #include "genotype.h"
@@ -59,10 +60,10 @@ class Variant {
   VariantField<VariantFieldValue<std::string>> string_individual_field(const std::string& tag) const;         ///< returns a random access object with all the values in a give individual field tag in string format for all samples contiguous in memory. @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
 
   // generic shared field getters (a.k.a "info fields")
-  std::vector<int32_t> integer_shared_field(const std::string& tag) const;                                    ///< returns a random access object with all the values in a given shared field tag in integer format for all samples contiguous in memory. @warning creates a new vector and copies all underlying values (converting if necessary) to the new vector.
-  std::vector<float> float_shared_field(const std::string& tag) const;                                        ///< returns a random access object with all the values in a given shared field tag in float format for all samples contiguous in memory. @warning creates a new vector and copies all underlying values (converting if necessary) to the new vector.
-  std::vector<std::string> string_shared_field(const std::string& tag) const;                                 ///< returns a random access object with all the values in a given shared field tag in string format for all samples contiguous in memory. @warning creates a new vector and copies all underlying values (converting if necessary) to the new vector.
-  std::vector<bool> boolean_shared_field(const std::string& tag) const;                                       ///< returns a random access object with all the values in a given shared field tag in boolean format for all samples contiguous in memory. @warning creates a new vector and copies all underlying values (converting if necessary) to the new vector.
+  bool boolean_shared_field(const std::string& tag) const;                    ///< whether or not the tag is present @note bools are treated specially as vector<bool> is impossible given the spec
+  SharedField<int32_t> integer_shared_field(const std::string& tag) const;    ///< returns a random access object with all the values in a given shared field tag in integer format contiguous in memory. @warning creates a new vector and copies all underlying values (converting if necessary) to the new vector.
+  SharedField<float> float_shared_field(const std::string& tag) const;        ///< returns a random access object with all the values in a given shared field tag in float format for all samples contiguous in memory. @warning creates a new vector and copies all underlying values (converting if necessary) to the new vector.
+  SharedField<std::string> string_shared_field(const std::string& tag) const; ///< returns a random access object with all the values in a given shared field tag in string format for all samples contiguous in memory. @warning creates a new vector and copies all underlying values (converting if necessary) to the new vector.
 
   /**
    * @brief returns a bitset indicating the samples for which the unary predicate is true
@@ -88,6 +89,7 @@ class Variant {
   std::shared_ptr<bcf1_t> m_body;                                                                             ///< htslib variant body pointer
 
   inline bcf_fmt_t* find_individual_field_by_tag(const std::string& tag) const;
+  inline bcf_info_t* find_shared_field_by_tag(const std::string& tag) const;
   template <typename TYPE> inline std::vector<TYPE> shared_field(const std::string& tag, const int type) const;
 
   friend class VariantWriter;

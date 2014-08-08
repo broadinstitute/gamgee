@@ -8,7 +8,6 @@
 namespace gamgee {
 namespace utils {
 
-
 int32_t convert_data_to_integer(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const FormatFieldType& type) {
   const auto p = data_ptr + (index * num_bytes_per_value);
   switch (type) {
@@ -85,6 +84,23 @@ uint8_t size_for_type(const FormatFieldType& type, const bcf_fmt_t* const format
       return 0; 
   }
 }
+
+uint8_t size_for_type(const FormatFieldType& type, const bcf_info_t* const info_ptr) {
+  switch (type) {
+    case FormatFieldType::NIL:
+    case FormatFieldType::INT8: 
+    case FormatFieldType::INT16:
+      return static_cast<uint8_t>(type);
+    case FormatFieldType::INT32:
+    case FormatFieldType::FLOAT:
+      return 4;
+    case FormatFieldType::STRING:
+      return info_ptr->len; // htslib keeps the number of bytes in the string in the n member variable. This is weird, but that's how it is.
+    default: 
+      return 0; 
+  }
+}
+
 
 } // end namespace utils
 } // end namespace gamgee

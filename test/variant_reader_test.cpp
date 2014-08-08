@@ -21,6 +21,10 @@ const auto truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "A", "
 const auto truth_alt               = vector< vector<string>> {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"}};
 const auto truth_high_quality_hets = boost::dynamic_bitset<>{std::string{"001"}};
 const auto truth_id                = vector<string>{"db2342", "rs837472", ".", ".", "."};
+const auto truth_shared_af         = vector<vector<float>>{{0.5}, {0.5}, {0.5}, {0.5}, {0.5, 0.0}};
+const auto truth_shared_an         = vector<vector<int32_t>>{{6}, {6}, {6}, {6}, {6}};
+const auto truth_shared_desc       = vector<vector<string>>{{"Test1,Test2"}, {}, {}, {}, {}};
+const auto truth_shared_validated  = vector<bool>{true, false, true, false, false};
 const auto truth_gq                = vector<vector<uint32_t>>{{25,12,650}, {35,35,35}, {35,35,35}, {35,35,35}, {35,35,35}};
 const auto truth_af                = vector<float> { 3.1,2.2 };
 const auto truth_pl                = vector<vector<vector<uint32_t>>>{
@@ -117,7 +121,7 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
   const auto af_string = record.string_individual_field("AF");
   const auto pl_int    = record.integer_individual_field("PL");
   const auto pl_float  = record.float_individual_field("PL");
-  const auto pl_string = record.string_individual_field("PL");
+  const auto pl_string = record.string_individual_field("PL"); 
   const auto as_int    = record.integer_individual_field("AS"); // this is a string field, we should be able to create the object but not access it's elements due to lazy initialization
   const auto as_float  = record.float_individual_field("AS");   // this is a string field, we should be able to create the object but not access it's elements due to lazy initialization
   const auto as_string = record.string_individual_field("AS");
@@ -144,23 +148,47 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
 }
 
 void check_shared_field_api(const Variant& record, const uint32_t truth_index) {
-  const auto validated_actual = record.boolean_shared_field("VALIDATED");
-  const auto validated_expected = std::vector<bool>{truth_index == 0};
-  BOOST_CHECK_EQUAL_COLLECTIONS(validated_actual.begin(), validated_actual.end(), validated_expected.begin(), validated_expected.end());
+  BOOST_CHECK_EQUAL(record.boolean_shared_field("VALIDATED"), truth_shared_validated[truth_index]);
   const auto an = record.integer_shared_field("AN");
-  BOOST_CHECK_EQUAL(an.size(), 1);
-  BOOST_CHECK_EQUAL(an[0], 6);
-  const auto af_actual = record.float_shared_field("AF");
-  const auto af_expected = truth_index == 4 ? std::vector<float>{0.5, 0} : std::vector<float>{0.5};
-  BOOST_CHECK_EQUAL_COLLECTIONS(af_actual.begin(), af_actual.end(), af_expected.begin(), af_expected.end());
-  const auto desc_actual = record.string_shared_field("DESC");
-  const auto desc_expected = truth_index == 0 ? std::vector<string>{"Test1,Test2"} : std::vector<string>{};
-  BOOST_CHECK_EQUAL_COLLECTIONS(desc_actual.begin(), desc_actual.end(), desc_expected.begin(), desc_expected.end());
+  BOOST_CHECK_EQUAL_COLLECTIONS(an.begin(), an.end(), truth_shared_an[truth_index].begin(), truth_shared_an[truth_index].end());
+  const auto af = record.float_shared_field("AF");
+  BOOST_CHECK_EQUAL_COLLECTIONS(af.begin(), af.end(), truth_shared_af[truth_index].begin(), truth_shared_af[truth_index].end());
+  const auto desc = record.string_shared_field("DESC");
+  BOOST_CHECK_EQUAL_COLLECTIONS(desc.begin(), desc.end(), truth_shared_desc[truth_index].begin(), truth_shared_desc[truth_index].end());
+  // check non-existing missing values
   BOOST_CHECK(missing(record.boolean_shared_field("NON_EXISTING")));
   BOOST_CHECK(missing(record.integer_shared_field("NON_EXISTING")));
   BOOST_CHECK(missing(record.float_shared_field("NON_EXISTING")));  
   BOOST_CHECK(missing(record.string_shared_field("NON_EXISTING"))); 
-  if (truth_index != 0) BOOST_CHECK(missing(desc_actual)); // testing a missing field that is actually present in the header
+  // check type conversions (currently failing because htslib's implementation returns an empty vector for any conversion)
+  const auto an_float = record.float_shared_field("AN");
+  const auto an_string = record.string_shared_field("AN");
+  for (auto i=0u; i != an_float.size(); ++i) {
+    BOOST_CHECK_EQUAL(an_float[i], float(truth_shared_an[truth_index][i]));
+    BOOST_CHECK_EQUAL(an_string[i], to_string(truth_shared_an[truth_index][i]));
+  }
+  const auto af_integer = record.integer_shared_field("AF");
+  const auto af_string = record.string_shared_field("AF");
+  for (auto i=0u; i != af_integer.size(); ++i) {
+    BOOST_CHECK_EQUAL(af_integer[i], int32_t(truth_shared_af[truth_index][i]));
+    BOOST_CHECK_EQUAL(af_string[i], to_string(truth_shared_af[truth_index][i]));
+  }
+  // from string specific type conversion
+  const auto desc_bool = record.boolean_shared_field("DESC");
+  const auto desc_integer = record.integer_shared_field("DESC");
+  const auto desc_float = record.float_shared_field("DESC");
+  if (truth_shared_desc[truth_index].empty()) {
+    BOOST_CHECK(!desc_bool);
+    BOOST_CHECK(missing(desc_integer));
+    BOOST_CHECK(missing(desc_float));
+    BOOST_CHECK(missing(record.string_shared_field("DESC"))); // check that an existing tag in the header can be missing 
+    BOOST_CHECK_THROW(desc_float[0], out_of_range);
+  }
+  else {
+    BOOST_CHECK(desc_bool);
+    BOOST_CHECK_THROW(desc_float[0], invalid_argument);
+    BOOST_CHECK_THROW(desc_integer[0], invalid_argument);
+  }
 }
 
 void check_genotype_api(const Variant& record, const uint32_t truth_index) {
