@@ -21,6 +21,7 @@ class VariantFiltersIterator : public std::iterator<std::random_access_iterator_
    * @brief simple constructor used by the VariantFilters begin/end member functions
    * @param header an htslib variant header to keep shared ownership of the memory
    * @param body an htslib variant body to keep shared ownership of the memory
+   * @param position current position in the iterator (starts at 0, normally)
    */
   VariantFiltersIterator(const std::shared_ptr<bcf_hdr_t>& header, const std::shared_ptr<bcf1_t>& body, const uint32_t position) : 
     m_header {header},
