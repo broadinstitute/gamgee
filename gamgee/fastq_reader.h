@@ -36,7 +36,7 @@ class FastqReader {
  public:
 
   /**
-    * @brief reades through all records in a file (fasta or fastq) parsing them into Fastq
+    * @brief reads through all records in a file (fasta or fastq) parsing them into Fastq
     * objects
     *
     * @param filename the name of the fasta/fastq file
@@ -44,7 +44,7 @@ class FastqReader {
   FastqReader(const std::string& filename);
 
   /**
-    * @brief reades through all records in a file (fasta or fastq) parsing them into Fastq
+    * @brief reads through all records in a file (fasta or fastq) parsing them into Fastq
     * objects
     *
     * @param filenames a vector containing a single element: the name of the fasta/fastq file
@@ -52,7 +52,7 @@ class FastqReader {
   FastqReader(const std::vector<std::string>& filenames);
 
   /**
-    * @brief reades through all records in a stream (e.g. stdin) parsing them into Fastq
+    * @brief reads through all records in a stream (e.g. stdin) parsing them into Fastq
     * objects
     *
     * @param input a reference to the input stream (e.g. &std::cin)
