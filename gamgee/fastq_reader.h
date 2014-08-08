@@ -6,6 +6,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 namespace gamgee {
 
@@ -41,6 +42,14 @@ class FastqReader {
     * @param filename the name of the fasta/fastq file
     */
   FastqReader(const std::string& filename);
+
+  /**
+    * @brief reades through all records in a file (fasta or fastq) parsing them into Fastq
+    * objects
+    *
+    * @param filenames a vector containing a single element: the name of the fasta/fastq file
+    */
+  FastqReader(const std::vector<std::string>& filenames);
 
   /**
     * @brief reades through all records in a stream (e.g. stdin) parsing them into Fastq

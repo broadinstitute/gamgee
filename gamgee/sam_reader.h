@@ -4,6 +4,7 @@
 #include "sam_iterator.h"
 #include "sam_pair_iterator.h"
 #include "utils/hts_memory.h"
+#include "utils/utils.h"
 
 #include "htslib/sam.h"
 
@@ -11,7 +12,7 @@
 #include <iostream>
 #include <fstream>
 #include <memory>
-
+#include <vector>
 
 namespace gamgee {
 
@@ -54,6 +55,24 @@ class SamReader {
       m_sam_file_ptr {sam_open(filename.empty() ? "-" : filename.c_str(), "r")},
       m_sam_header_ptr { utils::make_shared_sam_header(sam_hdr_read(m_sam_file_ptr)) }
     {}
+
+    /**
+     * @brief reads through all records in a file ( or sam) parsing them into Sam
+     * objects
+     *
+     * @param filenames a vector containing a single element: the name of the sam file
+     */
+    SamReader(const std::vector<std::string>& filenames) :
+      m_sam_file_ptr {},
+      m_sam_header_ptr {}
+    {
+      if (filenames.size() > 1)
+        throw utils::SingleInputException{"filenames", filenames.size()};
+      if (!filenames.empty()) {
+        m_sam_file_ptr  = sam_open(filenames.front().empty() ? "-" : filenames.front().c_str(), "r");
+        m_sam_header_ptr = utils::make_shared_sam_header(sam_hdr_read(m_sam_file_ptr));
+      }
+    }
 
     /**
      * @brief no copy construction/assignment allowed for iterators and readers

@@ -1,6 +1,7 @@
 #ifndef gamgee__utils__guard
 #define gamgee__utils__guard
 
+#include <boost/format.hpp>
 #include <boost/iterator/zip_iterator.hpp>
 #include <boost/range.hpp>
 
@@ -90,6 +91,15 @@ auto zip(const T&... containers) -> boost::iterator_range<boost::zip_iterator<de
     auto zip_end = boost::make_zip_iterator(boost::make_tuple(std::end(containers)...));
     return boost::make_iterator_range(zip_begin, zip_end);
 }
+
+/**
+ * @brief an exception class for the case where a single input is required, but more is provided
+ */
+class SingleInputException : public std::runtime_error {
+ public:
+  SingleInputException(const std::string& vector_name, const size_t size) :
+    std::runtime_error{(boost::format("Error: single input required, but vector %s has size %d") % vector_name % size).str()} { }
+};
 
 
 } // end utils namespace

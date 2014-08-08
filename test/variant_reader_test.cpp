@@ -313,6 +313,23 @@ BOOST_AUTO_TEST_CASE( single_variant_reader_missing_data )
   }
 }
 
+BOOST_AUTO_TEST_CASE( single_variant_reader_vector )
+{
+  for (const auto& record : SingleVariantReader{vector<string>{"testdata/test_variants.vcf"}})
+    BOOST_CHECK_EQUAL(record.n_samples(), 3);
+}
+
+BOOST_AUTO_TEST_CASE( single_variant_reader_vector_all_samples )
+{
+  for (const auto& record : SingleVariantReader{vector<string>{"testdata/test_variants.vcf"}, vector<string>{}, false})  // include all samples by setting include == false and passing an empty list
+    BOOST_CHECK_EQUAL(record.n_samples(), 3);
+}
+
+BOOST_AUTO_TEST_CASE( single_variant_reader_vector_too_large )
+{
+  BOOST_CHECK_THROW((SingleVariantReader{vector<string>{"testdata/test_variants.vcf", "testdata/test_variants.vcf"}}), std::runtime_error);
+}
+
 BOOST_AUTO_TEST_CASE( multi_variant_reader_validation )
 {
   const std::vector<std::string> filenames1{"testdata/test_variants.vcf", "testdata/extra_header.vcf"};
