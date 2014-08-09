@@ -1,6 +1,6 @@
 #include "variant.h"
-#include "variant_field.h"
-#include "variant_field_value.h"
+#include "individual_field.h"
+#include "individual_field_value.h"
 #include "shared_field.h"
 #include "utils/hts_memory.h"
 #include "utils/utils.h"
@@ -90,33 +90,33 @@ bool Variant::has_filter(const std::string& filter) const {
   return bcf_has_filter(m_header.get(), m_body.get(), const_cast<char*>(filter.c_str())) > 0; // have to cast away the constness here for the C api to work. But the promise still remains as the C function is not modifying the string.
 }
 
-VariantField<VariantFieldValue<int32_t>> Variant::genotype_quals() const {
+IndividualField<IndividualFieldValue<int32_t>> Variant::genotype_quals() const {
   return integer_individual_field("GQ");
 }
 
-VariantField<VariantFieldValue<int32_t>> Variant::phred_likelihoods() const {
+IndividualField<IndividualFieldValue<int32_t>> Variant::phred_likelihoods() const {
   return integer_individual_field("PL");
 }
 
-VariantField<VariantFieldValue<int32_t>> Variant::integer_individual_field(const std::string& tag) const {
+IndividualField<IndividualFieldValue<int32_t>> Variant::integer_individual_field(const std::string& tag) const {
   const auto fmt = find_individual_field_by_tag(tag);
-  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty VariantField
-    return VariantField<VariantFieldValue<int32_t>>{};
-  return VariantField<VariantFieldValue<int32_t>>{m_body, fmt};
+  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty IndividualField
+    return IndividualField<IndividualFieldValue<int32_t>>{};
+  return IndividualField<IndividualFieldValue<int32_t>>{m_body, fmt};
 }
 
-VariantField<VariantFieldValue<float>> Variant::float_individual_field(const std::string& tag) const {
+IndividualField<IndividualFieldValue<float>> Variant::float_individual_field(const std::string& tag) const {
   const auto fmt = find_individual_field_by_tag(tag);
-  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty VariantField
-    return VariantField<VariantFieldValue<float>>{};
-  return VariantField<VariantFieldValue<float>>{m_body, fmt};
+  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty IndividualField
+    return IndividualField<IndividualFieldValue<float>>{};
+  return IndividualField<IndividualFieldValue<float>>{m_body, fmt};
 }
 
-VariantField<VariantFieldValue<std::string>> Variant::string_individual_field(const std::string& tag) const {
+IndividualField<IndividualFieldValue<std::string>> Variant::string_individual_field(const std::string& tag) const {
   const auto fmt = find_individual_field_by_tag(tag);
-  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty VariantField
-    return VariantField<VariantFieldValue<string>>{};
-  return VariantField<VariantFieldValue<string>>{m_body, fmt};
+  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty IndividualField
+    return IndividualField<IndividualFieldValue<string>>{};
+  return IndividualField<IndividualFieldValue<string>>{m_body, fmt};
 }
 
 inline bcf_fmt_t* Variant::find_individual_field_by_tag(const string& tag) const {
@@ -134,31 +134,31 @@ bool Variant::boolean_shared_field(const std::string& tag) const {
 
 SharedField<int32_t> Variant::integer_shared_field(const std::string& tag) const {
   const auto info = find_shared_field_by_tag(tag);
-  if (info == nullptr) // if the variant is missing or the PL tag is missing, return an empty VariantField
+  if (info == nullptr) // if the variant is missing or the PL tag is missing, return an empty IndividualField
     return SharedField<int32_t>{};
   return SharedField<int32_t>{m_body, info};
 }
 
 SharedField<float> Variant::float_shared_field(const std::string& tag) const {
   const auto info = find_shared_field_by_tag(tag);
-  if (info == nullptr) // if the variant is missing or the PL tag is missing, return an empty VariantField
+  if (info == nullptr) // if the variant is missing or the PL tag is missing, return an empty IndividualField
     return SharedField<float>{};
   return SharedField<float>{m_body, info};
 }
 
 SharedField<string> Variant::string_shared_field(const std::string& tag) const {
   const auto info = find_shared_field_by_tag(tag);
-  if (info == nullptr) // if the variant is missing or the PL tag is missing, return an empty VariantField
+  if (info == nullptr) // if the variant is missing or the PL tag is missing, return an empty IndividualField
     return SharedField<string>{};
   return SharedField<string>{m_body, info};
 }
 
-VariantField<Genotype> Variant::genotypes() const {
+IndividualField<Genotype> Variant::genotypes() const {
   // bcf_get_fmt() will unpack the record if necessary
   const auto fmt = bcf_get_fmt(m_header.get(), m_body.get(), "GT");
-  if (fmt == nullptr) ///< if the variant is missing or the GT tag is missing, return an empty VariantField
-    return VariantField<Genotype>{};
-  return VariantField<Genotype>{m_body, fmt};
+  if (fmt == nullptr) ///< if the variant is missing or the GT tag is missing, return an empty IndividualField
+    return IndividualField<Genotype>{};
+  return IndividualField<Genotype>{m_body, fmt};
 }
 
 }

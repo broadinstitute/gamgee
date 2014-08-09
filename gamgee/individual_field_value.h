@@ -1,7 +1,7 @@
-#ifndef gamgee__variant_field_value__guard
-#define gamgee__variant_field_value__guard
+#ifndef gamgee__individual_field_value__guard
+#define gamgee__individual_field_value__guard
 
-#include "variant_field_value_iterator.h"
+#include "individual_field_value_iterator.h"
 #include "utils/hts_memory.h"
 #include "utils/utils.h"
 #include "utils/format_field_type.h"
@@ -20,7 +20,7 @@ namespace gamgee {
  * without making any copies and benefiting from data locality (all the data is
  * stored contiguously in memory). 
  *
- * A typical use of the VariantFieldValue can be examplified by the
+ * A typical use of the IndividualFieldValue can be examplified by the
  * genotype qualitiy accessor in Variant: 
  * 
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -29,15 +29,15 @@ namespace gamgee {
  * for_each(my_pls.begin(), my_pls.end(), [](const auto pl) { cout << pl << endl; });
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
- * VariantFieldValue objects can also be used in for loops like so: 
+ * IndividualFieldValue objects can also be used in for loops like so: 
  * 
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * for (const auto pl : my_pls) 
  *   cout << pl << endl;
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
- * While the VariantFieldValue objects are not really intended to be
- * created by the user, they are the returned by the VariantField iterator for
+ * While the IndividualFieldValue objects are not really intended to be
+ * created by the user, they are the returned by the IndividualField iterator for
  * types that don't have a specialized object.  Utilizing them correctly can
  * really simplify your work by leveraging the power of the STL functions.
  *
@@ -46,20 +46,20 @@ namespace gamgee {
  * @tparam TYPE the object type that holds the values for each sample. For
  * example for GQ it's a uint8_t, some types like GT and PL can have
  * specialized classes like Genotype and PhredLikelihoods. For all other types
- * it can be the VariantFieldValue.
+ * it can be the IndividualFieldValue.
  */
 template<class VALUE_TYPE>
-class VariantFieldValue {
+class IndividualFieldValue {
  public:
 
   /**
-   * @brief creates a new VariantFieldValue poiinting to the shared byte array inside the variant object
-   * @copydetails VariantField::VariantField(const std::shared_ptr<bcf1_t>&, bcf_fmt_t*)
+   * @brief creates a new IndividualFieldValue poiinting to the shared byte array inside the variant object
+   * @copydetails IndividualField::IndividualField(const std::shared_ptr<bcf1_t>&, bcf_fmt_t*)
    * @param body the the bcf1_t structure to hold a shared pointer to
    * @param format_ptr the format field pointer inside the body
    * @param data_ptr the location in the specific value inside the format_ptr byte array
    */
-  VariantFieldValue(const std::shared_ptr<bcf1_t>& body, const bcf_fmt_t* const format_ptr, uint8_t* const data_ptr) :
+  IndividualFieldValue(const std::shared_ptr<bcf1_t>& body, const bcf_fmt_t* const format_ptr, uint8_t* const data_ptr) :
     m_body {body},
     m_format_ptr {format_ptr},
     m_data_ptr {data_ptr},
@@ -67,16 +67,16 @@ class VariantFieldValue {
   {}
 
   /**
-   * @brief copying of the VariantFieldValue object is not allowed.
-   * @copydetails VariantField::VariantField(const VariantField&)
+   * @brief copying of the IndividualFieldValue object is not allowed.
+   * @copydetails IndividualField::IndividualField(const IndividualField&)
    */
-  VariantFieldValue(const VariantFieldValue& other) = delete;
+  IndividualFieldValue(const IndividualFieldValue& other) = delete;
   
   /**
-   * @brief safely moves the data from one VariantFieldValue to a new one without making any copies
-   * @param other another VariantFieldValue object
+   * @brief safely moves the data from one IndividualFieldValue to a new one without making any copies
+   * @param other another IndividualFieldValue object
    */
-  VariantFieldValue(VariantFieldValue&& other) :
+  IndividualFieldValue(IndividualFieldValue&& other) :
     m_body {std::move(other.m_body)},
     m_format_ptr {other.m_format_ptr},
     m_data_ptr {other.m_data_ptr},
@@ -84,15 +84,15 @@ class VariantFieldValue {
   {}
 
   /**
-   * @copydoc VariantField::VariantFieldValue(const VariantFieldValue&)
+   * @copydoc IndividualField::IndividualFieldValue(const IndividualFieldValue&)
    */
-  VariantFieldValue& operator=(const VariantFieldValue& other) = delete;
+  IndividualFieldValue& operator=(const IndividualFieldValue& other) = delete;
 
   /**
-   * @brief safely moves the data from one VariantField to the other without making any copies
-   * @param other another VariantFieldValue object
+   * @brief safely moves the data from one IndividualField to the other without making any copies
+   * @param other another IndividualFieldValue object
    */
-  VariantFieldValue& operator=(VariantFieldValue&& other) {
+  IndividualFieldValue& operator=(IndividualFieldValue&& other) {
     if (this != &other)
       return *this;
     m_body = std::move(other.m_body);
@@ -117,18 +117,18 @@ class VariantFieldValue {
   /**
    * @brief create a new begin iterator over the values for this sample
    */
-  VariantFieldValueIterator<VALUE_TYPE> begin() const {
-    return VariantFieldValueIterator<VALUE_TYPE>{m_body, m_data_ptr, m_num_bytes, static_cast<utils::FormatFieldType>(m_format_ptr->type)};
+  IndividualFieldValueIterator<VALUE_TYPE> begin() const {
+    return IndividualFieldValueIterator<VALUE_TYPE>{m_body, m_data_ptr, m_num_bytes, static_cast<utils::FormatFieldType>(m_format_ptr->type)};
   }
 
   /**
    * @brief create a new end iterator over the values for this sample
    */
-  VariantFieldValueIterator<VALUE_TYPE> end() const {
-    return VariantFieldValueIterator<VALUE_TYPE>{m_body, m_data_ptr + m_format_ptr->size, m_num_bytes, static_cast<utils::FormatFieldType>(m_format_ptr->type)};
+  IndividualFieldValueIterator<VALUE_TYPE> end() const {
+    return IndividualFieldValueIterator<VALUE_TYPE>{m_body, m_data_ptr + m_format_ptr->size, m_num_bytes, static_cast<utils::FormatFieldType>(m_format_ptr->type)};
   }
 
-  uint32_t size() const { return m_format_ptr->n; } ///< @brief the number of values in this VariantFieldValue (values per sample)
+  uint32_t size() const { return m_format_ptr->n; } ///< @brief the number of values in this IndividualFieldValue (values per sample)
 
  private:
   const std::shared_ptr<bcf1_t> m_body;
@@ -143,7 +143,7 @@ class VariantFieldValue {
  * @brief specialization of the conversion template for int32_t
  */
 template<> inline
-int32_t VariantFieldValue<int32_t>::convert_from_byte_array(int index) const {
+int32_t IndividualFieldValue<int32_t>::convert_from_byte_array(int index) const {
   return utils::convert_data_to_integer(m_data_ptr, index, m_num_bytes, static_cast<utils::FormatFieldType>(m_format_ptr->type));
 }
 
@@ -151,7 +151,7 @@ int32_t VariantFieldValue<int32_t>::convert_from_byte_array(int index) const {
  * @brief specialization of the conversion template for floats
  */
 template<> inline
-float VariantFieldValue<float>::convert_from_byte_array(int index) const {
+float IndividualFieldValue<float>::convert_from_byte_array(int index) const {
   return utils::convert_data_to_float(m_data_ptr, index, m_num_bytes, static_cast<utils::FormatFieldType>(m_format_ptr->type));
 }
 
@@ -159,11 +159,11 @@ float VariantFieldValue<float>::convert_from_byte_array(int index) const {
  * @brief specialization of the conversion template for strings
  */
 template<> inline
-std::string VariantFieldValue<std::string>::convert_from_byte_array(int index) const {
+std::string IndividualFieldValue<std::string>::convert_from_byte_array(int index) const {
   return utils::convert_data_to_string(m_data_ptr, index, m_num_bytes, static_cast<utils::FormatFieldType>(m_format_ptr->type));
 }
 
 
 }
 
-#endif // gamgee__variant_field_value__guard
+#endif // gamgee__individual_field_value__guard

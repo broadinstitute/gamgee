@@ -1,12 +1,11 @@
-#ifndef gamgee__variant_field_iterator__guard
-#define gamgee__variant_field_iterator__guard 
+#ifndef gamgee__individual_field_iterator__guard
+#define gamgee__individual_field_iterator__guard 
 
 #include "utils/utils.h"
 
 #include "htslib/vcf.h"
 
 #include<iterator>
-#include<sstream>
 
 namespace gamgee {
 
@@ -29,7 +28,7 @@ namespace gamgee {
  * in the Variant record. 
  */
 template<class TYPE>
-class VariantFieldIterator : public std::iterator<std::random_access_iterator_tag, TYPE> {
+class IndividualFieldIterator : public std::iterator<std::random_access_iterator_tag, TYPE> {
  public:
 
   /**
@@ -39,7 +38,7 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
    * @param end_iterator whether or not this is being called by the VariantField::end() function.
    * @note this constructor serves only the VariantField::begin() and VariantField::end() functions. 
    */
-  VariantFieldIterator(const std::shared_ptr<bcf1_t>& body, const bcf_fmt_t* const format_ptr, bool end_iterator = false) :
+  IndividualFieldIterator(const std::shared_ptr<bcf1_t>& body, const bcf_fmt_t* const format_ptr, bool end_iterator = false) :
     m_body {body}, 
     m_format_ptr {format_ptr},
     m_data_ptr {end_iterator ? format_ptr->p + m_format_ptr->size * m_body->n_sample : format_ptr->p} 
@@ -53,7 +52,7 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
    * @warning does not deep copy the underlying data! (but the copied iterator will be able to
    * navigate independentely). 
    */
-  VariantFieldIterator(const VariantFieldIterator& other) :
+  IndividualFieldIterator(const IndividualFieldIterator& other) :
     m_body {other.m_body},
     m_format_ptr {other.m_format_ptr},
     m_data_ptr {other.m_data_ptr}
@@ -63,16 +62,16 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
    * @brief safely moves the data from one VariantField to a new one without making any copies
    * @param other another VariantField object
    */
-  VariantFieldIterator(VariantFieldIterator&& other) noexcept : 
+  IndividualFieldIterator(IndividualFieldIterator&& other) noexcept : 
     m_body {std::move(other.m_body)},
     m_format_ptr {other.m_format_ptr},
     m_data_ptr {other.m_data_ptr}
   {}
 
   /**
-   * @copydoc VariantFieldIterator::VariantFieldIterator(const VariantFieldIterator&)
+   * @copydoc IndividualFieldIterator::IndividualFieldIterator(const IndividualFieldIterator&)
    */
-  VariantFieldIterator& operator=(const VariantFieldIterator& other) {
+  IndividualFieldIterator& operator=(const IndividualFieldIterator& other) {
     if (&this == other)
       return *this;
     m_body = other.m_body;
@@ -82,9 +81,9 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
   }
 
   /**
-   * @copydoc VariantFieldIterator::VariantFieldIterator(VariantFieldIterator&&)
+   * @copydoc IndividualFieldIterator::IndividualFieldIterator(IndividualFieldIterator&&)
    */
-  VariantFieldIterator& operator=(VariantFieldIterator&& other) noexcept {
+  IndividualFieldIterator& operator=(IndividualFieldIterator&& other) noexcept {
     if (&this == other)
       return *this;
     m_body = std::move(other.m_body);
@@ -98,15 +97,15 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
    * @param n how much to advance (negative numbers to go the other direction)
    * @warning there is no boundary check in this operator
    */
-  VariantFieldIterator& operator+=(const int n) noexcept {
+  IndividualFieldIterator& operator+=(const int n) noexcept {
     m_data_ptr += n * m_format_ptr->size;
     return *this;
   }
 
   /**
-   * @copydoc VariantFieldIterator::operator+=(int)
+   * @copydoc IndividualFieldIterator::operator+=(int)
    */
-  VariantFieldIterator& operator-=(const int n) noexcept {
+  IndividualFieldIterator& operator-=(const int n) noexcept {
     m_data_ptr -= n * m_format_ptr->size;
     return *this;
   }
@@ -114,14 +113,14 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
   /**
    * @brief two iterators are equal if they are in exactly the same state (pointing at the same location in memory
    */
-  bool operator==(const VariantFieldIterator& other) {
+  bool operator==(const IndividualFieldIterator& other) {
     return m_body == other.m_body && m_data_ptr == other.m_data_ptr;
   }
 
   /**
-   * @brief the oposite check of VariantFieldIterator::operator==()
+   * @brief the oposite check of IndividualFieldIterator::operator==()
    */
-  bool operator!=(const VariantFieldIterator& other) {
+  bool operator!=(const IndividualFieldIterator& other) {
     return m_body != other.m_body || m_data_ptr != other.m_data_ptr;
   }
 
@@ -129,28 +128,28 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
    * @brief an operator is greater/less than another iterator if it is pointing to a previous element (sample) in the VariantField 
    * object. The order is determined by the Variant record.
    */
-  bool operator<(const VariantFieldIterator& other) {
+  bool operator<(const IndividualFieldIterator& other) {
     return m_body == other.m_body && m_data_ptr < other.m_data_ptr;
   }
 
   /**
-   * @copydoc VariantFieldIterator::operator<()
+   * @copydoc IndividualFieldIterator::operator<()
    */
-  bool operator>(const VariantFieldIterator& other) {
+  bool operator>(const IndividualFieldIterator& other) {
     return m_body == other.m_body && m_data_ptr > other.m_data_ptr;
   }
 
   /**
-   * @copydoc VariantFieldIterator::operator<()
+   * @copydoc IndividualFieldIterator::operator<()
    */
-  bool operator<=(const VariantFieldIterator& other) {
+  bool operator<=(const IndividualFieldIterator& other) {
     return m_body == other.m_body && m_data_ptr <= other.m_data_ptr;
   }
 
   /**
-   * @copydoc VariantFieldIterator::operator<()
+   * @copydoc IndividualFieldIterator::operator<()
    */
-  bool operator>=(const VariantFieldIterator& other) {
+  bool operator>=(const IndividualFieldIterator& other) {
     return m_body == other.m_body && m_data_ptr >= other.m_data_ptr;
   }
 
@@ -168,7 +167,7 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
    * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result with end(). This is the STL way.
    * @return a reference to the start of the values of the next sample
    */
-  VariantFieldIterator& operator++() noexcept {
+  IndividualFieldIterator& operator++() noexcept {
     operator+=(1);
     return *this;
   }
@@ -179,8 +178,8 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
    * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result with end(). This is the STL way.
    * @return the value of the start of the same sample.
    */
-  VariantFieldIterator operator++(int) noexcept {
-    auto const tmp = VariantFieldIterator(*this);
+  IndividualFieldIterator operator++(int) noexcept {
+    auto const tmp = IndividualFieldIterator(*this);
     operator++();
     return tmp;
   }
@@ -191,7 +190,7 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
    * @warning does not check for bounds exception, you should verify whether or not you've reached the beginning by comparing the result with begin(). This is the STL way.
    * @return a reference to the start of the values of the previous sample
    */
-  VariantFieldIterator& operator--() noexcept {
+  IndividualFieldIterator& operator--() noexcept {
     operator-=(1);
     return *this;
   }
@@ -202,8 +201,8 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
    * @warning does not check for bounds exception, you should verify whether or not you've reached the beginning by comparing the result with begin(). This is the STL way.
    * @return the value of the start of the same sample.
    */
-  VariantFieldIterator& operator--(int) noexcept {
-    auto const tmp = VariantFieldIterator(*this);
+  IndividualFieldIterator& operator--(int) noexcept {
+    auto const tmp = IndividualFieldIterator(*this);
     operator--();
     return tmp;
   }
@@ -223,10 +222,10 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
   /**
    * @brief Difference between two iterators as an integer.
    * @note Useful as a substitute for size() when only begin() and end() are available.
-   * @returns the number of iterator steps between [first, last) where last is the current VariantFieldIterator.
+   * @returns the number of iterator steps between [first, last) where last is the current IndividualFieldIterator.
    * @param first is the iterator the position of which is to be subtracted from the position of the current iterator.
    */
-  int32_t  operator-(const VariantFieldIterator<TYPE>& first) const {
+  int32_t  operator-(const IndividualFieldIterator<TYPE>& first) const {
     return static_cast<int32_t>(m_data_ptr - first.m_data_ptr)/m_format_ptr->size;
   }
 
@@ -239,4 +238,4 @@ class VariantFieldIterator : public std::iterator<std::random_access_iterator_ta
 
 }
 
-#endif // gamgee__variant_field_iterator__guard
+#endif // gamgee__individual_field_iterator__guard

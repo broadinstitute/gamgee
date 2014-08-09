@@ -2,8 +2,8 @@
 #define gamgee__variant__guard
 
 #include "variant_header.h"
-#include "variant_field.h"
-#include "variant_field_value.h"
+#include "individual_field.h"
+#include "individual_field_value.h"
 #include "shared_field.h"
 #include "variant_filters.h"
 #include "boost/dynamic_bitset.hpp"
@@ -50,14 +50,14 @@ class Variant {
   bool has_filter(const std::string& filter) const;                                                           ///< checks for the existence of a filter in this record
 
   // standard individual field getters (a.k.a "format fields")
-  VariantField<VariantFieldValue<int32_t>> genotype_quals() const;                                            ///< returns a random access object with all the GQ values for all samples contiguously in memory. @warning creates a new object but makes no copies of the underlying values.
-  VariantField<VariantFieldValue<int32_t>> phred_likelihoods() const;                                         ///< returns a random access object with all the PL values for all samples contiguous in memory. @warning creates a new object but makes no copies of the underlying values.
-  VariantField<Genotype> genotypes() const;                                                                   ///< returns a random access object with all the values in a given GT tag for all samples contiguous in memory. @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<IndividualFieldValue<int32_t>> genotype_quals() const;                                            ///< returns a random access object with all the GQ values for all samples contiguously in memory. @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<IndividualFieldValue<int32_t>> phred_likelihoods() const;                                         ///< returns a random access object with all the PL values for all samples contiguous in memory. @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<Genotype> genotypes() const;                                                                   ///< returns a random access object with all the values in a given GT tag for all samples contiguous in memory. @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
 
   // generic individual field getters (a.k.a "format fields")
-  VariantField<VariantFieldValue<int32_t>> integer_individual_field(const std::string& tag) const;            ///< returns a random access object with all the values in a give individual field tag in integer format for all samples contiguous in memory.  @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
-  VariantField<VariantFieldValue<float>> float_individual_field(const std::string& tag) const;                ///< returns a random access object with all the values in a give individual field tag in float format for all samples contiguous in memory.  @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
-  VariantField<VariantFieldValue<std::string>> string_individual_field(const std::string& tag) const;         ///< returns a random access object with all the values in a give individual field tag in string format for all samples contiguous in memory. @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<IndividualFieldValue<int32_t>> integer_individual_field(const std::string& tag) const;            ///< returns a random access object with all the values in a give individual field tag in integer format for all samples contiguous in memory.  @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<IndividualFieldValue<float>> float_individual_field(const std::string& tag) const;                ///< returns a random access object with all the values in a give individual field tag in float format for all samples contiguous in memory.  @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<IndividualFieldValue<std::string>> string_individual_field(const std::string& tag) const;         ///< returns a random access object with all the values in a give individual field tag in string format for all samples contiguous in memory. @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
 
   // generic shared field getters (a.k.a "info fields")
   bool boolean_shared_field(const std::string& tag) const;                    ///< whether or not the tag is present @note bools are treated specially as vector<bool> is impossible given the spec
@@ -67,15 +67,15 @@ class Variant {
 
   /**
    * @brief returns a bitset indicating the samples for which the unary predicate is true
-   * @tparam any type that can be instantiated in a VariantFieldIterator<FF>
+   * @tparam any type that can be instantiated in a IndividualFieldIterator<FF>
    */
   template <class FF>                                                                                         
   static boost::dynamic_bitset<> select_if(                                                                   
-      const VariantFieldIterator<FF>& first,                                                                  ///< Iterator to the initial position in a sequence. The range includes the element pointed by first.
-      const VariantFieldIterator<FF>& last,                                                                   ///< Iterator to the last position in a sequence. The range does not include the element pointed by last.
-      const std::function<bool (const FF& value)> pred)                                                       ///< Unary predicate function that accepts an element in range [first, last) as argument and returns a value convertible to bool. The value returned indicates whether the element is considered a match in the context of this function. @note The function shall not modify its argument. @note This can either be a function pointer or a function object.
+      const IndividualFieldIterator<FF>& first,         ///< Iterator to the initial position in a sequence. The range includes the element pointed by first.
+      const IndividualFieldIterator<FF>& last,          ///< Iterator to the last position in a sequence. The range does not include the element pointed by last.
+      const std::function<bool (const FF& value)> pred) ///< Unary predicate function that accepts an element in range [first, last) as argument and returns a value convertible to bool. The value returned indicates whether the element is considered a match in the context of this function. @note The function shall not modify its argument. @note This can either be a function pointer or a function object.
   {
-    const auto n_samples = last - first; // HINT: This isn't basic pointer subtraction, it is a customized C++ operator overload that computes the number of samples between two VariantFieldIterator objects. Took a while to debug when it was not fully tested. -kshakir
+    const auto n_samples = last - first; // HINT: This isn't basic pointer subtraction, it is a customized C++ operator overload that computes the number of samples between two IndividualFieldIterator objects. Took a while to debug when it was not fully tested. -kshakir
     auto selected_samples = boost::dynamic_bitset<>(n_samples);
     auto it = first;
     for (auto i = 0; i < n_samples; i++) {
