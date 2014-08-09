@@ -48,8 +48,8 @@ const auto truth_as                = vector<vector<string>>{
 boost::dynamic_bitset<> high_qual_hets(const Variant& record) {  // filter all hets that have GQ > 20
   const auto genotypes = record.genotypes(); // a "vector-like" with the genotypes of all samples in this record
   const auto gqs = record.genotype_quals(); // a "vector-like" with all the GQs of all samples in this record
-  const auto hets = Variant::select_if<Genotype>(genotypes.begin(), genotypes.end(), [](const auto& g) { return g.het(); }); // returns a bit set with all hets marked with 1's
-  const auto pass_gqs = Variant::select_if<IndividualFieldValue<int32_t>>(gqs.begin(), gqs.end(), [](const auto& gq) { return gq[0] > 20; }); // returns a bit set with every sample with gq > 20 marked with 1's
+  const auto hets = Variant::select_if(genotypes.begin(), genotypes.end(), [](const auto& g) { return g.het(); }); // returns a bit set with all hets marked with 1's
+  const auto pass_gqs = Variant::select_if(gqs.begin(), gqs.end(), [](const auto& gq) { return gq[0] > 20; }); // returns a bit set with every sample with gq > 20 marked with 1's
   return hets & pass_gqs; // returns a bit set with all the samples that are het and have gq > 20
 }
 
