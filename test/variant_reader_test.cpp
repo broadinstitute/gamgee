@@ -145,6 +145,10 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
   }
   BOOST_CHECK_THROW(as_float[0][0], invalid_argument); 
   BOOST_CHECK_THROW(as_int[0][0], invalid_argument); 
+  BOOST_CHECK(missing(record.integer_individual_field("NON_EXISTING")));
+  BOOST_CHECK(missing(record.float_individual_field("NON_EXISTING")));
+  BOOST_CHECK(missing(record.string_individual_field("NON_EXISTING")));
+  BOOST_CHECK_THROW(record.float_individual_field("NON_EXISTING")[0], out_of_range);
 }
 
 void check_shared_field_api(const Variant& record, const uint32_t truth_index) {

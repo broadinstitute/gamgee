@@ -119,10 +119,12 @@ class VariantField {
    * @brief random access to the value of a given sample for reading or writing
    * @param sample must be between 0 and the number of samples for this record 
    * @note implementation guarantees this operation to be O(1)
-   * @exception std::out_of_range if sample is out of range
+   * @exception std::out_of_range if sample is out of range or entire field is missing and trying to access invalid memory
    * @return the value if it is a basic type (e.g. GQ, GL), or a specific object if it is a complex type (e.g. PL, AD,...)
    */
   TYPE operator[](const uint32_t sample) const {
+    if (empty())
+      throw std::out_of_range("Tried to index an individual field that is missing with operator[]");
     utils::check_max_boundary(sample, m_body->n_sample);
     return TYPE{m_body, m_format_ptr, m_format_ptr->p + (sample * m_format_ptr->size)}; 
   }
@@ -144,6 +146,7 @@ class VariantField {
   uint32_t size() const { return empty() ? 0 : m_body->n_sample; } ///< @brief the number of values in this VariantField @note this will always be the number of samples in the Variant record, which you can obtain once from it and not repeatedly for every VariantField)
   uint32_t n_samples() const { return size(); }                    ///< @brief just an alias to size() to simplify interfaces
   uint32_t empty() const { return m_body == nullptr; }             ///< @brief checks if the object is empty. @note empty objects are returned when the requested field is missing
+  uint32_t missing() const { return empty();}                       ///< @brief checks if the object is empty. @note empty objects are returned when the requested field is missing
 
  private:
   const std::shared_ptr<bcf1_t> m_body; ///< shared ownership of the Variant record memory so it stays alive while this object is in scope

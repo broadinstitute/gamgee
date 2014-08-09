@@ -78,7 +78,7 @@ class SharedField {
    * @brief random access to the value of a given sample for reading or writing
    * @param index must be between 0 and the number of values for this record 
    * @note implementation guarantees this operation to be O(1)
-   * @exception std::out_of_range if sample is out of range
+   * @exception std::out_of_range if sample is out of range or entire field is missing and trying to access invalid memory
    * @return the value in that index
    */
   TYPE operator[](const uint32_t index) const {
