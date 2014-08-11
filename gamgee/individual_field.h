@@ -27,7 +27,7 @@ namespace gamgee {
  * random access (and random access iterator compatible) way. The IndividualField can be used in any algorithm
  * of the stl that requires random access iterators.
  *
- * A typical use of the IndividualField can be examplified by the genotype quality accessor in Variant: 
+ * A typical use of the IndividualField can be exemplified by the genotype quality accessor in Variant: 
  * 
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * const auto gquals = variant_record.genotype_quals(); 
@@ -59,9 +59,6 @@ namespace gamgee {
  * @note all methods are inlined on purpose because they are so simple
  * 
  * @tparam TYPE the type desired for the given tag. For example for GQ's typically you would request an int32.
- *
- * @warning Currently only int32 and std::string are supported
- * 
  */
 template<class TYPE>
 class IndividualField {
@@ -93,11 +90,7 @@ class IndividualField {
    * @brief safely moves the data from one IndividualField to a new one without making any copies
    * @param other another IndividualField object
    */
-  IndividualField(IndividualField&& other) :
-    m_body {std::move(other.m_body)},
-    m_format_ptr {other.m_format_ptr}
-  {}
-
+  IndividualField(IndividualField&& other) = default;
   /**
    * @copydoc IndividualField::IndividualField(const IndividualField&)
    */
@@ -107,14 +100,8 @@ class IndividualField {
    * @brief safely moves the data from one IndividualField to the other without making any copies
    * @param other another IndividualField object
    */
-  IndividualField& operator=(IndividualField&& other) {
-    if (this != &other)
-      return *this;
-    m_body = std::move(other.m_body);
-    m_format_ptr = other.m_format_ptr;
-    return *this;
-  }
-
+  IndividualField& operator=(IndividualField&& other) = default;
+  
   /**
    * @brief random access to the value of a given sample for reading or writing
    * @param sample must be between 0 and the number of samples for this record 

@@ -61,9 +61,9 @@ class Variant {
 
   // generic shared field getters (a.k.a "info fields")
   bool boolean_shared_field(const std::string& tag) const;                    ///< whether or not the tag is present @note bools are treated specially as vector<bool> is impossible given the spec
-  SharedField<int32_t> integer_shared_field(const std::string& tag) const;    ///< returns a random access object with all the values in a given shared field tag in integer format contiguous in memory. @warning creates a new vector and copies all underlying values (converting if necessary) to the new vector.
-  SharedField<float> float_shared_field(const std::string& tag) const;        ///< returns a random access object with all the values in a given shared field tag in float format for all samples contiguous in memory. @warning creates a new vector and copies all underlying values (converting if necessary) to the new vector.
-  SharedField<std::string> string_shared_field(const std::string& tag) const; ///< returns a random access object with all the values in a given shared field tag in string format for all samples contiguous in memory. @warning creates a new vector and copies all underlying values (converting if necessary) to the new vector.
+  SharedField<int32_t> integer_shared_field(const std::string& tag) const;    ///< returns a random access object with all the values in a given shared field tag in integer format contiguous in memory. @warning creates a new object but makes no copies of the underlying values.
+  SharedField<float> float_shared_field(const std::string& tag) const;        ///< returns a random access object with all the values in a given shared field tag in float format for all samples contiguous in memory. @warning creates a new object but makes no copies of the underlying values.
+  SharedField<std::string> string_shared_field(const std::string& tag) const; ///< returns a random access object with all the values in a given shared field tag in string format for all samples contiguous in memory. @warning creates a new object but makes no copies of the underlying values.
 
   /**
    * @brief functional-stlye set logic operations for variant field vectors

@@ -24,7 +24,7 @@ namespace gamgee {
  * random access (and random access iterator compatible) way. The SharedField can be used in any algorithm
  * of the STL that requires random access iterators.
  *
- * A typical use of the SharedField can be examplified by the following:
+ * A typical use of the SharedField can be exemplified by the following:
  * 
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * const auto an = variant_record.shared_integer_field("AN"); 
@@ -34,17 +34,22 @@ namespace gamgee {
  * SharedField objects can also be used in for loops like so: 
  * 
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * for (const auto q : variant_record.genotype_quals()) 
- *   cout << q[0] << endl;
+ * for (const auto q : variant_record.shared_string_field("CULPRIT")) 
+ *   cout << q << endl;
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *
+ * Or directly like so: 
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * const auto ab = variant_record.shared_float_field("AB");
+ * cout << ab[0] << endl;
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *
  *
  * While the SharedField objects are not really intended to be created by the user, they are returned by 
  * many accessors in the Variant API like the Variant::shared_integer_field() example above. Utilizing them correctly can 
  * really simplify your work by leveraging the power of the STL functions.
  *
- * @todo this class is eerly similar to SharedField, perhaps we could merge them with some template specializations?
  * @note all methods are inlined on purpose because they are so simple
- * @warning Currently only int32 and std::string are supported
  * @tparam TYPE the output type desired for the given tag. For example for AN's typically you would request an int32_t. Conversions are allowed if possible.
  */
 template<class TYPE>
@@ -54,7 +59,7 @@ class SharedField {
   /**
    * @brief default constructor of an empty SharedField
    * @warning since private members are immutable, creating an empty SharedField like this means that it will stay empty forever (desired immutability effect)
-   * @note empty format fields are created when the field requested is missing in the Variant record
+   * @note empty shared fields are created when the field requested is missing in the Variant record
    */
   SharedField() : m_body {nullptr}, m_info_ptr {nullptr}, m_bytes_per_value {0} {} 
 
@@ -75,10 +80,10 @@ class SharedField {
   SharedField& operator=(SharedField&& other) = default;     ///< @brief safely moves the data from one SharedField to the other without making any copies
 
   /**
-   * @brief random access to the value of a given sample for reading or writing
+   * @brief random access to a given value for reading or writing
    * @param index must be between 0 and the number of values for this record 
    * @note implementation guarantees this operation to be O(1)
-   * @exception std::out_of_range if sample is out of range or entire field is missing and trying to access invalid memory
+   * @exception std::out_of_range if index is out of range or entire field is missing and trying to access invalid memory
    * @return the value in that index
    */
   TYPE operator[](const uint32_t index) const {

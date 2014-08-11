@@ -20,7 +20,7 @@ namespace gamgee {
  * without making any copies and benefiting from data locality (all the data is
  * stored contiguously in memory). 
  *
- * A typical use of the IndividualFieldValue can be examplified by the
+ * A typical use of the IndividualFieldValue can be exemplified by the
  * genotype qualitiy accessor in Variant: 
  * 
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

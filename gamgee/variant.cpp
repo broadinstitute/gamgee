@@ -134,21 +134,21 @@ bool Variant::boolean_shared_field(const std::string& tag) const {
 
 SharedField<int32_t> Variant::integer_shared_field(const std::string& tag) const {
   const auto info = find_shared_field_by_tag(tag);
-  if (info == nullptr) // if the variant is missing or the PL tag is missing, return an empty IndividualField
+  if (info == nullptr) 
     return SharedField<int32_t>{};
   return SharedField<int32_t>{m_body, info};
 }
 
 SharedField<float> Variant::float_shared_field(const std::string& tag) const {
   const auto info = find_shared_field_by_tag(tag);
-  if (info == nullptr) // if the variant is missing or the PL tag is missing, return an empty IndividualField
+  if (info == nullptr)
     return SharedField<float>{};
   return SharedField<float>{m_body, info};
 }
 
 SharedField<string> Variant::string_shared_field(const std::string& tag) const {
   const auto info = find_shared_field_by_tag(tag);
-  if (info == nullptr) // if the variant is missing or the PL tag is missing, return an empty IndividualField
+  if (info == nullptr)
     return SharedField<string>{};
   return SharedField<string>{m_body, info};
 }

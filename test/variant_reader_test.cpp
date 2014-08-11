@@ -164,7 +164,6 @@ void check_shared_field_api(const Variant& record, const uint32_t truth_index) {
   BOOST_CHECK(missing(record.integer_shared_field("NON_EXISTING")));
   BOOST_CHECK(missing(record.float_shared_field("NON_EXISTING")));  
   BOOST_CHECK(missing(record.string_shared_field("NON_EXISTING"))); 
-  // check type conversions (currently failing because htslib's implementation returns an empty vector for any conversion)
   const auto an_float = record.float_shared_field("AN");
   const auto an_string = record.string_shared_field("AN");
   for (auto i=0u; i != an_float.size(); ++i) {
