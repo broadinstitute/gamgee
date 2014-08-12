@@ -93,59 +93,68 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="utils_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef gamgee__utils__guard</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define gamgee__utils__guard</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;boost/iterator/zip_iterator.hpp&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;boost/range.hpp&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>gamgee {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span>utils {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;std::string <a class="code" href="namespacegamgee_1_1utils.html#a740716d2b795a26787bf1000ae62ddb2">reverse_complement</a>(<span class="keyword">const</span> std::string&amp; sequence);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;std::string <a class="code" href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">complement</a>(<span class="keyword">const</span> std::string&amp; sequence); </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;std::string <a class="code" href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">complement</a>(std::string&amp; sequence);               </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">char</span> <a class="code" href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">complement</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> base);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;std::vector&lt;std::string&gt; <a class="code" href="namespacegamgee_1_1utils.html#aa3f1ec8c7415419a0e1c57c8255873a9">hts_string_array_to_vector</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> * <span class="keyword">const</span> string_array, <span class="keyword">const</span> uint32_t array_size);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">   64</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">check_max_boundary</a>(<span class="keyword">const</span> uint32_t index, <span class="keyword">const</span> uint32_t size) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordflow">if</span> (index &gt;= size) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    std::stringstream error_message {};  </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    error_message &lt;&lt; <span class="stringliteral">&quot;Index:  &quot;</span> &lt;&lt; index &lt;&lt; <span class="stringliteral">&quot; must be less than &quot;</span> &lt;&lt; size &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">throw</span> std::out_of_range(error_message.str());</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>... <a class="code" href="namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&gt;</div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#a3993f3188fb1d3bd6337a36a53efb442">   87</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="namespacegamgee_1_1utils.html#a3993f3188fb1d3bd6337a36a53efb442">zip</a>(<span class="keyword">const</span> T&amp;... containers) -&gt; boost::iterator_range&lt;boost::zip_iterator&lt;decltype(boost::make_tuple(std::begin(containers)...))&gt;&gt;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;{</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">auto</span> zip_begin = boost::make_zip_iterator(boost::make_tuple(std::begin(containers)...));</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">auto</span> zip_end = boost::make_zip_iterator(boost::make_tuple(std::end(containers)...));</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> boost::make_iterator_range(zip_begin, zip_end);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;boost/format.hpp&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;boost/iterator/zip_iterator.hpp&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;boost/range.hpp&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span>gamgee {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span>utils {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;std::string <a class="code" href="namespacegamgee_1_1utils.html#a740716d2b795a26787bf1000ae62ddb2">reverse_complement</a>(<span class="keyword">const</span> std::string&amp; sequence);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;std::string <a class="code" href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">complement</a>(<span class="keyword">const</span> std::string&amp; sequence); </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;std::string <a class="code" href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">complement</a>(std::string&amp; sequence);               </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">char</span> <a class="code" href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">complement</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> base);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;std::vector&lt;std::string&gt; <a class="code" href="namespacegamgee_1_1utils.html#aa3f1ec8c7415419a0e1c57c8255873a9">hts_string_array_to_vector</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> * <span class="keyword">const</span> string_array, <span class="keyword">const</span> uint32_t array_size);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">   65</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">check_max_boundary</a>(<span class="keyword">const</span> uint32_t index, <span class="keyword">const</span> uint32_t size) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordflow">if</span> (index &gt;= size) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    std::stringstream error_message {};  </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    error_message &lt;&lt; <span class="stringliteral">&quot;Index:  &quot;</span> &lt;&lt; index &lt;&lt; <span class="stringliteral">&quot; must be less than &quot;</span> &lt;&lt; size &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">throw</span> std::out_of_range(error_message.str());</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>... <a class="code" href="namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&gt;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#a3993f3188fb1d3bd6337a36a53efb442">   88</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="namespacegamgee_1_1utils.html#a3993f3188fb1d3bd6337a36a53efb442">zip</a>(<span class="keyword">const</span> T&amp;... containers) -&gt; boost::iterator_range&lt;boost::zip_iterator&lt;decltype(boost::make_tuple(std::begin(containers)...))&gt;&gt;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">auto</span> zip_begin = boost::make_zip_iterator(boost::make_tuple(std::begin(containers)...));</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">auto</span> zip_end = boost::make_zip_iterator(boost::make_tuple(std::end(containers)...));</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> boost::make_iterator_range(zip_begin, zip_end);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;} <span class="comment">// end utils namespace</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;} <span class="comment">// end gamgee namespace</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#endif // gamgee__utils__guard</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="classgamgee_1_1utils_1_1_single_input_exception.html">   98</a></span>&#160;<span class="keyword">class </span><a class="code" href="classgamgee_1_1utils_1_1_single_input_exception.html">SingleInputException</a> : <span class="keyword">public</span> std::runtime_error {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classgamgee_1_1utils_1_1_single_input_exception.html#a805fb0f345649dcc0bf63f5c69a3724a">  100</a></span>&#160;  <a class="code" href="classgamgee_1_1utils_1_1_single_input_exception.html#a805fb0f345649dcc0bf63f5c69a3724a">SingleInputException</a>(<span class="keyword">const</span> std::string&amp; vector_name, <span class="keyword">const</span> <span class="keywordtype">size_t</span> size) :</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    std::runtime_error{(boost::format(<span class="stringliteral">&quot;Error: single input required, but vector %s has size %d&quot;</span>) % vector_name % size).str()} { }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;};</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;} <span class="comment">// end utils namespace</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;} <span class="comment">// end gamgee namespace</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#endif // gamgee__utils__guard</span></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a740716d2b795a26787bf1000ae62ddb2"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a740716d2b795a26787bf1000ae62ddb2">gamgee::utils::reverse_complement</a></div><div class="ttdeci">std::string reverse_complement(const std::string &amp;sequence)</div><div class="ttdoc">calculates the reverse complement of a sequence </div><div class="ttdef"><b>Definition:</b> utils.cpp:46</div></div>
+<div class="ttc" id="classgamgee_1_1utils_1_1_single_input_exception_html"><div class="ttname"><a href="classgamgee_1_1utils_1_1_single_input_exception.html">gamgee::utils::SingleInputException</a></div><div class="ttdoc">an exception class for the case where a single input is required, but more is provided ...</div><div class="ttdef"><b>Definition:</b> utils.h:98</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_af406bde810c85ea1749461ed137ab59b"><div class="ttname"><a href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">gamgee::utils::complement</a></div><div class="ttdeci">std::string complement(std::string &amp;sequence)</div><div class="ttdoc">calculates the complement of a sequence in-place </div><div class="ttdef"><b>Definition:</b> utils.cpp:34</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_aa3f1ec8c7415419a0e1c57c8255873a9"><div class="ttname"><a href="namespacegamgee_1_1utils.html#aa3f1ec8c7415419a0e1c57c8255873a9">gamgee::utils::hts_string_array_to_vector</a></div><div class="ttdeci">std::vector&lt; std::string &gt; hts_string_array_to_vector(const char *const *const string_array, const uint32_t array_size)</div><div class="ttdoc">converts an array of c-strings into a vector<string> </div><div class="ttdef"><b>Definition:</b> utils.cpp:53</div></div>
-<div class="ttc" id="namespacegamgee_1_1utils_html_a0f228e0091b6df37b21d4a58c7ad372c"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">gamgee::utils::check_max_boundary</a></div><div class="ttdeci">void check_max_boundary(const uint32_t index, const uint32_t size)</div><div class="ttdoc">checks that an index is greater than or equal to size </div><div class="ttdef"><b>Definition:</b> utils.h:64</div></div>
+<div class="ttc" id="namespacegamgee_1_1utils_html_a0f228e0091b6df37b21d4a58c7ad372c"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">gamgee::utils::check_max_boundary</a></div><div class="ttdeci">void check_max_boundary(const uint32_t index, const uint32_t size)</div><div class="ttdoc">checks that an index is greater than or equal to size </div><div class="ttdef"><b>Definition:</b> utils.h:65</div></div>
 <div class="ttc" id="namespacegamgee_html_ab33f4f3d734f661e6917eb693df3aa49ab9ece18c950afbfa6b0fdbfa4ff731d3"><div class="ttname"><a href="namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49ab9ece18c950afbfa6b0fdbfa4ff731d3">gamgee::Base::T</a></div></div>
-<div class="ttc" id="namespacegamgee_1_1utils_html_a3993f3188fb1d3bd6337a36a53efb442"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a3993f3188fb1d3bd6337a36a53efb442">gamgee::utils::zip</a></div><div class="ttdeci">auto zip(const T &amp;...containers) -&gt; boost::iterator_range&lt; boost::zip_iterator&lt; decltype(boost::make_tuple(std::begin(containers)...))&gt;&gt;</div><div class="ttdoc">utility method to zip iterators together with simpler syntax than boost </div><div class="ttdef"><b>Definition:</b> utils.h:87</div></div>
+<div class="ttc" id="classgamgee_1_1utils_1_1_single_input_exception_html_a805fb0f345649dcc0bf63f5c69a3724a"><div class="ttname"><a href="classgamgee_1_1utils_1_1_single_input_exception.html#a805fb0f345649dcc0bf63f5c69a3724a">gamgee::utils::SingleInputException::SingleInputException</a></div><div class="ttdeci">SingleInputException(const std::string &amp;vector_name, const size_t size)</div><div class="ttdef"><b>Definition:</b> utils.h:100</div></div>
+<div class="ttc" id="namespacegamgee_1_1utils_html_a3993f3188fb1d3bd6337a36a53efb442"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a3993f3188fb1d3bd6337a36a53efb442">gamgee::utils::zip</a></div><div class="ttdeci">auto zip(const T &amp;...containers) -&gt; boost::iterator_range&lt; boost::zip_iterator&lt; decltype(boost::make_tuple(std::begin(containers)...))&gt;&gt;</div><div class="ttdoc">utility method to zip iterators together with simpler syntax than boost </div><div class="ttdef"><b>Definition:</b> utils.h:88</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 8 2014 15:33:23 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 12 2014 15:11:51 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

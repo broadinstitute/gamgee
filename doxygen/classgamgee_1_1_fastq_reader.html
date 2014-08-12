@@ -104,10 +104,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aec6c7c050dacc0e4869ada74a44e6a2e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_fastq_reader.html#aec6c7c050dacc0e4869ada74a44e6a2e">FastqReader</a> (const std::string &amp;filename)</td></tr>
-<tr class="memdesc:aec6c7c050dacc0e4869ada74a44e6a2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">reades through all records in a file (fasta or fastq) parsing them into <a class="el" href="classgamgee_1_1_fastq.html" title="Utility class to hold one FastA or FastQ record. ">Fastq</a> objects  <a href="#aec6c7c050dacc0e4869ada74a44e6a2e">More...</a><br /></td></tr>
+<tr class="memdesc:aec6c7c050dacc0e4869ada74a44e6a2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads through all records in a file (fasta or fastq) parsing them into <a class="el" href="classgamgee_1_1_fastq.html" title="Utility class to hold one FastA or FastQ record. ">Fastq</a> objects  <a href="#aec6c7c050dacc0e4869ada74a44e6a2e">More...</a><br /></td></tr>
 <tr class="separator:aec6c7c050dacc0e4869ada74a44e6a2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8249a121a3dc250854f940d200638fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_fastq_reader.html#aa8249a121a3dc250854f940d200638fa">FastqReader</a> (const std::vector&lt; std::string &gt; &amp;filenames)</td></tr>
+<tr class="memdesc:aa8249a121a3dc250854f940d200638fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads through all records in a file (fasta or fastq) parsing them into <a class="el" href="classgamgee_1_1_fastq.html" title="Utility class to hold one FastA or FastQ record. ">Fastq</a> objects  <a href="#aa8249a121a3dc250854f940d200638fa">More...</a><br /></td></tr>
+<tr class="separator:aa8249a121a3dc250854f940d200638fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77c786a804fbd20f58e6e41caf502b56"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_fastq_reader.html#a77c786a804fbd20f58e6e41caf502b56">FastqReader</a> (std::istream *const input)</td></tr>
-<tr class="memdesc:a77c786a804fbd20f58e6e41caf502b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">reades through all records in a stream (e.g. stdin) parsing them into <a class="el" href="classgamgee_1_1_fastq.html" title="Utility class to hold one FastA or FastQ record. ">Fastq</a> objects  <a href="#a77c786a804fbd20f58e6e41caf502b56">More...</a><br /></td></tr>
+<tr class="memdesc:a77c786a804fbd20f58e6e41caf502b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads through all records in a stream (e.g. stdin) parsing them into <a class="el" href="classgamgee_1_1_fastq.html" title="Utility class to hold one FastA or FastQ record. ">Fastq</a> objects  <a href="#a77c786a804fbd20f58e6e41caf502b56">More...</a><br /></td></tr>
 <tr class="separator:a77c786a804fbd20f58e6e41caf502b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e4856c3af49fcea4f91a568bfb89653"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_fastq_reader.html#a5e4856c3af49fcea4f91a568bfb89653">~FastqReader</a> ()</td></tr>
 <tr class="memdesc:a5e4856c3af49fcea4f91a568bfb89653"><td class="mdescLeft">&#160;</td><td class="mdescRight">closes the file stream if there is one (in case we are reading a fasta/fastq file)  <a href="#a5e4856c3af49fcea4f91a568bfb89653">More...</a><br /></td></tr>
@@ -149,10 +152,34 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>reades through all records in a file (fasta or fastq) parsing them into <a class="el" href="classgamgee_1_1_fastq.html" title="Utility class to hold one FastA or FastQ record. ">Fastq</a> objects </p>
+<p>reads through all records in a file (fasta or fastq) parsing them into <a class="el" href="classgamgee_1_1_fastq.html" title="Utility class to hold one FastA or FastQ record. ">Fastq</a> objects </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">filename</td><td>the name of the fasta/fastq file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa8249a121a3dc250854f940d200638fa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">gamgee::FastqReader::FastqReader </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>filenames</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>reads through all records in a file (fasta or fastq) parsing them into <a class="el" href="classgamgee_1_1_fastq.html" title="Utility class to hold one FastA or FastQ record. ">Fastq</a> objects </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filenames</td><td>a vector containing a single element: the name of the fasta/fastq file </td></tr>
   </table>
   </dd>
 </dl>
@@ -173,7 +200,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>reades through all records in a stream (e.g. stdin) parsing them into <a class="el" href="classgamgee_1_1_fastq.html" title="Utility class to hold one FastA or FastQ record. ">Fastq</a> objects </p>
+<p>reads through all records in a stream (e.g. stdin) parsing them into <a class="el" href="classgamgee_1_1_fastq.html" title="Utility class to hold one FastA or FastQ record. ">Fastq</a> objects </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>a reference to the input stream (e.g. &amp;std::cin) </td></tr>
@@ -288,7 +315,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 8 2014 15:33:24 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 12 2014 15:11:51 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

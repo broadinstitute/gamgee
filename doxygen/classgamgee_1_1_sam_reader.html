@@ -106,6 +106,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae9fa8e1b6cf3dccac5b8c0c0f8da1b84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a> (const std::string &amp;filename)</td></tr>
 <tr class="memdesc:ae9fa8e1b6cf3dccac5b8c0c0f8da1b84"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads through all records in a file ( or sam) parsing them into <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> objects  <a href="#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">More...</a><br /></td></tr>
 <tr class="separator:ae9fa8e1b6cf3dccac5b8c0c0f8da1b84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43bc7ead164784faf257a64e2d63b46c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_reader.html#a43bc7ead164784faf257a64e2d63b46c">SamReader</a> (const std::vector&lt; std::string &gt; &amp;filenames)</td></tr>
+<tr class="memdesc:a43bc7ead164784faf257a64e2d63b46c"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads through all records in a file ( or sam) parsing them into <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> objects  <a href="#a43bc7ead164784faf257a64e2d63b46c">More...</a><br /></td></tr>
+<tr class="separator:a43bc7ead164784faf257a64e2d63b46c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3de4e3a789393b064b88d4cf6779e0fc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_reader.html#a3de4e3a789393b064b88d4cf6779e0fc">SamReader</a> (<a class="el" href="classgamgee_1_1_sam_reader.html">SamReader</a> &amp;other)=delete</td></tr>
 <tr class="memdesc:a3de4e3a789393b064b88d4cf6779e0fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">no copy construction/assignment allowed for iterators and readers  <a href="#a3de4e3a789393b064b88d4cf6779e0fc">More...</a><br /></td></tr>
 <tr class="separator:a3de4e3a789393b064b88d4cf6779e0fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -172,6 +175,40 @@ template&lt;class ITERATOR &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">filename</td><td>the name of the sam file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a43bc7ead164784faf257a64e2d63b46c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ITERATOR &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_sam_reader.html">gamgee::SamReader</a>&lt; ITERATOR &gt;::<a class="el" href="classgamgee_1_1_sam_reader.html">SamReader</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>filenames</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>reads through all records in a file ( or sam) parsing them into <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> objects </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filenames</td><td>a vector containing a single element: the name of the sam file </td></tr>
   </table>
   </dd>
 </dl>
@@ -407,7 +444,7 @@ template&lt;class ITERATOR &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 8 2014 15:33:24 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 12 2014 15:11:51 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
