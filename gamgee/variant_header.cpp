@@ -1,6 +1,8 @@
 #include "variant_header.h"
 #include "utils/hts_memory.h"
 #include "utils/utils.h"
+#include "htslib/vcf.h"
+#include "missing.h"
 
 #include <string>
 #include <vector>
@@ -77,6 +79,20 @@ vector<string> VariantHeader::individual_fields() const {
 bool VariantHeader::has_individual_field(const string field) const {
   const auto& fields = individual_fields();
   return find(fields.begin(), fields.end(), field) != fields.end();
+}
+
+int32_t VariantHeader::individual_field_index(const std::string key) const {
+  const auto hdr = m_header.get();
+  const auto id = bcf_hdr_id2int(hdr, BCF_DT_ID, key.c_str());
+  if ( !bcf_hdr_idinfo_exists(hdr,BCF_HL_FMT,id) ) return missing_values::int32;   // no such FMT field in the header
+  return id;
+}
+
+int32_t VariantHeader::shared_field_index(const std::string tag) const {
+  const auto hdr = m_header.get();
+  const auto tag_id = bcf_hdr_id2int(hdr, BCF_DT_ID, tag.c_str());
+  if ( !bcf_hdr_idinfo_exists(hdr,BCF_HL_INFO,tag_id) ) return missing_values::int32;    // no such INFO field in the header
+  return tag_id;
 }
 
 }

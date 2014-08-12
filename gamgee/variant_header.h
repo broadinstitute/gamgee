@@ -40,6 +40,9 @@ class VariantHeader {
 
   void advanced_merge_header(const VariantHeader& other) { bcf_hdr_combine(other.m_header.get(), m_header.get()); }
 
+  int32_t individual_field_index(const std::string) const;
+  int32_t shared_field_index(const std::string) const;
+
  private:
   std::shared_ptr<bcf_hdr_t> m_header;
   
