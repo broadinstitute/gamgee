@@ -13,6 +13,7 @@ constexpr auto FLOAT_COMPARISON_THRESHOLD = 0.0001f;
 
 const auto truth_chromosome        = vector<uint32_t>{0, 1, 1, 1, 2};
 const auto truth_alignment_starts  = vector<uint32_t>{10000000, 10001000, 10002000, 10003000, 10004000};
+const auto truth_alignment_stops   = vector<uint32_t>{10000000, 10001001, 10002006, 10003000, 10004002};
 const auto truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 3};
 const auto truth_filter_name       = vector<string>{"PASS", "PASS", "LOW_QUAL", "NOT_DEFINED", "PASS"};
 const auto truth_filter_size       = vector<uint32_t>{1,1,1,1,2};
@@ -57,11 +58,11 @@ void check_variant_basic_api(const Variant& record, const uint32_t truth_index) 
   BOOST_CHECK_EQUAL(record.ref(), truth_ref[truth_index]);
   BOOST_CHECK_EQUAL(record.chromosome(), truth_chromosome[truth_index]);
   BOOST_CHECK_EQUAL(record.alignment_start(), truth_alignment_starts[truth_index]);
+  BOOST_CHECK_EQUAL(record.alignment_stop(), truth_alignment_stops[truth_index]);
   BOOST_CHECK_EQUAL(record.n_alleles(), truth_n_alleles[truth_index]);
   BOOST_CHECK_EQUAL(record.n_samples(), 3);
   BOOST_CHECK_EQUAL(record.id(), truth_id[truth_index]);
 }
-
 
 void check_quals_api(const Variant& record, const uint32_t truth_index) {
   if (truth_quals[truth_index] < 0) 
@@ -380,7 +381,7 @@ BOOST_AUTO_TEST_CASE( multi_variant_reader_validation )
     auto reader = MultipleVariantReader<MultipleVariantIterator>(filenames_v, false);
 }
 
-BOOST_AUTO_TEST_CASE( mutliple_variant_reader_test ) {
+BOOST_AUTO_TEST_CASE( multiple_variant_reader_test ) {
   auto truth_index = 0u;
   const auto reader = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants.bcf"}, false};
   for (const auto& vec : reader) {
@@ -395,6 +396,28 @@ BOOST_AUTO_TEST_CASE( mutliple_variant_reader_test ) {
       check_shared_field_api(record, truth_index);
       check_genotype_api(record, truth_index);
     }
+    ++truth_index;
+  }
+}
+
+const auto gvcf_truth_ref               = vector<string>{"T", "C", "GG"};
+const auto gvcf_truth_chromosome        = vector<uint32_t>{0, 0, 1};
+const auto gvcf_truth_alignment_starts  = vector<uint32_t>{10000000, 20000000, 10001000};
+const auto gvcf_truth_alignment_stops   = vector<uint32_t>{10000000, 20000123, 10001001};
+const auto gvcf_truth_n_alleles         = vector<uint32_t>{2, 2, 2};
+const auto gvcf_truth_id                = vector<string>{"db2342", ".", "rs837472"};
+
+BOOST_AUTO_TEST_CASE( gvcf_test ) {
+  auto truth_index = 0u;
+  const auto reader = SingleVariantReader{"testdata/test.g.vcf"};
+  for (const auto& record : reader) {
+    BOOST_CHECK_EQUAL(record.ref(), gvcf_truth_ref[truth_index]);
+    BOOST_CHECK_EQUAL(record.chromosome(), gvcf_truth_chromosome[truth_index]);
+    BOOST_CHECK_EQUAL(record.alignment_start(), gvcf_truth_alignment_starts[truth_index]);
+    BOOST_CHECK_EQUAL(record.alignment_stop(), gvcf_truth_alignment_stops[truth_index]);
+    BOOST_CHECK_EQUAL(record.n_alleles(), gvcf_truth_n_alleles[truth_index]);
+    BOOST_CHECK_EQUAL(record.n_samples(), 3);
+    BOOST_CHECK_EQUAL(record.id(), gvcf_truth_id[truth_index]);
     ++truth_index;
   }
 }
