@@ -1,6 +1,7 @@
 #include "variant.h"
-#include "variant_field.h"
-#include "variant_field_value.h"
+#include "individual_field.h"
+#include "individual_field_value.h"
+#include "shared_field.h"
 #include "utils/hts_memory.h"
 #include "utils/utils.h"
 
@@ -89,90 +90,75 @@ bool Variant::has_filter(const std::string& filter) const {
   return bcf_has_filter(m_header.get(), m_body.get(), const_cast<char*>(filter.c_str())) > 0; // have to cast away the constness here for the C api to work. But the promise still remains as the C function is not modifying the string.
 }
 
-VariantField<VariantFieldValue<int32_t>> Variant::genotype_quals() const {
+IndividualField<IndividualFieldValue<int32_t>> Variant::genotype_quals() const {
   return integer_individual_field("GQ");
 }
 
-VariantField<VariantFieldValue<int32_t>> Variant::phred_likelihoods() const {
+IndividualField<IndividualFieldValue<int32_t>> Variant::phred_likelihoods() const {
   return integer_individual_field("PL");
 }
 
-VariantField<VariantFieldValue<int32_t>> Variant::integer_individual_field(const std::string& tag) const {
+IndividualField<IndividualFieldValue<int32_t>> Variant::integer_individual_field(const std::string& tag) const {
   const auto fmt = find_individual_field_by_tag(tag);
-  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty VariantField
-    return VariantField<VariantFieldValue<int32_t>>{};
-  return VariantField<VariantFieldValue<int32_t>>{m_body, fmt};
+  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty IndividualField
+    return IndividualField<IndividualFieldValue<int32_t>>{};
+  return IndividualField<IndividualFieldValue<int32_t>>{m_body, fmt};
 }
 
-VariantField<VariantFieldValue<float>> Variant::float_individual_field(const std::string& tag) const {
+IndividualField<IndividualFieldValue<float>> Variant::float_individual_field(const std::string& tag) const {
   const auto fmt = find_individual_field_by_tag(tag);
-  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty VariantField
-    return VariantField<VariantFieldValue<float>>{};
-  return VariantField<VariantFieldValue<float>>{m_body, fmt};
+  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty IndividualField
+    return IndividualField<IndividualFieldValue<float>>{};
+  return IndividualField<IndividualFieldValue<float>>{m_body, fmt};
 }
 
-VariantField<VariantFieldValue<std::string>> Variant::string_individual_field(const std::string& tag) const {
+IndividualField<IndividualFieldValue<std::string>> Variant::string_individual_field(const std::string& tag) const {
   const auto fmt = find_individual_field_by_tag(tag);
-  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty VariantField
-    return VariantField<VariantFieldValue<string>>{};
-  return VariantField<VariantFieldValue<string>>{m_body, fmt};
+  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty IndividualField
+    return IndividualField<IndividualFieldValue<string>>{};
+  return IndividualField<IndividualFieldValue<string>>{m_body, fmt};
 }
 
 inline bcf_fmt_t* Variant::find_individual_field_by_tag(const string& tag) const {
   return bcf_get_fmt(m_header.get(), m_body.get(), tag.c_str());     
 }
 
-std::vector<int32_t> Variant::integer_shared_field(const std::string& tag) const {
-  return shared_field<int32_t>(tag, BCF_HT_INT);
+inline bcf_info_t* Variant::find_shared_field_by_tag(const string& tag) const {
+  return bcf_get_info(m_header.get(), m_body.get(), tag.c_str());     
 }
 
-std::vector<float> Variant::float_shared_field(const std::string& tag) const {
-  return shared_field<float>(tag, BCF_HT_REAL);
+bool Variant::boolean_shared_field(const std::string& tag) const {
+  const auto info = find_shared_field_by_tag(tag);
+  return info != nullptr;
 }
 
-template <typename TYPE> 
-inline std::vector<TYPE> Variant::shared_field(const std::string& tag, const int type) const {
-  // Using malloc instead of new since bcf_get_info_values does realloc: http://www.stroustrup.com/bs_faq2.html#realloc
-  auto mem = (TYPE *)malloc(sizeof(TYPE)); // bcf_get_info_values writes without realloc when count returns with 1;
-  auto count = 1;
-  const auto info_result = bcf_get_info_values(m_header.get(), m_body.get(), tag.c_str(), (void**)&mem, &count, type);
-  if (info_result < 0) {
-    return std::vector<TYPE>{}; // return empty for all errors, even asking for the wrong type
-  }
-  const auto results = std::vector<TYPE>(mem, mem + count); // int32_t and floats returned as arrays
-  free(mem);
-  return results;
+SharedField<int32_t> Variant::integer_shared_field(const std::string& tag) const {
+  const auto info = find_shared_field_by_tag(tag);
+  if (info == nullptr) 
+    return SharedField<int32_t>{};
+  return SharedField<int32_t>{m_body, info};
 }
 
-std::vector<std::string> Variant::string_shared_field(const std::string& tag) const {
-  // Using malloc instead of new since bcf_get_info_values does realloc: http://www.stroustrup.com/bs_faq2.html#realloc
-  auto mem = (char*)malloc(0);
-  auto count = 0;
-  const auto info_result = bcf_get_info_string(m_header.get(), m_body.get(), tag.c_str(), &mem, &count);
-  if (info_result < 0) {
-    free(mem);
-    return std::vector<string>{}; // return empty for all errors, even asking for the wrong type
-  }
-  const auto results = std::vector<string>{std::string{mem}}; // strings returned as a single string
-  free(mem);
-  return results;
+SharedField<float> Variant::float_shared_field(const std::string& tag) const {
+  const auto info = find_shared_field_by_tag(tag);
+  if (info == nullptr)
+    return SharedField<float>{};
+  return SharedField<float>{m_body, info};
 }
 
-std::vector<bool> Variant::boolean_shared_field(const std::string& tag) const {
-  const auto info_result = bcf_get_info_flag(m_header.get(), m_body.get(), tag.c_str(), NULL, NULL);
-  if (info_result < 0) {
-    return std::vector<bool>{}; // return empty for all errors, even asking for the wrong type
-  }
-  const auto results = std::vector<bool>{info_result == 1}; // flags are returned only in the return value
-  return results;
+SharedField<string> Variant::string_shared_field(const std::string& tag) const {
+  const auto info = find_shared_field_by_tag(tag);
+  if (info == nullptr)
+    return SharedField<string>{};
+  return SharedField<string>{m_body, info};
 }
 
-VariantField<Genotype> Variant::genotypes() const {
+IndividualField<Genotype> Variant::genotypes() const {
   // bcf_get_fmt() will unpack the record if necessary
   const auto fmt = bcf_get_fmt(m_header.get(), m_body.get(), "GT");
-  if (fmt == nullptr) ///< if the variant is missing or the GT tag is missing, return an empty VariantField
-    return VariantField<Genotype>{};
-  return VariantField<Genotype>{m_body, fmt};
+  if (fmt == nullptr) ///< if the variant is missing or the GT tag is missing, return an empty IndividualField
+    return IndividualField<Genotype>{};
+  return IndividualField<Genotype>{m_body, fmt};
 }
 
 }

@@ -1,5 +1,5 @@
-#ifndef gamgee__variant_field_value_iterator__guard
-#define gamgee__variant_field_value_iterator__guard
+#ifndef gamgee__individual_field_value_iterator__guard
+#define gamgee__individual_field_value_iterator__guard
 
 #include "utils/format_field_type.h"
 
@@ -28,7 +28,7 @@ namespace gamgee {
  * in the Variant record. 
  */
 template<class VALUE_TYPE>
-class VariantFieldValueIterator : public std::iterator<std::random_access_iterator_tag, VALUE_TYPE> {
+class IndividualFieldValueIterator : public std::iterator<std::random_access_iterator_tag, VALUE_TYPE> {
  public:
 
   /**
@@ -37,10 +37,10 @@ class VariantFieldValueIterator : public std::iterator<std::random_access_iterat
    * @param data_ptr the byte array containing the value(s) for this sample
    * @param num_bytes number of bytes in each value
    * @param type the encoding of the value 
-   * @note this constructor is probably only used by VariantFieldValue::begin() and
-   * VariantFieldValue::end()
+   * @note this constructor is probably only used by IndividualFieldValue::begin() and
+   * IndividualFieldValue::end()
    */
-  VariantFieldValueIterator(const std::shared_ptr<bcf1_t>& body, uint8_t* data_ptr, const uint8_t num_bytes, const utils::FormatFieldType& type) :
+  IndividualFieldValueIterator(const std::shared_ptr<bcf1_t>& body, uint8_t* data_ptr, const uint8_t num_bytes, const utils::FormatFieldType& type) :
     m_body {body},
     m_current_data_ptr {data_ptr},
     m_original_data_ptr {data_ptr},
@@ -49,9 +49,9 @@ class VariantFieldValueIterator : public std::iterator<std::random_access_iterat
   {}
       
   /**
-   * @copydoc VariantFieldIterator::VariantFieldIterator(const VariantFieldIterator&)
+   * @copydoc IndividualFieldIterator::IndividualFieldIterator(const IndividualFieldIterator&)
    */
-  VariantFieldValueIterator(const VariantFieldValueIterator& other) :
+  IndividualFieldValueIterator(const IndividualFieldValueIterator& other) :
     m_body {other.m_body},
     m_current_data_ptr {other.m_current_data_ptr},
     m_original_data_ptr {other.m_original_data_ptr},
@@ -60,9 +60,9 @@ class VariantFieldValueIterator : public std::iterator<std::random_access_iterat
   {}
 
   /**
-   * @copydoc VariantFieldIterator::VariantFieldIterator(const VariantFieldIterator&)
+   * @copydoc IndividualFieldIterator::IndividualFieldIterator(const IndividualFieldIterator&)
    */
-  VariantFieldValueIterator(VariantFieldValueIterator&& other) noexcept :
+  IndividualFieldValueIterator(IndividualFieldValueIterator&& other) noexcept :
     m_body {std::move(other.m_body)},
     m_current_data_ptr {other.m_current_data_ptr},
     m_original_data_ptr {other.m_original_data_ptr},
@@ -71,9 +71,9 @@ class VariantFieldValueIterator : public std::iterator<std::random_access_iterat
   {}
 
   /**
-   * @copydoc VariantFieldIterator::VariantFieldIterator(const VariantFieldIterator&)
+   * @copydoc IndividualFieldIterator::IndividualFieldIterator(const IndividualFieldIterator&)
    */
-  VariantFieldValueIterator& operator=(const VariantFieldValueIterator& other) {
+  IndividualFieldValueIterator& operator=(const IndividualFieldValueIterator& other) {
     if (&this == other)
       return *this;
     m_body = std::move(other.m_body);
@@ -86,9 +86,9 @@ class VariantFieldValueIterator : public std::iterator<std::random_access_iterat
 
 
   /**
-   * @copydoc VariantFieldIterator::VariantFieldIterator(VariantFieldIterator&&)
+   * @copydoc IndividualFieldIterator::IndividualFieldIterator(IndividualFieldIterator&&)
    */
-  VariantFieldValueIterator& operator=(VariantFieldValueIterator&& other) noexcept {
+  IndividualFieldValueIterator& operator=(IndividualFieldValueIterator&& other) noexcept {
     if (&this == other)
       return *this;
     m_body = std::move(other.m_body);
@@ -100,17 +100,17 @@ class VariantFieldValueIterator : public std::iterator<std::random_access_iterat
   }
 
   /**
-   * @copydoc VariantFieldIterator::operator+=(const int)
+   * @copydoc IndividualFieldIterator::operator+=(const int)
    */
-  VariantFieldValueIterator& operator+=(const int n) {
+  IndividualFieldValueIterator& operator+=(const int n) {
     m_current_data_ptr += n * m_num_bytes;
     return *this;
   }
 
   /**
-   * @copydoc VariantFieldIterator::operator+=(int)
+   * @copydoc IndividualFieldIterator::operator+=(int)
    */
-  VariantFieldValueIterator& operator-=(const int n) {
+  IndividualFieldValueIterator& operator-=(const int n) {
     m_current_data_ptr -= n * m_num_bytes;
     return *this;
   }
@@ -118,14 +118,14 @@ class VariantFieldValueIterator : public std::iterator<std::random_access_iterat
   /**
    * @brief two iterators are equal if they are in exactly the same state (pointing at the same location in memory
    */
-  bool operator==(const VariantFieldValueIterator& other) {
+  bool operator==(const IndividualFieldValueIterator& other) {
     return m_body == other.m_body && m_current_data_ptr == other.m_current_data_ptr;
   }
 
   /**
-   * @brief the oposite check of VariantFieldValueIterator::operator==()
+   * @brief the oposite check of IndividualFieldValueIterator::operator==()
    */
-  bool operator!=(const VariantFieldValueIterator& other) {
+  bool operator!=(const IndividualFieldValueIterator& other) {
     return m_body != other.m_body || m_current_data_ptr != other.m_current_data_ptr;
   }
 
@@ -133,28 +133,28 @@ class VariantFieldValueIterator : public std::iterator<std::random_access_iterat
    * @brief an operator is greater/less than another iterator if it is pointing to a previous element (sample) in the FormatField 
    * object. The order is determined by the Variant record.
    */
-  bool operator<(const VariantFieldValueIterator& other) {
+  bool operator<(const IndividualFieldValueIterator& other) {
     return m_body == other.m_body && m_current_data_ptr < other.m_current_data_ptr;
   }
 
   /**
-   * @copydoc VariantFieldValueIterator::operator<()
+   * @copydoc IndividualFieldValueIterator::operator<()
    */
-  bool operator>(const VariantFieldValueIterator& other) {
+  bool operator>(const IndividualFieldValueIterator& other) {
     return m_body == other.m_body && m_current_data_ptr > other.m_current_data_ptr;
   }
 
   /**
-   * @copydoc VariantFieldValueIterator::operator<()
+   * @copydoc IndividualFieldValueIterator::operator<()
    */
-  bool operator<=(const VariantFieldValueIterator& other) {
+  bool operator<=(const IndividualFieldValueIterator& other) {
     return m_body == other.m_body && m_current_data_ptr <= other.m_current_data_ptr;
   }
 
   /**
-   * @copydoc VariantFieldValueIterator::operator<()
+   * @copydoc IndividualFieldValueIterator::operator<()
    */
-  bool operator>=(const VariantFieldValueIterator& other) {
+  bool operator>=(const IndividualFieldValueIterator& other) {
     return m_body == other.m_body && m_current_data_ptr >= other.m_current_data_ptr;
   }
 
@@ -213,7 +213,7 @@ class VariantFieldValueIterator : public std::iterator<std::random_access_iterat
  * @brief specialization of the conversion template for int32_t
  */
 template<> inline
-int32_t VariantFieldValueIterator<int32_t>::convert_from_byte_array(const uint8_t* data_ptr, int index) const {
+int32_t IndividualFieldValueIterator<int32_t>::convert_from_byte_array(const uint8_t* data_ptr, int index) const {
   return utils::convert_data_to_integer(data_ptr, index, m_num_bytes, m_type);
 }
 
@@ -221,7 +221,7 @@ int32_t VariantFieldValueIterator<int32_t>::convert_from_byte_array(const uint8_
  * @brief specialization of the conversion template for floats
  */
 template<> inline
-float VariantFieldValueIterator<float>::convert_from_byte_array(const uint8_t* data_ptr, int index) const {
+float IndividualFieldValueIterator<float>::convert_from_byte_array(const uint8_t* data_ptr, int index) const {
   return utils::convert_data_to_float(data_ptr, index, m_num_bytes, m_type);
 }
 
@@ -229,10 +229,10 @@ float VariantFieldValueIterator<float>::convert_from_byte_array(const uint8_t* d
  * @brief specialization of the conversion template for strings
  */
 template<> inline
-std::string VariantFieldValueIterator<std::string>::convert_from_byte_array(const uint8_t* data_ptr, int index) const {
+std::string IndividualFieldValueIterator<std::string>::convert_from_byte_array(const uint8_t* data_ptr, int index) const {
   return utils::convert_data_to_string(data_ptr, index, m_num_bytes, m_type);
 }
 
 };
 
-#endif // gamgee__variant_field_value_iterator__guard
+#endif // gamgee__individual_field_value_iterator__guard

@@ -17,7 +17,7 @@ enum class FormatFieldType {NIL = 0, INT8 = 1, INT16 = 2, INT32 = 3, FLOAT = 5, 
 
 
 /**
-  * @brief converts the value in an index from the byte array into VALUE_TYPE
+  * @brief converts the value in an index from the byte array into int32_t
   * 
   * The byte array's underlying data representation is record specific, meaning that even numbers (like Integer)
   * can be represented multiple ways across registers (some with uint8_t others with uint32_t...) dictated by
@@ -32,12 +32,14 @@ enum class FormatFieldType {NIL = 0, INT8 = 1, INT16 = 2, INT32 = 3, FLOAT = 5, 
 int32_t convert_data_to_integer(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const FormatFieldType& type);
 
 /**
- * @copydoc convert_data_to_integer(int, const uint8_t, const FormatFieldType&)
+ * @brief converts the value in an index from the byte array into float
+ * @copydetails convert_data_to_integer(int, const uint8_t, const FormatFieldType&)
  */
 float convert_data_to_float(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const FormatFieldType& type);
 
 /**
- * @copydoc convert_data_to_integer(int, const uint8_t, const FormatFieldType&)
+ * @brief converts the value in an index from the byte array into string
+ * @copydetails convert_data_to_integer(int, const uint8_t, const FormatFieldType&)
  */
 std::string convert_data_to_string(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const FormatFieldType& type);
 
@@ -45,6 +47,11 @@ std::string convert_data_to_string(const uint8_t* data_ptr, const int index, con
  * @brief returns the number of bytes for a given FormatFieldType
  */
 uint8_t size_for_type(const FormatFieldType& type, const bcf_fmt_t* const format_ptr);
+
+/**
+ * @brief returns the number of bytes for a given FormatFieldType
+ */
+uint8_t size_for_type(const FormatFieldType& type, const bcf_info_t* const info_ptr);
 
 } // end namespace utils
 } // end namespace gamgee

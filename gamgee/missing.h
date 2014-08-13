@@ -18,6 +18,7 @@ namespace missing_values {
   constexpr auto string_dot = ".";                                                                                              ///< "dot" is a missing string in the VCF spec.
 }
 
+inline bool missing (const bool value) { return !value; }                                                                       ///< Returns true if bool is false (missing).
 inline bool missing (const float value) { return isnan(value); }                                                                ///< Returns true if float is missing.
 inline bool missing (const int8_t value)  { return value == missing_values::int8; }                                             ///< Returns true if int8_t is missing.
 inline bool missing (const int16_t value) { return value == missing_values::int16; }                                            ///< Returns true if int16_t is missing.

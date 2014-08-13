@@ -10,7 +10,7 @@ using namespace boost;
 
 constexpr auto GQ_THRESH = 35;
 
-BOOST_AUTO_TEST_CASE( select_if ) {
+BOOST_AUTO_TEST_CASE( select_if_individual_fields ) {
   const auto actual_gq_selects = vector<dynamic_bitset<>>{
     dynamic_bitset<>(string("111")),  //Beware that in setting dynamic_bitset that way
     dynamic_bitset<>(string("110")),  //the bit order is inversed:  Here it is actually 011
@@ -29,10 +29,10 @@ BOOST_AUTO_TEST_CASE( select_if ) {
     for (const auto& record : SingleVariantReader{filename}) {
       const auto g_quals = record.genotype_quals();
       const auto p_likes = record.phred_likelihoods();
-      const auto high_gq = [](const VariantFieldValue<int32_t>& x) { return x[0] >= GQ_THRESH; };
-      const auto hom_ref = [](const VariantFieldValue<int32_t>& x) { return x[0] == 0; };
-      const auto comput_gq_select = Variant::select_if<VariantFieldValue<int32_t>>(g_quals.begin(), g_quals.end(), high_gq);
-      const auto comput_pl_select = Variant::select_if<VariantFieldValue<int32_t>>(p_likes.begin(), p_likes.end(), hom_ref);
+      const auto high_gq = [](const IndividualFieldValue<int32_t>& x) { return x[0] >= GQ_THRESH; };
+      const auto hom_ref = [](const IndividualFieldValue<int32_t>& x) { return x[0] == 0; };
+      const auto comput_gq_select = Variant::select_if(g_quals.begin(), g_quals.end(), high_gq);
+      const auto comput_pl_select = Variant::select_if(p_likes.begin(), p_likes.end(), hom_ref);
       BOOST_CHECK_EQUAL(comput_gq_select.size(), 3);
       BOOST_CHECK_EQUAL(comput_pl_select.size(), 3);
       const auto actual_gq_select = actual_gq_selects[record_idx];
@@ -44,4 +44,16 @@ BOOST_AUTO_TEST_CASE( select_if ) {
   }
 }
 
-
+BOOST_AUTO_TEST_CASE( select_if_shared_field ) {
+  const auto truth_an_counts = std::vector<int>{1,1,1,1,1};
+  const auto truth_af_counts = std::vector<int>{0,0,0,0,1};
+  auto truth_index = 0u;
+  for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf"}) {
+    const auto an = record.integer_shared_field("AN");
+    const auto r1 = Variant::select_if(an.begin(), an.end(), [](const auto& v) { return v == 6; });
+    BOOST_CHECK_EQUAL(r1.count(), truth_an_counts[truth_index]);
+    const auto af = record.float_shared_field("AF");
+    const auto r2 = Variant::select_if(af.begin(), af.end(), [](const auto& v) { return v < 0.5; });
+    BOOST_CHECK_EQUAL(r2.count(), truth_af_counts[truth_index++]);
+  }
+}
