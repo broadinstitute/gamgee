@@ -8,6 +8,6 @@ var searchData=
   ['filters',['filters',['../classgamgee_1_1_variant.html#a52a8562b1b0ed982d08c9fd09cb50353',1,'gamgee::Variant::filters()'],['../classgamgee_1_1_variant_header.html#a9903aa559390cfda45ae2e645005b667',1,'gamgee::VariantHeader::filters()']]],
   ['first',['first',['../classgamgee_1_1_sam.html#ad185f2ed5703a759f287a95c80aca107',1,'gamgee::Sam']]],
   ['flagsforfile',['FlagsForFile',['../_8ycm__extra__conf_8py.html#af1c9418abf3c686550f9a8be0dc6b2ef',1,'.ycm_extra_conf.py']]],
-  ['float_5findividual_5ffield',['float_individual_field',['../classgamgee_1_1_variant.html#a240e08719a608825b02357492af22615',1,'gamgee::Variant']]],
-  ['float_5fshared_5ffield',['float_shared_field',['../classgamgee_1_1_variant.html#a812e75b29e4582f021081a397d1fd06a',1,'gamgee::Variant']]]
+  ['float_5findividual_5ffield',['float_individual_field',['../classgamgee_1_1_variant.html#a2e1d38d0643d63e354b7f3ff047252b5',1,'gamgee::Variant']]],
+  ['float_5fshared_5ffield',['float_shared_field',['../classgamgee_1_1_variant.html#af6e2c16c4645a6e56af983d6e0e5146f',1,'gamgee::Variant']]]
 ];
