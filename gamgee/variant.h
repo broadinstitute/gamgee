@@ -37,6 +37,7 @@ class Variant {
 
   uint32_t chromosome()      const {return uint32_t(m_body->rid);}                                            ///< returns the integer representation of the chromosome. Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). Similar to Picards getReferenceIndex()
   uint32_t alignment_start() const {return uint32_t(m_body->pos+1);}                                          ///< returns a 1-based alignment start position (as you would see in a VCF file). @note the internal encoding is 0-based to mimic that of the BCF files.
+  uint32_t alignment_stop()  const {return uint32_t(m_body->pos + m_body->rlen);}                             ///< returns a 1-based alignment stop position, as you would see in a VCF INFO END tag, or the end position of the reference allele if there is no END tag.
   float    qual()            const {return m_body->qual;}                                                     ///< returns the Phred scaled site qual (probability that the site is not reference). See VCF spec.
   uint32_t n_samples()       const {return uint32_t(m_body->n_sample);}                                       ///< returns the number of samples in this Variant record
   uint32_t n_alleles()       const {return uint32_t(m_body->n_allele);}                                       ///< returns the number of alleles in this Variant record
