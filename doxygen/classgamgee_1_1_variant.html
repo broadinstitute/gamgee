@@ -131,6 +131,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a88256aaf7d75e08cfdc6b896719f9420"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a88256aaf7d75e08cfdc6b896719f9420">alignment_start</a> () const </td></tr>
 <tr class="memdesc:a88256aaf7d75e08cfdc6b896719f9420"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a 1-based alignment start position (as you would see in a VCF file).  <a href="#a88256aaf7d75e08cfdc6b896719f9420">More...</a><br /></td></tr>
 <tr class="separator:a88256aaf7d75e08cfdc6b896719f9420"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a054150e4928fa8ab323743f7600a62a9"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a054150e4928fa8ab323743f7600a62a9">alignment_stop</a> () const </td></tr>
+<tr class="memdesc:a054150e4928fa8ab323743f7600a62a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a 1-based alignment stop position, as you would see in a VCF INFO END tag, or the end position of the reference allele if there is no END tag.  <a href="#a054150e4928fa8ab323743f7600a62a9">More...</a><br /></td></tr>
+<tr class="separator:a054150e4928fa8ab323743f7600a62a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaebe7023dddd5dcaeb09b51b5241899e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#aaebe7023dddd5dcaeb09b51b5241899e">qual</a> () const </td></tr>
 <tr class="memdesc:aaebe7023dddd5dcaeb09b51b5241899e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the Phred scaled site qual (probability that the site is not reference). See VCF spec.  <a href="#aaebe7023dddd5dcaeb09b51b5241899e">More...</a><br /></td></tr>
 <tr class="separator:aaebe7023dddd5dcaeb09b51b5241899e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -348,6 +351,31 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 
 <p>returns a 1-based alignment start position (as you would see in a VCF file). </p>
 <dl class="section note"><dt>Note</dt><dd>the internal encoding is 0-based to mimic that of the BCF files. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a054150e4928fa8ab323743f7600a62a9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gamgee::Variant::alignment_stop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>returns a 1-based alignment stop position, as you would see in a VCF INFO END tag, or the end position of the reference allele if there is no END tag. </p>
 
 </div>
 </div>
@@ -923,7 +951,7 @@ creates a new object but makes no copies of the underlying values. </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 13 2014 21:43:44 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 14 2014 21:46:58 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
