@@ -27,8 +27,8 @@ BOOST_AUTO_TEST_CASE( select_if_individual_fields ) {
     const auto reader = SingleVariantReader{filename};
     auto record_idx = 0u;
     for (const auto& record : SingleVariantReader{filename}) {
-      const auto g_quals = record.genotype_quals();
-      const auto p_likes = record.phred_likelihoods();
+      const auto g_quals = record.integer_individual_field("GQ");
+      const auto p_likes = record.integer_individual_field("PL");
       const auto high_gq = [](const IndividualFieldValue<int32_t>& x) { return x[0] >= GQ_THRESH; };
       const auto hom_ref = [](const IndividualFieldValue<int32_t>& x) { return x[0] == 0; };
       const auto comput_gq_select = Variant::select_if(g_quals.begin(), g_quals.end(), high_gq);
