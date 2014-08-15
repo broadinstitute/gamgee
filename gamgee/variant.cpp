@@ -90,14 +90,6 @@ bool Variant::has_filter(const std::string& filter) const {
   return bcf_has_filter(m_header.get(), m_body.get(), const_cast<char*>(filter.c_str())) > 0; // have to cast away the constness here for the C api to work. But the promise still remains as the C function is not modifying the string.
 }
 
-IndividualField<IndividualFieldValue<int32_t>> Variant::genotype_quals() const {
-  return integer_individual_field("GQ");
-}
-
-IndividualField<IndividualFieldValue<int32_t>> Variant::phred_likelihoods() const {
-  return integer_individual_field("PL");
-}
-
 IndividualField<IndividualFieldValue<int32_t>> Variant::integer_individual_field(const std::string& tag) const {
   const auto id = bcf_hdr_id2int(m_header.get(), BCF_DT_ID, tag.c_str());
   if (!bcf_hdr_idinfo_exists(m_header.get(), BCF_HL_FMT, id))

@@ -48,7 +48,7 @@ const auto truth_as                = vector<vector<string>>{
 
 boost::dynamic_bitset<> high_qual_hets(const Variant& record) {  // filter all hets that have GQ > 20
   const auto genotypes = record.genotypes(); // a "vector-like" with the genotypes of all samples in this record
-  const auto gqs = record.genotype_quals(); // a "vector-like" with all the GQs of all samples in this record
+  const auto gqs = record.integer_individual_field("GQ"); // a "vector-like" with all the GQs of all samples in this record
   const auto hets = Variant::select_if(genotypes.begin(), genotypes.end(), [](const auto& g) { return g.het(); }); // returns a bit set with all hets marked with 1's
   const auto pass_gqs = Variant::select_if(gqs.begin(), gqs.end(), [](const auto& gq) { return gq[0] > 20; }); // returns a bit set with every sample with gq > 20 marked with 1's
   return hets & pass_gqs; // returns a bit set with all the samples that are het and have gq > 20
@@ -90,7 +90,7 @@ void check_filters_api(const Variant& record, const uint32_t truth_index) {
 }
 
 void check_genotype_quals_api(const Variant& record, const uint32_t truth_index) {
-  const auto gqs = record.genotype_quals();
+  const auto gqs = record.integer_individual_field("GQ");
   // direct access
   for (auto i = 0u; i != record.n_samples(); ++i) 
     BOOST_CHECK_EQUAL(gqs[i][0], truth_gq[truth_index][i]);
@@ -100,7 +100,7 @@ void check_genotype_quals_api(const Variant& record, const uint32_t truth_index)
 }
 
 void check_phred_likelihoods_api(const Variant& record, const uint32_t truth_index) {
-  const auto pls = record.phred_likelihoods();
+  const auto pls = record.integer_individual_field("PL");
   // direct access
   for(auto i = 0u; i != record.n_samples(); ++i) 
     for (auto j = 0u; j != pls[i].size(); ++j) 
