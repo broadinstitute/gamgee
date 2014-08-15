@@ -18,7 +18,7 @@ VariantIterator::VariantIterator(vcfFile* variant_file_ptr, const std::shared_pt
   m_variant_record_ptr {utils::make_shared_variant(bcf_init1())},      ///< important to initialize the record buffer in the constructor so we can reuse it across the iterator
   m_variant_record {m_variant_header_ptr, m_variant_record_ptr}
 {
-    fetch_next_record();
+  fetch_next_record();
 }
 
 Variant& VariantIterator::operator*() {
