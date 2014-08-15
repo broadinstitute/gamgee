@@ -126,6 +126,26 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
   const auto as_int    = record.individual_field_as_integer("AS"); // this is a string field, we should be able to create the object but not access it's elements due to lazy initialization
   const auto as_float  = record.individual_field_as_float("AS");   // this is a string field, we should be able to create the object but not access it's elements due to lazy initialization
   const auto as_string = record.individual_field_as_string("AS");
+  
+  // index based API
+  const auto header = record.header();
+  const auto gq_idx = header.field_index("GQ");
+  const auto af_idx = header.field_index("AF");
+  const auto pl_idx = header.field_index("PL");
+  const auto as_idx = header.field_index("AS");
+  const auto gq_int_idx    = record.individual_field_as_integer(gq_idx);
+  const auto gq_float_idx  = record.individual_field_as_float(gq_idx);
+  const auto gq_string_idx = record.individual_field_as_string(gq_idx);
+  const auto af_int_idx    = record.individual_field_as_integer(af_idx);
+  const auto af_float_idx  = record.individual_field_as_float(af_idx);
+  const auto af_string_idx = record.individual_field_as_string(af_idx);
+  const auto pl_int_idx    = record.individual_field_as_integer(pl_idx);
+  const auto pl_float_idx  = record.individual_field_as_float(pl_idx);
+  const auto pl_string_idx = record.individual_field_as_string(pl_idx); 
+  const auto as_int_idx    = record.individual_field_as_integer(as_idx); // this is a string field, we should be able to create the object but not access it's elements due to lazy initialization
+  const auto as_float_idx  = record.individual_field_as_float(as_idx);   // this is a string field, we should be able to create the object but not access it's elements due to lazy initialization
+  const auto as_string_idx = record.individual_field_as_string(as_idx);
+
 
   // test the conversions using unforgiving API
   BOOST_CHECK_THROW(record.float_individual_field("GQ"), runtime_error);
@@ -136,6 +156,14 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
   BOOST_CHECK_THROW(record.string_individual_field("PL"), runtime_error);
   BOOST_CHECK_THROW(record.integer_individual_field("AS"), runtime_error);
   BOOST_CHECK_THROW(record.float_individual_field("AS"), runtime_error);
+  BOOST_CHECK_THROW(record.float_individual_field(gq_idx), runtime_error);
+  BOOST_CHECK_THROW(record.string_individual_field(gq_idx), runtime_error);
+  BOOST_CHECK_THROW(record.integer_individual_field(af_idx), runtime_error);
+  BOOST_CHECK_THROW(record.string_individual_field(af_idx), runtime_error);
+  BOOST_CHECK_THROW(record.float_individual_field(pl_idx), runtime_error);
+  BOOST_CHECK_THROW(record.string_individual_field(pl_idx), runtime_error);
+  BOOST_CHECK_THROW(record.integer_individual_field(as_idx), runtime_error);
+  BOOST_CHECK_THROW(record.float_individual_field(as_idx), runtime_error);
   
   // need operator== to make these easy to write.
   // 
@@ -146,43 +174,72 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
 
   for(auto i=0u; i != record.n_samples(); ++i) {
     BOOST_CHECK_EQUAL(gq_int[i][0], truth_gq[truth_index][i]);
+    BOOST_CHECK_EQUAL(gq_int_idx[i][0], truth_gq[truth_index][i]);
     BOOST_CHECK_CLOSE(gq_float[i][0], float(truth_gq[truth_index][i]), FLOAT_COMPARISON_THRESHOLD);
+    BOOST_CHECK_CLOSE(gq_float_idx[i][0], float(truth_gq[truth_index][i]), FLOAT_COMPARISON_THRESHOLD);
     BOOST_CHECK_EQUAL(gq_string[i][0], to_string(truth_gq[truth_index][i]));
+    BOOST_CHECK_EQUAL(gq_string_idx[i][0], to_string(truth_gq[truth_index][i]));
     BOOST_REQUIRE_EQUAL(af_int[i].size(), truth_af.size()); // require otherwise next line may segfault
+    BOOST_REQUIRE_EQUAL(af_int_idx[i].size(), truth_af.size()); // require otherwise next line may segfault
     for (auto j=0u; j!= af_int[i].size(); ++j) {
       BOOST_CHECK_EQUAL(af_int[i][j], int32_t(truth_af[j]));
+      BOOST_CHECK_EQUAL(af_int_idx[i][j], int32_t(truth_af[j]));
       BOOST_CHECK_CLOSE(af_float[i][j], truth_af[j], FLOAT_COMPARISON_THRESHOLD);
+      BOOST_CHECK_CLOSE(af_float_idx[i][j], truth_af[j], FLOAT_COMPARISON_THRESHOLD);
       BOOST_CHECK_EQUAL(af_string[i][j], to_string(truth_af[j]));
+      BOOST_CHECK_EQUAL(af_string_idx[i][j], to_string(truth_af[j]));
     }
     BOOST_REQUIRE_EQUAL(pl_int[i].size(), truth_pl[truth_index][i].size()); // require otherwise next line may segfault
+    BOOST_REQUIRE_EQUAL(pl_int_idx[i].size(), truth_pl[truth_index][i].size()); // require otherwise next line may segfault
     for (auto j=0u; j!= pl_int[i].size(); ++j) { 
       BOOST_CHECK_EQUAL(pl_int[i][j], truth_pl[truth_index][i][j]);
+      BOOST_CHECK_EQUAL(pl_int_idx[i][j], truth_pl[truth_index][i][j]);
       BOOST_CHECK_CLOSE(pl_float[i][j], float(truth_pl[truth_index][i][j]), FLOAT_COMPARISON_THRESHOLD);
+      BOOST_CHECK_CLOSE(pl_float_idx[i][j], float(truth_pl[truth_index][i][j]), FLOAT_COMPARISON_THRESHOLD);
       BOOST_CHECK_EQUAL(pl_string[i][j], to_string(truth_pl[truth_index][i][j]));
+      BOOST_CHECK_EQUAL(pl_string_idx[i][j], to_string(truth_pl[truth_index][i][j]));
     }
     BOOST_CHECK_EQUAL(as_string[i][0], truth_as[truth_index][i]);
+    BOOST_CHECK_EQUAL(as_string_idx[i][0], truth_as[truth_index][i]);
   }
   BOOST_CHECK_THROW(as_float[0][0], invalid_argument); 
+  BOOST_CHECK_THROW(as_float_idx[0][0], invalid_argument); 
   BOOST_CHECK_THROW(as_int[0][0], invalid_argument); 
+  BOOST_CHECK_THROW(as_int_idx[0][0], invalid_argument); 
   BOOST_CHECK(missing(record.integer_individual_field("NON_EXISTING")));
+  BOOST_CHECK(missing(record.integer_individual_field(-1)));
   BOOST_CHECK(missing(record.float_individual_field("NON_EXISTING")));
+  BOOST_CHECK(missing(record.float_individual_field(-1)));
   BOOST_CHECK(missing(record.string_individual_field("NON_EXISTING")));
+  BOOST_CHECK(missing(record.string_individual_field(-1)));
   BOOST_CHECK_THROW(record.float_individual_field("NON_EXISTING")[0], out_of_range);
+  BOOST_CHECK_THROW(record.float_individual_field(-1)[0], out_of_range);
 }
 
 void check_shared_field_api(const Variant& record, const uint32_t truth_index) {
+  const auto header = record.header();
   BOOST_CHECK_EQUAL(record.boolean_shared_field("VALIDATED"), truth_shared_validated[truth_index]);
-  const auto an = record.integer_shared_field("AN");
+  const auto an = record.integer_shared_field("AN"); // test the string based api
   BOOST_CHECK_EQUAL_COLLECTIONS(an.begin(), an.end(), truth_shared_an[truth_index].begin(), truth_shared_an[truth_index].end());
+  const auto an_idx = record.integer_shared_field(header.field_index("AN")); // test the index based api
+  BOOST_CHECK_EQUAL_COLLECTIONS(an_idx.begin(), an_idx.end(), truth_shared_an[truth_index].begin(), truth_shared_an[truth_index].end());
   const auto af = record.float_shared_field("AF");
   BOOST_CHECK_EQUAL_COLLECTIONS(af.begin(), af.end(), truth_shared_af[truth_index].begin(), truth_shared_af[truth_index].end());
+  const auto af_idx = record.float_shared_field(header.field_index("AF")); // test the index based api
+  BOOST_CHECK_EQUAL_COLLECTIONS(af_idx.begin(), af_idx.end(), truth_shared_af[truth_index].begin(), truth_shared_af[truth_index].end());
   const auto desc = record.string_shared_field("DESC");
   BOOST_CHECK_EQUAL_COLLECTIONS(desc.begin(), desc.end(), truth_shared_desc[truth_index].begin(), truth_shared_desc[truth_index].end());
+  const auto desc_idx = record.string_shared_field(header.field_index("DESC")); // test the index based api
+  BOOST_CHECK_EQUAL_COLLECTIONS(desc_idx.begin(), desc_idx.end(), truth_shared_desc[truth_index].begin(), truth_shared_desc[truth_index].end());
   // check non-existing missing values
   BOOST_CHECK(missing(record.boolean_shared_field("NON_EXISTING")));
   BOOST_CHECK(missing(record.integer_shared_field("NON_EXISTING")));
   BOOST_CHECK(missing(record.float_shared_field("NON_EXISTING")));  
   BOOST_CHECK(missing(record.string_shared_field("NON_EXISTING"))); 
+  BOOST_CHECK(missing(record.boolean_shared_field(-1)));
+  BOOST_CHECK(missing(record.integer_shared_field(-1)));
+  BOOST_CHECK(missing(record.float_shared_field(-1)));  
+  BOOST_CHECK(missing(record.string_shared_field(-1))); 
   // check type conversions in the unforgiving API
   BOOST_CHECK_THROW(record.float_shared_field("AN"), runtime_error);
   BOOST_CHECK_THROW(record.string_shared_field("AN"), runtime_error);
@@ -190,6 +247,12 @@ void check_shared_field_api(const Variant& record, const uint32_t truth_index) {
   BOOST_CHECK_THROW(record.string_shared_field("AF"), runtime_error);
   BOOST_CHECK_THROW(record.integer_shared_field("DESC"), runtime_error);
   BOOST_CHECK_THROW(record.float_shared_field("DESC"), runtime_error);
+  BOOST_CHECK_THROW(record.float_shared_field(header.field_index("AN")), runtime_error);
+  BOOST_CHECK_THROW(record.string_shared_field(header.field_index("AN")), runtime_error);
+  BOOST_CHECK_THROW(record.integer_shared_field(header.field_index("AF")), runtime_error);
+  BOOST_CHECK_THROW(record.string_shared_field(header.field_index("AF")), runtime_error);
+  BOOST_CHECK_THROW(record.integer_shared_field(header.field_index("DESC")), runtime_error);
+  BOOST_CHECK_THROW(record.float_shared_field(header.field_index("DESC")), runtime_error);
   // check conversions on the nice API
   const auto an_float = record.shared_field_as_float("AN");
   const auto an_string = record.shared_field_as_string("AN");
@@ -197,30 +260,56 @@ void check_shared_field_api(const Variant& record, const uint32_t truth_index) {
     BOOST_CHECK_EQUAL(an_float[i], float(truth_shared_an[truth_index][i]));
     BOOST_CHECK_EQUAL(an_string[i], to_string(truth_shared_an[truth_index][i]));
   }
+  const auto an_float_idx = record.shared_field_as_float(header.field_index("AN"));
+  const auto an_string_idx = record.shared_field_as_string(header.field_index("AN"));
+  for (auto i=0u; i != an_float.size(); ++i) {
+    BOOST_CHECK_EQUAL(an_float_idx[i], float(truth_shared_an[truth_index][i]));
+    BOOST_CHECK_EQUAL(an_string_idx[i], to_string(truth_shared_an[truth_index][i]));
+  }
   const auto af_integer = record.shared_field_as_integer("AF");
   const auto af_string = record.shared_field_as_string("AF");
   for (auto i=0u; i != af_integer.size(); ++i) {
     BOOST_CHECK_EQUAL(af_integer[i], int32_t(truth_shared_af[truth_index][i]));
     BOOST_CHECK_EQUAL(af_string[i], to_string(truth_shared_af[truth_index][i]));
   }
+  const auto af_integer_idx = record.shared_field_as_integer(header.field_index("AF"));
+  const auto af_string_idx = record.shared_field_as_string(header.field_index("AF"));
+  for (auto i=0u; i != af_integer.size(); ++i) {
+    BOOST_CHECK_EQUAL(af_integer_idx[i], int32_t(truth_shared_af[truth_index][i]));
+    BOOST_CHECK_EQUAL(af_string_idx[i], to_string(truth_shared_af[truth_index][i]));
+  }
+  const auto desc_index = header.field_index("DESC");
   const auto desc_bool = record.boolean_shared_field("DESC");
   const auto desc_integer = record.shared_field_as_integer("DESC");
   const auto desc_float = record.shared_field_as_float("DESC");
+  const auto desc_bool_idx = record.boolean_shared_field(desc_index);
+  const auto desc_integer_idx = record.shared_field_as_integer(desc_index);
+  const auto desc_float_idx = record.shared_field_as_float(desc_index);
   if (truth_shared_desc[truth_index].empty()) {
     BOOST_CHECK(!desc_bool);
     BOOST_CHECK(missing(desc_integer));
     BOOST_CHECK(missing(desc_float));
+    BOOST_CHECK(!desc_bool_idx);
+    BOOST_CHECK(missing(desc_integer_idx));
+    BOOST_CHECK(missing(desc_float_idx));
     BOOST_CHECK(missing(record.shared_field_as_string("DESC"))); // check that an existing tag in the header can be missing 
+    BOOST_CHECK(missing(record.shared_field_as_string(desc_index))); // check that an existing tag in the header can be missing 
     BOOST_CHECK_THROW(desc_float[0], out_of_range);
   }
   else {
     BOOST_CHECK(desc_bool);
     BOOST_CHECK_THROW(desc_float[0], invalid_argument);
     BOOST_CHECK_THROW(desc_integer[0], invalid_argument);
+    BOOST_CHECK(desc_bool_idx);
+    BOOST_CHECK_THROW(desc_float_idx[0], invalid_argument);
+    BOOST_CHECK_THROW(desc_integer_idx[0], invalid_argument);
     // BOOST_CHECK_EQUAL(desc, record.shared_field_as_string("DESC"));  // needs operator == on shared fields
+    // BOOST_CHECK_EQUAL(desc_idx, record.shared_field_as_string(desc_index));  // needs operator == on shared fields
   }
   // BOOST_CHECK_EQUAL(an, record.shared_field_as_integer("AN")); // needs operator == on shared fields
-  // BOOST_CHECK_EQUAL(af, record.shared_field_as_float("AN")); // needs operator == on shared fields
+  // BOOST_CHECK_EQUAL(an, record.shared_field_as_integer(header.field_index("AN"))); // needs operator == on shared fields
+  // BOOST_CHECK_EQUAL(af, record.shared_field_as_float("AF")); // needs operator == on shared fields
+  // BOOST_CHECK_EQUAL(af, record.shared_field_as_float(header.field_index("AF"))); // needs operator == on shared fields
 }
 
 void check_genotype_api(const Variant& record, const uint32_t truth_index) {
