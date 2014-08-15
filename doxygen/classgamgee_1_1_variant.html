@@ -158,19 +158,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ada7dc841eb57e7744a77c08a7aef877a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#ada7dc841eb57e7744a77c08a7aef877a">has_filter</a> (const std::string &amp;filter) const </td></tr>
 <tr class="memdesc:ada7dc841eb57e7744a77c08a7aef877a"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks for the existence of a filter in this record  <a href="#ada7dc841eb57e7744a77c08a7aef877a">More...</a><br /></td></tr>
 <tr class="separator:ada7dc841eb57e7744a77c08a7aef877a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91c39285449c776c21ed88bd14e007f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_individual_field.html">IndividualField</a><br class="typebreak" />
-&lt; <a class="el" href="classgamgee_1_1_individual_field_value.html">IndividualFieldValue</a><br class="typebreak" />
-&lt; int32_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a91c39285449c776c21ed88bd14e007f2">genotype_quals</a> () const </td></tr>
-<tr class="memdesc:a91c39285449c776c21ed88bd14e007f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a random access object with all the GQ values for all samples contiguously in memory.  <a href="#a91c39285449c776c21ed88bd14e007f2">More...</a><br /></td></tr>
-<tr class="separator:a91c39285449c776c21ed88bd14e007f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a666fb4548187abd11939daa3e514c50f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_individual_field.html">IndividualField</a><br class="typebreak" />
-&lt; <a class="el" href="classgamgee_1_1_individual_field_value.html">IndividualFieldValue</a><br class="typebreak" />
-&lt; int32_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a666fb4548187abd11939daa3e514c50f">phred_likelihoods</a> () const </td></tr>
-<tr class="memdesc:a666fb4548187abd11939daa3e514c50f"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a random access object with all the PL values for all samples contiguous in memory.  <a href="#a666fb4548187abd11939daa3e514c50f">More...</a><br /></td></tr>
-<tr class="separator:a666fb4548187abd11939daa3e514c50f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68607de44ef4a90f2ce24737a2aac285"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_individual_field.html">IndividualField</a>&lt; <a class="el" href="classgamgee_1_1_genotype.html">Genotype</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a68607de44ef4a90f2ce24737a2aac285">genotypes</a> () const </td></tr>
-<tr class="memdesc:a68607de44ef4a90f2ce24737a2aac285"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a random access object with all the values in a given GT tag for all samples contiguous in memory.  <a href="#a68607de44ef4a90f2ce24737a2aac285">More...</a><br /></td></tr>
-<tr class="separator:a68607de44ef4a90f2ce24737a2aac285"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a332b5600fb5e748bd10ed634c8633a4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_individual_field.html">IndividualField</a><br class="typebreak" />
 &lt; <a class="el" href="classgamgee_1_1_individual_field_value.html">IndividualFieldValue</a><br class="typebreak" />
 &lt; int32_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a332b5600fb5e748bd10ed634c8633a4d">integer_individual_field</a> (const std::string &amp;tag) const </td></tr>
@@ -199,6 +186,9 @@ Public Member Functions</h2></td></tr>
 &lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a38067341bc566f6e6e1ad9f6e645acee">individual_field_as_string</a> (const std::string &amp;tag) const </td></tr>
 <tr class="memdesc:a38067341bc566f6e6e1ad9f6e645acee"><td class="mdescLeft">&#160;</td><td class="mdescRight">same as string_format_field but will attempt to convert underlying data to string if possible.  <a href="#a38067341bc566f6e6e1ad9f6e645acee">More...</a><br /></td></tr>
 <tr class="separator:a38067341bc566f6e6e1ad9f6e645acee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68607de44ef4a90f2ce24737a2aac285"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_individual_field.html">IndividualField</a>&lt; <a class="el" href="classgamgee_1_1_genotype.html">Genotype</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a68607de44ef4a90f2ce24737a2aac285">genotypes</a> () const </td></tr>
+<tr class="memdesc:a68607de44ef4a90f2ce24737a2aac285"><td class="mdescLeft">&#160;</td><td class="mdescRight">special getter for the <a class="el" href="classgamgee_1_1_genotype.html" title="Encodes a genotype. ">Genotype</a> (GT) field. Returns a random access object with all the values in a given GT tag for all samples contiguous in memory.  <a href="#a68607de44ef4a90f2ce24737a2aac285">More...</a><br /></td></tr>
+<tr class="separator:a68607de44ef4a90f2ce24737a2aac285"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cd6de76888701290861b2ecfa53abc0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a7cd6de76888701290861b2ecfa53abc0">boolean_shared_field</a> (const std::string &amp;tag) const </td></tr>
 <tr class="memdesc:a7cd6de76888701290861b2ecfa53abc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">whether or not the tag is present  <a href="#a7cd6de76888701290861b2ecfa53abc0">More...</a><br /></td></tr>
 <tr class="separator:a7cd6de76888701290861b2ecfa53abc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -522,24 +512,6 @@ creates a new object but makes no copies of the underlying values. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a91c39285449c776c21ed88bd14e007f2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classgamgee_1_1_individual_field.html">IndividualField</a>&lt; <a class="el" href="classgamgee_1_1_individual_field_value.html">IndividualFieldValue</a>&lt; int32_t &gt; &gt; gamgee::Variant::genotype_quals </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>returns a random access object with all the GQ values for all samples contiguously in memory. </p>
-<dl class="section warning"><dt>Warning</dt><dd>creates a new object but makes no copies of the underlying values. </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="a68607de44ef4a90f2ce24737a2aac285"></a>
 <div class="memitem">
 <div class="memproto">
@@ -553,7 +525,7 @@ creates a new object but makes no copies of the underlying values. </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>returns a random access object with all the values in a given GT tag for all samples contiguous in memory. </p>
+<p>special getter for the <a class="el" href="classgamgee_1_1_genotype.html" title="Encodes a genotype. ">Genotype</a> (GT) field. Returns a random access object with all the values in a given GT tag for all samples contiguous in memory. </p>
 <dl class="section warning"><dt>Warning</dt><dd>Only int8_t GT fields have been tested. </dd>
 <dd>
 Missing GT fields are untested. </dd>
@@ -840,24 +812,6 @@ creates a new object but makes no copies of the underlying values. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a666fb4548187abd11939daa3e514c50f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classgamgee_1_1_individual_field.html">IndividualField</a>&lt; <a class="el" href="classgamgee_1_1_individual_field_value.html">IndividualFieldValue</a>&lt; int32_t &gt; &gt; gamgee::Variant::phred_likelihoods </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>returns a random access object with all the PL values for all samples contiguous in memory. </p>
-<dl class="section warning"><dt>Warning</dt><dd>creates a new object but makes no copies of the underlying values. </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="aaebe7023dddd5dcaeb09b51b5241899e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1100,7 +1054,7 @@ creates a new object but makes no copies of the underlying values. </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 15 2014 16:14:16 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 15 2014 16:27:11 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
