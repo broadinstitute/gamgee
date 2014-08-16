@@ -4,7 +4,6 @@
 #include "sam_reader.h"
 #include "sam_builder.h"
 #include "missing.h"
-
 #include <vector>
 
 using namespace std;
@@ -391,10 +390,10 @@ BOOST_AUTO_TEST_CASE( sam_unclipped_start_and_stop ) {
   const auto sam2 = builder.set_chromosome(0).set_alignment_start(100).set_cigar("5S15M").build(); 
   const auto sam3 = builder.set_chromosome(0).set_alignment_start(100).set_cigar("15M5S").build(); 
   const auto sam4 = builder.set_chromosome(0).set_alignment_start(100).set_cigar("5S10M5S").build(); 
-  check_read_alignment_starts_and_stops(sam1, 100, 120, 100, 120);
-  check_read_alignment_starts_and_stops(sam2, 100, 115, 95, 115);
-  check_read_alignment_starts_and_stops(sam3, 100, 115, 100, 120);
-  check_read_alignment_starts_and_stops(sam4, 100, 110, 95, 115);
+  check_read_alignment_starts_and_stops(sam1, 100, 119, 100, 119);
+  check_read_alignment_starts_and_stops(sam2, 100, 114, 95, 114);
+  check_read_alignment_starts_and_stops(sam3, 100, 114, 100, 119);
+  check_read_alignment_starts_and_stops(sam4, 100, 109, 95, 114);
 }
 
 BOOST_AUTO_TEST_CASE( sam_input_vector ) {
@@ -434,5 +433,40 @@ BOOST_AUTO_TEST_CASE( sam_input_vector ) {
 }
 
 BOOST_AUTO_TEST_CASE( sam_input_vector_too_large ) {
-  BOOST_CHECK_THROW((SingleSamReader {vector<string>{"testdata/test_simple.bam","testdata/test_simple.bam"}}), std::runtime_error);}
+  BOOST_CHECK_THROW((SingleSamReader {vector<string>{"testdata/test_simple.bam","testdata/test_simple.bam"}}), std::runtime_error);
+}
 
+BOOST_AUTO_TEST_CASE( sam_mate_operations ) {
+  const auto truth_mate_alignment_stop = vector<uint32_t>{264,207,264,10486,10448,22924};
+  const auto truth_mate_unclipped_start = vector<uint32_t>{255,198,255,10477,10397,22924};
+  const auto truth_mate_unclipped_stop = vector<uint32_t>{264,207,264,10486,10458,22924};
+  auto i = 0u;
+  for (const auto& record : SingleSamReader{"testdata/test_simple.sam"}) {
+    const auto tag = record.string_tag("MC");
+    if (!missing(tag)) {
+      printf("%d => as: %d, ap: %d, mc: %s, ms: %d, mp: %d, mus: %d, mup: %d\n", i, record.alignment_start(), record.alignment_stop(), tag.value().c_str(), record.mate_alignment_start(), record.mate_alignment_stop(), record.mate_unclipped_start(), record.mate_unclipped_stop());
+      BOOST_CHECK_EQUAL(record.mate_alignment_stop(tag), truth_mate_alignment_stop[i]);
+      BOOST_CHECK_EQUAL(record.mate_alignment_stop(), truth_mate_alignment_stop[i]);  // check the other overload as well
+      BOOST_CHECK_EQUAL(record.mate_unclipped_start(tag), truth_mate_unclipped_start[i]);
+      BOOST_CHECK_EQUAL(record.mate_unclipped_start(), truth_mate_unclipped_start[i]);  // check the other overload as well
+      BOOST_CHECK_EQUAL(record.mate_unclipped_stop(tag), truth_mate_unclipped_stop[i]);
+      BOOST_CHECK_EQUAL(record.mate_unclipped_stop(), truth_mate_unclipped_stop[i++]);  // check the other overload as well
+    }
+    else {
+      BOOST_CHECK_THROW(record.mate_alignment_stop(), invalid_argument);
+      BOOST_CHECK_EQUAL(record.mate_alignment_stop(tag), record.mate_alignment_start());
+      BOOST_CHECK_THROW(record.mate_unclipped_start(), invalid_argument);
+      BOOST_CHECK_EQUAL(record.mate_unclipped_start(tag), record.mate_alignment_start());
+      BOOST_CHECK_THROW(record.mate_unclipped_stop(), invalid_argument);
+      BOOST_CHECK_EQUAL(record.mate_unclipped_stop(tag), record.mate_alignment_start());
+    }
+  }
+}
+
+BOOST_AUTO_TEST_CASE( sam_off_by_one_uber_test ) {
+  const auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
+  auto builder = SamBuilder{header};
+  const auto record = builder.set_name("TEST").set_bases("A").set_cigar("1M").set_base_quals({20}).set_alignment_start(1).build();
+  BOOST_CHECK_EQUAL(record.alignment_start(), 1);
+  BOOST_CHECK_EQUAL(record.alignment_stop(), 1);
+}

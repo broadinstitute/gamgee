@@ -126,8 +126,6 @@ class SamBuilder {
   SamBuilderDataField m_tags;       ///< htslib encoded aux data (tags) for eventual inclusion in the data field
   bool m_validate_on_build;         ///< should we validate the state of the Sam record at build time?
 
-  static const int8_t cigar_op_parse_table[];  ///< @brief Table used to parse chars representing cigar operations into their htslib encodings
-
   void validate() const;                    ///< @brief performs pre-build validation of the state of the Sam record under construction
   void build_data_array(bam1_t* sam) const; ///< @brief helper function that constructs the concatenated htslib-encoded data array
 };
