@@ -17,16 +17,15 @@ class IndexedSamIterator {
   public:
     IndexedSamIterator();
 
-    IndexedSamIterator(samFile* sam_file_ptr, hts_idx_t* sam_index_ptr,
-        const std::shared_ptr<bam_hdr_t>& sam_header_ptr, const std::vector<std::string>& interval_list);
+    IndexedSamIterator(samFile* sam_file_ptr, hts_idx_t* sam_index_ptr, const std::shared_ptr<bam_hdr_t>& sam_header_ptr,
+        const std::vector<std::string>& interval_list, std::vector<std::string>::iterator* interval_iterator_ptr,
+        hts_itr_t** sam_itr_ptr);
 
     IndexedSamIterator(IndexedSamIterator&) = delete;
     IndexedSamIterator& operator=(IndexedSamIterator&) = delete;
 
     IndexedSamIterator(IndexedSamIterator&&);
     IndexedSamIterator& operator=(IndexedSamIterator&&);
-
-    ~IndexedSamIterator();
 
     bool operator!=(const IndexedSamIterator& rhs);
     Sam& operator*();
@@ -37,12 +36,12 @@ class IndexedSamIterator {
     hts_idx_t * m_sam_index_ptr;
     std::shared_ptr<bam_hdr_t> m_sam_header_ptr;
     std::vector<std::string> m_interval_list;
-    std::vector<std::string>::iterator m_interval_iterator;
-    hts_itr_t * m_sam_itr_ptr;
+    std::vector<std::string>::iterator* m_interval_iterator_ptr;
+    hts_itr_t ** m_sam_itr_ptr_ptr;
     std::shared_ptr<bam1_t> m_sam_record_ptr;
     Sam m_sam_record;
 
-    hts_itr_t* fetch_current_interval();
+    hts_itr_t* fetch_next_hts_itr();
     Sam fetch_next_record();
 };
 
