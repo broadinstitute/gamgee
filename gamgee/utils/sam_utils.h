@@ -14,11 +14,6 @@ namespace contig_values {
   const auto unmapped_contig = std::string{"*"}; // Copied from strcmp line in hts_itr_querys(). Very, very different from unmapped flagged reads.
 }
 
-/*
-bool sam_index_exists(const std::string& filename);
-std::string sam_index_find(const std::string& filename);
-*/
-
 }
 
 }
