@@ -108,40 +108,43 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <a class="code" href="classgamgee_1_1_variant_iterator.html#ae09a22ac8a3086e36ff26527eb5e5ba7">VariantIterator</a>(vcfFile* variant_file_ptr, <span class="keyword">const</span> std::shared_ptr&lt;bcf_hdr_t&gt;&amp; variant_header_ptr);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="classgamgee_1_1_variant_iterator.html#ae09a22ac8a3086e36ff26527eb5e5ba7">VariantIterator</a>(<a class="code" href="classgamgee_1_1_variant_iterator.html">VariantIterator</a>&amp;&amp;);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="classgamgee_1_1_variant_iterator.html#ae09a22ac8a3086e36ff26527eb5e5ba7">VariantIterator</a>(<a class="code" href="classgamgee_1_1_variant_iterator.html">VariantIterator</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classgamgee_1_1_variant_iterator.html#a2d3bf2f75082ffb73201362b6456725b">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_variant_iterator.html">VariantIterator</a>&amp; rhs);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <a class="code" href="classgamgee_1_1_variant.html">Variant</a>&amp; <a class="code" href="classgamgee_1_1_variant_iterator.html#a51b9fe9f8e407fe5aca4972a6daee5ab">operator*</a>();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="classgamgee_1_1_variant.html">Variant</a>&amp; <a class="code" href="classgamgee_1_1_variant_iterator.html#a8e567ddcd842a29cfdf6da20adf09d44">operator++</a>();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classgamgee_1_1_variant_iterator.html#a8d0cbd82f9f9e0eebabb917852d67cda">empty</a>();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  vcfFile * m_variant_file_ptr;                    </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  std::shared_ptr&lt;bcf_hdr_t&gt; m_variant_header_ptr; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  std::shared_ptr&lt;bcf1_t&gt; m_variant_record_ptr;    </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="classgamgee_1_1_variant.html">Variant</a> m_variant_record;                        </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="classgamgee_1_1_variant.html">Variant</a> fetch_next_record();                     </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}  <span class="comment">// end namespace gamgee</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classgamgee_1_1_variant_iterator.html">VariantIterator</a>&amp; <a class="code" href="classgamgee_1_1_variant_iterator.html#a6a3971e1f81691826aa179bbe3d658e4">operator= </a>(<a class="code" href="classgamgee_1_1_variant_iterator.html">VariantIterator</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classgamgee_1_1_variant_iterator.html#a2d3bf2f75082ffb73201362b6456725b">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_variant_iterator.html">VariantIterator</a>&amp; rhs);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="classgamgee_1_1_variant.html">Variant</a>&amp; <a class="code" href="classgamgee_1_1_variant_iterator.html#a51b9fe9f8e407fe5aca4972a6daee5ab">operator*</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="classgamgee_1_1_variant.html">Variant</a>&amp; <a class="code" href="classgamgee_1_1_variant_iterator.html#a8e567ddcd842a29cfdf6da20adf09d44">operator++</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classgamgee_1_1_variant_iterator.html#a8d0cbd82f9f9e0eebabb917852d67cda">empty</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  vcfFile * m_variant_file_ptr;                    </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  std::shared_ptr&lt;bcf_hdr_t&gt; m_variant_header_ptr; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  std::shared_ptr&lt;bcf1_t&gt; m_variant_record_ptr;    </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <a class="code" href="classgamgee_1_1_variant.html">Variant</a> m_variant_record;                        </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif // gamgee__variant_iterator__guard</span></div>
-<div class="ttc" id="classgamgee_1_1_variant_iterator_html_a2d3bf2f75082ffb73201362b6456725b"><div class="ttname"><a href="classgamgee_1_1_variant_iterator.html#a2d3bf2f75082ffb73201362b6456725b">gamgee::VariantIterator::operator!=</a></div><div class="ttdeci">bool operator!=(const VariantIterator &amp;rhs)</div><div class="ttdoc">inequality operator (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> variant_iterator.cpp:38</div></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordtype">void</span> fetch_next_record();                        </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;};</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}  <span class="comment">// end namespace gamgee</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#endif // gamgee__variant_iterator__guard</span></div>
+<div class="ttc" id="classgamgee_1_1_variant_iterator_html_a2d3bf2f75082ffb73201362b6456725b"><div class="ttname"><a href="classgamgee_1_1_variant_iterator.html#a2d3bf2f75082ffb73201362b6456725b">gamgee::VariantIterator::operator!=</a></div><div class="ttdeci">bool operator!=(const VariantIterator &amp;rhs)</div><div class="ttdoc">inequality operator (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> variant_iterator.cpp:33</div></div>
 <div class="ttc" id="classgamgee_1_1_variant_iterator_html_ae09a22ac8a3086e36ff26527eb5e5ba7"><div class="ttname"><a href="classgamgee_1_1_variant_iterator.html#ae09a22ac8a3086e36ff26527eb5e5ba7">gamgee::VariantIterator::VariantIterator</a></div><div class="ttdeci">VariantIterator()</div><div class="ttdoc">creates an empty iterator (used for the end() method) </div><div class="ttdef"><b>Definition:</b> variant_iterator.cpp:9</div></div>
-<div class="ttc" id="classgamgee_1_1_variant_iterator_html_a8e567ddcd842a29cfdf6da20adf09d44"><div class="ttname"><a href="classgamgee_1_1_variant_iterator.html#a8e567ddcd842a29cfdf6da20adf09d44">gamgee::VariantIterator::operator++</a></div><div class="ttdeci">Variant &amp; operator++()</div><div class="ttdoc">pre-fetches the next record and tests for end of file </div><div class="ttdef"><b>Definition:</b> variant_iterator.cpp:33</div></div>
+<div class="ttc" id="classgamgee_1_1_variant_iterator_html_a8e567ddcd842a29cfdf6da20adf09d44"><div class="ttname"><a href="classgamgee_1_1_variant_iterator.html#a8e567ddcd842a29cfdf6da20adf09d44">gamgee::VariantIterator::operator++</a></div><div class="ttdeci">Variant &amp; operator++()</div><div class="ttdoc">pre-fetches the next record and tests for end of file </div><div class="ttdef"><b>Definition:</b> variant_iterator.cpp:28</div></div>
+<div class="ttc" id="classgamgee_1_1_variant_iterator_html_a6a3971e1f81691826aa179bbe3d658e4"><div class="ttname"><a href="classgamgee_1_1_variant_iterator.html#a6a3971e1f81691826aa179bbe3d658e4">gamgee::VariantIterator::operator=</a></div><div class="ttdeci">VariantIterator &amp; operator=(VariantIterator &amp;&amp;)=default</div><div class="ttdoc">a VariantIterator move assignment operator guarantees all objects will have the same state...</div></div>
 <div class="ttc" id="variant_8h_html"><div class="ttname"><a href="variant_8h.html">variant.h</a></div></div>
-<div class="ttc" id="classgamgee_1_1_variant_iterator_html_a8d0cbd82f9f9e0eebabb917852d67cda"><div class="ttname"><a href="classgamgee_1_1_variant_iterator.html#a8d0cbd82f9f9e0eebabb917852d67cda">gamgee::VariantIterator::empty</a></div><div class="ttdeci">bool empty()</div><div class="ttdoc">returns whether the iterator has no additional records </div><div class="ttdef"><b>Definition:</b> variant_iterator.cpp:42</div></div>
-<div class="ttc" id="classgamgee_1_1_variant_iterator_html_a51b9fe9f8e407fe5aca4972a6daee5ab"><div class="ttname"><a href="classgamgee_1_1_variant_iterator.html#a51b9fe9f8e407fe5aca4972a6daee5ab">gamgee::VariantIterator::operator*</a></div><div class="ttdeci">Variant &amp; operator*()</div><div class="ttdoc">dereference operator (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> variant_iterator.cpp:29</div></div>
+<div class="ttc" id="classgamgee_1_1_variant_iterator_html_a8d0cbd82f9f9e0eebabb917852d67cda"><div class="ttname"><a href="classgamgee_1_1_variant_iterator.html#a8d0cbd82f9f9e0eebabb917852d67cda">gamgee::VariantIterator::empty</a></div><div class="ttdeci">bool empty()</div><div class="ttdoc">returns whether the iterator has no additional records </div><div class="ttdef"><b>Definition:</b> variant_iterator.cpp:37</div></div>
+<div class="ttc" id="classgamgee_1_1_variant_iterator_html_a51b9fe9f8e407fe5aca4972a6daee5ab"><div class="ttname"><a href="classgamgee_1_1_variant_iterator.html#a51b9fe9f8e407fe5aca4972a6daee5ab">gamgee::VariantIterator::operator*</a></div><div class="ttdeci">Variant &amp; operator*()</div><div class="ttdoc">dereference operator (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> variant_iterator.cpp:24</div></div>
 <div class="ttc" id="classgamgee_1_1_variant_iterator_html"><div class="ttname"><a href="classgamgee_1_1_variant_iterator.html">gamgee::VariantIterator</a></div><div class="ttdoc">Utility class to enable for-each style iteration in the VariantReader class. </div><div class="ttdef"><b>Definition:</b> variant_iterator.h:15</div></div>
 <div class="ttc" id="classgamgee_1_1_variant_html"><div class="ttname"><a href="classgamgee_1_1_variant.html">gamgee::Variant</a></div><div class="ttdoc">Utility class to manipulate a Variant record. </div><div class="ttdef"><b>Definition:</b> variant.h:27</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 15 2014 16:27:11 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 19 2014 19:38:47 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
