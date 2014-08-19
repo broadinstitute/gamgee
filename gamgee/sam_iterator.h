@@ -79,7 +79,7 @@ class SamIterator {
     std::shared_ptr<bam1_t> m_sam_record_ptr;    ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
     Sam m_sam_record;                            ///< temporary record to hold between fetch (operator++) and serve (operator*)
 
-    Sam fetch_next_record();                     ///< fetches next Sam record into existing htslib memory without making a copy
+    void fetch_next_record();                    ///< fetches next Sam record into existing htslib memory without making a copy
 };
 
 }  // end namespace gamgee
