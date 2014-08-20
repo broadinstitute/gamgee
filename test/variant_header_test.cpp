@@ -1,5 +1,6 @@
 #include <boost/test/unit_test.hpp>
 #include "variant_header_builder.h"
+#include "missing.h"
 
 using namespace std;
 using namespace gamgee;
@@ -17,7 +18,9 @@ BOOST_AUTO_TEST_CASE( variant_header_builder_simple_building ) {
   const auto chromosomes = vector<string>{"chr1", "chr2", "chr3", "chr4"};
   const auto filters     = vector<string>{"LOW_QUAL", "PASS", "VQSR_FAILED"};
   const auto shareds       = vector<string>{"DP", "MQ", "RankSum"};
+  const auto shareds_indices = vector<uint32_t>{3,4,5};  // looks arbitrary but these are the indices of the shared fields because the filters get 0, 1 and 2.
   const auto individuals     = vector<string>{"GQ", "PL", "DP"};
+  const auto individuals_indices = vector<uint32_t>{6,7,3}; // the last index gets the same number as the info index. Weird, but that's how htslib deals with this.
   auto builder = VariantHeaderBuilder{};
   builder.add_source("Gamgee api test");
   builder.advanced_add_arbitrary_line("##unused=<XX=AA,Description=\"Unused generic\">");
@@ -40,5 +43,12 @@ BOOST_AUTO_TEST_CASE( variant_header_builder_simple_building ) {
   BOOST_CHECK(vh.has_individual_field("GQ") == true);
   BOOST_CHECK(vh.has_individual_field("DP") == true);
   BOOST_CHECK(vh.has_individual_field("BLAH") == false);
+  for (auto i = 0u; i != shareds.size(); ++i)
+    BOOST_CHECK_EQUAL(shareds_indices[i], vh.field_index(shareds[i]));
+  for (auto i = 0u; i != individuals.size(); ++i)
+    BOOST_CHECK_EQUAL(individuals_indices[i], vh.field_index(individuals[i]));
+  BOOST_CHECK(missing(vh.field_index("MISSING")));
+  BOOST_CHECK(missing(vh.field_index("MISSING")));
+  BOOST_CHECK_EQUAL(vh.field_index("PASS"), 0);
 }
 

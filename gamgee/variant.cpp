@@ -10,6 +10,36 @@
 using namespace std;
 namespace gamgee {
 
+/******************************************************************************
+ * Accessory functions (private functions)                                    *
+ ******************************************************************************/
+inline bool Variant::check_field(const int32_t type_field, const int32_t type_value, const int32_t index) const {
+  if (!check_field_exists(type_field, index))
+    return false;
+  if (!check_field_type(type_field, type_value, index))
+    throw std::runtime_error("individual field requested is not of the right type");
+  return true;
+}
+
+template<class FIELD_TYPE, class INDEX_OR_TAG>
+IndividualField<IndividualFieldValue<FIELD_TYPE>> Variant::individual_field_as(const INDEX_OR_TAG& p) const {
+  const auto field_ptr = find_individual_field(p);
+  if (field_ptr == nullptr)
+    return IndividualField<IndividualFieldValue<FIELD_TYPE>>{};
+  return IndividualField<IndividualFieldValue<FIELD_TYPE>>{m_body, field_ptr};
+}
+
+template<class FIELD_TYPE, class INDEX_OR_TAG>
+SharedField<FIELD_TYPE> Variant::shared_field_as(const INDEX_OR_TAG& p) const {
+  const auto field_ptr = find_shared_field(p);
+  if (field_ptr == nullptr)
+    return SharedField<FIELD_TYPE>{};
+  return SharedField<FIELD_TYPE>{m_body, field_ptr};
+}
+
+/******************************************************************************
+ * Constructors and operator overloads                                        *
+ ******************************************************************************/
 /**
  * @brief creates a variant record that points to htslib memory already allocated
  * @note the resulting Variant shares ownership of the pre-allocated memory via shared_ptr reference counting
@@ -32,14 +62,6 @@ Variant::Variant(const Variant& other) :
 {}
 
 /**
- * @brief moves a variant record and header, transferring ownership of the underlying htslib memory
- */
-Variant::Variant(Variant&& other) noexcept :
-  m_header {move(other.m_header)},
-  m_body {move(other.m_body)}
-{}
-
-/**
  * @brief creates a deep copy of a variant record
  * @param other the Variant to be copied
  * @note does not perform a deep copy of the variant header; to copy the header,
@@ -54,17 +76,10 @@ Variant& Variant::operator=(const Variant& other) {
   return *this;
 }
 
-/**
- * @brief moves a variant record, transferring ownership of the underlying htslib memory
- */
-Variant& Variant::operator=(Variant&& other) noexcept {
-  if ( &other == this )  
-    return *this;
-  m_body = move(other.m_body);
-  m_header = move(other.m_header);
-  return *this;
-}
 
+/******************************************************************************
+ * General record API                                                         *
+ ******************************************************************************/
 std::string Variant::id () const {
   bcf_unpack(m_body.get(), BCF_UN_STR);
   return std::string{m_body->d.id};
@@ -90,113 +105,127 @@ bool Variant::has_filter(const std::string& filter) const {
   return bcf_has_filter(m_header.get(), m_body.get(), const_cast<char*>(filter.c_str())) > 0; // have to cast away the constness here for the C api to work. But the promise still remains as the C function is not modifying the string.
 }
 
+/******************************************************************************
+ * Individual field API                                                       *
+ ******************************************************************************/
 IndividualField<IndividualFieldValue<int32_t>> Variant::integer_individual_field(const std::string& tag) const {
-  const auto id = bcf_hdr_id2int(m_header.get(), BCF_DT_ID, tag.c_str());
-  if (!bcf_hdr_idinfo_exists(m_header.get(), BCF_HL_FMT, id))
-    return IndividualField<IndividualFieldValue<int32_t>>{}; 
-  if (bcf_hdr_id2type(m_header.get(),BCF_HL_FMT,id)!=BCF_HT_INT)
-    throw runtime_error("individual field requested is not an integer");
-  return individual_field_as_integer(tag); // @todo: move this to an indexed based lookup API
+  return integer_individual_field(get_field_index(tag)); 
 }
 
 IndividualField<IndividualFieldValue<float>> Variant::float_individual_field(const std::string& tag) const {
-  const auto id = bcf_hdr_id2int(m_header.get(), BCF_DT_ID, tag.c_str());
-  if (!bcf_hdr_idinfo_exists(m_header.get(), BCF_HL_FMT, id))
-    return IndividualField<IndividualFieldValue<float>>{};
-  if (bcf_hdr_id2type(m_header.get(),BCF_HL_FMT,id)!=BCF_HT_REAL)
-    throw runtime_error("individual field requested is not a float");
-  return individual_field_as_float(tag); // @todo: move this to an indexed based lookup API
+  return float_individual_field(get_field_index(tag));
 }
 
 IndividualField<IndividualFieldValue<string>> Variant::string_individual_field(const std::string& tag) const {
-  const auto id = bcf_hdr_id2int(m_header.get(), BCF_DT_ID, tag.c_str());
-  if (!bcf_hdr_idinfo_exists(m_header.get(), BCF_HL_FMT, id))
-    return IndividualField<IndividualFieldValue<string>>{};
-  if (bcf_hdr_id2type(m_header.get(),BCF_HL_FMT,id)!=BCF_HT_STR)
-    throw runtime_error("individual field requested is not a string");
-  return individual_field_as_string(tag); // @todo: move this to an indexed based lookup API
+  return string_individual_field(get_field_index(tag));
 }
 
 IndividualField<IndividualFieldValue<int32_t>> Variant::individual_field_as_integer(const std::string& tag) const {
-  const auto fmt = find_individual_field_by_tag(tag);
-  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty IndividualField
-    return IndividualField<IndividualFieldValue<int32_t>>{};
-  return IndividualField<IndividualFieldValue<int32_t>>{m_body, fmt};
+  return individual_field_as<int32_t>(tag);
 }
 
 IndividualField<IndividualFieldValue<float>> Variant::individual_field_as_float(const std::string& tag) const {
-  const auto fmt = find_individual_field_by_tag(tag);
-  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty IndividualField
-    return IndividualField<IndividualFieldValue<float>>{};
-  return IndividualField<IndividualFieldValue<float>>{m_body, fmt};
+  return individual_field_as<float>(tag);
 }
 
 IndividualField<IndividualFieldValue<std::string>> Variant::individual_field_as_string(const std::string& tag) const {
-  const auto fmt = find_individual_field_by_tag(tag);
-  if (fmt == nullptr) ///< if the variant is missing or the PL tag is missing, return an empty IndividualField
-    return IndividualField<IndividualFieldValue<string>>{};
-  return IndividualField<IndividualFieldValue<string>>{m_body, fmt};
+  return individual_field_as<string>(tag);
 }
 
-inline bcf_fmt_t* Variant::find_individual_field_by_tag(const string& tag) const {
-  return bcf_get_fmt(m_header.get(), m_body.get(), tag.c_str());     
+IndividualField<IndividualFieldValue<int32_t>> Variant::integer_individual_field(const int32_t index) const {
+  if (check_field(BCF_HL_FMT, BCF_HT_INT, index))
+    return individual_field_as<int32_t>(index); 
+  return IndividualField<IndividualFieldValue<int32_t>>{};
 }
 
-inline bcf_info_t* Variant::find_shared_field_by_tag(const string& tag) const {
-  return bcf_get_info(m_header.get(), m_body.get(), tag.c_str());     
+IndividualField<IndividualFieldValue<float>> Variant::float_individual_field(const int32_t index) const {
+  if (check_field(BCF_HL_FMT, BCF_HT_REAL, index))
+    return individual_field_as<float>(index); 
+  return IndividualField<IndividualFieldValue<float>>{};
 }
 
+IndividualField<IndividualFieldValue<string>> Variant::string_individual_field(const int32_t index) const {
+  if (check_field(BCF_HL_FMT, BCF_HT_STR, index))
+    return individual_field_as<string>(index); 
+  return IndividualField<IndividualFieldValue<string>>{};
+}
+
+IndividualField<IndividualFieldValue<int32_t>> Variant::individual_field_as_integer(const int32_t index) const {
+  return individual_field_as<int32_t>(index);
+}
+
+IndividualField<IndividualFieldValue<float>> Variant::individual_field_as_float(const int32_t index) const {
+  return individual_field_as<float>(index);
+}
+
+IndividualField<IndividualFieldValue<std::string>> Variant::individual_field_as_string(const int32_t index) const {
+  return individual_field_as<string>(index);
+}
+
+
+/******************************************************************************
+ * Shared field API                                                           *
+ ******************************************************************************/
 bool Variant::boolean_shared_field(const std::string& tag) const {
-  const auto info = find_shared_field_by_tag(tag);
-  return info != nullptr;
+  return find_shared_field(tag) != nullptr;
+}
+
+bool Variant::boolean_shared_field(const int32_t index) const {
+  return find_shared_field(index) != nullptr;
 }
 
 SharedField<int32_t> Variant::integer_shared_field(const std::string& tag) const {
-  const auto id = bcf_hdr_id2int(m_header.get(), BCF_DT_ID, tag.c_str());
-  if (!bcf_hdr_idinfo_exists(m_header.get(), BCF_HL_INFO, id))
-    return SharedField<int32_t>{};
-  if (bcf_hdr_id2type(m_header.get(), BCF_HL_INFO,id) != BCF_HT_INT)
-    throw runtime_error("shared field requested is not a int");
-  return shared_field_as_integer(tag); // @todo: move this to an indexed based lookup API
+  return integer_shared_field(get_field_index(tag));
 }
 
 SharedField<float> Variant::float_shared_field(const std::string& tag) const {
-  const auto id = bcf_hdr_id2int(m_header.get(), BCF_DT_ID, tag.c_str());
-  if (!bcf_hdr_idinfo_exists(m_header.get(), BCF_HL_INFO, id))
-    return SharedField<float>{};
-  if (bcf_hdr_id2type(m_header.get(), BCF_HL_INFO,id) != BCF_HT_REAL)
-    throw runtime_error("shared field requested is not a float");
-  return shared_field_as_float(tag); // @todo: move this to an indexed based lookup API
+  return float_shared_field(get_field_index(tag));
 }
 
 SharedField<string> Variant::string_shared_field(const std::string& tag) const {
-  const auto id = bcf_hdr_id2int(m_header.get(), BCF_DT_ID, tag.c_str());
-  if (!bcf_hdr_idinfo_exists(m_header.get(), BCF_HL_INFO, id)) 
-    return SharedField<string>{};
-  if (bcf_hdr_id2type(m_header.get(), BCF_HL_INFO,id) != BCF_HT_STR)
-    throw runtime_error("shared field requested is not a string");
-  return shared_field_as_string(tag); // @todo: move this to an indexed based lookup API
+  return string_shared_field(get_field_index(tag));
 }
 
 SharedField<int32_t> Variant::shared_field_as_integer(const std::string& tag) const {
-  const auto info = find_shared_field_by_tag(tag);
-  if (info == nullptr) 
-    return SharedField<int32_t>{};
-  return SharedField<int32_t>{m_body, info};
+  return shared_field_as<int32_t>(tag);
 }
 
 SharedField<float> Variant::shared_field_as_float(const std::string& tag) const {
-  const auto info = find_shared_field_by_tag(tag);
-  if (info == nullptr)
-    return SharedField<float>{};
-  return SharedField<float>{m_body, info};
+  return shared_field_as<float>(tag);
 }
 
 SharedField<string> Variant::shared_field_as_string(const std::string& tag) const {
-  const auto info = find_shared_field_by_tag(tag);
-  if (info == nullptr)
-    return SharedField<string>{};
-  return SharedField<string>{m_body, info};
+  return shared_field_as<string>(tag);
+}
+
+SharedField<int32_t> Variant::integer_shared_field(const int32_t index) const {
+  if (check_field(BCF_HL_INFO, BCF_HT_INT, index))
+    return shared_field_as<int32_t>(index); 
+  return SharedField<int32_t>{};
+}
+
+SharedField<float> Variant::float_shared_field(const int32_t index) const {
+  if (check_field(BCF_HL_INFO, BCF_HT_REAL, index))
+    return shared_field_as<float>(index); 
+  return SharedField<float>{};
+}
+
+SharedField<string> Variant::string_shared_field(const int32_t index) const {
+  if (check_field(BCF_HL_INFO, BCF_HT_STR, index))
+    return shared_field_as<string>(index); 
+  return SharedField<string>{};
+}
+
+SharedField<int32_t> Variant::shared_field_as_integer(const int32_t index) const {
+  return shared_field_as<int32_t>(index);
+}
+
+SharedField<float> Variant::shared_field_as_float(const int32_t index) const {
+  return shared_field_as<float>(index);
+}
+
+SharedField<string> Variant::shared_field_as_string(const int32_t index) const {
+  return shared_field_as<string>(index);
 }
 
 IndividualField<Genotype> Variant::genotypes() const {

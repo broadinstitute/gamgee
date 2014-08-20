@@ -29,9 +29,9 @@ class Variant {
   Variant() = default;                                                                                        ///< initializes a null Variant @note this is only used internally by the iterators @warning if you need to create a Variant from scratch, use the builder instead
   explicit Variant(const std::shared_ptr<bcf_hdr_t>& header, const std::shared_ptr<bcf1_t>& body) noexcept;   ///< creates a Variant given htslib objects. @note used by all iterators
   Variant(const Variant& other);                                                                              ///< makes a deep copy of a Variant and it's header. Shared pointers maintain state to all other associated objects correctly.
-  Variant(Variant&& other) noexcept;                                                                          ///< moves Variant and it's header accordingly. Shared pointers maintain state to all other associated objects correctly.
   Variant& operator=(const Variant& other);                                                                   ///< deep copy assignment of a Variant and it's header. Shared pointers maintain state to all other associated objects correctly.
-  Variant& operator=(Variant&& other) noexcept;                                                               ///< move assignment of a Variant and it's header. Shared pointers maintain state to all other associated objects correctly.
+  Variant(Variant&& other) = default;                                                                         ///< moves Variant and it's header accordingly. Shared pointers maintain state to all other associated objects correctly.
+  Variant& operator=(Variant&& other) = default;                                                              ///< move assignment of a Variant and it's header. Shared pointers maintain state to all other associated objects correctly.
 
   VariantHeader header() const { return VariantHeader{m_header}; }
 
@@ -52,13 +52,19 @@ class Variant {
 
 
   // individual field getters (a.k.a "format fields")
-  IndividualField<IndividualFieldValue<int32_t>> integer_individual_field(const std::string& tag) const;       ///< returns a random access object with all the values in a given individual field tag in integer format for all samples contiguous in memory.  @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
-  IndividualField<IndividualFieldValue<float>> float_individual_field(const std::string& tag) const;           ///< returns a random access object with all the values in a given individual field tag in float format for all samples contiguous in memory.  @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
-  IndividualField<IndividualFieldValue<std::string>> string_individual_field(const std::string& tag) const;    ///< returns a random access object with all the values in a given individual field tag in string format for all samples contiguous in memory. @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
-  IndividualField<IndividualFieldValue<int32_t>> individual_field_as_integer(const std::string& tag) const;    ///< same as integer_format_field but will attempt to convert underlying data to integer if possible. @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
-  IndividualField<IndividualFieldValue<float>> individual_field_as_float(const std::string& tag) const;        ///< same as float_format_field but will attempt to convert underlying data to float if possible. @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
-  IndividualField<IndividualFieldValue<std::string>> individual_field_as_string(const std::string& tag) const; ///< same as string_format_field but will attempt to convert underlying data to string if possible. @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
   IndividualField<Genotype> genotypes() const;                                                                 ///< special getter for the Genotype (GT) field. Returns a random access object with all the values in a given GT tag for all samples contiguous in memory. @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<IndividualFieldValue<int32_t>> integer_individual_field(const std::string& tag) const;       ///< returns a random access object with all the values in a given individual field tag in integer format for all samples contiguous in memory.  @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<IndividualFieldValue<float>> float_individual_field(const std::string& tag) const;           ///< returns a random access object with all the values in a given individual field tag in float format for all samples contiguous in memory.  @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<IndividualFieldValue<std::string>> string_individual_field(const std::string& tag) const;    ///< returns a random access object with all the values in a given individual field tag in string format for all samples contiguous in memory. @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<IndividualFieldValue<int32_t>> individual_field_as_integer(const std::string& tag) const;    ///< same as integer_individual_field but will attempt to convert underlying data to integer if possible. @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<IndividualFieldValue<float>> individual_field_as_float(const std::string& tag) const;        ///< same as float_individual_field but will attempt to convert underlying data to float if possible. @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<IndividualFieldValue<std::string>> individual_field_as_string(const std::string& tag) const; ///< same as string_individual_field but will attempt to convert underlying data to string if possible. @warning Only int8_t GT fields have been tested.
+  IndividualField<IndividualFieldValue<int32_t>> integer_individual_field(const int32_t index) const;          ///< returns a random access object with all the values in a given individual field tag index in integer format for all samples contiguous in memory. @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<IndividualFieldValue<float>> float_individual_field(const int32_t index) const;              ///< returns a random access object with all the values in a given individual field tag index in float format for all samples contiguous in memory.   @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<IndividualFieldValue<std::string>> string_individual_field(const int32_t index) const;       ///< returns a random access object with all the values in a given individual field tag index in string format for all samples contiguous in memory.   @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<IndividualFieldValue<int32_t>> individual_field_as_integer(const int32_t index) const;       ///< same as integer_individual_field but will attempt to convert underlying data to integer if possible. @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<IndividualFieldValue<float>> individual_field_as_float(const int32_t index) const;           ///< same as float_individual_field but will attempt to convert underlying data to float if possible. @warning creates a new object but makes no copies of the underlying values.
+  IndividualField<IndividualFieldValue<std::string>> individual_field_as_string(const int32_t index) const;    ///< same as string_individual_field but will attempt to convert underlying data to string if possible. @warning creates a new object but makes no copies of the underlying values.
 
   // shared field getters (a.k.a "info fields")
   bool boolean_shared_field(const std::string& tag) const;                       ///< whether or not the tag is present @note bools are treated specially as vector<bool> is impossible given the spec
@@ -68,6 +74,14 @@ class Variant {
   SharedField<int32_t> shared_field_as_integer(const std::string& tag) const;    ///< same as integer_shared_field but will attempt to convert underlying data to integer if possible. @warning creates a new object but makes no copies of the underlying values.
   SharedField<float> shared_field_as_float(const std::string& tag) const;        ///< same as float_shared_field but will attempt to convert underlying data to float if possible. @warning creates a new object but makes no copies of the underlying values.
   SharedField<std::string> shared_field_as_string(const std::string& tag) const; ///< same as string_shared_field but will attempt to convert underlying data to string if possible. @warning creates a new object but makes no copies of the underlying values.
+  bool boolean_shared_field(const int32_t index) const;                          ///< whether or not the tag with this index is present @note bools are treated specially as vector<bool> is impossible given the spec
+  SharedField<int32_t> integer_shared_field(const int32_t index) const;          ///< same as integer_shared_field but will attempt to convert underlying data to integer if possible. @warning creates a new object but makes no copies of the underlying values.
+  SharedField<float> float_shared_field(const int32_t index) const;              ///< same as float_shared_field but will attempt to convert underlying data to float if possible. @warning creates a new object but makes no copies of the underlying values.
+  SharedField<std::string> string_shared_field(const int32_t index) const;       ///< same as string_shared_field but will attempt to convert underlying data to string if possible. @warning creates a new object but makes no copies of the underlying values.
+  SharedField<int32_t> shared_field_as_integer(const int32_t index) const;       ///< same as integer_shared_field but will attempt to convert underlying data to integer if possible. @warning creates a new object but makes no copies of the underlying values.
+  SharedField<float> shared_field_as_float(const int32_t index) const;           ///< same as float_shared_field but will attempt to convert underlying data to float if possible. @warning creates a new object but makes no copies of the underlying values.
+  SharedField<std::string> shared_field_as_string(const int32_t index) const;    ///< same as string_shared_field but will attempt to convert underlying data to string if possible. @warning creates a new object but makes no copies of the underlying values.
+
   /**
    * @brief functional-stlye set logic operations for variant field vectors
    *
@@ -137,9 +151,17 @@ class Variant {
   std::shared_ptr<bcf_hdr_t> m_header;                                                                        ///< htslib variant header pointer
   std::shared_ptr<bcf1_t> m_body;                                                                             ///< htslib variant body pointer
 
-  inline bcf_fmt_t* find_individual_field_by_tag(const std::string& tag) const;
-  inline bcf_info_t* find_shared_field_by_tag(const std::string& tag) const;
-  template <typename TYPE> inline std::vector<TYPE> shared_field(const std::string& tag, const int type) const;
+  uint32_t get_field_index(const std::string& tag) const { return bcf_hdr_id2int(m_header.get(), BCF_DT_ID, tag.c_str()); }
+  bool     check_field_exists(const int type_field, const int index) const { return index >= 0 && bcf_hdr_idinfo_exists(m_header.get(), type_field, index); }
+  bool     check_field_type(const int type_field, const uint32_t type_value, const int index) const { return bcf_hdr_id2type(m_header.get(), type_field, index) == type_value; }
+  bcf_fmt_t*  find_individual_field(const std::string& tag) const { return bcf_get_fmt(m_header.get(), m_body.get(), tag.c_str());  }
+  bcf_info_t* find_shared_field(const std::string& tag)     const { return bcf_get_info(m_header.get(), m_body.get(), tag.c_str()); }
+  bcf_fmt_t*  find_individual_field(const uint32_t index) const { return bcf_get_fmt_idx(m_body.get(), index);                    }
+  bcf_info_t* find_shared_field(const uint32_t index)     const { return bcf_get_info_idx(m_body.get(), index);                   }
+  bool check_field(const int32_t type_field, const int32_t type_value, const int32_t index) const;
+
+  template<class FIELD_TYPE, class INDEX_OR_TAG> SharedField<FIELD_TYPE> shared_field_as(const INDEX_OR_TAG& p) const;
+  template<class FIELD_TYPE, class INDEX_OR_TAG> IndividualField<IndividualFieldValue<FIELD_TYPE>> individual_field_as(const INDEX_OR_TAG& p) const;
 
   friend class VariantWriter;
 };

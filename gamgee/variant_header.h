@@ -40,6 +40,14 @@ class VariantHeader {
 
   void advanced_merge_header(const VariantHeader& other) { bcf_hdr_combine(other.m_header.get(), m_header.get()); }
 
+  /**
+   * @brief looks up the index of a particular filter, shared or individual field tag, enabling subsequent O(1) random-access lookups for that field throughout the iteration. 
+   * @return missing_values::int32_t if the tag is not present in the header (you can use missing() on the return value to check)
+   * @note prefer this to looking up tag names during the iteration if you are looking for shared fields multiple times. 
+   * @note if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), they will also have the same index internally, so this function will do the right thing. The accessors for individual and shared field will know how to use the index to retrieve the correct field.
+   */
+  int32_t field_index(const std::string& tag) const;                                      
+
  private:
   std::shared_ptr<bcf_hdr_t> m_header;
   

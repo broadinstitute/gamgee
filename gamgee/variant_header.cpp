@@ -1,6 +1,7 @@
 #include "variant_header.h"
 #include "utils/hts_memory.h"
 #include "utils/utils.h"
+#include "missing.h"
 
 #include <string>
 #include <vector>
@@ -77,6 +78,11 @@ vector<string> VariantHeader::individual_fields() const {
 bool VariantHeader::has_individual_field(const string field) const {
   const auto& fields = individual_fields();
   return find(fields.begin(), fields.end(), field) != fields.end();
+}
+
+int32_t VariantHeader::field_index(const string& tag) const { 
+  const auto index = bcf_hdr_id2int(m_header.get(), BCF_DT_ID, tag.c_str());
+  return index >= 0 ? index : missing_values::int32;
 }
 
 }
