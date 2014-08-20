@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['indexedsamiterator',['IndexedSamIterator',['../classgamgee_1_1_indexed_sam_iterator.html',1,'gamgee']]],
+  ['indexedsamreader',['IndexedSamReader',['../classgamgee_1_1_indexed_sam_reader.html',1,'gamgee']]],
   ['individualfield',['IndividualField',['../classgamgee_1_1_individual_field.html',1,'gamgee']]],
   ['individualfielditerator',['IndividualFieldIterator',['../classgamgee_1_1_individual_field_iterator.html',1,'gamgee']]],
   ['individualfieldvalue',['IndividualFieldValue',['../classgamgee_1_1_individual_field_value.html',1,'gamgee']]],

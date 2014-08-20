@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pairsamreader',['PairSamReader',['../namespacegamgee.html#aa7286f2e8ef592ae858c97b6f9045d0c',1,'gamgee']]]
+  ['indexedsinglesamreader',['IndexedSingleSamReader',['../namespacegamgee.html#ad57cad9569e33a2a0708f90784652a38',1,'gamgee']]]
 ];
