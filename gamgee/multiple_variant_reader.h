@@ -44,7 +44,7 @@ class MultipleVariantReader {
    */
   MultipleVariantReader(const std::vector<std::string>& filenames, const bool validate_headers = true) :
     m_variant_files { },
-    m_variant_header { nullptr }
+    m_variant_header { }
   {
     init_reader(filenames, validate_headers);
   }
@@ -76,10 +76,10 @@ class MultipleVariantReader {
     for (const auto& filename : filenames) {
       // TODO? check for maximum one stream
       vcfFile* file_ptr = bcf_open(filename.empty() ? "-" : filename.c_str(), "r");
-      m_variant_files.push_back(file_ptr);
+      m_variant_files.push_back(utils::make_shared_hts_file(file_ptr));
 
       const auto& header_ptr = utils::make_shared_variant_header(bcf_hdr_read(file_ptr));
-      if (m_variant_header == nullptr)
+      if (!m_variant_header)
         m_variant_header = header_ptr;
 
       if (validate_headers)
@@ -90,24 +90,14 @@ class MultipleVariantReader {
   /**
    * @brief MultipleVariantReader should never be copied, but it can be moved
    */
-  MultipleVariantReader(MultipleVariantReader&& other) :
-    m_variant_files {std::move(other.m_variant_files)},
-    m_variant_header {std::move(other.m_variant_header)}
-  {}
-
-  /**
-   * @brief closes the file streams if they are files
-   */
-  ~MultipleVariantReader() {
-    for (auto file_ptr : m_variant_files)
-      if (file_ptr != nullptr)
-        bcf_close(file_ptr);
-  }
+  MultipleVariantReader(MultipleVariantReader&& other) = default;
+  MultipleVariantReader& operator=(MultipleVariantReader&& other) = default;
 
   /**
    * @brief a MultipleVariantReader cannot be copied safely, as it is iterating over streams.
    */
   MultipleVariantReader(const MultipleVariantReader&) = delete;
+  MultipleVariantReader& operator=(const MultipleVariantReader& other) = delete;
 
   /**
    * @brief creates an ITERATOR pointing at the start of the input streams (needed by for-each
@@ -140,8 +130,8 @@ class MultipleVariantReader {
     HeaderException() : std::runtime_error("Error: chromosomes in header files are inconsistent") { }
   };
  private:
-  std::vector<vcfFile*> m_variant_files;                ///< vector of the internal file structures of the variant files
-  std::shared_ptr<bcf_hdr_t> m_variant_header;          ///< the internal header structure of the first variant file
+  std::vector<std::shared_ptr<htsFile>> m_variant_files;        ///< vector of the internal file structures of the variant files
+  std::shared_ptr<bcf_hdr_t> m_variant_header;                  ///< the internal header structure of the first variant file
 
   ///< confirms that the chromosomes in the headers of all of the input files are identical
   // TODO? only handles chromosome names, not lengths

@@ -7,7 +7,7 @@ MultipleVariantIterator::MultipleVariantIterator() :
   m_variant_vector {}
 {}
 
-MultipleVariantIterator::MultipleVariantIterator(const std::vector<vcfFile*> variant_files, const std::shared_ptr<bcf_hdr_t> variant_header) :
+MultipleVariantIterator::MultipleVariantIterator(const std::vector<std::shared_ptr<htsFile>> variant_files, const std::shared_ptr<bcf_hdr_t> variant_header) :
   m_queue {},
   m_variant_vector {}
 {
@@ -17,11 +17,6 @@ MultipleVariantIterator::MultipleVariantIterator(const std::vector<vcfFile*> var
   }
   fetch_next_vector();
 }
-
-MultipleVariantIterator::MultipleVariantIterator(MultipleVariantIterator&& original) :
-  m_queue {std::move(original.m_queue)},
-  m_variant_vector {std::move(original.m_variant_vector)}
-{}
 
 std::vector<Variant>& MultipleVariantIterator::operator*() {
   return m_variant_vector;

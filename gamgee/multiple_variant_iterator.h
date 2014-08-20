@@ -25,15 +25,22 @@ class MultipleVariantIterator {
   /**
    * @brief initializes a new iterator based on a vector of input files (vcf or bcf)
    *
-   * @param variant_files   vector of vcf/bcf files opened via the bcf_open() macro from htslib
+   * @param variant_files  vector of vcf/bcf files opened via the bcf_open() macro from htslib
    * @param variant_header the combined vcf/bcf file header
    */
-  MultipleVariantIterator(const std::vector<vcfFile*> variant_files, const std::shared_ptr<bcf_hdr_t> variant_header);
+  MultipleVariantIterator(const std::vector<std::shared_ptr<htsFile>> variant_files, const std::shared_ptr<bcf_hdr_t> variant_header);
 
   /**
    * @brief a MultipleVariantIterator move constructor guarantees all objects will have the same state.
    */
-  MultipleVariantIterator(MultipleVariantIterator&&);
+  MultipleVariantIterator(MultipleVariantIterator&&) = default;
+  MultipleVariantIterator& operator=(MultipleVariantIterator&& other) = default;
+
+  /**
+   * @brief a MultipleVariantIterator cannot be copied safely, as it is iterating over streams.
+   */
+  MultipleVariantIterator(const MultipleVariantIterator&) = delete;
+  MultipleVariantIterator& operator=(const MultipleVariantIterator& other) = delete;
 
   /**
    * @brief pseudo-inequality operator (needed by for-each loop)

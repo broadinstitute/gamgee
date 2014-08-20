@@ -7,12 +7,12 @@ using namespace std;
 namespace gamgee {
 
 VariantIterator::VariantIterator() :
-  m_variant_file_ptr {nullptr},
-  m_variant_header_ptr {nullptr},
-  m_variant_record_ptr {nullptr}
+  m_variant_file_ptr {},
+  m_variant_header_ptr {},
+  m_variant_record_ptr {}
 {}
 
-VariantIterator::VariantIterator(vcfFile* variant_file_ptr, const std::shared_ptr<bcf_hdr_t>& variant_header_ptr) :
+VariantIterator::VariantIterator(const std::shared_ptr<htsFile>& variant_file_ptr, const std::shared_ptr<bcf_hdr_t>& variant_header_ptr) :
   m_variant_file_ptr {variant_file_ptr},
   m_variant_header_ptr {variant_header_ptr},
   m_variant_record_ptr {utils::make_shared_variant(bcf_init1())},      ///< important to initialize the record buffer in the constructor so we can reuse it across the iterator
@@ -35,7 +35,7 @@ bool VariantIterator::operator!=(const VariantIterator& rhs) {
 }
 
 bool VariantIterator::empty() {
-  return m_variant_file_ptr == nullptr;
+  return !m_variant_file_ptr;
 }
 
 /**
@@ -43,8 +43,8 @@ bool VariantIterator::empty() {
  * @warning we're reusing the existing htslib memory, so users should be aware that all objects from the previous iteration are now stale unless a deep copy has been performed
  */
 void VariantIterator::fetch_next_record() {
- if (bcf_read1(m_variant_file_ptr, m_variant_header_ptr.get(), m_variant_record_ptr.get()) < 0) {
-    m_variant_file_ptr = nullptr;
+ if (bcf_read1(m_variant_file_ptr.get(), m_variant_header_ptr.get(), m_variant_record_ptr.get()) < 0) {
+    m_variant_file_ptr.reset();
     m_variant_record = Variant{};
   }
 }
