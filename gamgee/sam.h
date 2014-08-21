@@ -19,14 +19,56 @@ namespace gamgee {
  */
 class Sam {
  public:
-  Sam() = default;                                                                                      ///< @brief initializes a null Sam @note this is only used internally by the iterators @warning if you need to create a Variant from scratch, use the builder instead
-  explicit Sam(const std::shared_ptr<bam_hdr_t>& header, const std::shared_ptr<bam1_t>& body) noexcept; ///< @brief creates a Sam given htslib objects. @note used by all iterators
-  Sam(const Sam& other);                                                                                ///< @brief makes a deep copy of a Sam and it's header. Shared pointers maintain state to all other associated objects correctly.
-  Sam(Sam&& other) noexcept;                                                                            ///< @brief moves Sam and it's header accordingly. Shared pointers maintain state to all other associated objects correctly.
-  Sam& operator=(const Sam& other);                                                                     ///< @brief deep copy assignment of a Sam and it's header. Shared pointers maintain state to all other associated objects correctly.
-  Sam& operator=(Sam&& other) noexcept;                                                                 ///< @brief move assignment of a Sam and it's header. Shared pointers maintain state to all other associated objects correctly.
+  /**
+   * @brief initializes a null Sam.
+   * @note this is only used internally by the iterators 
+   * @warning if you need to create a Sam from scratch, use the builder instead
+   */
+  Sam() = default;
 
-  SamHeader header() { return SamHeader{m_header}; }
+  /**
+   * @brief creates a sam record that points to htslib memory already allocated
+   *
+   * @note the resulting Sam shares ownership of the pre-allocated memory via shared_ptr
+   *       reference counting
+   */
+  explicit Sam(const std::shared_ptr<bam_hdr_t>& header, const std::shared_ptr<bam1_t>& body) noexcept; 
+
+  /**
+   * @brief creates a deep copy of a sam record
+   *
+   * @note the copy will have exclusive ownership over the newly-allocated htslib memory
+   *       until a data field (cigar, bases, etc.) is accessed, after which it will be
+   *       shared via reference counting with the Cigar, etc. objects
+   * @note does not perform a deep copy of the sam header; to copy the header,
+   *       first get it via the header() function and then copy it via the usual C++
+   *       semantics
+   */
+  Sam(const Sam& other);
+
+  /**
+   * @copydoc Sam::Sam(const Sam&)  
+   */ 
+  Sam& operator=(const Sam& other);
+
+  /**
+   * @brief moves Sam and its header accordingly. Shared pointers maintain state to all other associated objects correctly.
+   */
+  Sam(Sam&& other) = default;
+
+  /**
+   * @brief move assignment of a Sam and it's header. Shared pointers maintain state to all other associated objects correctly.
+   */
+  Sam& operator=(Sam&& other) = default;
+
+  /**
+   * @brief the header of the Sam record
+   *
+   * @return a newly created SamHeader object every time it's called but the htslib memory used by the header is the same (no new allocations).
+   */
+  SamHeader header() { 
+    return SamHeader{m_header}; 
+  }
 
   /**
    * @brief chromosome index of the read.
@@ -35,21 +77,21 @@ class Sam {
    *
    * @return the integer representation of the chromosome.
    */
-  uint32_t chromosome()           const { return uint32_t(m_body->core.tid);     }       
+  uint32_t chromosome() const { return uint32_t(m_body->core.tid);     }       
 
   /**
    * @brief the reference position of the first base in the read
    * @note the internal encoding is 0-based to mimic that of the BAM files.
    * @return a (1-based and inclusive) alignment start position (as you would see in a Sam file).
    */
-  uint32_t alignment_start()      const { return uint32_t(m_body->core.pos+1);   }       
+  uint32_t alignment_start() const { return uint32_t(m_body->core.pos+1);   }       
 
   /**
    * @brief returns a (1-based and inclusive) alignment stop position. 
    * @note the internal encoding is 0-based to mimic that of the BAM files. 
    * @note htslib's bam_endpos returns the coordinate of the first base AFTER the alignment, 0-based, so that translates into the last base IN the 1-based alignment.
    */
-  uint32_t alignment_stop()       const { return uint32_t(bam_endpos(m_body.get())); }   
+  uint32_t alignment_stop() const { return uint32_t(bam_endpos(m_body.get())); }   
 
   /**
    * @brief calculates the theoretical alignment start of a read that has soft/hard-clips preceding the alignment
@@ -62,7 +104,7 @@ class Sam {
    * Invalid to call on an unmapped read.
    * Invalid to call with cigar = null
    */
-  uint32_t unclipped_start()      const ;
+  uint32_t unclipped_start() const ;
 
   /**
    * @brief calculates the theoretical alignment stop of a read that has soft/hard-clips preceding the alignment
@@ -74,14 +116,14 @@ class Sam {
    * @warning Invalid to call on an unmapped read.
    * @warning Invalid to call with cigar = null
    */
-  uint32_t unclipped_stop()       const ;
+  uint32_t unclipped_stop() const ;
 
   /**
    * @brief returns the integer representation of the mate's chromosome. 
    *
    * Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). 
    */
-  uint32_t mate_chromosome()      const { return uint32_t(m_body->core.mtid);    }       
+  uint32_t mate_chromosome() const { return uint32_t(m_body->core.mtid);    }       
 
   /**
    * @brief returns a (1-based and inclusive) mate's alignment start position (as you would see in a Sam file). 
@@ -94,7 +136,7 @@ class Sam {
    * @note the internal encoding is 0-based to mimic that of the BAM files. 
    * @throw std::invalid_argument if called on a record that doesn't contain the mate cigar ("MC") tag.
    */
-  uint32_t mate_alignment_stop()  const ;                                                
+  uint32_t mate_alignment_stop() const ;                                                
 
   /**
    * @brief returns a (1-based and inclusive) mate's alignment stop position. 
@@ -123,7 +165,7 @@ class Sam {
    * @warning This overload DOES NOT throw an exception if the mate cigar tag is missing. Instead it returns mate_alignment_start(). Treat it as undefined behavior. 
    * @note the internal encoding is 0-based to mimic that of the BAM files. 
    */
-  uint32_t mate_alignment_stop(const SamTag<std::string>& mate_cigar_tag)  const ;       
+  uint32_t mate_alignment_stop(const SamTag<std::string>& mate_cigar_tag) const ;       
 
   /**
    * @brief returns a (1-based and inclusive) mate's unclipped alignment start position. 
@@ -163,7 +205,7 @@ class Sam {
   /**
    * @brief returns a (1-based and inclusive) mate's unclipped alignment stop position. @throw std::invalid_argument if called on a record that doesn't contain the mate cigar ("MC") tag.
    */
-  uint32_t mate_unclipped_stop()  const ;                                                
+  uint32_t mate_unclipped_stop() const ;                                                
 
   /**
    * @brief returns a (1-based and inclusive) mate's unclipped alignment stop position. 
@@ -192,7 +234,7 @@ class Sam {
    * @warning This overload DOES NOT throw an exception if the mate cigar tag is missing. Instead it returns mate_alignment_start(). Treat it as undefined behavior. 
    * @note the internal encoding is 0-based to mimic that of the BAM files.
    */
-  uint32_t mate_unclipped_stop(const SamTag<std::string>& mate_cigar_tag)  const;        
+  uint32_t mate_unclipped_stop(const SamTag<std::string>& mate_cigar_tag) const;        
 
   // modify non-variable length fields (things outside of the data member)
   // TODO: provide setter for TLEN (core.isize)?
@@ -202,9 +244,9 @@ class Sam {
   void set_mate_alignment_start(const uint32_t mstart) { m_body->core.mpos = int32_t(mstart - 1); } ///< @brief simple setter for the mate's alignment start. @warning You should use (1-based and inclusive) alignment but internally this is stored 0-based to simplify BAM conversion.
 
   // getters for fields inside the data field
-  std::string name()     const { return std::string{bam_get_qname(m_body.get())}; } ///< @brief returns the read name
-  Cigar cigar()          const { return Cigar{m_body}; }                            ///< @brief returns the cigar. @warning the objects returned by this member function will share underlying htslib memory with this object. @warning creates an object but doesn't copy the underlying values.
-  ReadBases bases()      const { return ReadBases{m_body}; }                        ///< @brief returns the read bases. @warning the objects returned by this member function will share underlying htslib memory with this object. @warning creates an object but doesn't copy the underlying values.
+  std::string name() const { return std::string{bam_get_qname(m_body.get())}; } ///< @brief returns the read name
+  Cigar cigar() const { return Cigar{m_body}; }                            ///< @brief returns the cigar. @warning the objects returned by this member function will share underlying htslib memory with this object. @warning creates an object but doesn't copy the underlying values.
+  ReadBases bases() const { return ReadBases{m_body}; }                        ///< @brief returns the read bases. @warning the objects returned by this member function will share underlying htslib memory with this object. @warning creates an object but doesn't copy the underlying values.
   BaseQuals base_quals() const { return BaseQuals{m_body}; }                        ///< @brief returns the base qualities. @warning the objects returned by this member function will share underlying htslib memory with this object. @warning creates an object but doesn't copy the underlying values. 
 
   // getters for tagged values within the aux part of the data field
@@ -214,18 +256,18 @@ class Sam {
   SamTag<std::string> string_tag(const std::string& tag_name) const; ///< @brief retrieve a string-valued tag by name. @warning creates an object but doesn't copy the underlying values.
 
   // getters for flags 
-  bool paired()          const { return m_body->core.flag & BAM_FPAIRED;        } ///< @brief whether or not this read is paired
+  bool paired() const { return m_body->core.flag & BAM_FPAIRED;        } ///< @brief whether or not this read is paired
   bool properly_paired() const { return m_body->core.flag & BAM_FPROPER_PAIR;   } ///< @brief whether or not this read is properly paired (see definition in BAM spec)
-  bool unmapped()        const { return m_body->core.flag & BAM_FUNMAP;         } ///< @brief whether or not this read is unmapped
-  bool next_unmapped()   const { return m_body->core.flag & BAM_FMUNMAP;        } ///< @brief whether or not the next read is unmapped
-  bool reverse()         const { return m_body->core.flag & BAM_FREVERSE;       } ///< @brief whether or not this read is from the reverse strand
-  bool next_reverse()    const { return m_body->core.flag & BAM_FMREVERSE;      } ///< @brief whether or not the next read is from the reverse strand
-  bool first()           const { return m_body->core.flag & BAM_FREAD1;         } ///< @brief whether or not this read is the first read in a pair (or multiple pairs)
-  bool last()            const { return m_body->core.flag & BAM_FREAD2;         } ///< @brief whether or not this read is the last read in a pair (or multiple pairs)
-  bool secondary()       const { return m_body->core.flag & BAM_FSECONDARY;     } ///< @brief whether or not this read is a secondary alignment (see definition in BAM spec)
-  bool fail()            const { return m_body->core.flag & BAM_FQCFAIL;        } ///< @brief whether or not this read is marked as failing vendor (sequencer) quality control
-  bool duplicate()       const { return m_body->core.flag & BAM_FDUP;           } ///< @brief whether or not this read is a duplicate
-  bool supplementary()   const { return m_body->core.flag & BAM_FSUPPLEMENTARY; } ///< @brief whether or not this read is a supplementary alignment (see definition in the BAM spec) 
+  bool unmapped() const { return m_body->core.flag & BAM_FUNMAP;         } ///< @brief whether or not this read is unmapped
+  bool next_unmapped() const { return m_body->core.flag & BAM_FMUNMAP;        } ///< @brief whether or not the next read is unmapped
+  bool reverse() const { return m_body->core.flag & BAM_FREVERSE;       } ///< @brief whether or not this read is from the reverse strand
+  bool next_reverse() const { return m_body->core.flag & BAM_FMREVERSE;      } ///< @brief whether or not the next read is from the reverse strand
+  bool first() const { return m_body->core.flag & BAM_FREAD1;         } ///< @brief whether or not this read is the first read in a pair (or multiple pairs)
+  bool last() const { return m_body->core.flag & BAM_FREAD2;         } ///< @brief whether or not this read is the last read in a pair (or multiple pairs)
+  bool secondary() const { return m_body->core.flag & BAM_FSECONDARY;     } ///< @brief whether or not this read is a secondary alignment (see definition in BAM spec)
+  bool fail() const { return m_body->core.flag & BAM_FQCFAIL;        } ///< @brief whether or not this read is marked as failing vendor (sequencer) quality control
+  bool duplicate() const { return m_body->core.flag & BAM_FDUP;           } ///< @brief whether or not this read is a duplicate
+  bool supplementary() const { return m_body->core.flag & BAM_FSUPPLEMENTARY; } ///< @brief whether or not this read is a supplementary alignment (see definition in the BAM spec) 
 
   // modify flags
   void set_paired()            { m_body->core.flag |= BAM_FPAIRED;         } 
