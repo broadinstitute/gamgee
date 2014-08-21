@@ -3,7 +3,7 @@
 
 #include "utils/hts_memory.h"
 #include "utils/utils.h"
-#include "utils/format_field_type.h"
+#include "utils/variant_field_type.h"
 #include "utils/genotype_utils.h"
 
 #include <memory>

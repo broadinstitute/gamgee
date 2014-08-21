@@ -1,7 +1,7 @@
 #ifndef gamgee__shared_field_iterator__guard
 #define gamgee__shared_field_iterator__guard
 
-#include "utils/format_field_type.h"
+#include "utils/variant_field_type.h"
 
 #include "htslib/vcf.h"
 
@@ -40,7 +40,7 @@ class SharedFieldIterator : public std::iterator<std::random_access_iterator_tag
     m_current_data_ptr {nullptr},
     m_original_data_ptr{nullptr},
     m_bytes_per_value{0},
-    m_type{utils::FormatFieldType::NIL} 
+    m_type{utils::VariantFieldType::NIL} 
   {}
 
   /**
@@ -51,7 +51,7 @@ class SharedFieldIterator : public std::iterator<std::random_access_iterator_tag
    * @param type the encoding of the value 
    * @note this constructor is probably only used by SharedField::begin() and SharedField::end()
    */
-  explicit SharedFieldIterator(const std::shared_ptr<bcf1_t>& body, uint8_t* data_ptr, const uint8_t bytes_per_value, const utils::FormatFieldType& type) :
+  explicit SharedFieldIterator(const std::shared_ptr<bcf1_t>& body, uint8_t* data_ptr, const uint8_t bytes_per_value, const utils::VariantFieldType& type) :
     m_body {body},
     m_current_data_ptr {data_ptr},
     m_original_data_ptr {data_ptr},
@@ -145,7 +145,7 @@ class SharedFieldIterator : public std::iterator<std::random_access_iterator_tag
   const uint8_t* m_current_data_ptr;
   const uint8_t* const m_original_data_ptr;
   const uint8_t m_bytes_per_value;
-  const utils::FormatFieldType m_type;
+  const utils::VariantFieldType m_type;
 
   VALUE_TYPE convert_from_byte_array(const uint8_t* data_ptr, int index) const;
 };

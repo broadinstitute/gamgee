@@ -71,7 +71,7 @@ class SharedField {
   explicit SharedField(const std::shared_ptr<bcf1_t>& body, const bcf_info_t* const info_ptr) :
     m_body {body},
     m_info_ptr {info_ptr},
-    m_bytes_per_value {utils::size_for_type(static_cast<utils::FormatFieldType>(info_ptr->type), info_ptr)}
+    m_bytes_per_value {utils::size_for_type(static_cast<utils::VariantFieldType>(info_ptr->type), info_ptr)}
   {}
 
   SharedField(const SharedField& other) = delete;            ///< @brief copying of the SharedField object is not allowed. Use move constructor instead.
@@ -123,13 +123,13 @@ class SharedField {
   /** @brief create a new iterator pointing to the begining of the values of this field */
   SharedFieldIterator<TYPE> begin() const {
     if (empty()) return SharedFieldIterator<TYPE>();
-    return SharedFieldIterator<TYPE>{m_body, m_info_ptr->vptr, m_bytes_per_value, static_cast<utils::FormatFieldType>(m_info_ptr->type)};
+    return SharedFieldIterator<TYPE>{m_body, m_info_ptr->vptr, m_bytes_per_value, static_cast<utils::VariantFieldType>(m_info_ptr->type)};
   }
 
   /** @brief create a new iterator pointing to the end of the values of this field */
   SharedFieldIterator<TYPE> end() const {
     if (empty()) return SharedFieldIterator<TYPE>();
-    return SharedFieldIterator<TYPE>{m_body, m_info_ptr->vptr + size() * m_bytes_per_value, m_bytes_per_value, static_cast<utils::FormatFieldType>(m_info_ptr->type)};
+    return SharedFieldIterator<TYPE>{m_body, m_info_ptr->vptr + size() * m_bytes_per_value, m_bytes_per_value, static_cast<utils::VariantFieldType>(m_info_ptr->type)};
   }
 
   uint32_t size() const { return m_info_ptr->len; } ///< @brief the number of values in this SharedField (values per sample)
@@ -152,7 +152,7 @@ uint32_t SharedField<std::string>::size() const { return empty() ? 0 : 1; } ///<
  */
 template<> inline
 int32_t SharedField<int32_t>::convert_from_byte_array(int index) const {
-  return utils::convert_data_to_integer(m_info_ptr->vptr, index, m_bytes_per_value, static_cast<utils::FormatFieldType>(m_info_ptr->type));
+  return utils::convert_data_to_integer(m_info_ptr->vptr, index, m_bytes_per_value, static_cast<utils::VariantFieldType>(m_info_ptr->type));
 }
 
 /**
@@ -160,7 +160,7 @@ int32_t SharedField<int32_t>::convert_from_byte_array(int index) const {
  */
 template<> inline
 float SharedField<float>::convert_from_byte_array(int index) const {
-  return utils::convert_data_to_float(m_info_ptr->vptr, index, m_bytes_per_value, static_cast<utils::FormatFieldType>(m_info_ptr->type));
+  return utils::convert_data_to_float(m_info_ptr->vptr, index, m_bytes_per_value, static_cast<utils::VariantFieldType>(m_info_ptr->type));
 }
 
 /**
@@ -168,7 +168,7 @@ float SharedField<float>::convert_from_byte_array(int index) const {
  */
 template<> inline
 std::string SharedField<std::string>::convert_from_byte_array(int index) const {
-  return utils::convert_data_to_string(m_info_ptr->vptr, index, m_bytes_per_value, static_cast<utils::FormatFieldType>(m_info_ptr->type));
+  return utils::convert_data_to_string(m_info_ptr->vptr, index, m_bytes_per_value, static_cast<utils::VariantFieldType>(m_info_ptr->type));
 }
 
 

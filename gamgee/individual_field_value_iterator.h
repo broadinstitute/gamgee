@@ -1,7 +1,7 @@
 #ifndef gamgee__individual_field_value_iterator__guard
 #define gamgee__individual_field_value_iterator__guard
 
-#include "utils/format_field_type.h"
+#include "utils/variant_field_type.h"
 
 #include "htslib/vcf.h"
 
@@ -40,7 +40,7 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
    * @note this constructor is probably only used by IndividualFieldValue::begin() and
    * IndividualFieldValue::end()
    */
-  IndividualFieldValueIterator(const std::shared_ptr<bcf1_t>& body, uint8_t* data_ptr, const uint8_t num_bytes, const utils::FormatFieldType& type) :
+  IndividualFieldValueIterator(const std::shared_ptr<bcf1_t>& body, uint8_t* data_ptr, const uint8_t num_bytes, const utils::VariantFieldType& type) :
     m_body {body},
     m_current_data_ptr {data_ptr},
     m_original_data_ptr {data_ptr},
@@ -204,7 +204,7 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
   const uint8_t* m_current_data_ptr;
   const uint8_t* const m_original_data_ptr;
   const uint8_t m_num_bytes;
-  const utils::FormatFieldType m_type;
+  const utils::VariantFieldType m_type;
 
   VALUE_TYPE convert_from_byte_array(const uint8_t* data_ptr, int index) const;
 };

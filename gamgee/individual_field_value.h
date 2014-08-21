@@ -4,7 +4,7 @@
 #include "individual_field_value_iterator.h"
 #include "utils/hts_memory.h"
 #include "utils/utils.h"
-#include "utils/format_field_type.h"
+#include "utils/variant_field_type.h"
 
 #include "htslib/vcf.h"
 
@@ -63,7 +63,7 @@ class IndividualFieldValue {
     m_body {body},
     m_format_ptr {format_ptr},
     m_data_ptr {data_ptr},
-    m_num_bytes {utils::size_for_type(static_cast<utils::FormatFieldType>(format_ptr->type), format_ptr)}
+    m_num_bytes {utils::size_for_type(static_cast<utils::VariantFieldType>(format_ptr->type), format_ptr)}
   {}
 
   /**
@@ -144,14 +144,14 @@ class IndividualFieldValue {
    * @brief create a new begin iterator over the values for this sample
    */
   IndividualFieldValueIterator<VALUE_TYPE> begin() const {
-    return IndividualFieldValueIterator<VALUE_TYPE>{m_body, m_data_ptr, m_num_bytes, static_cast<utils::FormatFieldType>(m_format_ptr->type)};
+    return IndividualFieldValueIterator<VALUE_TYPE>{m_body, m_data_ptr, m_num_bytes, static_cast<utils::VariantFieldType>(m_format_ptr->type)};
   }
 
   /**
    * @brief create a new end iterator over the values for this sample
    */
   IndividualFieldValueIterator<VALUE_TYPE> end() const {
-    return IndividualFieldValueIterator<VALUE_TYPE>{m_body, m_data_ptr + m_format_ptr->size, m_num_bytes, static_cast<utils::FormatFieldType>(m_format_ptr->type)};
+    return IndividualFieldValueIterator<VALUE_TYPE>{m_body, m_data_ptr + m_format_ptr->size, m_num_bytes, static_cast<utils::VariantFieldType>(m_format_ptr->type)};
   }
 
   uint32_t size() const { return m_format_ptr->n; } ///< @brief the number of values in this IndividualFieldValue (values per sample)
@@ -170,7 +170,7 @@ class IndividualFieldValue {
  */
 template<> inline
 int32_t IndividualFieldValue<int32_t>::convert_from_byte_array(int index) const {
-  return utils::convert_data_to_integer(m_data_ptr, index, m_num_bytes, static_cast<utils::FormatFieldType>(m_format_ptr->type));
+  return utils::convert_data_to_integer(m_data_ptr, index, m_num_bytes, static_cast<utils::VariantFieldType>(m_format_ptr->type));
 }
 
 /**
@@ -178,7 +178,7 @@ int32_t IndividualFieldValue<int32_t>::convert_from_byte_array(int index) const 
  */
 template<> inline
 float IndividualFieldValue<float>::convert_from_byte_array(int index) const {
-  return utils::convert_data_to_float(m_data_ptr, index, m_num_bytes, static_cast<utils::FormatFieldType>(m_format_ptr->type));
+  return utils::convert_data_to_float(m_data_ptr, index, m_num_bytes, static_cast<utils::VariantFieldType>(m_format_ptr->type));
 }
 
 /**
@@ -186,7 +186,7 @@ float IndividualFieldValue<float>::convert_from_byte_array(int index) const {
  */
 template<> inline
 std::string IndividualFieldValue<std::string>::convert_from_byte_array(int index) const {
-  return utils::convert_data_to_string(m_data_ptr, index, m_num_bytes, static_cast<utils::FormatFieldType>(m_format_ptr->type));
+  return utils::convert_data_to_string(m_data_ptr, index, m_num_bytes, static_cast<utils::VariantFieldType>(m_format_ptr->type));
 }
 
 
