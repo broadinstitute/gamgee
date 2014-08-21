@@ -478,6 +478,48 @@ BOOST_AUTO_TEST_CASE( single_variant_reader_vector_too_large )
   BOOST_CHECK_THROW((SingleVariantReader{vector<string>{"testdata/test_variants.vcf", "testdata/test_variants.vcf"}}), std::runtime_error);
 }
 
+BOOST_AUTO_TEST_CASE( single_variant_reader_move_test ) {
+  auto reader1 = SingleVariantReader{"testdata/test_variants.vcf"};
+
+  // move construct
+  auto reader2 = std::move(reader1);
+
+  // move assign
+  auto reader3 = SingleVariantReader{"testdata/test_variants_missing_data.vcf"};        // different file
+  reader3 = std::move(reader2);
+
+  auto truth_index = 0u;
+  for (const auto& record : reader3) {
+    check_variant_basic_api(record, truth_index);
+    check_quals_api(record, truth_index);
+    check_alt_api(record, truth_index);
+    check_filters_api(record, truth_index);
+    check_genotype_quals_api(record,truth_index);
+    check_phred_likelihoods_api(record, truth_index);
+    check_individual_field_api(record, truth_index);
+    check_shared_field_api(record, truth_index);
+    check_genotype_api(record, truth_index);
+    ++truth_index;
+  }
+}
+
+BOOST_AUTO_TEST_CASE( variant_iterator_move_test ) {
+  auto reader = SingleVariantReader{"testdata/test_variants.vcf"};
+  auto iter1 = reader.begin();
+  auto rec1 = *iter1;
+
+  // move construct
+  auto iter2 = std::move(iter1);
+  auto rec2 = *iter2;
+
+  // move assign
+  iter1 = std::move(iter2);
+  auto rec3 = *iter1;
+
+  BOOST_CHECK_EQUAL(rec1.alignment_start(), rec2.alignment_start());
+  BOOST_CHECK_EQUAL(rec1.alignment_start(), rec3.alignment_start());
+}
+
 BOOST_AUTO_TEST_CASE( multi_variant_reader_validation )
 {
   const std::vector<std::string> filenames1{"testdata/test_variants.vcf", "testdata/extra_header.vcf"};
@@ -571,6 +613,52 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_excluding )
 {
   multiple_variant_reader_sample_test(vector<string>{"NA12891"}, false, 2);  // exclude only NA12891
   multiple_variant_reader_sample_test(vector<string>{"NA12891", "NA12878"}, false, 1);  // exclude both these samples
+}
+
+BOOST_AUTO_TEST_CASE( multiple_variant_reader_move_test ) {
+  auto reader1 = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants.bcf"}, false};
+  auto iter1 = reader1.begin();
+
+  // move construct
+  auto reader2 = std::move(reader1);
+  auto iter2 = reader2.begin();
+
+  // move assign
+  reader1 = std::move(reader2);
+  auto iter3 = reader1.begin();
+
+  // because begin() advances state, iter1 -> vec1, iter2 -> vec2, iter3 -> vec3
+  ++iter1; // advance to vector 2
+  ++iter1; // advance to vector 3
+  ++iter2; // advance to vector 3
+
+  auto vec1 = *iter1;
+  auto vec2 = *iter2;
+  auto vec3 = *iter3;
+
+  for (auto i = 0u; i != vec1.size(); ++ i) {
+    BOOST_CHECK_EQUAL(vec1[i].alignment_start(), vec2[i].alignment_start());
+    BOOST_CHECK_EQUAL(vec1[i].alignment_start(), vec3[i].alignment_start());
+  }
+}
+
+BOOST_AUTO_TEST_CASE( multiple_variant_iterator_move_test ) {
+  auto reader = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants.bcf"}, false};
+  auto iter1 = reader.begin();
+  auto vec1 = *iter1;
+
+  // move construct
+  auto iter2 = std::move(iter1);
+  auto vec2 = *iter2;
+
+  // move assign
+  iter1 = std::move(iter2);
+  auto vec3 = *iter1;
+
+  for (auto i = 0u; i != vec1.size(); ++ i) {
+    BOOST_CHECK_EQUAL(vec1[i].alignment_start(), vec2[i].alignment_start());
+    BOOST_CHECK_EQUAL(vec1[i].alignment_start(), vec3[i].alignment_start());
+  }
 }
 
 const auto gvcf_truth_ref               = vector<string>{"T", "C", "GG"};
@@ -700,5 +788,23 @@ BOOST_AUTO_TEST_CASE( indexed_variant_reader_move_test ) {
     BOOST_CHECK_EQUAL(rec1.alignment_start(), rec2.alignment_start());
     BOOST_CHECK_EQUAL(rec1.alignment_start(), rec3.alignment_start());
   }
- }
+}
 
+BOOST_AUTO_TEST_CASE( indexed_variant_iterator_move_test ) {
+  for (const auto filename : indexed_variant_input_files) {
+    auto reader = IndexedVariantReader<IndexedVariantIterator>{filename, indexed_variant_chrom_full};
+    auto iter1 = reader.begin();
+    auto rec1 = *iter1;
+
+    // move construct
+    auto iter2 = std::move(iter1);
+    auto rec2 = *iter2;
+
+    // move assign
+    iter1 = std::move(iter2);
+    auto rec3 = *iter1;
+
+    BOOST_CHECK_EQUAL(rec1.alignment_start(), rec2.alignment_start());
+    BOOST_CHECK_EQUAL(rec1.alignment_start(), rec3.alignment_start());
+  }
+}
