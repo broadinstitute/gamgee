@@ -167,12 +167,13 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
   BOOST_CHECK_THROW(record.integer_individual_field(as_idx), runtime_error);
   BOOST_CHECK_THROW(record.float_individual_field(as_idx), runtime_error);
   
-  // need operator== to make these easy to write.
-  // 
-  // BOOST_CHECK_EQUAL(gq_int, record.integer_individual_field("GQ"));
-  // BOOST_CHECK_EQUAL(af_float, record.float_individual_field("AF"));
-  // BOOST_CHECK_EQUAL(pl_int, record.integer_individual_field("PL"));
-  // BOOST_CHECK_EQUAL(as_string, record.string_individual_field("AS"));
+  BOOST_CHECK(gq_int == record.integer_individual_field("GQ"));
+  BOOST_CHECK(af_float == record.float_individual_field("AF"));
+  BOOST_CHECK(pl_int == record.integer_individual_field("PL"));
+  BOOST_CHECK(as_string == record.string_individual_field("AS"));
+  BOOST_CHECK(gq_int != record.individual_field_as_integer("AF"));
+  BOOST_CHECK(pl_float != record.individual_field_as_float("GQ"));
+  BOOST_CHECK(as_string != record.individual_field_as_string("PL"));
 
   for(auto i=0u; i != record.n_samples(); ++i) {
     BOOST_CHECK_EQUAL(gq_int[i][0], truth_gq[truth_index][i]);
