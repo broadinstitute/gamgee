@@ -121,6 +121,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a90e8159aa63edf3421c440e02ca8a4d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_shared_field.html">SharedField</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field.html#a90e8159aa63edf3421c440e02ca8a4d8">operator=</a> (<a class="el" href="classgamgee_1_1_shared_field.html">SharedField</a> &amp;&amp;other)=default</td></tr>
 <tr class="memdesc:a90e8159aa63edf3421c440e02ca8a4d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">safely moves the data from one <a class="el" href="classgamgee_1_1_shared_field.html" title="A class template to hold the values of a specific Variant&#39;s shared field. ">SharedField</a> to the other without making any copies  <a href="#a90e8159aa63edf3421c440e02ca8a4d8">More...</a><br /></td></tr>
 <tr class="separator:a90e8159aa63edf3421c440e02ca8a4d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e295a344afb05d118401766b074ec59"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field.html#a8e295a344afb05d118401766b074ec59">operator==</a> (const <a class="el" href="classgamgee_1_1_shared_field.html">SharedField</a> &amp;other) const </td></tr>
+<tr class="memdesc:a8e295a344afb05d118401766b074ec59"><td class="mdescLeft">&#160;</td><td class="mdescRight">compares two <a class="el" href="classgamgee_1_1_shared_field.html" title="A class template to hold the values of a specific Variant&#39;s shared field. ">SharedField</a> objects in the following order: memory address, size and values.  <a href="#a8e295a344afb05d118401766b074ec59">More...</a><br /></td></tr>
+<tr class="separator:a8e295a344afb05d118401766b074ec59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fad623b4291aafaf4203a33b85aacb2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field.html#a3fad623b4291aafaf4203a33b85aacb2">operator!=</a> (const <a class="el" href="classgamgee_1_1_shared_field.html">SharedField</a> &amp;other) const </td></tr>
+<tr class="memdesc:a3fad623b4291aafaf4203a33b85aacb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">compares two <a class="el" href="classgamgee_1_1_shared_field.html" title="A class template to hold the values of a specific Variant&#39;s shared field. ">SharedField</a> objects in the following order: memory address, size and values.  <a href="#a3fad623b4291aafaf4203a33b85aacb2">More...</a><br /></td></tr>
+<tr class="separator:a3fad623b4291aafaf4203a33b85aacb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bf4b6e8ec83dc2bbb368c0ef4ca760b"><td class="memItemLeft" align="right" valign="top">TYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field.html#a4bf4b6e8ec83dc2bbb368c0ef4ca760b">operator[]</a> (const uint32_t index) const </td></tr>
 <tr class="memdesc:a4bf4b6e8ec83dc2bbb368c0ef4ca760b"><td class="mdescLeft">&#160;</td><td class="mdescRight">random access to a given value for reading or writing  <a href="#a4bf4b6e8ec83dc2bbb368c0ef4ca760b">More...</a><br /></td></tr>
 <tr class="separator:a4bf4b6e8ec83dc2bbb368c0ef4ca760b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -407,6 +413,41 @@ template&lt;class TYPE&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a3fad623b4291aafaf4203a33b85aacb2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TYPE&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classgamgee_1_1_shared_field.html">gamgee::SharedField</a>&lt; TYPE &gt;::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_shared_field.html">SharedField</a>&lt; TYPE &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>compares two <a class="el" href="classgamgee_1_1_shared_field.html" title="A class template to hold the values of a specific Variant&#39;s shared field. ">SharedField</a> objects in the following order: memory address, size and values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>something to compare to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the objects are not the same (memory address-wise), or contain different number of values, or the values are not exactly the same. Value comparison is dictated by TYPE's operator== implementation </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a5dc2708be7f99da48a350fd7aace319f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -460,6 +501,41 @@ template&lt;class TYPE&gt; </div>
 </div><div class="memdoc">
 
 <p>safely moves the data from one <a class="el" href="classgamgee_1_1_shared_field.html" title="A class template to hold the values of a specific Variant&#39;s shared field. ">SharedField</a> to the other without making any copies </p>
+
+</div>
+</div>
+<a class="anchor" id="a8e295a344afb05d118401766b074ec59"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TYPE&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classgamgee_1_1_shared_field.html">gamgee::SharedField</a>&lt; TYPE &gt;::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_shared_field.html">SharedField</a>&lt; TYPE &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>compares two <a class="el" href="classgamgee_1_1_shared_field.html" title="A class template to hold the values of a specific Variant&#39;s shared field. ">SharedField</a> objects in the following order: memory address, size and values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>something to compare to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the objects are the same (memory address-wise), or contain exactly the same values. Value comparison is dictated by TYPE's operator== implementation </dd></dl>
 
 </div>
 </div>
@@ -563,7 +639,7 @@ template&lt;&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 21 2014 18:09:18 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 21 2014 19:02:31 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
