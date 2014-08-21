@@ -23,9 +23,6 @@ namespace gamgee {
  * @note this iterator never makes any copies of the underlying memory. It is
  * implemented with pointer acrobatics behind the scenes for maximum
  * performance while maintaining a friendly interface.
- *
- * @warning modifying any elements via this iterator **will modify** the values
- * in the Variant record. 
  */
 template<class TYPE>
 class IndividualFieldIterator : public std::iterator<std::random_access_iterator_tag, TYPE> {
