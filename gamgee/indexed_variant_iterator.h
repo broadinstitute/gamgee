@@ -1,0 +1,91 @@
+#ifndef gamgee__indexed_variant_iterator__guard
+#define gamgee__indexed_variant_iterator__guard
+
+#include "variant_iterator.h"
+
+#include "htslib/vcf.h"
+
+#include <memory>
+#include <string>
+#include <vector>
+
+namespace gamgee {
+
+class IndexedVariantIterator : public VariantIterator {
+ public:
+
+  static const std::vector<std::string> all_intervals;
+
+  /**
+   * @brief creates an empty iterator (used for the end() method)
+   */
+  IndexedVariantIterator();
+
+  /**
+   * @brief initializes a new iterator based on a file, an index, a header, and a vector of intervals
+   *
+   * @param file_ptr            pointer to a BCF file opened via the bcf_open() macro from htslib
+   * @param index_ptr           pointer to a BCF file index (CSI) created with the bcf_index_load() macro from htslib
+   * @param header_ptr          shared pointer to a BCF file header created with the bcf_hdr_read() macro from htslib
+   * @param interval_list       vector of intervals represented by strings
+   */
+  IndexedVariantIterator(vcfFile* file_ptr, hts_idx_t* index_ptr,
+                         const std::shared_ptr<bcf_hdr_t>& header_ptr,
+                         const std::vector<std::string> interval_list = all_intervals);
+
+  virtual ~IndexedVariantIterator();
+
+  /**
+   * @brief an IndexedVariantIterator cannot be copied safely, as it is iterating over a stream.
+   */
+
+  IndexedVariantIterator(IndexedVariantIterator& other) = delete;
+  IndexedVariantIterator& operator=(IndexedVariantIterator& other) = delete;
+
+  /**
+   * @brief an IndexedVariantIterator can be moved
+   */
+
+  IndexedVariantIterator(IndexedVariantIterator&& other) :
+    m_variant_index_ptr { std::move(other.m_variant_index_ptr) },
+    m_interval_list { std::move(other.m_interval_list) },
+    m_interval_iter { std::move(other.m_interval_iter) },
+    m_index_iter_ptr { std::move(other.m_index_iter_ptr) }
+  {
+    other.m_index_iter_ptr = nullptr;
+  }
+
+  IndexedVariantIterator& operator=(IndexedVariantIterator&& other) {
+    m_variant_index_ptr = std::move(other.m_variant_index_ptr);
+    m_interval_list = std::move(other.m_interval_list);
+    m_interval_iter = std::move(other.m_interval_iter);
+    m_index_iter_ptr = std::move(other.m_index_iter_ptr);
+
+    other.m_index_iter_ptr = nullptr;
+
+    return *this;
+  }
+
+  /**
+   * @brief inequality operator (needed by for-each loop)
+   *
+   * @param rhs the other IndexedVariantIterator to compare to
+   *
+   * @return whether or not the two iterators are the same (e.g. have the same input file on the same
+   * status and the same intervals)
+   */
+  bool operator!=(const IndexedVariantIterator& rhs);
+
+ protected:
+  void fetch_next_record() override;                            ///< fetches next Variant record into existing htslib memory without making a copy
+
+ private:
+  hts_idx_t* m_variant_index_ptr;                               ///< pointer to the internal structure of the index file.  NOTE: owned by IndexedVariantReader!
+  std::vector<std::string> m_interval_list;                     ///< vector of intervals represented by strings
+  std::vector<std::string>::const_iterator m_interval_iter;     ///< iterator for the interval list
+  hts_itr_t* m_index_iter_ptr;                                  ///< htslib BCF index iterator
+};
+
+}
+
+#endif  /* defined(gamgee__indexed_variant_iterator__guard) */

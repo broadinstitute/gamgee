@@ -2,6 +2,8 @@
 #include "variant_reader.h"
 #include "multiple_variant_reader.h"
 #include "multiple_variant_iterator.h"
+#include "indexed_variant_reader.h"
+#include "indexed_variant_iterator.h"
 #include "missing.h"
 
 #include <boost/test/unit_test.hpp>
@@ -538,3 +540,94 @@ BOOST_AUTO_TEST_CASE( gvcf_test ) {
     ++truth_index;
   }
 }
+
+// TODO?  update to work with VCF GZ
+// const auto input_files = vector<string>{"testdata/var_idx/test_variants.bcf", "testdata/var_idx/test_variants_csi.vcf.gz", "testdata/var_idx/test_variants_tabix.vcf.gz"};
+const auto indexed_variant_input_files = vector<string>{"testdata/var_idx/test_variants.bcf"};
+
+const auto indexed_variant_chrom_full = vector<string> {"1", "20", "22"};
+const auto indexed_variant_bp_full = vector<string> {"1:10000000-10000000", "20:10001000-10001000", "20:10002000-10002000", "20:10003000-10003000", "22:10004000-10004000"};
+const auto indexed_variant_chrom_partial = vector<string> {"1"};
+const auto indexed_variant_bp_partial = vector<string> {"20:10001000-10001000"};
+
+// empty interval lists and full interval lists
+BOOST_AUTO_TEST_CASE( indexed_variant_reader_full_test ) {
+  for (const auto filename : indexed_variant_input_files) {
+    for (const auto intervals : {vector<string>{}, IndexedVariantIterator::all_intervals, indexed_variant_chrom_full, indexed_variant_bp_full}) {
+      auto truth_index = 0u;
+      const auto reader = IndexedVariantReader<IndexedVariantIterator>{filename, intervals};
+      for (const auto& record : reader) {
+        check_variant_basic_api(record, truth_index);
+        check_quals_api(record, truth_index);
+        check_alt_api(record, truth_index);
+        check_filters_api(record, truth_index);
+        check_genotype_quals_api(record,truth_index);
+        check_phred_likelihoods_api(record, truth_index);
+        check_individual_field_api(record, truth_index);
+        check_shared_field_api(record, truth_index);
+        check_genotype_api(record, truth_index);
+        ++truth_index;
+      }
+      BOOST_CHECK_EQUAL(truth_index, 5u);
+    }
+  }
+}
+
+// one (different) record each
+BOOST_AUTO_TEST_CASE( indexed_variant_reader_partial_test ) {
+  for (const auto filename : indexed_variant_input_files) {
+
+    const auto intervals1 = indexed_variant_chrom_partial;
+    auto truth_index = 0u;
+    const auto reader1 = IndexedVariantReader<IndexedVariantIterator>{filename, intervals1};
+    for (const auto& record : reader1) {
+      BOOST_CHECK_EQUAL(record.ref(), "T");
+      BOOST_CHECK_EQUAL(record.chromosome(), 0);
+      BOOST_CHECK_EQUAL(record.alignment_start(), 10000000);
+      BOOST_CHECK_EQUAL(record.alignment_stop(), 10000000);
+      BOOST_CHECK_EQUAL(record.n_alleles(), 2);
+      BOOST_CHECK_EQUAL(record.n_samples(), 3);
+      BOOST_CHECK_EQUAL(record.id(), "db2342");
+      ++truth_index;
+    }
+    BOOST_CHECK_EQUAL(truth_index, 1u);
+
+    const auto intervals2 = indexed_variant_bp_partial;
+    truth_index = 0u;
+    const auto reader2 = IndexedVariantReader<IndexedVariantIterator>{filename, intervals2};
+    for (const auto& record : reader2) {
+      BOOST_CHECK_EQUAL(record.ref(), "GG");
+      BOOST_CHECK_EQUAL(record.chromosome(), 1);
+      BOOST_CHECK_EQUAL(record.alignment_start(), 10001000);
+      BOOST_CHECK_EQUAL(record.alignment_stop(), 10001001);
+      BOOST_CHECK_EQUAL(record.n_alleles(), 2);
+      BOOST_CHECK_EQUAL(record.n_samples(), 3);
+      BOOST_CHECK_EQUAL(record.id(), "rs837472");
+      ++truth_index;
+    }
+    BOOST_CHECK_EQUAL(truth_index, 1u);
+  }
+}
+
+BOOST_AUTO_TEST_CASE( indexed_variant_reader_move_test ) {
+  for (const auto filename : indexed_variant_input_files) {
+    auto reader1 = IndexedVariantReader<IndexedVariantIterator>{filename, indexed_variant_chrom_full};
+    auto iter1 = reader1.begin();
+
+    // move construct
+    auto reader2 = std::move(reader1);
+    auto iter2 = reader2.begin();
+
+    // move assign
+    reader1 = std::move(reader2);
+    auto iter3 = reader1.begin();
+
+    auto rec1 = *iter1;
+    auto rec2 = *iter2;
+    auto rec3 = *iter3;
+
+    BOOST_CHECK_EQUAL(rec1.alignment_start(), rec2.alignment_start());
+    BOOST_CHECK_EQUAL(rec1.alignment_start(), rec3.alignment_start());
+  }
+ }
+
