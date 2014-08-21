@@ -444,7 +444,6 @@ BOOST_AUTO_TEST_CASE( sam_mate_operations ) {
   for (const auto& record : SingleSamReader{"testdata/test_simple.sam"}) {
     const auto tag = record.string_tag("MC");
     if (!missing(tag)) {
-      printf("%d => as: %d, ap: %d, mc: %s, ms: %d, mp: %d, mus: %d, mup: %d\n", i, record.alignment_start(), record.alignment_stop(), tag.value().c_str(), record.mate_alignment_start(), record.mate_alignment_stop(), record.mate_unclipped_start(), record.mate_unclipped_stop());
       BOOST_CHECK_EQUAL(record.mate_alignment_stop(tag), truth_mate_alignment_stop[i]);
       BOOST_CHECK_EQUAL(record.mate_alignment_stop(), truth_mate_alignment_stop[i]);  // check the other overload as well
       BOOST_CHECK_EQUAL(record.mate_unclipped_start(tag), truth_mate_unclipped_start[i]);
