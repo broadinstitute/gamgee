@@ -14,6 +14,8 @@
 #include "fastq.h"
 #include "fastq_reader.h"
 
+#include "interval.h"
+
 #include "missing.h"
 
 #endif  /* gamgee__gamgee__guard */
