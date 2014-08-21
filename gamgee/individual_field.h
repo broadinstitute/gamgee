@@ -101,6 +101,32 @@ class IndividualField {
    * @param other another IndividualField object
    */
   IndividualField& operator=(IndividualField&& other) = default;
+
+  /**
+   * @brief compares two IndividualField objects in the following order: memory address, size and values. 
+   * @param other something to compare to
+   * @return true if the objects are the same (memory address-wise), or contain exactly the same values. Value comparison is dictated by TYPE's operator== implementation
+   */
+  bool operator==(const IndividualField& other) const {
+    if (this == &other) 
+      return true;
+    if (size() != other.size()) 
+      return false;
+    for (auto i=0u; i != size(); ++i) {
+      if (operator[](i) != other[i])
+        return false;
+    }
+    return true;
+  }
+
+  /**
+   * @brief compares two IndividualField objects in the following order: memory address, size and values. 
+   * @param other something to compare to
+   * @return true if the objects are not the same (memory address-wise), or contain different number of values, or the values are not exactly the same. Value comparison is dictated by TYPE's operator== implementation
+   */
+  bool operator!=(const IndividualField& other) const {
+    return !(*this == other);
+  }
   
   /**
    * @brief random access to the value of a given sample for reading or writing
