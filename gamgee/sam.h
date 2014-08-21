@@ -28,17 +28,171 @@ class Sam {
 
   SamHeader header() { return SamHeader{m_header}; }
 
-  // getters for non-variable length fields (things outside of the data member)
-  uint32_t chromosome()           const { return uint32_t(m_body->core.tid);     }       ///< @brief returns the integer representation of the chromosome. Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). Similar to Picards getReferenceIndex()
-  uint32_t alignment_start()      const { return uint32_t(m_body->core.pos+1);   }       ///< @brief returns a (1-based and inclusive) alignment start position (as you would see in a Sam file). @note the internal encoding is 0-based to mimic that of the BAM files.
-  uint32_t alignment_stop()       const { return uint32_t(bam_endpos(m_body.get())+1); } ///< @brief returns a (1-based and inclusive) alignment stop position (as you would see in a Sam file). @note the internal encoding is 0-based to mimic that of the BAM files.
+  /**
+   * @brief chromosome index of the read.
+   *
+   * Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). Similar to Picards getReferenceIndex()
+   *
+   * @return the integer representation of the chromosome.
+   */
+  uint32_t chromosome()           const { return uint32_t(m_body->core.tid);     }       
+
+  /**
+   * @brief the reference position of the first base in the read
+   * @note the internal encoding is 0-based to mimic that of the BAM files.
+   * @return a (1-based and inclusive) alignment start position (as you would see in a Sam file).
+   */
+  uint32_t alignment_start()      const { return uint32_t(m_body->core.pos+1);   }       
+
+  /**
+   * @brief returns a (1-based and inclusive) alignment stop position. 
+   * @note the internal encoding is 0-based to mimic that of the BAM files. 
+   * @note htslib's bam_endpos returns the coordinate of the first base AFTER the alignment, 0-based, so that translates into the last base IN the 1-based alignment.
+   */
+  uint32_t alignment_stop()       const { return uint32_t(bam_endpos(m_body.get())); }   
+
+  /**
+   * @brief calculates the theoretical alignment start of a read that has soft/hard-clips preceding the alignment
+   *
+   * For example if the read has an alignment start of 100 but the first 4 bases
+   * were clipped (hard or soft clipped) then this method will return 96.
+   *
+   * @return the alignment start (1-based, inclusive) adjusted for clipped bases.  
+   *
+   * Invalid to call on an unmapped read.
+   * Invalid to call with cigar = null
+   */
   uint32_t unclipped_start()      const ;
+
+  /**
+   * @brief calculates the theoretical alignment stop of a read that has soft/hard-clips preceding the alignment
+   *
+   * For example if the read has an alignment stop of 100 but the last 4 bases
+   * were clipped (hard or soft clipped) then this method will return 104.
+   *
+   * @return the alignment stop (1-based, inclusive) adjusted for clipped bases.     
+   * @warning Invalid to call on an unmapped read.
+   * @warning Invalid to call with cigar = null
+   */
   uint32_t unclipped_stop()       const ;
-  uint32_t mate_chromosome()      const { return uint32_t(m_body->core.mtid);    }       ///< @brief returns the integer representation of the mate's chromosome. Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). Similar to Picards getMateReferenceIndex()
-  uint32_t mate_alignment_start() const { return uint32_t(m_body->core.mpos+1);  }       ///< @brief returns a (1-based and inclusive) mate's alignment start position (as you would see in a Sam file). @note the internal encoding is 0-based to mimic that of the BAM files.
-  uint32_t mate_alignment_stop()  const ;                                                ///< @brief returns a (1-based and inclusive) mate'salignment stop position (as you would see in a Sam file). @note the internal encoding is 0-based to mimic that of the BAM files. @warning not implemented -- requires new mate cigar tag!
-  uint32_t mate_unclipped_start() const { return alignment_start();              }       ///< @warning dummy implementation -- requires new mate cigar tag!
-  uint32_t mate_unclipped_stop()  const ;                                                ///< @warning not implemented -- requires new mate cigar tag!
+
+  /**
+   * @brief returns the integer representation of the mate's chromosome. 
+   *
+   * Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). 
+   */
+  uint32_t mate_chromosome()      const { return uint32_t(m_body->core.mtid);    }       
+
+  /**
+   * @brief returns a (1-based and inclusive) mate's alignment start position (as you would see in a Sam file). 
+   * @note the internal encoding is 0-based to mimic that of the BAM files.
+   */
+  uint32_t mate_alignment_start() const { return uint32_t(m_body->core.mpos+1);  }       
+
+  /**
+   * @brief returns a (1-based and inclusive) mate's alignment stop position.
+   * @note the internal encoding is 0-based to mimic that of the BAM files. 
+   * @throw std::invalid_argument if called on a record that doesn't contain the mate cigar ("MC") tag.
+   */
+  uint32_t mate_alignment_stop()  const ;                                                
+
+  /**
+   * @brief returns a (1-based and inclusive) mate's alignment stop position. 
+   *
+   * This overload is for usage when the user checks for the existence of the
+   * tag themselves and passes it in to avoid exception throwing. This is provided
+   * for performance conscious use of this function. This way you will only create 
+   * one SamTag object for the mate cigar tag, instead of potentially two when checking
+   * for its availability and then calling this function. For example: 
+   * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   * const auto tag = record.string_tag("MC");  // obtains the tag from the record (expensive operation)
+   * if (!missing(tag))
+   *   cout << record.mate_alignment_stop(tag) << endl;  // this will reuse the tag you have already obtained
+   * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   *
+   * This is better than the alternative using the other overload where you
+   * have to either get the Tag twice or check for the exception thrown:
+   *
+   * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   * const auto tag = record.string_tag("MC");  // obtains the tag from the record (expensive operation)
+   * if (!missing(tag))
+   *   cout << record.mate_alignment_stop() << endl;  // this will obtain a new tag internally (unnecessary)
+   * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   *
+   * @param mate_cigar_tag the MC tag as obtained via the string_tag("MC") API in Sam. 
+   * @warning This overload DOES NOT throw an exception if the mate cigar tag is missing. Instead it returns mate_alignment_start(). Treat it as undefined behavior. 
+   * @note the internal encoding is 0-based to mimic that of the BAM files. 
+   */
+  uint32_t mate_alignment_stop(const SamTag<std::string>& mate_cigar_tag)  const ;       
+
+  /**
+   * @brief returns a (1-based and inclusive) mate's unclipped alignment start position. 
+   * @throw std::invalid_argument if called on a record that doesn't contain the mate cigar ("MC") tag.
+   */
+  uint32_t mate_unclipped_start() const;                                                 
+
+  /**
+   * @brief returns a (1-based and inclusive) mate's unclipped alignment start position.
+   *
+   * This overload is for usage when the user checks for the existence of the
+   * tag themselves and passes it in to avoid exception throwing. This is provided
+   * for performance conscious use of this function. This way you will only create 
+   * one SamTag object for the mate cigar tag. Instead of potentially two when checking
+   * for it's availability and then calling this function. For example: 
+   * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   * const auto tag = record.string_tag("MC");  // obtains the tag from the record (expensive operation)
+   * if (!missing(tag))
+   *   cout << record.mate_unclipped_start(tag) << endl;  // this will reuse the tag you have already obtained
+   * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   *
+   * This is better than the alternative using the other overload where you
+   * have to either get the Tag twice or check for the exception thrown:
+   *
+   * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   * const auto tag = record.string_tag("MC");  // obtains the tag from the record (expensive operation)
+   * if (!missing(tag))
+   *   cout << record.mate_unclipped_start() << endl;  // this will obtain a new tag internally (unnecessary)
+   * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   *
+   * @param mate_cigar_tag the MC tag as obtained via the string_tag("MC") API in Sam. 
+   * @warning This overload DOES NOT throw an exception if the mate cigar tag is missing. Instead it returns mate_alignment_start(). Treat it as undefined behavior. 
+   * @note the internal encoding is 0-based to mimic that of the BAM files.
+   */
+  uint32_t mate_unclipped_start(const SamTag<std::string>& mate_cigar_tag) const;        
+
+  /**
+   * @brief returns a (1-based and inclusive) mate's unclipped alignment stop position. @throw std::invalid_argument if called on a record that doesn't contain the mate cigar ("MC") tag.
+   */
+  uint32_t mate_unclipped_stop()  const ;                                                
+
+  /**
+   * @brief returns a (1-based and inclusive) mate's unclipped alignment stop position. 
+   *
+   * This overload is for usage when the user checks for the existence of the
+   * tag themselves and passes it in to avoid exception throwing. This is provided
+   * for performance conscious use of this function. This way you will only create 
+   * one SamTag object for the mate cigar tag. Instead of potentially two when checking
+   * for it's availability and then calling this function. For example: 
+   * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   * const auto tag = record.string_tag("MC");  // obtains the tag from the record (expensive operation)
+   * if (!missing(tag))
+   *   cout << record.mate_unclipped_stop(tag) << endl;  // this will reuse the tag you have already obtained
+   * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   *
+   * This is better than the alternative using the other overload where you
+   * have to either get the Tag twice or check for the exception thrown:
+   *
+   * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   * const auto tag = record.string_tag("MC");  // obtains the tag from the record (expensive operation)
+   * if (!missing(tag))
+   *   cout << record.mate_unclipped_stop() << endl;  // this will obtain a new tag internally (unnecessary)
+   * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   *
+   * @param mate_cigar_tag the MC tag as obtained via the string_tag("MC") API in Sam. 
+   * @warning This overload DOES NOT throw an exception if the mate cigar tag is missing. Instead it returns mate_alignment_start(). Treat it as undefined behavior. 
+   * @note the internal encoding is 0-based to mimic that of the BAM files.
+   */
+  uint32_t mate_unclipped_stop(const SamTag<std::string>& mate_cigar_tag)  const;        
 
   // modify non-variable length fields (things outside of the data member)
   // TODO: provide setter for TLEN (core.isize)?

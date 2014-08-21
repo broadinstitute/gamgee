@@ -14,6 +14,7 @@ namespace gamgee {
   * @warning the order of these operators are matching the defines in htslib, do not change!
   */
 const char Cigar::cigar_ops_as_chars[] = { 'M', 'I', 'D', 'N', 'S', 'H', 'P', '=', 'X', 'B' };
+const std::vector<int8_t> Cigar::cigar_op_parse_table = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,7,-1,-1,-1,-1,9,-1,2,-1,-1,-1,5,1,-1,-1,-1,0,3,-1,6,-1,-1,4,-1,-1,-1,-1,8,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
 
 /**
   * @brief creates a Cigar object that points to htslib memory already allocated
@@ -100,6 +101,21 @@ string Cigar::to_string() const {
   for ( uint32_t i = 0; i < m_num_cigar_elements; ++i ) 
     stream << cigar_oplen(m_cigar[i]) << cigar_ops_as_chars[static_cast<int>(cigar_op(m_cigar[i]))];
   return stream.str();
+}
+
+CigarElement Cigar::parse_next_cigar_element (stringstream& cigar_stream) {
+  auto element_length = uint32_t{0};
+  auto element_op = uint8_t{0};
+  cigar_stream >> element_length;
+  if ( cigar_stream.fail() )
+    throw invalid_argument(string("Error parsing cigar string: ") + cigar_stream.str());
+  cigar_stream >> element_op;
+  if ( cigar_stream.fail() || int(element_op) >= 128 )
+    throw invalid_argument(string("Error parsing cigar string: ") + cigar_stream.str());
+  const auto encoded_op = cigar_op_parse_table[element_op];
+  if ( encoded_op < 0 )
+    throw invalid_argument(string("Unrecognized operator ") + char(element_op) + " in cigar string: " + cigar_stream.str());
+  return make_cigar_element(element_length, static_cast<CigarOperator>(encoded_op));
 }
 
 

@@ -1,4 +1,5 @@
 #include "sam_builder.h"
+#include "cigar.h"
 #include "utils/hts_memory.h"
 
 #include <algorithm>
@@ -9,14 +10,6 @@
 using namespace std;
 
 namespace gamgee {
-
-/**
- * @brief Table used to parse chars representing cigar operations into their htslib encodings
- *
- * @note: This table should eventually be moved to htslib. Currently htslib dynamically allocates
- *        and fills the equivalent of this table on-demand, which makes little sense.
- */
-const int8_t SamBuilder::cigar_op_parse_table[] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,7,-1,-1,-1,-1,9,-1,2,-1,-1,-1,5,1,-1,-1,-1,0,3,-1,6,-1,-1,4,-1,-1,-1,-1,8,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
 
 /**
  * @brief create a Sam from scratch, starting only with a header
@@ -128,24 +121,8 @@ SamBuilder& SamBuilder::set_cigar(const std::string& new_cigar) {
   // (yeah, "almost always auto" actually involves a lot of overhead in the form of "auto x = type{}"
   // move assignments)
   stringstream new_cigar_stream{ new_cigar };
-  for ( auto i = 0u; i < num_cigar_elements; ++i ) {
-    unsigned long element_length;
-    unsigned char element_op;
-
-    new_cigar_stream >> element_length;
-    if ( new_cigar_stream.fail() )
-      throw invalid_argument(string("Error parsing cigar string: ") + new_cigar);
-
-    new_cigar_stream >> element_op;
-    if ( new_cigar_stream.fail() || int(element_op) >= 128 )
-      throw invalid_argument(string("Error parsing cigar string: ") + new_cigar);
-
-    auto encoded_op = cigar_op_parse_table[int(element_op)];
-    if ( encoded_op < 0 )
-      throw invalid_argument(string("Unrecognized operator ") + char(element_op) + " in cigar string: " + new_cigar);
-
-    encoded_cigar_ptr[i] = (element_length << BAM_CIGAR_SHIFT) | encoded_op;
-  }
+  for ( auto i = 0u; i < num_cigar_elements; ++i ) 
+    encoded_cigar_ptr[i] = Cigar::parse_next_cigar_element(new_cigar_stream);
 
   // move existing encoded cigar we've just created into the field to avoid an extra copy
   m_cigar.update(move(encoded_cigar), num_cigar_elements * sizeof(CigarElement), num_cigar_elements);

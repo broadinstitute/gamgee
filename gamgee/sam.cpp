@@ -1,12 +1,17 @@
-#include "htslib/sam.h"
 #include "sam.h"
+#include "cigar.h"
 #include "utils/hts_memory.h"
+#include "htslib/sam.h"
+#include "missing.h"
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 namespace gamgee {
+
+constexpr auto MATE_CIGAR_TAG = "MC";
 
 /**
  * @brief creates a sam record that points to htslib memory already allocated
@@ -71,16 +76,27 @@ Sam& Sam::operator=(Sam&& other) noexcept {
   return *this;
 }
 
-/**
- * @brief calculates the theoretical alignment start of a read that has soft/hard-clips preceding the alignment
- *
- * @return the alignment start (1-based, inclusive) adjusted for clipped bases.  For example if the read
- * has an alignment start of 100 but the first 4 bases were clipped (hard or soft clipped)
- * then this method will return 96.
- *
- * Invalid to call on an unmapped read.
- * Invalid to call with cigar = null
- */
+uint32_t Sam::mate_alignment_stop(const SamTag<string>& mate_cigar_tag) const {
+  auto result = mate_alignment_start();
+  stringstream cigar_stream {mate_cigar_tag.value()};
+  auto has_reference_bases = false;
+  while (cigar_stream.peek() != std::char_traits<char>::eof()) {
+    const auto element = Cigar::parse_next_cigar_element(cigar_stream);
+    if (Cigar::consumes_reference_bases(Cigar::cigar_op(element))) {
+      result +=  Cigar::cigar_oplen(element);
+      has_reference_bases = true;
+    }
+  }
+  return has_reference_bases ? result-1 : result; // we want the last base to be 1-based and **inclusive** but we only need to deduct 1 if we had any reference consuming operators in the read.
+}
+
+uint32_t Sam::mate_alignment_stop() const {
+  const auto mate_cigar = string_tag(MATE_CIGAR_TAG);
+  if (missing(mate_cigar))
+    throw std::invalid_argument{string{"Cannot find the mate alignment stop on a record without the tag: "} + MATE_CIGAR_TAG};
+  return mate_alignment_stop(mate_cigar);
+}
+
 uint32_t Sam::unclipped_start() const {
   auto pos = alignment_start();
   const auto* cigar = bam_get_cigar(m_body.get());
@@ -94,16 +110,6 @@ uint32_t Sam::unclipped_start() const {
   return pos;
 }
 
-/**
- * @brief calculates the theoretical alignment stop of a read that has soft/hard-clips preceding the alignment
- *
- * @return the alignment stop (1-based, inclusive) adjusted for clipped bases.  For example if the read
- * has an alignment stop of 100 but the last 4 bases were clipped (hard or soft clipped)
- * then this method will return 104.
- *
- * Invalid to call on an unmapped read.
- * Invalid to call with cigar = null
- */
 uint32_t Sam::unclipped_stop() const {
   auto pos = alignment_stop();
   const auto* cigar = bam_get_cigar(m_body.get());
@@ -116,6 +122,55 @@ uint32_t Sam::unclipped_stop() const {
   }
   return pos;
 }
+
+uint32_t Sam::mate_unclipped_start() const {
+  const auto mate_cigar_tag = string_tag(MATE_CIGAR_TAG);
+  if (missing(mate_cigar_tag))
+    throw std::invalid_argument{string{"Cannot find the mate unclipped start on a record without the tag: "} + MATE_CIGAR_TAG};
+  return mate_unclipped_start(mate_cigar_tag);
+}
+
+uint32_t Sam::mate_unclipped_start(const SamTag<string>& mate_cigar_tag) const {
+  auto result = mate_alignment_start();
+  stringstream cigar_stream {mate_cigar_tag.value()};
+  while (cigar_stream.peek() != std::char_traits<char>::eof()) {
+    const auto element = Cigar::parse_next_cigar_element(cigar_stream);
+    const auto op = Cigar::cigar_op(element);
+    if (op != CigarOperator::S && op != CigarOperator::H)
+      break;
+    result -= Cigar::cigar_oplen(element);
+  }
+  return result;
+}
+
+uint32_t Sam::mate_unclipped_stop() const {
+  const auto mate_cigar_tag = string_tag(MATE_CIGAR_TAG);
+  if (missing(mate_cigar_tag))
+    throw std::invalid_argument{string{"Cannot find the mate unclipped stop on a record without the tag: "} + MATE_CIGAR_TAG};
+  return mate_unclipped_stop(mate_cigar_tag);
+}
+
+uint32_t Sam::mate_unclipped_stop(const SamTag<string>& mate_cigar_tag) const {
+  auto result = mate_alignment_start();
+  stringstream cigar_stream {mate_cigar_tag.value()};
+  auto end_tail = false;
+  auto has_reference_bases = false;
+  while (cigar_stream.peek() != std::char_traits<char>::eof()) {
+    const auto element = Cigar::parse_next_cigar_element(cigar_stream);
+    const auto op = Cigar::cigar_op(element);
+    if (!end_tail && (op == CigarOperator::S || op == CigarOperator::H))
+      continue;
+    if (!end_tail)
+      end_tail = true;
+    if (Cigar::consumes_reference_bases(op) || op == CigarOperator::S || op == CigarOperator::H) {
+      result += Cigar::cigar_oplen(element);
+      has_reference_bases = true;
+    }
+  }
+  return has_reference_bases ? result - 1 : result; // we only want to subtract 1 in case we actually had bases in the read that modified the alignment start. Because we are adding the length of the operators, we will end up pointing to one past the unclipped stop of the read. We want to be **inclusive**. 
+}
+
+
 
 /**
  * @brief retrieve an integer-valued tag by name
