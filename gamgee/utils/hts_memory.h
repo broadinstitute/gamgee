@@ -19,6 +19,20 @@ struct HtsFileDeleter {
 };
 
 /** 
+ * @brief a functor object to delete an hts file index pointer
+ */
+struct HtsIndexDeleter {
+  void operator()(hts_idx_t* p) const { hts_idx_destroy(p); }
+};
+
+/**
+ * @brief a functor object to delete an hts file iterator pointer
+ */
+struct HtsIteratorDeleter {
+  void operator()(hts_itr_t* p) const { hts_itr_destroy(p); }
+};
+
+/**
  * @brief a functor object to delete a bam1_t pointer 
  * 
  * used by the unique_ptr queue used in the paired reader
@@ -48,6 +62,9 @@ struct VariantBodyDeleter {
   void operator()(bcf1_t* p) const { bcf_destroy1(p); }
 };
 
+std::shared_ptr<htsFile> make_shared_hts_file(htsFile* hts_file_ptr);
+std::shared_ptr<hts_idx_t> make_shared_hts_index(hts_idx_t* hts_index_ptr);
+std::shared_ptr<hts_itr_t> make_shared_hts_itr(hts_itr_t* hts_itr_ptr);
 std::shared_ptr<bam1_t> make_shared_sam(bam1_t* sam_ptr);
 std::shared_ptr<bam_hdr_t> make_shared_sam_header(bam_hdr_t* sam_header_ptr);
 std::shared_ptr<bcf1_t> make_shared_variant(bcf1_t* bcf_ptr);

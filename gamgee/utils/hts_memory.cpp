@@ -8,6 +8,30 @@ namespace gamgee {
 namespace utils {
 
 /**
+  * @brief wraps a pre-allocated htsFile in a shared_ptr with correct deleter
+  * @param hts_file_ptr an htslib raw file pointer
+  */
+shared_ptr<htsFile> make_shared_hts_file(htsFile* hts_file_ptr) {
+  return shared_ptr<htsFile>(hts_file_ptr, HtsFileDeleter());
+}
+
+/**
+  * @brief wraps a pre-allocated hts_idx_t in a shared_ptr with correct deleter
+  * @param hts_index_ptr an htslib raw file index pointer
+  */
+shared_ptr<hts_idx_t> make_shared_hts_index(hts_idx_t* hts_index_ptr) {
+  return shared_ptr<hts_idx_t>(hts_index_ptr, HtsIndexDeleter());
+}
+
+/**
+  * @brief wraps a pre-allocated hts_itr_t in a shared_ptr with correct deleter
+  * @param hts_itr_ptr an htslib raw file iterator pointer
+  */
+shared_ptr<hts_itr_t> make_shared_hts_itr(hts_itr_t* hts_itr_ptr) {
+  return shared_ptr<hts_itr_t>(hts_itr_ptr, HtsIteratorDeleter());
+}
+
+/**
   * @brief wraps a pre-allocated bam1_t in a shared_ptr with correct deleter
   * @param sam_ptr an htslib raw bam pointer
   */
