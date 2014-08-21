@@ -305,13 +305,15 @@ void check_shared_field_api(const Variant& record, const uint32_t truth_index) {
     BOOST_CHECK(desc_bool_idx);
     BOOST_CHECK_THROW(desc_float_idx[0], invalid_argument);
     BOOST_CHECK_THROW(desc_integer_idx[0], invalid_argument);
-    // BOOST_CHECK_EQUAL(desc, record.shared_field_as_string("DESC"));  // needs operator == on shared fields
-    // BOOST_CHECK_EQUAL(desc_idx, record.shared_field_as_string(desc_index));  // needs operator == on shared fields
+    BOOST_CHECK(desc == record.shared_field_as_string("DESC"));  
+    BOOST_CHECK(desc_idx == record.shared_field_as_string(desc_index));  
   }
-  // BOOST_CHECK_EQUAL(an, record.shared_field_as_integer("AN")); // needs operator == on shared fields
-  // BOOST_CHECK_EQUAL(an, record.shared_field_as_integer(header.field_index("AN"))); // needs operator == on shared fields
-  // BOOST_CHECK_EQUAL(af, record.shared_field_as_float("AF")); // needs operator == on shared fields
-  // BOOST_CHECK_EQUAL(af, record.shared_field_as_float(header.field_index("AF"))); // needs operator == on shared fields
+  BOOST_CHECK(an == record.shared_field_as_integer("AN")); 
+  BOOST_CHECK(an == record.shared_field_as_integer(header.field_index("AN"))); 
+  BOOST_CHECK(af == record.shared_field_as_float("AF")); 
+  BOOST_CHECK(af == record.shared_field_as_float(header.field_index("AF"))); 
+  BOOST_CHECK(an != record.shared_field_as_integer("AF")); 
+  BOOST_CHECK(af != record.shared_field_as_float(header.field_index("AN"))); 
 }
 
 void check_genotype_api(const Variant& record, const uint32_t truth_index) {

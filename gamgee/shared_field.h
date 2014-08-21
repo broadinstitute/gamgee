@@ -80,6 +80,33 @@ class SharedField {
   SharedField& operator=(SharedField&& other) = default;     ///< @brief safely moves the data from one SharedField to the other without making any copies
 
   /**
+   * @brief compares two SharedField objects in the following order: memory address, size and values. 
+   * @param other something to compare to
+   * @return true if the objects are the same (memory address-wise), or contain exactly the same values. Value comparison is dictated by TYPE's operator== implementation
+   */
+  bool operator==(const SharedField& other) const {
+    if (this == &other) 
+      return true;
+    if (size() != other.size()) 
+      return false;
+    for (auto i=0u; i != size(); ++i) {
+      if (operator[](i) != other[i])
+        return false;
+    }
+    return true;
+  }
+
+  /**
+   * @brief compares two SharedField objects in the following order: memory address, size and values. 
+   * @param other something to compare to
+   * @return true if the objects are not the same (memory address-wise), or contain different number of values, or the values are not exactly the same. Value comparison is dictated by TYPE's operator== implementation
+   */
+  bool operator!=(const SharedField& other) const {
+    return !(*this == other);
+  }
+
+
+  /**
    * @brief random access to a given value for reading or writing
    * @param index must be between 0 and the number of values for this record 
    * @note implementation guarantees this operation to be O(1)
