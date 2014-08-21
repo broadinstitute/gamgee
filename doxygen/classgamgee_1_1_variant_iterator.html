@@ -90,6 +90,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classgamgee_1_1_variant_iterator-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">gamgee::VariantIterator Class Reference</div>  </div>
@@ -100,6 +102,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <a href="classgamgee_1_1_variant_iterator.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="variant__iterator_8h_source.html">variant_iterator.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for gamgee::VariantIterator:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classgamgee_1_1_variant_iterator.png" usemap="#gamgee::VariantIterator_map" alt=""/>
+  <map id="gamgee::VariantIterator_map" name="gamgee::VariantIterator_map">
+<area href="classgamgee_1_1_indexed_variant_iterator.html" alt="gamgee::IndexedVariantIterator" shape="rect" coords="0,56,187,80"/>
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -127,6 +138,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8d0cbd82f9f9e0eebabb917852d67cda"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_iterator.html#a8d0cbd82f9f9e0eebabb917852d67cda">empty</a> ()</td></tr>
 <tr class="memdesc:a8d0cbd82f9f9e0eebabb917852d67cda"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns whether the iterator has no additional records  <a href="#a8d0cbd82f9f9e0eebabb917852d67cda">More...</a><br /></td></tr>
 <tr class="separator:a8d0cbd82f9f9e0eebabb917852d67cda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a23fec9fd3c7d3c94801f447e86b6bfa3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_iterator.html#a23fec9fd3c7d3c94801f447e86b6bfa3">fetch_next_record</a> ()</td></tr>
+<tr class="memdesc:a23fec9fd3c7d3c94801f447e86b6bfa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">fetches next <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record into existing htslib memory without making a copy  <a href="#a23fec9fd3c7d3c94801f447e86b6bfa3">More...</a><br /></td></tr>
+<tr class="separator:a23fec9fd3c7d3c94801f447e86b6bfa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:af3013bcac2de4d46d1bb453c21fae39c"><td class="memItemLeft" align="right" valign="top">vcfFile *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_iterator.html#af3013bcac2de4d46d1bb453c21fae39c">m_variant_file_ptr</a></td></tr>
+<tr class="memdesc:af3013bcac2de4d46d1bb453c21fae39c"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the vcf/bcf file  <a href="#af3013bcac2de4d46d1bb453c21fae39c">More...</a><br /></td></tr>
+<tr class="separator:af3013bcac2de4d46d1bb453c21fae39c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa97ec226db2093779a1119fc18933b1a"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; bcf_hdr_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_iterator.html#aa97ec226db2093779a1119fc18933b1a">m_variant_header_ptr</a></td></tr>
+<tr class="memdesc:aa97ec226db2093779a1119fc18933b1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the variant header  <a href="#aa97ec226db2093779a1119fc18933b1a">More...</a><br /></td></tr>
+<tr class="separator:aa97ec226db2093779a1119fc18933b1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa37d1a3df410df49f47faade4414a251"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; bcf1_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_iterator.html#aa37d1a3df410df49f47faade4414a251">m_variant_record_ptr</a></td></tr>
+<tr class="memdesc:aa37d1a3df410df49f47faade4414a251"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the internal structure of the variant record. Useful to only allocate it once.  <a href="#aa37d1a3df410df49f47faade4414a251">More...</a><br /></td></tr>
+<tr class="separator:aa37d1a3df410df49f47faade4414a251"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa82ee96fa2f302844ff2d6e09d273899"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant.html">Variant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_iterator.html#aa82ee96fa2f302844ff2d6e09d273899">m_variant_record</a></td></tr>
+<tr class="memdesc:aa82ee96fa2f302844ff2d6e09d273899"><td class="mdescLeft">&#160;</td><td class="mdescRight">temporary record to hold between fetch (operator++) and serve (operator*)  <a href="#aa82ee96fa2f302844ff2d6e09d273899">More...</a><br /></td></tr>
+<tr class="separator:aa82ee96fa2f302844ff2d6e09d273899"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utility class to enable for-each style iteration in the <a class="el" href="classgamgee_1_1_variant_reader.html" title="Utility class to read a VCF/BCF file with an appropriate Variant iterator from a stream (e...">VariantReader</a> class. </p>
@@ -228,6 +260,35 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a23fec9fd3c7d3c94801f447e86b6bfa3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gamgee::VariantIterator::fetch_next_record </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>fetches next <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record into existing htslib memory without making a copy </p>
+<p>pre-fetches the next variant record</p>
+<dl class="section warning"><dt>Warning</dt><dd>we're reusing the existing htslib memory, so users should be aware that all objects from the previous iteration are now stale unless a deep copy has been performed </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classgamgee_1_1_indexed_variant_iterator.html#af6bf08f66f144e115910a9461d8d8ab9">gamgee::IndexedVariantIterator</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a2d3bf2f75082ffb73201362b6456725b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -315,6 +376,95 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="af3013bcac2de4d46d1bb453c21fae39c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">vcfFile* gamgee::VariantIterator::m_variant_file_ptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>pointer to the vcf/bcf file </p>
+
+</div>
+</div>
+<a class="anchor" id="aa97ec226db2093779a1119fc18933b1a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;bcf_hdr_t&gt; gamgee::VariantIterator::m_variant_header_ptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>pointer to the variant header </p>
+
+</div>
+</div>
+<a class="anchor" id="aa82ee96fa2f302844ff2d6e09d273899"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_variant.html">Variant</a> gamgee::VariantIterator::m_variant_record</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>temporary record to hold between fetch (operator++) and serve (operator*) </p>
+
+</div>
+</div>
+<a class="anchor" id="aa37d1a3df410df49f47faade4414a251"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;bcf1_t&gt; gamgee::VariantIterator::m_variant_record_ptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>pointer to the internal structure of the variant record. Useful to only allocate it once. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>gamgee/<a class="el" href="variant__iterator_8h_source.html">variant_iterator.h</a></li>
 <li>gamgee/<a class="el" href="variant__iterator_8cpp.html">variant_iterator.cpp</a></li>
@@ -322,7 +472,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 20 2014 20:34:10 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 21 2014 15:08:16 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -6,6 +6,8 @@ var searchData=
   ['_7egenotype',['~Genotype',['../classgamgee_1_1_genotype.html#a7632e183ab71ca41630c088dc8de3737',1,'gamgee::Genotype']]],
   ['_7eindexedsamiterator',['~IndexedSamIterator',['../classgamgee_1_1_indexed_sam_iterator.html#adf415ec8eed9f723b16b96e60ab2e21f',1,'gamgee::IndexedSamIterator']]],
   ['_7eindexedsamreader',['~IndexedSamReader',['../classgamgee_1_1_indexed_sam_reader.html#a6d89a8c7b9d0ce9fae1041dc9ca9c8d7',1,'gamgee::IndexedSamReader']]],
+  ['_7eindexedvariantiterator',['~IndexedVariantIterator',['../classgamgee_1_1_indexed_variant_iterator.html#a2881b9a7c90d2d405a20b2b6bb4e4024',1,'gamgee::IndexedVariantIterator']]],
+  ['_7eindexedvariantreader',['~IndexedVariantReader',['../classgamgee_1_1_indexed_variant_reader.html#a2b7be9264afecaca7b581a2b995c8dec',1,'gamgee::IndexedVariantReader']]],
   ['_7emultiplevariantreader',['~MultipleVariantReader',['../classgamgee_1_1_multiple_variant_reader.html#a65df97c08c0a4cbf2c920797649fa5cb',1,'gamgee::MultipleVariantReader']]],
   ['_7ereadbases',['~ReadBases',['../classgamgee_1_1_read_bases.html#a7e63842e54197f854264860bf87a1cf6',1,'gamgee::ReadBases']]],
   ['_7esambuilder',['~SamBuilder',['../classgamgee_1_1_sam_builder.html#a64f813dc61bb374229e44e2a071eef10',1,'gamgee::SamBuilder']]],

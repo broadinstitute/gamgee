@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['source_5fextensions',['SOURCE_EXTENSIONS',['../_8ycm__extra__conf_8py.html#a47014996e1e517071cd0412a22adb123',1,'.ycm_extra_conf.py']]],
-  ['string_5fdot',['string_dot',['../namespacegamgee_1_1missing__values.html#ae4abf96097fd03be084479871201ff83',1,'gamgee::missing_values']]],
-  ['string_5fempty',['string_empty',['../namespacegamgee_1_1missing__values.html#a6242a9906efbe8b441e098b94095ffa7',1,'gamgee::missing_values']]]
+  ['int16',['int16',['../namespacegamgee_1_1missing__values.html#a4b89db3148e72861ca7bc77d739597ac',1,'gamgee::missing_values']]],
+  ['int32',['int32',['../namespacegamgee_1_1missing__values.html#a8211dad6a9c794845dc7f8f9b2fac530',1,'gamgee::missing_values']]],
+  ['int8',['int8',['../namespacegamgee_1_1missing__values.html#a1d3ec0320b3ea5149753c72f4b876e06',1,'gamgee::missing_values']]]
 ];

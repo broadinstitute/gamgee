@@ -1,6 +1,10 @@
 var searchData=
 [
   ['m',['M',['../namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139a69691c7bdcc3ce6d5d8a1361f22d04ac',1,'gamgee']]],
+  ['m_5fvariant_5ffile_5fptr',['m_variant_file_ptr',['../classgamgee_1_1_variant_iterator.html#af3013bcac2de4d46d1bb453c21fae39c',1,'gamgee::VariantIterator']]],
+  ['m_5fvariant_5fheader_5fptr',['m_variant_header_ptr',['../classgamgee_1_1_variant_iterator.html#aa97ec226db2093779a1119fc18933b1a',1,'gamgee::VariantIterator']]],
+  ['m_5fvariant_5frecord',['m_variant_record',['../classgamgee_1_1_variant_iterator.html#aa82ee96fa2f302844ff2d6e09d273899',1,'gamgee::VariantIterator']]],
+  ['m_5fvariant_5frecord_5fptr',['m_variant_record_ptr',['../classgamgee_1_1_variant_iterator.html#aa37d1a3df410df49f47faade4414a251',1,'gamgee::VariantIterator']]],
   ['make_5fcigar_5felement',['make_cigar_element',['../classgamgee_1_1_cigar.html#a7314cf95ecb9b08a94ffce8aa1e976ab',1,'gamgee::Cigar']]],
   ['make_5fshared_5fsam',['make_shared_sam',['../namespacegamgee_1_1utils.html#ae5e4c2a62b4e2544996e8b0193e5c31a',1,'gamgee::utils']]],
   ['make_5fshared_5fsam_5fheader',['make_shared_sam_header',['../namespacegamgee_1_1utils.html#a72ad0cc418281effcdb1abd1a077761e',1,'gamgee::utils']]],
