@@ -21,7 +21,8 @@ class Sam {
  public:
   /**
    * @brief initializes a null Sam.
-   * @note this is only used internally by the iterators @warning if you need to create a Variant from scratch, use the builder instead
+   * @note this is only used internally by the iterators 
+   * @warning if you need to create a Sam from scratch, use the builder instead
    */
   Sam() = default;
 
@@ -51,7 +52,7 @@ class Sam {
   Sam& operator=(const Sam& other);
 
   /**
-   * @brief moves Sam and it's header accordingly. Shared pointers maintain state to all other associated objects correctly.
+   * @brief moves Sam and its header accordingly. Shared pointers maintain state to all other associated objects correctly.
    */
   Sam(Sam&& other) = default;
 
@@ -63,7 +64,7 @@ class Sam {
   /**
    * @brief the header of the Sam record
    *
-   * @return a newly created SamHeader object every time it's called.
+   * @return a newly created SamHeader object every time it's called but the htslib memory used by the header is the same (no new allocations).
    */
   SamHeader header() { 
     return SamHeader{m_header}; 
