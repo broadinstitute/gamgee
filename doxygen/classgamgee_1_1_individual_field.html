@@ -121,6 +121,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aae3ceb70862001049d1aaf0fc3723259"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_individual_field.html">IndividualField</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field.html#aae3ceb70862001049d1aaf0fc3723259">operator=</a> (<a class="el" href="classgamgee_1_1_individual_field.html">IndividualField</a> &amp;&amp;other)=default</td></tr>
 <tr class="memdesc:aae3ceb70862001049d1aaf0fc3723259"><td class="mdescLeft">&#160;</td><td class="mdescRight">safely moves the data from one <a class="el" href="classgamgee_1_1_individual_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">IndividualField</a> to the other without making any copies  <a href="#aae3ceb70862001049d1aaf0fc3723259">More...</a><br /></td></tr>
 <tr class="separator:aae3ceb70862001049d1aaf0fc3723259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73978483367b96bc8d8b5c3efa9ad70b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field.html#a73978483367b96bc8d8b5c3efa9ad70b">operator==</a> (const <a class="el" href="classgamgee_1_1_individual_field.html">IndividualField</a> &amp;other) const </td></tr>
+<tr class="memdesc:a73978483367b96bc8d8b5c3efa9ad70b"><td class="mdescLeft">&#160;</td><td class="mdescRight">compares two <a class="el" href="classgamgee_1_1_individual_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">IndividualField</a> objects in the following order: memory address, size and values.  <a href="#a73978483367b96bc8d8b5c3efa9ad70b">More...</a><br /></td></tr>
+<tr class="separator:a73978483367b96bc8d8b5c3efa9ad70b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afffc5a76790c58c8b3cecea01f068acb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field.html#afffc5a76790c58c8b3cecea01f068acb">operator!=</a> (const <a class="el" href="classgamgee_1_1_individual_field.html">IndividualField</a> &amp;other) const </td></tr>
+<tr class="memdesc:afffc5a76790c58c8b3cecea01f068acb"><td class="mdescLeft">&#160;</td><td class="mdescRight">compares two <a class="el" href="classgamgee_1_1_individual_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">IndividualField</a> objects in the following order: memory address, size and values.  <a href="#afffc5a76790c58c8b3cecea01f068acb">More...</a><br /></td></tr>
+<tr class="separator:afffc5a76790c58c8b3cecea01f068acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c9ec2cec81635f7f94044a7ac527464"><td class="memItemLeft" align="right" valign="top">TYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field.html#a3c9ec2cec81635f7f94044a7ac527464">operator[]</a> (const uint32_t sample) const </td></tr>
 <tr class="memdesc:a3c9ec2cec81635f7f94044a7ac527464"><td class="mdescLeft">&#160;</td><td class="mdescRight">random access to the value of a given sample for reading or writing  <a href="#a3c9ec2cec81635f7f94044a7ac527464">More...</a><br /></td></tr>
 <tr class="separator:a3c9ec2cec81635f7f94044a7ac527464"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -447,6 +453,41 @@ template&lt;class TYPE&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="afffc5a76790c58c8b3cecea01f068acb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TYPE&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classgamgee_1_1_individual_field.html">gamgee::IndividualField</a>&lt; TYPE &gt;::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_individual_field.html">IndividualField</a>&lt; TYPE &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>compares two <a class="el" href="classgamgee_1_1_individual_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">IndividualField</a> objects in the following order: memory address, size and values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>something to compare to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the objects are not the same (memory address-wise), or contain different number of values, or the values are not exactly the same. Value comparison is dictated by TYPE's operator== implementation </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="aebef5c4e81e7d20ce3f57d0bacf37dec"></a>
 <div class="memitem">
 <div class="memproto">
@@ -506,6 +547,41 @@ template&lt;class TYPE&gt; </div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a73978483367b96bc8d8b5c3efa9ad70b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TYPE&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classgamgee_1_1_individual_field.html">gamgee::IndividualField</a>&lt; TYPE &gt;::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_individual_field.html">IndividualField</a>&lt; TYPE &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>compares two <a class="el" href="classgamgee_1_1_individual_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">IndividualField</a> objects in the following order: memory address, size and values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>something to compare to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the objects are the same (memory address-wise), or contain exactly the same values. Value comparison is dictated by TYPE's operator== implementation </dd></dl>
 
 </div>
 </div>
@@ -585,7 +661,7 @@ template&lt;class TYPE&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 21 2014 19:02:31 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 21 2014 19:09:23 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
