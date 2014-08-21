@@ -91,6 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="classgamgee_1_1_cigar-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -151,6 +152,21 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a7314cf95ecb9b08a94ffce8aa1e976ab"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4">CigarElement</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#a7314cf95ecb9b08a94ffce8aa1e976ab">make_cigar_element</a> (const uint32_t oplen, const <a class="el" href="namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139">CigarOperator</a> op)</td></tr>
 <tr class="memdesc:a7314cf95ecb9b08a94ffce8aa1e976ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates an encoded htslib cigar element suitable for direct insertion into a <a class="el" href="classgamgee_1_1_cigar.html" title="Utility class to manage the memory of the cigar structure. ">Cigar</a> out of a length and a CigarOperator  <a href="#a7314cf95ecb9b08a94ffce8aa1e976ab">More...</a><br /></td></tr>
 <tr class="separator:a7314cf95ecb9b08a94ffce8aa1e976ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbd57de7a577ddf5a8a6594cf771eb6b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4">CigarElement</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#afbd57de7a577ddf5a8a6594cf771eb6b">parse_next_cigar_element</a> (std::stringstream &amp;cigar_stream)</td></tr>
+<tr class="memdesc:afbd57de7a577ddf5a8a6594cf771eb6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">utility function to parse cigar strings (in a stringstream) one element at a time  <a href="#afbd57de7a577ddf5a8a6594cf771eb6b">More...</a><br /></td></tr>
+<tr class="separator:afbd57de7a577ddf5a8a6594cf771eb6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad815a1f123c264ba4ddd0da5ae2a91a1"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#ad815a1f123c264ba4ddd0da5ae2a91a1">consumes_read_bases</a> (const <a class="el" href="namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139">CigarOperator</a> op)</td></tr>
+<tr class="memdesc:ad815a1f123c264ba4ddd0da5ae2a91a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns true if operator is one of the following: Match (M), Insertion (I), Soft-Clip (S), Equal (=) or Different (X)  <a href="#ad815a1f123c264ba4ddd0da5ae2a91a1">More...</a><br /></td></tr>
+<tr class="separator:ad815a1f123c264ba4ddd0da5ae2a91a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5f930031da1984a4fb2d7ad664342c8"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#ad5f930031da1984a4fb2d7ad664342c8">consumes_reference_bases</a> (const <a class="el" href="namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139">CigarOperator</a> op)</td></tr>
+<tr class="memdesc:ad5f930031da1984a4fb2d7ad664342c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns true if operator is one of the following: Match (M), Deletion (D), Reference-Skip (N), Equal (=) or Different (X)  <a href="#ad5f930031da1984a4fb2d7ad664342c8">More...</a><br /></td></tr>
+<tr class="separator:ad5f930031da1984a4fb2d7ad664342c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:af3ba8453a1e389e4feb2387e8946c285"><td class="memItemLeft" align="right" valign="top">static const std::vector&lt; int8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_cigar.html#af3ba8453a1e389e4feb2387e8946c285">cigar_op_parse_table</a> = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,7,-1,-1,-1,-1,9,-1,2,-1,-1,-1,5,1,-1,-1,-1,0,3,-1,6,-1,-1,4,-1,-1,-1,-1,8,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}</td></tr>
+<tr class="memdesc:af3ba8453a1e389e4feb2387e8946c285"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table used to parse chars representing cigar operations into their htslib encodings.  <a href="#af3ba8453a1e389e4feb2387e8946c285">More...</a><br /></td></tr>
+<tr class="separator:af3ba8453a1e389e4feb2387e8946c285"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -306,6 +322,58 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>gets the length of an individual cigar element </p>
+
+</div>
+</div>
+<a class="anchor" id="ad815a1f123c264ba4ddd0da5ae2a91a1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool gamgee::Cigar::consumes_read_bases </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139">CigarOperator</a>&#160;</td>
+          <td class="paramname"><em>op</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>returns true if operator is one of the following: Match (M), Insertion (I), Soft-Clip (S), Equal (=) or Different (X) </p>
+
+</div>
+</div>
+<a class="anchor" id="ad5f930031da1984a4fb2d7ad664342c8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool gamgee::Cigar::consumes_reference_bases </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139">CigarOperator</a>&#160;</td>
+          <td class="paramname"><em>op</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>returns true if operator is one of the following: Match (M), Deletion (D), Reference-Skip (N), Equal (=) or Different (X) </p>
 
 </div>
 </div>
@@ -466,6 +534,38 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="afbd57de7a577ddf5a8a6594cf771eb6b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4">CigarElement</a> gamgee::Cigar::parse_next_cigar_element </td>
+          <td>(</td>
+          <td class="paramtype">std::stringstream &amp;&#160;</td>
+          <td class="paramname"><em>cigar_stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>utility function to parse cigar strings (in a stringstream) one element at a time </p>
+<p>This function is useful if you are parsing a cigar string into elements and operators. A simple way to iterate over all the elements is : </p><div class="fragment"><div class="line"><span class="keyword">auto</span> cigar_stream = stringstream{cigar_string};  <span class="comment">// requires gcc 4.9&#39;s stdlibc++ if you can&#39;t use that, don&#39;t use auto on this line</span></div>
+<div class="line"><span class="keywordflow">while</span> (cigar_stream.peek() != std::char_traits&lt;char&gt;::eof()) {</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> element = <a class="code" href="classgamgee_1_1_cigar.html#afbd57de7a577ddf5a8a6594cf771eb6b">parse_next_cigar_element</a>(cigar_stream);</div>
+<div class="line">  do_something_with(<a class="code" href="classgamgee_1_1_cigar.html#a006cfbb4b6187c8a09f84240071c38f6">Cigar::cigar_op</a>(element), <a class="code" href="classgamgee_1_1_cigar.html#afabc7802c54abc14ea8c6a8e577b7894">Cigar::cigar_oplen</a>(element));</div>
+<div class="line">}</div>
+</div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>a CigarElement with length and operator that can be extracted using the <a class="el" href="classgamgee_1_1_cigar.html" title="Utility class to manage the memory of the cigar structure. ">Cigar</a> API (<a class="el" href="classgamgee_1_1_cigar.html#a006cfbb4b6187c8a09f84240071c38f6" title="gets the operator of an individual cigar element ">Cigar::cigar_op</a> and <a class="el" href="classgamgee_1_1_cigar.html#afabc7802c54abc14ea8c6a8e577b7894" title="gets the length of an individual cigar element ">Cigar::cigar_oplen</a>) to actual elements. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a761e526c7f7ad64252e2dcafc8b899d5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -532,6 +632,30 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="af3ba8453a1e389e4feb2387e8946c285"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; int8_t &gt; gamgee::Cigar::cigar_op_parse_table = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,7,-1,-1,-1,-1,9,-1,2,-1,-1,-1,5,1,-1,-1,-1,0,3,-1,6,-1,-1,4,-1,-1,-1,-1,8,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Table used to parse chars representing cigar operations into their htslib encodings. </p>
+<dl class="section note"><dt>Note</dt><dd>: This table should eventually be moved to htslib. Currently htslib dynamically allocates and fills the equivalent of this table on-demand, which makes little sense. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>gamgee/<a class="el" href="cigar_8h_source.html">cigar.h</a></li>
 <li>gamgee/<a class="el" href="cigar_8cpp.html">cigar.cpp</a></li>
@@ -539,7 +663,7 @@ Friends</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 21 2014 15:41:25 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 21 2014 16:37:13 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

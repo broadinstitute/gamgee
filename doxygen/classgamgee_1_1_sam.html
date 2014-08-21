@@ -125,13 +125,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af54747dadf6e431283156d9d455d8817"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_sam_header.html">SamHeader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#af54747dadf6e431283156d9d455d8817">header</a> ()</td></tr>
 <tr class="separator:af54747dadf6e431283156d9d455d8817"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6b0aa48ad5673b617d11b97950e4e91"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#ac6b0aa48ad5673b617d11b97950e4e91">chromosome</a> () const </td></tr>
-<tr class="memdesc:ac6b0aa48ad5673b617d11b97950e4e91"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the integer representation of the chromosome. Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). Similar to Picards getReferenceIndex()  <a href="#ac6b0aa48ad5673b617d11b97950e4e91">More...</a><br /></td></tr>
+<tr class="memdesc:ac6b0aa48ad5673b617d11b97950e4e91"><td class="mdescLeft">&#160;</td><td class="mdescRight">chromosome index of the read.  <a href="#ac6b0aa48ad5673b617d11b97950e4e91">More...</a><br /></td></tr>
 <tr class="separator:ac6b0aa48ad5673b617d11b97950e4e91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9aff91f1994ab40103c49c5334511a63"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#a9aff91f1994ab40103c49c5334511a63">alignment_start</a> () const </td></tr>
-<tr class="memdesc:a9aff91f1994ab40103c49c5334511a63"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a (1-based and inclusive) alignment start position (as you would see in a <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> file).  <a href="#a9aff91f1994ab40103c49c5334511a63">More...</a><br /></td></tr>
+<tr class="memdesc:a9aff91f1994ab40103c49c5334511a63"><td class="mdescLeft">&#160;</td><td class="mdescRight">the reference position of the first base in the read  <a href="#a9aff91f1994ab40103c49c5334511a63">More...</a><br /></td></tr>
 <tr class="separator:a9aff91f1994ab40103c49c5334511a63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7eeda0d08aecf8037c0c2050d5634dc2"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#a7eeda0d08aecf8037c0c2050d5634dc2">alignment_stop</a> () const </td></tr>
-<tr class="memdesc:a7eeda0d08aecf8037c0c2050d5634dc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a (1-based and inclusive) alignment stop position (as you would see in a <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> file).  <a href="#a7eeda0d08aecf8037c0c2050d5634dc2">More...</a><br /></td></tr>
+<tr class="memdesc:a7eeda0d08aecf8037c0c2050d5634dc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a (1-based and inclusive) alignment stop position.  <a href="#a7eeda0d08aecf8037c0c2050d5634dc2">More...</a><br /></td></tr>
 <tr class="separator:a7eeda0d08aecf8037c0c2050d5634dc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdf0b3651128a0f8787ec1f5c0236899"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#afdf0b3651128a0f8787ec1f5c0236899">unclipped_start</a> () const </td></tr>
 <tr class="memdesc:afdf0b3651128a0f8787ec1f5c0236899"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates the theoretical alignment start of a read that has soft/hard-clips preceding the alignment  <a href="#afdf0b3651128a0f8787ec1f5c0236899">More...</a><br /></td></tr>
@@ -140,18 +140,29 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aa4801927f70100f120c882ddf7b0acf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates the theoretical alignment stop of a read that has soft/hard-clips preceding the alignment  <a href="#aa4801927f70100f120c882ddf7b0acf4">More...</a><br /></td></tr>
 <tr class="separator:aa4801927f70100f120c882ddf7b0acf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e0a18025638149d8c25216ebd12e7ec"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#a2e0a18025638149d8c25216ebd12e7ec">mate_chromosome</a> () const </td></tr>
-<tr class="memdesc:a2e0a18025638149d8c25216ebd12e7ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the integer representation of the mate's chromosome. Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). Similar to Picards getMateReferenceIndex()  <a href="#a2e0a18025638149d8c25216ebd12e7ec">More...</a><br /></td></tr>
+<tr class="memdesc:a2e0a18025638149d8c25216ebd12e7ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the integer representation of the mate's chromosome.  <a href="#a2e0a18025638149d8c25216ebd12e7ec">More...</a><br /></td></tr>
 <tr class="separator:a2e0a18025638149d8c25216ebd12e7ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb88f5ba0c20718a997315ffe29803e9"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#afb88f5ba0c20718a997315ffe29803e9">mate_alignment_start</a> () const </td></tr>
 <tr class="memdesc:afb88f5ba0c20718a997315ffe29803e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a (1-based and inclusive) mate's alignment start position (as you would see in a <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> file).  <a href="#afb88f5ba0c20718a997315ffe29803e9">More...</a><br /></td></tr>
 <tr class="separator:afb88f5ba0c20718a997315ffe29803e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a761094dcd5cc88b231313157f8f3b6b5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#a761094dcd5cc88b231313157f8f3b6b5">mate_alignment_stop</a> () const </td></tr>
-<tr class="memdesc:a761094dcd5cc88b231313157f8f3b6b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a (1-based and inclusive) mate'salignment stop position (as you would see in a <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> file).  <a href="#a761094dcd5cc88b231313157f8f3b6b5">More...</a><br /></td></tr>
+<tr class="memdesc:a761094dcd5cc88b231313157f8f3b6b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a (1-based and inclusive) mate's alignment stop position.  <a href="#a761094dcd5cc88b231313157f8f3b6b5">More...</a><br /></td></tr>
 <tr class="separator:a761094dcd5cc88b231313157f8f3b6b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d193aac7f990a4732e618f43236cb92"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#a5d193aac7f990a4732e618f43236cb92">mate_alignment_stop</a> (const <a class="el" href="classgamgee_1_1_sam_tag.html">SamTag</a>&lt; std::string &gt; &amp;mate_cigar_tag) const </td></tr>
+<tr class="memdesc:a5d193aac7f990a4732e618f43236cb92"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a (1-based and inclusive) mate's alignment stop position.  <a href="#a5d193aac7f990a4732e618f43236cb92">More...</a><br /></td></tr>
+<tr class="separator:a5d193aac7f990a4732e618f43236cb92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0153411640fb83c7f1b3b09d6d0e078f"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#a0153411640fb83c7f1b3b09d6d0e078f">mate_unclipped_start</a> () const </td></tr>
+<tr class="memdesc:a0153411640fb83c7f1b3b09d6d0e078f"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a (1-based and inclusive) mate's unclipped alignment start position.  <a href="#a0153411640fb83c7f1b3b09d6d0e078f">More...</a><br /></td></tr>
 <tr class="separator:a0153411640fb83c7f1b3b09d6d0e078f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a950c87dcff9a83be591042116cc21d30"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#a950c87dcff9a83be591042116cc21d30">mate_unclipped_start</a> (const <a class="el" href="classgamgee_1_1_sam_tag.html">SamTag</a>&lt; std::string &gt; &amp;mate_cigar_tag) const </td></tr>
+<tr class="memdesc:a950c87dcff9a83be591042116cc21d30"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a (1-based and inclusive) mate's unclipped alignment start position.  <a href="#a950c87dcff9a83be591042116cc21d30">More...</a><br /></td></tr>
+<tr class="separator:a950c87dcff9a83be591042116cc21d30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55b020b715aaaf7e301032d7bffd2a3e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#a55b020b715aaaf7e301032d7bffd2a3e">mate_unclipped_stop</a> () const </td></tr>
+<tr class="memdesc:a55b020b715aaaf7e301032d7bffd2a3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a (1-based and inclusive) mate's unclipped alignment stop position.  <a href="#a55b020b715aaaf7e301032d7bffd2a3e">More...</a><br /></td></tr>
 <tr class="separator:a55b020b715aaaf7e301032d7bffd2a3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a499fef40222cf985150e959e41c68df1"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#a499fef40222cf985150e959e41c68df1">mate_unclipped_stop</a> (const <a class="el" href="classgamgee_1_1_sam_tag.html">SamTag</a>&lt; std::string &gt; &amp;mate_cigar_tag) const </td></tr>
+<tr class="memdesc:a499fef40222cf985150e959e41c68df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a (1-based and inclusive) mate's unclipped alignment stop position.  <a href="#a499fef40222cf985150e959e41c68df1">More...</a><br /></td></tr>
+<tr class="separator:a499fef40222cf985150e959e41c68df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8eae6bf547ae838870c7ee8e38dc25c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#ae8eae6bf547ae838870c7ee8e38dc25c">set_chromosome</a> (const uint32_t chr)</td></tr>
 <tr class="memdesc:ae8eae6bf547ae838870c7ee8e38dc25c"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple setter for the chromosome index. Index is 0-based.  <a href="#ae8eae6bf547ae838870c7ee8e38dc25c">More...</a><br /></td></tr>
 <tr class="separator:ae8eae6bf547ae838870c7ee8e38dc25c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -422,8 +433,9 @@ does not perform a deep copy of the sam header; to copy the header, first get it
 </table>
 </div><div class="memdoc">
 
-<p>returns a (1-based and inclusive) alignment start position (as you would see in a <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> file). </p>
+<p>the reference position of the first base in the read </p>
 <dl class="section note"><dt>Note</dt><dd>the internal encoding is 0-based to mimic that of the BAM files. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a (1-based and inclusive) alignment start position (as you would see in a <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> file). </dd></dl>
 
 </div>
 </div>
@@ -448,8 +460,10 @@ does not perform a deep copy of the sam header; to copy the header, first get it
 </table>
 </div><div class="memdoc">
 
-<p>returns a (1-based and inclusive) alignment stop position (as you would see in a <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> file). </p>
-<dl class="section note"><dt>Note</dt><dd>the internal encoding is 0-based to mimic that of the BAM files. </dd></dl>
+<p>returns a (1-based and inclusive) alignment stop position. </p>
+<dl class="section note"><dt>Note</dt><dd>the internal encoding is 0-based to mimic that of the BAM files. </dd>
+<dd>
+htslib's bam_endpos returns the coordinate of the first base AFTER the alignment, 0-based, so that translates into the last base IN the 1-based alignment. </dd></dl>
 
 </div>
 </div>
@@ -551,7 +565,9 @@ creates an object but doesn't copy the underlying values. </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p>returns the integer representation of the chromosome. Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). Similar to Picards getReferenceIndex() </p>
+<p>chromosome index of the read. </p>
+<p>Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). Similar to Picards getReferenceIndex()</p>
+<dl class="section return"><dt>Returns</dt><dd>the integer representation of the chromosome. </dd></dl>
 
 </div>
 </div>
@@ -812,9 +828,47 @@ creates an object but doesn't copy the underlying values. </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>returns a (1-based and inclusive) mate'salignment stop position (as you would see in a <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> file). </p>
+<p>returns a (1-based and inclusive) mate's alignment stop position. </p>
 <dl class="section note"><dt>Note</dt><dd>the internal encoding is 0-based to mimic that of the BAM files. </dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>not implemented &ndash; requires new mate cigar tag! </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if called on a record that doesn't contain the mate cigar ("MC") tag. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5d193aac7f990a4732e618f43236cb92"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gamgee::Sam::mate_alignment_stop </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_sam_tag.html">SamTag</a>&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mate_cigar_tag</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns a (1-based and inclusive) mate's alignment stop position. </p>
+<p>This overload is for usage when the user checks for the existence of the tag themselves and passes it in to avoid exception throwing. This is provided for performance conscious use of this function. This way you will only create one <a class="el" href="classgamgee_1_1_sam_tag.html" title="class to represent a Sam TAG:TYPE:VALUE entry ">SamTag</a> object for the mate cigar tag, instead of potentially two when checking for its availability and then calling this function. For example: </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> tag = record.string_tag(<span class="stringliteral">&quot;MC&quot;</span>);  <span class="comment">// obtains the tag from the record (expensive operation)</span></div>
+<div class="line"><span class="keywordflow">if</span> (!<a class="code" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>(tag))</div>
+<div class="line">  cout &lt;&lt; record.mate_alignment_stop(tag) &lt;&lt; endl;  <span class="comment">// this will reuse the tag you have already obtained</span></div>
+</div><!-- fragment --><p>This is better than the alternative using the other overload where you have to either get the Tag twice or check for the exception thrown:</p>
+<div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> tag = record.string_tag(<span class="stringliteral">&quot;MC&quot;</span>);  <span class="comment">// obtains the tag from the record (expensive operation)</span></div>
+<div class="line"><span class="keywordflow">if</span> (!<a class="code" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>(tag))</div>
+<div class="line">  cout &lt;&lt; record.mate_alignment_stop() &lt;&lt; endl;  <span class="comment">// this will obtain a new tag internally (unnecessary)</span></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mate_cigar_tag</td><td>the MC tag as obtained via the string_tag("MC") API in <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Warning</dt><dd>This overload DOES NOT throw an exception if the mate cigar tag is missing. Instead it returns <a class="el" href="classgamgee_1_1_sam.html#afb88f5ba0c20718a997315ffe29803e9" title="returns a (1-based and inclusive) mate&#39;s alignment start position (as you would see in a Sam file)...">mate_alignment_start()</a>. Treat it as undefined behavior. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>the internal encoding is 0-based to mimic that of the BAM files. </dd></dl>
 
 </div>
 </div>
@@ -839,16 +893,14 @@ creates an object but doesn't copy the underlying values. </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p>returns the integer representation of the mate's chromosome. Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). Similar to Picards getMateReferenceIndex() </p>
+<p>returns the integer representation of the mate's chromosome. </p>
+<p>Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). </p>
 
 </div>
 </div>
 <a class="anchor" id="a0153411640fb83c7f1b3b09d6d0e078f"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint32_t gamgee::Sam::mate_unclipped_start </td>
@@ -857,13 +909,48 @@ creates an object but doesn't copy the underlying values. </dd></dl>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<dl class="section warning"><dt>Warning</dt><dd>dummy implementation &ndash; requires new mate cigar tag! </dd></dl>
+
+<p>returns a (1-based and inclusive) mate's unclipped alignment start position. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if called on a record that doesn't contain the mate cigar ("MC") tag. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a950c87dcff9a83be591042116cc21d30"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gamgee::Sam::mate_unclipped_start </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_sam_tag.html">SamTag</a>&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mate_cigar_tag</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns a (1-based and inclusive) mate's unclipped alignment start position. </p>
+<p>This overload is for usage when the user checks for the existence of the tag themselves and passes it in to avoid exception throwing. This is provided for performance conscious use of this function. This way you will only create one <a class="el" href="classgamgee_1_1_sam_tag.html" title="class to represent a Sam TAG:TYPE:VALUE entry ">SamTag</a> object for the mate cigar tag. Instead of potentially two when checking for it's availability and then calling this function. For example: </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> tag = record.string_tag(<span class="stringliteral">&quot;MC&quot;</span>);  <span class="comment">// obtains the tag from the record (expensive operation)</span></div>
+<div class="line"><span class="keywordflow">if</span> (!<a class="code" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>(tag))</div>
+<div class="line">  cout &lt;&lt; record.mate_unclipped_start(tag) &lt;&lt; endl;  <span class="comment">// this will reuse the tag you have already obtained</span></div>
+</div><!-- fragment --><p>This is better than the alternative using the other overload where you have to either get the Tag twice or check for the exception thrown:</p>
+<div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> tag = record.string_tag(<span class="stringliteral">&quot;MC&quot;</span>);  <span class="comment">// obtains the tag from the record (expensive operation)</span></div>
+<div class="line"><span class="keywordflow">if</span> (!<a class="code" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>(tag))</div>
+<div class="line">  cout &lt;&lt; record.mate_unclipped_start() &lt;&lt; endl;  <span class="comment">// this will obtain a new tag internally (unnecessary)</span></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mate_cigar_tag</td><td>the MC tag as obtained via the string_tag("MC") API in <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Warning</dt><dd>This overload DOES NOT throw an exception if the mate cigar tag is missing. Instead it returns <a class="el" href="classgamgee_1_1_sam.html#afb88f5ba0c20718a997315ffe29803e9" title="returns a (1-based and inclusive) mate&#39;s alignment start position (as you would see in a Sam file)...">mate_alignment_start()</a>. Treat it as undefined behavior. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>the internal encoding is 0-based to mimic that of the BAM files. </dd></dl>
 
 </div>
 </div>
@@ -879,7 +966,47 @@ creates an object but doesn't copy the underlying values. </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section warning"><dt>Warning</dt><dd>not implemented &ndash; requires new mate cigar tag! </dd></dl>
+
+<p>returns a (1-based and inclusive) mate's unclipped alignment stop position. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if called on a record that doesn't contain the mate cigar ("MC") tag. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a499fef40222cf985150e959e41c68df1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gamgee::Sam::mate_unclipped_stop </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_sam_tag.html">SamTag</a>&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mate_cigar_tag</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns a (1-based and inclusive) mate's unclipped alignment stop position. </p>
+<p>This overload is for usage when the user checks for the existence of the tag themselves and passes it in to avoid exception throwing. This is provided for performance conscious use of this function. This way you will only create one <a class="el" href="classgamgee_1_1_sam_tag.html" title="class to represent a Sam TAG:TYPE:VALUE entry ">SamTag</a> object for the mate cigar tag. Instead of potentially two when checking for it's availability and then calling this function. For example: </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> tag = record.string_tag(<span class="stringliteral">&quot;MC&quot;</span>);  <span class="comment">// obtains the tag from the record (expensive operation)</span></div>
+<div class="line"><span class="keywordflow">if</span> (!<a class="code" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>(tag))</div>
+<div class="line">  cout &lt;&lt; record.mate_unclipped_stop(tag) &lt;&lt; endl;  <span class="comment">// this will reuse the tag you have already obtained</span></div>
+</div><!-- fragment --><p>This is better than the alternative using the other overload where you have to either get the Tag twice or check for the exception thrown:</p>
+<div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> tag = record.string_tag(<span class="stringliteral">&quot;MC&quot;</span>);  <span class="comment">// obtains the tag from the record (expensive operation)</span></div>
+<div class="line"><span class="keywordflow">if</span> (!<a class="code" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>(tag))</div>
+<div class="line">  cout &lt;&lt; record.mate_unclipped_stop() &lt;&lt; endl;  <span class="comment">// this will obtain a new tag internally (unnecessary)</span></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mate_cigar_tag</td><td>the MC tag as obtained via the string_tag("MC") API in <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Warning</dt><dd>This overload DOES NOT throw an exception if the mate cigar tag is missing. Instead it returns <a class="el" href="classgamgee_1_1_sam.html#afb88f5ba0c20718a997315ffe29803e9" title="returns a (1-based and inclusive) mate&#39;s alignment start position (as you would see in a Sam file)...">mate_alignment_start()</a>. Treat it as undefined behavior. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>the internal encoding is 0-based to mimic that of the BAM files. </dd></dl>
 
 </div>
 </div>
@@ -1783,7 +1910,8 @@ does not perform a deep copy of the sam header; to copy the header, first get it
 </div><div class="memdoc">
 
 <p>calculates the theoretical alignment start of a read that has soft/hard-clips preceding the alignment </p>
-<dl class="section return"><dt>Returns</dt><dd>the alignment start (1-based, inclusive) adjusted for clipped bases. For example if the read has an alignment start of 100 but the first 4 bases were clipped (hard or soft clipped) then this method will return 96.</dd></dl>
+<p>For example if the read has an alignment start of 100 but the first 4 bases were clipped (hard or soft clipped) then this method will return 96.</p>
+<dl class="section return"><dt>Returns</dt><dd>the alignment start (1-based, inclusive) adjusted for clipped bases.</dd></dl>
 <p>Invalid to call on an unmapped read. Invalid to call with cigar = null </p>
 
 </div>
@@ -1802,8 +1930,11 @@ does not perform a deep copy of the sam header; to copy the header, first get it
 </div><div class="memdoc">
 
 <p>calculates the theoretical alignment stop of a read that has soft/hard-clips preceding the alignment </p>
-<dl class="section return"><dt>Returns</dt><dd>the alignment stop (1-based, inclusive) adjusted for clipped bases. For example if the read has an alignment stop of 100 but the last 4 bases were clipped (hard or soft clipped) then this method will return 104.</dd></dl>
-<p>Invalid to call on an unmapped read. Invalid to call with cigar = null </p>
+<p>For example if the read has an alignment stop of 100 but the last 4 bases were clipped (hard or soft clipped) then this method will return 104.</p>
+<dl class="section return"><dt>Returns</dt><dd>the alignment stop (1-based, inclusive) adjusted for clipped bases. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Invalid to call on an unmapped read. </dd>
+<dd>
+Invalid to call with cigar = null </dd></dl>
 
 </div>
 </div>
@@ -1884,7 +2015,7 @@ does not perform a deep copy of the sam header; to copy the header, first get it
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 21 2014 15:41:25 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 21 2014 16:37:13 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

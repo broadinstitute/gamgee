@@ -11,6 +11,8 @@ var searchData=
   ['comment',['comment',['../classgamgee_1_1_fastq.html#a45b0dd799a8bb650ad19746b30dca544',1,'gamgee::Fastq']]],
   ['complement',['complement',['../namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b',1,'gamgee::utils::complement(std::string &amp;sequence)'],['../namespacegamgee_1_1utils.html#a7a60af0f48035150f82481f2547c57e9',1,'gamgee::utils::complement(const std::string &amp;sequence)'],['../namespacegamgee_1_1utils.html#ab9002b9228221fb6a03d04e48424e318',1,'gamgee::utils::complement(const char base)']]],
   ['complement_5fbase',['complement_base',['../namespacegamgee_1_1utils.html#afa77e0e092d799249e1843b35b6fc33a',1,'gamgee::utils']]],
+  ['consumes_5fread_5fbases',['consumes_read_bases',['../classgamgee_1_1_cigar.html#ad815a1f123c264ba4ddd0da5ae2a91a1',1,'gamgee::Cigar']]],
+  ['consumes_5freference_5fbases',['consumes_reference_bases',['../classgamgee_1_1_cigar.html#ad5f930031da1984a4fb2d7ad664342c8',1,'gamgee::Cigar']]],
   ['convert_5fdata_5fto_5ffloat',['convert_data_to_float',['../namespacegamgee_1_1utils.html#a1e311a6e54eb6bb586924d5109206c8e',1,'gamgee::utils']]],
   ['convert_5fdata_5fto_5finteger',['convert_data_to_integer',['../namespacegamgee_1_1utils.html#a5e97f0ad88440531250c794004c4d0b7',1,'gamgee::utils']]],
   ['convert_5fdata_5fto_5fstring',['convert_data_to_string',['../namespacegamgee_1_1utils.html#a175b96f16641108cac41f2c299e76e98',1,'gamgee::utils']]],
