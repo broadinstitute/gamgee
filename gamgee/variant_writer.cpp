@@ -15,7 +15,8 @@ VariantWriter::VariantWriter(const VariantHeader& header, const std::string& out
 }
 
 VariantWriter::~VariantWriter() {
-  bcf_close(m_out_file);
+  if (m_out_file != nullptr)
+    bcf_close(m_out_file);
 }
 
 void VariantWriter::add_header(const VariantHeader& header) { 
