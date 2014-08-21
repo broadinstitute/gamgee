@@ -124,7 +124,8 @@ class VariantReader {
    * @brief closes the file stream if there is one (in case we are reading a variant file)
    */
   ~VariantReader() {
-    bcf_close(m_variant_file_ptr);
+    if (m_variant_file_ptr != nullptr)
+      bcf_close(m_variant_file_ptr);
   }
 
   /**

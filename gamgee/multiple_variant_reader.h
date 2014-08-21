@@ -66,7 +66,8 @@ class MultipleVariantReader {
    */
   ~MultipleVariantReader() {
     for (auto file_ptr : m_variant_files)
-      bcf_close(file_ptr);
+      if (file_ptr != nullptr)
+        bcf_close(file_ptr);
   }
 
   /**
