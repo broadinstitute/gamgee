@@ -145,6 +145,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html">IndividualFieldValueIterator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">iterator for FormatFieldGenericValue objects.  <a href="classgamgee_1_1_individual_field_value_iterator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_interval.html">Interval</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility class to store an genomic location (<a class="el" href="classgamgee_1_1_interval.html" title="Utility class to store an genomic location (Interval). ">Interval</a>).  <a href="classgamgee_1_1_interval.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html">MultipleVariantIterator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility class to enable for-each style iteration in the <a class="el" href="classgamgee_1_1_multiple_variant_reader.html" title="Utility class to read multiple VCF/BCF files with an appropriate iterator in a for-each loop...">MultipleVariantReader</a> class.  <a href="classgamgee_1_1_multiple_variant_iterator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -264,6 +267,20 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ad5dbd22b3e2219d6c6b72511e33b3561"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#ad5dbd22b3e2219d6c6b72511e33b3561">skip_picard_header</a> (istream &amp;infile)</td></tr>
+<tr class="separator:ad5dbd22b3e2219d6c6b72511e33b3561"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0af5b447230ea4f48623227c3c777f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_interval.html">Interval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#af0af5b447230ea4f48623227c3c777f4">parse_interval_record</a> (const string &amp;line)</td></tr>
+<tr class="separator:af0af5b447230ea4f48623227c3c777f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a899ab09a4c231aa40937287d45576f8d"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="classgamgee_1_1_interval.html">Interval</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a899ab09a4c231aa40937287d45576f8d">read_intervals</a> (const string &amp;intervals_file)</td></tr>
+<tr class="separator:a899ab09a4c231aa40937287d45576f8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c52e7f8ba48d6e0b13012b99a472a84"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="classgamgee_1_1_interval.html">Interval</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a1c52e7f8ba48d6e0b13012b99a472a84">read_intervals</a> (istream &amp;input)</td></tr>
+<tr class="separator:a1c52e7f8ba48d6e0b13012b99a472a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a1b039b82dd879b4357a95681d6fd89"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classgamgee_1_1_interval.html">Interval</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a9a1b039b82dd879b4357a95681d6fd89">read_intervals</a> (const std::string &amp;intervals_file)</td></tr>
+<tr class="memdesc:a9a1b039b82dd879b4357a95681d6fd89"><td class="mdescLeft">&#160;</td><td class="mdescRight">utility function to read all Intervals from an Intervals file  <a href="#a9a1b039b82dd879b4357a95681d6fd89">More...</a><br /></td></tr>
+<tr class="separator:a9a1b039b82dd879b4357a95681d6fd89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ed74174acad5bf98f6e54d4fa632340"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classgamgee_1_1_interval.html">Interval</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a4ed74174acad5bf98f6e54d4fa632340">read_intervals</a> (std::istream &amp;input)</td></tr>
+<tr class="memdesc:a4ed74174acad5bf98f6e54d4fa632340"><td class="mdescLeft">&#160;</td><td class="mdescRight">utility function to read all Intervals from an Intervals file  <a href="#a4ed74174acad5bf98f6e54d4fa632340">More...</a><br /></td></tr>
+<tr class="separator:a4ed74174acad5bf98f6e54d4fa632340"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a659c46d5b1420346543fb1afc4a575de"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a> (const bool value)</td></tr>
 <tr class="memdesc:a659c46d5b1420346543fb1afc4a575de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if bool is false (missing).  <a href="#a659c46d5b1420346543fb1afc4a575de">More...</a><br /></td></tr>
 <tr class="separator:a659c46d5b1420346543fb1afc4a575de"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -294,6 +311,10 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a1933c2d89760c1391c192e44dd7caef5"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a1933c2d89760c1391c192e44dd7caef5">PICARD_HEADER_TAG</a> = '@'</td></tr>
+<tr class="separator:a1933c2d89760c1391c192e44dd7caef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd7ef74f462df5f454db18082baefd87"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#abd7ef74f462df5f454db18082baefd87">sep</a> = char_separator&lt;char&gt;{&quot; \t:-&quot;}</td></tr>
+<tr class="separator:abd7ef74f462df5f454db18082baefd87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abeab9f8f8d7f7b19a8a2ae3f2fee85a7"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#abeab9f8f8d7f7b19a8a2ae3f2fee85a7">MATE_CIGAR_TAG</a> = &quot;MC&quot;</td></tr>
 <tr class="separator:abeab9f8f8d7f7b19a8a2ae3f2fee85a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -724,6 +745,120 @@ template&lt;class VALUE &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="af0af5b447230ea4f48623227c3c777f4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_interval.html">Interval</a> gamgee::parse_interval_record </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>line</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a899ab09a4c231aa40937287d45576f8d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;<a class="el" href="classgamgee_1_1_interval.html">Interval</a>&gt; gamgee::read_intervals </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>intervals_file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1c52e7f8ba48d6e0b13012b99a472a84"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;<a class="el" href="classgamgee_1_1_interval.html">Interval</a>&gt; gamgee::read_intervals </td>
+          <td>(</td>
+          <td class="paramtype">istream &amp;&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9a1b039b82dd879b4357a95681d6fd89"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="classgamgee_1_1_interval.html">Interval</a>&gt; gamgee::read_intervals </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>intervals_file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>utility function to read all Intervals from an Intervals file </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">intervals_file</td><td>the file with the Intervals in one of the supported formats</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector of <a class="el" href="classgamgee_1_1_interval.html" title="Utility class to store an genomic location (Interval). ">Interval</a> objects </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a4ed74174acad5bf98f6e54d4fa632340"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="classgamgee_1_1_interval.html">Interval</a>&gt; gamgee::read_intervals </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>utility function to read all Intervals from an Intervals file </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>an input stream (e.g. std::cin)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector of <a class="el" href="classgamgee_1_1_interval.html" title="Utility class to store an genomic location (Interval). ">Interval</a> objects </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad5dbd22b3e2219d6c6b72511e33b3561"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gamgee::skip_picard_header </td>
+          <td>(</td>
+          <td class="paramtype">istream &amp;&#160;</td>
+          <td class="paramname"><em>infile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a class="anchor" id="abeab9f8f8d7f7b19a8a2ae3f2fee85a7"></a>
 <div class="memitem">
@@ -737,10 +872,34 @@ template&lt;class VALUE &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a1933c2d89760c1391c192e44dd7caef5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const auto gamgee::PICARD_HEADER_TAG = '@'</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abd7ef74f462df5f454db18082baefd87"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const auto gamgee::sep = char_separator&lt;char&gt;{&quot; \t:-&quot;}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 21 2014 16:37:13 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 21 2014 18:09:18 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

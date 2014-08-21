@@ -73,6 +73,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>All</span></a></li>
       <li class="current"><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
       <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
@@ -178,6 +180,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>set_bases()
 : <a class="el" href="classgamgee_1_1_sam_builder.html#aabe780e692d442bc9d72579d9575b1de">gamgee::SamBuilder</a>
 </li>
+<li>set_chr()
+: <a class="el" href="classgamgee_1_1_interval.html#a7f3284fa31809fe3ccc94af957a031c0">gamgee::Interval</a>
+</li>
 <li>set_chromosome()
 : <a class="el" href="classgamgee_1_1_sam.html#ae8eae6bf547ae838870c7ee8e38dc25c">gamgee::Sam</a>
 , <a class="el" href="classgamgee_1_1_sam_builder.html#ae9b3fcdcf62e88f0e17c78159970cbd4">gamgee::SamBuilder</a>
@@ -268,6 +273,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="classgamgee_1_1_sam.html#a38cc5a44c46acf254158947cc81c6fe6">gamgee::Sam</a>
 , <a class="el" href="classgamgee_1_1_sam_builder.html#a6607d95c14018c4dba073003c220645c">gamgee::SamBuilder</a>
 </li>
+<li>set_output_type()
+: <a class="el" href="classgamgee_1_1_interval.html#a29f0f9a83abd2c9d403b2a6f717875d6">gamgee::Interval</a>
+</li>
 <li>set_paired()
 : <a class="el" href="classgamgee_1_1_sam.html#a299c4642ba0b75b2879ecec18a46e67e">gamgee::Sam</a>
 , <a class="el" href="classgamgee_1_1_sam_builder.html#a8bd2ea54953c836b24bf931e032b60d5">gamgee::SamBuilder</a>
@@ -286,6 +294,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>set_sequence()
 : <a class="el" href="classgamgee_1_1_fastq.html#af6ab94bd63e51eb9114a5cceb50d4740">gamgee::Fastq</a>
 </li>
+<li>set_start()
+: <a class="el" href="classgamgee_1_1_interval.html#ab2010c2100858cb94c2f9c23b87c612a">gamgee::Interval</a>
+</li>
+<li>set_stop()
+: <a class="el" href="classgamgee_1_1_interval.html#a062f0563acb35bd821b1e07826e90620">gamgee::Interval</a>
+</li>
 <li>set_supplementary()
 : <a class="el" href="classgamgee_1_1_sam.html#ae8807efc0162d88a5218ba118e142f10">gamgee::Sam</a>
 , <a class="el" href="classgamgee_1_1_sam_builder.html#aa6dbbcb082e955f33ed13477de4e45b2">gamgee::SamBuilder</a>
@@ -295,7 +309,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classgamgee_1_1_sam_builder.html#a423eb365a96fe9d3a670031c51b8f347">gamgee::SamBuilder</a>
 </li>
 <li>shared_field_as_float()
-: <a class="el" href="classgamgee_1_1_variant.html#a79f144d76f47488afffefbaf1947695d">gamgee::Variant</a>
+: <a class="el" href="classgamgee_1_1_variant.html#a040d85e426f71e365d6546260ae3819c">gamgee::Variant</a>
 </li>
 <li>shared_field_as_integer()
 : <a class="el" href="classgamgee_1_1_variant.html#ab597d764669b2b36392e4558e136d4d0">gamgee::Variant</a>
@@ -307,7 +321,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="classgamgee_1_1_variant_header.html#a1068a7fdb23dc67166a8df908cdc2116">gamgee::VariantHeader</a>
 </li>
 <li>SharedField()
-: <a class="el" href="classgamgee_1_1_shared_field.html#a2157147b5a16c5ee7b2683b2f200970f">gamgee::SharedField&lt; TYPE &gt;</a>
+: <a class="el" href="classgamgee_1_1_shared_field.html#a0d1e2065d157c50a485e094196e90c53">gamgee::SharedField&lt; TYPE &gt;</a>
 </li>
 <li>SharedFieldIterator()
 : <a class="el" href="classgamgee_1_1_shared_field_iterator.html#a50055a722aa3394853c8ec7e2f7aac3d">gamgee::SharedFieldIterator&lt; VALUE_TYPE &gt;</a>
@@ -321,16 +335,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classgamgee_1_1_genotype.html#af5c9fc27656bda0a716982f073d5f794">gamgee::Genotype</a>
 , <a class="el" href="classgamgee_1_1_individual_field.html#a3993f503302a6c6cc45fec97778591c8">gamgee::IndividualField&lt; TYPE &gt;</a>
 , <a class="el" href="classgamgee_1_1_individual_field_value.html#aa83a952a7773fca06e1394d07ef15e2c">gamgee::IndividualFieldValue&lt; VALUE_TYPE &gt;</a>
+, <a class="el" href="classgamgee_1_1_interval.html#acd46715a80547a4fd24f777478d5e02b">gamgee::Interval</a>
 , <a class="el" href="classgamgee_1_1_read_bases.html#abc2c3ba62fdfaf5d55cb7da7e1f908f3">gamgee::ReadBases</a>
-, <a class="el" href="classgamgee_1_1_shared_field.html#a92f8f02250e6953620be7bf1377a80ec">gamgee::SharedField&lt; TYPE &gt;</a>
+, <a class="el" href="classgamgee_1_1_shared_field.html#ab31aafb35c34fcc5ddbe602401b73daf">gamgee::SharedField&lt; TYPE &gt;</a>
 , <a class="el" href="classgamgee_1_1_variant_filters.html#a6d5e75bc8eaf6b5e1c1b47d59b12088a">gamgee::VariantFilters</a>
 , <a class="el" href="classgamgee_1_1_variant_filters_iterator.html#af0367b1310a6735219c8cede5f27529f">gamgee::VariantFiltersIterator</a>
+</li>
+<li>start()
+: <a class="el" href="classgamgee_1_1_interval.html#a94fed0996825250fdc78a3c6ef9bc9a0">gamgee::Interval</a>
+</li>
+<li>stop()
+: <a class="el" href="classgamgee_1_1_interval.html#ae00b92f0f6a3c7be2db07e379ed0296c">gamgee::Interval</a>
 </li>
 <li>string_individual_field()
 : <a class="el" href="classgamgee_1_1_variant.html#af063e66dca677dd9aa3c880b4a558436">gamgee::Variant</a>
 </li>
 <li>string_shared_field()
-: <a class="el" href="classgamgee_1_1_variant.html#a0ea0ac3429f671d250835a82cc6c1a05">gamgee::Variant</a>
+: <a class="el" href="classgamgee_1_1_variant.html#a26edd30ee67c0f7f9ed95ac09098f72e">gamgee::Variant</a>
 </li>
 <li>string_tag()
 : <a class="el" href="classgamgee_1_1_sam.html#a36a261d2f72624c206c73dcf23874a52">gamgee::Sam</a>
@@ -342,7 +363,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 21 2014 16:37:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 21 2014 18:09:18 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

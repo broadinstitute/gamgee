@@ -73,6 +73,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>All</span></a></li>
       <li class="current"><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
       <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
@@ -133,6 +135,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classgamgee_1_1_indexed_variant_iterator.html#a8b12c0f872f9ace67ac5596325247dfd">gamgee::IndexedVariantIterator</a>
 , <a class="el" href="classgamgee_1_1_individual_field_iterator.html#a885360f0e2621ee63ed567886fbb791b">gamgee::IndividualFieldIterator&lt; TYPE &gt;</a>
 , <a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#a41f8bf4a1b5fbf17195ed5489461e28c">gamgee::IndividualFieldValueIterator&lt; VALUE_TYPE &gt;</a>
+, <a class="el" href="classgamgee_1_1_interval.html#a5438f8d748f2565bd00500c63ffee1ea">gamgee::Interval</a>
 , <a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#a7d945e028d26616ae3d51181ea75d64b">gamgee::MultipleVariantIterator</a>
 , <a class="el" href="classgamgee_1_1_read_bases.html#ae83d3cd0e345898a3b1db052b2020892">gamgee::ReadBases</a>
 , <a class="el" href="classgamgee_1_1_sam_iterator.html#a31037e62b5e33f4fb4b60d8fbd844091">gamgee::SamIterator</a>
@@ -212,25 +215,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classgamgee_1_1_genotype.html#a476eb30243d02210058f6619e01fcd8c">gamgee::Genotype</a>
 , <a class="el" href="classgamgee_1_1_indexed_sam_iterator.html#a2cbbeba5a89fcf5327bb80b586b16f19">gamgee::IndexedSamIterator</a>
 , <a class="el" href="classgamgee_1_1_indexed_sam_reader.html#ae0633e2519eb9983301ce9ff1124eb21">gamgee::IndexedSamReader&lt; ITERATOR &gt;</a>
-, <a class="el" href="classgamgee_1_1_indexed_variant_iterator.html#a717440aef903a6ddf5ba1b71f8b05c0c">gamgee::IndexedVariantIterator</a>
+, <a class="el" href="classgamgee_1_1_indexed_variant_iterator.html#a21b7471c7784c8ea4ccbf47ebc3ae3dc">gamgee::IndexedVariantIterator</a>
 , <a class="el" href="classgamgee_1_1_indexed_variant_reader.html#a51986c586d0433ce0d78d6e2a8bb03cb">gamgee::IndexedVariantReader&lt; ITERATOR &gt;</a>
 , <a class="el" href="classgamgee_1_1_individual_field.html#aebef5c4e81e7d20ce3f57d0bacf37dec">gamgee::IndividualField&lt; TYPE &gt;</a>
 , <a class="el" href="classgamgee_1_1_individual_field_iterator.html#aaafd9eb1c611edb1661a20335d21358c">gamgee::IndividualFieldIterator&lt; TYPE &gt;</a>
 , <a class="el" href="classgamgee_1_1_individual_field_value.html#a0df4b4f663d8204c7277326791069633">gamgee::IndividualFieldValue&lt; VALUE_TYPE &gt;</a>
 , <a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#a6d7a5f2ae0f9adc86f5ab1b42e787d44">gamgee::IndividualFieldValueIterator&lt; VALUE_TYPE &gt;</a>
+, <a class="el" href="classgamgee_1_1_interval.html#a0461f6d7b053071ae354434ea5050e15">gamgee::Interval</a>
 , <a class="el" href="classgamgee_1_1_read_bases.html#a57b2e20136d01e1c47c7431a0753c133">gamgee::ReadBases</a>
-, <a class="el" href="classgamgee_1_1_sam.html#a7f2a9981c3ab902d1c35843817ecdee2">gamgee::Sam</a>
+, <a class="el" href="classgamgee_1_1_sam.html#ab821b23b5a63373a71c48b0e3961876e">gamgee::Sam</a>
 , <a class="el" href="classgamgee_1_1_sam_builder.html#a3d52e9a450f135f68702841f89fd5a29">gamgee::SamBuilder</a>
 , <a class="el" href="classgamgee_1_1_sam_builder_data_field.html#a9e84602732a2810bb60caea89a72dcd9">gamgee::SamBuilderDataField</a>
-, <a class="el" href="classgamgee_1_1_sam_header.html#a40f4725f03235f3bd10af8ffb45a82ba">gamgee::SamHeader</a>
-, <a class="el" href="classgamgee_1_1_sam_iterator.html#a8b1f4d53a53546b7ba196dd7ca27468f">gamgee::SamIterator</a>
+, <a class="el" href="classgamgee_1_1_sam_header.html#a5490e7ebcf604dca12524d015b9f869f">gamgee::SamHeader</a>
+, <a class="el" href="classgamgee_1_1_sam_iterator.html#ac4b338268f515a27b9bdea88a4cfe65b">gamgee::SamIterator</a>
 , <a class="el" href="classgamgee_1_1_sam_pair_iterator.html#a53e611cac932f41be17ce53d61a279f8">gamgee::SamPairIterator</a>
-, <a class="el" href="classgamgee_1_1_sam_reader.html#a208a0d95ab81b47c7e33a5efd589c4cc">gamgee::SamReader&lt; ITERATOR &gt;</a>
-, <a class="el" href="classgamgee_1_1_sam_tag.html#ac5da75a2b951030b2d3a3f8bf5c325ba">gamgee::SamTag&lt; TAG_TYPE &gt;</a>
+, <a class="el" href="classgamgee_1_1_sam_reader.html#a8567d7cdf4006029f6ff58c3d8ee12ec">gamgee::SamReader&lt; ITERATOR &gt;</a>
+, <a class="el" href="classgamgee_1_1_sam_tag.html#a0f8e8cff4552d465fe366bd3eb8afa28">gamgee::SamTag&lt; TAG_TYPE &gt;</a>
 , <a class="el" href="classgamgee_1_1_shared_field.html#a5dc2708be7f99da48a350fd7aace319f">gamgee::SharedField&lt; TYPE &gt;</a>
-, <a class="el" href="classgamgee_1_1_shared_field_iterator.html#a6676cf9aad2b98de54fb06c0a189a918">gamgee::SharedFieldIterator&lt; VALUE_TYPE &gt;</a>
+, <a class="el" href="classgamgee_1_1_shared_field_iterator.html#a82e06418ed6d8c026f6a3050bf72719d">gamgee::SharedFieldIterator&lt; VALUE_TYPE &gt;</a>
 , <a class="el" href="classgamgee_1_1_variant.html#a657600985c822ce285dd2e925f0a054a">gamgee::Variant</a>
-, <a class="el" href="classgamgee_1_1_variant_header.html#a0b3d1847b24cf99ab20020b6db51684d">gamgee::VariantHeader</a>
+, <a class="el" href="classgamgee_1_1_variant_header.html#a0bf57a8272c281303d3bd4e824440108">gamgee::VariantHeader</a>
 , <a class="el" href="classgamgee_1_1_variant_iterator.html#a6a3971e1f81691826aa179bbe3d658e4">gamgee::VariantIterator</a>
 </li>
 <li>operator==()
@@ -239,6 +243,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classgamgee_1_1_genotype.html#a3a94d92eb5e550ddd0039cc46dcfb592">gamgee::Genotype</a>
 , <a class="el" href="classgamgee_1_1_individual_field_iterator.html#ab9c3dafef5dc0108a46e3678728a4bb2">gamgee::IndividualFieldIterator&lt; TYPE &gt;</a>
 , <a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#a3d21f3867a42b729fe0cce7edb2b5bc2">gamgee::IndividualFieldValueIterator&lt; VALUE_TYPE &gt;</a>
+, <a class="el" href="classgamgee_1_1_interval.html#a307dfc278c285113df59843f0c2f0661">gamgee::Interval</a>
 , <a class="el" href="classgamgee_1_1_read_bases.html#a1d28dddd04b726361b59fc2f7c94db8b">gamgee::ReadBases</a>
 , <a class="el" href="classgamgee_1_1_shared_field_iterator.html#ad02c85ea899a32542a9c284af211e8ee">gamgee::SharedFieldIterator&lt; VALUE_TYPE &gt;</a>
 , <a class="el" href="classgamgee_1_1_variant_filters_iterator.html#a3d3fcdee1b68f66e80793ba74adc440d">gamgee::VariantFiltersIterator</a>
@@ -256,7 +261,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classgamgee_1_1_variant_filters_iterator.html#a62d15856eeef8b4909bb2fddca781151">gamgee::VariantFiltersIterator</a>
 </li>
 <li>operator[]()
-: <a class="el" href="classgamgee_1_1_base_quals.html#a3fe74e06cf155c6509886494c2a7e6a4">gamgee::BaseQuals</a>
+: <a class="el" href="classgamgee_1_1_base_quals.html#a820dada36c9aed829460c9c1ad979e0c">gamgee::BaseQuals</a>
 , <a class="el" href="classgamgee_1_1_cigar.html#aac09e9f480419c59027e3236d04ce00e">gamgee::Cigar</a>
 , <a class="el" href="classgamgee_1_1_genotype.html#a620ea021d732a1253c13ee80f75f3996">gamgee::Genotype</a>
 , <a class="el" href="classgamgee_1_1_individual_field.html#a3c9ec2cec81635f7f94044a7ac527464">gamgee::IndividualField&lt; TYPE &gt;</a>
@@ -269,11 +274,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classgamgee_1_1_variant_filters.html#a8f82e8ea183ae7beb0f0d85c3570ad95">gamgee::VariantFilters</a>
 , <a class="el" href="classgamgee_1_1_variant_filters_iterator.html#ab192fa1c9bb6215ee4b8bcd89a7db707">gamgee::VariantFiltersIterator</a>
 </li>
+<li>output_type()
+: <a class="el" href="classgamgee_1_1_interval.html#afbcf73acc5d595166beeb9d3b5f37de5">gamgee::Interval</a>
+</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 21 2014 16:37:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 21 2014 18:09:18 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
