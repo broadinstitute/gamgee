@@ -56,10 +56,14 @@ class IndexedSamReader {
     IndexedSamReader& operator=(IndexedSamReader&& other) = default;
 
     /**
-     * @brief no copy construction/assignment allowed for iterators and readers
+     * @brief no copy construction/assignment allowed for input iterators and readers
      */
     IndexedSamReader(const IndexedSamReader& other) = delete;
-    IndexedSamReader& operator=(const IndexedSamReader& other) = delete;
+
+    /**
+     * @copydoc IndexedSamReader(IndexedSamReader&)
+     */
+    IndexedSamReader& operator=(IndexedSamReader& other) = delete;
 
     /**
      * @brief creates a ITERATOR pointing at the start of the input stream (needed by for-each

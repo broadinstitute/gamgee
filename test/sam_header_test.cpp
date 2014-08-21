@@ -1,6 +1,7 @@
-#include "sam_reader.h"
-
 #include <boost/test/unit_test.hpp>
+
+#include "sam_reader.h"
+#include "test_utils.h"
 
 using namespace std;
 using namespace gamgee;
@@ -18,11 +19,8 @@ BOOST_AUTO_TEST_CASE( sam_header ) {
 /** @todo Need a way to modify the header in between these copies/moves to make sure these are working properly! */
 BOOST_AUTO_TEST_CASE( sam_header_constructors ) {
   auto reader = SingleSamReader{"testdata/test_simple.bam"};
-  auto header1 = reader.header();
-  auto header2 = header1;                  // copy constructor
-  auto header3 = std::move(header1);       // move constructor
-  header1 = header2;                       // copy assignment
-  const auto header4 = std::move(header1); // transfer header1's memory somewhere else so we can reuse it for move assignment
-  header1 = std::move(header3);            // move assignment
-  header1 = header1;                       // self assignment
+  auto h0 = reader.header();
+  auto copies = check_copy_constructor(h0);
+  auto moves = check_copy_constructor(h0);
+  // need builder to be able to modify the header and check. At least this test will blow up if something is not functional.
 }

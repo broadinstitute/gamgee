@@ -1,4 +1,5 @@
 #include <boost/test/unit_test.hpp>
+#include "test_utils.h"
 #include "variant_header_builder.h"
 #include "missing.h"
 
@@ -50,5 +51,19 @@ BOOST_AUTO_TEST_CASE( variant_header_builder_simple_building ) {
   BOOST_CHECK(missing(vh.field_index("MISSING")));
   BOOST_CHECK(missing(vh.field_index("MISSING")));
   BOOST_CHECK_EQUAL(vh.field_index("PASS"), 0);
+}
+
+BOOST_AUTO_TEST_CASE( variant_header_move_and_copy_constructor ) {
+  auto builder = VariantHeaderBuilder{};
+  builder.add_sample("S1");
+  auto h0 = builder.build();
+  auto copies = check_copy_constructor(h0);
+  auto c2 = get<2>(copies);
+  BOOST_CHECK_EQUAL_COLLECTIONS(h0.samples().begin(), h0.samples().end(), get<0>(copies).samples().begin(), get<0>(copies).samples().end());
+  BOOST_CHECK_EQUAL_COLLECTIONS(h0.samples().begin(), h0.samples().end(), get<1>(copies).samples().begin(), get<1>(copies).samples().end());
+  BOOST_CHECK_EQUAL_COLLECTIONS(h0.samples().begin(), h0.samples().end(), c2.samples().begin(), c2.samples().end());
+  auto m1 = check_move_constructor(get<1>(copies));
+  BOOST_CHECK_EQUAL_COLLECTIONS(h0.samples().begin(), h0.samples().end(), m1.samples().begin(), m1.samples().end());
+  // can't modify a variant header... so this is it for the test.
 }
 

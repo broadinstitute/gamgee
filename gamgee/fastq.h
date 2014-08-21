@@ -27,18 +27,33 @@ class Fastq {
       m_name {name}, m_comment {comment}, m_sequence{sequence}, m_quals{quals} 
   {}
 
+  Fastq(const Fastq&) = default;
+  Fastq& operator=(const Fastq&) = default;
+  Fastq(Fastq&&) = default;
+  Fastq& operator=(Fastq&&) = default;
+
   
   /**
     * @brief inequality comparison of all fields in the record
     *
+    * @return true if any field differs (string comparison)
+    */
+  bool operator!=(const Fastq& other) const {
+      return !(*this == other); 
+  }
+  
+  /**
+    * @brief equality comparison of all fields in the record
+    *
     * @return true only if every field is the same (string comparison)
     */
-  bool operator!=(const Fastq& other) {
+  bool operator==(const Fastq& other) const {
       return m_name     == other.m_name     &&
              m_comment  == other.m_comment  &&
              m_sequence == other.m_sequence &&
              m_quals    == other.m_quals;
   }
+
 
   std::string name() const                       { return m_name;         }
   std::string comment() const                    { return m_comment;      }

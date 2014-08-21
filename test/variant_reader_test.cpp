@@ -5,6 +5,7 @@
 #include "indexed_variant_reader.h"
 #include "indexed_variant_iterator.h"
 #include "missing.h"
+#include "test_utils.h"
 
 #include <boost/test/unit_test.hpp>
 
@@ -478,31 +479,6 @@ BOOST_AUTO_TEST_CASE( single_variant_reader_vector_too_large )
   BOOST_CHECK_THROW((SingleVariantReader{vector<string>{"testdata/test_variants.vcf", "testdata/test_variants.vcf"}}), std::runtime_error);
 }
 
-BOOST_AUTO_TEST_CASE( single_variant_reader_move_test ) {
-  auto reader1 = SingleVariantReader{"testdata/test_variants.vcf"};
-
-  // move construct
-  auto reader2 = std::move(reader1);
-
-  // move assign
-  auto reader3 = SingleVariantReader{"testdata/test_variants_missing_data.vcf"};        // different file
-  reader3 = std::move(reader2);
-
-  auto truth_index = 0u;
-  for (const auto& record : reader3) {
-    check_variant_basic_api(record, truth_index);
-    check_quals_api(record, truth_index);
-    check_alt_api(record, truth_index);
-    check_filters_api(record, truth_index);
-    check_genotype_quals_api(record,truth_index);
-    check_phred_likelihoods_api(record, truth_index);
-    check_individual_field_api(record, truth_index);
-    check_shared_field_api(record, truth_index);
-    check_genotype_api(record, truth_index);
-    ++truth_index;
-  }
-}
-
 BOOST_AUTO_TEST_CASE( variant_iterator_move_test ) {
   auto reader = SingleVariantReader{"testdata/test_variants.vcf"};
   auto iter1 = reader.begin();
@@ -807,4 +783,11 @@ BOOST_AUTO_TEST_CASE( indexed_variant_iterator_move_test ) {
     BOOST_CHECK_EQUAL(rec1.alignment_start(), rec2.alignment_start());
     BOOST_CHECK_EQUAL(rec1.alignment_start(), rec3.alignment_start());
   }
+}
+
+BOOST_AUTO_TEST_CASE( variant_reader_move_constructor ) {
+  auto r0 = SingleVariantReader{"testdata/test_variants.bcf"};
+  auto r1 = SingleVariantReader{"testdata/test_variants.bcf"};
+  auto m1 = check_move_constructor(r1);
+  BOOST_CHECK_EQUAL(r0.begin().operator*().alignment_start(), m1.begin().operator*().alignment_start());
 }
