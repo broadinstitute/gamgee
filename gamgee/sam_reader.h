@@ -4,7 +4,7 @@
 #include "sam_iterator.h"
 #include "sam_pair_iterator.h"
 #include "utils/hts_memory.h"
-#include "utils/utils.h"
+#include "exceptions.h"
 
 #include "htslib/sam.h"
 
@@ -67,7 +67,7 @@ class SamReader {
       m_sam_header_ptr {}
     {
       if (filenames.size() > 1)
-        throw utils::SingleInputException{"filenames", filenames.size()};
+        throw SingleInputException{"filenames", filenames.size()};
       if (!filenames.empty()) {
         m_sam_file_ptr  = sam_open(filenames.front().empty() ? "-" : filenames.front().c_str(), "r");
         m_sam_header_ptr = utils::make_shared_sam_header(sam_hdr_read(m_sam_file_ptr));

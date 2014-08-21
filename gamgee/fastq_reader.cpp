@@ -1,7 +1,7 @@
 #include "fastq_reader.h"
 #include "fastq_iterator.h"
 
-#include "utils/utils.h"
+#include "exceptions.h"
 
 #include <string>
 #include <iostream>
@@ -22,7 +22,7 @@ FastqReader::FastqReader(const std::string& filename) {
 
 FastqReader::FastqReader(const std::vector<std::string>& filenames) {
   if (filenames.size() > 1)
-    throw utils::SingleInputException{"filenames", filenames.size()};
+    throw SingleInputException{"filenames", filenames.size()};
   if (!filenames.empty()) {
     m_file_stream.open(filenames.front());
     m_input_stream = &m_file_stream;
