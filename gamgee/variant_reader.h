@@ -54,9 +54,11 @@ class VariantReader {
    * @param filename the name of the variant file
    */
   explicit VariantReader(const std::string& filename) :
-    m_variant_file_ptr { utils::make_shared_hts_file(bcf_open(filename.empty() ? "-" : filename.c_str(), "r")) },
-    m_variant_header_ptr { utils::make_shared_variant_header(bcf_hdr_read(m_variant_file_ptr.get())) }
-  {}
+    m_variant_file_ptr {},
+    m_variant_header_ptr {}
+  {
+    init_reader(filename);
+  }
 
   /**
    * @brief reads through all records in a file (vcf or bcf) parsing them into Variant
@@ -70,11 +72,8 @@ class VariantReader {
   {
     if (filenames.size() > 1)
       throw SingleInputException{"filenames", filenames.size()};
-    if (!filenames.empty()) {
-      vcfFile* file_ptr = bcf_open(filenames.front().empty() ? "-" : filenames.front().c_str(), "r");
-      m_variant_file_ptr = utils::make_shared_hts_file(file_ptr);
-      m_variant_header_ptr = utils::make_shared_variant_header(bcf_hdr_read(file_ptr));
-    }
+    if (!filenames.empty())
+      init_reader(filenames.front());
   }
 
   /**
@@ -87,9 +86,10 @@ class VariantReader {
    * @param include whether you want these samples to be included or excluded from your iteration.  default = true (include)
    */
   VariantReader(const std::string& filename, const std::vector<std::string>& samples, const bool include = true) :
-    m_variant_file_ptr { utils::make_shared_hts_file(bcf_open(filename.empty() ? "-" : filename.c_str(), "r")) },
-    m_variant_header_ptr { utils::make_shared_variant_header(bcf_hdr_read(m_variant_file_ptr.get())) }
+    m_variant_file_ptr {},
+    m_variant_header_ptr {}
   {
+    init_reader(filename);
     subset_variant_samples(m_variant_header_ptr.get(), samples, include);
   }
 
@@ -108,12 +108,8 @@ class VariantReader {
   {
     if (filenames.size() > 1)
       throw SingleInputException{"filenames", filenames.size()};
-    if (!filenames.empty()) {
-      vcfFile* file_ptr = bcf_open(filenames.front().empty() ? "-" : filenames.front().c_str(), "r");
-      m_variant_file_ptr = utils::make_shared_hts_file(file_ptr);
-      m_variant_header_ptr = utils::make_shared_variant_header(bcf_hdr_read(file_ptr));
-      subset_variant_samples(m_variant_header_ptr.get(), samples, include);
-    }
+    if (!filenames.empty())
+      init_reader(filenames.front());
   }
 
   /**
@@ -157,6 +153,17 @@ class VariantReader {
  private:
   std::shared_ptr<htsFile> m_variant_file_ptr;          ///< pointer to the internal file structure of the variant/bam/cram file
   std::shared_ptr<bcf_hdr_t> m_variant_header_ptr;      ///< pointer to the internal header structure of the variant/bam/cram file
+
+  /**
+   * @brief initialize the VariantReader (helper function for constructors)
+   *
+   * @param filename the name of the variant file
+   */
+  void init_reader (const std::string& filename) {
+    vcfFile* file_ptr = bcf_open(filename.empty() ? "-" : filename.c_str(), "r");
+    m_variant_file_ptr = utils::make_shared_hts_file (file_ptr);
+    m_variant_header_ptr = utils::make_shared_variant_header (bcf_hdr_read (file_ptr));
+  }
 };
 
 using SingleVariantReader = VariantReader<VariantIterator>;
