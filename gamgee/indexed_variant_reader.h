@@ -38,53 +38,25 @@ class IndexedVariantReader {
    *
    */
   IndexedVariantReader(const std::string& filename, const std::vector<std::string> interval_list) :
-    m_variant_file_ptr { bcf_open(filename.c_str(), "r") },
-    m_variant_index_ptr { bcf_index_load(filename.c_str()) },
-    m_variant_header_ptr { utils::make_shared_variant_header(bcf_hdr_read(m_variant_file_ptr)) },
+    m_variant_file_ptr { utils::make_shared_hts_file(bcf_open(filename.c_str(), "r")) },
+    m_variant_index_ptr { utils::make_shared_hts_index(bcf_index_load(filename.c_str())) },
+    m_variant_header_ptr { utils::make_shared_variant_header(bcf_hdr_read(m_variant_file_ptr.get())) },
     m_interval_list { std::move(interval_list) }
   {}
-
-  /**
-   * @brief closes the file stream and index
-   */
-  ~IndexedVariantReader() {
-    if (m_variant_file_ptr != nullptr)
-      bcf_close(m_variant_file_ptr);
-    hts_idx_destroy(m_variant_index_ptr);
-  }
 
   /**
    * @brief an IndexedVariantReader cannot be copied safely, as it is iterating over a stream.
    */
 
-  IndexedVariantReader(IndexedVariantReader& other) = delete;
-  IndexedVariantReader& operator=(IndexedVariantReader& other) = delete;
+  IndexedVariantReader(const IndexedVariantReader& other) = delete;
+  IndexedVariantReader& operator=(const IndexedVariantReader& other) = delete;
 
   /**
    * @brief an IndexedVariantReader can be moved
    */
 
-  IndexedVariantReader(IndexedVariantReader&& other) :
-    m_variant_file_ptr { std::move(other.m_variant_file_ptr) },
-    m_variant_index_ptr { std::move(other.m_variant_index_ptr) },
-    m_variant_header_ptr { std::move(other.m_variant_header_ptr) },
-    m_interval_list { std::move(other.m_interval_list) }
-  {
-    other.m_variant_file_ptr = nullptr;
-    other.m_variant_index_ptr = nullptr;
-  }
-
-  IndexedVariantReader& operator=(IndexedVariantReader&& other) {
-    m_variant_file_ptr = std::move(other.m_variant_file_ptr);
-    m_variant_index_ptr = std::move(other.m_variant_index_ptr);
-    m_variant_header_ptr = std::move(other.m_variant_header_ptr);
-    m_interval_list = std::move(other.m_interval_list);
-
-    other.m_variant_file_ptr = nullptr;
-    other.m_variant_index_ptr = nullptr;
-
-    return *this;
-  }
+  IndexedVariantReader(IndexedVariantReader&& other) = default;
+  IndexedVariantReader& operator=(IndexedVariantReader&& other) = default;
 
   ITERATOR begin() const {
     return ITERATOR{ m_variant_file_ptr, m_variant_index_ptr, m_variant_header_ptr, m_interval_list };
@@ -100,8 +72,8 @@ class IndexedVariantReader {
   inline VariantHeader header() const { return VariantHeader{m_variant_header_ptr}; }
 
  private:
-  vcfFile* m_variant_file_ptr;                        ///< pointer to the internal structure of the variant file
-  hts_idx_t* m_variant_index_ptr;                     ///< pointer to the internal structure of the index file
+  std::shared_ptr<vcfFile> m_variant_file_ptr;        ///< pointer to the internal structure of the variant file
+  std::shared_ptr<hts_idx_t> m_variant_index_ptr;     ///< pointer to the internal structure of the index file
   std::shared_ptr<bcf_hdr_t> m_variant_header_ptr;    ///< pointer to the internal structure of the header file
   std::vector<std::string> m_interval_list;           ///< vector of intervals represented by strings
 };
