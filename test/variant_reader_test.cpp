@@ -570,6 +570,23 @@ BOOST_AUTO_TEST_CASE( gvcf_test ) {
   }
 }
 
+BOOST_AUTO_TEST_CASE( gvcf_test_multiple ) {
+  auto truth_index = 0u;
+  const auto reader = MultipleVariantReader<MultipleVariantIterator>{vector<string>{"testdata/test.g.vcf", "testdata/test.g.bcf"}};
+  for (const auto& vec : reader) {
+    for (const auto& record : vec) {
+      BOOST_CHECK_EQUAL(record.ref(), gvcf_truth_ref[truth_index]);
+      BOOST_CHECK_EQUAL(record.chromosome(), gvcf_truth_chromosome[truth_index]);
+      BOOST_CHECK_EQUAL(record.alignment_start(), gvcf_truth_alignment_starts[truth_index]);
+      BOOST_CHECK_EQUAL(record.alignment_stop(), gvcf_truth_alignment_stops[truth_index]);
+      BOOST_CHECK_EQUAL(record.n_alleles(), gvcf_truth_n_alleles[truth_index]);
+      BOOST_CHECK_EQUAL(record.n_samples(), 3);
+      BOOST_CHECK_EQUAL(record.id(), gvcf_truth_id[truth_index]);
+    }
+    ++truth_index;
+  }
+}
+
 // TODO?  update to work with VCF GZ
 // const auto input_files = vector<string>{"testdata/var_idx/test_variants.bcf", "testdata/var_idx/test_variants_csi.vcf.gz", "testdata/var_idx/test_variants_tabix.vcf.gz"};
 const auto indexed_variant_input_files = vector<string>{"testdata/var_idx/test_variants.bcf"};
