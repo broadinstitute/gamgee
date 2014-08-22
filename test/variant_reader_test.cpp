@@ -403,54 +403,48 @@ BOOST_AUTO_TEST_CASE( individual_fields_api ) { generic_variant_reader_test(chec
 BOOST_AUTO_TEST_CASE( shared_fields_api )     { generic_variant_reader_test(check_shared_field_api);      }
 BOOST_AUTO_TEST_CASE( genotype_api )          { generic_variant_reader_test(check_genotype_api);          }
 
-
-BOOST_AUTO_TEST_CASE( single_variant_reader_sites_only )  
-{
-  for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{}})  // exclude all samples (sites-only)
-    BOOST_CHECK_EQUAL(record.n_samples(), 0);
-}
-
-BOOST_AUTO_TEST_CASE( missing_id_field )  
+BOOST_AUTO_TEST_CASE( missing_id_field )
 {
   const auto truth_missing = vector<bool>{false, false, true, true, true};
   auto i = 0u;
-  for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf"}) 
+  for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf"})
     BOOST_CHECK_EQUAL(missing(record.id()), truth_missing[i++]); // check that the missing and non-missing values in the vcf actually return the right missingness
   BOOST_CHECK(missing(""));                                      // check that an empty string is missing
   BOOST_CHECK(!missing("arBItrary_vaLue"));                      // check that a non-empty string is not missing
 }
 
+void single_variant_reader_sample_test(const string filename, const vector<string> samples, const bool include, const int desired_samples) {
+  for (const auto& record : SingleVariantReader{filename, samples, include})
+    BOOST_CHECK_EQUAL(record.n_samples(), desired_samples);
+}
+
+BOOST_AUTO_TEST_CASE( single_variant_reader_sites_only )  
+{
+  single_variant_reader_sample_test("testdata/test_variants.vcf", vector<string>{}, true, 0); // exclude all samples (sites-only)
+}
 
 BOOST_AUTO_TEST_CASE( single_variant_reader_include_all_samples ) 
 {
-  for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{}, false})  // include all samples by setting include == false and passing an empty list
-    BOOST_CHECK_EQUAL(record.n_samples(), 3);
+  single_variant_reader_sample_test("testdata/test_variants.vcf", vector<string>{}, false, 3);  // include all samples by setting include == false and passing an empty list
 }
 
 BOOST_AUTO_TEST_CASE( single_variant_reader_including )  
 {
-  for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{"NA12878"}}) // include only NA12878
-    BOOST_CHECK_EQUAL(record.n_samples(), 1);
-  for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{"NA12878", "NA12892"}}) // include both these samples
-    BOOST_CHECK_EQUAL(record.n_samples(), 2);
+  single_variant_reader_sample_test("testdata/test_variants.vcf", vector<string>{"NA12878"}, true, 1); // include only NA12878
+  single_variant_reader_sample_test("testdata/test_variants.vcf", vector<string>{"NA12878", "NA12892"}, true, 2); // include both these samples
 }
 
 BOOST_AUTO_TEST_CASE( single_variant_reader_excluding )  
 {
-  for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{"NA12891"}, false})  // exclude only NA12891
-    BOOST_CHECK_EQUAL(record.n_samples(), 2);
-  for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf", vector<string>{"NA12891", "NA12878"}, false})  // exclude both these samples
-    BOOST_CHECK_EQUAL(record.n_samples(), 1);
+  single_variant_reader_sample_test("testdata/test_variants.vcf", vector<string>{"NA12891"}, false, 2);  // exclude only NA12891
+  single_variant_reader_sample_test("testdata/test_variants.vcf", vector<string>{"NA12891", "NA12878"}, false, 1);  // exclude both these samples
 }
 
 BOOST_AUTO_TEST_CASE( single_variant_reader_missing_data )
 {
-  for (const auto& record : SingleVariantReader{"testdata/test_variants_missing_data.vcf", vector<string>{"0001A","0002A","0003A","0004A","0005A","0006A","0007A"}}){ // include 7 samples
-    BOOST_CHECK_EQUAL(record.n_samples(), 7); 
-  }
-  for (const auto& record : SingleVariantReader{"testdata/test_variants_missing_data.vcf", vector<string>{"0007B", "0008A", "0009A", "0009B"}, false}){ // exclude 4 samples
-    BOOST_CHECK_EQUAL(record.n_samples(), 7); 
-  }
+  single_variant_reader_sample_test("testdata/test_variants_missing_data.vcf", vector<string>{"0001A","0002A","0003A","0004A","0005A","0006A","0007A"}, true, 7);       // include 7 samples
+  single_variant_reader_sample_test("testdata/test_variants_missing_data.vcf", vector<string>{"0007B", "0008A", "0009A", "0009B"}, false, 7);   // exclude 4 samples
+
   for (const auto& record : SingleVariantReader{"testdata/test_variants_missing_data.vcf"}){ // include all 11 samples
     BOOST_CHECK_EQUAL(record.n_samples(), 11); 
     const auto gt_for_all_samples = record.genotypes();
@@ -522,6 +516,63 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_test ) {
   }
 }
 
+const auto multi_diff_truth_record_count      = vector<uint32_t>{4, 1, 1, 1, 2, 1};
+const auto multi_diff_truth_chromosome        = vector<uint32_t>{0, 1, 1, 1, 1, 2};
+const auto multi_diff_truth_alignment_starts  = vector<uint32_t>{10000000, 10001000, 10001999, 10002000, 10003000, 10004000};
+const auto multi_diff_truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "TAGTGQA", "A", "GAT"};
+const auto multi_diff_truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 2, 3};
+const auto multi_diff_truth_id                = vector<string>{"db2342", "rs837472", ".", ".", ".", "."};
+
+BOOST_AUTO_TEST_CASE( multiple_variant_reader_difference_test ) {
+  auto truth_index = 0u;
+  const auto reader = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants_multiple_alt.vcf"}, false};
+  for (const auto& vec : reader) {
+    BOOST_CHECK_EQUAL(vec.size(), multi_diff_truth_record_count[truth_index]);
+    for (const auto& record : vec) {
+      BOOST_CHECK_EQUAL(record.chromosome(), multi_diff_truth_chromosome[truth_index]);
+      BOOST_CHECK_EQUAL(record.alignment_start(), multi_diff_truth_alignment_starts[truth_index]);
+      BOOST_CHECK_EQUAL(record.ref(), multi_diff_truth_ref[truth_index]);
+      BOOST_CHECK_EQUAL(record.n_alleles(), multi_diff_truth_n_alleles[truth_index]);
+      BOOST_CHECK_EQUAL(record.n_samples(), 3);
+      BOOST_CHECK_EQUAL(record.id(), multi_diff_truth_id[truth_index]);
+    }
+    ++truth_index;
+  }
+  BOOST_CHECK_EQUAL(truth_index, 6u);
+}
+
+void multiple_variant_reader_sample_test(const vector<string> samples, const bool include, const int desired_samples) {
+  auto filenames = vector<string>{"testdata/test_variants.vcf", "testdata/test_variants.bcf"};
+
+  for (const auto& vec : MultipleVariantReader<MultipleVariantIterator>{filenames, false, samples, include})
+    for (const auto& record : vec)
+      BOOST_CHECK_EQUAL(record.n_samples(), desired_samples);
+}
+
+/*      TODO: Issue #209
+BOOST_AUTO_TEST_CASE( multiple_variant_reader_sites_only )
+{
+  multiple_variant_reader_sample_test(vector<string>{}, true, 0); // exclude all samples (sites-only)
+}
+*/
+
+BOOST_AUTO_TEST_CASE( multiple_variant_reader_include_all_samples )
+{
+  multiple_variant_reader_sample_test(vector<string>{}, false, 3);  // include all samples by setting include == false and passing an empty list
+}
+
+BOOST_AUTO_TEST_CASE( multiple_variant_reader_including )
+{
+  multiple_variant_reader_sample_test(vector<string>{"NA12878"}, true, 1); // include only NA12878
+  multiple_variant_reader_sample_test(vector<string>{"NA12878", "NA12892"}, true, 2); // include both these samples
+}
+
+BOOST_AUTO_TEST_CASE( multiple_variant_reader_excluding )
+{
+  multiple_variant_reader_sample_test(vector<string>{"NA12891"}, false, 2);  // exclude only NA12891
+  multiple_variant_reader_sample_test(vector<string>{"NA12891", "NA12878"}, false, 1);  // exclude both these samples
+}
+
 const auto gvcf_truth_ref               = vector<string>{"T", "C", "GG"};
 const auto gvcf_truth_chromosome        = vector<uint32_t>{0, 0, 1};
 const auto gvcf_truth_alignment_starts  = vector<uint32_t>{10000000, 20000000, 10001000};
@@ -540,6 +591,23 @@ BOOST_AUTO_TEST_CASE( gvcf_test ) {
     BOOST_CHECK_EQUAL(record.n_alleles(), gvcf_truth_n_alleles[truth_index]);
     BOOST_CHECK_EQUAL(record.n_samples(), 3);
     BOOST_CHECK_EQUAL(record.id(), gvcf_truth_id[truth_index]);
+    ++truth_index;
+  }
+}
+
+BOOST_AUTO_TEST_CASE( gvcf_test_multiple ) {
+  auto truth_index = 0u;
+  const auto reader = MultipleVariantReader<MultipleVariantIterator>{vector<string>{"testdata/test.g.vcf", "testdata/test.g.bcf"}};
+  for (const auto& vec : reader) {
+    for (const auto& record : vec) {
+      BOOST_CHECK_EQUAL(record.ref(), gvcf_truth_ref[truth_index]);
+      BOOST_CHECK_EQUAL(record.chromosome(), gvcf_truth_chromosome[truth_index]);
+      BOOST_CHECK_EQUAL(record.alignment_start(), gvcf_truth_alignment_starts[truth_index]);
+      BOOST_CHECK_EQUAL(record.alignment_stop(), gvcf_truth_alignment_stops[truth_index]);
+      BOOST_CHECK_EQUAL(record.n_alleles(), gvcf_truth_n_alleles[truth_index]);
+      BOOST_CHECK_EQUAL(record.n_samples(), 3);
+      BOOST_CHECK_EQUAL(record.id(), gvcf_truth_id[truth_index]);
+    }
     ++truth_index;
   }
 }

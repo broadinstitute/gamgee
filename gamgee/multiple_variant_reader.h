@@ -5,6 +5,7 @@
 
 #include "variant_header.h"
 #include "utils/hts_memory.h"
+#include "utils/variant_utils.h"
 
 namespace gamgee {
 
@@ -43,7 +44,35 @@ class MultipleVariantReader {
    */
   MultipleVariantReader(const std::vector<std::string>& filenames, const bool validate_headers = true) :
     m_variant_files { },
-    m_variant_header { nullptr } {
+    m_variant_header { nullptr }
+  {
+    init_reader(filenames, validate_headers);
+  }
+
+  /**
+   * @brief enables reading records in multiple files (vcf or bcf)
+   *
+   * @param filenames the names of the variant files
+   * @param validate_headers should we validate that the header files have identical chromosomes?  (must specify if using this constructor)
+   * @param samples the list of samples you want included/excluded from your iteration
+   * @param include whether you want these samples to be included or excluded from your iteration.  default = true (include)
+   */
+  MultipleVariantReader(const std::vector<std::string>& filenames, const bool validate_headers,
+                        const std::vector<std::string>& samples, const bool include = true) :
+    m_variant_files { },
+    m_variant_header { nullptr }
+  {
+    init_reader(filenames, validate_headers);
+    subset_variant_samples(m_variant_header.get(), samples, include);
+  }
+
+  /**
+   * @brief helper function for constructors
+   *
+   * @param filenames the names of the variant files
+   * @param validate_headers should we validate that the header files have identical chromosomes?
+   */
+   void init_reader(const std::vector<std::string>& filenames, const bool validate_headers) {
     for (const auto& filename : filenames) {
       // TODO? check for maximum one stream
       vcfFile* file_ptr = bcf_open(filename.empty() ? "-" : filename.c_str(), "r");

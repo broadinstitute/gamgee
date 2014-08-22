@@ -8,6 +8,10 @@
 
 #include "variant.h"
 #include "variant_reader.h"
+#include "multiple_variant_reader.h"
+#include "multiple_variant_iterator.h"
+#include "indexed_variant_reader.h"
+#include "indexed_variant_iterator.h"
 #include "variant_writer.h"
 #include "variant_header_builder.h"
 
