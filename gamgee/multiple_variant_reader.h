@@ -42,7 +42,7 @@ class MultipleVariantReader {
    * @param filenames the names of the variant files
    * @param validate_headers should we validate that the header files have identical chromosomes?  default = true
    */
-  MultipleVariantReader(const std::vector<std::string>& filenames, const bool validate_headers = true) :
+  explicit MultipleVariantReader(const std::vector<std::string>& filenames, const bool validate_headers = true) :
     m_variant_files { },
     m_variant_header { }
   {
@@ -72,7 +72,7 @@ class MultipleVariantReader {
    * @param filenames the names of the variant files
    * @param validate_headers should we validate that the header files have identical chromosomes?
    */
-   void init_reader(const std::vector<std::string>& filenames, const bool validate_headers) {
+  void init_reader(const std::vector<std::string>& filenames, const bool validate_headers) {
     for (const auto& filename : filenames) {
       // TODO? check for maximum one stream
       vcfFile* file_ptr = bcf_open(filename.empty() ? "-" : filename.c_str(), "r");

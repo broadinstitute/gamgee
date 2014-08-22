@@ -53,7 +53,7 @@ class VariantReader {
    *
    * @param filename the name of the variant file
    */
-  VariantReader(const std::string& filename) :
+  explicit VariantReader(const std::string& filename) :
     m_variant_file_ptr { utils::make_shared_hts_file(bcf_open(filename.empty() ? "-" : filename.c_str(), "r")) },
     m_variant_header_ptr { utils::make_shared_variant_header(bcf_hdr_read(m_variant_file_ptr.get())) }
   {}
@@ -64,7 +64,7 @@ class VariantReader {
    *
    * @param filenames a vector containing a single element: the name of the variant file
    */
-  VariantReader(const std::vector<std::string>& filenames) :
+  explicit VariantReader(const std::vector<std::string>& filenames) :
     m_variant_file_ptr {},
     m_variant_header_ptr {}
   {
