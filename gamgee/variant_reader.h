@@ -3,8 +3,10 @@
 
 #include "variant_header.h"
 #include "variant_iterator.h"
-#include "utils/hts_memory.h"
 #include "exceptions.h"
+
+#include "utils/hts_memory.h"
+#include "utils/variant_utils.h"
 
 #include "htslib/vcf.h"
 
@@ -81,13 +83,13 @@ class VariantReader {
    *
    * @param filename the name of the variant file
    * @param samples the list of samples you want included/excluded from your iteration
-   * @param include whether you want these samples to be included or excluded from your iteration.
+   * @param include whether you want these samples to be included or excluded from your iteration.  default = true (include)
    */
   VariantReader(const std::string& filename, const std::vector<std::string>& samples, const bool include = true) :
     m_variant_file_ptr {bcf_open(filename.empty() ? "-" : filename.c_str(), "r")},
     m_variant_header_ptr { utils::make_shared_variant_header(bcf_hdr_read(m_variant_file_ptr)) }
   {
-    init_samples(samples, include);
+    subset_variant_samples(m_variant_header_ptr.get(), samples, include);
   }
 
   /**
@@ -97,7 +99,7 @@ class VariantReader {
    *
    * @param filenames a vector containing a single element: the name of the variant file
    * @param samples the list of samples you want included/excluded from your iteration
-   * @param include whether you want these samples to be included or excluded from your iteration.
+   * @param include whether you want these samples to be included or excluded from your iteration.  default = true (include)
    */
   VariantReader(const std::vector<std::string>& filenames, const std::vector<std::string>& samples, const bool include = true) :
     m_variant_file_ptr {},
@@ -108,7 +110,7 @@ class VariantReader {
     if (!filenames.empty()) {
       m_variant_file_ptr  = bcf_open(filenames.front().empty() ? "-" : filenames.front().c_str(), "r");
       m_variant_header_ptr = utils::make_shared_variant_header(bcf_hdr_read(m_variant_file_ptr));
-      init_samples(samples, include);
+      subset_variant_samples(m_variant_header_ptr.get(), samples, include);
     }
   }
 
@@ -160,28 +162,6 @@ class VariantReader {
  private:
   vcfFile* m_variant_file_ptr;                           ///< pointer to the internal file structure of the variant/bam/cram file
   std::shared_ptr<bcf_hdr_t> m_variant_header_ptr; ///< pointer to the internal header structure of the variant/bam/cram file
-
-  /**
-   * @brief allows the caller to include only selected samples. To create a sites only file,
-   * simply pass an empty vector of samples.
-   *
-   * @param samples the list of samples you want included/excluded from your iteration
-   * @param whether you want these samples to be included or excluded from your iteration.
-   */
-  void init_samples(const std::vector<std::string>& samples, const bool include) {
-    if (samples.empty() && include) // exclude all samples
-      bcf_hdr_set_samples(m_variant_header_ptr.get(), NULL, false);
-
-    else if (samples.empty() && !include) // keep all samples
-      bcf_hdr_set_samples(m_variant_header_ptr.get(), "-", false);
-
-    else { // select some samples
-      auto sample_list = include ? std::string{} : std::string{"^"};
-      std::for_each(samples.begin(), samples.end(), [&sample_list](const auto& s) { sample_list += s + ","; });
-      sample_list.erase(sample_list.size() - 1);
-      bcf_hdr_set_samples(m_variant_header_ptr.get(), sample_list.c_str(), false);
-    }
-  }
 };
 
 using SingleVariantReader = VariantReader<VariantIterator>;
