@@ -2,6 +2,7 @@
 
 #include "htslib/vcf.h"
 
+#include <algorithm>
 #include <string>
 #include <vector>
 
