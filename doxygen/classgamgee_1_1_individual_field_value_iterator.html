@@ -111,9 +111,9 @@ Inheritance diagram for gamgee::IndividualFieldValueIterator&lt; VALUE_TYPE &gt;
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1ac02e9bb23d99543c25936cfd8f856b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#a1ac02e9bb23d99543c25936cfd8f856b">IndividualFieldValueIterator</a> (const std::shared_ptr&lt; bcf1_t &gt; &amp;body, uint8_t *data_ptr, const uint8_t num_bytes, const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">utils::VariantFieldType</a> &amp;type)</td></tr>
-<tr class="memdesc:a1ac02e9bb23d99543c25936cfd8f856b"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple constructor  <a href="#a1ac02e9bb23d99543c25936cfd8f856b">More...</a><br /></td></tr>
-<tr class="separator:a1ac02e9bb23d99543c25936cfd8f856b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05c2e7432527d58f44e4b0453f72414e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#a05c2e7432527d58f44e4b0453f72414e">IndividualFieldValueIterator</a> (const std::shared_ptr&lt; bcf1_t &gt; &amp;body, uint8_t *data_ptr, const uint8_t num_bytes, const <a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476">utils::FormatFieldType</a> &amp;type)</td></tr>
+<tr class="memdesc:a05c2e7432527d58f44e4b0453f72414e"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple constructor  <a href="#a05c2e7432527d58f44e4b0453f72414e">More...</a><br /></td></tr>
+<tr class="separator:a05c2e7432527d58f44e4b0453f72414e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0199fad8b65f9008d25ab1fda15ec67e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#a0199fad8b65f9008d25ab1fda15ec67e">IndividualFieldValueIterator</a> (const <a class="el" href="classgamgee_1_1_individual_field_value_iterator.html">IndividualFieldValueIterator</a> &amp;other)</td></tr>
 <tr class="memdesc:a0199fad8b65f9008d25ab1fda15ec67e"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy constructor is only meant for internal STL functions use. It makes a shallow copy of the underlying object which is sufficient for an iterator, but not exactly what a user would expect (user should expect copy constructors to make deep copies). But a deep copied iterator makes no sense.  <a href="#a0199fad8b65f9008d25ab1fda15ec67e">More...</a><br /></td></tr>
 <tr class="separator:a0199fad8b65f9008d25ab1fda15ec67e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,7 +174,7 @@ class gamgee::IndividualFieldValueIterator&lt; VALUE_TYPE &gt;</h3>
 this iterator never makes any copies of the underlying memory. It is implemented with pointer acrobatics behind the scenes for maximum performance while maintaining a friendly interface.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>modifying any elements via this iterator <b>will modify</b> the values in the <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a1ac02e9bb23d99543c25936cfd8f856b"></a>
+<a class="anchor" id="a05c2e7432527d58f44e4b0453f72414e"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -204,7 +204,7 @@ template&lt;class VALUE_TYPE &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">utils::VariantFieldType</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacegamgee_1_1utils.html#ad2ff3899c9a5fd0e59985b2b6663e476">utils::FormatFieldType</a> &amp;&#160;</td>
           <td class="paramname"><em>type</em>&#160;</td>
         </tr>
         <tr>
@@ -725,7 +725,7 @@ template&lt;class VALUE_TYPE &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 22 2014 15:14:15 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 22 2014 15:16:08 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

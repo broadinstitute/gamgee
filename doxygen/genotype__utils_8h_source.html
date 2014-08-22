@@ -95,7 +95,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="hts__memory_8h.html">hts_memory.h</a>&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">utils.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="variant__field__type_8h.html">variant_field_type.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="format__field__type_8h.html">format_field_type.h</a>&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../missing.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;htslib/vcf.h&quot;</span></div>
@@ -150,7 +150,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a1ecd589903b5395d15527e3b0a6481cf"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a1ecd589903b5395d15527e3b0a6481cf">gamgee::utils::allele_keys</a></div><div class="ttdeci">vector&lt; int32_t &gt; allele_keys(const std::shared_ptr&lt; bcf1_t &gt; &amp;body, const bcf_fmt_t *const format_ptr, const uint8_t *data_ptr, const TYPE missing, const TYPE vector_end)</div><div class="ttdef"><b>Definition:</b> genotype_utils.cpp:59</div></div>
-<div class="ttc" id="variant__field__type_8h_html"><div class="ttname"><a href="variant__field__type_8h.html">variant_field_type.h</a></div></div>
 <div class="ttc" id="utils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div></div>
 <div class="ttc" id="namespacegamgee_1_1missing__values_html_a8211dad6a9c794845dc7f8f9b2fac530"><div class="ttname"><a href="namespacegamgee_1_1missing__values.html#a8211dad6a9c794845dc7f8f9b2fac530">gamgee::missing_values::int32</a></div><div class="ttdeci">constexpr auto int32</div><div class="ttdoc">missing value for an int32 </div><div class="ttdef"><b>Definition:</b> missing.h:16</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a2ec32c97f1f7c6ee9f97179bcbca45bb"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a2ec32c97f1f7c6ee9f97179bcbca45bb">gamgee::utils::allele_strings</a></div><div class="ttdeci">vector&lt; string &gt; allele_strings(const std::shared_ptr&lt; bcf1_t &gt; &amp;body, const bcf_fmt_t *const format_ptr, const uint8_t *data_ptr, const TYPE missing, const TYPE vector_end)</div><div class="ttdef"><b>Definition:</b> genotype_utils.cpp:99</div></div>
@@ -158,12 +157,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="namespacegamgee_1_1utils_html_af66b0baa8941c1a24e6dacc9a522cd07"><div class="ttname"><a href="namespacegamgee_1_1utils.html#af66b0baa8941c1a24e6dacc9a522cd07">gamgee::utils::allele_key</a></div><div class="ttdeci">int32_t allele_key(const uint8_t *data_ptr, const uint32_t allele_index, const TYPE missing)</div><div class="ttdef"><b>Definition:</b> genotype_utils.h:41</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a56eb3079fbaa3dc854fc541667e4d22d"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a56eb3079fbaa3dc854fc541667e4d22d">gamgee::utils::allele_count</a></div><div class="ttdeci">uint32_t allele_count(const bcf_fmt_t *const format_ptr)</div><div class="ttdoc">Counts the genotype alleles. </div><div class="ttdef"><b>Definition:</b> genotype_utils.h:25</div></div>
 <div class="ttc" id="hts__memory_8h_html"><div class="ttname"><a href="hts__memory_8h.html">hts_memory.h</a></div></div>
+<div class="ttc" id="format__field__type_8h_html"><div class="ttname"><a href="format__field__type_8h.html">format_field_type.h</a></div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_abece8890c17e6f5ac54a4922fc24f05c"><div class="ttname"><a href="namespacegamgee_1_1utils.html#abece8890c17e6f5ac54a4922fc24f05c">gamgee::utils::allele_key_to_string</a></div><div class="ttdeci">string allele_key_to_string(const std::shared_ptr&lt; bcf1_t &gt; &amp;body, const int32_t allele_int)</div><div class="ttdoc">Returns the genotype allele string from this line. </div><div class="ttdef"><b>Definition:</b> genotype_utils.cpp:125</div></div>
 <div class="ttc" id="namespacegamgee_html_a659c46d5b1420346543fb1afc4a575de"><div class="ttname"><a href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">gamgee::missing</a></div><div class="ttdeci">bool missing(const bool value)</div><div class="ttdoc">Returns true if bool is false (missing). </div><div class="ttdef"><b>Definition:</b> missing.h:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 22 2014 15:14:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 22 2014 15:16:07 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
