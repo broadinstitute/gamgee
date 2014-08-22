@@ -1,5 +1,5 @@
-#ifndef gamgee__format_field_type__guard
-#define gamgee__format_field_type__guard
+#ifndef gamgee__variant_field_utils__guard
+#define gamgee__variant_field_utils__guard
 
 #include "htslib/vcf.h"
 
@@ -13,7 +13,7 @@ namespace utils {
  * @brief an enumeration of the types in htslib for the format field values
  * @note these must match the order in the htslib defines in htslib/vcf.h
  */
-enum class FormatFieldType {NIL = 0, INT8 = 1, INT16 = 2, INT32 = 3, FLOAT = 5, STRING = 7};
+enum class VariantFieldType {NIL = 0, INT8 = 1, INT16 = 2, INT32 = 3, FLOAT = 5, STRING = 7};
 
 
 /**
@@ -29,31 +29,31 @@ enum class FormatFieldType {NIL = 0, INT8 = 1, INT16 = 2, INT32 = 3, FLOAT = 5, 
   * @exception Will throw std::invalid_argument exception if trying to create a string out of a numeric format or 
   * vice-versa. All numeric type conversions are internally truncated or expanded accordingly.
   */
-int32_t convert_data_to_integer(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const FormatFieldType& type);
+int32_t convert_data_to_integer(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const VariantFieldType& type);
 
 /**
  * @brief converts the value in an index from the byte array into float
- * @copydetails convert_data_to_integer(int, const uint8_t, const FormatFieldType&)
+ * @copydetails convert_data_to_integer(int, const uint8_t, const VariantFieldType&)
  */
-float convert_data_to_float(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const FormatFieldType& type);
+float convert_data_to_float(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const VariantFieldType& type);
 
 /**
  * @brief converts the value in an index from the byte array into string
- * @copydetails convert_data_to_integer(int, const uint8_t, const FormatFieldType&)
+ * @copydetails convert_data_to_integer(int, const uint8_t, const VariantFieldType&)
  */
-std::string convert_data_to_string(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const FormatFieldType& type);
+std::string convert_data_to_string(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const VariantFieldType& type);
 
 /**
- * @brief returns the number of bytes for a given FormatFieldType
+ * @brief returns the number of bytes for a given VariantFieldType
  */
-uint8_t size_for_type(const FormatFieldType& type, const bcf_fmt_t* const format_ptr);
+uint8_t size_for_type(const VariantFieldType& type, const bcf_fmt_t* const format_ptr);
 
 /**
- * @brief returns the number of bytes for a given FormatFieldType
+ * @brief returns the number of bytes for a given VariantFieldType
  */
-uint8_t size_for_type(const FormatFieldType& type, const bcf_info_t* const info_ptr);
+uint8_t size_for_type(const VariantFieldType& type, const bcf_info_t* const info_ptr);
 
 } // end namespace utils
 } // end namespace gamgee
 
-#endif // gamgee__format_field_type__guard
+#endif // gamgee__variant_field_utils__guard

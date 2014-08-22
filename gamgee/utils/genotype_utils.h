@@ -3,7 +3,7 @@
 
 #include "hts_memory.h"
 #include "utils.h"
-#include "format_field_type.h"
+#include "variant_field_type.h"
 #include "../missing.h"
 
 #include "htslib/vcf.h"
