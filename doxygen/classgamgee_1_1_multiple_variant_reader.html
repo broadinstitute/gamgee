@@ -136,6 +136,7 @@ Public Member Functions</h2></td></tr>
 class gamgee::MultipleVariantReader&lt; ITERATOR &gt;</h3>
 
 <p>Utility class to read multiple VCF/BCF files with an appropriate iterator in a for-each loop. </p>
+<dl class="section note"><dt>Note</dt><dd>result vectors will be ordered arbitrarily per location. There is no guarantee or expectation that the vector will be in the same order (or have the same number) as the inputs. In the common case where all files have exactly the same sites, it is recommended to use a zip iterator over SingleVariantReaders. This will produce a deterministic ordering and will be faster than <a class="el" href="classgamgee_1_1_multiple_variant_reader.html" title="Utility class to read multiple VCF/BCF files with an appropriate iterator in a for-each loop...">MultipleVariantReader</a>.</dd></dl>
 <p>This class is designed to parse files in for-each loops with the following signature:</p>
 <div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; vector : MultipleVariantReader&lt;MultipleVariantIterator&gt;{filenames})</div>
 <div class="line">  do_something_with_vector(vector);</div>
@@ -362,7 +363,7 @@ template&lt;class ITERATOR &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 22 2014 01:13:12 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 22 2014 15:14:15 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
