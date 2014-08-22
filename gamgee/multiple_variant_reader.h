@@ -11,6 +11,11 @@ namespace gamgee {
 /**
  * @brief Utility class to read multiple VCF/BCF files with an appropriate iterator in a for-each loop.
  *
+ * @note result vectors will be ordered arbitrarily per location.  There is no guarantee or expectation that the vector
+ * will be in the same order (or have the same number) as the inputs.  In the common case where all files have exactly
+ * the same sites, it is recommended to use a zip iterator over SingleVariantReaders.  This will produce a deterministic
+ * ordering and will be faster than MultipleVariantReader.
+ *
  * This class is designed to parse files in for-each loops with the following signature:
  *
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
