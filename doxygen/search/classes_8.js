@@ -13,5 +13,5 @@ var searchData=
   ['samwriter',['SamWriter',['../classgamgee_1_1_sam_writer.html',1,'gamgee']]],
   ['sharedfield',['SharedField',['../classgamgee_1_1_shared_field.html',1,'gamgee']]],
   ['sharedfielditerator',['SharedFieldIterator',['../classgamgee_1_1_shared_field_iterator.html',1,'gamgee']]],
-  ['singleinputexception',['SingleInputException',['../classgamgee_1_1utils_1_1_single_input_exception.html',1,'gamgee::utils']]]
+  ['singleinputexception',['SingleInputException',['../classgamgee_1_1_single_input_exception.html',1,'gamgee']]]
 ];

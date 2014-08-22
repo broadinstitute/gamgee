@@ -96,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="variant__header_8h.html">variant_header.h</a>&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="variant__iterator_8h.html">variant_iterator.h</a>&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="hts__memory_8h.html">utils/hts_memory.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">utils/utils.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="exceptions_8h.html">exceptions.h</a>&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;htslib/vcf.h&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
@@ -122,7 +122,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    m_variant_header_ptr {}</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  {</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">if</span> (filenames.size() &gt; 1)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <span class="keywordflow">throw</span> utils::SingleInputException{<span class="stringliteral">&quot;filenames&quot;</span>, filenames.size()};</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <span class="keywordflow">throw</span> SingleInputException{<span class="stringliteral">&quot;filenames&quot;</span>, filenames.size()};</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">if</span> (!filenames.empty()) {</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      m_variant_file_ptr  = bcf_open(filenames.front().empty() ? <span class="stringliteral">&quot;-&quot;</span> : filenames.front().c_str(), <span class="stringliteral">&quot;r&quot;</span>);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      m_variant_header_ptr = <a class="code" href="namespacegamgee_1_1utils.html#a2732369bc67b236fbe94bcaba720d170">utils::make_shared_variant_header</a>(bcf_hdr_read(m_variant_file_ptr));</div>
@@ -141,7 +141,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    m_variant_header_ptr {}</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  {</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">if</span> (filenames.size() &gt; 1)</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      <span class="keywordflow">throw</span> utils::SingleInputException{<span class="stringliteral">&quot;filenames&quot;</span>, filenames.size()};</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      <span class="keywordflow">throw</span> SingleInputException{<span class="stringliteral">&quot;filenames&quot;</span>, filenames.size()};</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">if</span> (!filenames.empty()) {</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      m_variant_file_ptr  = bcf_open(filenames.front().empty() ? <span class="stringliteral">&quot;-&quot;</span> : filenames.front().c_str(), <span class="stringliteral">&quot;r&quot;</span>);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      m_variant_header_ptr = <a class="code" href="namespacegamgee_1_1utils.html#a2732369bc67b236fbe94bcaba720d170">utils::make_shared_variant_header</a>(bcf_hdr_read(m_variant_file_ptr));</div>
@@ -201,9 +201,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="namespacegamgee_1_1utils_html_a2732369bc67b236fbe94bcaba720d170"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a2732369bc67b236fbe94bcaba720d170">gamgee::utils::make_shared_variant_header</a></div><div class="ttdeci">shared_ptr&lt; bcf_hdr_t &gt; make_shared_variant_header(bcf_hdr_t *bcf_hdr_ptr)</div><div class="ttdoc">wraps a pre-allocated bcf_hdr_t in a shared_ptr with correct deleter </div><div class="ttdef"><b>Definition:</b> hts_memory.cpp:38</div></div>
 <div class="ttc" id="classgamgee_1_1_variant_reader_html_afec368616b3e825715fb6e2e04038625"><div class="ttname"><a href="classgamgee_1_1_variant_reader.html#afec368616b3e825715fb6e2e04038625">gamgee::VariantReader::begin</a></div><div class="ttdeci">ITERATOR begin() const </div><div class="ttdoc">creates a ITERATOR pointing at the start of the input stream (needed by for-each loop) ...</div><div class="ttdef"><b>Definition:</b> variant_reader.h:142</div></div>
 <div class="ttc" id="classgamgee_1_1_variant_reader_html_ace9b67be3e4aad24e670a6fd32b70b7c"><div class="ttname"><a href="classgamgee_1_1_variant_reader.html#ace9b67be3e4aad24e670a6fd32b70b7c">gamgee::VariantReader::header</a></div><div class="ttdeci">VariantHeader header() const </div><div class="ttdoc">returns the variant header of the file being read </div><div class="ttdef"><b>Definition:</b> variant_reader.h:158</div></div>
-<div class="ttc" id="utils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div></div>
 <div class="ttc" id="classgamgee_1_1_variant_reader_html_a74891130422cad55cf61faecce1b6d7c"><div class="ttname"><a href="classgamgee_1_1_variant_reader.html#a74891130422cad55cf61faecce1b6d7c">gamgee::VariantReader::end</a></div><div class="ttdeci">ITERATOR end() const </div><div class="ttdoc">creates a ITERATOR with a nullified input stream (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> variant_reader.h:151</div></div>
 <div class="ttc" id="classgamgee_1_1_variant_reader_html_ab7a1d2a582f6c257f7ecb02a6ccc71c4"><div class="ttname"><a href="classgamgee_1_1_variant_reader.html#ab7a1d2a582f6c257f7ecb02a6ccc71c4">gamgee::VariantReader::~VariantReader</a></div><div class="ttdeci">~VariantReader()</div><div class="ttdoc">closes the file stream if there is one (in case we are reading a variant file) </div><div class="ttdef"><b>Definition:</b> variant_reader.h:126</div></div>
+<div class="ttc" id="exceptions_8h_html"><div class="ttname"><a href="exceptions_8h.html">exceptions.h</a></div></div>
 <div class="ttc" id="classgamgee_1_1_variant_reader_html_a9d5302456364fddd7c7288a779b117f6"><div class="ttname"><a href="classgamgee_1_1_variant_reader.html#a9d5302456364fddd7c7288a779b117f6">gamgee::VariantReader::VariantReader</a></div><div class="ttdeci">VariantReader(const std::string &amp;filename, const std::vector&lt; std::string &gt; &amp;samples, const bool include=true)</div><div class="ttdoc">reads through all records in a file (vcf or bcf) parsing them into Variant objects but only including...</div><div class="ttdef"><b>Definition:</b> variant_reader.h:86</div></div>
 <div class="ttc" id="classgamgee_1_1_variant_reader_html"><div class="ttname"><a href="classgamgee_1_1_variant_reader.html">gamgee::VariantReader</a></div><div class="ttdoc">Utility class to read a VCF/BCF file with an appropriate Variant iterator from a stream (e...</div><div class="ttdef"><b>Definition:</b> variant_reader.h:45</div></div>
 <div class="ttc" id="classgamgee_1_1_variant_reader_html_aa6d4d79ec06b916a99eeb873b13fe185"><div class="ttname"><a href="classgamgee_1_1_variant_reader.html#aa6d4d79ec06b916a99eeb873b13fe185">gamgee::VariantReader::VariantReader</a></div><div class="ttdeci">VariantReader(const std::string &amp;filename)</div><div class="ttdoc">reads through all records in a file (vcf or bcf) parsing them into Variant objects ...</div><div class="ttdef"><b>Definition:</b> variant_reader.h:54</div></div>
@@ -215,7 +215,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 21 2014 19:44:28 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 22 2014 01:13:11 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
