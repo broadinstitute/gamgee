@@ -103,6 +103,12 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_hts_file_deleter.html">HtsFileDeleter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete an htsFile pointer  <a href="structgamgee_1_1utils_1_1_hts_file_deleter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_hts_index_deleter.html">HtsIndexDeleter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete an hts file index pointer  <a href="structgamgee_1_1utils_1_1_hts_index_deleter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_hts_iterator_deleter.html">HtsIteratorDeleter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete an hts file iterator pointer  <a href="structgamgee_1_1utils_1_1_hts_iterator_deleter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_sam_body_deleter.html">SamBodyDeleter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a bam1_t pointer  <a href="structgamgee_1_1utils_1_1_sam_body_deleter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,6 +169,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a771649e6d3a864010772e1c1accbde26"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a771649e6d3a864010772e1c1accbde26">allele_key</a> (const bcf_fmt_t *const format_ptr, const uint8_t *data_ptr, const uint32_t allele_index)</td></tr>
 <tr class="memdesc:a771649e6d3a864010772e1c1accbde26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the genotype allele at position allele_index.  <a href="#a771649e6d3a864010772e1c1accbde26">More...</a><br /></td></tr>
 <tr class="separator:a771649e6d3a864010772e1c1accbde26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50116d5da2ab23b2963b0e1f95eca489"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; htsFile &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a50116d5da2ab23b2963b0e1f95eca489">make_shared_hts_file</a> (htsFile *hts_file_ptr)</td></tr>
+<tr class="memdesc:a50116d5da2ab23b2963b0e1f95eca489"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated htsFile in a shared_ptr with correct deleter  <a href="#a50116d5da2ab23b2963b0e1f95eca489">More...</a><br /></td></tr>
+<tr class="separator:a50116d5da2ab23b2963b0e1f95eca489"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0c6a5d15fc80f2b8432bf42c386f630"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; hts_idx_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ad0c6a5d15fc80f2b8432bf42c386f630">make_shared_hts_index</a> (hts_idx_t *hts_index_ptr)</td></tr>
+<tr class="memdesc:ad0c6a5d15fc80f2b8432bf42c386f630"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated hts_idx_t in a shared_ptr with correct deleter  <a href="#ad0c6a5d15fc80f2b8432bf42c386f630">More...</a><br /></td></tr>
+<tr class="separator:ad0c6a5d15fc80f2b8432bf42c386f630"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac934bb527c189299ab91b2881b4295fe"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; hts_itr_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ac934bb527c189299ab91b2881b4295fe">make_shared_hts_itr</a> (hts_itr_t *hts_itr_ptr)</td></tr>
+<tr class="memdesc:ac934bb527c189299ab91b2881b4295fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated hts_itr_t in a shared_ptr with correct deleter  <a href="#ac934bb527c189299ab91b2881b4295fe">More...</a><br /></td></tr>
+<tr class="separator:ac934bb527c189299ab91b2881b4295fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5e4c2a62b4e2544996e8b0193e5c31a"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; bam1_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ae5e4c2a62b4e2544996e8b0193e5c31a">make_shared_sam</a> (bam1_t *sam_ptr)</td></tr>
 <tr class="memdesc:ae5e4c2a62b4e2544996e8b0193e5c31a"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated bam1_t in a shared_ptr with correct deleter  <a href="#ae5e4c2a62b4e2544996e8b0193e5c31a">More...</a><br /></td></tr>
 <tr class="separator:ae5e4c2a62b4e2544996e8b0193e5c31a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1040,6 +1055,78 @@ template&lt;class TYPE &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a50116d5da2ab23b2963b0e1f95eca489"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; htsFile &gt; gamgee::utils::make_shared_hts_file </td>
+          <td>(</td>
+          <td class="paramtype">htsFile *&#160;</td>
+          <td class="paramname"><em>hts_file_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>wraps a pre-allocated htsFile in a shared_ptr with correct deleter </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hts_file_ptr</td><td>an htslib raw file pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad0c6a5d15fc80f2b8432bf42c386f630"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; hts_idx_t &gt; gamgee::utils::make_shared_hts_index </td>
+          <td>(</td>
+          <td class="paramtype">hts_idx_t *&#160;</td>
+          <td class="paramname"><em>hts_index_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>wraps a pre-allocated hts_idx_t in a shared_ptr with correct deleter </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hts_index_ptr</td><td>an htslib raw file index pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac934bb527c189299ab91b2881b4295fe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; hts_itr_t &gt; gamgee::utils::make_shared_hts_itr </td>
+          <td>(</td>
+          <td class="paramtype">hts_itr_t *&#160;</td>
+          <td class="paramname"><em>hts_itr_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>wraps a pre-allocated hts_itr_t in a shared_ptr with correct deleter </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hts_itr_ptr</td><td>an htslib raw file iterator pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ae5e4c2a62b4e2544996e8b0193e5c31a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1360,7 +1447,7 @@ template&lt;typename... T&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 22 2014 20:22:13 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 22 2014 21:01:57 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

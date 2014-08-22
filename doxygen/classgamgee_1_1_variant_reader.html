@@ -115,15 +115,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aac54f91a115951115e08dcc9a3def2e3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_reader.html#aac54f91a115951115e08dcc9a3def2e3">VariantReader</a> (const std::vector&lt; std::string &gt; &amp;filenames, const std::vector&lt; std::string &gt; &amp;samples, const bool include=true)</td></tr>
 <tr class="memdesc:aac54f91a115951115e08dcc9a3def2e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads through all records in a file (vcf or bcf) parsing them into <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> objects but only including the selected samples. To create a sites only file, simply pass an empty vector of samples.  <a href="#aac54f91a115951115e08dcc9a3def2e3">More...</a><br /></td></tr>
 <tr class="separator:aac54f91a115951115e08dcc9a3def2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9d7f239804edd916ee9c79d8f5d7981"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_reader.html#ad9d7f239804edd916ee9c79d8f5d7981">VariantReader</a> (<a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a> &amp;&amp;other)</td></tr>
-<tr class="memdesc:ad9d7f239804edd916ee9c79d8f5d7981"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classgamgee_1_1_variant_reader.html" title="Utility class to read a VCF/BCF file with an appropriate Variant iterator from a stream (e...">VariantReader</a> should never be copied, but it can be moved around.  <a href="#ad9d7f239804edd916ee9c79d8f5d7981">More...</a><br /></td></tr>
-<tr class="separator:ad9d7f239804edd916ee9c79d8f5d7981"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7a1d2a582f6c257f7ecb02a6ccc71c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_reader.html#ab7a1d2a582f6c257f7ecb02a6ccc71c4">~VariantReader</a> ()</td></tr>
-<tr class="memdesc:ab7a1d2a582f6c257f7ecb02a6ccc71c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">closes the file stream if there is one (in case we are reading a variant file)  <a href="#ab7a1d2a582f6c257f7ecb02a6ccc71c4">More...</a><br /></td></tr>
-<tr class="separator:ab7a1d2a582f6c257f7ecb02a6ccc71c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d967e364948ce4d6aaab8722be769f6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_reader.html#a8d967e364948ce4d6aaab8722be769f6">VariantReader</a> (const <a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a> &amp;)=delete</td></tr>
-<tr class="memdesc:a8d967e364948ce4d6aaab8722be769f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">a <a class="el" href="classgamgee_1_1_variant_reader.html" title="Utility class to read a VCF/BCF file with an appropriate Variant iterator from a stream (e...">VariantReader</a> cannot be copied safely, as it is iterating over a stream.  <a href="#a8d967e364948ce4d6aaab8722be769f6">More...</a><br /></td></tr>
-<tr class="separator:a8d967e364948ce4d6aaab8722be769f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ed98ecaa1086a7894b78a0968ee12fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_reader.html#a8ed98ecaa1086a7894b78a0968ee12fe">VariantReader</a> (const <a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a> &amp;other)=delete</td></tr>
+<tr class="memdesc:a8ed98ecaa1086a7894b78a0968ee12fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">a <a class="el" href="classgamgee_1_1_variant_reader.html" title="Utility class to read a VCF/BCF file with an appropriate Variant iterator from a stream (e...">VariantReader</a> cannot be copied safely, as it is iterating over a stream.  <a href="#a8ed98ecaa1086a7894b78a0968ee12fe">More...</a><br /></td></tr>
+<tr class="separator:a8ed98ecaa1086a7894b78a0968ee12fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a245b34aa0233953b692ab9e3a13029b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_reader.html#a245b34aa0233953b692ab9e3a13029b9">operator=</a> (const <a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a> &amp;other)=delete</td></tr>
+<tr class="separator:a245b34aa0233953b692ab9e3a13029b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82444cf1e261d9bcba73a93615b52cd7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_reader.html#a82444cf1e261d9bcba73a93615b52cd7">VariantReader</a> (<a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a> &amp;&amp;other)=default</td></tr>
+<tr class="memdesc:a82444cf1e261d9bcba73a93615b52cd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">a <a class="el" href="classgamgee_1_1_variant_reader.html" title="Utility class to read a VCF/BCF file with an appropriate Variant iterator from a stream (e...">VariantReader</a> can be moved  <a href="#a82444cf1e261d9bcba73a93615b52cd7">More...</a><br /></td></tr>
+<tr class="separator:a82444cf1e261d9bcba73a93615b52cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a463f37f4da78bf370bd2b8143fe5eced"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_reader.html#a463f37f4da78bf370bd2b8143fe5eced">operator=</a> (<a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a> &amp;&amp;other)=default</td></tr>
+<tr class="separator:a463f37f4da78bf370bd2b8143fe5eced"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afec368616b3e825715fb6e2e04038625"><td class="memItemLeft" align="right" valign="top">ITERATOR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_reader.html#afec368616b3e825715fb6e2e04038625">begin</a> () const </td></tr>
 <tr class="memdesc:afec368616b3e825715fb6e2e04038625"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a ITERATOR pointing at the start of the input stream (needed by for-each loop)  <a href="#afec368616b3e825715fb6e2e04038625">More...</a><br /></td></tr>
 <tr class="separator:afec368616b3e825715fb6e2e04038625"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,7 +168,7 @@ template&lt;class ITERATOR &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -201,7 +202,7 @@ template&lt;class ITERATOR &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -320,7 +321,35 @@ template&lt;class ITERATOR &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ad9d7f239804edd916ee9c79d8f5d7981"></a>
+<a class="anchor" id="a8ed98ecaa1086a7894b78a0968ee12fe"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ITERATOR &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_variant_reader.html">gamgee::VariantReader</a>&lt; ITERATOR &gt;::<a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a>&lt; ITERATOR &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>a <a class="el" href="classgamgee_1_1_variant_reader.html" title="Utility class to read a VCF/BCF file with an appropriate Variant iterator from a stream (e...">VariantReader</a> cannot be copied safely, as it is iterating over a stream. </p>
+
+</div>
+</div>
+<a class="anchor" id="a82444cf1e261d9bcba73a93615b52cd7"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -339,67 +368,12 @@ template&lt;class ITERATOR &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="classgamgee_1_1_variant_reader.html" title="Utility class to read a VCF/BCF file with an appropriate Variant iterator from a stream (e...">VariantReader</a> should never be copied, but it can be moved around. </p>
-
-</div>
-</div>
-<a class="anchor" id="ab7a1d2a582f6c257f7ecb02a6ccc71c4"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class ITERATOR &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classgamgee_1_1_variant_reader.html">gamgee::VariantReader</a>&lt; ITERATOR &gt;::~<a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>closes the file stream if there is one (in case we are reading a variant file) </p>
-
-</div>
-</div>
-<a class="anchor" id="a8d967e364948ce4d6aaab8722be769f6"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class ITERATOR &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classgamgee_1_1_variant_reader.html">gamgee::VariantReader</a>&lt; ITERATOR &gt;::<a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a>&lt; ITERATOR &gt; &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>a <a class="el" href="classgamgee_1_1_variant_reader.html" title="Utility class to read a VCF/BCF file with an appropriate Variant iterator from a stream (e...">VariantReader</a> cannot be copied safely, as it is iterating over a stream. </p>
+<p>a <a class="el" href="classgamgee_1_1_variant_reader.html" title="Utility class to read a VCF/BCF file with an appropriate Variant iterator from a stream (e...">VariantReader</a> can be moved </p>
 
 </div>
 </div>
@@ -487,13 +461,65 @@ template&lt;class ITERATOR &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a245b34aa0233953b692ab9e3a13029b9"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ITERATOR &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a>&amp; <a class="el" href="classgamgee_1_1_variant_reader.html">gamgee::VariantReader</a>&lt; ITERATOR &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a>&lt; ITERATOR &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a463f37f4da78bf370bd2b8143fe5eced"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ITERATOR &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a>&amp; <a class="el" href="classgamgee_1_1_variant_reader.html">gamgee::VariantReader</a>&lt; ITERATOR &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a>&lt; ITERATOR &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>gamgee/<a class="el" href="variant__reader_8h_source.html">variant_reader.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 22 2014 20:22:13 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 22 2014 21:01:57 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
