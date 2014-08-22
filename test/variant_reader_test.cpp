@@ -516,6 +516,31 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_test ) {
   }
 }
 
+const auto multi_diff_truth_record_count      = vector<uint32_t>{4, 1, 1, 1, 2, 1};
+const auto multi_diff_truth_chromosome        = vector<uint32_t>{0, 1, 1, 1, 1, 2};
+const auto multi_diff_truth_alignment_starts  = vector<uint32_t>{10000000, 10001000, 10001999, 10002000, 10003000, 10004000};
+const auto multi_diff_truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "TAGTGQA", "A", "GAT"};
+const auto multi_diff_truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 2, 3};
+const auto multi_diff_truth_id                = vector<string>{"db2342", "rs837472", ".", ".", ".", "."};
+
+BOOST_AUTO_TEST_CASE( multiple_variant_reader_difference_test ) {
+  auto truth_index = 0u;
+  const auto reader = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants_multiple_alt.vcf"}, false};
+  for (const auto& vec : reader) {
+    BOOST_CHECK_EQUAL(vec.size(), multi_diff_truth_record_count[truth_index]);
+    for (const auto& record : vec) {
+      BOOST_CHECK_EQUAL(record.chromosome(), multi_diff_truth_chromosome[truth_index]);
+      BOOST_CHECK_EQUAL(record.alignment_start(), multi_diff_truth_alignment_starts[truth_index]);
+      BOOST_CHECK_EQUAL(record.ref(), multi_diff_truth_ref[truth_index]);
+      BOOST_CHECK_EQUAL(record.n_alleles(), multi_diff_truth_n_alleles[truth_index]);
+      BOOST_CHECK_EQUAL(record.n_samples(), 3);
+      BOOST_CHECK_EQUAL(record.id(), multi_diff_truth_id[truth_index]);
+    }
+    ++truth_index;
+  }
+  BOOST_CHECK_EQUAL(truth_index, 6u);
+}
+
 void multiple_variant_reader_sample_test(const vector<string> samples, const bool include, const int desired_samples) {
   auto filenames = vector<string>{"testdata/test_variants.vcf", "testdata/test_variants.bcf"};
 
