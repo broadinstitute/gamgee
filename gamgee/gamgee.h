@@ -18,4 +18,6 @@
 
 #include "missing.h"
 
+#include "exceptions.h"
+
 #endif  /* gamgee__gamgee__guard */

@@ -4,7 +4,7 @@
 #include "variant_header.h"
 #include "variant_iterator.h"
 #include "utils/hts_memory.h"
-#include "utils/utils.h"
+#include "exceptions.h"
 
 #include "htslib/vcf.h"
 
@@ -67,7 +67,7 @@ class VariantReader {
     m_variant_header_ptr {}
   {
     if (filenames.size() > 1)
-      throw utils::SingleInputException{"filenames", filenames.size()};
+      throw SingleInputException{"filenames", filenames.size()};
     if (!filenames.empty()) {
       m_variant_file_ptr  = bcf_open(filenames.front().empty() ? "-" : filenames.front().c_str(), "r");
       m_variant_header_ptr = utils::make_shared_variant_header(bcf_hdr_read(m_variant_file_ptr));
@@ -104,7 +104,7 @@ class VariantReader {
     m_variant_header_ptr {}
   {
     if (filenames.size() > 1)
-      throw utils::SingleInputException{"filenames", filenames.size()};
+      throw SingleInputException{"filenames", filenames.size()};
     if (!filenames.empty()) {
       m_variant_file_ptr  = bcf_open(filenames.front().empty() ? "-" : filenames.front().c_str(), "r");
       m_variant_header_ptr = utils::make_shared_variant_header(bcf_hdr_read(m_variant_file_ptr));
