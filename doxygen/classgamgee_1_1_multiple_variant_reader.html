@@ -112,6 +112,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aca73a6ff24becbc2ec346adb58d31fec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_reader.html#aca73a6ff24becbc2ec346adb58d31fec">MultipleVariantReader</a> (const std::vector&lt; std::string &gt; &amp;filenames, const bool validate_headers=true)</td></tr>
 <tr class="memdesc:aca73a6ff24becbc2ec346adb58d31fec"><td class="mdescLeft">&#160;</td><td class="mdescRight">enables reading records in multiple files (vcf or bcf)  <a href="#aca73a6ff24becbc2ec346adb58d31fec">More...</a><br /></td></tr>
 <tr class="separator:aca73a6ff24becbc2ec346adb58d31fec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35432d933efca9841ea896d3e2e90877"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_reader.html#a35432d933efca9841ea896d3e2e90877">MultipleVariantReader</a> (const std::vector&lt; std::string &gt; &amp;filenames, const bool validate_headers, const std::vector&lt; std::string &gt; &amp;samples, const bool include=true)</td></tr>
+<tr class="memdesc:a35432d933efca9841ea896d3e2e90877"><td class="mdescLeft">&#160;</td><td class="mdescRight">enables reading records in multiple files (vcf or bcf)  <a href="#a35432d933efca9841ea896d3e2e90877">More...</a><br /></td></tr>
+<tr class="separator:a35432d933efca9841ea896d3e2e90877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ded7fb8dd5c8530ed1588bdd0455c8f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_reader.html#a6ded7fb8dd5c8530ed1588bdd0455c8f">init_reader</a> (const std::vector&lt; std::string &gt; &amp;filenames, const bool validate_headers)</td></tr>
+<tr class="memdesc:a6ded7fb8dd5c8530ed1588bdd0455c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">helper function for constructors  <a href="#a6ded7fb8dd5c8530ed1588bdd0455c8f">More...</a><br /></td></tr>
+<tr class="separator:a6ded7fb8dd5c8530ed1588bdd0455c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a792f1cb5a335ad631d96def0c8064fce"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_reader.html#a792f1cb5a335ad631d96def0c8064fce">MultipleVariantReader</a> (<a class="el" href="classgamgee_1_1_multiple_variant_reader.html">MultipleVariantReader</a> &amp;&amp;other)</td></tr>
 <tr class="memdesc:a792f1cb5a335ad631d96def0c8064fce"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classgamgee_1_1_multiple_variant_reader.html" title="Utility class to read multiple VCF/BCF files with an appropriate iterator in a for-each loop...">MultipleVariantReader</a> should never be copied, but it can be moved.  <a href="#a792f1cb5a335ad631d96def0c8064fce">More...</a><br /></td></tr>
 <tr class="separator:a792f1cb5a335ad631d96def0c8064fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,6 +189,65 @@ template&lt;class ITERATOR &gt; </div>
   <table class="params">
     <tr><td class="paramname">filenames</td><td>the names of the variant files </td></tr>
     <tr><td class="paramname">validate_headers</td><td>should we validate that the header files have identical chromosomes? default = true </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a35432d933efca9841ea896d3e2e90877"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ITERATOR &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_multiple_variant_reader.html">gamgee::MultipleVariantReader</a>&lt; ITERATOR &gt;::<a class="el" href="classgamgee_1_1_multiple_variant_reader.html">MultipleVariantReader</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>filenames</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>validate_headers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>samples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>include</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>enables reading records in multiple files (vcf or bcf) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filenames</td><td>the names of the variant files </td></tr>
+    <tr><td class="paramname">validate_headers</td><td>should we validate that the header files have identical chromosomes? (must specify if using this constructor) </td></tr>
+    <tr><td class="paramname">samples</td><td>the list of samples you want included/excluded from your iteration </td></tr>
+    <tr><td class="paramname">include</td><td>whether you want these samples to be included or excluded from your iteration. default = true (include) </td></tr>
   </table>
   </dd>
 </dl>
@@ -357,13 +422,58 @@ template&lt;class ITERATOR &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a6ded7fb8dd5c8530ed1588bdd0455c8f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ITERATOR &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classgamgee_1_1_multiple_variant_reader.html">gamgee::MultipleVariantReader</a>&lt; ITERATOR &gt;::init_reader </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>filenames</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>validate_headers</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>helper function for constructors </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filenames</td><td>the names of the variant files </td></tr>
+    <tr><td class="paramname">validate_headers</td><td>should we validate that the header files have identical chromosomes? </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>gamgee/<a class="el" href="multiple__variant__reader_8h_source.html">multiple_variant_reader.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 22 2014 15:16:08 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 22 2014 20:22:12 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -311,6 +311,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a50fea678bec0e23c8331d5936dbd51f9"><td class="memTemplParams" colspan="2">template&lt;class VALUE &gt; </td></tr>
 <tr class="memitem:a50fea678bec0e23c8331d5936dbd51f9"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a50fea678bec0e23c8331d5936dbd51f9">missing</a> (const std::vector&lt; VALUE &gt; &amp;v)</td></tr>
 <tr class="separator:a50fea678bec0e23c8331d5936dbd51f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37644d067ba6f6fb7d010656ba781a7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a37644d067ba6f6fb7d010656ba781a7d">subset_variant_samples</a> (bcf_hdr_t *hdr_ptr, const std::vector&lt; std::string &gt; &amp;samples, const bool include)</td></tr>
+<tr class="memdesc:a37644d067ba6f6fb7d010656ba781a7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">allows the caller to include only selected samples in a <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> Reader. To create a sites only file, simply pass an empty vector of samples.  <a href="#a37644d067ba6f6fb7d010656ba781a7d">More...</a><br /></td></tr>
+<tr class="separator:a37644d067ba6f6fb7d010656ba781a7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -862,6 +865,47 @@ template&lt;class VALUE &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a37644d067ba6f6fb7d010656ba781a7d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gamgee::subset_variant_samples </td>
+          <td>(</td>
+          <td class="paramtype">bcf_hdr_t *&#160;</td>
+          <td class="paramname"><em>hdr_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>samples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>include</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>allows the caller to include only selected samples in a <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> Reader. To create a sites only file, simply pass an empty vector of samples. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">samples</td><td>the list of samples you want included/excluded from your iteration </td></tr>
+    <tr><td class="paramname">whether</td><td>you want these samples to be included or excluded from your iteration. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a class="anchor" id="abeab9f8f8d7f7b19a8a2ae3f2fee85a7"></a>
 <div class="memitem">
@@ -902,7 +946,7 @@ template&lt;class VALUE &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 22 2014 15:16:08 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 22 2014 20:22:12 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
