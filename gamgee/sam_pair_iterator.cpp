@@ -19,7 +19,7 @@ SamPairIterator::SamPairIterator() :
   m_sam_record_ptr2 {nullptr}
 {}
 
-SamPairIterator::SamPairIterator(samFile * sam_file_ptr, const std::shared_ptr<bam_hdr_t>& sam_header_ptr) : 
+SamPairIterator::SamPairIterator(const std::shared_ptr<htsFile>& sam_file_ptr, const std::shared_ptr<bam_hdr_t>& sam_header_ptr) :
   m_sam_file_ptr    {sam_file_ptr},
   m_sam_header_ptr  {sam_header_ptr},
   m_sam_record_ptr1 {utils::make_shared_sam(bam_init1())}, ///< important to initialize the record buffer in the constructor so we can reuse it across the iterator
@@ -41,7 +41,7 @@ bool SamPairIterator::operator!=(const SamPairIterator& rhs) {
 }
 
 bool SamPairIterator::read_sam(shared_ptr<bam1_t>& record_ptr) {
-  if (sam_read1(m_sam_file_ptr, m_sam_header_ptr.get(), record_ptr.get()) < 0) {
+  if (sam_read1(m_sam_file_ptr.get(), m_sam_header_ptr.get(), record_ptr.get()) < 0) {
     m_sam_file_ptr = nullptr;
     return false;
   }

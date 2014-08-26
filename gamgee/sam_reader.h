@@ -35,7 +35,7 @@ namespace gamgee {
  *   do_something_with_pair(pair);
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
- * Most iterators have aliases definied by this module so you can use it like so:
+ * Most iterators have aliases defined by this module so you can use it like so:
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * for (auto& pair : SingleSamReader{filename})
  *   do_something_with_pair(pair);
@@ -52,9 +52,11 @@ class SamReader {
      * @param filename the name of the sam file
      */
     SamReader(const std::string& filename) :
-      m_sam_file_ptr {sam_open(filename.empty() ? "-" : filename.c_str(), "r")},
-      m_sam_header_ptr { utils::make_shared_sam_header(sam_hdr_read(m_sam_file_ptr)) }
-    {}
+      m_sam_file_ptr {},
+      m_sam_header_ptr {}
+    {
+      init_reader(filename);
+    }
 
     /**
      * @brief reads through all records in a file ( or sam) parsing them into Sam
@@ -68,52 +70,21 @@ class SamReader {
     {
       if (filenames.size() > 1)
         throw SingleInputException{"filenames", filenames.size()};
-      if (!filenames.empty()) {
-        m_sam_file_ptr  = sam_open(filenames.front().empty() ? "-" : filenames.front().c_str(), "r");
-        m_sam_header_ptr = utils::make_shared_sam_header(sam_hdr_read(m_sam_file_ptr));
-      }
+      if (!filenames.empty())
+        init_reader(filenames.front());
     }
 
     /**
      * @brief no copy construction/assignment allowed for iterators and readers
      */
-    SamReader(SamReader& other) = delete;
+    SamReader(const SamReader& other) = delete;
+    SamReader& operator=(const SamIterator&) = delete;
 
     /**
-     * @brief simple move assignment/construction 
-     *
-     * we need a custom move constructor here because we need to set the file pointer to nullptr
-     * otherwise the destructor will try to close the dangling pointer.
+     * @brief a SamReader move constructor guarantees all objects will have the same state.
      */
-    SamReader(SamReader&& other) :
-      m_sam_file_ptr {std::move(other.m_sam_file_ptr)},
-      m_sam_header_ptr {std::move(other.m_sam_header_ptr)}
-    {
-      other.m_sam_file_ptr = nullptr;
-    }
-
-    /**
-     * @copydoc SamReader(SamReader&)
-     */
-    SamReader& operator=(SamReader& other) = delete;
-
-    /**
-     * @copydoc SamReader(SamReader&&)
-     */
-    SamReader& operator=(SamReader&& other) {
-      m_sam_file_ptr = std::move(other.m_sam_file_ptr);
-      m_sam_header_ptr = std::move(other.m_sam_header_ptr);
-      other.m_sam_file_ptr = nullptr;
-      return *this;
-    }
-
-    /**
-     * @brief closes the file stream if there is one (in case we are reading a sam file)
-     */
-    ~SamReader() {
-      if (m_sam_file_ptr) 
-        sam_close(m_sam_file_ptr);
-    }
+    SamReader(SamReader&&) = default;
+    SamReader& operator=(SamReader&&) = default;
 
     /**
      * @brief creates a ITERATOR pointing at the start of the input stream (needed by for-each
@@ -137,8 +108,19 @@ class SamReader {
     inline SamHeader header() { return SamHeader{m_sam_header_ptr}; }
 
   private:
-    samFile* m_sam_file_ptr;                     ///< pointer to the internal file structure of the sam/bam/cram file
+    std::shared_ptr<htsFile> m_sam_file_ptr;     ///< pointer to the internal file structure of the sam/bam/cram file
     std::shared_ptr<bam_hdr_t> m_sam_header_ptr; ///< pointer to the internal header structure of the sam/bam/cram file
+
+    /**
+     * @brief initialize the SamReader (helper function for constructors)
+     *
+     * @param filename the name of the variant file
+     */
+    void init_reader (const std::string& filename) {
+      samFile* file_ptr = sam_open(filename.empty() ? "-" : filename.c_str(), "r");
+      m_sam_file_ptr  = utils::make_shared_hts_file(file_ptr);
+      m_sam_header_ptr = utils::make_shared_sam_header(sam_hdr_read(file_ptr));
+    }
 };
 
 using SingleSamReader = SamReader<SamIterator>;
