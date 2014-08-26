@@ -1,22 +1,19 @@
 #include "variant_writer.h"
 
+#include "utils/hts_memory.h"
+
 namespace gamgee {
 
 VariantWriter::VariantWriter(const std::string& output_fname, const bool binary) :
-  m_out_file {open_file(output_fname, binary ? "wb" : "w")},
+  m_out_file {utils::make_shared_hts_file(open_file(output_fname, binary ? "wb" : "w"))},
   m_header {nullptr}
 {}
 
 VariantWriter::VariantWriter(const VariantHeader& header, const std::string& output_fname, const bool binary) :
-  m_out_file {open_file(output_fname, binary ? "wb" : "w")},
+  m_out_file {utils::make_shared_hts_file(open_file(output_fname, binary ? "wb" : "w"))},
   m_header{header}
 {
   write_header();
-}
-
-VariantWriter::~VariantWriter() {
-  if (m_out_file != nullptr)
-    bcf_close(m_out_file);
 }
 
 void VariantWriter::add_header(const VariantHeader& header) { 
@@ -25,7 +22,7 @@ void VariantWriter::add_header(const VariantHeader& header) {
 }
 
 void VariantWriter::add_record(const Variant& body) { 
-  bcf_write1(m_out_file, m_header.m_header.get(), body.m_body.get());
+  bcf_write1(m_out_file.get(), m_header.m_header.get(), body.m_body.get());
 }
 
 htsFile* VariantWriter::open_file(const std::string& output_fname, const std::string& mode) {
@@ -33,7 +30,7 @@ htsFile* VariantWriter::open_file(const std::string& output_fname, const std::st
 }
 
 void VariantWriter::write_header() const {
-  bcf_hdr_write(m_out_file, m_header.m_header.get());
+  bcf_hdr_write(m_out_file.get(), m_header.m_header.get());
 }
 
 
