@@ -35,7 +35,7 @@ class IndividualFieldIterator : public std::iterator<std::random_access_iterator
    * @param end_iterator whether or not this is being called by the VariantField::end() function.
    * @note this constructor serves only the VariantField::begin() and VariantField::end() functions. 
    */
-  IndividualFieldIterator(const std::shared_ptr<bcf1_t>& body, const bcf_fmt_t* const format_ptr, bool end_iterator = false) :
+  IndividualFieldIterator(const std::shared_ptr<bcf1_t>& body, bcf_fmt_t* format_ptr, bool end_iterator = false) :
     m_body {body}, 
     m_format_ptr {format_ptr},
     m_data_ptr {end_iterator ? format_ptr->p + m_format_ptr->size * m_body->n_sample : format_ptr->p} 
@@ -69,8 +69,6 @@ class IndividualFieldIterator : public std::iterator<std::random_access_iterator
    * @copydoc IndividualFieldIterator::IndividualFieldIterator(const IndividualFieldIterator&)
    */
   IndividualFieldIterator& operator=(const IndividualFieldIterator& other) {
-    if (&this == other)
-      return *this;
     m_body = other.m_body;
     m_format_ptr = other.m_format_ptr;
     m_data_ptr = other.m_data_ptr;
@@ -81,8 +79,6 @@ class IndividualFieldIterator : public std::iterator<std::random_access_iterator
    * @copydoc IndividualFieldIterator::IndividualFieldIterator(IndividualFieldIterator&&)
    */
   IndividualFieldIterator& operator=(IndividualFieldIterator&& other) noexcept {
-    if (&this == other)
-      return *this;
     m_body = std::move(other.m_body);
     m_format_ptr = other.m_format_ptr;
     m_data_ptr = other.m_data_ptr;
@@ -228,7 +224,7 @@ class IndividualFieldIterator : public std::iterator<std::random_access_iterator
 
  private:
   std::shared_ptr<bcf1_t> m_body;      ///< shared ownership of the Variant record memory so it stays alive while this object is in scope
-  const bcf_fmt_t* const m_format_ptr; ///< pointer to the format_field in the body so we can access the tag's information
+  bcf_fmt_t* m_format_ptr; 			   ///< pointer to the format_field in the body so we can access the tag's information
   uint8_t* m_data_ptr;                 ///< pointer to m_body structure where the data for this particular type is located.
 
 };
