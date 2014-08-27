@@ -117,7 +117,7 @@ class SamReader {
      * @param filename the name of the variant file
      */
     void init_reader (const std::string& filename) {
-      samFile* file_ptr = sam_open(filename.empty() ? "-" : filename.c_str(), "r");
+      auto* file_ptr = sam_open(filename.empty() ? "-" : filename.c_str(), "r");
       m_sam_file_ptr  = utils::make_shared_hts_file(file_ptr);
       m_sam_header_ptr = utils::make_shared_sam_header(sam_hdr_read(file_ptr));
     }
