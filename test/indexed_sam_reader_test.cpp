@@ -94,3 +94,17 @@ BOOST_AUTO_TEST_CASE( indexed_single_readers_begin_always_restarts ) {
   ++it2;
   BOOST_CHECK_EQUAL((*it1).alignment_start(), (*it2).alignment_start());
 }
+
+BOOST_AUTO_TEST_CASE( indexed_sam_iterator_move_test ) {
+  auto reader0 = IndexedSingleSamReader{"testdata/test_simple.bam", vector<string>{"."}};
+  auto iter0 = reader0.begin();
+
+  auto reader1 = IndexedSingleSamReader{"testdata/test_simple.bam", vector<string>{"."}};
+  auto iter1 = reader1.begin();
+  auto moved = check_move_constructor(iter1);
+
+  auto record0 = *iter0;
+  auto moved_record = *moved;
+  BOOST_CHECK_EQUAL(record0.name(), moved_record.name());
+  BOOST_CHECK_EQUAL(record0.chromosome(), moved_record.chromosome());
+}
