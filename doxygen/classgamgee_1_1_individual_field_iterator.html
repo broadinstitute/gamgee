@@ -111,9 +111,9 @@ Inheritance diagram for gamgee::IndividualFieldIterator&lt; TYPE &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac0b5e1de2b1e2367b1a9875f0fa7446d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_iterator.html#ac0b5e1de2b1e2367b1a9875f0fa7446d">IndividualFieldIterator</a> (const std::shared_ptr&lt; bcf1_t &gt; &amp;body, const bcf_fmt_t *const format_ptr, bool end_iterator=false)</td></tr>
-<tr class="memdesc:ac0b5e1de2b1e2367b1a9875f0fa7446d"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple constructor used by VariantField to create an iterator  <a href="#ac0b5e1de2b1e2367b1a9875f0fa7446d">More...</a><br /></td></tr>
-<tr class="separator:ac0b5e1de2b1e2367b1a9875f0fa7446d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04bf2ba06e889b78db7f31cf7d859484"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_iterator.html#a04bf2ba06e889b78db7f31cf7d859484">IndividualFieldIterator</a> (const std::shared_ptr&lt; bcf1_t &gt; &amp;body, bcf_fmt_t *format_ptr, bool end_iterator=false)</td></tr>
+<tr class="memdesc:a04bf2ba06e889b78db7f31cf7d859484"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple constructor used by VariantField to create an iterator  <a href="#a04bf2ba06e889b78db7f31cf7d859484">More...</a><br /></td></tr>
+<tr class="separator:a04bf2ba06e889b78db7f31cf7d859484"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b620286a45b8e6ba90a8eab319751e1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_iterator.html#a6b620286a45b8e6ba90a8eab319751e1">IndividualFieldIterator</a> (const <a class="el" href="classgamgee_1_1_individual_field_iterator.html">IndividualFieldIterator</a> &amp;other)</td></tr>
 <tr class="memdesc:a6b620286a45b8e6ba90a8eab319751e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy constructor is only meant for internal STL functions use. It makes a shallow copy of the underlying object which is sufficient for an iterator, but not exactly what a user would expect (user should expect copy constructors to make deep copies). But a deep copied iterator makes no sense.  <a href="#a6b620286a45b8e6ba90a8eab319751e1">More...</a><br /></td></tr>
 <tr class="separator:a6b620286a45b8e6ba90a8eab319751e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,7 +182,7 @@ class gamgee::IndividualFieldIterator&lt; TYPE &gt;</h3>
 <dd>
 this iterator never makes any copies of the underlying memory. It is implemented with pointer acrobatics behind the scenes for maximum performance while maintaining a friendly interface. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ac0b5e1de2b1e2367b1a9875f0fa7446d"></a>
+<a class="anchor" id="a04bf2ba06e889b78db7f31cf7d859484"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -200,7 +200,7 @@ template&lt;class TYPE&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bcf_fmt_t *const&#160;</td>
+          <td class="paramtype">bcf_fmt_t *&#160;</td>
           <td class="paramname"><em>format_ptr</em>, </td>
         </tr>
         <tr>
@@ -834,7 +834,7 @@ template&lt;class TYPE&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 27 2014 18:11:45 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 27 2014 20:15:27 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
