@@ -24,7 +24,7 @@ class FastqIterator {
     *
     * @param in input stream
     */
-  explicit FastqIterator(std::shared_ptr<std::istream> in);
+  explicit FastqIterator(std::shared_ptr<std::istream>& in);
 
   /**
     * @brief a FastqIterator should never be copied as the underlying stream can only be

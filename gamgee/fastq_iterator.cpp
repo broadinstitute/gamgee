@@ -12,7 +12,7 @@ FastqIterator::FastqIterator() :
   m_input_stream {}
 {}
 
-FastqIterator::FastqIterator(std::shared_ptr<std::istream> in) :
+FastqIterator::FastqIterator(std::shared_ptr<std::istream>& in) :
   m_input_stream {in} 
 {
   m_is_fastq = false;
