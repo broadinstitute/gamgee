@@ -124,7 +124,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classgamgee_1_1_multiple_variant_reader.html#a6ded7fb8dd5c8530ed1588bdd0455c8f">   75</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classgamgee_1_1_multiple_variant_reader.html#a6ded7fb8dd5c8530ed1588bdd0455c8f">init_reader</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; filenames, <span class="keyword">const</span> <span class="keywordtype">bool</span> validate_headers) {</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; filename : filenames) {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <span class="comment">// TODO? check for maximum one stream</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      vcfFile* file_ptr = bcf_open(filename.empty() ? <span class="stringliteral">&quot;-&quot;</span> : filename.c_str(), <span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <span class="keyword">auto</span>* file_ptr = bcf_open(filename.empty() ? <span class="stringliteral">&quot;-&quot;</span> : filename.c_str(), <span class="stringliteral">&quot;r&quot;</span>);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      m_variant_files.push_back(<a class="code" href="namespacegamgee_1_1utils.html#a50116d5da2ab23b2963b0e1f95eca489">utils::make_shared_hts_file</a>(file_ptr));</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span>&amp; header_ptr = <a class="code" href="namespacegamgee_1_1utils.html#a2732369bc67b236fbe94bcaba720d170">utils::make_shared_variant_header</a>(bcf_hdr_read(file_ptr));</div>
@@ -192,7 +192,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 22 2014 21:01:56 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 27 2014 18:11:45 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

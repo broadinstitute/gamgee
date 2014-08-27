@@ -94,52 +94,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define gamgee__variant_writer__guard</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="variant_8h.html">variant.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="variant__header_8h.html">variant_header.h</a>&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;htslib/vcf.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="variant_8h.html">variant.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="variant__header_8h.html">variant_header.h</a>&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>gamgee {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="hts__memory_8h.html">utils/hts_memory.h</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classgamgee_1_1_variant_writer.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="classgamgee_1_1_variant_writer.html">VariantWriter</a> {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; <span class="keyword">public</span>: </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classgamgee_1_1_variant_writer.html#aff9e52cd96c9a8ae5b6c99e5f2e9cc46">VariantWriter</a>(<span class="keyword">const</span> std::string&amp; output_fname = <span class="stringliteral">&quot;-&quot;</span>, <span class="keyword">const</span> <span class="keywordtype">bool</span> binary = <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classgamgee_1_1_variant_writer.html#aff9e52cd96c9a8ae5b6c99e5f2e9cc46">VariantWriter</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_variant_header.html">VariantHeader</a>&amp; header, <span class="keyword">const</span> std::string&amp; output_fname = <span class="stringliteral">&quot;-&quot;</span>, <span class="keyword">const</span> <span class="keywordtype">bool</span> binary = <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="classgamgee_1_1_variant_writer.html#aaca49e73bdacb72d0910b3b4c2d53331">~VariantWriter</a>();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classgamgee_1_1_variant_writer.html#a85c172cede99a7fdd9edfd9c0a768ccf">add_record</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_variant.html">Variant</a>&amp; body);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;htslib/vcf.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>gamgee {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classgamgee_1_1_variant_writer.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classgamgee_1_1_variant_writer.html">VariantWriter</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; <span class="keyword">public</span>: </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classgamgee_1_1_variant_writer.html#aff9e52cd96c9a8ae5b6c99e5f2e9cc46">VariantWriter</a>(<span class="keyword">const</span> std::string&amp; output_fname = <span class="stringliteral">&quot;-&quot;</span>, <span class="keyword">const</span> <span class="keywordtype">bool</span> binary = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classgamgee_1_1_variant_writer.html#aff9e52cd96c9a8ae5b6c99e5f2e9cc46">VariantWriter</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_variant_header.html">VariantHeader</a>&amp; header, <span class="keyword">const</span> std::string&amp; output_fname = <span class="stringliteral">&quot;-&quot;</span>, <span class="keyword">const</span> <span class="keywordtype">bool</span> binary = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="classgamgee_1_1_variant_writer.html#aff9e52cd96c9a8ae5b6c99e5f2e9cc46">VariantWriter</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_variant_writer.html">VariantWriter</a>&amp; other) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <a class="code" href="classgamgee_1_1_variant_writer.html">VariantWriter</a>&amp; <a class="code" href="classgamgee_1_1_variant_writer.html#a56b608c8ecf4ec9751ebce4439b2e2eb">operator=</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_variant_writer.html">VariantWriter</a>&amp; other) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classgamgee_1_1_variant_writer.html#a3cda74c0dac195ac22c52dbf2a7dd3e2">add_header</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_variant_header.html">VariantHeader</a>&amp; header);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="classgamgee_1_1_variant_writer.html#aff9e52cd96c9a8ae5b6c99e5f2e9cc46">VariantWriter</a>(<a class="code" href="classgamgee_1_1_variant_writer.html">VariantWriter</a>&amp;&amp; other) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <a class="code" href="classgamgee_1_1_variant_writer.html">VariantWriter</a>&amp; <a class="code" href="classgamgee_1_1_variant_writer.html#a56b608c8ecf4ec9751ebce4439b2e2eb">operator=</a>(<a class="code" href="classgamgee_1_1_variant_writer.html">VariantWriter</a>&amp;&amp; other) = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  htsFile* m_out_file;    </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="classgamgee_1_1_variant_header.html">VariantHeader</a> m_header; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keyword">static</span> htsFile* open_file(<span class="keyword">const</span> std::string&amp; output_fname, <span class="keyword">const</span> std::string&amp; binary);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordtype">void</span> write_header() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif // gamgee__variant_writer__guard</span></div>
-<div class="ttc" id="classgamgee_1_1_variant_writer_html_a3cda74c0dac195ac22c52dbf2a7dd3e2"><div class="ttname"><a href="classgamgee_1_1_variant_writer.html#a3cda74c0dac195ac22c52dbf2a7dd3e2">gamgee::VariantWriter::add_header</a></div><div class="ttdeci">void add_header(const VariantHeader &amp;header)</div><div class="ttdoc">Adds a header to the file stream. </div><div class="ttdef"><b>Definition:</b> variant_writer.cpp:22</div></div>
-<div class="ttc" id="classgamgee_1_1_variant_writer_html_aff9e52cd96c9a8ae5b6c99e5f2e9cc46"><div class="ttname"><a href="classgamgee_1_1_variant_writer.html#aff9e52cd96c9a8ae5b6c99e5f2e9cc46">gamgee::VariantWriter::VariantWriter</a></div><div class="ttdeci">VariantWriter(const std::string &amp;output_fname=&quot;-&quot;, const bool binary=true)</div><div class="ttdoc">Creates a new VariantWriter using the specified output file name. </div><div class="ttdef"><b>Definition:</b> variant_writer.cpp:5</div></div>
-<div class="ttc" id="classgamgee_1_1_variant_writer_html"><div class="ttname"><a href="classgamgee_1_1_variant_writer.html">gamgee::VariantWriter</a></div><div class="ttdoc">utility class to write out a SAM/BAM/CRAM file to any stream </div><div class="ttdef"><b>Definition:</b> variant_writer.h:16</div></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classgamgee_1_1_variant_writer.html#a85c172cede99a7fdd9edfd9c0a768ccf">add_record</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_variant.html">Variant</a>&amp; body);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classgamgee_1_1_variant_writer.html#a3cda74c0dac195ac22c52dbf2a7dd3e2">add_header</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_variant_header.html">VariantHeader</a>&amp; header);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  std::unique_ptr&lt;htsFile, utils::HtsFileDeleter&gt; m_out_file;  </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="classgamgee_1_1_variant_header.html">VariantHeader</a> m_header;               </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">static</span> htsFile* open_file(<span class="keyword">const</span> std::string&amp; output_fname, <span class="keyword">const</span> std::string&amp; binary);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordtype">void</span> write_header() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif // gamgee__variant_writer__guard</span></div>
+<div class="ttc" id="classgamgee_1_1_variant_writer_html_a56b608c8ecf4ec9751ebce4439b2e2eb"><div class="ttname"><a href="classgamgee_1_1_variant_writer.html#a56b608c8ecf4ec9751ebce4439b2e2eb">gamgee::VariantWriter::operator=</a></div><div class="ttdeci">VariantWriter &amp; operator=(const VariantWriter &amp;other)=delete</div></div>
+<div class="ttc" id="classgamgee_1_1_variant_writer_html_a3cda74c0dac195ac22c52dbf2a7dd3e2"><div class="ttname"><a href="classgamgee_1_1_variant_writer.html#a3cda74c0dac195ac22c52dbf2a7dd3e2">gamgee::VariantWriter::add_header</a></div><div class="ttdeci">void add_header(const VariantHeader &amp;header)</div><div class="ttdoc">Adds a header to the file stream. </div><div class="ttdef"><b>Definition:</b> variant_writer.cpp:19</div></div>
+<div class="ttc" id="classgamgee_1_1_variant_writer_html_aff9e52cd96c9a8ae5b6c99e5f2e9cc46"><div class="ttname"><a href="classgamgee_1_1_variant_writer.html#aff9e52cd96c9a8ae5b6c99e5f2e9cc46">gamgee::VariantWriter::VariantWriter</a></div><div class="ttdeci">VariantWriter(const std::string &amp;output_fname=&quot;-&quot;, const bool binary=true)</div><div class="ttdoc">Creates a new VariantWriter using the specified output file name. </div><div class="ttdef"><b>Definition:</b> variant_writer.cpp:7</div></div>
+<div class="ttc" id="classgamgee_1_1_variant_writer_html"><div class="ttname"><a href="classgamgee_1_1_variant_writer.html">gamgee::VariantWriter</a></div><div class="ttdoc">utility class to write out a SAM/BAM/CRAM file to any stream </div><div class="ttdef"><b>Definition:</b> variant_writer.h:20</div></div>
 <div class="ttc" id="variant_8h_html"><div class="ttname"><a href="variant_8h.html">variant.h</a></div></div>
-<div class="ttc" id="classgamgee_1_1_variant_writer_html_a85c172cede99a7fdd9edfd9c0a768ccf"><div class="ttname"><a href="classgamgee_1_1_variant_writer.html#a85c172cede99a7fdd9edfd9c0a768ccf">gamgee::VariantWriter::add_record</a></div><div class="ttdeci">void add_record(const Variant &amp;body)</div><div class="ttdoc">Adds a record to the file stream. </div><div class="ttdef"><b>Definition:</b> variant_writer.cpp:27</div></div>
+<div class="ttc" id="classgamgee_1_1_variant_writer_html_a85c172cede99a7fdd9edfd9c0a768ccf"><div class="ttname"><a href="classgamgee_1_1_variant_writer.html#a85c172cede99a7fdd9edfd9c0a768ccf">gamgee::VariantWriter::add_record</a></div><div class="ttdeci">void add_record(const Variant &amp;body)</div><div class="ttdoc">Adds a record to the file stream. </div><div class="ttdef"><b>Definition:</b> variant_writer.cpp:24</div></div>
+<div class="ttc" id="hts__memory_8h_html"><div class="ttname"><a href="hts__memory_8h.html">hts_memory.h</a></div></div>
 <div class="ttc" id="classgamgee_1_1_variant_html"><div class="ttname"><a href="classgamgee_1_1_variant.html">gamgee::Variant</a></div><div class="ttdoc">Utility class to manipulate a Variant record. </div><div class="ttdef"><b>Definition:</b> variant.h:27</div></div>
 <div class="ttc" id="classgamgee_1_1_variant_header_html"><div class="ttname"><a href="classgamgee_1_1_variant_header.html">gamgee::VariantHeader</a></div><div class="ttdoc">Utility class to hold a variant header. </div><div class="ttdef"><b>Definition:</b> variant_header.h:18</div></div>
 <div class="ttc" id="variant__header_8h_html"><div class="ttname"><a href="variant__header_8h.html">variant_header.h</a></div></div>
-<div class="ttc" id="classgamgee_1_1_variant_writer_html_aaca49e73bdacb72d0910b3b4c2d53331"><div class="ttname"><a href="classgamgee_1_1_variant_writer.html#aaca49e73bdacb72d0910b3b4c2d53331">gamgee::VariantWriter::~VariantWriter</a></div><div class="ttdeci">~VariantWriter()</div><div class="ttdoc">takes care of closing the file/stream </div><div class="ttdef"><b>Definition:</b> variant_writer.cpp:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 22 2014 21:01:56 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 27 2014 18:11:45 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

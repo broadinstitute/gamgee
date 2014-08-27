@@ -106,20 +106,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a85872cae0fc1db289966c1103c13fa79"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_iterator.html#a85872cae0fc1db289966c1103c13fa79">SamIterator</a> ()</td></tr>
 <tr class="memdesc:a85872cae0fc1db289966c1103c13fa79"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates an empty iterator (used for the end() method)  <a href="#a85872cae0fc1db289966c1103c13fa79">More...</a><br /></td></tr>
 <tr class="separator:a85872cae0fc1db289966c1103c13fa79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa73da167fc5b78a674fcebc530baea91"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_iterator.html#aa73da167fc5b78a674fcebc530baea91">SamIterator</a> (samFile *sam_file_ptr, const std::shared_ptr&lt; bam_hdr_t &gt; &amp;sam_header_ptr)</td></tr>
-<tr class="memdesc:aa73da167fc5b78a674fcebc530baea91"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes a new iterator based on an input stream (e.g. sam/a file, stdin, ...)  <a href="#aa73da167fc5b78a674fcebc530baea91">More...</a><br /></td></tr>
-<tr class="separator:aa73da167fc5b78a674fcebc530baea91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a833b1a64102dc135a63518e8a5e24d12"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_iterator.html#a833b1a64102dc135a63518e8a5e24d12">SamIterator</a> (<a class="el" href="classgamgee_1_1_sam_iterator.html">SamIterator</a> &amp;)=delete</td></tr>
-<tr class="memdesc:a833b1a64102dc135a63518e8a5e24d12"><td class="mdescLeft">&#160;</td><td class="mdescRight">no copy construction/assignment allowed for readers and iterators  <a href="#a833b1a64102dc135a63518e8a5e24d12">More...</a><br /></td></tr>
-<tr class="separator:a833b1a64102dc135a63518e8a5e24d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d5a67f6a7ad29e6bfd28758dcec2355"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_iterator.html#a5d5a67f6a7ad29e6bfd28758dcec2355">SamIterator</a> (const std::shared_ptr&lt; htsFile &gt; &amp;sam_file_ptr, const std::shared_ptr&lt; bam_hdr_t &gt; &amp;sam_header_ptr)</td></tr>
+<tr class="memdesc:a5d5a67f6a7ad29e6bfd28758dcec2355"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes a new iterator based on an input stream (e.g. sam/a file, stdin, ...)  <a href="#a5d5a67f6a7ad29e6bfd28758dcec2355">More...</a><br /></td></tr>
+<tr class="separator:a5d5a67f6a7ad29e6bfd28758dcec2355"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e98890d93df9bdc791dba599cb982ad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_iterator.html#a1e98890d93df9bdc791dba599cb982ad">SamIterator</a> (const <a class="el" href="classgamgee_1_1_sam_iterator.html">SamIterator</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a1e98890d93df9bdc791dba599cb982ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">no copy construction/assignment allowed for readers and iterators  <a href="#a1e98890d93df9bdc791dba599cb982ad">More...</a><br /></td></tr>
+<tr class="separator:a1e98890d93df9bdc791dba599cb982ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5cebb987023ee951689ad9a85b3ef64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_sam_iterator.html">SamIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_iterator.html#ab5cebb987023ee951689ad9a85b3ef64">operator=</a> (const <a class="el" href="classgamgee_1_1_sam_iterator.html">SamIterator</a> &amp;)=delete</td></tr>
+<tr class="separator:ab5cebb987023ee951689ad9a85b3ef64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f854a36e6520e2e8ad283b0b719413a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_iterator.html#a3f854a36e6520e2e8ad283b0b719413a">SamIterator</a> (<a class="el" href="classgamgee_1_1_sam_iterator.html">SamIterator</a> &amp;&amp;)=default</td></tr>
 <tr class="memdesc:a3f854a36e6520e2e8ad283b0b719413a"><td class="mdescLeft">&#160;</td><td class="mdescRight">a <a class="el" href="classgamgee_1_1_sam_iterator.html" title="Utility class to enable for-each style iteration in the SamReader class. ">SamIterator</a> move constructor guarantees all objects will have the same state.  <a href="#a3f854a36e6520e2e8ad283b0b719413a">More...</a><br /></td></tr>
 <tr class="separator:a3f854a36e6520e2e8ad283b0b719413a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4b338268f515a27b9bdea88a4cfe65b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_sam_iterator.html">SamIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_iterator.html#ac4b338268f515a27b9bdea88a4cfe65b">operator=</a> (<a class="el" href="classgamgee_1_1_sam_iterator.html">SamIterator</a> &amp;)=delete</td></tr>
-<tr class="memdesc:ac4b338268f515a27b9bdea88a4cfe65b"><td class="mdescLeft">&#160;</td><td class="mdescRight">no copy construction/assignment allowed for readers and iterators  <a href="#ac4b338268f515a27b9bdea88a4cfe65b">More...</a><br /></td></tr>
-<tr class="separator:ac4b338268f515a27b9bdea88a4cfe65b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b1f4d53a53546b7ba196dd7ca27468f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_sam_iterator.html">SamIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_iterator.html#a8b1f4d53a53546b7ba196dd7ca27468f">operator=</a> (<a class="el" href="classgamgee_1_1_sam_iterator.html">SamIterator</a> &amp;&amp;)=default</td></tr>
-<tr class="memdesc:a8b1f4d53a53546b7ba196dd7ca27468f"><td class="mdescLeft">&#160;</td><td class="mdescRight">a <a class="el" href="classgamgee_1_1_sam_iterator.html" title="Utility class to enable for-each style iteration in the SamReader class. ">SamIterator</a> move constructor guarantees all objects will have the same state.  <a href="#a8b1f4d53a53546b7ba196dd7ca27468f">More...</a><br /></td></tr>
 <tr class="separator:a8b1f4d53a53546b7ba196dd7ca27468f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31037e62b5e33f4fb4b60d8fbd844091"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_iterator.html#a31037e62b5e33f4fb4b60d8fbd844091">operator!=</a> (const <a class="el" href="classgamgee_1_1_sam_iterator.html">SamIterator</a> &amp;rhs)</td></tr>
 <tr class="memdesc:a31037e62b5e33f4fb4b60d8fbd844091"><td class="mdescLeft">&#160;</td><td class="mdescRight">inequality operator (needed by for-each loop)  <a href="#a31037e62b5e33f4fb4b60d8fbd844091">More...</a><br /></td></tr>
@@ -151,14 +149,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa73da167fc5b78a674fcebc530baea91"></a>
+<a class="anchor" id="a5d5a67f6a7ad29e6bfd28758dcec2355"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">gamgee::SamIterator::SamIterator </td>
           <td>(</td>
-          <td class="paramtype">samFile *&#160;</td>
+          <td class="paramtype">const std::shared_ptr&lt; htsFile &gt; &amp;&#160;</td>
           <td class="paramname"><em>sam_file_ptr</em>, </td>
         </tr>
         <tr>
@@ -186,7 +184,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a833b1a64102dc135a63518e8a5e24d12"></a>
+<a class="anchor" id="a1e98890d93df9bdc791dba599cb982ad"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -196,7 +194,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">gamgee::SamIterator::SamIterator </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classgamgee_1_1_sam_iterator.html">SamIterator</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_sam_iterator.html">SamIterator</a> &amp;&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -300,7 +298,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac4b338268f515a27b9bdea88a4cfe65b"></a>
+<a class="anchor" id="ab5cebb987023ee951689ad9a85b3ef64"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -310,7 +308,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classgamgee_1_1_sam_iterator.html">SamIterator</a>&amp; gamgee::SamIterator::operator= </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classgamgee_1_1_sam_iterator.html">SamIterator</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_sam_iterator.html">SamIterator</a> &amp;&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -321,8 +319,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>no copy construction/assignment allowed for readers and iterators </p>
 
 </div>
 </div>
@@ -348,8 +344,6 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>a <a class="el" href="classgamgee_1_1_sam_iterator.html" title="Utility class to enable for-each style iteration in the SamReader class. ">SamIterator</a> move constructor guarantees all objects will have the same state. </p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -359,7 +353,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 22 2014 21:01:56 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 27 2014 18:11:46 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

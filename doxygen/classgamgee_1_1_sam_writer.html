@@ -109,9 +109,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a900f50a6e06d06796c1a472278bb8b9b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_writer.html#a900f50a6e06d06796c1a472278bb8b9b">SamWriter</a> (const <a class="el" href="classgamgee_1_1_sam_header.html">SamHeader</a> &amp;header, const std::string &amp;output_fname=&quot;-&quot;, const bool binary=true)</td></tr>
 <tr class="memdesc:a900f50a6e06d06796c1a472278bb8b9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classgamgee_1_1_sam_writer.html" title="utility class to write out a SAM/BAM/CRAM file to any stream ">SamWriter</a> with the header extracted from a <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> record and using the specified output file name.  <a href="#a900f50a6e06d06796c1a472278bb8b9b">More...</a><br /></td></tr>
 <tr class="separator:a900f50a6e06d06796c1a472278bb8b9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc1d4cbec70ec4d7e01d187cc304b3a4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_writer.html#abc1d4cbec70ec4d7e01d187cc304b3a4">~SamWriter</a> ()</td></tr>
-<tr class="memdesc:abc1d4cbec70ec4d7e01d187cc304b3a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">takes care of closing the file/stream  <a href="#abc1d4cbec70ec4d7e01d187cc304b3a4">More...</a><br /></td></tr>
-<tr class="separator:abc1d4cbec70ec4d7e01d187cc304b3a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3e4393193028877d9b1915fb2600864"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_writer.html#ad3e4393193028877d9b1915fb2600864">SamWriter</a> (const <a class="el" href="classgamgee_1_1_sam_writer.html">SamWriter</a> &amp;other)=delete</td></tr>
+<tr class="memdesc:ad3e4393193028877d9b1915fb2600864"><td class="mdescLeft">&#160;</td><td class="mdescRight">a <a class="el" href="classgamgee_1_1_sam_writer.html" title="utility class to write out a SAM/BAM/CRAM file to any stream ">SamWriter</a> cannot be copied safely, as it is iterating over a stream.  <a href="#ad3e4393193028877d9b1915fb2600864">More...</a><br /></td></tr>
+<tr class="separator:ad3e4393193028877d9b1915fb2600864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8defd7754f8bfa7eaeed62da2be09258"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_sam_writer.html">SamWriter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_writer.html#a8defd7754f8bfa7eaeed62da2be09258">operator=</a> (const <a class="el" href="classgamgee_1_1_sam_writer.html">SamWriter</a> &amp;other)=delete</td></tr>
+<tr class="separator:a8defd7754f8bfa7eaeed62da2be09258"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdbd01b02bff59ee2677d0060d8ea1fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_writer.html#afdbd01b02bff59ee2677d0060d8ea1fa">SamWriter</a> (<a class="el" href="classgamgee_1_1_sam_writer.html">SamWriter</a> &amp;&amp;other)=default</td></tr>
+<tr class="memdesc:afdbd01b02bff59ee2677d0060d8ea1fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">a <a class="el" href="classgamgee_1_1_sam_writer.html" title="utility class to write out a SAM/BAM/CRAM file to any stream ">SamWriter</a> can be moved  <a href="#afdbd01b02bff59ee2677d0060d8ea1fa">More...</a><br /></td></tr>
+<tr class="separator:afdbd01b02bff59ee2677d0060d8ea1fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba58b20e60aec15a1204a7f4d37f5903"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_sam_writer.html">SamWriter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_writer.html#aba58b20e60aec15a1204a7f4d37f5903">operator=</a> (<a class="el" href="classgamgee_1_1_sam_writer.html">SamWriter</a> &amp;&amp;other)=default</td></tr>
+<tr class="separator:aba58b20e60aec15a1204a7f4d37f5903"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a805dcb8e14a8f60dccfcefd32805d6ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_writer.html#a805dcb8e14a8f60dccfcefd32805d6ec">add_record</a> (const <a class="el" href="classgamgee_1_1_sam.html">Sam</a> &amp;body)</td></tr>
 <tr class="memdesc:a805dcb8e14a8f60dccfcefd32805d6ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a record to the file stream.  <a href="#a805dcb8e14a8f60dccfcefd32805d6ec">More...</a><br /></td></tr>
 <tr class="separator:a805dcb8e14a8f60dccfcefd32805d6ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -218,20 +225,55 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="abc1d4cbec70ec4d7e01d187cc304b3a4"></a>
+<a class="anchor" id="ad3e4393193028877d9b1915fb2600864"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">gamgee::SamWriter::~SamWriter </td>
+          <td class="memname">gamgee::SamWriter::SamWriter </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_sam_writer.html">SamWriter</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>takes care of closing the file/stream </p>
+<p>a <a class="el" href="classgamgee_1_1_sam_writer.html" title="utility class to write out a SAM/BAM/CRAM file to any stream ">SamWriter</a> cannot be copied safely, as it is iterating over a stream. </p>
+
+</div>
+</div>
+<a class="anchor" id="afdbd01b02bff59ee2677d0060d8ea1fa"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">gamgee::SamWriter::SamWriter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgamgee_1_1_sam_writer.html">SamWriter</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>a <a class="el" href="classgamgee_1_1_sam_writer.html" title="utility class to write out a SAM/BAM/CRAM file to any stream ">SamWriter</a> can be moved </p>
 
 </div>
 </div>
@@ -285,6 +327,54 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a8defd7754f8bfa7eaeed62da2be09258"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_sam_writer.html">SamWriter</a>&amp; gamgee::SamWriter::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_sam_writer.html">SamWriter</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aba58b20e60aec15a1204a7f4d37f5903"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_sam_writer.html">SamWriter</a>&amp; gamgee::SamWriter::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgamgee_1_1_sam_writer.html">SamWriter</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>gamgee/<a class="el" href="sam__writer_8h_source.html">sam_writer.h</a></li>
 <li>gamgee/<a class="el" href="sam__writer_8cpp.html">sam_writer.cpp</a></li>
@@ -292,7 +382,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 22 2014 21:01:56 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 27 2014 18:11:46 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -106,37 +106,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classgamgee_1_1_sam_iterator.html#a85872cae0fc1db289966c1103c13fa79">SamIterator</a>();</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classgamgee_1_1_sam_iterator.html#a85872cae0fc1db289966c1103c13fa79">SamIterator</a>(samFile* sam_file_ptr, <span class="keyword">const</span> std::shared_ptr&lt;bam_hdr_t&gt;&amp; sam_header_ptr);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classgamgee_1_1_sam_iterator.html#a85872cae0fc1db289966c1103c13fa79">SamIterator</a>(<span class="keyword">const</span> std::shared_ptr&lt;htsFile&gt;&amp; sam_file_ptr, <span class="keyword">const</span> std::shared_ptr&lt;bam_hdr_t&gt;&amp; sam_header_ptr);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classgamgee_1_1_sam_iterator.html#a85872cae0fc1db289966c1103c13fa79">SamIterator</a>(<a class="code" href="classgamgee_1_1_sam_iterator.html">SamIterator</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classgamgee_1_1_sam_iterator.html#a85872cae0fc1db289966c1103c13fa79">SamIterator</a>(<a class="code" href="classgamgee_1_1_sam_iterator.html">SamIterator</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classgamgee_1_1_sam_iterator.html">SamIterator</a>&amp; <a class="code" href="classgamgee_1_1_sam_iterator.html#ac4b338268f515a27b9bdea88a4cfe65b">operator=</a>(<a class="code" href="classgamgee_1_1_sam_iterator.html">SamIterator</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classgamgee_1_1_sam_iterator.html">SamIterator</a>&amp; <a class="code" href="classgamgee_1_1_sam_iterator.html#ac4b338268f515a27b9bdea88a4cfe65b">operator=</a>(<a class="code" href="classgamgee_1_1_sam_iterator.html">SamIterator</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgamgee_1_1_sam_iterator.html#a31037e62b5e33f4fb4b60d8fbd844091">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_sam_iterator.html">SamIterator</a>&amp; rhs);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="classgamgee_1_1_sam.html">Sam</a>&amp; <a class="code" href="classgamgee_1_1_sam_iterator.html#a24e09e961034a35f85577021b15d05bf">operator*</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classgamgee_1_1_sam_iterator.html#a85872cae0fc1db289966c1103c13fa79">SamIterator</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_sam_iterator.html">SamIterator</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classgamgee_1_1_sam_iterator.html">SamIterator</a>&amp; <a class="code" href="classgamgee_1_1_sam_iterator.html#ab5cebb987023ee951689ad9a85b3ef64">operator=</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_sam_iterator.html">SamIterator</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classgamgee_1_1_sam_iterator.html#a85872cae0fc1db289966c1103c13fa79">SamIterator</a>(<a class="code" href="classgamgee_1_1_sam_iterator.html">SamIterator</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classgamgee_1_1_sam_iterator.html">SamIterator</a>&amp; <a class="code" href="classgamgee_1_1_sam_iterator.html#ab5cebb987023ee951689ad9a85b3ef64">operator=</a>(<a class="code" href="classgamgee_1_1_sam_iterator.html">SamIterator</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgamgee_1_1_sam_iterator.html#a31037e62b5e33f4fb4b60d8fbd844091">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_sam_iterator.html">SamIterator</a>&amp; rhs);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="classgamgee_1_1_sam.html">Sam</a>&amp; <a class="code" href="classgamgee_1_1_sam_iterator.html#a24e09e961034a35f85577021b15d05bf">operator*</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="classgamgee_1_1_sam.html">Sam</a>&amp; <a class="code" href="classgamgee_1_1_sam_iterator.html#a0814973134d8aa28fc924181a635a563">operator++</a>();</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="classgamgee_1_1_sam.html">Sam</a>&amp; <a class="code" href="classgamgee_1_1_sam_iterator.html#a0814973134d8aa28fc924181a635a563">operator++</a>();</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    samFile * m_sam_file_ptr;                    </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::shared_ptr&lt;bam_hdr_t&gt; m_sam_header_ptr; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    std::shared_ptr&lt;bam1_t&gt; m_sam_record_ptr;    </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="classgamgee_1_1_sam.html">Sam</a> m_sam_record;                            </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> fetch_next_record();                    </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}  <span class="comment">// end namespace gamgee</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#endif // gamgee__sam_iterator__guard</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    std::shared_ptr&lt;htsFile&gt; m_sam_file_ptr;     </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    std::shared_ptr&lt;bam_hdr_t&gt; m_sam_header_ptr; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    std::shared_ptr&lt;bam1_t&gt; m_sam_record_ptr;    </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="classgamgee_1_1_sam.html">Sam</a> m_sam_record;                            </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> fetch_next_record();                    </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}  <span class="comment">// end namespace gamgee</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif // gamgee__sam_iterator__guard</span></div>
+<div class="ttc" id="classgamgee_1_1_sam_iterator_html_ab5cebb987023ee951689ad9a85b3ef64"><div class="ttname"><a href="classgamgee_1_1_sam_iterator.html#ab5cebb987023ee951689ad9a85b3ef64">gamgee::SamIterator::operator=</a></div><div class="ttdeci">SamIterator &amp; operator=(const SamIterator &amp;)=delete</div></div>
 <div class="ttc" id="sam_8h_html"><div class="ttname"><a href="sam_8h.html">sam.h</a></div></div>
 <div class="ttc" id="classgamgee_1_1_sam_iterator_html_a85872cae0fc1db289966c1103c13fa79"><div class="ttname"><a href="classgamgee_1_1_sam_iterator.html#a85872cae0fc1db289966c1103c13fa79">gamgee::SamIterator::SamIterator</a></div><div class="ttdeci">SamIterator()</div><div class="ttdoc">creates an empty iterator (used for the end() method) </div><div class="ttdef"><b>Definition:</b> sam_iterator.cpp:9</div></div>
-<div class="ttc" id="classgamgee_1_1_sam_iterator_html_ac4b338268f515a27b9bdea88a4cfe65b"><div class="ttname"><a href="classgamgee_1_1_sam_iterator.html#ac4b338268f515a27b9bdea88a4cfe65b">gamgee::SamIterator::operator=</a></div><div class="ttdeci">SamIterator &amp; operator=(SamIterator &amp;)=delete</div><div class="ttdoc">no copy construction/assignment allowed for readers and iterators </div></div>
 <div class="ttc" id="classgamgee_1_1_sam_iterator_html"><div class="ttname"><a href="classgamgee_1_1_sam_iterator.html">gamgee::SamIterator</a></div><div class="ttdoc">Utility class to enable for-each style iteration in the SamReader class. </div><div class="ttdef"><b>Definition:</b> sam_iterator.h:15</div></div>
 <div class="ttc" id="classgamgee_1_1_sam_iterator_html_a24e09e961034a35f85577021b15d05bf"><div class="ttname"><a href="classgamgee_1_1_sam_iterator.html#a24e09e961034a35f85577021b15d05bf">gamgee::SamIterator::operator*</a></div><div class="ttdeci">Sam &amp; operator*()</div><div class="ttdoc">dereference operator (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> sam_iterator.cpp:24</div></div>
 <div class="ttc" id="classgamgee_1_1_sam_html"><div class="ttname"><a href="classgamgee_1_1_sam.html">gamgee::Sam</a></div><div class="ttdoc">Utility class to manipulate a Sam record. </div><div class="ttdef"><b>Definition:</b> sam.h:20</div></div>
@@ -145,7 +143,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 22 2014 21:01:56 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 27 2014 18:11:45 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

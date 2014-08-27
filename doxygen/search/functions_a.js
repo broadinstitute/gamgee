@@ -8,6 +8,7 @@ var searchData=
   ['make_5fshared_5fsam_5fheader',['make_shared_sam_header',['../namespacegamgee_1_1utils.html#a72ad0cc418281effcdb1abd1a077761e',1,'gamgee::utils']]],
   ['make_5fshared_5fvariant',['make_shared_variant',['../namespacegamgee_1_1utils.html#a22e4ba8eb2a8667becd53d5f10fad35f',1,'gamgee::utils']]],
   ['make_5fshared_5fvariant_5fheader',['make_shared_variant_header',['../namespacegamgee_1_1utils.html#a2732369bc67b236fbe94bcaba720d170',1,'gamgee::utils']]],
+  ['make_5funique_5fhts_5ffile',['make_unique_hts_file',['../namespacegamgee_1_1utils.html#a212198e63351e31260f9a80a0e78ae35',1,'gamgee::utils']]],
   ['makerelativepathsinflagsabsolute',['MakeRelativePathsInFlagsAbsolute',['../_8ycm__extra__conf_8py.html#aa17b17787ee25ee278fe0330e8245fb8',1,'.ycm_extra_conf.py']]],
   ['mate_5falignment_5fstart',['mate_alignment_start',['../classgamgee_1_1_sam.html#afb88f5ba0c20718a997315ffe29803e9',1,'gamgee::Sam']]],
   ['mate_5falignment_5fstop',['mate_alignment_stop',['../classgamgee_1_1_sam.html#a761094dcd5cc88b231313157f8f3b6b5',1,'gamgee::Sam::mate_alignment_stop() const '],['../classgamgee_1_1_sam.html#a5d193aac7f990a4732e618f43236cb92',1,'gamgee::Sam::mate_alignment_stop(const SamTag&lt; std::string &gt; &amp;mate_cigar_tag) const ']]],
