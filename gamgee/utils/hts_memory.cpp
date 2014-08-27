@@ -64,6 +64,14 @@ shared_ptr<bcf_hdr_t> make_shared_variant_header(bcf_hdr_t* bcf_hdr_ptr) {
 }
 
 /**
+  * @brief wraps a pre-allocated htsFile in a unique_ptr with correct deleter
+  * @param hts_file_ptr an htslib raw file pointer
+  */
+unique_ptr<htsFile, HtsFileDeleter> make_unique_hts_file(htsFile* hts_file_ptr) {
+  return unique_ptr<htsFile, HtsFileDeleter>(hts_file_ptr);
+}
+
+/**
   * @brief creates a deep copy of an existing bam1_t
   * @param original an htslib raw bam pointer
   */

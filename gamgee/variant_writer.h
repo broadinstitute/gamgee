@@ -2,9 +2,13 @@
 #define gamgee__variant_writer__guard
 
 #include <string>
+#include <memory>
 
 #include "variant.h"
 #include "variant_header.h"
+
+#include "utils/hts_memory.h"
+
 #include "htslib/vcf.h"
 
 namespace gamgee {
@@ -35,9 +39,18 @@ class VariantWriter {
   explicit VariantWriter(const VariantHeader& header, const std::string& output_fname = "-", const bool binary = true);
 
   /**
-   * @brief takes care of closing the file/stream
+   * @brief a VariantWriter cannot be copied safely, as it is iterating over a stream.
    */
-  ~VariantWriter();
+
+  VariantWriter(const VariantWriter& other) = delete;
+  VariantWriter& operator=(const VariantWriter& other) = delete;
+
+  /**
+   * @brief a VariantWriter can be moved
+   */
+
+  VariantWriter(VariantWriter&& other) = default;
+  VariantWriter& operator=(VariantWriter&& other) = default;
 
   /**
    * @brief Adds a record to the file stream
@@ -53,8 +66,8 @@ class VariantWriter {
   void add_header(const VariantHeader& header);
 
  private:
-  htsFile* m_out_file;    ///< the file or stream to write out to ("-" means stdout)
-  VariantHeader m_header; ///< holds a copy of the header throughout the production of the output (necessary for every record that gets added)
+  std::unique_ptr<htsFile, utils::HtsFileDeleter> m_out_file;  ///< the file or stream to write out to ("-" means stdout)
+  VariantHeader m_header;               ///< holds a copy of the header throughout the production of the output (necessary for every record that gets added)
 
   static htsFile* open_file(const std::string& output_fname, const std::string& binary);
   void write_header() const;

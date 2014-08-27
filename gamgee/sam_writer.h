@@ -2,9 +2,13 @@
 #define gamgee__sam_writer__guard
 
 #include <string>
+#include <memory>
 
 #include "sam.h"
 #include "sam_header.h"
+
+#include "utils/hts_memory.h"
+
 #include "htslib/sam.h"
 
 namespace gamgee {
@@ -35,9 +39,18 @@ class SamWriter {
   explicit SamWriter(const SamHeader& header, const std::string& output_fname = "-", const bool binary = true);
 
   /**
-   * @brief takes care of closing the file/stream
+   * @brief a SamWriter cannot be copied safely, as it is iterating over a stream.
    */
-  ~SamWriter();
+
+  SamWriter(const SamWriter& other) = delete;
+  SamWriter& operator=(const SamWriter& other) = delete;
+
+  /**
+   * @brief a SamWriter can be moved
+   */
+
+  SamWriter(SamWriter&& other) = default;
+  SamWriter& operator=(SamWriter&& other) = default;
 
   /**
    * @brief Adds a record to the file stream
@@ -53,8 +66,8 @@ class SamWriter {
   void add_header(const SamHeader& header);
 
  private:
-  htsFile* m_out_file; ///< the file or stream to write out to ("-" means stdout)
-  SamHeader m_header;  ///< holds a copy of the header throughout the production of the output (necessary for every record that gets added)
+  std::unique_ptr<htsFile, utils::HtsFileDeleter> m_out_file;  ///< the file or stream to write out to ("-" means stdout)
+  SamHeader m_header;                   ///< holds a copy of the header throughout the production of the output (necessary for every record that gets added)
 
   static htsFile* open_file(const std::string& output_fname, const std::string& binary);
   void write_header() const;

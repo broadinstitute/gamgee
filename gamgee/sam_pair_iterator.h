@@ -28,26 +28,18 @@ class SamPairIterator {
      * @param sam_file_ptr   pointer to a sam file opened via the sam_open() macro from htslib
      * @param sam_header_ptr pointer to a sam file header created with the sam_hdr_read() macro from htslib
      */
-    SamPairIterator(samFile * sam_file_ptr, const std::shared_ptr<bam_hdr_t>& sam_header_ptr);
+    SamPairIterator(const std::shared_ptr<htsFile>& sam_file_ptr, const std::shared_ptr<bam_hdr_t>& sam_header_ptr);
 
     /**
      * @brief no copy construction/assignment allowed in readers or iterators
      */
-    SamPairIterator(SamPairIterator& other) = delete;
+    SamPairIterator(const SamPairIterator& other) = delete;
+    SamPairIterator& operator=(const SamPairIterator& other) = delete;
 
     /**
      * @brief a SamPairIterator move constructor guarantees all objects will have the same state.
      */
     SamPairIterator(SamPairIterator&& other) = default;
-
-    /**
-     * @copydoc SamPairIterator(SamPairIterator&)
-     */
-    SamPairIterator& operator=(SamPairIterator& other) = delete;
-    
-    /**
-     * @copydoc SamPairIterator(SamPairIterator&&)
-     */
     SamPairIterator& operator=(SamPairIterator&& other) = default;
     
     /**
@@ -79,7 +71,7 @@ class SamPairIterator {
     using SamPtrQueue = std::queue<std::shared_ptr<bam1_t>>;
 
     SamPtrQueue m_supp_alignments;                     ///< queue to hold the supplementary alignments temporarily while processing the pairs
-    samFile * m_sam_file_ptr;                          ///< pointer to the sam file
+    std::shared_ptr<htsFile> m_sam_file_ptr;           ///< pointer to the sam file
     const std::shared_ptr<bam_hdr_t> m_sam_header_ptr; ///< pointer to the sam header
     std::shared_ptr<bam1_t> m_sam_record_ptr1;         ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
     std::shared_ptr<bam1_t> m_sam_record_ptr2;         ///< pointer to the internal structure of the sam record. Useful to only allocate it once.

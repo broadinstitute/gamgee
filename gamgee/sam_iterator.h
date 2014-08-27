@@ -26,26 +26,18 @@ class SamIterator {
      * @param sam_file_ptr   pointer to a sam file opened via the sam_open() macro from htslib
      * @param sam_header_ptr pointer to a sam file header created with the sam_hdr_read() macro from htslib
      */
-    SamIterator(samFile* sam_file_ptr, const std::shared_ptr<bam_hdr_t>& sam_header_ptr);
+    SamIterator(const std::shared_ptr<htsFile>& sam_file_ptr, const std::shared_ptr<bam_hdr_t>& sam_header_ptr);
 
     /**
      * @brief no copy construction/assignment allowed for readers and iterators
      */
-    SamIterator(SamIterator&) = delete;
+    SamIterator(const SamIterator&) = delete;
+    SamIterator& operator=(const SamIterator&) = delete;
 
     /**
      * @brief a SamIterator move constructor guarantees all objects will have the same state.
      */
     SamIterator(SamIterator&&) = default;
-    
-    /**
-     * @copydoc SamIterator(SamIterator&)
-     */
-    SamIterator& operator=(SamIterator&) = delete;
-
-    /**
-     * @copydoc SamIterator(SamIterator&&)
-     */
     SamIterator& operator=(SamIterator&&) = default;
     
     /**
@@ -74,7 +66,7 @@ class SamIterator {
     Sam& operator++();
 
   private:
-    samFile * m_sam_file_ptr;                    ///< pointer to the sam file
+    std::shared_ptr<htsFile> m_sam_file_ptr;     ///< pointer to the sam file
     std::shared_ptr<bam_hdr_t> m_sam_header_ptr; ///< pointer to the sam header
     std::shared_ptr<bam1_t> m_sam_record_ptr;    ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
     Sam m_sam_record;                            ///< temporary record to hold between fetch (operator++) and serve (operator*)

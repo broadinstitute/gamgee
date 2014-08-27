@@ -75,7 +75,7 @@ class MultipleVariantReader {
   void init_reader(const std::vector<std::string>& filenames, const bool validate_headers) {
     for (const auto& filename : filenames) {
       // TODO? check for maximum one stream
-      vcfFile* file_ptr = bcf_open(filename.empty() ? "-" : filename.c_str(), "r");
+      auto* file_ptr = bcf_open(filename.empty() ? "-" : filename.c_str(), "r");
       m_variant_files.push_back(utils::make_shared_hts_file(file_ptr));
 
       const auto& header_ptr = utils::make_shared_variant_header(bcf_hdr_read(file_ptr));

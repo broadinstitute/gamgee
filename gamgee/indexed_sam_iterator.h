@@ -29,40 +29,20 @@ class IndexedSamIterator {
      * @param sam_header_ptr pointer to a bam/cram file header created with the sam_hdr_read() macro from htslib
      * @param interval_list  vector of intervals compatible with sam_itr_querys, hts_parse_reg, etc.
      */
-    IndexedSamIterator(samFile* sam_file_ptr, hts_idx_t* sam_index_ptr,
+    IndexedSamIterator(const std::shared_ptr<htsFile>& sam_file_ptr, const std::shared_ptr<hts_idx_t>& sam_index_ptr,
         const std::shared_ptr<bam_hdr_t>& sam_header_ptr, const std::vector<std::string>& interval_list);
 
     /**
-     * @brief simple move assignment/construction
-     *
-     * we need a custom move constructor here because we need to set the iterator pointer to nullptr
-     * otherwise the destructor will try to close the dangling pointers.
-     *
-     * @param other the other IndexedSamIterator to move from
+     * @brief iterators and readers can be moved
      */
-    IndexedSamIterator(IndexedSamIterator&& other);
+    IndexedSamIterator(IndexedSamIterator&& other) = default;
+    IndexedSamIterator& operator=(IndexedSamIterator&& other) = default;
 
     /**
-     * @copydoc IndexedSamIterator(IndexedSamIterator&&)
+     * @brief no copy construction/assignment allowed for iterators and readers
      */
-    IndexedSamIterator& operator=(IndexedSamIterator&& other);
-
-    /**
-     * @brief no copy construction/assignment allowed for readers and iterators
-     *
-     * @param other the other IndexedSamIterator to copy from
-     */
-    IndexedSamIterator(IndexedSamIterator& other) = delete;
-
-    /**
-     * @copydoc IndexedSamIterator(IndexedSamIterator&)
-     */
-    IndexedSamIterator& operator=(IndexedSamIterator& other) = delete;
-
-    /**
-     * @brief closes the iterators if there are some
-     */
-    ~IndexedSamIterator();
+    IndexedSamIterator(const IndexedSamIterator& other) = delete;
+    IndexedSamIterator& operator=(const IndexedSamIterator& other) = delete;
 
     /**
      * @brief inequality operator (needed by for-each loop)
@@ -90,12 +70,12 @@ class IndexedSamIterator {
     Sam& operator++();
 
   private:
-    samFile * m_sam_file_ptr;                               ///< pointer to the bam file
-    hts_idx_t * m_sam_index_ptr;                            ///< pointer to the bam index
+    std::shared_ptr<htsFile> m_sam_file_ptr;                ///< pointer to the bam file
+    std::shared_ptr<hts_idx_t> m_sam_index_ptr;             ///< pointer to the bam index
     std::shared_ptr<bam_hdr_t> m_sam_header_ptr;            ///< pointer to the bam header
     std::vector<std::string> m_interval_list;               ///< intervals to iterate
     std::vector<std::string>::iterator m_interval_iterator; ///< temporary interval to hold between sam_itr_querys and serve fetch_next_record
-    hts_itr_t * m_sam_itr_ptr;                              ///< temporary iterator to hold between sam_itr_querys and serve fetch_next_record
+    std::shared_ptr<hts_itr_t> m_sam_itr_ptr;               ///< temporary iterator to hold between sam_itr_querys and serve fetch_next_record
     std::shared_ptr<bam1_t> m_sam_record_ptr;               ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
     Sam m_sam_record;                                       ///< temporary record to hold between fetch (operator++) and serve (operator*)
 
