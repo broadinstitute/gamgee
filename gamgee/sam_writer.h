@@ -2,9 +2,13 @@
 #define gamgee__sam_writer__guard
 
 #include <string>
+#include <memory>
 
 #include "sam.h"
 #include "sam_header.h"
+
+#include "utils/hts_memory.h"
+
 #include "htslib/sam.h"
 
 namespace gamgee {
@@ -62,7 +66,7 @@ class SamWriter {
   void add_header(const SamHeader& header);
 
  private:
-  std::shared_ptr<htsFile> m_out_file;  ///< the file or stream to write out to ("-" means stdout)
+  std::unique_ptr<htsFile, utils::HtsFileDeleter> m_out_file;  ///< the file or stream to write out to ("-" means stdout)
   SamHeader m_header;                   ///< holds a copy of the header throughout the production of the output (necessary for every record that gets added)
 
   static htsFile* open_file(const std::string& output_fname, const std::string& binary);

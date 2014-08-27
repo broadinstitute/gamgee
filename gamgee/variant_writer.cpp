@@ -5,12 +5,12 @@
 namespace gamgee {
 
 VariantWriter::VariantWriter(const std::string& output_fname, const bool binary) :
-  m_out_file {utils::make_shared_hts_file(open_file(output_fname, binary ? "wb" : "w"))},
+  m_out_file {utils::make_unique_hts_file(open_file(output_fname, binary ? "wb" : "w"))},
   m_header {nullptr}
 {}
 
 VariantWriter::VariantWriter(const VariantHeader& header, const std::string& output_fname, const bool binary) :
-  m_out_file {utils::make_shared_hts_file(open_file(output_fname, binary ? "wb" : "w"))},
+  m_out_file {utils::make_unique_hts_file(open_file(output_fname, binary ? "wb" : "w"))},
   m_header{header}
 {
   write_header();
