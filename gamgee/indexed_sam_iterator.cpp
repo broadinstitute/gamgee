@@ -21,7 +21,7 @@ IndexedSamIterator::IndexedSamIterator(const std::shared_ptr<htsFile>& sam_file_
   m_sam_header_ptr {sam_header_ptr},
   m_interval_list {interval_list},
   m_interval_iterator {m_interval_list.begin()},
-  m_sam_itr_ptr {utils::make_shared_hts_itr(sam_itr_querys(m_sam_index_ptr.get(), m_sam_header_ptr.get(), (*m_interval_iterator).c_str()))},
+  m_sam_itr_ptr {utils::make_unique_hts_itr(sam_itr_querys(m_sam_index_ptr.get(), m_sam_header_ptr.get(), (*m_interval_iterator).c_str()))},
   m_sam_record_ptr {utils::make_shared_sam(bam_init1())},
   m_sam_record {m_sam_header_ptr, m_sam_record_ptr} {
     fetch_next_record();
