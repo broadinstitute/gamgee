@@ -1,8 +1,10 @@
 #ifndef gamgee__fastq_iterator__guard
 #define gamgee__fastq_iterator__guard
 
-
 #include "fastq.h"
+
+#include <memory>
+#include <istream>
 
 namespace gamgee {
 
