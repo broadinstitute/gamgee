@@ -3,7 +3,7 @@ var searchData=
   ['fail',['fail',['../classgamgee_1_1_sam.html#ae91875767c9de5239aa32a29231a37bb',1,'gamgee::Sam']]],
   ['fast_5fdiploid_5fkey_5fgeneration',['fast_diploid_key_generation',['../classgamgee_1_1_genotype.html#a05e3002b133d74e407306a7aa7aeb8d5',1,'gamgee::Genotype']]],
   ['fastq',['Fastq',['../classgamgee_1_1_fastq.html',1,'gamgee']]],
-  ['fastq',['Fastq',['../classgamgee_1_1_fastq.html#af3b62e5a1a51db1945a3552ccbde55b5',1,'gamgee::Fastq::Fastq()'],['../classgamgee_1_1_fastq.html#adf3b012667d472ab7fb7acd3117a00f3',1,'gamgee::Fastq::Fastq(std::string name, std::string comment, std::string sequence, std::string quals=&quot;&quot;)']]],
+  ['fastq',['Fastq',['../classgamgee_1_1_fastq.html#af3b62e5a1a51db1945a3552ccbde55b5',1,'gamgee::Fastq::Fastq()'],['../classgamgee_1_1_fastq.html#adf3b012667d472ab7fb7acd3117a00f3',1,'gamgee::Fastq::Fastq(std::string name, std::string comment, std::string sequence, std::string quals=&quot;&quot;)'],['../classgamgee_1_1_fastq.html#ac7c14894edf06f3029a0457da41ed386',1,'gamgee::Fastq::Fastq(const Fastq &amp;)=default'],['../classgamgee_1_1_fastq.html#a06d969cb9dc0f93479b4f56d066e6469',1,'gamgee::Fastq::Fastq(Fastq &amp;&amp;)=default']]],
   ['fastq_2ecpp',['fastq.cpp',['../fastq_8cpp.html',1,'']]],
   ['fastq_2eh',['fastq.h',['../fastq_8h.html',1,'']]],
   ['fastq_5fiterator_2ecpp',['fastq_iterator.cpp',['../fastq__iterator_8cpp.html',1,'']]],
