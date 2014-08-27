@@ -41,7 +41,7 @@ class FastqReader {
     *
     * @param filename the name of the fasta/fastq file
     */
-  FastqReader(const std::string& filename);
+  explicit FastqReader(const std::string& filename);
 
   /**
     * @brief reads through all records in a file (fasta or fastq) parsing them into Fastq
@@ -49,7 +49,7 @@ class FastqReader {
     *
     * @param filenames a vector containing a single element: the name of the fasta/fastq file
     */
-  FastqReader(const std::vector<std::string>& filenames);
+  explicit FastqReader(const std::vector<std::string>& filenames);
 
   /**
     * @brief reads through all records in a stream (e.g. stdin) parsing them into Fastq
@@ -57,23 +57,20 @@ class FastqReader {
     *
     * @param input a reference to the input stream (e.g. &std::cin)
     */
-  FastqReader(std::istream* const input);
-
-  /**
-    * @brief closes the file stream if there is one (in case we are reading a fasta/fastq file)
-    */
-  ~FastqReader();
+  explicit FastqReader(std::istream* const input);
 
   /**
     * @brief move constructor for the FastqReader class simply transfers all objects with the state
     * maintained.
     */
-  FastqReader(FastqReader&&);
+  FastqReader(FastqReader&&) = default;
+  FastqReader& operator=(FastqReader&&) = default;
 
   /**
     * @brief a FastqReader cannot be copied safely, as it is iterating over a stream.
     */
   FastqReader(const FastqReader&) = delete;
+  FastqReader& operator=(const FastqReader&) = delete;
 
   /**
     * @brief creates a FastqIterator pointing at the start of the input stream (needed by for-each
@@ -91,8 +88,7 @@ class FastqReader {
   FastqIterator end();
 
 private:
-  std::istream* m_input_stream;  ///< a pointer to the input stream
-  std::ifstream m_file_stream;   ///< a file stream (in case we are reading from a file)
+  std::shared_ptr<std::istream> m_input_stream; ///< a pointer to the input stream
 };
 
 }  // end of namespace

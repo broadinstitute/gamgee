@@ -8,11 +8,11 @@ using namespace std;
 
 namespace gamgee {
 
-FastqIterator::FastqIterator() {
-  m_input_stream = nullptr;
-}
+FastqIterator::FastqIterator() :
+  m_input_stream {}
+{}
 
-FastqIterator::FastqIterator(std::istream* in) : 
+FastqIterator::FastqIterator(std::shared_ptr<std::istream> in) :
   m_input_stream {in} 
 {
   m_is_fastq = false;
@@ -79,7 +79,7 @@ string FastqIterator::parse_quals(uint32_t seq_length) {
 Fastq FastqIterator::fetch_next_element() {
   auto name = string{};
   if (!(*m_input_stream >> name)) { // parse name (first string) and abort if we reached the end of the file
-    m_input_stream = nullptr;
+    m_input_stream.reset();
     return Fastq{};
   }
   const auto comment = parse_comment();

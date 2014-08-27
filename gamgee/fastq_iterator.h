@@ -22,19 +22,21 @@ class FastqIterator {
     *
     * @param in input stream
     */
-  FastqIterator(std::istream* in);
+  explicit FastqIterator(std::shared_ptr<std::istream> in);
 
   /**
     * @brief a FastqIterator should never be copied as the underlying stream can only be
     * manipulated by one object.
     */
   FastqIterator(const FastqIterator&) = delete;
+  FastqIterator& operator=(const FastqIterator&) = delete;
 
   /**
     * @brief a FastqIterator move constructor guarantees all objects will have the same state.
     */
   FastqIterator(FastqIterator&&) = default;
-  
+  FastqIterator& operator=(FastqIterator&&) = default;
+
   /**
     * @brief inequality operator (needed by for-each loop)
     *
@@ -60,7 +62,7 @@ class FastqIterator {
   Fastq& operator++();
   
  private:
-  std::istream* m_input_stream; ///< pointer to the input stream
+  std::shared_ptr<std::istream> m_input_stream;         ///< a pointer to the input stream
   Fastq m_element;              ///< the current parsed fastq/fasta element
   bool m_is_fastq;              ///< whether we are parsing fastq's or fasta's from the input stream
   char m_eos_delim;             ///< delimits the end of the sequence field in the fastq/fasta file
