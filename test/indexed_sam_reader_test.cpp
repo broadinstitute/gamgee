@@ -1,6 +1,8 @@
-#include "indexed_sam_reader.h"
-
 #include <boost/test/unit_test.hpp>
+
+#include "indexed_sam_reader.h"
+#include "test_utils.h"
+
 
 using namespace std;
 using namespace gamgee;
@@ -77,12 +79,18 @@ BOOST_AUTO_TEST_CASE( indexed_single_readers_empty )
 }
 
 BOOST_AUTO_TEST_CASE( indexed_single_readers_move_constructor_and_assignment ) {
+  auto r0 = IndexedSingleSamReader{"testdata/test_simple.bam", vector<string>{"."}};
+  auto m1 = check_move_constructor(r0);
+  auto m2 = IndexedSingleSamReader{"testdata/test_simple.bam", vector<string>{"."}};
+  BOOST_CHECK_EQUAL((*(m1.begin())).alignment_start(), (*(m2.begin())).alignment_start());
+}
+
+BOOST_AUTO_TEST_CASE( indexed_single_readers_begin_always_restarts ) {
   auto reader1 = IndexedSingleSamReader{"testdata/test_simple.bam", vector<string>{"."}};
   auto it1 = reader1.begin();
-  auto reader2 = std::move(reader1); // check move constructor
-  reader1 = IndexedSingleSamReader{"testdata/test_simple.bam", vector<string>{"."}}; // check move assignment
-  auto it2 = reader2.begin();
-  auto it3 = reader1.begin();
-  BOOST_CHECK_EQUAL((*it1).alignment_start(), (*it2).alignment_start());    // unlike the SingleSamReader, these should be the same because they are pointing at the exact same restarted iterator
-  BOOST_CHECK_EQUAL((*it1).alignment_start(), (*it3).alignment_start()); // these should be the same! both pointing at the first record
+  ++it1;
+  auto it2 = reader1.begin();
+  BOOST_CHECK_NE((*it1).alignment_start(), (*it2).alignment_start());
+  ++it2;
+  BOOST_CHECK_EQUAL((*it1).alignment_start(), (*it2).alignment_start());
 }
