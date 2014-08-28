@@ -76,6 +76,12 @@ class Genotype{
    */
   bool het() const;
   /**
+   * @brief Checks if this genotype vector is a heterozygous call and none of the alleles is the reference.
+   * @return True if this GT is a het and none of the alleles is the reference.
+   * @note only for diploids.
+   */
+  bool non_ref_het() const;
+  /**
    * @brief Checks if this genotype vector is a homozygous call that is non-reference.
    * @return True if this GT is a hom var.
    * @note only for diploids, returns false otherwise.

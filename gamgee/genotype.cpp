@@ -38,6 +38,19 @@ bool Genotype::het() const {
   return (allele_1 != allele_2);
 }
 
+bool Genotype::non_ref_het() const {
+  if (size() != 2) {
+    return false;
+  }
+  const auto allele_1 = allele_key(0);
+  if (allele_1 == 0)
+    return false;
+  const auto allele_2 = allele_key(1);
+  if (allele_2 == 0)
+    return false;
+  return (allele_1 != allele_2);
+}
+
 bool Genotype::hom_var() const {
   if (size() != 2) {
     return false;
