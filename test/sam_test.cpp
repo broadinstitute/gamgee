@@ -22,6 +22,7 @@ BOOST_AUTO_TEST_CASE( sam_body_simple_members_by_reference ) {
   const auto expected_cigar_element_operator = CigarOperator::M;
   const auto expected_bases = "ACCCTAACCCTAACCCTAACCCTAACCATAACCCTAAGACTAACCCTAAACCTAACCCTCATAATCGAAATACAAC";
   const vector<uint8_t> expected_quals = {33, 33, 33, 33, 34, 31, 34, 30, 32, 32, 33, 34, 33, 33, 27, 21, 18, 29, 28, 33, 31, 29, 10, 33, 24, 12, 24, 10, 8, 17, 33, 23, 11, 10, 31, 18, 17, 22, 33, 20, 32, 29, 24, 15, 7, 7, 29, 12, 10, 6, 6, 18, 30, 7, 14, 6, 6, 6, 32, 8, 7, 6, 6, 16, 24, 7, 6, 22, 13, 11, 9, 9, 4, 8, 18, 25};
+  const auto expected_mapq = 0;
 
   for (auto& record : SingleSamReader {"testdata/test_simple.bam"}) {  // should be replaced by mock sam_body
     record.set_chromosome(chr);
@@ -45,6 +46,12 @@ BOOST_AUTO_TEST_CASE( sam_body_simple_members_by_reference ) {
       BOOST_CHECK_EQUAL(actual_quals[i], expected_quals[i]);
     }
 
+    // check that we got the right value from the file
+    BOOST_CHECK_EQUAL(record.mapping_qual(), expected_mapq);
+    // overwrite it and check that the setter worked
+    record.set_mapping_qual(20);
+    BOOST_CHECK_EQUAL(record.mapping_qual(), 20);
+
     break;
   }
 }
@@ -58,6 +65,7 @@ BOOST_AUTO_TEST_CASE( sam_body_simple_members_by_copy ) {
   const auto expected_cigar_element_operator = CigarOperator::M;
   const auto expected_bases = "ACCCTAACCCTAACCCTAACCCTAACCATAACCCTAAGACTAACCCTAAACCTAACCCTCATAATCGAAATACAAC";
   const vector<uint8_t> expected_quals = {33, 33, 33, 33, 34, 31, 34, 30, 32, 32, 33, 34, 33, 33, 27, 21, 18, 29, 28, 33, 31, 29, 10, 33, 24, 12, 24, 10, 8, 17, 33, 23, 11, 10, 31, 18, 17, 22, 33, 20, 32, 29, 24, 15, 7, 7, 29, 12, 10, 6, 6, 18, 30, 7, 14, 6, 6, 6, 32, 8, 7, 6, 6, 16, 24, 7, 6, 22, 13, 11, 9, 9, 4, 8, 18, 25};
+  const auto expected_mapq = 0;
 
   for (auto record : SingleSamReader {"testdata/test_simple.bam"}) {  // should be replaced by mock sam_body
     record.set_chromosome(chr);
@@ -83,6 +91,12 @@ BOOST_AUTO_TEST_CASE( sam_body_simple_members_by_copy ) {
     for ( auto i = 0u; i < actual_quals.size(); ++i ) {
       BOOST_CHECK_EQUAL(actual_quals[i], expected_quals[i]);
     }
+
+    // check that we got the right value from the file
+    BOOST_CHECK_EQUAL(record.mapping_qual(), expected_mapq);
+    // overwrite it and check that the setter worked
+    record.set_mapping_qual(20);
+    BOOST_CHECK_EQUAL(record.mapping_qual(), 20);
 
     break;
   }
@@ -418,6 +432,7 @@ BOOST_AUTO_TEST_CASE( sam_input_vector ) {
   const auto expected_cigar_element_operator = CigarOperator::M;
   const auto expected_bases = "ACCCTAACCCTAACCCTAACCCTAACCATAACCCTAAGACTAACCCTAAACCTAACCCTCATAATCGAAATACAAC";
   const vector<uint8_t> expected_quals = {33, 33, 33, 33, 34, 31, 34, 30, 32, 32, 33, 34, 33, 33, 27, 21, 18, 29, 28, 33, 31, 29, 10, 33, 24, 12, 24, 10, 8, 17, 33, 23, 11, 10, 31, 18, 17, 22, 33, 20, 32, 29, 24, 15, 7, 7, 29, 12, 10, 6, 6, 18, 30, 7, 14, 6, 6, 6, 32, 8, 7, 6, 6, 16, 24, 7, 6, 22, 13, 11, 9, 9, 4, 8, 18, 25};
+  const auto expected_mapq = 0;
 
   for (auto& record : SingleSamReader {vector<string>{"testdata/test_simple.bam"}}) {  // should be replaced by mock sam_body
     record.set_chromosome(chr);
@@ -440,6 +455,12 @@ BOOST_AUTO_TEST_CASE( sam_input_vector ) {
     for ( auto i = 0u; i < actual_quals.size(); ++i ) {
       BOOST_CHECK_EQUAL(actual_quals[i], expected_quals[i]);
     }
+
+    // check that we got the right value from the file
+    BOOST_CHECK_EQUAL(record.mapping_qual(), expected_mapq);
+    // overwrite it and check that the setter worked
+    record.set_mapping_qual(20);
+    BOOST_CHECK_EQUAL(record.mapping_qual(), 20);
 
     break;
   }
