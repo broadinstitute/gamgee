@@ -340,31 +340,45 @@ void check_genotype_api(const Variant& record, const uint32_t truth_index) {
       BOOST_CHECK(!gt_for_single_sample.hom_ref());
       BOOST_CHECK(!gt_for_single_sample.hom_var());
       BOOST_CHECK_NE(allele_keys[0], allele_keys[1]);
-      BOOST_CHECK_EQUAL(allele_keys[0], 0);
-      BOOST_CHECK_EQUAL(allele_keys[1], 1);
       BOOST_CHECK_NE(alleles[0], alleles[1]);
-      BOOST_CHECK_EQUAL(alleles[0], truth_ref[truth_index]);
-      BOOST_CHECK_EQUAL(alleles[1], truth_alt[truth_index][0]);
-      BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00000001);
+      if (truth_index != 4) {
+        BOOST_CHECK(!gt_for_single_sample.non_ref_het());
+        BOOST_CHECK_EQUAL(allele_keys[0], 0);
+        BOOST_CHECK_EQUAL(allele_keys[0], 0);
+        BOOST_CHECK_EQUAL(allele_keys[1], 1);
+        BOOST_CHECK_EQUAL(alleles[0], truth_ref[truth_index]);
+        BOOST_CHECK_EQUAL(alleles[1], truth_alt[truth_index][0]);
+        BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00000001);
+      } else {
+        BOOST_CHECK(gt_for_single_sample.non_ref_het());
+        BOOST_CHECK_EQUAL(allele_keys[0], 1);
+        BOOST_CHECK_EQUAL(allele_keys[1], 2);
+        BOOST_CHECK_NE(alleles[0], alleles[1]);
+        BOOST_CHECK_EQUAL(alleles[0], truth_alt[truth_index][0]);
+        BOOST_CHECK_EQUAL(alleles[1], truth_alt[truth_index][1]);
+        BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00010002);
+      }
     }
     if (gt_for_single_sample.hom_ref()) {
       BOOST_CHECK(!gt_for_single_sample.het());
+      BOOST_CHECK(!gt_for_single_sample.non_ref_het());
       BOOST_CHECK(!gt_for_single_sample.hom_var());
       BOOST_CHECK_EQUAL(allele_keys[0], allele_keys[1]);
+      BOOST_CHECK_EQUAL(alleles[0], alleles[1]);
       BOOST_CHECK_EQUAL(allele_keys[0], 0);
       BOOST_CHECK_EQUAL(allele_keys[1], 0);
-      BOOST_CHECK_EQUAL(alleles[0], alleles[1]);
       BOOST_CHECK_EQUAL(alleles[0], truth_ref[truth_index]);
       BOOST_CHECK_EQUAL(alleles[1], truth_ref[truth_index]);
       BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00000000);
     }
     if (gt_for_single_sample.hom_var()) {
       BOOST_CHECK(!gt_for_single_sample.het());
+      BOOST_CHECK(!gt_for_single_sample.non_ref_het());
       BOOST_CHECK(!gt_for_single_sample.hom_ref());
       BOOST_CHECK_EQUAL(allele_keys[0], allele_keys[1]);
+      BOOST_CHECK_EQUAL(alleles[0], alleles[1]);
       BOOST_CHECK_EQUAL(allele_keys[0], 1);
       BOOST_CHECK_EQUAL(allele_keys[1], 1);
-      BOOST_CHECK_EQUAL(alleles[0], alleles[1]);
       BOOST_CHECK_EQUAL(alleles[0], truth_alt[truth_index][0]);
       BOOST_CHECK_EQUAL(alleles[1], truth_alt[truth_index][0]);
       BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00010001);
@@ -693,6 +707,16 @@ BOOST_AUTO_TEST_CASE( gvcf_test_multiple ) {
   }
 }
 
+/*
+  NOTE: Updated test_variants.bcf and var_idx directory via-
+    bcftools view testdata/test_variants.vcf -o testdata/var_idx/test_variants.bcf -O b
+    bcftools view testdata/test_variants.vcf -o testdata/var_idx/test_variants_csi.vcf.gz -O z
+    cp testdata/var_idx/test_variants_csi.vcf.gz testdata/var_idx/test_variants_tabix.vcf.gz
+    bcftools index testdata/var_idx/test_variants.bcf
+    bcftools index testdata/var_idx/test_variants_csi.vcf.gz
+    bcftools index testdata/var_idx/test_variants_tabix.vcf.gz -t
+    cp testdata/var_idx/test_variants.bcf testdata/test_variants.bcf
+ */
 // TODO?  update to work with VCF GZ
 // const auto input_files = vector<string>{"testdata/var_idx/test_variants.bcf", "testdata/var_idx/test_variants_csi.vcf.gz", "testdata/var_idx/test_variants_tabix.vcf.gz"};
 const auto indexed_variant_input_files = vector<string>{"testdata/var_idx/test_variants.bcf"};
