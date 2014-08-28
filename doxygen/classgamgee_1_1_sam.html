@@ -164,6 +164,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a499fef40222cf985150e959e41c68df1"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#a499fef40222cf985150e959e41c68df1">mate_unclipped_stop</a> (const <a class="el" href="classgamgee_1_1_sam_tag.html">SamTag</a>&lt; std::string &gt; &amp;mate_cigar_tag) const </td></tr>
 <tr class="memdesc:a499fef40222cf985150e959e41c68df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a (1-based and inclusive) mate's unclipped alignment stop position.  <a href="#a499fef40222cf985150e959e41c68df1">More...</a><br /></td></tr>
 <tr class="separator:a499fef40222cf985150e959e41c68df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa558520d65410e63a3dd7c76edc60113"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#aa558520d65410e63a3dd7c76edc60113">mapping_qual</a> () const </td></tr>
+<tr class="memdesc:aa558520d65410e63a3dd7c76edc60113"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the mapping quality of this alignment  <a href="#aa558520d65410e63a3dd7c76edc60113">More...</a><br /></td></tr>
+<tr class="separator:aa558520d65410e63a3dd7c76edc60113"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8eae6bf547ae838870c7ee8e38dc25c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#ae8eae6bf547ae838870c7ee8e38dc25c">set_chromosome</a> (const uint32_t chr)</td></tr>
 <tr class="memdesc:ae8eae6bf547ae838870c7ee8e38dc25c"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple setter for the chromosome index. Index is 0-based.  <a href="#ae8eae6bf547ae838870c7ee8e38dc25c">More...</a><br /></td></tr>
 <tr class="separator:ae8eae6bf547ae838870c7ee8e38dc25c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -176,6 +179,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad27cb13dae73753f03f4b47639a3ec97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#ad27cb13dae73753f03f4b47639a3ec97">set_mate_alignment_start</a> (const uint32_t mstart)</td></tr>
 <tr class="memdesc:ad27cb13dae73753f03f4b47639a3ec97"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple setter for the mate's alignment start.  <a href="#ad27cb13dae73753f03f4b47639a3ec97">More...</a><br /></td></tr>
 <tr class="separator:ad27cb13dae73753f03f4b47639a3ec97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42fdd68ed585ad55b2536fc9f1bf1ec4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#a42fdd68ed585ad55b2536fc9f1bf1ec4">set_mapping_qual</a> (const uint8_t mapq)</td></tr>
+<tr class="memdesc:a42fdd68ed585ad55b2536fc9f1bf1ec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple setter for the alignment quality  <a href="#a42fdd68ed585ad55b2536fc9f1bf1ec4">More...</a><br /></td></tr>
+<tr class="separator:a42fdd68ed585ad55b2536fc9f1bf1ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ce2293b869bde4965964b55a7ccd101"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#a2ce2293b869bde4965964b55a7ccd101">name</a> () const </td></tr>
 <tr class="memdesc:a2ce2293b869bde4965964b55a7ccd101"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the read name  <a href="#a2ce2293b869bde4965964b55a7ccd101">More...</a><br /></td></tr>
 <tr class="separator:a2ce2293b869bde4965964b55a7ccd101"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -788,6 +794,31 @@ creates an object but doesn't copy the underlying values. </dd></dl>
 
 </div>
 </div>
+<a class="anchor" id="aa558520d65410e63a3dd7c76edc60113"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gamgee::Sam::mapping_qual </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>returns the mapping quality of this alignment </p>
+
+</div>
+</div>
 <a class="anchor" id="afb88f5ba0c20718a997315ffe29803e9"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1375,6 +1406,32 @@ does not perform a deep copy of the sam header; to copy the header, first get it
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a42fdd68ed585ad55b2536fc9f1bf1ec4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gamgee::Sam::set_mapping_qual </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>mapq</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>simple setter for the alignment quality </p>
 
 </div>
 </div>
@@ -2010,7 +2067,7 @@ Invalid to call with cigar = null </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 28 2014 02:00:36 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 28 2014 17:26:41 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
