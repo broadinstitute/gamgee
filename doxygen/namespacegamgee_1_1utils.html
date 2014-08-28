@@ -109,6 +109,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_hts_iterator_deleter.html">HtsIteratorDeleter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete an hts file iterator pointer  <a href="structgamgee_1_1utils_1_1_hts_iterator_deleter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_i_f_stream_deleter.html">IFStreamDeleter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete an ifstream  <a href="structgamgee_1_1utils_1_1_i_f_stream_deleter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_sam_body_deleter.html">SamBodyDeleter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a bam1_t pointer  <a href="structgamgee_1_1utils_1_1_sam_body_deleter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,6 +142,12 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:afcdf33f05f9af45a26afa1d18eb25bcc"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; std::ifstream &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#afcdf33f05f9af45a26afa1d18eb25bcc">make_shared_ifstream</a> (std::ifstream *ifstream_ptr)</td></tr>
+<tr class="memdesc:afcdf33f05f9af45a26afa1d18eb25bcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated ifstream in a shared_ptr with correct deleter  <a href="#afcdf33f05f9af45a26afa1d18eb25bcc">More...</a><br /></td></tr>
+<tr class="separator:afcdf33f05f9af45a26afa1d18eb25bcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae13bc9131a1224fb57b15244f968d07d"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; std::ifstream &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ae13bc9131a1224fb57b15244f968d07d">make_shared_ifstream</a> (std::string filename)</td></tr>
+<tr class="memdesc:ae13bc9131a1224fb57b15244f968d07d"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps an input file in a shared_ptr to an ifstream with correct deleter  <a href="#ae13bc9131a1224fb57b15244f968d07d">More...</a><br /></td></tr>
+<tr class="separator:ae13bc9131a1224fb57b15244f968d07d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ee633d9c3a8da271e79ba212980ff21"><td class="memTemplParams" colspan="2">template&lt;class TYPE &gt; </td></tr>
 <tr class="memitem:a5ee633d9c3a8da271e79ba212980ff21"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a5ee633d9c3a8da271e79ba212980ff21">allele_missing</a> (const uint8_t *data_ptr, const uint32_t allele_index, const TYPE <a class="el" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>)</td></tr>
 <tr class="separator:a5ee633d9c3a8da271e79ba212980ff21"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -194,6 +203,10 @@ Functions</h2></td></tr>
 <a class="el" href="structgamgee_1_1utils_1_1_hts_file_deleter.html">HtsFileDeleter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a212198e63351e31260f9a80a0e78ae35">make_unique_hts_file</a> (htsFile *hts_file_ptr)</td></tr>
 <tr class="memdesc:a212198e63351e31260f9a80a0e78ae35"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated htsFile in a unique_ptr with correct deleter  <a href="#a212198e63351e31260f9a80a0e78ae35">More...</a><br /></td></tr>
 <tr class="separator:a212198e63351e31260f9a80a0e78ae35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13db4dd858bb737708b44acf5d11abf4"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; hts_itr_t, <br class="typebreak" />
+<a class="el" href="structgamgee_1_1utils_1_1_hts_iterator_deleter.html">HtsIteratorDeleter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a13db4dd858bb737708b44acf5d11abf4">make_unique_hts_itr</a> (hts_itr_t *hts_itr_ptr)</td></tr>
+<tr class="memdesc:a13db4dd858bb737708b44acf5d11abf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated hts_itr_t in a unique_ptr with correct deleter  <a href="#a13db4dd858bb737708b44acf5d11abf4">More...</a><br /></td></tr>
+<tr class="separator:a13db4dd858bb737708b44acf5d11abf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01cd31cd2e6e4343b8e61797bed36107"><td class="memItemLeft" align="right" valign="top">bam1_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a01cd31cd2e6e4343b8e61797bed36107">sam_deep_copy</a> (bam1_t *original)</td></tr>
 <tr class="memdesc:a01cd31cd2e6e4343b8e61797bed36107"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a deep copy of an existing bam1_t  <a href="#a01cd31cd2e6e4343b8e61797bed36107">More...</a><br /></td></tr>
 <tr class="separator:a01cd31cd2e6e4343b8e61797bed36107"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1131,6 +1144,54 @@ template&lt;class TYPE &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="afcdf33f05f9af45a26afa1d18eb25bcc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; std::ifstream &gt; gamgee::utils::make_shared_ifstream </td>
+          <td>(</td>
+          <td class="paramtype">std::ifstream *&#160;</td>
+          <td class="paramname"><em>ifstream_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>wraps a pre-allocated ifstream in a shared_ptr with correct deleter </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ifstream_ptr</td><td>an ifstream raw file pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ae13bc9131a1224fb57b15244f968d07d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; std::ifstream &gt; gamgee::utils::make_shared_ifstream </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>wraps an input file in a shared_ptr to an ifstream with correct deleter </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>the input filename </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ae5e4c2a62b4e2544996e8b0193e5c31a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1245,6 +1306,30 @@ template&lt;class TYPE &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hts_file_ptr</td><td>an htslib raw file pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a13db4dd858bb737708b44acf5d11abf4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; hts_itr_t, <a class="el" href="structgamgee_1_1utils_1_1_hts_iterator_deleter.html">HtsIteratorDeleter</a> &gt; gamgee::utils::make_unique_hts_itr </td>
+          <td>(</td>
+          <td class="paramtype">hts_itr_t *&#160;</td>
+          <td class="paramname"><em>hts_itr_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>wraps a pre-allocated hts_itr_t in a unique_ptr with correct deleter </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hts_itr_ptr</td><td>an htslib raw file iterator pointer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1475,7 +1560,7 @@ template&lt;typename... T&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 27 2014 21:00:48 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 28 2014 02:00:36 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -99,47 +99,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>gamgee {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classgamgee_1_1_fastq_reader.html">   35</a></span>&#160;<span class="keyword">class </span><a class="code" href="classgamgee_1_1_fastq_reader.html">FastqReader</a> {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="classgamgee_1_1_fastq_reader.html#aec6c7c050dacc0e4869ada74a44e6a2e">FastqReader</a>(<span class="keyword">const</span> std::string&amp; filename);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="classgamgee_1_1_fastq_reader.html#aec6c7c050dacc0e4869ada74a44e6a2e">FastqReader</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; filenames);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="classgamgee_1_1_fastq_reader.html#aec6c7c050dacc0e4869ada74a44e6a2e">FastqReader</a>(std::istream* <span class="keyword">const</span> input);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <a class="code" href="classgamgee_1_1_fastq_reader.html#a5e4856c3af49fcea4f91a568bfb89653">~FastqReader</a>();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="classgamgee_1_1_fastq_reader.html#aec6c7c050dacc0e4869ada74a44e6a2e">FastqReader</a>(<a class="code" href="classgamgee_1_1_fastq_reader.html">FastqReader</a>&amp;&amp;);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="classgamgee_1_1_fastq_reader.html#aec6c7c050dacc0e4869ada74a44e6a2e">FastqReader</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_fastq_reader.html">FastqReader</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <a class="code" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a> <a class="code" href="classgamgee_1_1_fastq_reader.html#ae2fe35b318462d652a97523bf6d25319">begin</a>();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <a class="code" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a> <a class="code" href="classgamgee_1_1_fastq_reader.html#af8d95b9f25cd4428d696a7fd857c58e8">end</a>();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  std::istream* m_input_stream;  </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  std::ifstream m_file_stream;   </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;};</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}  <span class="comment">// end of namespace</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#endif // gamgee__fastq_reader__guard</span></div>
-<div class="ttc" id="classgamgee_1_1_fastq_reader_html"><div class="ttname"><a href="classgamgee_1_1_fastq_reader.html">gamgee::FastqReader</a></div><div class="ttdoc">Utility class to read many Fastq records from a stream (e.g. Fastq file, stdin, ...) in a for-each loop in a for-each loop. </div><div class="ttdef"><b>Definition:</b> fastq_reader.h:35</div></div>
-<div class="ttc" id="classgamgee_1_1_fastq_reader_html_aec6c7c050dacc0e4869ada74a44e6a2e"><div class="ttname"><a href="classgamgee_1_1_fastq_reader.html#aec6c7c050dacc0e4869ada74a44e6a2e">gamgee::FastqReader::FastqReader</a></div><div class="ttdeci">FastqReader(const std::string &amp;filename)</div><div class="ttdoc">reads through all records in a file (fasta or fastq) parsing them into Fastq objects ...</div><div class="ttdef"><b>Definition:</b> fastq_reader.cpp:16</div></div>
-<div class="ttc" id="classgamgee_1_1_fastq_reader_html_ae2fe35b318462d652a97523bf6d25319"><div class="ttname"><a href="classgamgee_1_1_fastq_reader.html#ae2fe35b318462d652a97523bf6d25319">gamgee::FastqReader::begin</a></div><div class="ttdeci">FastqIterator begin()</div><div class="ttdoc">creates a FastqIterator pointing at the start of the input stream (needed by for-each loop) ...</div><div class="ttdef"><b>Definition:</b> fastq_reader.cpp:40</div></div>
-<div class="ttc" id="classgamgee_1_1_fastq_reader_html_af8d95b9f25cd4428d696a7fd857c58e8"><div class="ttname"><a href="classgamgee_1_1_fastq_reader.html#af8d95b9f25cd4428d696a7fd857c58e8">gamgee::FastqReader::end</a></div><div class="ttdeci">FastqIterator end()</div><div class="ttdoc">creates a FastqIterator with a nullified input stream (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> fastq_reader.cpp:44</div></div>
-<div class="ttc" id="classgamgee_1_1_fastq_iterator_html"><div class="ttname"><a href="classgamgee_1_1_fastq_iterator.html">gamgee::FastqIterator</a></div><div class="ttdoc">Utility class to enable for-each style iteration in the FastqReader class. </div><div class="ttdef"><b>Definition:</b> fastq_iterator.h:12</div></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>gamgee {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classgamgee_1_1_fastq_reader.html">   36</a></span>&#160;<span class="keyword">class </span><a class="code" href="classgamgee_1_1_fastq_reader.html">FastqReader</a> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classgamgee_1_1_fastq_reader.html#aec6c7c050dacc0e4869ada74a44e6a2e">FastqReader</a>(<span class="keyword">const</span> std::string&amp; filename);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classgamgee_1_1_fastq_reader.html#aec6c7c050dacc0e4869ada74a44e6a2e">FastqReader</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; filenames);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classgamgee_1_1_fastq_reader.html#aec6c7c050dacc0e4869ada74a44e6a2e">FastqReader</a>(std::istream* <span class="keyword">const</span> input);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="classgamgee_1_1_fastq_reader.html#aec6c7c050dacc0e4869ada74a44e6a2e">FastqReader</a>(<a class="code" href="classgamgee_1_1_fastq_reader.html">FastqReader</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <a class="code" href="classgamgee_1_1_fastq_reader.html">FastqReader</a>&amp; <a class="code" href="classgamgee_1_1_fastq_reader.html#ac0d1bacf13db10ad052ff22c53b067e4">operator=</a>(<a class="code" href="classgamgee_1_1_fastq_reader.html">FastqReader</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="classgamgee_1_1_fastq_reader.html#aec6c7c050dacc0e4869ada74a44e6a2e">FastqReader</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_fastq_reader.html">FastqReader</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="classgamgee_1_1_fastq_reader.html">FastqReader</a>&amp; <a class="code" href="classgamgee_1_1_fastq_reader.html#ac0d1bacf13db10ad052ff22c53b067e4">operator=</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_fastq_reader.html">FastqReader</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <a class="code" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a> <a class="code" href="classgamgee_1_1_fastq_reader.html#ae2fe35b318462d652a97523bf6d25319">begin</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <a class="code" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a> <a class="code" href="classgamgee_1_1_fastq_reader.html#af8d95b9f25cd4428d696a7fd857c58e8">end</a>();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  std::shared_ptr&lt;std::istream&gt; m_input_stream; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}  <span class="comment">// end of namespace</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif // gamgee__fastq_reader__guard</span></div>
+<div class="ttc" id="classgamgee_1_1_fastq_reader_html"><div class="ttname"><a href="classgamgee_1_1_fastq_reader.html">gamgee::FastqReader</a></div><div class="ttdoc">Utility class to read many Fastq records from a stream (e.g. Fastq file, stdin, ...) in a for-each loop in a for-each loop. </div><div class="ttdef"><b>Definition:</b> fastq_reader.h:36</div></div>
+<div class="ttc" id="classgamgee_1_1_fastq_reader_html_aec6c7c050dacc0e4869ada74a44e6a2e"><div class="ttname"><a href="classgamgee_1_1_fastq_reader.html#aec6c7c050dacc0e4869ada74a44e6a2e">gamgee::FastqReader::FastqReader</a></div><div class="ttdeci">FastqReader(const std::string &amp;filename)</div><div class="ttdoc">reads through all records in a file (fasta or fastq) parsing them into Fastq objects ...</div><div class="ttdef"><b>Definition:</b> fastq_reader.cpp:17</div></div>
+<div class="ttc" id="classgamgee_1_1_fastq_reader_html_ae2fe35b318462d652a97523bf6d25319"><div class="ttname"><a href="classgamgee_1_1_fastq_reader.html#ae2fe35b318462d652a97523bf6d25319">gamgee::FastqReader::begin</a></div><div class="ttdeci">FastqIterator begin()</div><div class="ttdoc">creates a FastqIterator pointing at the start of the input stream (needed by for-each loop) ...</div><div class="ttdef"><b>Definition:</b> fastq_reader.cpp:39</div></div>
+<div class="ttc" id="classgamgee_1_1_fastq_reader_html_af8d95b9f25cd4428d696a7fd857c58e8"><div class="ttname"><a href="classgamgee_1_1_fastq_reader.html#af8d95b9f25cd4428d696a7fd857c58e8">gamgee::FastqReader::end</a></div><div class="ttdeci">FastqIterator end()</div><div class="ttdoc">creates a FastqIterator with a nullified input stream (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> fastq_reader.cpp:43</div></div>
+<div class="ttc" id="classgamgee_1_1_fastq_iterator_html"><div class="ttname"><a href="classgamgee_1_1_fastq_iterator.html">gamgee::FastqIterator</a></div><div class="ttdoc">Utility class to enable for-each style iteration in the FastqReader class. </div><div class="ttdef"><b>Definition:</b> fastq_iterator.h:14</div></div>
 <div class="ttc" id="fastq__iterator_8h_html"><div class="ttname"><a href="fastq__iterator_8h.html">fastq_iterator.h</a></div></div>
-<div class="ttc" id="classgamgee_1_1_fastq_reader_html_a5e4856c3af49fcea4f91a568bfb89653"><div class="ttname"><a href="classgamgee_1_1_fastq_reader.html#a5e4856c3af49fcea4f91a568bfb89653">gamgee::FastqReader::~FastqReader</a></div><div class="ttdeci">~FastqReader()</div><div class="ttdoc">closes the file stream if there is one (in case we are reading a fasta/fastq file) ...</div><div class="ttdef"><b>Definition:</b> fastq_reader.cpp:32</div></div>
+<div class="ttc" id="classgamgee_1_1_fastq_reader_html_ac0d1bacf13db10ad052ff22c53b067e4"><div class="ttname"><a href="classgamgee_1_1_fastq_reader.html#ac0d1bacf13db10ad052ff22c53b067e4">gamgee::FastqReader::operator=</a></div><div class="ttdeci">FastqReader &amp; operator=(FastqReader &amp;&amp;)=default</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 27 2014 21:00:47 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 28 2014 02:00:36 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
