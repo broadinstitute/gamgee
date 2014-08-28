@@ -167,6 +167,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa558520d65410e63a3dd7c76edc60113"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#aa558520d65410e63a3dd7c76edc60113">mapping_qual</a> () const </td></tr>
 <tr class="memdesc:aa558520d65410e63a3dd7c76edc60113"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the mapping quality of this alignment  <a href="#aa558520d65410e63a3dd7c76edc60113">More...</a><br /></td></tr>
 <tr class="separator:aa558520d65410e63a3dd7c76edc60113"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72cb07d437398e0b500d90abcf77e544"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#a72cb07d437398e0b500d90abcf77e544">insert_size</a> () const </td></tr>
+<tr class="memdesc:a72cb07d437398e0b500d90abcf77e544"><td class="mdescLeft">&#160;</td><td class="mdescRight">inferred insert size as reported by the aligner  <a href="#a72cb07d437398e0b500d90abcf77e544">More...</a><br /></td></tr>
+<tr class="separator:a72cb07d437398e0b500d90abcf77e544"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8eae6bf547ae838870c7ee8e38dc25c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#ae8eae6bf547ae838870c7ee8e38dc25c">set_chromosome</a> (const uint32_t chr)</td></tr>
 <tr class="memdesc:ae8eae6bf547ae838870c7ee8e38dc25c"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple setter for the chromosome index. Index is 0-based.  <a href="#ae8eae6bf547ae838870c7ee8e38dc25c">More...</a><br /></td></tr>
 <tr class="separator:ae8eae6bf547ae838870c7ee8e38dc25c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,6 +185,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a42fdd68ed585ad55b2536fc9f1bf1ec4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#a42fdd68ed585ad55b2536fc9f1bf1ec4">set_mapping_qual</a> (const uint8_t mapq)</td></tr>
 <tr class="memdesc:a42fdd68ed585ad55b2536fc9f1bf1ec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple setter for the alignment quality  <a href="#a42fdd68ed585ad55b2536fc9f1bf1ec4">More...</a><br /></td></tr>
 <tr class="separator:a42fdd68ed585ad55b2536fc9f1bf1ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a052730fcdd1005651e37e3830c442d49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#a052730fcdd1005651e37e3830c442d49">set_insert_size</a> (const int32_t isize)</td></tr>
+<tr class="memdesc:a052730fcdd1005651e37e3830c442d49"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple setter for the insert size  <a href="#a052730fcdd1005651e37e3830c442d49">More...</a><br /></td></tr>
+<tr class="separator:a052730fcdd1005651e37e3830c442d49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ce2293b869bde4965964b55a7ccd101"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam.html#a2ce2293b869bde4965964b55a7ccd101">name</a> () const </td></tr>
 <tr class="memdesc:a2ce2293b869bde4965964b55a7ccd101"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the read name  <a href="#a2ce2293b869bde4965964b55a7ccd101">More...</a><br /></td></tr>
 <tr class="separator:a2ce2293b869bde4965964b55a7ccd101"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -745,6 +751,34 @@ creates an object but doesn't copy the underlying values. </dd></dl>
 
 <p>the header of the <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> record </p>
 <dl class="section return"><dt>Returns</dt><dd>a newly created <a class="el" href="classgamgee_1_1_sam_header.html" title="Utility class to hold the header of a sam file. ">SamHeader</a> object every time it's called but the htslib memory used by the header is the same (no new allocations). </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a72cb07d437398e0b500d90abcf77e544"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t gamgee::Sam::insert_size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>inferred insert size as reported by the aligner </p>
+<p>This is the signed observed insert size. If all segments are mapped to the same reference, the unsigned observed template length equals the number of bases from the leftmost mapped base to the rightmost mapped base. The leftmost segment has a plus sign and the rightmost has a minus sign. The sign of segments in the middle is undefined.</p>
+<p>It is set as 0 for single read or when the information is unavailable.</p>
+<dl class="section return"><dt>Returns</dt><dd>a signed insert size or zero if it can't be inferred. </dd></dl>
 
 </div>
 </div>
@@ -1383,6 +1417,32 @@ does not perform a deep copy of the sam header; to copy the header, first get it
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a052730fcdd1005651e37e3830c442d49"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gamgee::Sam::set_insert_size </td>
+          <td>(</td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>isize</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>simple setter for the insert size </p>
 
 </div>
 </div>
@@ -2067,7 +2127,7 @@ Invalid to call with cigar = null </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 28 2014 17:29:50 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 28 2014 19:13:07 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
