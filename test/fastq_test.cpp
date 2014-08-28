@@ -1,5 +1,6 @@
 #include "fastq.h"
 #include "fastq_reader.h"
+#include "test_utils.h"
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp> 
@@ -72,3 +73,21 @@ BOOST_AUTO_TEST_CASE( fastq_output )
   check_fastq_output_with_file("testdata/complete_same_seq.fa", "testdata/complete_same_seq.fa"); // read a clean fasta
 }
 
+BOOST_AUTO_TEST_CASE( fastq_copy_and_move_constructor ) {
+  auto it = FastqReader{"testdata/complete_same_seq.fa"}.begin();
+  auto c0 = *it;
+  auto copies = check_copy_constructor(c0);
+  auto c1 = get<0>(copies);
+  auto c2 = get<1>(copies);
+  auto c3 = get<2>(copies);
+  BOOST_CHECK(c0 == c1);
+  BOOST_CHECK(c0 == c2);
+  BOOST_CHECK(c0 == c3);
+  c1.set_name("modified");
+  BOOST_CHECK(c1 != c0);
+  BOOST_CHECK(c1 != c2);
+  auto m0 = *it;
+  auto m1 = check_move_constructor(m0);
+  auto m2 = *it;
+  BOOST_CHECK(m1 == m2);
+}

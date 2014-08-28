@@ -3,6 +3,8 @@
 
 #include "variant_iterator.h"
 
+#include "utils/hts_memory.h"
+
 #include "htslib/vcf.h"
 
 #include <memory>
@@ -59,13 +61,13 @@ class IndexedVariantIterator : public VariantIterator {
   bool operator!=(const IndexedVariantIterator& rhs);
 
  protected:
-  void fetch_next_record() override;                            ///< fetches next Variant record into existing htslib memory without making a copy
+  void fetch_next_record() override;                                       ///< fetches next Variant record into existing htslib memory without making a copy
 
  private:
-  std::shared_ptr<hts_idx_t> m_variant_index_ptr;               ///< pointer to the internal structure of the index file
-  std::vector<std::string> m_interval_list;                     ///< vector of intervals represented by strings
-  std::vector<std::string>::const_iterator m_interval_iter;     ///< iterator for the interval list
-  std::shared_ptr<hts_itr_t> m_index_iter_ptr;                  ///< pointer to the htslib BCF index iterator
+  std::shared_ptr<hts_idx_t> m_variant_index_ptr;                          ///< pointer to the internal structure of the index file
+  std::vector<std::string> m_interval_list;                                ///< vector of intervals represented by strings
+  std::vector<std::string>::const_iterator m_interval_iter;                ///< iterator for the interval list
+  std::unique_ptr<hts_itr_t, utils::HtsIteratorDeleter> m_index_iter_ptr;  ///< pointer to the htslib BCF index iterator
 };
 
 }

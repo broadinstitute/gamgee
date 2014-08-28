@@ -1,5 +1,7 @@
 #include "sam_reader.h"
 
+#include "test_utils.h"
+
 #include <boost/test/unit_test.hpp>
 
 using namespace std;
@@ -37,15 +39,27 @@ BOOST_AUTO_TEST_CASE( paired_readers ) {
   }
 }
 
-BOOST_AUTO_TEST_CASE( move_constructor_and_assignment ) {
+BOOST_AUTO_TEST_CASE( single_sam_reader_move_test ) {
+  auto reader0 = SingleSamReader{"testdata/test_simple.bam"};
   auto reader1 = SingleSamReader{"testdata/test_simple.bam"};
-  auto it1 = reader1.begin();
-  auto reader2 = std::move(reader1);                                     // check move constructor
-  reader1 = SingleSamReader{"testdata/test_simple.bam"};                 // check move assignment
-  auto it2 = reader2.begin();
-  auto it3 = reader1.begin();
-  BOOST_CHECK_NE((*it1).alignment_start(), (*it2).alignment_start());    // these should be different because they are pointing at the exact same iterator, so it2 should be 1 record ahead it1
-  BOOST_CHECK_EQUAL((*it1).alignment_start(), (*it3).alignment_start()); // these should be the same! both pointing at the first record
+  auto moved = check_move_constructor(reader1);
+
+  auto record0 = reader0.begin().operator*();
+  auto moved_record = moved.begin().operator*();
+  BOOST_CHECK_EQUAL(record0.name(), moved_record.name());
+  BOOST_CHECK_EQUAL(record0.chromosome(), moved_record.chromosome());
 }
 
+BOOST_AUTO_TEST_CASE( sam_iterator_move_test ) {
+  auto reader0 = SingleSamReader{"testdata/test_simple.bam"};
+  auto iter0 = reader0.begin();
 
+  auto reader1 = SingleSamReader{"testdata/test_simple.bam"};
+  auto iter1 = reader1.begin();
+  auto moved = check_move_constructor(iter1);
+
+  auto record0 = *iter0;
+  auto moved_record = *moved;
+  BOOST_CHECK_EQUAL(record0.name(), moved_record.name());
+  BOOST_CHECK_EQUAL(record0.chromosome(), moved_record.chromosome());
+}

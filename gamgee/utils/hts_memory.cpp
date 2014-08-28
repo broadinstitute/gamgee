@@ -72,6 +72,14 @@ unique_ptr<htsFile, HtsFileDeleter> make_unique_hts_file(htsFile* hts_file_ptr) 
 }
 
 /**
+  * @brief wraps a pre-allocated hts_itr_t in a unique_ptr with correct deleter
+  * @param hts_itr_ptr an htslib raw file iterator pointer
+  */
+std::unique_ptr<hts_itr_t, HtsIteratorDeleter> make_unique_hts_itr(hts_itr_t* hts_itr_ptr) {
+  return std::unique_ptr<hts_itr_t, HtsIteratorDeleter>(hts_itr_ptr);
+}
+
+/**
   * @brief creates a deep copy of an existing bam1_t
   * @param original an htslib raw bam pointer
   */

@@ -71,6 +71,7 @@ std::shared_ptr<bcf1_t> make_shared_variant(bcf1_t* bcf_ptr);
 std::shared_ptr<bcf_hdr_t> make_shared_variant_header(bcf_hdr_t* bcf_hdr_ptr);
 
 std::unique_ptr<htsFile, HtsFileDeleter> make_unique_hts_file(htsFile* hts_file_ptr);
+std::unique_ptr<hts_itr_t, HtsIteratorDeleter> make_unique_hts_itr(hts_itr_t* hts_itr_ptr);
 
 bam1_t* sam_deep_copy(bam1_t* original);
 bam_hdr_t* sam_header_deep_copy(bam_hdr_t* original);

@@ -2,6 +2,7 @@
 #include "fastq_iterator.h"
 
 #include "exceptions.h"
+#include "utils/file_utils.h"
 
 #include <string>
 #include <iostream>
@@ -13,28 +14,26 @@ using namespace std;
 
 namespace gamgee {
 
-FastqReader::FastqReader(const std::string& filename) {
+FastqReader::FastqReader(const std::string& filename) :
+  m_input_stream {}
+{
   if (!filename.empty()) {
-    m_file_stream.open(filename);
-    m_input_stream = &m_file_stream;
+    m_input_stream = utils::make_shared_ifstream(filename);
   }
 }
 
-FastqReader::FastqReader(const std::vector<std::string>& filenames) {
+FastqReader::FastqReader(const std::vector<std::string>& filenames) :
+  m_input_stream {}
+{
   if (filenames.size() > 1)
     throw SingleInputException{"filenames", filenames.size()};
   if (!filenames.empty()) {
-    m_file_stream.open(filenames.front());
-    m_input_stream = &m_file_stream;
+    m_input_stream = utils::make_shared_ifstream(filenames.front());
   }
 }
 
-FastqReader::~FastqReader() {
-  m_file_stream.close();
-}
-
 FastqReader::FastqReader(std::istream* const input) : 
-  m_input_stream{input} 
+  m_input_stream{shared_ptr<std::istream>(input)}
 {}
 
 FastqIterator FastqReader::begin() {

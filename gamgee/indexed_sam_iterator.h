@@ -3,6 +3,8 @@
 
 #include "sam.h"
 
+#include "utils/hts_memory.h"
+
 #include "htslib/sam.h"
 
 #include <memory>
@@ -75,7 +77,7 @@ class IndexedSamIterator {
     std::shared_ptr<bam_hdr_t> m_sam_header_ptr;            ///< pointer to the bam header
     std::vector<std::string> m_interval_list;               ///< intervals to iterate
     std::vector<std::string>::iterator m_interval_iterator; ///< temporary interval to hold between sam_itr_querys and serve fetch_next_record
-    std::shared_ptr<hts_itr_t> m_sam_itr_ptr;               ///< temporary iterator to hold between sam_itr_querys and serve fetch_next_record
+    std::unique_ptr<hts_itr_t, utils::HtsIteratorDeleter> m_sam_itr_ptr; ///< temporary iterator to hold between sam_itr_querys and serve fetch_next_record
     std::shared_ptr<bam1_t> m_sam_record_ptr;               ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
     Sam m_sam_record;                                       ///< temporary record to hold between fetch (operator++) and serve (operator*)
 
