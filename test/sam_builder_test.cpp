@@ -321,9 +321,9 @@ BOOST_AUTO_TEST_CASE( reconstruct_complete_read ) {
   builder.set_mate_chromosome(original_read.mate_chromosome()).set_mate_alignment_start(original_read.mate_alignment_start());
   original_read.paired() ? builder.set_paired() : builder.set_not_paired();
   original_read.unmapped() ? builder.set_unmapped() : builder.set_not_unmapped();
-  original_read.next_unmapped() ? builder.set_next_unmapped() : builder.set_not_next_unmapped();
+  original_read.mate_unmapped() ? builder.set_mate_unmapped() : builder.set_not_mate_unmapped();
   original_read.reverse() ? builder.set_reverse() : builder.set_not_reverse();
-  original_read.next_reverse() ? builder.set_next_reverse() : builder.set_not_next_reverse();
+  original_read.mate_reverse() ? builder.set_mate_reverse() : builder.set_not_mate_reverse();
   original_read.first() ? builder.set_first() : builder.set_not_first();
   original_read.last() ? builder.set_last() : builder.set_not_last();
   original_read.secondary() ? builder.set_secondary() : builder.set_not_secondary();
@@ -343,9 +343,9 @@ BOOST_AUTO_TEST_CASE( reconstruct_complete_read ) {
   BOOST_CHECK_EQUAL(read.mate_alignment_start(), original_read.mate_alignment_start());
   BOOST_CHECK_EQUAL(read.paired(), original_read.paired());
   BOOST_CHECK_EQUAL(read.unmapped(), original_read.unmapped());
-  BOOST_CHECK_EQUAL(read.next_unmapped(), original_read.next_unmapped());
+  BOOST_CHECK_EQUAL(read.mate_unmapped(), original_read.mate_unmapped());
   BOOST_CHECK_EQUAL(read.reverse(), original_read.reverse());
-  BOOST_CHECK_EQUAL(read.next_reverse(), original_read.next_reverse());
+  BOOST_CHECK_EQUAL(read.mate_reverse(), original_read.mate_reverse());
   BOOST_CHECK_EQUAL(read.first(), original_read.first());
   BOOST_CHECK_EQUAL(read.last(), original_read.last());
   BOOST_CHECK_EQUAL(read.secondary(), original_read.secondary());

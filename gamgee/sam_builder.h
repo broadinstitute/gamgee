@@ -95,12 +95,12 @@ class SamBuilder {
   SamBuilder& set_not_paired()        { m_core_read.set_not_paired(); return *this;        }
   SamBuilder& set_unmapped()          { m_core_read.set_unmapped(); return *this;          }
   SamBuilder& set_not_unmapped()      { m_core_read.set_not_unmapped(); return *this;      }
-  SamBuilder& set_next_unmapped()     { m_core_read.set_next_unmapped(); return *this;     }
-  SamBuilder& set_not_next_unmapped() { m_core_read.set_not_next_unmapped(); return *this; }
+  SamBuilder& set_mate_unmapped()     { m_core_read.set_mate_unmapped(); return *this;     }
+  SamBuilder& set_not_mate_unmapped() { m_core_read.set_not_mate_unmapped(); return *this; }
   SamBuilder& set_reverse()           { m_core_read.set_reverse(); return *this;           }
   SamBuilder& set_not_reverse()       { m_core_read.set_not_reverse(); return *this;       }
-  SamBuilder& set_next_reverse()      { m_core_read.set_next_reverse(); return *this;      }
-  SamBuilder& set_not_next_reverse()  { m_core_read.set_not_next_reverse(); return *this;  }
+  SamBuilder& set_mate_reverse()      { m_core_read.set_mate_reverse(); return *this;      }
+  SamBuilder& set_not_mate_reverse()  { m_core_read.set_not_mate_reverse(); return *this;  }
   SamBuilder& set_first()             { m_core_read.set_first(); return *this;             }
   SamBuilder& set_not_first()         { m_core_read.set_not_first(); return *this;         }
   SamBuilder& set_last()              { m_core_read.set_last(); return *this;              }

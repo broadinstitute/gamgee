@@ -261,13 +261,13 @@ class Sam {
   void set_mate_chromosome(const uint32_t mchr)        { m_body->core.mtid = int32_t(mchr);       } ///< @brief simple setter for the mate's chromosome index. Index is 0-based.
   void set_mate_alignment_start(const uint32_t mstart) { m_body->core.mpos = int32_t(mstart - 1); } ///< @brief simple setter for the mate's alignment start. @warning You should use (1-based and inclusive) alignment but internally this is stored 0-based to simplify BAM conversion.
   void set_mapping_qual(const uint8_t mapq)            { m_body->core.qual = mapq;                } ///< @brief simple setter for the alignment quality
-  void set_insert_size(const int32_t isize)            { m_body->core.isize = isize;              } ///< @brief simple setter for the insert size
+  void set_insert_size(const int32_t isize)        { m_body->core.isize = isize;              } ///< @brief simple setter for the insert size
 
   // getters for fields inside the data field
   std::string name() const { return std::string{bam_get_qname(m_body.get())}; } ///< @brief returns the read name
-  Cigar cigar() const { return Cigar{m_body}; }                            ///< @brief returns the cigar. @warning the objects returned by this member function will share underlying htslib memory with this object. @warning creates an object but doesn't copy the underlying values.
-  ReadBases bases() const { return ReadBases{m_body}; }                        ///< @brief returns the read bases. @warning the objects returned by this member function will share underlying htslib memory with this object. @warning creates an object but doesn't copy the underlying values.
-  BaseQuals base_quals() const { return BaseQuals{m_body}; }                        ///< @brief returns the base qualities. @warning the objects returned by this member function will share underlying htslib memory with this object. @warning creates an object but doesn't copy the underlying values. 
+  Cigar cigar() const { return Cigar{m_body}; }                                 ///< @brief returns the cigar. @warning the objects returned by this member function will share underlying htslib memory with this object. @warning creates an object but doesn't copy the underlying values.
+  ReadBases bases() const { return ReadBases{m_body}; }                         ///< @brief returns the read bases. @warning the objects returned by this member function will share underlying htslib memory with this object. @warning creates an object but doesn't copy the underlying values.
+  BaseQuals base_quals() const { return BaseQuals{m_body}; }                    ///< @brief returns the base qualities. @warning the objects returned by this member function will share underlying htslib memory with this object. @warning creates an object but doesn't copy the underlying values.
 
   // getters for tagged values within the aux part of the data field
   SamTag<int32_t> integer_tag(const std::string& tag_name) const;    ///< @brief retrieve an integer-valued tag by name. @warning creates an object but doesn't copy the underlying values.
@@ -276,30 +276,30 @@ class Sam {
   SamTag<std::string> string_tag(const std::string& tag_name) const; ///< @brief retrieve a string-valued tag by name. @warning creates an object but doesn't copy the underlying values.
 
   // getters for flags 
-  bool paired() const { return m_body->core.flag & BAM_FPAIRED;        } ///< @brief whether or not this read is paired
+  bool paired() const { return m_body->core.flag & BAM_FPAIRED;        }          ///< @brief whether or not this read is paired
   bool properly_paired() const { return m_body->core.flag & BAM_FPROPER_PAIR;   } ///< @brief whether or not this read is properly paired (see definition in BAM spec)
-  bool unmapped() const { return m_body->core.flag & BAM_FUNMAP;         } ///< @brief whether or not this read is unmapped
-  bool next_unmapped() const { return m_body->core.flag & BAM_FMUNMAP;        } ///< @brief whether or not the next read is unmapped
-  bool reverse() const { return m_body->core.flag & BAM_FREVERSE;       } ///< @brief whether or not this read is from the reverse strand
-  bool next_reverse() const { return m_body->core.flag & BAM_FMREVERSE;      } ///< @brief whether or not the next read is from the reverse strand
-  bool first() const { return m_body->core.flag & BAM_FREAD1;         } ///< @brief whether or not this read is the first read in a pair (or multiple pairs)
-  bool last() const { return m_body->core.flag & BAM_FREAD2;         } ///< @brief whether or not this read is the last read in a pair (or multiple pairs)
-  bool secondary() const { return m_body->core.flag & BAM_FSECONDARY;     } ///< @brief whether or not this read is a secondary alignment (see definition in BAM spec)
-  bool fail() const { return m_body->core.flag & BAM_FQCFAIL;        } ///< @brief whether or not this read is marked as failing vendor (sequencer) quality control
-  bool duplicate() const { return m_body->core.flag & BAM_FDUP;           } ///< @brief whether or not this read is a duplicate
-  bool supplementary() const { return m_body->core.flag & BAM_FSUPPLEMENTARY; } ///< @brief whether or not this read is a supplementary alignment (see definition in the BAM spec) 
+  bool unmapped() const { return m_body->core.flag & BAM_FUNMAP;         }        ///< @brief whether or not this read is unmapped
+  bool mate_unmapped() const { return m_body->core.flag & BAM_FMUNMAP;        }   ///< @brief whether or not the mate read is unmapped
+  bool reverse() const { return m_body->core.flag & BAM_FREVERSE;       }         ///< @brief whether or not this read is from the reverse strand
+  bool mate_reverse() const { return m_body->core.flag & BAM_FMREVERSE;      }    ///< @brief whether or not the mate read is from the reverse strand
+  bool first() const { return m_body->core.flag & BAM_FREAD1;         }           ///< @brief whether or not this read is the first read in a pair (or multiple pairs)
+  bool last() const { return m_body->core.flag & BAM_FREAD2;         }            ///< @brief whether or not this read is the last read in a pair (or multiple pairs)
+  bool secondary() const { return m_body->core.flag & BAM_FSECONDARY;     }       ///< @brief whether or not this read is a secondary alignment (see definition in BAM spec)
+  bool fail() const { return m_body->core.flag & BAM_FQCFAIL;        }            ///< @brief whether or not this read is marked as failing vendor (sequencer) quality control
+  bool duplicate() const { return m_body->core.flag & BAM_FDUP;           }       ///< @brief whether or not this read is a duplicate
+  bool supplementary() const { return m_body->core.flag & BAM_FSUPPLEMENTARY; }   ///< @brief whether or not this read is a supplementary alignment (see definition in the BAM spec)
 
   // modify flags
   void set_paired()            { m_body->core.flag |= BAM_FPAIRED;         } 
   void set_not_paired()        { m_body->core.flag &= ~BAM_FPAIRED;        }
   void set_unmapped()          { m_body->core.flag |= BAM_FUNMAP;          }
   void set_not_unmapped()      { m_body->core.flag &= ~BAM_FUNMAP;         }
-  void set_next_unmapped()     { m_body->core.flag |= BAM_FMUNMAP;         }
-  void set_not_next_unmapped() { m_body->core.flag &= ~BAM_FMUNMAP;        }
+  void set_mate_unmapped()     { m_body->core.flag |= BAM_FMUNMAP;         }
+  void set_not_mate_unmapped() { m_body->core.flag &= ~BAM_FMUNMAP;        }
   void set_reverse()           { m_body->core.flag |= BAM_FREVERSE;        }
   void set_not_reverse()       { m_body->core.flag &= ~BAM_FREVERSE;       }
-  void set_next_reverse()      { m_body->core.flag |= BAM_FMREVERSE;       }
-  void set_not_next_reverse()  { m_body->core.flag &= ~BAM_FMREVERSE;      }
+  void set_mate_reverse()      { m_body->core.flag |= BAM_FMREVERSE;       }
+  void set_not_mate_reverse()  { m_body->core.flag &= ~BAM_FMREVERSE;      }
   void set_first()             { m_body->core.flag |= BAM_FREAD1;          }
   void set_not_first()         { m_body->core.flag &= ~BAM_FREAD1;         }
   void set_last()              { m_body->core.flag |= BAM_FREAD2;          }
