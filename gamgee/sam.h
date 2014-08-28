@@ -241,13 +241,27 @@ class Sam {
    */
   uint8_t mapping_qual() const { return uint8_t(m_body->core.qual); }
 
+  /**
+   * @brief inferred insert size as reported by the aligner
+   *
+   * This is the signed observed insert size. If all segments are mapped to the same reference, 
+   * the unsigned observed template length equals the number of bases from the leftmost mapped 
+   * base to the rightmost mapped base. The leftmost segment has a plus sign and the rightmost 
+   * has a minus sign. The sign of segments in the middle is undefined. 
+   *
+   * It is set as 0 for single read or when the information is unavailable.
+   * 
+   * @return a signed insert size or zero if it can't be inferred.
+   */
+  int32_t insert_size() const { return m_body->core.isize; }
+
   // modify non-variable length fields (things outside of the data member)
-  // TODO: provide setter for TLEN (core.isize)?
   void set_chromosome(const uint32_t chr)              { m_body->core.tid  = int32_t(chr);        } ///< @brief simple setter for the chromosome index. Index is 0-based.
   void set_alignment_start(const uint32_t start)       { m_body->core.pos  = int32_t(start-1);    } ///< @brief simple setter for the alignment start. @warning You should use (1-based and inclusive) alignment but internally this is stored 0-based to simplify BAM conversion.
   void set_mate_chromosome(const uint32_t mchr)        { m_body->core.mtid = int32_t(mchr);       } ///< @brief simple setter for the mate's chromosome index. Index is 0-based.
   void set_mate_alignment_start(const uint32_t mstart) { m_body->core.mpos = int32_t(mstart - 1); } ///< @brief simple setter for the mate's alignment start. @warning You should use (1-based and inclusive) alignment but internally this is stored 0-based to simplify BAM conversion.
   void set_mapping_qual(const uint8_t mapq)            { m_body->core.qual = mapq;                } ///< @brief simple setter for the alignment quality
+  void set_insert_size(const int32_t isize)            { m_body->core.isize = isize;              } ///< @brief simple setter for the insert size
 
   // getters for fields inside the data field
   std::string name() const { return std::string{bam_get_qname(m_body.get())}; } ///< @brief returns the read name
