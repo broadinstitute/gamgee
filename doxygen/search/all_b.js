@@ -8,6 +8,7 @@ var searchData=
   ['next_5freverse',['next_reverse',['../classgamgee_1_1_sam.html#a484e6de325450c628ea61ccf22577e58',1,'gamgee::Sam']]],
   ['next_5funmapped',['next_unmapped',['../classgamgee_1_1_sam.html#a9030e6f7dfd25480f595fd4387e596b3',1,'gamgee::Sam']]],
   ['nil',['NIL',['../namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ecabc0b1e8b63f3f00318eee5aeabc14255',1,'gamgee::utils']]],
+  ['non_5fref_5fhet',['non_ref_het',['../classgamgee_1_1_genotype.html#a34e152f2cb8264f685c2722848308b1e',1,'gamgee::Genotype']]],
   ['num_5fbytes',['num_bytes',['../classgamgee_1_1_sam_builder_data_field.html#a39a69a75a26048141bcd009103223372',1,'gamgee::SamBuilderDataField']]],
   ['num_5felements',['num_elements',['../classgamgee_1_1_sam_builder_data_field.html#a137090c63a7caed3157dc8d31a20f3fe',1,'gamgee::SamBuilderDataField']]]
 ];

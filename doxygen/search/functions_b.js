@@ -6,6 +6,7 @@ var searchData=
   ['name',['name',['../classgamgee_1_1_fastq.html#af664bfffd53f9b011929a200c90eeda1',1,'gamgee::Fastq::name()'],['../classgamgee_1_1_sam.html#a2ce2293b869bde4965964b55a7ccd101',1,'gamgee::Sam::name()'],['../classgamgee_1_1_sam_tag.html#af0c19c11aa6034b01363bb63facfbe51',1,'gamgee::SamTag::name()']]],
   ['next_5freverse',['next_reverse',['../classgamgee_1_1_sam.html#a484e6de325450c628ea61ccf22577e58',1,'gamgee::Sam']]],
   ['next_5funmapped',['next_unmapped',['../classgamgee_1_1_sam.html#a9030e6f7dfd25480f595fd4387e596b3',1,'gamgee::Sam']]],
+  ['non_5fref_5fhet',['non_ref_het',['../classgamgee_1_1_genotype.html#a34e152f2cb8264f685c2722848308b1e',1,'gamgee::Genotype']]],
   ['num_5fbytes',['num_bytes',['../classgamgee_1_1_sam_builder_data_field.html#a39a69a75a26048141bcd009103223372',1,'gamgee::SamBuilderDataField']]],
   ['num_5felements',['num_elements',['../classgamgee_1_1_sam_builder_data_field.html#a137090c63a7caed3157dc8d31a20f3fe',1,'gamgee::SamBuilderDataField']]]
 ];
