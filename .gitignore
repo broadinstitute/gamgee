@@ -28,3 +28,8 @@ dox/
 
 # Haroopad temporaries
 *.bak
+
+# Eclipse project files
+.settings/
+.cproject
+.project
