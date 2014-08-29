@@ -414,7 +414,7 @@ void check_all_apis(const Variant& record, const uint32_t truth_index) {
 }
 
 void generic_variant_reader_test(const std::function<void(const Variant&, const uint32_t)>& fun) {
-  for (const auto& filename : {"testdata/test_variants.vcf", "testdata/test_variants.bcf"}) {
+  for (const auto& filename : {"testdata/test_variants.vcf", "testdata/test_variants.bcf", "testdata/test_variants.vcf.gz"}) {
     auto truth_index = 0u;
     for (const auto& record : SingleVariantReader{filename}) {
       fun(record, truth_index);
@@ -551,7 +551,7 @@ BOOST_AUTO_TEST_CASE( multi_variant_reader_validation )
 
 BOOST_AUTO_TEST_CASE( multiple_variant_reader_test ) {
   auto truth_index = 0u;
-  const auto reader = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants.bcf"}, false};
+  const auto reader = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants.bcf", "testdata/test_variants.vcf.gz"}, false};
   for (const auto& vec : reader) {
     for (const auto& record : vec)
       check_all_apis(record, truth_index);
