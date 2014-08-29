@@ -1,5 +1,7 @@
 #include "genotype.h"
 
+#include "boost/algorithm/cxx11/all_of.hpp"
+
 namespace gamgee {
 
 using namespace std;
@@ -52,25 +54,14 @@ bool Genotype::non_ref_het() const {
 }
 
 bool Genotype::hom_var() const {
-  if (size() != 2) {
-    return false;
-  }
-  const auto allele_1 = allele_key(0);
-  if (allele_1 == 0)
-    return false;
-  const auto allele_2 = allele_key(1);
-  return allele_1 == allele_2;
+  const auto keys = alleles_keys();
+  const auto allele_1 = keys[0];
+  return allele_1 != 0 && boost::algorithm::all_of_equal(keys, allele_1);
 }
 
 bool Genotype::hom_ref() const {
-  if (size() != 2) {
-    return false;
-  }
-  const auto allele_1 = allele_key(0);
-  if (allele_1 != 0)
-    return false;
-  const auto allele_2 = allele_key(1);
-  return allele_2 == 0;
+  const auto keys = alleles_keys();
+  return boost::algorithm::all_of_equal(keys, 0);
 }
 
 uint32_t Genotype::fast_diploid_key_generation() const {
