@@ -75,30 +75,33 @@ class Genotype{
    * @note only for diploids.
    */
   bool het() const;
+
   /**
    * @brief Checks if this genotype vector is a heterozygous call and none of the alleles is the reference.
    * @return True if this GT is a het and none of the alleles is the reference.
    * @note only for diploids.
    */
   bool non_ref_het() const;
-  /**
-   * @brief Checks if this genotype vector is a homozygous call that is non-reference.
-   * @return True if this GT is a hom var.
-   * @note only for diploids, returns false otherwise.
-   */
-  bool hom_var() const;
-  /**
-   * @brief Checks if this genotype vector is a homozygous call that is reference.
-   * @return True if this GT is a hom ref.
-   * @note only for diploids, returns false otherwise.
-   */
-  bool hom_ref() const;
+
   /**
    * @brief A bit encoding for the first two alleles.
    * @return A bit encoding for the first two alleles.
    * @note only for diploids, returns false otherwise.
    */
   uint32_t fast_diploid_key_generation() const;
+
+  //for all ploidies
+  /**
+   * @brief Checks if this genotype vector is a homozygous call that is non-reference.
+   * @return True if this GT is a hom var.
+   */
+  bool hom_var() const;
+
+  /**
+   * @brief Checks if this genotype vector is a homozygous call that is reference.
+   * @return True if this GT is a hom ref.
+   */
+  bool hom_ref() const;
 
   /**
    * @brief Checks if all alleles are missing.

@@ -1,0 +1,21 @@
+##fileformat=VCFv4.1
+##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+##INFO=<ID=AN,Number=1,Type=Integer,Description="Total number of alleles in called genotypes">
+##INFO=<ID=VALIDATED,Number=0,Type=Flag,Description="Validated By Follow-up Experiment">
+##INFO=<ID=DESC,Number=.,Type=String,Description="Custom Description">
+##FILTER=<ID=PASS,Description=All filters passed>
+##FILTER=<ID=LOW_QUAL,Description=Low quality call>
+##FILTER=<ID=MISSED,Description=Missed by the variant caller>
+##FILTER=<ID=NOT_DEFINED,Description=Undefined filter>
+##contig=<ID=1,Length=300000000,Description=the first chromosome>
+##contig=<ID=20,Length=64000000>
+##contig=<ID=22,Length=120000000>
+##FORMAT=<ID=GT,Number=1,Type=String,Description=Genotype>
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description=Genotype quality>
+##FORMAT=<ID=PL,Number=G,Type=Integer,Description=Phred scaled relative Likelihoods of the genotypes>
+##FORMAT=<ID=AF,Number=2,Type=Float,Description=Arbitrary float field with 2 values (test purposes only)>
+##FORMAT=<ID=AS,Number=1,Type=String,Description=Arbitrary string field with 1 value (test purposes only)>
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	NA12878	NA12891	NA12892
+1	10000000	db2342	T	C	80	PASS	AF=0.5;AN=6;VALIDATED;DESC=Test1,Test2	GT:GQ:PL:AF:AS	1:25:10,100:3.1,2.2:ABA	0:12:10,1000:3.1,2.2:CA	1:650:10,0:3.1,2.2:XISPAFORRO
+20	10000000	db2342	T	C	80	PASS	AF=0.5;AN=6;VALIDATED;DESC=Test1,Test2	GT:GQ:PL:AF:AS	0/1:25:10,0,100:3.1,2.2:ABA	0/0:12:0,10,1000:3.1,2.2:CA	1/1:650:10,100,0:3.1,2.2:XISPAFORRO
+22	10000000	db2342	T	C	80	PASS	AF=0.5;AN=6;VALIDATED;DESC=Test1,Test2	GT:GQ:PL:AF:AS	0/0/1:25:10,0,32,100:3.1,2.2:ABA	0/0/0:12:0,10,30,1000:3.1,2.2:CA	1/1/1:650:10,30,100,0:3.1,2.2:XISPAFORRO
