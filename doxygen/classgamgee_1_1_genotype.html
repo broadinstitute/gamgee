@@ -133,15 +133,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a34e152f2cb8264f685c2722848308b1e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#a34e152f2cb8264f685c2722848308b1e">non_ref_het</a> () const </td></tr>
 <tr class="memdesc:a34e152f2cb8264f685c2722848308b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if this genotype vector is a heterozygous call and none of the alleles is the reference.  <a href="#a34e152f2cb8264f685c2722848308b1e">More...</a><br /></td></tr>
 <tr class="separator:a34e152f2cb8264f685c2722848308b1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05e3002b133d74e407306a7aa7aeb8d5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#a05e3002b133d74e407306a7aa7aeb8d5">fast_diploid_key_generation</a> () const </td></tr>
+<tr class="memdesc:a05e3002b133d74e407306a7aa7aeb8d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">A bit encoding for the first two alleles.  <a href="#a05e3002b133d74e407306a7aa7aeb8d5">More...</a><br /></td></tr>
+<tr class="separator:a05e3002b133d74e407306a7aa7aeb8d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16825437893fa3876c424cf39e4cc8c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#a16825437893fa3876c424cf39e4cc8c1">hom_var</a> () const </td></tr>
 <tr class="memdesc:a16825437893fa3876c424cf39e4cc8c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if this genotype vector is a homozygous call that is non-reference.  <a href="#a16825437893fa3876c424cf39e4cc8c1">More...</a><br /></td></tr>
 <tr class="separator:a16825437893fa3876c424cf39e4cc8c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2c8e4b9deaa940ac5e4a7428a9310bd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#ae2c8e4b9deaa940ac5e4a7428a9310bd">hom_ref</a> () const </td></tr>
 <tr class="memdesc:ae2c8e4b9deaa940ac5e4a7428a9310bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if this genotype vector is a homozygous call that is reference.  <a href="#ae2c8e4b9deaa940ac5e4a7428a9310bd">More...</a><br /></td></tr>
 <tr class="separator:ae2c8e4b9deaa940ac5e4a7428a9310bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05e3002b133d74e407306a7aa7aeb8d5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#a05e3002b133d74e407306a7aa7aeb8d5">fast_diploid_key_generation</a> () const </td></tr>
-<tr class="memdesc:a05e3002b133d74e407306a7aa7aeb8d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">A bit encoding for the first two alleles.  <a href="#a05e3002b133d74e407306a7aa7aeb8d5">More...</a><br /></td></tr>
-<tr class="separator:a05e3002b133d74e407306a7aa7aeb8d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fa76a9c8da2da98315a22dd81528143"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#a0fa76a9c8da2da98315a22dd81528143">missing</a> () const </td></tr>
 <tr class="memdesc:a0fa76a9c8da2da98315a22dd81528143"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if all alleles are missing.  <a href="#a0fa76a9c8da2da98315a22dd81528143">More...</a><br /></td></tr>
 <tr class="separator:a0fa76a9c8da2da98315a22dd81528143"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -433,7 +433,6 @@ Public Member Functions</h2></td></tr>
 
 <p>Checks if this genotype vector is a homozygous call that is reference. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this GT is a hom ref. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>only for diploids, returns false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -452,7 +451,6 @@ Public Member Functions</h2></td></tr>
 
 <p>Checks if this genotype vector is a homozygous call that is non-reference. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this GT is a hom var. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>only for diploids, returns false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -659,7 +657,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 29 2014 17:42:12 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Aug 30 2014 05:04:13 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
