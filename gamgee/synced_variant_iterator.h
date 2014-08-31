@@ -43,7 +43,7 @@ class SyncedVariantIterator {
   /**
    * @brief pseudo-inequality operator (needed by for-each loop)
    *
-   * NOTE: this method does the minimal work necessary to determine that we have reached the end of iteration.
+   * @warning this method does the minimal work necessary to determine that we have reached the end of iteration.
    * it is NOT a valid general-purpose inequality method.
    *
    * @param rhs the other SyncedVariantIterator to compare to
