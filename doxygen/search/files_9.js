@@ -17,5 +17,8 @@ var searchData=
   ['sam_5fwriter_2ecpp',['sam_writer.cpp',['../sam__writer_8cpp.html',1,'']]],
   ['sam_5fwriter_2eh',['sam_writer.h',['../sam__writer_8h.html',1,'']]],
   ['shared_5ffield_2eh',['shared_field.h',['../shared__field_8h.html',1,'']]],
-  ['shared_5ffield_5fiterator_2eh',['shared_field_iterator.h',['../shared__field__iterator_8h.html',1,'']]]
+  ['shared_5ffield_5fiterator_2eh',['shared_field_iterator.h',['../shared__field__iterator_8h.html',1,'']]],
+  ['synced_5fvariant_5fiterator_2ecpp',['synced_variant_iterator.cpp',['../synced__variant__iterator_8cpp.html',1,'']]],
+  ['synced_5fvariant_5fiterator_2eh',['synced_variant_iterator.h',['../synced__variant__iterator_8h.html',1,'']]],
+  ['synced_5fvariant_5freader_2eh',['synced_variant_reader.h',['../synced__variant__reader_8h.html',1,'']]]
 ];

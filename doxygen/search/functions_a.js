@@ -7,6 +7,7 @@ var searchData=
   ['make_5fshared_5fifstream',['make_shared_ifstream',['../namespacegamgee_1_1utils.html#afcdf33f05f9af45a26afa1d18eb25bcc',1,'gamgee::utils::make_shared_ifstream(std::ifstream *ifstream_ptr)'],['../namespacegamgee_1_1utils.html#ae13bc9131a1224fb57b15244f968d07d',1,'gamgee::utils::make_shared_ifstream(std::string filename)']]],
   ['make_5fshared_5fsam',['make_shared_sam',['../namespacegamgee_1_1utils.html#ae5e4c2a62b4e2544996e8b0193e5c31a',1,'gamgee::utils']]],
   ['make_5fshared_5fsam_5fheader',['make_shared_sam_header',['../namespacegamgee_1_1utils.html#a72ad0cc418281effcdb1abd1a077761e',1,'gamgee::utils']]],
+  ['make_5fshared_5fsynced_5fvariant_5freader',['make_shared_synced_variant_reader',['../namespacegamgee_1_1utils.html#a53201a12479882cc6e6bb789a506109b',1,'gamgee::utils']]],
   ['make_5fshared_5fvariant',['make_shared_variant',['../namespacegamgee_1_1utils.html#a22e4ba8eb2a8667becd53d5f10fad35f',1,'gamgee::utils']]],
   ['make_5fshared_5fvariant_5fheader',['make_shared_variant_header',['../namespacegamgee_1_1utils.html#a2732369bc67b236fbe94bcaba720d170',1,'gamgee::utils']]],
   ['make_5funique_5fhts_5ffile',['make_unique_hts_file',['../namespacegamgee_1_1utils.html#a212198e63351e31260f9a80a0e78ae35',1,'gamgee::utils']]],

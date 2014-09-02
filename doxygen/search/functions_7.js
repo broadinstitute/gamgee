@@ -8,5 +8,6 @@ var searchData=
   ['hom_5fref',['hom_ref',['../classgamgee_1_1_genotype.html#ae2c8e4b9deaa940ac5e4a7428a9310bd',1,'gamgee::Genotype']]],
   ['hom_5fvar',['hom_var',['../classgamgee_1_1_genotype.html#a16825437893fa3876c424cf39e4cc8c1',1,'gamgee::Genotype']]],
   ['hts_5fstring_5farray_5fto_5fvector',['hts_string_array_to_vector',['../namespacegamgee_1_1utils.html#aa3f1ec8c7415419a0e1c57c8255873a9',1,'gamgee::utils']]],
-  ['htslib_5ffilter_5fname',['htslib_filter_name',['../namespacegamgee_1_1utils.html#a7e1092478e0b19aa3887ff5ee6c82cb9',1,'gamgee::utils']]]
+  ['htslib_5ffilter_5fname',['htslib_filter_name',['../namespacegamgee_1_1utils.html#a7e1092478e0b19aa3887ff5ee6c82cb9',1,'gamgee::utils']]],
+  ['htslibexception',['HtslibException',['../classgamgee_1_1_htslib_exception.html#aa09bcdf5289b9847914362b8ea8d5d8a',1,'gamgee::HtslibException']]]
 ];

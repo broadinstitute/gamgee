@@ -96,6 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock"><code>#include &quot;htslib/sam.h&quot;</code><br />
 <code>#include &quot;htslib/vcf.h&quot;</code><br />
+<code>#include &quot;htslib/synced_bcf_reader.h&quot;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
@@ -124,6 +125,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_variant_body_deleter.html">gamgee::utils::VariantBodyDeleter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a bcf1_t pointer  <a href="structgamgee_1_1utils_1_1_variant_body_deleter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_synced_reader_deleter.html">gamgee::utils::SyncedReaderDeleter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a bcf_srs_t pointer  <a href="structgamgee_1_1utils_1_1_synced_reader_deleter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -157,6 +161,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a2732369bc67b236fbe94bcaba720d170"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; bcf_hdr_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a2732369bc67b236fbe94bcaba720d170">gamgee::utils::make_shared_variant_header</a> (bcf_hdr_t *bcf_hdr_ptr)</td></tr>
 <tr class="memdesc:a2732369bc67b236fbe94bcaba720d170"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated bcf_hdr_t in a shared_ptr with correct deleter  <a href="#a2732369bc67b236fbe94bcaba720d170">More...</a><br /></td></tr>
 <tr class="separator:a2732369bc67b236fbe94bcaba720d170"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53201a12479882cc6e6bb789a506109b"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; bcf_srs_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a53201a12479882cc6e6bb789a506109b">gamgee::utils::make_shared_synced_variant_reader</a> (bcf_srs_t *synced_reader_ptr)</td></tr>
+<tr class="memdesc:a53201a12479882cc6e6bb789a506109b"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated bcf_srs_t in a shared_ptr with correct deleter  <a href="#a53201a12479882cc6e6bb789a506109b">More...</a><br /></td></tr>
+<tr class="separator:a53201a12479882cc6e6bb789a506109b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a212198e63351e31260f9a80a0e78ae35"><td class="memItemLeft" align="right" valign="top">unique_ptr&lt; htsFile, <br class="typebreak" />
 HtsFileDeleter &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a212198e63351e31260f9a80a0e78ae35">gamgee::utils::make_unique_hts_file</a> (htsFile *hts_file_ptr)</td></tr>
 <tr class="memdesc:a212198e63351e31260f9a80a0e78ae35"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated htsFile in a unique_ptr with correct deleter  <a href="#a212198e63351e31260f9a80a0e78ae35">More...</a><br /></td></tr>
@@ -187,7 +194,7 @@ HtsIteratorDeleter &gt;&#160;</td><td class="memItemRight" valign="bottom"><a cl
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Aug 30 2014 05:04:13 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Sep 2 2014 16:25:44 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
