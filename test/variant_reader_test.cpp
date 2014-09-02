@@ -4,10 +4,13 @@
 #include "multiple_variant_iterator.h"
 #include "indexed_variant_reader.h"
 #include "indexed_variant_iterator.h"
+#include "synced_variant_reader.h"
+#include "synced_variant_iterator.h"
 #include "missing.h"
 #include "test_utils.h"
 
 #include <boost/test/unit_test.hpp>
+#include <boost/algorithm/string/join.hpp>
 
 using namespace std;
 using namespace gamgee;
@@ -398,8 +401,20 @@ void check_genotype_api(const Variant& record, const uint32_t truth_index) {
   }
 }
 
+void check_all_apis(const Variant& record, const uint32_t truth_index) {
+  check_variant_basic_api(record, truth_index);
+  check_quals_api(record, truth_index);
+  check_alt_api(record, truth_index);
+  check_filters_api(record, truth_index);
+  check_genotype_quals_api(record,truth_index);
+  check_phred_likelihoods_api(record, truth_index);
+  check_individual_field_api(record, truth_index);
+  check_shared_field_api(record, truth_index);
+  check_genotype_api(record, truth_index);
+}
+
 void generic_variant_reader_test(const std::function<void(const Variant&, const uint32_t)>& fun) {
-  for (const auto& filename : {"testdata/test_variants.vcf", "testdata/test_variants.bcf"}) {
+  for (const auto& filename : {"testdata/test_variants.vcf", "testdata/test_variants.bcf", "testdata/test_variants.vcf.gz"}) {
     auto truth_index = 0u;
     for (const auto& record : SingleVariantReader{filename}) {
       fun(record, truth_index);
@@ -511,17 +526,8 @@ BOOST_AUTO_TEST_CASE( variant_iterator_move_test ) {
   auto record0 = *iter0;
   auto moved_record = *moved;
   auto truth_index = 0u;
-  for (auto record : {record0, moved_record}) {
-    check_variant_basic_api(record, truth_index);
-    check_quals_api(record, truth_index);
-    check_alt_api(record, truth_index);
-    check_filters_api(record, truth_index);
-    check_genotype_quals_api(record,truth_index);
-    check_phred_likelihoods_api(record, truth_index);
-    check_individual_field_api(record, truth_index);
-    check_shared_field_api(record, truth_index);
-    check_genotype_api(record, truth_index);
-  }
+  for (auto record : {record0, moved_record})
+    check_all_apis(record, truth_index);
 }
 
 BOOST_AUTO_TEST_CASE( multi_variant_reader_validation )
@@ -545,19 +551,10 @@ BOOST_AUTO_TEST_CASE( multi_variant_reader_validation )
 
 BOOST_AUTO_TEST_CASE( multiple_variant_reader_test ) {
   auto truth_index = 0u;
-  const auto reader = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants.bcf"}, false};
+  const auto reader = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants.bcf", "testdata/test_variants.vcf.gz"}, false};
   for (const auto& vec : reader) {
-    for (const auto& record : vec) {
-      check_variant_basic_api(record, truth_index);
-      check_quals_api(record, truth_index);
-      check_alt_api(record, truth_index);
-      check_filters_api(record, truth_index);
-      check_genotype_quals_api(record,truth_index);
-      check_phred_likelihoods_api(record, truth_index);
-      check_individual_field_api(record, truth_index);
-      check_shared_field_api(record, truth_index);
-      check_genotype_api(record, truth_index);
-    }
+    for (const auto& record : vec)
+      check_all_apis(record, truth_index);
     ++truth_index;
   }
 }
@@ -628,17 +625,8 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_move_test ) {
   auto moved_record = moved.begin().operator*();
   auto truth_index = 0u;
   for (auto vec : {record0, moved_record}) {
-    for (auto record : vec) {
-      check_variant_basic_api(record, truth_index);
-      check_quals_api(record, truth_index);
-      check_alt_api(record, truth_index);
-      check_filters_api(record, truth_index);
-      check_genotype_quals_api(record,truth_index);
-      check_phred_likelihoods_api(record, truth_index);
-      check_individual_field_api(record, truth_index);
-      check_shared_field_api(record, truth_index);
-      check_genotype_api(record, truth_index);
-    }
+    for (auto record : vec)
+      check_all_apis(record, truth_index);
   }
 }
 
@@ -654,17 +642,8 @@ BOOST_AUTO_TEST_CASE( multiple_variant_iterator_move_test ) {
   auto moved_record = *iter1;
   auto truth_index = 0u;
   for (auto vec : {record0, moved_record}) {
-    for (auto record : vec) {
-      check_variant_basic_api(record, truth_index);
-      check_quals_api(record, truth_index);
-      check_alt_api(record, truth_index);
-      check_filters_api(record, truth_index);
-      check_genotype_quals_api(record,truth_index);
-      check_phred_likelihoods_api(record, truth_index);
-      check_individual_field_api(record, truth_index);
-      check_shared_field_api(record, truth_index);
-      check_genotype_api(record, truth_index);
-    }
+    for (auto record : vec)
+      check_all_apis(record, truth_index);
   }
 }
 
@@ -707,6 +686,8 @@ BOOST_AUTO_TEST_CASE( gvcf_test_multiple ) {
   }
 }
 
+// IndexedVariantReader / IndexedVariantIterator
+
 /*
   NOTE: Updated test_variants.bcf and var_idx directory via-
     bcftools view testdata/test_variants.vcf -o testdata/var_idx/test_variants.bcf -O b
@@ -717,9 +698,8 @@ BOOST_AUTO_TEST_CASE( gvcf_test_multiple ) {
     bcftools index testdata/var_idx/test_variants_tabix.vcf.gz -t
     cp testdata/var_idx/test_variants.bcf testdata/test_variants.bcf
  */
-// TODO?  update to work with VCF GZ
-// const auto input_files = vector<string>{"testdata/var_idx/test_variants.bcf", "testdata/var_idx/test_variants_csi.vcf.gz", "testdata/var_idx/test_variants_tabix.vcf.gz"};
-const auto indexed_variant_input_files = vector<string>{"testdata/var_idx/test_variants.bcf"};
+const auto indexed_variant_vcf_inputs = vector<string>{"testdata/var_idx/test_variants_csi.vcf.gz", "testdata/var_idx/test_variants_tabix.vcf.gz"};
+const auto indexed_variant_bcf_inputs = vector<string>{"testdata/var_idx/test_variants.bcf"};
 
 const auto indexed_variant_chrom_full = vector<string> {"1", "20", "22"};
 const auto indexed_variant_bp_full = vector<string> {"1:10000000-10000000", "20:10001000-10001000", "20:10002000-10002000", "20:10003000-10003000", "22:10004000-10004000"};
@@ -728,20 +708,12 @@ const auto indexed_variant_bp_partial = vector<string> {"20:10001000-10001000"};
 
 // empty interval lists and full interval lists
 BOOST_AUTO_TEST_CASE( indexed_variant_reader_full_test ) {
-  for (const auto filename : indexed_variant_input_files) {
+  for (const auto filename : indexed_variant_bcf_inputs) {
     for (const auto intervals : {vector<string>{}, IndexedVariantIterator::all_intervals, indexed_variant_chrom_full, indexed_variant_bp_full}) {
       auto truth_index = 0u;
       const auto reader = IndexedVariantReader<IndexedVariantIterator>{filename, intervals};
       for (const auto& record : reader) {
-        check_variant_basic_api(record, truth_index);
-        check_quals_api(record, truth_index);
-        check_alt_api(record, truth_index);
-        check_filters_api(record, truth_index);
-        check_genotype_quals_api(record,truth_index);
-        check_phred_likelihoods_api(record, truth_index);
-        check_individual_field_api(record, truth_index);
-        check_shared_field_api(record, truth_index);
-        check_genotype_api(record, truth_index);
+        check_all_apis(record, truth_index);
         ++truth_index;
       }
       BOOST_CHECK_EQUAL(truth_index, 5u);
@@ -751,11 +723,10 @@ BOOST_AUTO_TEST_CASE( indexed_variant_reader_full_test ) {
 
 // one (different) record each
 BOOST_AUTO_TEST_CASE( indexed_variant_reader_partial_test ) {
-  for (const auto filename : indexed_variant_input_files) {
+  for (const auto filename : indexed_variant_bcf_inputs) {
 
-    const auto intervals1 = indexed_variant_chrom_partial;
     auto truth_index = 0u;
-    const auto reader1 = IndexedVariantReader<IndexedVariantIterator>{filename, intervals1};
+    const auto reader1 = IndexedVariantReader<IndexedVariantIterator>{filename, indexed_variant_chrom_partial};
     for (const auto& record : reader1) {
       BOOST_CHECK_EQUAL(record.ref(), "T");
       BOOST_CHECK_EQUAL(record.chromosome(), 0);
@@ -768,9 +739,8 @@ BOOST_AUTO_TEST_CASE( indexed_variant_reader_partial_test ) {
     }
     BOOST_CHECK_EQUAL(truth_index, 1u);
 
-    const auto intervals2 = indexed_variant_bp_partial;
     truth_index = 0u;
-    const auto reader2 = IndexedVariantReader<IndexedVariantIterator>{filename, intervals2};
+    const auto reader2 = IndexedVariantReader<IndexedVariantIterator>{filename, indexed_variant_bp_partial};
     for (const auto& record : reader2) {
       BOOST_CHECK_EQUAL(record.ref(), "GG");
       BOOST_CHECK_EQUAL(record.chromosome(), 1);
@@ -786,7 +756,7 @@ BOOST_AUTO_TEST_CASE( indexed_variant_reader_partial_test ) {
 }
 
 BOOST_AUTO_TEST_CASE( indexed_variant_reader_move_test ) {
-  for (const auto filename : indexed_variant_input_files) {
+  for (const auto filename : indexed_variant_bcf_inputs) {
     auto reader0 = IndexedVariantReader<IndexedVariantIterator>{filename, indexed_variant_chrom_full};
     auto reader1 = IndexedVariantReader<IndexedVariantIterator>{filename, indexed_variant_chrom_full};
     auto moved = check_move_constructor(reader1);
@@ -799,7 +769,7 @@ BOOST_AUTO_TEST_CASE( indexed_variant_reader_move_test ) {
 }
 
 BOOST_AUTO_TEST_CASE( indexed_variant_iterator_move_test ) {
-  for (const auto filename : indexed_variant_input_files) {
+  for (const auto filename : indexed_variant_bcf_inputs) {
     auto reader0 = IndexedVariantReader<IndexedVariantIterator>{filename, indexed_variant_chrom_full};
     auto iter0 = reader0.begin();
     auto reader1 = IndexedVariantReader<IndexedVariantIterator>{filename, indexed_variant_chrom_full};
@@ -810,5 +780,100 @@ BOOST_AUTO_TEST_CASE( indexed_variant_iterator_move_test ) {
     auto moved_record = *moved;
 
     BOOST_CHECK_EQUAL(record0.alignment_start(), moved_record.alignment_start());
+  }
+}
+
+// SyncedVariantReader / SyncedVariantIterator
+
+const auto indexed_variant_chrom_full_joined = boost::algorithm::join(indexed_variant_chrom_full, ",");
+const auto indexed_variant_bp_full_joined = boost::algorithm::join(indexed_variant_bp_full, ",");
+const auto indexed_variant_chrom_partial_joined = boost::algorithm::join(indexed_variant_chrom_partial, ",");
+const auto indexed_variant_bp_partial_joined = boost::algorithm::join(indexed_variant_bp_partial, ",");
+
+// full interval lists
+BOOST_AUTO_TEST_CASE( synced_variant_reader_full_test ) {
+  for (const auto intervals : {indexed_variant_chrom_full_joined, indexed_variant_bp_full_joined}) {
+    for (const auto input_files : {indexed_variant_vcf_inputs, indexed_variant_bcf_inputs}) {
+      auto truth_index = 0u;
+      const auto reader = SyncedVariantReader<SyncedVariantIterator>{input_files, intervals};
+      for (const auto& vec : reader) {
+        for (const auto& record : vec)
+          check_all_apis(record, truth_index);
+        ++truth_index;
+      }
+      BOOST_CHECK_EQUAL(truth_index, 5u);
+    }
+  }
+}
+
+// one (different) record each
+BOOST_AUTO_TEST_CASE( synced_variant_reader_partial_test ) {
+  for (const auto filename : indexed_variant_bcf_inputs) {
+
+    const auto intervals1 = indexed_variant_chrom_partial_joined;
+    for (const auto input_files : {indexed_variant_vcf_inputs, indexed_variant_bcf_inputs}) {
+      auto truth_index = 0u;
+      const auto reader1 = SyncedVariantReader<SyncedVariantIterator>{input_files, intervals1};
+      for (const auto& vec : reader1) {
+        for (const auto& record : vec) {
+          BOOST_CHECK_EQUAL(record.ref(), "T");
+          BOOST_CHECK_EQUAL(record.chromosome(), 0);
+          BOOST_CHECK_EQUAL(record.alignment_start(), 10000000);
+          BOOST_CHECK_EQUAL(record.alignment_stop(), 10000000);
+          BOOST_CHECK_EQUAL(record.n_alleles(), 2);
+          BOOST_CHECK_EQUAL(record.n_samples(), 3);
+          BOOST_CHECK_EQUAL(record.id(), "db2342");
+        }
+        ++truth_index;
+      }
+      BOOST_CHECK_EQUAL(truth_index, 1u);
+    }
+
+    const auto intervals2 = indexed_variant_bp_partial_joined;
+    for (const auto input_files : {indexed_variant_vcf_inputs, indexed_variant_bcf_inputs}) {
+      auto truth_index = 0u;
+      const auto reader2 = SyncedVariantReader<SyncedVariantIterator>{input_files, intervals2};
+      for (const auto& vec : reader2) {
+        for (const auto& record : vec) {
+          BOOST_CHECK_EQUAL(record.ref(), "GG");
+          BOOST_CHECK_EQUAL(record.chromosome(), 1);
+          BOOST_CHECK_EQUAL(record.alignment_start(), 10001000);
+          BOOST_CHECK_EQUAL(record.alignment_stop(), 10001001);
+          BOOST_CHECK_EQUAL(record.n_alleles(), 2);
+          BOOST_CHECK_EQUAL(record.n_samples(), 3);
+          BOOST_CHECK_EQUAL(record.id(), "rs837472");
+        }
+        ++truth_index;
+      }
+      BOOST_CHECK_EQUAL(truth_index, 1u);
+    }
+  }
+}
+
+BOOST_AUTO_TEST_CASE( synced_variant_reader_move_test ) {
+  for (const auto input_files : {indexed_variant_vcf_inputs, indexed_variant_bcf_inputs}) {
+    auto reader0 = SyncedVariantReader<SyncedVariantIterator>{input_files, indexed_variant_chrom_full_joined};
+    auto reader1 = SyncedVariantReader<SyncedVariantIterator>{input_files, indexed_variant_chrom_full_joined};
+    auto moved = check_move_constructor(reader1);
+
+    auto record0 = reader0.begin().operator*();
+    auto moved_record = moved.begin().operator*();
+
+    BOOST_CHECK_EQUAL(record0[0].alignment_start(), moved_record[0].alignment_start());
+  }
+}
+
+BOOST_AUTO_TEST_CASE( synced_variant_iterator_move_test ) {
+  for (const auto input_files : {indexed_variant_vcf_inputs, indexed_variant_bcf_inputs}) {
+    auto reader0 = SyncedVariantReader<SyncedVariantIterator>{input_files, indexed_variant_chrom_full_joined};
+    auto iter0 = reader0.begin();
+    auto reader1 = SyncedVariantReader<SyncedVariantIterator>{input_files, indexed_variant_chrom_full_joined};
+    auto iter1 = reader1.begin();
+    auto moved = check_move_constructor(iter1);
+
+    auto record0 = *iter0;
+    auto moved_record = *moved;
+
+    BOOST_CHECK_EQUAL(record0[0].alignment_start(), moved_record[0].alignment_start());
   }
 }

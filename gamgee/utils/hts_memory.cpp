@@ -64,6 +64,14 @@ shared_ptr<bcf_hdr_t> make_shared_variant_header(bcf_hdr_t* bcf_hdr_ptr) {
 }
 
 /**
+  * @brief wraps a pre-allocated bcf_srs_t in a shared_ptr with correct deleter
+  * @param synced_reader_ptr an htslib synced BCF reader pointer
+  */
+std::shared_ptr<bcf_srs_t> make_shared_synced_variant_reader(bcf_srs_t* synced_reader_ptr) {
+  return shared_ptr<bcf_srs_t>(synced_reader_ptr, SyncedReaderDeleter());
+}
+
+/**
   * @brief wraps a pre-allocated htsFile in a unique_ptr with correct deleter
   * @param hts_file_ptr an htslib raw file pointer
   */

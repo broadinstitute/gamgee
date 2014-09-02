@@ -3,6 +3,7 @@
 
 #include "htslib/sam.h"
 #include "htslib/vcf.h"
+#include "htslib/synced_bcf_reader.h"
 
 #include <memory>
 #include <vector>
@@ -62,6 +63,13 @@ struct VariantBodyDeleter {
   void operator()(bcf1_t* p) const { bcf_destroy1(p); }
 };
 
+/**
+ * @brief a functor object to delete a bcf_srs_t pointer
+ */
+struct SyncedReaderDeleter {
+  void operator()(bcf_srs_t* p) const { bcf_sr_destroy(p); }
+};
+
 std::shared_ptr<htsFile> make_shared_hts_file(htsFile* hts_file_ptr);
 std::shared_ptr<hts_idx_t> make_shared_hts_index(hts_idx_t* hts_index_ptr);
 std::shared_ptr<hts_itr_t> make_shared_hts_itr(hts_itr_t* hts_itr_ptr);
@@ -69,6 +77,7 @@ std::shared_ptr<bam1_t> make_shared_sam(bam1_t* sam_ptr);
 std::shared_ptr<bam_hdr_t> make_shared_sam_header(bam_hdr_t* sam_header_ptr);
 std::shared_ptr<bcf1_t> make_shared_variant(bcf1_t* bcf_ptr);
 std::shared_ptr<bcf_hdr_t> make_shared_variant_header(bcf_hdr_t* bcf_hdr_ptr);
+std::shared_ptr<bcf_srs_t> make_shared_synced_variant_reader(bcf_srs_t* synced_reader_ptr);
 
 std::unique_ptr<htsFile, HtsFileDeleter> make_unique_hts_file(htsFile* hts_file_ptr);
 std::unique_ptr<hts_itr_t, HtsIteratorDeleter> make_unique_hts_itr(hts_itr_t* hts_itr_ptr);
