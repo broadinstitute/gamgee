@@ -67,10 +67,12 @@ class SyncedVariantIterator {
   std::vector<Variant>& operator++();
 
  private:
-  std::shared_ptr<bcf_srs_t> m_synced_readers;  ///< pointer to the synced readers of the variant files
-  std::vector<Variant> m_variant_vector;	///< caches next Variant vector
+  std::shared_ptr<bcf_srs_t> m_synced_readers;                  ///< pointer to the synced readers of the variant files
+  std::vector<Variant> m_variant_vector;                        ///< caches next Variant vector
+  std::vector<std::shared_ptr<bcf_hdr_t>> m_headers_vector;     ///< caches each reader's htslib header
 
-  void fetch_next_record();                     ///< fetches next Variant vector
+  void init_headers_vector();                                   ///< initializes m_variant_headers
+  void fetch_next_record();                                     ///< fetches next Variant vector
 };
 
 }  // end namespace gamgee
