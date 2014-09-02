@@ -54,13 +54,13 @@ bool Genotype::non_ref_het() const {
 }
 
 bool Genotype::hom_var() const {
-  const auto keys = alleles_keys();
+  const auto keys = allele_keys();
   const auto allele_1 = keys[0];
   return allele_1 != 0 && boost::algorithm::all_of_equal(keys, allele_1);
 }
 
 bool Genotype::hom_ref() const {
-  const auto keys = alleles_keys();
+  const auto keys = allele_keys();
   return boost::algorithm::all_of_equal(keys, 0);
 }
 
@@ -82,7 +82,7 @@ std::vector<std::string> Genotype::alleles_strings() const {
   return utils::allele_strings(m_body, m_format_ptr, m_data_ptr);
 }
 
-std::vector<int32_t> Genotype::alleles_keys() const {
+std::vector<int32_t> Genotype::allele_keys() const {
   return utils::allele_keys(m_body, m_format_ptr, m_data_ptr);
 }
 

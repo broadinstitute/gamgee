@@ -121,7 +121,7 @@ class Genotype{
    * @brief Returns a vector with all the allele keys
    * @return a vector with all the allele keys
    */
-  std::vector<int32_t> alleles_keys() const;
+  std::vector<int32_t> allele_keys() const;
 
   /**
    * @brief Returns the allele string at index

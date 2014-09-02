@@ -327,7 +327,7 @@ void check_genotype_api(const Variant& record, const uint32_t truth_index) {
   for (const auto& gt_for_single_sample: gt_for_all_samples) {
     BOOST_CHECK_EQUAL(gt_for_single_sample.size(), 2);
     const auto alleles = gt_for_single_sample.alleles_strings();
-    const auto allele_keys = gt_for_single_sample.alleles_keys();
+    const auto allele_keys = gt_for_single_sample.allele_keys();
     BOOST_CHECK_EQUAL(gt_for_single_sample.allele_string(0), alleles[0]);
     BOOST_CHECK_EQUAL(gt_for_single_sample.allele_string(1), alleles[1]);
     BOOST_CHECK_EQUAL(gt_for_single_sample.allele_key(0), allele_keys[0]);
