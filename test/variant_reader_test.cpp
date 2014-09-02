@@ -792,7 +792,7 @@ const auto indexed_variant_bp_partial_joined = boost::algorithm::join(indexed_va
 
 // full interval lists
 BOOST_AUTO_TEST_CASE( synced_variant_reader_full_test ) {
-  for (const auto intervals : {indexed_variant_chrom_full_joined, indexed_variant_bp_full_joined}) {
+  for (const auto intervals : {string{""}, indexed_variant_chrom_full_joined, indexed_variant_bp_full_joined}) {
     for (const auto input_files : {indexed_variant_vcf_inputs, indexed_variant_bcf_inputs}) {
       auto truth_index = 0u;
       const auto reader = SyncedVariantReader<SyncedVariantIterator>{input_files, intervals};

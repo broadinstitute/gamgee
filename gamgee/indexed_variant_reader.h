@@ -34,7 +34,7 @@ class IndexedVariantReader {
    * parsing them into Variant objects
    *
    * @param filename the name of the variant file
-   * @param interval_list a vector of intervals represented by strings
+   * @param interval_list a vector of intervals represented by strings.  Empty vector for all intervals.
    *
    */
   IndexedVariantReader(const std::string& filename, const std::vector<std::string> interval_list) :
