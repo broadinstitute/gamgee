@@ -122,15 +122,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  std::vector&lt;Variant&gt;&amp; <a class="code" href="classgamgee_1_1_synced_variant_iterator.html#a88dd115642767dd6bfb6602a6e46263b">operator++</a>();</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  std::shared_ptr&lt;bcf_srs_t&gt; m_synced_readers;  </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  std::vector&lt;Variant&gt; m_variant_vector;  </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordtype">void</span> fetch_next_record();                     </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;};</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}  <span class="comment">// end namespace gamgee</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  std::shared_ptr&lt;bcf_srs_t&gt; m_synced_readers;                  </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  std::vector&lt;Variant&gt; m_variant_vector;                        </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  std::vector&lt;std::shared_ptr&lt;bcf_hdr_t&gt;&gt; m_headers_vector;     </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">void</span> init_headers_vector();                                   </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordtype">void</span> fetch_next_record();                                     </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* gamgee__synced_variant_iterator__guard */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}  <span class="comment">// end namespace gamgee</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* gamgee__synced_variant_iterator__guard */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="classgamgee_1_1_synced_variant_iterator_html_ac4420574e2ad2307c91eee59f5513615"><div class="ttname"><a href="classgamgee_1_1_synced_variant_iterator.html#ac4420574e2ad2307c91eee59f5513615">gamgee::SyncedVariantIterator::SyncedVariantIterator</a></div><div class="ttdeci">SyncedVariantIterator()</div><div class="ttdoc">creates an empty iterator (used for the end() method) </div><div class="ttdef"><b>Definition:</b> synced_variant_iterator.cpp:11</div></div>
 <div class="ttc" id="classgamgee_1_1_synced_variant_iterator_html"><div class="ttname"><a href="classgamgee_1_1_synced_variant_iterator.html">gamgee::SyncedVariantIterator</a></div><div class="ttdoc">Utility class to enable for-each style iteration in the SyncedVariantReader class. </div><div class="ttdef"><b>Definition:</b> synced_variant_iterator.h:16</div></div>
 <div class="ttc" id="variant_8h_html"><div class="ttname"><a href="variant_8h.html">variant.h</a></div></div>
@@ -141,7 +143,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Sep 2 2014 19:14:30 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Sep 2 2014 19:46:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
