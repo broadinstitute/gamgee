@@ -157,19 +157,19 @@ class gamgee::IndividualField&lt; TYPE &gt;</h3>
 <p>The role of this class is to perform the pointer manipulations behind the scenes that permit the user to navigate the values of a field without making any copies and benefiting from data locality (all the data is stored contiguously in memory).</p>
 <p>For example, the genotype quality field (GQ) will hold one uint8_t value for each sample. The PL field will hold at least three values per sample. The <a class="el" href="classgamgee_1_1_individual_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">IndividualField</a> will hold all these values per sample in a random access (and random access iterator compatible) way. The <a class="el" href="classgamgee_1_1_individual_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">IndividualField</a> can be used in any algorithm of the stl that requires random access iterators.</p>
 <p>A typical use of the <a class="el" href="classgamgee_1_1_individual_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">IndividualField</a> can be exemplified by the genotype quality accessor in <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a>:</p>
-<div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> gquals = variant_record.genotype_quals(); </div>
+<div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> gquals = variant_record.integer_individual_field(<span class="stringliteral">&quot;GQ&quot;</span>);</div>
 <div class="line">for_each(gquals.begin(), gquals.end(), [](<span class="keyword">const</span> <span class="keyword">auto</span> q) { cout &lt;&lt; q[0] &lt;&lt; endl; });</div>
 </div><!-- fragment --><p><a class="el" href="classgamgee_1_1_individual_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">IndividualField</a> objects can also be used in for loops like so:</p>
-<div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> q : variant_record.genotype_quals()) </div>
+<div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> q : variant_record.integer_individual_field(<span class="stringliteral">&quot;GQ&quot;</span>))</div>
 <div class="line">  cout &lt;&lt; q[0] &lt;&lt; endl;</div>
 </div><!-- fragment --><p>For a field with multiple values, you can also iterate on the resulting <a class="el" href="classgamgee_1_1_individual_field_value.html" title="A class template to hold the values a format field for a particular sample. ">IndividualFieldValue</a> like so:</p>
-<div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> pls = variant_record.phred_likelihoods(); </div>
+<div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> pls = variant_record.integer_individual_field(<span class="stringliteral">&quot;PL&quot;</span>);</div>
 <div class="line"><span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; pl : pls) {</div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> x : pl) {</div>
 <div class="line">    cout &lt;&lt; x &lt;&lt; endl;  <span class="comment">// here x will be hom_ref, het, homvar in each iteration</span></div>
 <div class="line">  }</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>While the <a class="el" href="classgamgee_1_1_individual_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">IndividualField</a> objects are not really intended to be created by the user, they are the returned by many accessors in the <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> API like the genotype_quals() example above. Utilizing them correctly can really simplify your work by leveraging the power of the STL functions.</p>
+</div><!-- fragment --><p>While the <a class="el" href="classgamgee_1_1_individual_field.html" title="A class template to hold the values of a specific Variant&#39;s format field for all samples. ">IndividualField</a> objects are not really intended to be created by the user, they are the returned by many accessors in the <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> API like the integer_individual_field("GQ") example above. Utilizing them correctly can really simplify your work by leveraging the power of the STL functions.</p>
 <dl class="section note"><dt>Note</dt><dd>all methods are inlined on purpose because they are so simple</dd></dl>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -661,7 +661,7 @@ template&lt;class TYPE&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Sep 2 2014 20:14:11 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 4 2014 18:59:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

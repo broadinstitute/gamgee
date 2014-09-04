@@ -264,7 +264,7 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aca3608bbdb9182260d1ba515bdf3b8e2"><td class="memTemplParams" colspan="2">template&lt;class VALUE , template&lt; class &gt; class ITER&gt; </td></tr>
 <tr class="memitem:aca3608bbdb9182260d1ba515bdf3b8e2"><td class="memTemplItemLeft" align="right" valign="top">static boost::dynamic_bitset&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#aca3608bbdb9182260d1ba515bdf3b8e2">select_if</a> (const ITER&lt; VALUE &gt; &amp;first, const ITER&lt; VALUE &gt; &amp;last, const std::function&lt; bool(const decltype(*first)&amp;value)&gt; pred)</td></tr>
-<tr class="memdesc:aca3608bbdb9182260d1ba515bdf3b8e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">functional-stlye set logic operations for variant field vectors  <a href="#aca3608bbdb9182260d1ba515bdf3b8e2">More...</a><br /></td></tr>
+<tr class="memdesc:aca3608bbdb9182260d1ba515bdf3b8e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">functional-style set logic operations for variant field vectors  <a href="#aca3608bbdb9182260d1ba515bdf3b8e2">More...</a><br /></td></tr>
 <tr class="separator:aca3608bbdb9182260d1ba515bdf3b8e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
@@ -1070,12 +1070,12 @@ template&lt;class VALUE , template&lt; class &gt; class ITER&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>functional-stlye set logic operations for variant field vectors </p>
+<p>functional-style set logic operations for variant field vectors </p>
 <p>This function applies the unary predicate pred to every element between first and last in the container without modifying them. It then produces a bitset with as many elements as the full iteration (from first to last) For all elements where the predicate returns true, the corresponding bit in the bitset will be 1 (set). For all elements where the predicate returns false, the corresponding bit will be 0 (unset)</p>
 <p>The great advantage of this functionality is that you can perform one operation across all elements of an iterator benefiting from data locality and cache prefetching which gets translated into a more manageable format (bitset) for subsequent set-logic transformations. This will be particularly fast for very large datasets, for example, in a VCF file with 1000+ samples, running several select_if's end to end on all the samples and then combining the resulting bitsets using set-logic, is much faster than having one single iteration updating several IndividualFields due to it's distance in the computer's memory.</p>
 <p>For example:</p>
 <div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="classgamgee_1_1_variant.html#a68607de44ef4a90f2ce24737a2aac285">genotypes</a> = record.genotypes(); <span class="comment">// a &quot;vector-like&quot; with the genotypes of all samples in this record</span></div>
-<div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> gqs = record.genotype_quals(); <span class="comment">// a &quot;vector-like&quot; with all the GQs of all samples in this record</span></div>
+<div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> gqs = record.integer_individual_field(<span class="stringliteral">&quot;GQ&quot;</span>); <span class="comment">// a &quot;vector-like&quot; with all the GQs of all samples in this record</span></div>
 <div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> hets = <a class="code" href="classgamgee_1_1_variant.html#aca3608bbdb9182260d1ba515bdf3b8e2">Variant::select_if</a>(<a class="code" href="classgamgee_1_1_variant.html#a68607de44ef4a90f2ce24737a2aac285">genotypes</a>.begin(), <a class="code" href="classgamgee_1_1_variant.html#a68607de44ef4a90f2ce24737a2aac285">genotypes</a>.end(), [](<span class="keyword">const</span> <span class="keyword">auto</span>&amp; g) { <span class="keywordflow">return</span> g.het(); }); <span class="comment">// returns a bit set with all hets marked with 1&#39;s</span></div>
 <div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> pass_gqs = <a class="code" href="classgamgee_1_1_variant.html#aca3608bbdb9182260d1ba515bdf3b8e2">Variant::select_if</a>(gqs.begin(), gqs.end(), [](<span class="keyword">const</span> <span class="keyword">auto</span>&amp; gq) { <span class="keywordflow">return</span> gq[0] &gt; 20; }); <span class="comment">// returns a bit set with every sample with gq &gt; 20 marked with 1&#39;s</span></div>
 <div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> high_qual_hets = hets &amp; pass_gqs; <span class="comment">// a bit set with all the samples that are het and have gq &gt; 20</span></div>
@@ -1321,7 +1321,7 @@ This function can be called directly (ignoring the template parameters) as all t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Sep 2 2014 20:14:11 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 4 2014 18:59:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
