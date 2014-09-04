@@ -78,7 +78,7 @@ bool Genotype::missing() const {
   return true;
 }
 
-std::vector<std::string> Genotype::alleles_strings() const {
+std::vector<std::string> Genotype::allele_strings() const {
   return utils::allele_strings(m_body, m_format_ptr, m_data_ptr);
 }
 

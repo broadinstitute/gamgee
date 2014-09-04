@@ -111,11 +111,12 @@ class Genotype{
   bool missing() const;
 
   // referencing alleles inside a sample's genotype
+
   /**
    * @brief Returns a vector with all the allele strings
    * @return a vector with all the allele strings
    */
-  std::vector<std::string> alleles_strings() const;
+  std::vector<std::string> allele_strings() const;
 
   /**
    * @brief Returns a vector with all the allele keys
