@@ -1,7 +1,6 @@
 #ifndef gamgee__individual_field_value_iterator__guard
 #define gamgee__individual_field_value_iterator__guard
 
-#include "utils/utils.h"
 #include "utils/variant_field_type.h"
 
 #include "htslib/vcf.h"
@@ -221,6 +220,28 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
    */
   int32_t  operator-(const IndividualFieldValueIterator<VALUE_TYPE>& first) const {
     return static_cast<int32_t>(m_current_data_ptr - first.m_current_data_ptr)/m_num_bytes;
+  }
+
+  /**
+   * @brief Difference between an iterators and an integer n.
+   * @returns an iterator decremented by n steps.
+   * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way.
+   * @param n is the number of steps to step backward.
+   */
+  IndividualFieldValueIterator&  operator-(const int32_t n) const {
+    operator-=(n);
+    return *this;
+  }
+
+  /**
+   * @brief Addition of an iterators with an integer n.
+   * @returns an iterator incremented by n steps.
+   * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way.
+   * @param n is the number of steps to step forward.
+   */
+  IndividualFieldValueIterator&  operator+(const int32_t n) const {
+    operator+=(n);
+    return *this;
   }
 
   /**
