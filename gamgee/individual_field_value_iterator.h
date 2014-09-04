@@ -1,6 +1,7 @@
 #ifndef gamgee__individual_field_value_iterator__guard
 #define gamgee__individual_field_value_iterator__guard
 
+#include "utils/utils.h"
 #include "utils/variant_field_type.h"
 
 #include "htslib/vcf.h"
@@ -167,25 +168,59 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
   }
 
   /**
-   * @brief advances to the next sample
+   * @brief Prefix increment:  Advances to the next value.
    * @note mainly designed for iterators
    * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way.
-   * @return the next value in it's native type
+   * @return a reference to the next IndividualFieldValue.
    */
-  VALUE_TYPE operator++() noexcept {
-    m_current_data_ptr += m_num_bytes;
-    return convert_from_byte_array(m_current_data_ptr, 0);
+  IndividualFieldValueIterator& operator++() noexcept {
+    operator+=(1);
+    return *this;
   }
 
   /**
-   * @brief advances to the previous sample
+   * @brief Postfix increment:  Advances to the next value.
+   * @note mainly designed for iterators
+   * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way.
+   * @return a reference to the next IndividualFieldValue.
+   */
+  IndividualFieldValueIterator& operator++(int) noexcept {
+    const auto tmp = IndividualFieldValueIterator(*this);
+    operator++();
+    return tmp;
+  }
+
+  /**
+   * @brief Prefix decrement: Steps back to the previous value.
    * @note mainly designed for iterators
    * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way.
    * @return the previous value in it's native type
    */
-  VALUE_TYPE operator--() {
-    m_current_data_ptr -= m_num_bytes;
-    return convert_from_byte_array(m_current_data_ptr, 0);
+  IndividualFieldValueIterator& operator--() {
+    operator-=(1);
+    return *this;
+  }
+
+  /**
+   * @brief Postfix decrement: Steps back to the previous value.
+   * @note mainly designed for iterators
+   * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way.
+   * @return the previous value in it's native type
+   */
+  IndividualFieldValueIterator& operator--(int) {
+    const auto tmp = IndividualFieldValueIterator(*this);
+    operator--();
+    return tmp;
+  }
+
+  /**
+   * @brief Difference between two iterators as an integer.
+   * @note Useful as a substitute for size() when only begin() and end() are available.
+   * @returns the number of iterator steps between [first, last) where last is the current IndividualFieldIterator.
+   * @param first is the iterator the position of which is to be subtracted from the position of the current iterator.
+   */
+  int32_t  operator-(const IndividualFieldValueIterator<VALUE_TYPE>& first) const {
+    return static_cast<int32_t>(m_current_data_ptr - first.m_current_data_ptr)/m_num_bytes;
   }
 
   /**
