@@ -21,10 +21,10 @@ namespace gamgee {
  * stored contiguously in memory). 
  *
  * A typical use of the IndividualFieldValue can be exemplified by the
- * genotype qualitiy accessor in Variant: 
+ * phred likelihood accessor in Variant:
  * 
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * const auto all_pls = record.phred_likelihoods();
+ * const auto all_pls = record.integer_individual_field("PL");
  * const auto my_pls = all_pls[2] // take the second sample
  * for_each(my_pls.begin(), my_pls.end(), [](const auto pl) { cout << pl << endl; });
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -44,9 +44,8 @@ namespace gamgee {
  * @note all methods are inlined on purpose because they are so simple
  * 
  * @tparam TYPE the object type that holds the values for each sample. For
- * example for GQ it's a uint8_t, some types like GT and PL can have
- * specialized classes like Genotype and PhredLikelihoods. For all other types
- * it can be the IndividualFieldValue.
+ * example for GQ it's a uint8_t, some types like GT can have specialized classes
+ * like Genotype. For all other types it can be the IndividualFieldValue.
  */
 template<class VALUE_TYPE>
 class IndividualFieldValue {

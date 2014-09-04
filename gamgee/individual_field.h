@@ -30,21 +30,21 @@ namespace gamgee {
  * A typical use of the IndividualField can be exemplified by the genotype quality accessor in Variant: 
  * 
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * const auto gquals = variant_record.genotype_quals(); 
+ * const auto gquals = variant_record.integer_individual_field("GQ");
  * for_each(gquals.begin(), gquals.end(), [](const auto q) { cout << q[0] << endl; });
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
  * IndividualField objects can also be used in for loops like so: 
  * 
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * for (const auto q : variant_record.genotype_quals()) 
+ * for (const auto q : variant_record.integer_individual_field("GQ"))
  *   cout << q[0] << endl;
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
  * For a field with multiple values, you can also iterate on the resulting IndividualFieldValue like so:
  *
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * const auto pls = variant_record.phred_likelihoods(); 
+ * const auto pls = variant_record.integer_individual_field("PL");
  * for(const auto& pl : pls) {
  *   for (const auto x : pl) {
  *     cout << x << endl;  // here x will be hom_ref, het, homvar in each iteration
@@ -53,7 +53,7 @@ namespace gamgee {
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
  * While the IndividualField objects are not really intended to be created by the user, they are the returned by 
- * many accessors in the Variant API like the genotype_quals() example above. Utilizing them correctly can 
+ * many accessors in the Variant API like the integer_individual_field("GQ") example above. Utilizing them correctly can
  * really simplify your work by leveraging the power of the STL functions.
  *
  * @note all methods are inlined on purpose because they are so simple

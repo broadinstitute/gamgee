@@ -83,7 +83,7 @@ class Variant {
   SharedField<std::string> shared_field_as_string(const int32_t index) const;    ///< same as string_shared_field but will attempt to convert underlying data to string if possible. @warning creates a new object but makes no copies of the underlying values.
 
   /**
-   * @brief functional-stlye set logic operations for variant field vectors
+   * @brief functional-style set logic operations for variant field vectors
    *
    * This function applies the unary predicate pred to every element between 
    * first and last in the container without modifying them. It then produces 
@@ -107,7 +107,7 @@ class Variant {
    *
    * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    * const auto genotypes = record.genotypes(); // a "vector-like" with the genotypes of all samples in this record
-   * const auto gqs = record.genotype_quals(); // a "vector-like" with all the GQs of all samples in this record
+   * const auto gqs = record.integer_individual_field("GQ"); // a "vector-like" with all the GQs of all samples in this record
    * const auto hets = Variant::select_if(genotypes.begin(), genotypes.end(), [](const auto& g) { return g.het(); }); // returns a bit set with all hets marked with 1's
    * const auto pass_gqs = Variant::select_if(gqs.begin(), gqs.end(), [](const auto& gq) { return gq[0] > 20; }); // returns a bit set with every sample with gq > 20 marked with 1's
    * const auto high_qual_hets = hets & pass_gqs; // a bit set with all the samples that are het and have gq > 20
