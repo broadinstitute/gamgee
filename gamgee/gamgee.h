@@ -24,4 +24,6 @@
 
 #include "exceptions.h"
 
+#include "zip.h"
+
 #endif  /* gamgee__gamgee__guard */

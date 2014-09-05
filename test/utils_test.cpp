@@ -1,4 +1,5 @@
 #include "../gamgee/utils/utils.h"
+#include "../gamgee/zip.h"
 
 #include <boost/test/unit_test.hpp>
 
