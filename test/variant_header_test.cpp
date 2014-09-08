@@ -41,6 +41,12 @@ BOOST_AUTO_TEST_CASE( variant_header_builder_simple_building ) {
   check_fields(vh.filters(), filters);
   check_fields(vh.shared_fields(), shareds);
   check_fields(vh.individual_fields(), individuals);
+  BOOST_CHECK(vh.has_filter("LOW_QUAL") == true);
+  BOOST_CHECK(vh.has_filter("VQSR_FAILED") == true);
+  BOOST_CHECK(vh.has_filter("BLAH") == false);
+  BOOST_CHECK(vh.has_shared_field("DP") == true);
+  BOOST_CHECK(vh.has_shared_field("MQ") == true);
+  BOOST_CHECK(vh.has_shared_field("BLAH") == false);
   BOOST_CHECK(vh.has_individual_field("GQ") == true);
   BOOST_CHECK(vh.has_individual_field("DP") == true);
   BOOST_CHECK(vh.has_individual_field("BLAH") == false);
