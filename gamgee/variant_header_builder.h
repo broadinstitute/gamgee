@@ -31,14 +31,14 @@ class VariantHeaderBuilder {
   VariantHeaderBuilder(VariantHeaderBuilder&& other) = default;
   VariantHeaderBuilder& operator=(VariantHeaderBuilder&& other) = default;
 
-  void add_chromosome(const std::string& id, const std::string& length = "", const std::string& url = "", const std::string& extra = "");
-  void add_filter(const std::string& id, const std::string& description = "", const std::string& extra = "");
-  void add_shared_field(const std::string& id, const std::string& number, const std::string& type, const std::string& description = "", const std::string& source = "", const std::string& version = "", const std::string& extra = "");
-  void add_individual_field(const std::string& id, const std::string& number, const std::string& type, const std::string& description = "", const std::string& extra = "");
-  void add_sample(const std::string& sample);
-  void add_source(const std::string& source);
+  VariantHeaderBuilder& add_chromosome(const std::string& id, const std::string& length = "", const std::string& url = "", const std::string& extra = "");
+  VariantHeaderBuilder& add_filter(const std::string& id, const std::string& description = "", const std::string& extra = "");
+  VariantHeaderBuilder& add_shared_field(const std::string& id, const std::string& number, const std::string& type, const std::string& description = "", const std::string& source = "", const std::string& version = "", const std::string& extra = "");
+  VariantHeaderBuilder& add_individual_field(const std::string& id, const std::string& number, const std::string& type, const std::string& description = "", const std::string& extra = "");
+  VariantHeaderBuilder& add_sample(const std::string& sample);
+  VariantHeaderBuilder& add_source(const std::string& source);
 
-  void advanced_add_arbitrary_line(const std::string& line);
+  VariantHeaderBuilder& advanced_add_arbitrary_line(const std::string& line);
 
   /**
    * @brief create a new VariantHeader by copying the contents of this builder into a new object.  Allows for reuse.

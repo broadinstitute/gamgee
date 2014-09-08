@@ -100,3 +100,40 @@ BOOST_AUTO_TEST_CASE( variant_header_builder_move ) {
   auto builder2 = check_move_constructor(builder1);
   variant_header_builder_checks(builder2.build());
 }
+
+BOOST_AUTO_TEST_CASE( variant_header_builder_chained ) {
+  auto builder = VariantHeaderBuilder{};
+  builder
+    .add_source("Gamgee api test")
+    .advanced_add_arbitrary_line("##unused=<XX=AA,Description=\"Unused generic\">")
+    .add_chromosome("chr1", "234")
+    .add_chromosome("chr2", "234")
+    .add_chromosome("chr3", "234");
+
+  // verify that the chain can be broken and resumed
+  builder
+    .add_chromosome("chr4", "234")
+    .add_sample("S1")
+    .add_sample("S292")
+    .add_sample("S30034")
+    .add_filter("LOW_QUAL", "anything", "deer=vanison")
+    .add_filter("PASS", "anything", "deer=vanison")
+    .add_filter("VQSR_FAILED", "anything", "deer=vanison")
+    .add_shared_field("DP", "43", "Integer", "something", "the_source", "3.4", "cow=beef")
+    .add_shared_field("MQ", "43", "Integer", "something", "the_source", "3.4", "cow=beef")
+    .add_shared_field("RankSum", "43", "Integer", "something", "the_source", "3.4", "cow=beef")
+    .add_individual_field("GQ", "13", "Float", "nothing", "goat=shank")
+    .add_individual_field("PL", "13", "Float", "nothing", "goat=shank")
+    .add_individual_field("DP", "13", "Float", "nothing", "goat=shank");
+
+  for (const auto& sample : samples)
+    builder.add_sample(sample);
+  for (const auto& filter : filters)
+    builder.add_filter(filter, "anything", "deer=vanison");
+  for (const auto& shared : shareds)
+    builder.add_shared_field(shared, "43", "Integer", "something", "the_source", "3.4", "cow=beef");
+  for (const auto& individual : individuals)
+    builder.add_individual_field(individual, "13", "Float", "nothing", "goat=shank");
+
+  variant_header_builder_checks(builder.build());
+}

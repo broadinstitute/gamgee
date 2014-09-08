@@ -22,24 +22,26 @@ VariantHeaderBuilder::VariantHeaderBuilder() noexcept :
   m_header {bcf_hdr_init("w"), utils::VariantHeaderDeleter()}
 {}
 
-void VariantHeaderBuilder::add_chromosome(const string& id, const string& length, const string& url, const string& extra) {
+VariantHeaderBuilder& VariantHeaderBuilder::add_chromosome(const string& id, const string& length, const string& url, const string& extra) {
   auto s = string{"##contig=<ID=" + id};
   s.append(optional_parameter("length=", length));
   s.append(optional_parameter("url=", url));
   s.append(optional_parameter("", extra));
   s.append(">");
   bcf_hdr_append(m_header.get(), s.c_str());
+  return *this;
 }
 
-void VariantHeaderBuilder::add_filter(const string& id, const string& description, const string& extra) {
+VariantHeaderBuilder& VariantHeaderBuilder::add_filter(const string& id, const string& description, const string& extra) {
   auto s = string{"##FILTER=<ID=" + id};
   s.append(optional_parameter("Description=", description));
   s.append(optional_parameter("", extra));
   s.append(">");
   bcf_hdr_append(m_header.get(), s.c_str());
+  return *this;
 }
 
-void VariantHeaderBuilder::add_shared_field(const string& id, const string& number, const string& type, const string& description, const string& source, const string& version, const string& extra) {
+VariantHeaderBuilder& VariantHeaderBuilder::add_shared_field(const string& id, const string& number, const string& type, const string& description, const string& source, const string& version, const string& extra) {
   auto s = string{"##INFO=<ID=" + id};
   s.append(required_parameter("number=", number));
   s.append(required_parameter("type=", type));
@@ -49,9 +51,10 @@ void VariantHeaderBuilder::add_shared_field(const string& id, const string& numb
   s.append(optional_parameter("", extra));
   s.append(">");
   bcf_hdr_append(m_header.get(), s.c_str());
+  return *this;
 }
 
-void VariantHeaderBuilder::add_individual_field(const string& id, const string& number, const string& type, const string& description, const string& extra) {
+VariantHeaderBuilder& VariantHeaderBuilder::add_individual_field(const string& id, const string& number, const string& type, const string& description, const string& extra) {
   auto s = string{"##FORMAT=<ID=" + id};
   s.append(required_parameter("number=", number));
   s.append(required_parameter("type=", type));
@@ -59,19 +62,23 @@ void VariantHeaderBuilder::add_individual_field(const string& id, const string& 
   s.append(optional_parameter("", extra));
   s.append(">");
   bcf_hdr_append(m_header.get(), s.c_str());
+  return *this;
 }
 
-void VariantHeaderBuilder::add_source(const string& source) {
+VariantHeaderBuilder& VariantHeaderBuilder::add_source(const string& source) {
   auto s = string{"##FORMAT=<source=" + source + ">"};
   bcf_hdr_append(m_header.get(), s.c_str());
+  return *this;
 }
 
-void VariantHeaderBuilder::add_sample(const string& sample) {
+VariantHeaderBuilder& VariantHeaderBuilder::add_sample(const string& sample) {
   bcf_hdr_add_sample(m_header.get(), sample.c_str());
+  return *this;
 }
 
-void VariantHeaderBuilder::advanced_add_arbitrary_line(const std::string& line) {
+VariantHeaderBuilder& VariantHeaderBuilder::advanced_add_arbitrary_line(const std::string& line) {
   bcf_hdr_append(m_header.get(), line.c_str());
+  return *this;
 }
 
 
