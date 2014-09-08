@@ -94,3 +94,9 @@ BOOST_AUTO_TEST_CASE( variant_header_builder_one_time_build ) {
   const auto header = builder.one_time_build();
   variant_header_builder_checks(header);
 }
+
+BOOST_AUTO_TEST_CASE( variant_header_builder_move ) {
+  auto builder1 = simple_builder();
+  auto builder2 = check_move_constructor(builder1);
+  variant_header_builder_checks(builder2.build());
+}

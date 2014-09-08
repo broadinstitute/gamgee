@@ -24,8 +24,12 @@ class VariantHeaderBuilder {
    * @warning       you should only call this explicitly if you are building a VariantHeader from scratch.
    */
   VariantHeaderBuilder() noexcept;
-  VariantHeaderBuilder(VariantHeaderBuilder&& other) noexcept;
-  VariantHeaderBuilder(const VariantHeaderBuilder& other) = delete; ///< @brief explicitly forbid copying of a builder
+
+  VariantHeaderBuilder(const VariantHeaderBuilder& other) = delete;
+  VariantHeaderBuilder& operator=(const VariantHeaderBuilder& other) = delete;
+
+  VariantHeaderBuilder(VariantHeaderBuilder&& other) = default;
+  VariantHeaderBuilder& operator=(VariantHeaderBuilder&& other) = default;
 
   void add_chromosome(const std::string& id, const std::string& length = "", const std::string& url = "", const std::string& extra = "");
   void add_filter(const std::string& id, const std::string& description = "", const std::string& extra = "");

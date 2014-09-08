@@ -22,10 +22,6 @@ VariantHeaderBuilder::VariantHeaderBuilder() noexcept :
   m_header {bcf_hdr_init("w"), utils::VariantHeaderDeleter()}
 {}
 
-VariantHeaderBuilder::VariantHeaderBuilder(VariantHeaderBuilder&& other) noexcept :
-  m_header {std::move(other.m_header)}
-{}
-
 void VariantHeaderBuilder::add_chromosome(const string& id, const string& length, const string& url, const string& extra) {
   auto s = string{"##contig=<ID=" + id};
   s.append(optional_parameter("length=", length));
