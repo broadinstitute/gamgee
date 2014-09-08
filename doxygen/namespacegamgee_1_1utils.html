@@ -251,10 +251,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a0f228e0091b6df37b21d4a58c7ad372c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">check_max_boundary</a> (const uint32_t index, const uint32_t size)</td></tr>
 <tr class="memdesc:a0f228e0091b6df37b21d4a58c7ad372c"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks that an index is greater than or equal to size  <a href="#a0f228e0091b6df37b21d4a58c7ad372c">More...</a><br /></td></tr>
 <tr class="separator:a0f228e0091b6df37b21d4a58c7ad372c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4eeafb551287063423ea31a173c264e0"><td class="memTemplParams" colspan="2">template&lt;typename... T&gt; </td></tr>
-<tr class="memitem:a4eeafb551287063423ea31a173c264e0"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a4eeafb551287063423ea31a173c264e0">zip</a> (const T &amp;...containers) -&gt; boost::iterator_range&lt; boost::zip_iterator&lt; decltype(boost::make_tuple(containers.begin()...))&gt;&gt;</td></tr>
-<tr class="memdesc:a4eeafb551287063423ea31a173c264e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">utility method to zip iterators together with simpler syntax than boost  <a href="#a4eeafb551287063423ea31a173c264e0">More...</a><br /></td></tr>
-<tr class="separator:a4eeafb551287063423ea31a173c264e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b57ec3415d2ed156dbd52b8c5b16dcb"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a8b57ec3415d2ed156dbd52b8c5b16dcb">convert_data_to_integer</a> (const uint8_t *data_ptr, const int index, const uint8_t num_bytes_per_value, const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">VariantFieldType</a> &amp;type)</td></tr>
 <tr class="memdesc:a8b57ec3415d2ed156dbd52b8c5b16dcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">converts the value in an index from the byte array into int32_t  <a href="#a8b57ec3415d2ed156dbd52b8c5b16dcb">More...</a><br /></td></tr>
 <tr class="separator:a8b57ec3415d2ed156dbd52b8c5b16dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -270,6 +266,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a6ccc5fa09f535b5f1a9dde2e1357737c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a6ccc5fa09f535b5f1a9dde2e1357737c">size_for_type</a> (const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">VariantFieldType</a> &amp;type, const bcf_info_t *const info_ptr)</td></tr>
 <tr class="memdesc:a6ccc5fa09f535b5f1a9dde2e1357737c"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of bytes for a given VariantFieldType  <a href="#a6ccc5fa09f535b5f1a9dde2e1357737c">More...</a><br /></td></tr>
 <tr class="separator:a6ccc5fa09f535b5f1a9dde2e1357737c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4eeafb551287063423ea31a173c264e0"><td class="memTemplParams" colspan="2">template&lt;typename... T&gt; </td></tr>
+<tr class="memitem:a4eeafb551287063423ea31a173c264e0"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a4eeafb551287063423ea31a173c264e0">zip</a> (const T &amp;...containers) -&gt; boost::iterator_range&lt; boost::zip_iterator&lt; decltype(boost::make_tuple(containers.begin()...))&gt;&gt;</td></tr>
+<tr class="memdesc:a4eeafb551287063423ea31a173c264e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">utility method to zip iterators together with simpler syntax than boost  <a href="#a4eeafb551287063423ea31a173c264e0">More...</a><br /></td></tr>
+<tr class="separator:a4eeafb551287063423ea31a173c264e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>utility functions for the gamgee library </p>
@@ -1590,7 +1590,7 @@ template&lt;typename... T&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 4 2014 20:26:52 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 8 2014 17:57:41 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
