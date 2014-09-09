@@ -36,7 +36,10 @@ class VariantHeader {
   std::vector<std::string> chromosomes() const;       ///< @brief builds a vector with the contigs
   std::vector<std::string> shared_fields() const;     ///< @brief builds a vector with the info fields
   std::vector<std::string> individual_fields() const; ///< @brief builds a vector with the format fields
-  bool has_individual_field(const std::string) const; ///< @brief checks if the format field has the given field
+
+  bool has_filter(const std::string&) const;           ///< @brief checks if the given filter is present
+  bool has_shared_field(const std::string&) const;     ///< @brief checks if the given shared (INFO) field is present
+  bool has_individual_field(const std::string&) const; ///< @brief checks if the given individual (FORMAT) field is present
 
   void advanced_merge_header(const VariantHeader& other) { bcf_hdr_combine(other.m_header.get(), m_header.get()); }
 
