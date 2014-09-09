@@ -2,18 +2,30 @@
 
 #include "utils/hts_memory.h"
 
+#include <zlib.h>
+
 namespace gamgee {
 
-VariantWriter::VariantWriter(const std::string& output_fname, const bool binary) :
-  m_out_file {utils::make_unique_hts_file(open_file(output_fname, binary ? "wb" : "w"))},
+VariantWriter::VariantWriter(const std::string& output_fname, const bool binary, const int compression_level) :
+  m_out_file {utils::make_unique_hts_file(open_file(output_fname, write_mode(binary, compression_level)))},
   m_header {nullptr}
 {}
 
-VariantWriter::VariantWriter(const VariantHeader& header, const std::string& output_fname, const bool binary) :
-  m_out_file {utils::make_unique_hts_file(open_file(output_fname, binary ? "wb" : "w"))},
+VariantWriter::VariantWriter(const VariantHeader& header, const std::string& output_fname, const bool binary, const int compression_level) :
+  m_out_file {utils::make_unique_hts_file(open_file(output_fname, write_mode(binary, compression_level)))},
   m_header{header}
 {
   write_header();
+}
+
+std::string VariantWriter::write_mode(const bool binary, const int compression_level) const {
+  if (compression_level != Z_DEFAULT_COMPRESSION) {
+    if (!binary)
+      throw new std::runtime_error{"Cannot specify compression level for VCF files"};
+    return "wb" + std::to_string(compression_level);
+  }
+  else
+    return binary ? "wb" : "w";
 }
 
 void VariantWriter::add_header(const VariantHeader& header) { 
