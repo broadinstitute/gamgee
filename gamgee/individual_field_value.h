@@ -156,10 +156,10 @@ class IndividualFieldValue {
   uint32_t size() const { return m_format_ptr->n; } ///< @brief the number of values in this IndividualFieldValue (values per sample)
 
  private:
-  const std::shared_ptr<bcf1_t> m_body;
-  const bcf_fmt_t* const m_format_ptr;
-  uint8_t* const m_data_ptr;
-  const uint8_t m_num_bytes;
+  std::shared_ptr<bcf1_t> m_body;
+  const bcf_fmt_t* m_format_ptr;
+  uint8_t* m_data_ptr;
+  uint8_t m_num_bytes;
 
   VALUE_TYPE convert_from_byte_array(int index) const;
 };
