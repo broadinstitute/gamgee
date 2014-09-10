@@ -96,26 +96,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>utility class to write out a SAM/BAM/CRAM file to any stream  
+<p>utility class to write out a VCF/BCF file to any stream  
  <a href="classgamgee_1_1_variant_writer.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="variant__writer_8h_source.html">variant_writer.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aff9e52cd96c9a8ae5b6c99e5f2e9cc46"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_writer.html#aff9e52cd96c9a8ae5b6c99e5f2e9cc46">VariantWriter</a> (const std::string &amp;output_fname=&quot;-&quot;, const bool binary=true)</td></tr>
-<tr class="memdesc:aff9e52cd96c9a8ae5b6c99e5f2e9cc46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a SAM/BAM/CRAM file to any stream ">VariantWriter</a> using the specified output file name.  <a href="#aff9e52cd96c9a8ae5b6c99e5f2e9cc46">More...</a><br /></td></tr>
-<tr class="separator:aff9e52cd96c9a8ae5b6c99e5f2e9cc46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcc822db4e33cee2119e2faef18a289f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_writer.html#afcc822db4e33cee2119e2faef18a289f">VariantWriter</a> (const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> &amp;header, const std::string &amp;output_fname=&quot;-&quot;, const bool binary=true)</td></tr>
-<tr class="memdesc:afcc822db4e33cee2119e2faef18a289f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a SAM/BAM/CRAM file to any stream ">VariantWriter</a> with the header extracted from a <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record and using the specified output file name.  <a href="#afcc822db4e33cee2119e2faef18a289f">More...</a><br /></td></tr>
-<tr class="separator:afcc822db4e33cee2119e2faef18a289f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2efb337db19e94c26f50b13b0f5c9dd9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_writer.html#a2efb337db19e94c26f50b13b0f5c9dd9">VariantWriter</a> (const std::string &amp;output_fname=&quot;-&quot;, const bool binary=true, const int compression_level=Z_DEFAULT_COMPRESSION)</td></tr>
+<tr class="memdesc:a2efb337db19e94c26f50b13b0f5c9dd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a VCF/BCF file to any stream ">VariantWriter</a> using the specified output file name.  <a href="#a2efb337db19e94c26f50b13b0f5c9dd9">More...</a><br /></td></tr>
+<tr class="separator:a2efb337db19e94c26f50b13b0f5c9dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d888b10667b361e61a6884344385344"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_writer.html#a9d888b10667b361e61a6884344385344">VariantWriter</a> (const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> &amp;header, const std::string &amp;output_fname=&quot;-&quot;, const bool binary=true, const int compression_level=Z_DEFAULT_COMPRESSION)</td></tr>
+<tr class="memdesc:a9d888b10667b361e61a6884344385344"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a VCF/BCF file to any stream ">VariantWriter</a> with the header extracted from a <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record and using the specified output file name.  <a href="#a9d888b10667b361e61a6884344385344">More...</a><br /></td></tr>
+<tr class="separator:a9d888b10667b361e61a6884344385344"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07642e4ae11402807d585364bcce8eb7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_writer.html#a07642e4ae11402807d585364bcce8eb7">VariantWriter</a> (const <a class="el" href="classgamgee_1_1_variant_writer.html">VariantWriter</a> &amp;other)=delete</td></tr>
-<tr class="memdesc:a07642e4ae11402807d585364bcce8eb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">a <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a SAM/BAM/CRAM file to any stream ">VariantWriter</a> cannot be copied safely, as it is iterating over a stream.  <a href="#a07642e4ae11402807d585364bcce8eb7">More...</a><br /></td></tr>
+<tr class="memdesc:a07642e4ae11402807d585364bcce8eb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">a <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a VCF/BCF file to any stream ">VariantWriter</a> cannot be copied safely, as it is iterating over a stream.  <a href="#a07642e4ae11402807d585364bcce8eb7">More...</a><br /></td></tr>
 <tr class="separator:a07642e4ae11402807d585364bcce8eb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56b608c8ecf4ec9751ebce4439b2e2eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_writer.html">VariantWriter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_writer.html#a56b608c8ecf4ec9751ebce4439b2e2eb">operator=</a> (const <a class="el" href="classgamgee_1_1_variant_writer.html">VariantWriter</a> &amp;other)=delete</td></tr>
 <tr class="separator:a56b608c8ecf4ec9751ebce4439b2e2eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe866f986cb0ae6bed697c81cb44ef06"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_writer.html#afe866f986cb0ae6bed697c81cb44ef06">VariantWriter</a> (<a class="el" href="classgamgee_1_1_variant_writer.html">VariantWriter</a> &amp;&amp;other)=default</td></tr>
-<tr class="memdesc:afe866f986cb0ae6bed697c81cb44ef06"><td class="mdescLeft">&#160;</td><td class="mdescRight">a <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a SAM/BAM/CRAM file to any stream ">VariantWriter</a> can be moved  <a href="#afe866f986cb0ae6bed697c81cb44ef06">More...</a><br /></td></tr>
+<tr class="memdesc:afe866f986cb0ae6bed697c81cb44ef06"><td class="mdescLeft">&#160;</td><td class="mdescRight">a <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a VCF/BCF file to any stream ">VariantWriter</a> can be moved  <a href="#afe866f986cb0ae6bed697c81cb44ef06">More...</a><br /></td></tr>
 <tr class="separator:afe866f986cb0ae6bed697c81cb44ef06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49e3be3a787da38be49d1dccc673d3f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_writer.html">VariantWriter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_writer.html#a49e3be3a787da38be49d1dccc673d3f8">operator=</a> (<a class="el" href="classgamgee_1_1_variant_writer.html">VariantWriter</a> &amp;&amp;other)=default</td></tr>
 <tr class="separator:a49e3be3a787da38be49d1dccc673d3f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,10 +127,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3cda74c0dac195ac22c52dbf2a7dd3e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>utility class to write out a SAM/BAM/CRAM file to any stream </p>
+<div class="textblock"><p>utility class to write out a VCF/BCF file to any stream </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>add serialization option </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aff9e52cd96c9a8ae5b6c99e5f2e9cc46"></a>
+<a class="anchor" id="a2efb337db19e94c26f50b13b0f5c9dd9"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -147,7 +147,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const bool&#160;</td>
-          <td class="paramname"><em>binary</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>binary</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>compression_level</em> = <code>Z_DEFAULT_COMPRESSION</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -162,11 +168,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Creates a new <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a SAM/BAM/CRAM file to any stream ">VariantWriter</a> using the specified output file name. </p>
+<p>Creates a new <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a VCF/BCF file to any stream ">VariantWriter</a> using the specified output file name. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">output_fname</td><td>file to write to. The default is stdout (as defined by htslib) </td></tr>
-    <tr><td class="paramname">binary</td><td>whether the output should be in BAM (true) or SAM format (false) </td></tr>
+    <tr><td class="paramname">binary</td><td>whether the output should be in BCF (true) or VCF format (false) </td></tr>
+    <tr><td class="paramname">compression_level</td><td>optional zlib compression level. 0 for none, 1 for best speed, 9 for best compression </td></tr>
   </table>
   </dd>
 </dl>
@@ -174,7 +181,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="afcc822db4e33cee2119e2faef18a289f"></a>
+<a class="anchor" id="a9d888b10667b361e61a6884344385344"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -197,7 +204,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const bool&#160;</td>
-          <td class="paramname"><em>binary</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>binary</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>compression_level</em> = <code>Z_DEFAULT_COMPRESSION</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -212,12 +225,13 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Creates a new <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a SAM/BAM/CRAM file to any stream ">VariantWriter</a> with the header extracted from a <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record and using the specified output file name. </p>
+<p>Creates a new <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a VCF/BCF file to any stream ">VariantWriter</a> with the header extracted from a <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record and using the specified output file name. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">header</td><td><a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a> object to make a copy from </td></tr>
+    <tr><td class="paramname">header</td><td>a <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a> object to make a copy from </td></tr>
     <tr><td class="paramname">output_fname</td><td>file to write to. The default is stdout (as defined by htslib) </td></tr>
-    <tr><td class="paramname">binary</td><td>whether the output should be in BAM (true) or SAM format (false) </td></tr>
+    <tr><td class="paramname">binary</td><td>whether the output should be in BCF (true) or VCF format (false) </td></tr>
+    <tr><td class="paramname">compression_level</td><td>optional zlib compression level. 0 for none, 1 for best speed, 9 for best compression </td></tr>
   </table>
   </dd>
 </dl>
@@ -247,7 +261,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>a <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a SAM/BAM/CRAM file to any stream ">VariantWriter</a> cannot be copied safely, as it is iterating over a stream. </p>
+<p>a <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a VCF/BCF file to any stream ">VariantWriter</a> cannot be copied safely, as it is iterating over a stream. </p>
 
 </div>
 </div>
@@ -273,7 +287,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>a <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a SAM/BAM/CRAM file to any stream ">VariantWriter</a> can be moved </p>
+<p>a <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a VCF/BCF file to any stream ">VariantWriter</a> can be moved </p>
 
 </div>
 </div>
@@ -382,7 +396,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Sep 9 2014 01:54:52 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 10 2014 19:12:20 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
