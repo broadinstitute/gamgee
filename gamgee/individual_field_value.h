@@ -5,6 +5,7 @@
 #include "utils/hts_memory.h"
 #include "utils/utils.h"
 #include "utils/variant_field_type.h"
+#include "missing.h"
 
 #include "htslib/vcf.h"
 
@@ -156,6 +157,17 @@ class IndividualFieldValue {
   uint32_t size() const { return m_format_ptr->n; } ///< @brief the number of values in this IndividualFieldValue (values per sample)
   VALUE_TYPE front() const { return operator[](0); }                    ///< @brief convenience function to access the first element
   VALUE_TYPE back() const { return operator[](m_format_ptr->n - 1); }   ///< @brief convenience function to access the last element
+
+  /**
+   * @brief returns true if all of the values are missing
+   */
+  bool missing() const {
+    for (const auto value : *this)
+      // use qualifier to avoid recursion
+      if (!gamgee::missing(value))
+        return false;
+    return true;
+  }
 
  private:
   std::shared_ptr<bcf1_t> m_body;
