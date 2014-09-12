@@ -154,6 +154,8 @@ class IndividualFieldValue {
   }
 
   uint32_t size() const { return m_format_ptr->n; } ///< @brief the number of values in this IndividualFieldValue (values per sample)
+  VALUE_TYPE front() const { return operator[](0); }                    ///< @brief convenience function to access the first element
+  VALUE_TYPE back() const { return operator[](m_format_ptr->n - 1); }   ///< @brief convenience function to access the last element
 
  private:
   std::shared_ptr<bcf1_t> m_body;

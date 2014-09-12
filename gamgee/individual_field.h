@@ -160,6 +160,8 @@ class IndividualField {
   uint32_t n_samples() const { return size(); }                    ///< @brief just an alias to size() to simplify interfaces
   uint32_t empty() const { return m_body == nullptr; }             ///< @brief checks if the object is empty. @note empty objects are returned when the requested field is missing
   uint32_t missing() const { return empty();}                      ///< @brief checks if the object is empty. @note empty objects are returned when the requested field is missing
+  TYPE front() const { return operator[](0); }                     ///< @brief convenience function to access the first element
+  TYPE back() const { return operator[](m_body->n_sample - 1); }   ///< @brief convenience function to access the last element
 
  private:
   const std::shared_ptr<bcf1_t> m_body; ///< shared ownership of the Variant record memory so it stays alive while this object is in scope

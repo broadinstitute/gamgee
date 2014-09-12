@@ -209,6 +209,14 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
     BOOST_CHECK_EQUAL(as_string[i][0], truth_as[truth_index][i]);
     BOOST_CHECK_EQUAL(as_string_idx[i][0], truth_as[truth_index][i]);
   }
+  BOOST_CHECK_EQUAL(gq_int.front()[0], truth_gq[truth_index][0]);
+  BOOST_CHECK_EQUAL(gq_int.back()[0], truth_gq[truth_index][gq_int.size() - 1]);
+  BOOST_CHECK_EQUAL(gq_int[0].front(), truth_gq[truth_index][0]);
+  BOOST_CHECK_EQUAL(gq_int[0].back(), truth_gq[truth_index][0]);
+  BOOST_CHECK_EQUAL(pl_int.front()[0], truth_pl[truth_index][0][0]);
+  BOOST_CHECK_EQUAL(pl_int.back()[0], truth_pl[truth_index][pl_int.size() - 1][0]);
+  BOOST_CHECK_EQUAL(pl_int[0].front(), truth_pl[truth_index][0][0]);
+  BOOST_CHECK_EQUAL(pl_int[0].back(), truth_pl[truth_index][0][pl_int[0].size() - 1]);
   BOOST_CHECK_THROW(as_float[0][0], invalid_argument); 
   BOOST_CHECK_THROW(as_float_idx[0][0], invalid_argument); 
   BOOST_CHECK_THROW(as_int[0][0], invalid_argument); 
@@ -238,6 +246,9 @@ void check_shared_field_api(const Variant& record, const uint32_t truth_index) {
   BOOST_CHECK_EQUAL_COLLECTIONS(desc.begin(), desc.end(), truth_shared_desc[truth_index].begin(), truth_shared_desc[truth_index].end());
   const auto desc_idx = record.string_shared_field(header.field_index("DESC")); // test the index based api
   BOOST_CHECK_EQUAL_COLLECTIONS(desc_idx.begin(), desc_idx.end(), truth_shared_desc[truth_index].begin(), truth_shared_desc[truth_index].end());
+  // check front() and back()
+  BOOST_CHECK_EQUAL(an.front(), truth_shared_an[truth_index][0]);
+  BOOST_CHECK_EQUAL(an.back(), truth_shared_an[truth_index][an.size() - 1]);
   // check non-existing missing values
   BOOST_CHECK(missing(record.boolean_shared_field("NON_EXISTING")));
   BOOST_CHECK(missing(record.integer_shared_field("NON_EXISTING")));

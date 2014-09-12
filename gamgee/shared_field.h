@@ -135,6 +135,8 @@ class SharedField {
   uint32_t size() const { return m_info_ptr->len; } ///< @brief the number of values in this SharedField (values per sample)
   bool empty() const { return m_body == nullptr; }  ///< @brief checks if the object is empty. @note empty objects are returned when the requested field is missing
   bool missing() const { return empty(); }          ///< simple overload of empty to work with gamgee's missing API
+  TYPE front() const { return operator[](0); }                    ///< @brief convenience function to access the first element
+  TYPE back() const { return operator[](m_info_ptr->len - 1); }   ///< @brief convenience function to access the last element
 
  private:
   const std::shared_ptr<bcf1_t> m_body;
