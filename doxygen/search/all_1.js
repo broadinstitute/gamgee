@@ -1,6 +1,7 @@
 var searchData=
 [
   ['b',['B',['../namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139a9d5ed678fe57bcca610140957afab571',1,'gamgee']]],
+  ['back',['back',['../classgamgee_1_1_individual_field.html#a4ffb6c82d6c2490eafbc298b644bdad6',1,'gamgee::IndividualField::back()'],['../classgamgee_1_1_individual_field_value.html#aff33de10fd722566f56a3baaa778e607',1,'gamgee::IndividualFieldValue::back()'],['../classgamgee_1_1_shared_field.html#add28b8338b921305a4d9956e6487b6d4',1,'gamgee::SharedField::back()']]],
   ['base',['Base',['../namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49',1,'gamgee']]],
   ['base_5fquals',['base_quals',['../classgamgee_1_1_sam.html#ab8d33b7e4b35d8cdca5957c5513d5cd7',1,'gamgee::Sam']]],
   ['base_5fquals_2ecpp',['base_quals.cpp',['../base__quals_8cpp.html',1,'']]],

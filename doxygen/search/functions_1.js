@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['back',['back',['../classgamgee_1_1_individual_field.html#a4ffb6c82d6c2490eafbc298b644bdad6',1,'gamgee::IndividualField::back()'],['../classgamgee_1_1_individual_field_value.html#aff33de10fd722566f56a3baaa778e607',1,'gamgee::IndividualFieldValue::back()'],['../classgamgee_1_1_shared_field.html#add28b8338b921305a4d9956e6487b6d4',1,'gamgee::SharedField::back()']]],
   ['base_5fquals',['base_quals',['../classgamgee_1_1_sam.html#ab8d33b7e4b35d8cdca5957c5513d5cd7',1,'gamgee::Sam']]],
   ['basequals',['BaseQuals',['../classgamgee_1_1_base_quals.html#a876c8eaa13bd730513af88a81625b359',1,'gamgee::BaseQuals::BaseQuals(const std::shared_ptr&lt; bam1_t &gt; &amp;sam_record)'],['../classgamgee_1_1_base_quals.html#a35e14ae7ab0dbb3bda0501e60fc31031',1,'gamgee::BaseQuals::BaseQuals(const BaseQuals &amp;other)'],['../classgamgee_1_1_base_quals.html#a1879811d0141073e9bc93b3f8a79ab16',1,'gamgee::BaseQuals::BaseQuals(BaseQuals &amp;&amp;other)=default']]],
   ['bases',['bases',['../classgamgee_1_1_sam.html#ad7ead855781a27fe9a304e3181a0c643',1,'gamgee::Sam']]],
