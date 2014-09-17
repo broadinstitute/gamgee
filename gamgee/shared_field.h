@@ -90,7 +90,7 @@ class SharedField {
     if (size() != other.size()) 
       return false;
     for (auto i=0u; i != size(); ++i) {
-      if (operator[](i) != other[i])
+      if (!utils::bcf_check_equal_primitive(operator[](i), other[i]))
         return false;
     }
     return true;

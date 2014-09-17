@@ -11,45 +11,156 @@
 
 #include <boost/test/unit_test.hpp>
 #include <boost/algorithm/string/join.hpp>
+#include <boost/iterator/zip_iterator.hpp>
 
 using namespace std;
 using namespace gamgee;
 
 constexpr auto FLOAT_COMPARISON_THRESHOLD = 0.0001f;
 
-const auto truth_chromosome        = vector<uint32_t>{0, 1, 1, 1, 2};
-const auto truth_alignment_starts  = vector<uint32_t>{10000000, 10001000, 10002000, 10003000, 10004000};
-const auto truth_alignment_stops   = vector<uint32_t>{10000000, 10001001, 10002006, 10003000, 10004002};
-const auto truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 3};
-const auto truth_filter_name       = vector<string>{"PASS", "PASS", "LOW_QUAL", "NOT_DEFINED", "PASS"};
-const auto truth_filter_size       = vector<uint32_t>{1,1,1,1,2};
-const auto truth_quals             = vector<float>{80,8.4,-1,-1,-1};
-const auto truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "A", "GAT"};
-const auto truth_alt               = vector< vector<string>> {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"}};
+float g_bcf_float_missing = reinterpret_cast<float&>(bcf_float_missing);
+
+const auto truth_chromosome        = vector<uint32_t>{0, 1, 1, 1, 2, 2};
+const auto truth_alignment_starts  = vector<uint32_t>{10000000, 10001000, 10002000, 10003000, 10004000, 10005000 };
+const auto truth_alignment_stops   = vector<uint32_t>{10000000, 10001001, 10002006, 10003000, 10004002, 10005002 };
+const auto truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 3, 3};
+const auto truth_filter_name       = vector<string>{"PASS", "PASS", "LOW_QUAL", "NOT_DEFINED", "PASS", "PASS"};
+const auto truth_filter_size       = vector<uint32_t>{1,1,1,1,2,1};
+const auto truth_quals             = vector<float>{80,8.4,-1,-1,-1,-1};
+const auto truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "A", "GAT","GAT"};
+const auto truth_alt               = vector< vector<string>> {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"},  {"G","GATAT"}};
 const auto truth_high_quality_hets = boost::dynamic_bitset<>{std::string{"001"}};
-const auto truth_id                = vector<string>{"db2342", "rs837472", ".", ".", "."};
-const auto truth_shared_af         = vector<vector<float>>{{0.5}, {0.5}, {0.5}, {0.5}, {0.5, 0.0}};
-const auto truth_shared_an         = vector<vector<int32_t>>{{6}, {6}, {6}, {6}, {6}};
-const auto truth_shared_desc       = vector<vector<string>>{{"Test1,Test2"}, {}, {}, {}, {}};
-const auto truth_shared_validated  = vector<bool>{true, false, true, false, false};
-const auto truth_gq                = vector<vector<int32_t>>{{25,12,650}, {35,35,35}, {35,35,35}, {35,35,35}, {35,35,35}};
-const auto truth_af                = vector<float> { 3.1,2.2 };
+const auto truth_id                = vector<string>{"db2342", "rs837472", ".", ".", ".","."};
+const auto truth_shared_af         = vector<vector<float>>{{0.5}, {0.5}, {0.5}, {0.5}, {0.5, 0.0}, {0.5, g_bcf_float_missing}};
+const auto truth_shared_an         = vector<vector<int32_t>>{{6}, {6}, {6}, {6}, {6}, {6}};
+const auto truth_shared_desc       = vector<vector<string>>{{"Test1,Test2"}, {}, {}, {}, {}, {}};
+const auto truth_shared_validated  = vector<bool>{true, false, true, false, false, false};
+const auto truth_gq_bt_type =  vector<int32_t>{BCF_BT_INT16, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8};
+const auto truth_gq                = vector<vector<int32_t>>{{25,12,650}, {35,35,35}, {35,35,35}, {35,35,35}, {35,35,35}, {35,bcf_int32_missing,35}};
+const auto truth_af                = vector<vector<vector<float>>> {
+  { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
+  { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
+  { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
+  { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
+  { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
+  { {3.1,g_bcf_float_missing}, {3.1,2.2}, {3.1,2.2} } 
+};
+
+const auto truth_pl_bt_type = vector<int32_t>{ BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT32, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8 };
 const auto truth_pl                = vector<vector<vector<int32_t>>>{
   {{10,0,100      }, {0,10,1000      }, {10,100,0}      },
   {{10,0,100      }, {0,10,100       }, {10,100,0}      },
   {{10,0,100      }, {0,10,2000000000}, {10,100,0}      },
   {{10,0,100      }, {0,10,100       }, {10,100,0}      },
-  {{10,0,100,2,4,8}, {0,10,100,2,4,8 }, {10,100,0,2,4,8}}
+  {{10,0,100,2,4,8}, {0,10,100,2,4,8 }, {10,100,0,2,4,8}},
+  {{10,0,100,bcf_int32_missing,4,bcf_int32_missing}, {0,10,100,2,4,8 }, {10,100,0,2,4,8}}
 };
 const auto truth_as                = vector<vector<string>>{ 
   {"ABA","CA","XISPAFORRO"}, 
   {"ABA","ABA","ABA"}, 
   {"ABA","ABA","ABA"}, 
   {"ABA","ABA","ABA"}, 
-  {"ABA","ABA","ABA"} 
+  {"ABA","ABA","ABA"}, 
+  {"ABA","ABA","."} 
 };
 
+/*
+ * @brief given the data type (BCF_BT_*), returns the int32_t with the value of bcf_*_vector_end
+ * @param bcf_bt_type type (BCF_BT_*) of the data
+ * @return bcf_*_vector_end
+ */
+int32_t bcf_vector_end_val(int32_t bcf_bt_type)
+{
+  auto vector_end_val = 0;
+  switch(bcf_bt_type)
+  {
+    case BCF_BT_INT8:
+      vector_end_val = bcf_int8_vector_end;
+      break;
+    case BCF_BT_INT16:
+      vector_end_val = bcf_int16_vector_end;
+      break;
+    case BCF_BT_INT32:
+      vector_end_val = bcf_int32_vector_end;
+      break;
+    case BCF_BT_FLOAT:
+      vector_end_val = bcf_float_vector_end;
+      break;
+    default:
+      BOOST_CHECK_MESSAGE(0, "Unknown VCF integer type "<< bcf_bt_type);
+      return -1;
+  }
+  return vector_end_val;
+}
 
+/*
+ * @brief given the int data type (BCF_BT_INT*) and int32 representation of the datatype, returns the string corresponding to 
+ * the data type. Note that functions like shared_field_as_integer return int32 representation of data, even though the underlying data
+ * type might be int16/int8 etc. Hence, shared_field_as_integer would convert bcf_int8_missing to bcf_int32_missing so that
+ * missing functions in the rest of gamgee work correctly. However, a string comparison check in the tests here would fail 
+ * since to_string(bcf_int8_missing) != to_string(bcf_int32_missing). This function re-converts 'special' values back to their
+ * original data types and then converts to string.
+ * @note the function checks whether it is a special value - anything <= bcf_int32_vector_end is a special value- if yes, compute
+ * the real special value corresponding to the data type bcf_bt_type. The 'real' special value is computed by obtaining the 
+ * bcf_*_vector_end value and subtracting from it 'diff', where diff is the difference between v and the int32 special value
+ * bcf_int32_vector_end
+ * @param v int32_t value obtained from *_as_integer gamgee function
+ * @param bcf_bt_type int type (BCF_BT_INT*) of the data
+ * @return string representation of value
+ */
+string bcf_int32_to_string(int32_t v, int32_t bcf_bt_type)
+{
+  if(v <= bcf_int32_vector_end)
+  {
+    auto vector_end_val = bcf_vector_end_val(bcf_bt_type);    
+    auto diff = bcf_int32_vector_end - v; //either 0 or 1
+    return to_string(vector_end_val - diff);
+  }
+  else
+    return to_string(v);
+}
+/*
+ * @brief given the int data type (BCF_BT_INT*) and int32 representation of the datatype, returns the float corresponding to 
+ * the data type. Note that functions like shared_field_as_integer return int32 representation of data, even though the underlying data
+ * type might be int16/int8 etc. Hence, shared_field_as_integer would convert bcf_int8_missing to bcf_int32_missing so that
+ * missing functions in the rest of gamgee work correctly. However, a float comparison check in the tests here would fail 
+ * since float(bcf_int8_missing) != float(bcf_int32_missing). This function re-converts 'special' values back to their
+ * original data types and then converts to float.
+ * @note the function checks whether it is a special value - anything <= bcf_int32_vector_end is a special value- if yes, compute
+ * the real special value corresponding to the data type bcf_bt_type. The 'real' special value is computed by obtaining the 
+ * bcf_*_vector_end value and subtracting from it 'diff', where diff is the difference between v and the int32 special value
+ * bcf_int32_vector_end
+ * @param v int32_t value obtained from *_as_integer gamgee function
+ * @param bcf_bt_type type (BCF_BT_*) of the data
+ * @return string representation of value
+ */
+float bcf_int32_to_float(int32_t v, int32_t bcf_bt_type)
+{
+  if(v <= bcf_int32_vector_end)
+  {
+    auto diff = bcf_int32_vector_end - v; //either 0 or 1
+    auto pack_value = bcf_float_vector_end - diff;
+    auto tmp = 0.0f;
+    bcf_float_set(&tmp, pack_value);
+    return tmp;
+  }
+  else
+    return float(v);
+}
+/*
+ * @brief floating point comparison for VCF fields
+ * v1, v2 can be NaNs since the bcf_float_missing and vector_end values are NaNs. A simple comparison
+ * of v1 and v2 would fail since (nan == nan) is always false. This is fixed by explicitly comparing both values to bcf_float_missing and
+ * vector_end i.e. v1 and v2 are equal if ANY ONE of the following conditions is true
+ * (a) both are bcf_float_missing OR
+ * (b) both are bcf_float_vector_end OR
+ * (c) |v1-v2|<threshold
+ */
+bool bcf_compare_float(const float v1, const float v2, const float threshold)
+{
+  return ((bcf_float_is_missing(v1) && bcf_float_is_missing(v2)) || (bcf_float_is_vector_end(v1) && bcf_float_is_vector_end(v2))
+	|| (fabsf(v1-v2) <= threshold));
+}
 
 
 boost::dynamic_bitset<> high_qual_hets(const Variant& record) {  // filter all hets that have GQ > 20
@@ -190,29 +301,33 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
   for(auto i=0u; i != record.n_samples(); ++i) {
     BOOST_CHECK_EQUAL(gq_int[i][0], truth_gq[truth_index][i]);
     BOOST_CHECK_EQUAL(gq_int_idx[i][0], truth_gq[truth_index][i]);
-    BOOST_CHECK_CLOSE(gq_float[i][0], float(truth_gq[truth_index][i]), FLOAT_COMPARISON_THRESHOLD);
-    BOOST_CHECK_CLOSE(gq_float_idx[i][0], float(truth_gq[truth_index][i]), FLOAT_COMPARISON_THRESHOLD);
-    BOOST_CHECK_EQUAL(gq_string[i][0], to_string(truth_gq[truth_index][i]));
-    BOOST_CHECK_EQUAL(gq_string_idx[i][0], to_string(truth_gq[truth_index][i]));
-    BOOST_REQUIRE_EQUAL(af_int[i].size(), truth_af.size()); // require otherwise next line may segfault
-    BOOST_REQUIRE_EQUAL(af_int_idx[i].size(), truth_af.size()); // require otherwise next line may segfault
+    BOOST_CHECK_MESSAGE(bcf_compare_float(gq_float[i][0],
+	  bcf_int32_to_float(truth_gq[truth_index][i], truth_gq_bt_type[truth_index]), FLOAT_COMPARISON_THRESHOLD),
+	"["<<gq_float[i][0]<<" != "<<truth_gq[truth_index][i]<<"]");
+    BOOST_CHECK_MESSAGE(bcf_compare_float(gq_float_idx[i][0],
+	  bcf_int32_to_float(truth_gq[truth_index][i], truth_gq_bt_type[truth_index]), FLOAT_COMPARISON_THRESHOLD),
+	"["<<gq_float_idx[i][0]<<" != "<<truth_gq[truth_index][i]<<"]");
+    BOOST_CHECK_EQUAL(gq_string[i][0], bcf_int32_to_string(truth_gq[truth_index][i], truth_gq_bt_type[truth_index]));
+    BOOST_CHECK_EQUAL(gq_string_idx[i][0], bcf_int32_to_string(truth_gq[truth_index][i], truth_gq_bt_type[truth_index]));
+    BOOST_REQUIRE_EQUAL(af_int[i].size(), truth_af[truth_index][i].size()); // require otherwise next line may segfault
+    BOOST_REQUIRE_EQUAL(af_int_idx[i].size(), truth_af[truth_index][i].size()); // require otherwise next line may segfault
     for (auto j=0u; j!= af_int[i].size(); ++j) {
-      BOOST_CHECK_EQUAL(af_int[i][j], int32_t(truth_af[j]));
-      BOOST_CHECK_EQUAL(af_int_idx[i][j], int32_t(truth_af[j]));
-      BOOST_CHECK_CLOSE(af_float[i][j], truth_af[j], FLOAT_COMPARISON_THRESHOLD);
-      BOOST_CHECK_CLOSE(af_float_idx[i][j], truth_af[j], FLOAT_COMPARISON_THRESHOLD);
-      BOOST_CHECK_EQUAL(af_string[i][j], to_string(truth_af[j]));
-      BOOST_CHECK_EQUAL(af_string_idx[i][j], to_string(truth_af[j]));
+      BOOST_CHECK_EQUAL(af_int[i][j], int32_t(truth_af[truth_index][i][j]));
+      BOOST_CHECK_EQUAL(af_int_idx[i][j], int32_t(truth_af[truth_index][i][j]));
+      BOOST_CHECK(bcf_compare_float(af_float[i][j], truth_af[truth_index][i][j], FLOAT_COMPARISON_THRESHOLD));
+      BOOST_CHECK(bcf_compare_float(af_float_idx[i][j], truth_af[truth_index][i][j], FLOAT_COMPARISON_THRESHOLD));
+      BOOST_CHECK_EQUAL(af_string[i][j], to_string(truth_af[truth_index][i][j]));
+      BOOST_CHECK_EQUAL(af_string_idx[i][j], to_string(truth_af[truth_index][i][j]));
     }
     BOOST_REQUIRE_EQUAL(pl_int[i].size(), truth_pl[truth_index][i].size()); // require otherwise next line may segfault
     BOOST_REQUIRE_EQUAL(pl_int_idx[i].size(), truth_pl[truth_index][i].size()); // require otherwise next line may segfault
     for (auto j=0u; j!= pl_int[i].size(); ++j) { 
       BOOST_CHECK_EQUAL(pl_int[i][j], truth_pl[truth_index][i][j]);
       BOOST_CHECK_EQUAL(pl_int_idx[i][j], truth_pl[truth_index][i][j]);
-      BOOST_CHECK_CLOSE(pl_float[i][j], float(truth_pl[truth_index][i][j]), FLOAT_COMPARISON_THRESHOLD);
-      BOOST_CHECK_CLOSE(pl_float_idx[i][j], float(truth_pl[truth_index][i][j]), FLOAT_COMPARISON_THRESHOLD);
-      BOOST_CHECK_EQUAL(pl_string[i][j], to_string(truth_pl[truth_index][i][j]));
-      BOOST_CHECK_EQUAL(pl_string_idx[i][j], to_string(truth_pl[truth_index][i][j]));
+      BOOST_CHECK(bcf_compare_float(pl_float[i][j], bcf_int32_to_float(truth_pl[truth_index][i][j], truth_pl_bt_type[truth_index]), FLOAT_COMPARISON_THRESHOLD));
+      BOOST_CHECK(bcf_compare_float(pl_float_idx[i][j], bcf_int32_to_float(truth_pl[truth_index][i][j], truth_pl_bt_type[truth_index]), FLOAT_COMPARISON_THRESHOLD));
+      BOOST_CHECK_EQUAL(pl_string[i][j], bcf_int32_to_string(truth_pl[truth_index][i][j], truth_pl_bt_type[truth_index]));
+      BOOST_CHECK_EQUAL(pl_string_idx[i][j], bcf_int32_to_string(truth_pl[truth_index][i][j], truth_pl_bt_type[truth_index]));
     }
     BOOST_CHECK_EQUAL(as_string[i][0], truth_as[truth_index][i]);
     BOOST_CHECK_EQUAL(as_string_idx[i][0], truth_as[truth_index][i]);
@@ -247,9 +362,26 @@ void check_shared_field_api(const Variant& record, const uint32_t truth_index) {
   const auto an_idx = record.integer_shared_field(header.field_index("AN")); // test the index based api
   BOOST_CHECK_EQUAL_COLLECTIONS(an_idx.begin(), an_idx.end(), truth_shared_an[truth_index].begin(), truth_shared_an[truth_index].end());
   const auto af = record.float_shared_field("AF");
-  BOOST_CHECK_EQUAL_COLLECTIONS(af.begin(), af.end(), truth_shared_af[truth_index].begin(), truth_shared_af[truth_index].end());
+  int af_index = 0;
+  for(auto af_value : af)
+  {
+    BOOST_CHECK_MESSAGE(bcf_compare_float(af_value, truth_shared_af[truth_index][af_index], FLOAT_COMPARISON_THRESHOLD),
+	"["<<af_value<<" != "<<truth_shared_af[truth_index][af_index]<<"]");
+    ++af_index;
+  }
+  //More C++ 2011 friendly - but mismatch with const iter makes it impossible to use without larger code changes
+  //for_each(boost::make_zip_iterator(boost::make_tuple(af.begin(), truth_shared_af[truth_index].cbegin())),
+      //boost::make_zip_iterator(boost::make_tuple(af.end(), truth_shared_af[truth_index].cend())), [](auto tuple)
+      //{ bcf_compare_float(tuple.get<0>(),
+	//tuple.get<1>(), FLOAT_COMPARISON_THRESHOLD);  } );
   const auto af_idx = record.float_shared_field(header.field_index("AF")); // test the index based api
-  BOOST_CHECK_EQUAL_COLLECTIONS(af_idx.begin(), af_idx.end(), truth_shared_af[truth_index].begin(), truth_shared_af[truth_index].end());
+  af_index = 0;
+  for(auto af_value : af_idx)
+  {
+    BOOST_CHECK_MESSAGE(bcf_compare_float(af_value, truth_shared_af[truth_index][af_index], FLOAT_COMPARISON_THRESHOLD),
+	"["<<af_value<<" != "<<truth_shared_af[truth_index][af_index]<<"]");
+    ++af_index;
+  }
   const auto desc = record.string_shared_field("DESC");
   BOOST_CHECK_EQUAL_COLLECTIONS(desc.begin(), desc.end(), truth_shared_desc[truth_index].begin(), truth_shared_desc[truth_index].end());
   const auto desc_idx = record.string_shared_field(header.field_index("DESC")); // test the index based api
@@ -463,7 +595,7 @@ BOOST_AUTO_TEST_CASE( genotype_api )          { generic_variant_reader_test(chec
 
 BOOST_AUTO_TEST_CASE( missing_id_field )
 {
-  const auto truth_missing = vector<bool>{false, false, true, true, true};
+  const auto truth_missing = vector<bool>{false, false, true, true, true, true};
   auto i = 0u;
   for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf"})
     BOOST_CHECK_EQUAL(missing(record.id()), truth_missing[i++]); // check that the missing and non-missing values in the vcf actually return the right missingness
@@ -587,12 +719,12 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_test ) {
   }
 }
 
-const auto multi_diff_truth_record_count      = vector<uint32_t>{4, 1, 1, 1, 2, 1};
-const auto multi_diff_truth_chromosome        = vector<uint32_t>{0, 1, 1, 1, 1, 2};
-const auto multi_diff_truth_alignment_starts  = vector<uint32_t>{10000000, 10001000, 10001999, 10002000, 10003000, 10004000};
-const auto multi_diff_truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "TAGTGQA", "A", "GAT"};
-const auto multi_diff_truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 2, 3};
-const auto multi_diff_truth_id                = vector<string>{"db2342", "rs837472", ".", ".", ".", "."};
+const auto multi_diff_truth_record_count      = vector<uint32_t>{4, 1, 1, 1, 2, 1, 1};
+const auto multi_diff_truth_chromosome        = vector<uint32_t>{0, 1, 1, 1, 1, 2, 2};
+const auto multi_diff_truth_alignment_starts  = vector<uint32_t>{10000000, 10001000, 10001999, 10002000, 10003000, 10004000, 10005000};
+const auto multi_diff_truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "TAGTGQA", "A", "GAT", "GAT"};
+const auto multi_diff_truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 2, 3, 3};
+const auto multi_diff_truth_id                = vector<string>{"db2342", "rs837472", ".", ".", ".", ".", "."};
 
 BOOST_AUTO_TEST_CASE( multiple_variant_reader_difference_test ) {
   auto truth_index = 0u;
@@ -609,7 +741,7 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_difference_test ) {
     }
     ++truth_index;
   }
-  BOOST_CHECK_EQUAL(truth_index, 6u);
+  BOOST_CHECK_EQUAL(truth_index, 7u);
 }
 
 void multiple_variant_reader_sample_test(const vector<string> samples, const bool include, const int desired_samples) {
