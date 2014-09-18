@@ -40,6 +40,16 @@ class FastqIterator {
   FastqIterator& operator=(FastqIterator&&) = default;
 
   /**
+    * @brief equality operator
+    *
+    * @param rhs the other FastqIterator to compare to
+    *
+    * @return whether or not the two iterators are the same (e.g. have the same input stream on the same
+    * status)
+    */
+  bool operator==(const FastqIterator& rhs) const;
+
+  /**
     * @brief inequality operator (needed by for-each loop)
     *
     * @param rhs the other FastqIterator to compare to
@@ -47,7 +57,7 @@ class FastqIterator {
     * @return whether or not the two iterators are the same (e.g. have the same input stream on the same
     * status)
     */
-  bool operator!=(const FastqIterator& rhs);
+  bool operator!=(const FastqIterator& rhs) const;
 
   /**
     * @brief dereference operator (needed by for-each loop)
