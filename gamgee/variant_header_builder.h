@@ -1,8 +1,10 @@
 #ifndef gamgee__variant_header_builder__guard
 #define gamgee__variant_header_builder__guard
 
-#include "utils/utils.h"
 #include "variant_header.h"
+
+#include "utils/utils.h"
+#include "utils/hts_memory.h"
 
 #include "htslib/vcf.h"
 
@@ -34,7 +36,18 @@ class VariantHeaderBuilder {
 
   void advanced_add_arbitrary_line(const std::string& line);
 
-  VariantHeader build() const { return VariantHeader{m_header}; }
+  /**
+   * @brief create a new VariantHeader by copying the contents of this builder into a new object.  Allows for reuse.
+   */
+  VariantHeader build() const {
+    return VariantHeader{utils::make_shared_variant_header(utils::variant_header_deep_copy(m_header.get()))};
+  }
+
+  /**
+   * @brief create a new VariantHeader by moving the contents of this builder into a new object.
+   * More efficient but does not allow for reuse.
+   */
+  VariantHeader one_time_build() const { return VariantHeader{move(m_header)}; }
 
  private:
   std::shared_ptr<bcf_hdr_t> m_header;
