@@ -158,6 +158,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ada7dc841eb57e7744a77c08a7aef877a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#ada7dc841eb57e7744a77c08a7aef877a">has_filter</a> (const std::string &amp;filter) const </td></tr>
 <tr class="memdesc:ada7dc841eb57e7744a77c08a7aef877a"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks for the existence of a filter in this record  <a href="#ada7dc841eb57e7744a77c08a7aef877a">More...</a><br /></td></tr>
 <tr class="separator:ada7dc841eb57e7744a77c08a7aef877a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1a458aa3444f2c43e1186759215d9d4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#ad1a458aa3444f2c43e1186759215d9d4">shared_field_type</a> (const std::string &amp;tag) const </td></tr>
+<tr class="memdesc:ad1a458aa3444f2c43e1186759215d9d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the type of this shared (info) field  <a href="#ad1a458aa3444f2c43e1186759215d9d4">More...</a><br /></td></tr>
+<tr class="separator:ad1a458aa3444f2c43e1186759215d9d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1918f6d8b4615782458bbb9151b72379"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a1918f6d8b4615782458bbb9151b72379">shared_field_type</a> (const int32_t index) const </td></tr>
+<tr class="memdesc:a1918f6d8b4615782458bbb9151b72379"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the type of this shared (info) field  <a href="#a1918f6d8b4615782458bbb9151b72379">More...</a><br /></td></tr>
+<tr class="separator:a1918f6d8b4615782458bbb9151b72379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed31925d28a48a6b47816752b8bac808"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#aed31925d28a48a6b47816752b8bac808">individual_field_type</a> (const std::string &amp;tag) const </td></tr>
+<tr class="memdesc:aed31925d28a48a6b47816752b8bac808"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the type of this individual (format) field  <a href="#aed31925d28a48a6b47816752b8bac808">More...</a><br /></td></tr>
+<tr class="separator:aed31925d28a48a6b47816752b8bac808"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7aad0a0263e6a9bcc9a6504cba3ee67"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#ae7aad0a0263e6a9bcc9a6504cba3ee67">individual_field_type</a> (const int32_t index) const </td></tr>
+<tr class="memdesc:ae7aad0a0263e6a9bcc9a6504cba3ee67"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the type of this individual (format) field  <a href="#ae7aad0a0263e6a9bcc9a6504cba3ee67">More...</a><br /></td></tr>
+<tr class="separator:ae7aad0a0263e6a9bcc9a6504cba3ee67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68607de44ef4a90f2ce24737a2aac285"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_individual_field.html">IndividualField</a>&lt; <a class="el" href="classgamgee_1_1_genotype.html">Genotype</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a68607de44ef4a90f2ce24737a2aac285">genotypes</a> () const </td></tr>
 <tr class="memdesc:a68607de44ef4a90f2ce24737a2aac285"><td class="mdescLeft">&#160;</td><td class="mdescRight">special getter for the <a class="el" href="classgamgee_1_1_genotype.html" title="Encodes a genotype. ">Genotype</a> (GT) field. Returns a random access object with all the values in a given GT tag for all samples contiguous in memory.  <a href="#a68607de44ef4a90f2ce24737a2aac285">More...</a><br /></td></tr>
 <tr class="separator:a68607de44ef4a90f2ce24737a2aac285"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -808,6 +820,42 @@ creates a new object but makes no copies of the underlying values. </dd></dl>
 
 </div>
 </div>
+<a class="anchor" id="aed31925d28a48a6b47816752b8bac808"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gamgee::Variant::individual_field_type </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>tag</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the type of this individual (format) field </p>
+
+</div>
+</div>
+<a class="anchor" id="ae7aad0a0263e6a9bcc9a6504cba3ee67"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gamgee::Variant::individual_field_type </td>
+          <td>(</td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the type of this individual (format) field </p>
+
+</div>
+</div>
 <a class="anchor" id="a332b5600fb5e748bd10ed634c8633a4d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1217,6 +1265,42 @@ This function can be called directly (ignoring the template parameters) as all t
 
 </div>
 </div>
+<a class="anchor" id="ad1a458aa3444f2c43e1186759215d9d4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gamgee::Variant::shared_field_type </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>tag</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the type of this shared (info) field </p>
+
+</div>
+</div>
+<a class="anchor" id="a1918f6d8b4615782458bbb9151b72379"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gamgee::Variant::shared_field_type </td>
+          <td>(</td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the type of this shared (info) field </p>
+
+</div>
+</div>
 <a class="anchor" id="af063e66dca677dd9aa3c880b4a558436"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1321,7 +1405,7 @@ This function can be called directly (ignoring the template parameters) as all t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 12 2014 22:07:53 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 19 2014 21:21:46 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
