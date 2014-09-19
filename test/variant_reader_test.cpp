@@ -32,9 +32,9 @@ const auto truth_shared_af         = vector<vector<float>>{{0.5}, {0.5}, {0.5}, 
 const auto truth_shared_an         = vector<vector<int32_t>>{{6}, {6}, {6}, {6}, {6}};
 const auto truth_shared_desc       = vector<vector<string>>{{"Test1,Test2"}, {}, {}, {}, {}};
 const auto truth_shared_validated  = vector<bool>{true, false, true, false, false};
-const auto truth_gq                = vector<vector<uint32_t>>{{25,12,650}, {35,35,35}, {35,35,35}, {35,35,35}, {35,35,35}};
+const auto truth_gq                = vector<vector<int32_t>>{{25,12,650}, {35,35,35}, {35,35,35}, {35,35,35}, {35,35,35}};
 const auto truth_af                = vector<float> { 3.1,2.2 };
-const auto truth_pl                = vector<vector<vector<uint32_t>>>{
+const auto truth_pl                = vector<vector<vector<int32_t>>>{
   {{10,0,100      }, {0,10,1000      }, {10,100,0}      },
   {{10,0,100      }, {0,10,100       }, {10,100,0}      },
   {{10,0,100      }, {0,10,2000000000}, {10,100,0}      },
@@ -66,7 +66,7 @@ void check_variant_basic_api(const Variant& record, const uint32_t truth_index) 
   BOOST_CHECK_EQUAL(record.alignment_start(), truth_alignment_starts[truth_index]);
   BOOST_CHECK_EQUAL(record.alignment_stop(), truth_alignment_stops[truth_index]);
   BOOST_CHECK_EQUAL(record.n_alleles(), truth_n_alleles[truth_index]);
-  BOOST_CHECK_EQUAL(record.n_samples(), 3);
+  BOOST_CHECK_EQUAL(record.n_samples(), 3u);
   BOOST_CHECK_EQUAL(record.id(), truth_id[truth_index]);
 }
 
@@ -356,7 +356,7 @@ void check_genotype_api(const Variant& record, const uint32_t truth_index) {
   BOOST_CHECK(gt_for_all_samples[0].het());
   BOOST_CHECK(gt_for_all_samples[2].hom_var());
   for (const auto& gt_for_single_sample: gt_for_all_samples) {
-    BOOST_CHECK_EQUAL(gt_for_single_sample.size(), 2);
+    BOOST_CHECK_EQUAL(gt_for_single_sample.size(), 2u);
     const auto alleles = gt_for_single_sample.allele_strings();
     const auto allele_keys = gt_for_single_sample.allele_keys();
     BOOST_CHECK_EQUAL(gt_for_single_sample.allele_string(0), alleles[0]);
@@ -366,7 +366,7 @@ void check_genotype_api(const Variant& record, const uint32_t truth_index) {
     BOOST_CHECK_EQUAL(gt_for_single_sample[0], allele_keys[0]);
     BOOST_CHECK_EQUAL(gt_for_single_sample[1], allele_keys[1]);
     BOOST_CHECK(!missing(gt_for_single_sample));
-    BOOST_CHECK_EQUAL(gt_for_single_sample.size(), 2);
+    BOOST_CHECK_EQUAL(gt_for_single_sample.size(), 2u);
     if (gt_for_single_sample.het()) {
       BOOST_CHECK(!gt_for_single_sample.hom_ref());
       BOOST_CHECK(!gt_for_single_sample.hom_var());
@@ -379,7 +379,7 @@ void check_genotype_api(const Variant& record, const uint32_t truth_index) {
         BOOST_CHECK_EQUAL(allele_keys[1], 1);
         BOOST_CHECK_EQUAL(alleles[0], truth_ref[truth_index]);
         BOOST_CHECK_EQUAL(alleles[1], truth_alt[truth_index][0]);
-        BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00000001);
+        BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00000001u);
       } else {
         BOOST_CHECK(gt_for_single_sample.non_ref_het());
         BOOST_CHECK_EQUAL(allele_keys[0], 1);
@@ -387,7 +387,7 @@ void check_genotype_api(const Variant& record, const uint32_t truth_index) {
         BOOST_CHECK_NE(alleles[0], alleles[1]);
         BOOST_CHECK_EQUAL(alleles[0], truth_alt[truth_index][0]);
         BOOST_CHECK_EQUAL(alleles[1], truth_alt[truth_index][1]);
-        BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00010002);
+        BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00010002u);
       }
     }
     if (gt_for_single_sample.hom_ref()) {
@@ -400,7 +400,7 @@ void check_genotype_api(const Variant& record, const uint32_t truth_index) {
       BOOST_CHECK_EQUAL(allele_keys[1], 0);
       BOOST_CHECK_EQUAL(alleles[0], truth_ref[truth_index]);
       BOOST_CHECK_EQUAL(alleles[1], truth_ref[truth_index]);
-      BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00000000);
+      BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00000000u);
     }
     if (gt_for_single_sample.hom_var()) {
       BOOST_CHECK(!gt_for_single_sample.het());
@@ -412,7 +412,7 @@ void check_genotype_api(const Variant& record, const uint32_t truth_index) {
       BOOST_CHECK_EQUAL(allele_keys[1], 1);
       BOOST_CHECK_EQUAL(alleles[0], truth_alt[truth_index][0]);
       BOOST_CHECK_EQUAL(alleles[1], truth_alt[truth_index][0]);
-      BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00010001);
+      BOOST_CHECK_EQUAL(gt_for_single_sample.fast_diploid_key_generation(), 0x00010001u);
     }
     if (truth_index == 0) {
       BOOST_CHECK(gt_for_all_samples[0] == gt_for_all_samples[0]);
@@ -473,7 +473,7 @@ BOOST_AUTO_TEST_CASE( missing_id_field )
 
 void single_variant_reader_sample_test(const string filename, const vector<string> samples, const bool include, const int desired_samples) {
   for (const auto& record : SingleVariantReader{filename, samples, include})
-    BOOST_CHECK_EQUAL(record.n_samples(), desired_samples);
+    BOOST_CHECK_EQUAL(record.n_samples(), static_cast<uint32_t>(desired_samples));
 }
 
 BOOST_AUTO_TEST_CASE( single_variant_reader_sites_only )  
@@ -504,11 +504,11 @@ BOOST_AUTO_TEST_CASE( single_variant_reader_missing_data )
   single_variant_reader_sample_test("testdata/test_variants_missing_data.vcf", vector<string>{"0007B", "0008A", "0009A", "0009B"}, false, 7);   // exclude 4 samples
 
   for (const auto& record : SingleVariantReader{"testdata/test_variants_missing_data.vcf"}){ // include all 11 samples
-    BOOST_CHECK_EQUAL(record.n_samples(), 11); 
+    BOOST_CHECK_EQUAL(record.n_samples(), 11u); 
     const auto gt_for_all_samples = record.genotypes();
     for (const auto& gt_for_single_sample: gt_for_all_samples) {
       BOOST_CHECK(missing(gt_for_single_sample));
-      BOOST_CHECK_EQUAL(gt_for_single_sample.size(), 2);
+      BOOST_CHECK_EQUAL(gt_for_single_sample.size(), 2u);
       BOOST_CHECK(missing(gt_for_single_sample.allele_string(0)));
       BOOST_CHECK(missing(gt_for_single_sample.allele_string(1)));
       BOOST_CHECK(missing(gt_for_single_sample.allele_key(0)));
@@ -522,13 +522,13 @@ BOOST_AUTO_TEST_CASE( single_variant_reader_missing_data )
 BOOST_AUTO_TEST_CASE( single_variant_reader_vector )
 {
   for (const auto& record : SingleVariantReader{vector<string>{"testdata/test_variants.vcf"}})
-    BOOST_CHECK_EQUAL(record.n_samples(), 3);
+    BOOST_CHECK_EQUAL(record.n_samples(), 3u);
 }
 
 BOOST_AUTO_TEST_CASE( single_variant_reader_vector_all_samples )
 {
   for (const auto& record : SingleVariantReader{vector<string>{"testdata/test_variants.vcf"}, vector<string>{}, false})  // include all samples by setting include == false and passing an empty list
-    BOOST_CHECK_EQUAL(record.n_samples(), 3);
+    BOOST_CHECK_EQUAL(record.n_samples(), 3u);
 }
 
 BOOST_AUTO_TEST_CASE( single_variant_reader_vector_too_large )
@@ -604,7 +604,7 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_difference_test ) {
       BOOST_CHECK_EQUAL(record.alignment_start(), multi_diff_truth_alignment_starts[truth_index]);
       BOOST_CHECK_EQUAL(record.ref(), multi_diff_truth_ref[truth_index]);
       BOOST_CHECK_EQUAL(record.n_alleles(), multi_diff_truth_n_alleles[truth_index]);
-      BOOST_CHECK_EQUAL(record.n_samples(), 3);
+      BOOST_CHECK_EQUAL(record.n_samples(), 3u);
       BOOST_CHECK_EQUAL(record.id(), multi_diff_truth_id[truth_index]);
     }
     ++truth_index;
@@ -617,7 +617,7 @@ void multiple_variant_reader_sample_test(const vector<string> samples, const boo
 
   for (const auto& vec : MultipleVariantReader<MultipleVariantIterator>{filenames, false, samples, include})
     for (const auto& record : vec)
-      BOOST_CHECK_EQUAL(record.n_samples(), desired_samples);
+      BOOST_CHECK_EQUAL(record.n_samples(), static_cast<uint32_t>(desired_samples));
 }
 
 /*      TODO: Issue #209
@@ -691,7 +691,7 @@ BOOST_AUTO_TEST_CASE( gvcf_test ) {
     BOOST_CHECK_EQUAL(record.alignment_start(), gvcf_truth_alignment_starts[truth_index]);
     BOOST_CHECK_EQUAL(record.alignment_stop(), gvcf_truth_alignment_stops[truth_index]);
     BOOST_CHECK_EQUAL(record.n_alleles(), gvcf_truth_n_alleles[truth_index]);
-    BOOST_CHECK_EQUAL(record.n_samples(), 3);
+    BOOST_CHECK_EQUAL(record.n_samples(), 3u);
     BOOST_CHECK_EQUAL(record.id(), gvcf_truth_id[truth_index]);
     ++truth_index;
   }
@@ -707,7 +707,7 @@ BOOST_AUTO_TEST_CASE( gvcf_test_multiple ) {
       BOOST_CHECK_EQUAL(record.alignment_start(), gvcf_truth_alignment_starts[truth_index]);
       BOOST_CHECK_EQUAL(record.alignment_stop(), gvcf_truth_alignment_stops[truth_index]);
       BOOST_CHECK_EQUAL(record.n_alleles(), gvcf_truth_n_alleles[truth_index]);
-      BOOST_CHECK_EQUAL(record.n_samples(), 3);
+      BOOST_CHECK_EQUAL(record.n_samples(), 3u);
       BOOST_CHECK_EQUAL(record.id(), gvcf_truth_id[truth_index]);
     }
     ++truth_index;
@@ -757,11 +757,11 @@ BOOST_AUTO_TEST_CASE( indexed_variant_reader_partial_test ) {
     const auto reader1 = IndexedVariantReader<IndexedVariantIterator>{filename, indexed_variant_chrom_partial};
     for (const auto& record : reader1) {
       BOOST_CHECK_EQUAL(record.ref(), "T");
-      BOOST_CHECK_EQUAL(record.chromosome(), 0);
-      BOOST_CHECK_EQUAL(record.alignment_start(), 10000000);
-      BOOST_CHECK_EQUAL(record.alignment_stop(), 10000000);
-      BOOST_CHECK_EQUAL(record.n_alleles(), 2);
-      BOOST_CHECK_EQUAL(record.n_samples(), 3);
+      BOOST_CHECK_EQUAL(record.chromosome(), 0u);
+      BOOST_CHECK_EQUAL(record.alignment_start(), 10000000u);
+      BOOST_CHECK_EQUAL(record.alignment_stop(), 10000000u);
+      BOOST_CHECK_EQUAL(record.n_alleles(), 2u);
+      BOOST_CHECK_EQUAL(record.n_samples(), 3u);
       BOOST_CHECK_EQUAL(record.id(), "db2342");
       ++truth_index;
     }
@@ -771,11 +771,11 @@ BOOST_AUTO_TEST_CASE( indexed_variant_reader_partial_test ) {
     const auto reader2 = IndexedVariantReader<IndexedVariantIterator>{filename, indexed_variant_bp_partial};
     for (const auto& record : reader2) {
       BOOST_CHECK_EQUAL(record.ref(), "GG");
-      BOOST_CHECK_EQUAL(record.chromosome(), 1);
-      BOOST_CHECK_EQUAL(record.alignment_start(), 10001000);
-      BOOST_CHECK_EQUAL(record.alignment_stop(), 10001001);
-      BOOST_CHECK_EQUAL(record.n_alleles(), 2);
-      BOOST_CHECK_EQUAL(record.n_samples(), 3);
+      BOOST_CHECK_EQUAL(record.chromosome(), 1u);
+      BOOST_CHECK_EQUAL(record.alignment_start(), 10001000u);
+      BOOST_CHECK_EQUAL(record.alignment_stop(), 10001001u);
+      BOOST_CHECK_EQUAL(record.n_alleles(), 2u);
+      BOOST_CHECK_EQUAL(record.n_samples(), 3u);
       BOOST_CHECK_EQUAL(record.id(), "rs837472");
       ++truth_index;
     }
@@ -845,11 +845,11 @@ BOOST_AUTO_TEST_CASE( synced_variant_reader_partial_test ) {
       for (const auto& vec : reader1) {
         for (const auto& record : vec) {
           BOOST_CHECK_EQUAL(record.ref(), "T");
-          BOOST_CHECK_EQUAL(record.chromosome(), 0);
-          BOOST_CHECK_EQUAL(record.alignment_start(), 10000000);
-          BOOST_CHECK_EQUAL(record.alignment_stop(), 10000000);
-          BOOST_CHECK_EQUAL(record.n_alleles(), 2);
-          BOOST_CHECK_EQUAL(record.n_samples(), 3);
+          BOOST_CHECK_EQUAL(record.chromosome(), 0u);
+          BOOST_CHECK_EQUAL(record.alignment_start(), 10000000u);
+          BOOST_CHECK_EQUAL(record.alignment_stop(), 10000000u);
+          BOOST_CHECK_EQUAL(record.n_alleles(), 2u);
+          BOOST_CHECK_EQUAL(record.n_samples(), 3u);
           BOOST_CHECK_EQUAL(record.id(), "db2342");
         }
         ++truth_index;
@@ -864,11 +864,11 @@ BOOST_AUTO_TEST_CASE( synced_variant_reader_partial_test ) {
       for (const auto& vec : reader2) {
         for (const auto& record : vec) {
           BOOST_CHECK_EQUAL(record.ref(), "GG");
-          BOOST_CHECK_EQUAL(record.chromosome(), 1);
-          BOOST_CHECK_EQUAL(record.alignment_start(), 10001000);
-          BOOST_CHECK_EQUAL(record.alignment_stop(), 10001001);
-          BOOST_CHECK_EQUAL(record.n_alleles(), 2);
-          BOOST_CHECK_EQUAL(record.n_samples(), 3);
+          BOOST_CHECK_EQUAL(record.chromosome(), 1u);
+          BOOST_CHECK_EQUAL(record.alignment_start(), 10001000u);
+          BOOST_CHECK_EQUAL(record.alignment_stop(), 10001001u);
+          BOOST_CHECK_EQUAL(record.n_alleles(), 2u);
+          BOOST_CHECK_EQUAL(record.n_samples(), 3u);
           BOOST_CHECK_EQUAL(record.id(), "rs837472");
         }
         ++truth_index;

@@ -18,9 +18,9 @@ const auto samples     = vector<string>{"S1", "S292", "S30034"};
 const auto chromosomes = vector<string>{"chr1", "chr2", "chr3", "chr4"};
 const auto filters     = vector<string>{"LOW_QUAL", "PASS", "VQSR_FAILED"};
 const auto shareds       = vector<string>{"DP", "MQ", "RankSum"};
-const auto shareds_indices = vector<uint32_t>{3,4,5};  // looks arbitrary but these are the indices of the shared fields because the filters get 0, 1 and 2.
+const auto shareds_indices = vector<int32_t>{3,4,5};  // looks arbitrary but these are the indices of the shared fields because the filters get 0, 1 and 2.
 const auto individuals     = vector<string>{"GQ", "PL", "DP"};
-const auto individuals_indices = vector<uint32_t>{6,7,3}; // the last index gets the same number as the info index. Weird, but that's how htslib deals with this.
+const auto individuals_indices = vector<int32_t>{6,7,3}; // the last index gets the same number as the info index. Weird, but that's how htslib deals with this.
 
 void variant_header_builder_checks(const VariantHeader& vh) {
   check_fields(vh.chromosomes(), chromosomes);
