@@ -17,8 +17,8 @@ void check_first_read(Sam& record) {
   const auto chr = 5u;
   const auto aln = 1000u;
   const auto expected_cigar = "76M";
-  const auto expected_cigar_size = 1;
-  const auto expected_cigar_element_length = 76;
+  const auto expected_cigar_size = 1u;
+  const auto expected_cigar_element_length = 76u;
   const auto expected_cigar_element_operator = CigarOperator::M;
   const auto expected_bases = "ACCCTAACCCTAACCCTAACCCTAACCATAACCCTAAGACTAACCCTAAACCTAACCCTCATAATCGAAATACAAC";
   const vector<uint8_t> expected_quals = {33, 33, 33, 33, 34, 31, 34, 30, 32, 32, 33, 34, 33, 33, 27, 21, 18, 29, 28, 33, 31, 29, 10, 33, 24, 12, 24, 10, 8, 17, 33, 23, 11, 10, 31, 18, 17, 22, 33, 20, 32, 29, 24, 15, 7, 7, 29, 12, 10, 6, 6, 18, 30, 7, 14, 6, 6, 6, 32, 8, 7, 6, 6, 16, 24, 7, 6, 22, 13, 11, 9, 9, 4, 8, 18, 25};
@@ -425,6 +425,6 @@ BOOST_AUTO_TEST_CASE( sam_off_by_one_uber_test ) {
   const auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
   auto builder = SamBuilder{header};
   const auto record = builder.set_name("TEST").set_bases("A").set_cigar("1M").set_base_quals({20}).set_alignment_start(1).build();
-  BOOST_CHECK_EQUAL(record.alignment_start(), 1);
-  BOOST_CHECK_EQUAL(record.alignment_stop(), 1);
+  BOOST_CHECK_EQUAL(record.alignment_start(), 1u);
+  BOOST_CHECK_EQUAL(record.alignment_stop(), 1u);
 }

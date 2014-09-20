@@ -13,7 +13,7 @@ BOOST_AUTO_TEST_CASE( single_readers )
     auto read_counter = 0u;
     for (const auto& sam : SingleSamReader{filename}) {
       BOOST_CHECK_EQUAL(sam.name().substr(0, 15), "30PPJAAXX090125");
-      BOOST_CHECK_EQUAL(sam.chromosome(), 0);
+      BOOST_CHECK_EQUAL(sam.chromosome(), 0u);
       ++read_counter;
     }
     BOOST_CHECK_EQUAL(read_counter, 33u);

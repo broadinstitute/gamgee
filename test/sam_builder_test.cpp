@@ -305,9 +305,9 @@ BOOST_AUTO_TEST_CASE( set_multiple_data_fields_from_scratch ) {
   BOOST_CHECK_EQUAL(constructed_read.cigar().to_string(), "1M1I1M");
   BOOST_CHECK_EQUAL(constructed_read.bases().to_string(), "ACT");
   BOOST_CHECK_EQUAL(constructed_read.base_quals().to_string(), "1 2 3");
-  BOOST_CHECK_EQUAL(constructed_read.chromosome(), 1);
-  BOOST_CHECK_EQUAL(constructed_read.alignment_start(), 142);
-  BOOST_CHECK_EQUAL(constructed_read.mate_alignment_start(), 199);
+  BOOST_CHECK_EQUAL(constructed_read.chromosome(), 1u);
+  BOOST_CHECK_EQUAL(constructed_read.alignment_start(), 142u);
+  BOOST_CHECK_EQUAL(constructed_read.mate_alignment_start(), 199u);
 }
 
 BOOST_AUTO_TEST_CASE( reconstruct_complete_read ) {
@@ -365,9 +365,9 @@ BOOST_AUTO_TEST_CASE( build_multiple_reads ) {
   BOOST_CHECK_EQUAL(constructed_read.cigar().to_string(), "1M1I1M");
   BOOST_CHECK_EQUAL(constructed_read.bases().to_string(), "ACT");
   BOOST_CHECK_EQUAL(constructed_read.base_quals().to_string(), "1 2 3");
-  BOOST_CHECK_EQUAL(constructed_read.chromosome(), 1);
-  BOOST_CHECK_EQUAL(constructed_read.alignment_start(), 142);
-  BOOST_CHECK_EQUAL(constructed_read.mate_alignment_start(), 199);
+  BOOST_CHECK_EQUAL(constructed_read.chromosome(), 1u);
+  BOOST_CHECK_EQUAL(constructed_read.alignment_start(), 142u);
+  BOOST_CHECK_EQUAL(constructed_read.mate_alignment_start(), 199u);
 
   auto second_read = builder.set_chromosome(2).set_cigar("2M1I").set_bases("GGA").build();
 
@@ -375,9 +375,9 @@ BOOST_AUTO_TEST_CASE( build_multiple_reads ) {
   BOOST_CHECK_EQUAL(second_read.cigar().to_string(), "2M1I");
   BOOST_CHECK_EQUAL(second_read.bases().to_string(), "GGA");
   BOOST_CHECK_EQUAL(second_read.base_quals().to_string(), "1 2 3");
-  BOOST_CHECK_EQUAL(second_read.chromosome(), 2);
-  BOOST_CHECK_EQUAL(second_read.alignment_start(), 142);
-  BOOST_CHECK_EQUAL(second_read.mate_alignment_start(), 199);
+  BOOST_CHECK_EQUAL(second_read.chromosome(), 2u);
+  BOOST_CHECK_EQUAL(second_read.alignment_start(), 142u);
+  BOOST_CHECK_EQUAL(second_read.mate_alignment_start(), 199u);
 }
 BOOST_AUTO_TEST_CASE( set_illegal_base_quals ) {
   auto header = SingleSamReader{"testdata/test_simple.bam"}.header();

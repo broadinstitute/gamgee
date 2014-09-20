@@ -16,7 +16,7 @@ BOOST_AUTO_TEST_CASE( indexed_single_readers_intervals )
 
     for (const auto& sam : IndexedSingleSamReader{filename, interval_list}) {
       BOOST_CHECK_EQUAL(sam.name().substr(0, 15), "30PPJAAXX090125");
-      BOOST_CHECK_EQUAL(sam.chromosome(), 0);
+      BOOST_CHECK_EQUAL(sam.chromosome(), 0u);
       ++read_counter;
     }
     BOOST_CHECK_EQUAL(read_counter, 15u);
@@ -24,10 +24,10 @@ BOOST_AUTO_TEST_CASE( indexed_single_readers_intervals )
     const auto interval_read_counts = vector<int>{3, 4, 4, 4};
     auto interval_number = 0u;
     for (const auto& interval : interval_list) {
-      auto interval_read_counter = 0u;
+      auto interval_read_counter = 0;
       for (const auto& sam : IndexedSingleSamReader{filename, vector<string>{interval}}) {
         BOOST_CHECK_EQUAL(sam.name().substr(0, 15), "30PPJAAXX090125");
-        BOOST_CHECK_EQUAL(sam.chromosome(), 0);
+        BOOST_CHECK_EQUAL(sam.chromosome(), 0u);
         ++interval_read_counter;
       }
       BOOST_CHECK_EQUAL(interval_read_counter, interval_read_counts[interval_number]);
@@ -43,7 +43,7 @@ BOOST_AUTO_TEST_CASE( indexed_single_readers_entire_file )
     auto read_counter = 0u;
     for (const auto& sam : IndexedSingleSamReader{filename, entire_file}) {
       BOOST_CHECK_EQUAL(sam.name().substr(0, 15), "30PPJAAXX090125");
-      BOOST_CHECK_EQUAL(sam.chromosome(), 0);
+      BOOST_CHECK_EQUAL(sam.chromosome(), 0u);
       ++read_counter;
     }
     BOOST_CHECK_EQUAL(read_counter, 33u);
@@ -57,7 +57,7 @@ BOOST_AUTO_TEST_CASE( indexed_single_readers_unmapped )
     auto read_counter = 0u;
     for (const auto& sam : IndexedSingleSamReader{filename, unmapped_reads}) {
       BOOST_CHECK_EQUAL(sam.name().substr(0, 15), "30PPJAAXX090125");
-      BOOST_CHECK_EQUAL(sam.chromosome(), 0);
+      BOOST_CHECK_EQUAL(sam.chromosome(), 0u);
       ++read_counter;
     }
     BOOST_CHECK_EQUAL(read_counter, 0u);
@@ -71,7 +71,7 @@ BOOST_AUTO_TEST_CASE( indexed_single_readers_empty )
     auto read_counter = 0u;
     for (const auto& sam : IndexedSingleSamReader{filename, empty_list}) {
       BOOST_CHECK_EQUAL(sam.name().substr(0, 15), "30PPJAAXX090125");
-      BOOST_CHECK_EQUAL(sam.chromosome(), 0);
+      BOOST_CHECK_EQUAL(sam.chromosome(), 0u);
       ++read_counter;
     }
     BOOST_CHECK_EQUAL(read_counter, 0u);
