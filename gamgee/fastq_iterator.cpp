@@ -37,8 +37,12 @@ Fastq& FastqIterator::operator++() {
   return m_element;
 }
 
-bool FastqIterator::operator!=(const FastqIterator& rhs) {
-  return m_input_stream != rhs.m_input_stream;
+bool FastqIterator::operator==(const FastqIterator& rhs) const {
+  return m_input_stream == rhs.m_input_stream;
+}
+
+bool FastqIterator::operator!=(const FastqIterator& rhs) const {
+  return !operator==(rhs);
 }
 
 const string FastqIterator::parse_multiline() {
