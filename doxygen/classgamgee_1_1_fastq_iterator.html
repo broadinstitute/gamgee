@@ -119,9 +119,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af93df231f3e2f5751fc509bd2366ceb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeba95acccf55f7e92a18b5666bd6ac5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_fastq_iterator.html#aeba95acccf55f7e92a18b5666bd6ac5c">operator=</a> (<a class="el" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a> &amp;&amp;)=default</td></tr>
 <tr class="separator:aeba95acccf55f7e92a18b5666bd6ac5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cf83f7341e1eaa2d8ab70b2018ec328"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_fastq_iterator.html#a9cf83f7341e1eaa2d8ab70b2018ec328">operator!=</a> (const <a class="el" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a> &amp;rhs)</td></tr>
-<tr class="memdesc:a9cf83f7341e1eaa2d8ab70b2018ec328"><td class="mdescLeft">&#160;</td><td class="mdescRight">inequality operator (needed by for-each loop)  <a href="#a9cf83f7341e1eaa2d8ab70b2018ec328">More...</a><br /></td></tr>
-<tr class="separator:a9cf83f7341e1eaa2d8ab70b2018ec328"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac42a3aed4e0904e01d45cb097fe5a49"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_fastq_iterator.html#aac42a3aed4e0904e01d45cb097fe5a49">operator==</a> (const <a class="el" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a> &amp;rhs) const </td></tr>
+<tr class="memdesc:aac42a3aed4e0904e01d45cb097fe5a49"><td class="mdescLeft">&#160;</td><td class="mdescRight">equality operator  <a href="#aac42a3aed4e0904e01d45cb097fe5a49">More...</a><br /></td></tr>
+<tr class="separator:aac42a3aed4e0904e01d45cb097fe5a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a837ee99054e4efc1c35e8cf58947d2d8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_fastq_iterator.html#a837ee99054e4efc1c35e8cf58947d2d8">operator!=</a> (const <a class="el" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a> &amp;rhs) const </td></tr>
+<tr class="memdesc:a837ee99054e4efc1c35e8cf58947d2d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">inequality operator (needed by for-each loop)  <a href="#a837ee99054e4efc1c35e8cf58947d2d8">More...</a><br /></td></tr>
+<tr class="separator:a837ee99054e4efc1c35e8cf58947d2d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1417fe05ba803dc9cffc3735b4d68e7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_fastq.html">Fastq</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_fastq_iterator.html#a1417fe05ba803dc9cffc3735b4d68e7c">operator*</a> ()</td></tr>
 <tr class="memdesc:a1417fe05ba803dc9cffc3735b4d68e7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">dereference operator (needed by for-each loop)  <a href="#a1417fe05ba803dc9cffc3735b4d68e7c">More...</a><br /></td></tr>
 <tr class="separator:a1417fe05ba803dc9cffc3735b4d68e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -234,7 +237,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a9cf83f7341e1eaa2d8ab70b2018ec328"></a>
+<a class="anchor" id="a837ee99054e4efc1c35e8cf58947d2d8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -243,7 +246,7 @@ Public Member Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a> &amp;&#160;</td>
           <td class="paramname"><em>rhs</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -343,6 +346,31 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aac42a3aed4e0904e01d45cb097fe5a49"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::FastqIterator::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>equality operator </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>the other <a class="el" href="classgamgee_1_1_fastq_iterator.html" title="Utility class to enable for-each style iteration in the FastqReader class. ">FastqIterator</a> to compare to</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>whether or not the two iterators are the same (e.g. have the same input stream on the same status) </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>gamgee/<a class="el" href="fastq__iterator_8h_source.html">fastq_iterator.h</a></li>
 <li>gamgee/<a class="el" href="fastq__iterator_8cpp.html">fastq_iterator.cpp</a></li>
@@ -350,7 +378,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Sep 20 2014 01:31:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 22 2014 20:52:28 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

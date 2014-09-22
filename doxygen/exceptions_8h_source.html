@@ -112,18 +112,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::runtime_error{(boost::format(<span class="stringliteral">&quot;Error: htslib failed with error code %d.  See stderr for details.&quot;</span>) % error_code).str()} { }</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;} <span class="comment">// end of namespace gamgee</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif // end of gamgee__exceptions__guard</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classgamgee_1_1_chromosome_not_found_exception.html">   32</a></span>&#160;<span class="keyword">class </span><a class="code" href="classgamgee_1_1_chromosome_not_found_exception.html">ChromosomeNotFoundException</a> : <span class="keyword">public</span> std::runtime_error {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classgamgee_1_1_chromosome_not_found_exception.html#a223216cf0fa4e78890f65e3c0af6e839">   34</a></span>&#160;  <a class="code" href="classgamgee_1_1_chromosome_not_found_exception.html#a223216cf0fa4e78890f65e3c0af6e839">ChromosomeNotFoundException</a>(<span class="keyword">const</span> std::string&amp; chrom_name) :</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    std::runtime_error{(boost::format(<span class="stringliteral">&quot;Error: chromosome %s was not found in the given reference&quot;</span>) % chrom_name).str()} { }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classgamgee_1_1_chromosome_size_exception.html">   41</a></span>&#160;<span class="keyword">class </span><a class="code" href="classgamgee_1_1_chromosome_size_exception.html">ChromosomeSizeException</a> : <span class="keyword">public</span> std::runtime_error {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classgamgee_1_1_chromosome_size_exception.html#a8b1235887db863df00142942190feb6f">   43</a></span>&#160;  <a class="code" href="classgamgee_1_1_chromosome_size_exception.html#a8b1235887db863df00142942190feb6f">ChromosomeSizeException</a>(<span class="keyword">const</span> std::string&amp; chrom_name, <span class="keyword">const</span> <span class="keywordtype">size_t</span> chrom_size, <span class="keyword">const</span> <span class="keywordtype">int</span> desired_location) :</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::runtime_error{(boost::format(<span class="stringliteral">&quot;Error: chromosome %s is of size %d but location %d was requested&quot;</span>) % chrom_name % chrom_size % desired_location).str()} { }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;} <span class="comment">// end of namespace gamgee</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif // end of gamgee__exceptions__guard</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="ttc" id="classgamgee_1_1_single_input_exception_html_aa22eb2d298b3537695c9a752770eb46c"><div class="ttname"><a href="classgamgee_1_1_single_input_exception.html#aa22eb2d298b3537695c9a752770eb46c">gamgee::SingleInputException::SingleInputException</a></div><div class="ttdeci">SingleInputException(const std::string &amp;vector_name, const size_t size)</div><div class="ttdef"><b>Definition:</b> exceptions.h:16</div></div>
 <div class="ttc" id="classgamgee_1_1_htslib_exception_html_aa09bcdf5289b9847914362b8ea8d5d8a"><div class="ttname"><a href="classgamgee_1_1_htslib_exception.html#aa09bcdf5289b9847914362b8ea8d5d8a">gamgee::HtslibException::HtslibException</a></div><div class="ttdeci">HtslibException(const int error_code)</div><div class="ttdef"><b>Definition:</b> exceptions.h:25</div></div>
+<div class="ttc" id="classgamgee_1_1_chromosome_not_found_exception_html"><div class="ttname"><a href="classgamgee_1_1_chromosome_not_found_exception.html">gamgee::ChromosomeNotFoundException</a></div><div class="ttdoc">an exception class for the case where a chromosome is not found in the reference </div><div class="ttdef"><b>Definition:</b> exceptions.h:32</div></div>
+<div class="ttc" id="classgamgee_1_1_chromosome_size_exception_html_a8b1235887db863df00142942190feb6f"><div class="ttname"><a href="classgamgee_1_1_chromosome_size_exception.html#a8b1235887db863df00142942190feb6f">gamgee::ChromosomeSizeException::ChromosomeSizeException</a></div><div class="ttdeci">ChromosomeSizeException(const std::string &amp;chrom_name, const size_t chrom_size, const int desired_location)</div><div class="ttdef"><b>Definition:</b> exceptions.h:43</div></div>
+<div class="ttc" id="classgamgee_1_1_chromosome_not_found_exception_html_a223216cf0fa4e78890f65e3c0af6e839"><div class="ttname"><a href="classgamgee_1_1_chromosome_not_found_exception.html#a223216cf0fa4e78890f65e3c0af6e839">gamgee::ChromosomeNotFoundException::ChromosomeNotFoundException</a></div><div class="ttdeci">ChromosomeNotFoundException(const std::string &amp;chrom_name)</div><div class="ttdef"><b>Definition:</b> exceptions.h:34</div></div>
 <div class="ttc" id="classgamgee_1_1_single_input_exception_html"><div class="ttname"><a href="classgamgee_1_1_single_input_exception.html">gamgee::SingleInputException</a></div><div class="ttdoc">an exception class for the case where a single input is required, but more is provided ...</div><div class="ttdef"><b>Definition:</b> exceptions.h:14</div></div>
+<div class="ttc" id="classgamgee_1_1_chromosome_size_exception_html"><div class="ttname"><a href="classgamgee_1_1_chromosome_size_exception.html">gamgee::ChromosomeSizeException</a></div><div class="ttdoc">an exception class for the case where a chromosome is not found in the reference </div><div class="ttdef"><b>Definition:</b> exceptions.h:41</div></div>
 <div class="ttc" id="classgamgee_1_1_htslib_exception_html"><div class="ttname"><a href="classgamgee_1_1_htslib_exception.html">gamgee::HtslibException</a></div><div class="ttdoc">a catchall exception class for htslib errors </div><div class="ttdef"><b>Definition:</b> exceptions.h:23</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Sep 20 2014 01:31:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 22 2014 20:52:28 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -113,42 +113,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classgamgee_1_1_fastq_iterator.html#a398df9dc90f9043caba55925fb600fd8">FastqIterator</a>(<a class="code" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a>&amp; <a class="code" href="classgamgee_1_1_fastq_iterator.html#a9ebfa90af846d6994a2aa22549328976">operator=</a>(<a class="code" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classgamgee_1_1_fastq_iterator.html#a9cf83f7341e1eaa2d8ab70b2018ec328">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a>&amp; rhs);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classgamgee_1_1_fastq_iterator.html#aac42a3aed4e0904e01d45cb097fe5a49">operator==</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a>&amp; rhs) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="classgamgee_1_1_fastq.html">Fastq</a>&amp; <a class="code" href="classgamgee_1_1_fastq_iterator.html#a1417fe05ba803dc9cffc3735b4d68e7c">operator*</a>();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="classgamgee_1_1_fastq.html">Fastq</a>&amp; <a class="code" href="classgamgee_1_1_fastq_iterator.html#a538c7281c23233a214adeae6915cd170">operator++</a>();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  std::shared_ptr&lt;std::istream&gt; m_input_stream;         </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <a class="code" href="classgamgee_1_1_fastq.html">Fastq</a> m_element;              </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">bool</span> m_is_fastq;              </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">char</span> m_eos_delim;             </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordtype">char</span> m_bor_delim;             </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="classgamgee_1_1_fastq.html">Fastq</a> fetch_next_element();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  std::string parse_comment();</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  std::string parse_seq();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  std::string parse_quals(uint32_t seq_length);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">const</span> std::string parse_multiline();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordtype">void</span> skip_new_lines();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}  <span class="comment">// end namespace gamgee</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#endif // gamgee__fastq_iterator__guard</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classgamgee_1_1_fastq_iterator.html#a837ee99054e4efc1c35e8cf58947d2d8">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_fastq_iterator.html">FastqIterator</a>&amp; rhs) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="classgamgee_1_1_fastq.html">Fastq</a>&amp; <a class="code" href="classgamgee_1_1_fastq_iterator.html#a1417fe05ba803dc9cffc3735b4d68e7c">operator*</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="classgamgee_1_1_fastq.html">Fastq</a>&amp; <a class="code" href="classgamgee_1_1_fastq_iterator.html#a538c7281c23233a214adeae6915cd170">operator++</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  std::shared_ptr&lt;std::istream&gt; m_input_stream;         </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <a class="code" href="classgamgee_1_1_fastq.html">Fastq</a> m_element;              </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordtype">bool</span> m_is_fastq;              </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordtype">char</span> m_eos_delim;             </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordtype">char</span> m_bor_delim;             </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <a class="code" href="classgamgee_1_1_fastq.html">Fastq</a> fetch_next_element();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  std::string parse_comment();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  std::string parse_seq();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  std::string parse_quals(uint32_t seq_length);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keyword">const</span> std::string parse_multiline();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordtype">void</span> skip_new_lines();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;};</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}  <span class="comment">// end namespace gamgee</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif // gamgee__fastq_iterator__guard</span></div>
 <div class="ttc" id="fastq_8h_html"><div class="ttname"><a href="fastq_8h.html">fastq.h</a></div></div>
-<div class="ttc" id="classgamgee_1_1_fastq_iterator_html_a9cf83f7341e1eaa2d8ab70b2018ec328"><div class="ttname"><a href="classgamgee_1_1_fastq_iterator.html#a9cf83f7341e1eaa2d8ab70b2018ec328">gamgee::FastqIterator::operator!=</a></div><div class="ttdeci">bool operator!=(const FastqIterator &amp;rhs)</div><div class="ttdoc">inequality operator (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> fastq_iterator.cpp:40</div></div>
 <div class="ttc" id="classgamgee_1_1_fastq_iterator_html_a398df9dc90f9043caba55925fb600fd8"><div class="ttname"><a href="classgamgee_1_1_fastq_iterator.html#a398df9dc90f9043caba55925fb600fd8">gamgee::FastqIterator::FastqIterator</a></div><div class="ttdeci">FastqIterator()</div><div class="ttdoc">creates an empty iterator (used for the end() method) </div><div class="ttdef"><b>Definition:</b> fastq_iterator.cpp:11</div></div>
+<div class="ttc" id="classgamgee_1_1_fastq_iterator_html_a837ee99054e4efc1c35e8cf58947d2d8"><div class="ttname"><a href="classgamgee_1_1_fastq_iterator.html#a837ee99054e4efc1c35e8cf58947d2d8">gamgee::FastqIterator::operator!=</a></div><div class="ttdeci">bool operator!=(const FastqIterator &amp;rhs) const </div><div class="ttdoc">inequality operator (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> fastq_iterator.cpp:44</div></div>
 <div class="ttc" id="classgamgee_1_1_fastq_html"><div class="ttname"><a href="classgamgee_1_1_fastq.html">gamgee::Fastq</a></div><div class="ttdoc">Utility class to hold one FastA or FastQ record. </div><div class="ttdef"><b>Definition:</b> fastq.h:13</div></div>
 <div class="ttc" id="classgamgee_1_1_fastq_iterator_html_a9ebfa90af846d6994a2aa22549328976"><div class="ttname"><a href="classgamgee_1_1_fastq_iterator.html#a9ebfa90af846d6994a2aa22549328976">gamgee::FastqIterator::operator=</a></div><div class="ttdeci">FastqIterator &amp; operator=(const FastqIterator &amp;)=delete</div></div>
 <div class="ttc" id="classgamgee_1_1_fastq_iterator_html"><div class="ttname"><a href="classgamgee_1_1_fastq_iterator.html">gamgee::FastqIterator</a></div><div class="ttdoc">Utility class to enable for-each style iteration in the FastqReader class. </div><div class="ttdef"><b>Definition:</b> fastq_iterator.h:14</div></div>
 <div class="ttc" id="classgamgee_1_1_fastq_iterator_html_a1417fe05ba803dc9cffc3735b4d68e7c"><div class="ttname"><a href="classgamgee_1_1_fastq_iterator.html#a1417fe05ba803dc9cffc3735b4d68e7c">gamgee::FastqIterator::operator*</a></div><div class="ttdeci">Fastq &amp; operator*()</div><div class="ttdoc">dereference operator (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> fastq_iterator.cpp:31</div></div>
 <div class="ttc" id="classgamgee_1_1_fastq_iterator_html_a538c7281c23233a214adeae6915cd170"><div class="ttname"><a href="classgamgee_1_1_fastq_iterator.html#a538c7281c23233a214adeae6915cd170">gamgee::FastqIterator::operator++</a></div><div class="ttdeci">Fastq &amp; operator++()</div><div class="ttdoc">increment operator (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> fastq_iterator.cpp:35</div></div>
+<div class="ttc" id="classgamgee_1_1_fastq_iterator_html_aac42a3aed4e0904e01d45cb097fe5a49"><div class="ttname"><a href="classgamgee_1_1_fastq_iterator.html#aac42a3aed4e0904e01d45cb097fe5a49">gamgee::FastqIterator::operator==</a></div><div class="ttdeci">bool operator==(const FastqIterator &amp;rhs) const </div><div class="ttdoc">equality operator </div><div class="ttdef"><b>Definition:</b> fastq_iterator.cpp:40</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Sep 20 2014 01:31:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 22 2014 20:52:28 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

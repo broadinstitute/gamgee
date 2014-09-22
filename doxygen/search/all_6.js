@@ -11,6 +11,7 @@ var searchData=
   ['genotype_5futils_2ecpp',['genotype_utils.cpp',['../genotype__utils_8cpp.html',1,'']]],
   ['genotype_5futils_2eh',['genotype_utils.h',['../genotype__utils_8h.html',1,'']]],
   ['genotypes',['genotypes',['../classgamgee_1_1_variant.html#a68607de44ef4a90f2ce24737a2aac285',1,'gamgee::Variant']]],
+  ['get_5fsequence',['get_sequence',['../classgamgee_1_1_reference_map.html#a6386a54a8d0336f9ddc6adb9eeec3844',1,'gamgee::ReferenceMap']]],
   ['getcompilationinfoforfile',['GetCompilationInfoForFile',['../_8ycm__extra__conf_8py.html#a1c7294d0bfbd409f9d5d418ed3e91a52',1,'.ycm_extra_conf.py']]],
   ['missing_5fvalues',['missing_values',['../namespacegamgee_1_1missing__values.html',1,'gamgee']]],
   ['utils',['utils',['../namespacegamgee_1_1utils.html',1,'gamgee']]]
