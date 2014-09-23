@@ -72,18 +72,18 @@ BOOST_AUTO_TEST_CASE( reference_map_get_sequence_test )
 BOOST_AUTO_TEST_CASE( reference_iterator_test ) {
   auto reference1 = ReferenceIterator{FILE1};
   for (const auto chr : CHROMOSOMES1) {
-    for (auto counter = 1; counter <= SEQ1.size(); counter++) {
+    for (auto counter = 1u; counter <= SEQ1.size(); counter++) {
       const char truth = SEQ1[counter - 1];
       BOOST_CHECK(truth == reference1.ref_base(chr, counter));
     }
   }
 
   auto reference2 = ReferenceIterator{FILE2};
-  for (auto counter = 1; counter <= CHR1_SEQ.size(); counter++) {
+  for (auto counter = 1u; counter <= CHR1_SEQ.size(); counter++) {
     const char truth = CHR1_SEQ[counter - 1];
     BOOST_CHECK(truth == reference2.ref_base("chr1", counter));
   }
-  for (auto counter = 1; counter <= CHR2_SEQ.size(); counter++) {
+  for (auto counter = 1u; counter <= CHR2_SEQ.size(); counter++) {
     const char truth = CHR2_SEQ[counter - 1];
     BOOST_CHECK(truth == reference2.ref_base("chr2", counter));
   }

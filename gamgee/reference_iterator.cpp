@@ -12,7 +12,7 @@ const char ReferenceIterator::ref_base(const std::string& chromosome, const int 
   if (m_iterator == FastqIterator{})
     throw new ChromosomeNotFoundException{chromosome};
 
-  if (one_based_location > m_sequence.sequence().size())
+  if (one_based_location > static_cast<const int>(m_sequence.sequence().size()))
     throw new ChromosomeSizeException{chromosome, m_sequence.sequence().size(), one_based_location};
 
   return m_sequence.sequence()[one_based_location-1];
