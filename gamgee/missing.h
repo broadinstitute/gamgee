@@ -2,6 +2,7 @@
 #define gamgee__missing__guard
 
 #include "sam_tag.h"
+#include "utils/utils.h"
 #include "htslib/vcf.h"
 
 #include <vector>
@@ -19,7 +20,7 @@ namespace missing_values {
 }
 
 inline bool missing (const bool value) { return !value; }                                                                       ///< Returns true if bool is false (missing).
-inline bool missing (const float value) { return isnan(value); }                                                                ///< Returns true if float is missing.
+inline bool missing (const float value) { return bcf_float_is_missing(value); }                                                 ///< Returns true if float is missing.
 inline bool missing (const int8_t value)  { return value == missing_values::int8; }                                             ///< Returns true if int8_t is missing.
 inline bool missing (const int16_t value) { return value == missing_values::int16; }                                            ///< Returns true if int16_t is missing.
 inline bool missing (const int32_t value) { return value == missing_values::int32; }                                            ///< Returns true if int32_t is missing.
