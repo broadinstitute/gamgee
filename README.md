@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/broadinstitute/gamgee.svg?branch=master)](https://travis-ci.org/broadinstitute/gamgee)
 [![Coverage Status](https://coveralls.io/repos/broadinstitute/gamgee/badge.png)](https://coveralls.io/r/broadinstitute/gamgee)
-
+[![Issue Stats](http://issuestats.com/github/broadinstitute/gamgee/badge/pr)](http://issuestats.com/github/broadinstitute/gamgee)
+[![Issue Stats](http://issuestats.com/github/broadinstitute/gamgee/badge/issue)](http://issuestats.com/github/broadinstitute/gamgee)
 
 Gamgee
 ======
