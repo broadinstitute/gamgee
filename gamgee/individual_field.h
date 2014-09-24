@@ -164,7 +164,7 @@ class IndividualField {
   TYPE back() const { return operator[](m_body->n_sample - 1); }   ///< @brief convenience function to access the last element
 
  private:
-  const std::shared_ptr<bcf1_t> m_body; ///< shared ownership of the Variant record memory so it stays alive while this object is in scope
+  std::shared_ptr<bcf1_t> m_body; ///< shared ownership of the Variant record memory so it stays alive while this object is in scope
   bcf_fmt_t*  m_format_ptr;  ///< pointer to m_body structure where the data for this particular type is located.
 };
 

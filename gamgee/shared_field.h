@@ -139,9 +139,9 @@ class SharedField {
   TYPE back() const { return operator[](m_info_ptr->len - 1); }   ///< @brief convenience function to access the last element
 
  private:
-  const std::shared_ptr<bcf1_t> m_body;
-  const bcf_info_t* const m_info_ptr;
-  const uint8_t m_bytes_per_value;
+  std::shared_ptr<bcf1_t> m_body;
+  const bcf_info_t* m_info_ptr;
+  uint8_t m_bytes_per_value;
 
   TYPE convert_from_byte_array(int index) const;
 };

@@ -138,11 +138,11 @@ class SharedFieldIterator : public std::iterator<std::random_access_iterator_tag
   }
 
  private:
-  const std::shared_ptr<bcf1_t> m_body;
+  std::shared_ptr<bcf1_t> m_body;
   const uint8_t* m_current_data_ptr;
-  const uint8_t* const m_original_data_ptr;
-  const uint8_t m_bytes_per_value;
-  const utils::VariantFieldType m_type;
+  const uint8_t* m_original_data_ptr;
+  uint8_t m_bytes_per_value;
+  utils::VariantFieldType m_type;
 
   VALUE_TYPE convert_from_byte_array(const uint8_t* data_ptr, int index) const;
 };

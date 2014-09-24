@@ -72,7 +72,7 @@ class SamPairIterator {
 
     SamPtrQueue m_supp_alignments;                     ///< queue to hold the supplementary alignments temporarily while processing the pairs
     std::shared_ptr<htsFile> m_sam_file_ptr;           ///< pointer to the sam file
-    const std::shared_ptr<bam_hdr_t> m_sam_header_ptr; ///< pointer to the sam header
+    std::shared_ptr<bam_hdr_t> m_sam_header_ptr; ///< pointer to the sam header
     std::shared_ptr<bam1_t> m_sam_record_ptr1;         ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
     std::shared_ptr<bam1_t> m_sam_record_ptr2;         ///< pointer to the internal structure of the sam record. Useful to only allocate it once.
     std::pair<Sam,Sam> m_sam_records;                  ///< temporary record to hold between fetch (operator++) and serve (operator*)
