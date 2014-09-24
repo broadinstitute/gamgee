@@ -97,6 +97,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
+<code>#include &quot;htslib/vcf.h&quot;</code><br />
 </div>
 <p><a href="utils_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -128,11 +129,22 @@ Functions</h2></td></tr>
 <tr class="memitem:a0f228e0091b6df37b21d4a58c7ad372c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">gamgee::utils::check_max_boundary</a> (const uint32_t index, const uint32_t size)</td></tr>
 <tr class="memdesc:a0f228e0091b6df37b21d4a58c7ad372c"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks that an index is greater than or equal to size  <a href="#a0f228e0091b6df37b21d4a58c7ad372c">More...</a><br /></td></tr>
 <tr class="separator:a0f228e0091b6df37b21d4a58c7ad372c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e21ed8e0db5a468b1a8cdd63e3437ec"><td class="memTemplParams" colspan="2">template&lt;class TYPE &gt; </td></tr>
+<tr class="memitem:a9e21ed8e0db5a468b1a8cdd63e3437ec"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a9e21ed8e0db5a468b1a8cdd63e3437ec">gamgee::utils::bcf_check_equal_primitive</a> (const TYPE x, const TYPE y)</td></tr>
+<tr class="memdesc:a9e21ed8e0db5a468b1a8cdd63e3437ec"><td class="mdescLeft">&#160;</td><td class="mdescRight"><ul>
+<li>Check whether two values from VCF fields of primitive types (for which the == operator is defined) * are equal The function template is specialized for float fields </li>
+</ul>
+ <a href="#a9e21ed8e0db5a468b1a8cdd63e3437ec">More...</a><br /></td></tr>
+<tr class="separator:a9e21ed8e0db5a468b1a8cdd63e3437ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac632b46c9dd7989fdfd8cee7b6adf0d8"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:ac632b46c9dd7989fdfd8cee7b6adf0d8"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ac632b46c9dd7989fdfd8cee7b6adf0d8">gamgee::utils::bcf_check_equal_primitive&lt; float &gt;</a> (const float x, const float y)</td></tr>
+<tr class="memdesc:ac632b46c9dd7989fdfd8cee7b6adf0d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Check whether two float values from VCF fields are equal  <a href="#ac632b46c9dd7989fdfd8cee7b6adf0d8">More...</a><br /></td></tr>
+<tr class="separator:ac632b46c9dd7989fdfd8cee7b6adf0d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 24 2014 20:39:46 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 24 2014 21:33:34 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

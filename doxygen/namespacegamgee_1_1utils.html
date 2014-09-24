@@ -251,6 +251,17 @@ Functions</h2></td></tr>
 <tr class="memitem:a0f228e0091b6df37b21d4a58c7ad372c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">check_max_boundary</a> (const uint32_t index, const uint32_t size)</td></tr>
 <tr class="memdesc:a0f228e0091b6df37b21d4a58c7ad372c"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks that an index is greater than or equal to size  <a href="#a0f228e0091b6df37b21d4a58c7ad372c">More...</a><br /></td></tr>
 <tr class="separator:a0f228e0091b6df37b21d4a58c7ad372c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e21ed8e0db5a468b1a8cdd63e3437ec"><td class="memTemplParams" colspan="2">template&lt;class TYPE &gt; </td></tr>
+<tr class="memitem:a9e21ed8e0db5a468b1a8cdd63e3437ec"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a9e21ed8e0db5a468b1a8cdd63e3437ec">bcf_check_equal_primitive</a> (const TYPE x, const TYPE y)</td></tr>
+<tr class="memdesc:a9e21ed8e0db5a468b1a8cdd63e3437ec"><td class="mdescLeft">&#160;</td><td class="mdescRight"><ul>
+<li>Check whether two values from VCF fields of primitive types (for which the == operator is defined) * are equal The function template is specialized for float fields </li>
+</ul>
+ <a href="#a9e21ed8e0db5a468b1a8cdd63e3437ec">More...</a><br /></td></tr>
+<tr class="separator:a9e21ed8e0db5a468b1a8cdd63e3437ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac632b46c9dd7989fdfd8cee7b6adf0d8"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:ac632b46c9dd7989fdfd8cee7b6adf0d8"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ac632b46c9dd7989fdfd8cee7b6adf0d8">bcf_check_equal_primitive&lt; float &gt;</a> (const float x, const float y)</td></tr>
+<tr class="memdesc:ac632b46c9dd7989fdfd8cee7b6adf0d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Check whether two float values from VCF fields are equal  <a href="#ac632b46c9dd7989fdfd8cee7b6adf0d8">More...</a><br /></td></tr>
+<tr class="separator:ac632b46c9dd7989fdfd8cee7b6adf0d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b57ec3415d2ed156dbd52b8c5b16dcb"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a8b57ec3415d2ed156dbd52b8c5b16dcb">convert_data_to_integer</a> (const uint8_t *data_ptr, const int index, const uint8_t num_bytes_per_value, const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">VariantFieldType</a> &amp;type)</td></tr>
 <tr class="memdesc:a8b57ec3415d2ed156dbd52b8c5b16dcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">converts the value in an index from the byte array into int32_t  <a href="#a8b57ec3415d2ed156dbd52b8c5b16dcb">More...</a><br /></td></tr>
 <tr class="separator:a8b57ec3415d2ed156dbd52b8c5b16dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -735,6 +746,86 @@ template&lt;class TYPE &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The genotype allele strings. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Only int8_t GT fields have been tested. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9e21ed8e0db5a468b1a8cdd63e3437ec"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::utils::bcf_check_equal_primitive </td>
+          <td>(</td>
+          <td class="paramtype">const TYPE&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const TYPE&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><ul>
+<li>Check whether two values from VCF fields of primitive types (for which the == operator is defined) * are equal The function template is specialized for float fields </li>
+</ul>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac632b46c9dd7989fdfd8cee7b6adf0d8"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="namespacegamgee_1_1utils.html#a9e21ed8e0db5a468b1a8cdd63e3437ec">gamgee::utils::bcf_check_equal_primitive</a>&lt; float &gt; </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>: Check whether two float values from VCF fields are equal </p>
+<dl class="section note"><dt>Note</dt><dd>: since bcf_float_missing and bcf_float_vector_end are represented as NaNs and (nan == nan) returns false, a special check needs to be done for checking equality of float values in VCFs </dd></dl>
 
 </div>
 </div>
@@ -1590,7 +1681,7 @@ template&lt;typename... T&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 24 2014 20:39:46 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 24 2014 21:33:35 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

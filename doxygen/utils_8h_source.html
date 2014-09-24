@@ -97,41 +97,55 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>gamgee {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>utils {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;std::string <a class="code" href="namespacegamgee_1_1utils.html#a740716d2b795a26787bf1000ae62ddb2">reverse_complement</a>(<span class="keyword">const</span> std::string&amp; sequence);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;std::string <a class="code" href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">complement</a>(<span class="keyword">const</span> std::string&amp; sequence); </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;std::string <a class="code" href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">complement</a>(std::string&amp; sequence);               </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">char</span> <a class="code" href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">complement</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> base);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;std::vector&lt;std::string&gt; <a class="code" href="namespacegamgee_1_1utils.html#aa3f1ec8c7415419a0e1c57c8255873a9">hts_string_array_to_vector</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> * <span class="keyword">const</span> string_array, <span class="keyword">const</span> uint32_t array_size);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">   61</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">check_max_boundary</a>(<span class="keyword">const</span> uint32_t index, <span class="keyword">const</span> uint32_t size) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">if</span> (index &gt;= size) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::stringstream error_message {};  </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    error_message &lt;&lt; <span class="stringliteral">&quot;Index:  &quot;</span> &lt;&lt; index &lt;&lt; <span class="stringliteral">&quot; must be less than &quot;</span> &lt;&lt; size &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">throw</span> std::out_of_range(error_message.str());</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;} <span class="comment">// end utils namespace</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;} <span class="comment">// end gamgee namespace</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif // gamgee__utils__guard</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;htslib/vcf.h&quot;</span> </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>gamgee {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span>utils {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;std::string <a class="code" href="namespacegamgee_1_1utils.html#a740716d2b795a26787bf1000ae62ddb2">reverse_complement</a>(<span class="keyword">const</span> std::string&amp; sequence);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;std::string <a class="code" href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">complement</a>(<span class="keyword">const</span> std::string&amp; sequence); </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;std::string <a class="code" href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">complement</a>(std::string&amp; sequence);               </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">char</span> <a class="code" href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">complement</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> base);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;std::vector&lt;std::string&gt; <a class="code" href="namespacegamgee_1_1utils.html#aa3f1ec8c7415419a0e1c57c8255873a9">hts_string_array_to_vector</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> * <span class="keyword">const</span> string_array, <span class="keyword">const</span> uint32_t array_size);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">   62</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">check_max_boundary</a>(<span class="keyword">const</span> uint32_t index, <span class="keyword">const</span> uint32_t size) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordflow">if</span> (index &gt;= size) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    std::stringstream error_message {};  </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    error_message &lt;&lt; <span class="stringliteral">&quot;Index:  &quot;</span> &lt;&lt; index &lt;&lt; <span class="stringliteral">&quot; must be less than &quot;</span> &lt;&lt; size &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">throw</span> std::out_of_range(error_message.str());</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> TYPE&gt;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#a9e21ed8e0db5a468b1a8cdd63e3437ec">   75</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="namespacegamgee_1_1utils.html#a9e21ed8e0db5a468b1a8cdd63e3437ec">bcf_check_equal_primitive</a>(<span class="keyword">const</span> TYPE x, <span class="keyword">const</span> TYPE y) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordflow">return</span> (x == y);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">template</span>&lt;&gt;</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#ac632b46c9dd7989fdfd8cee7b6adf0d8">   84</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="namespacegamgee_1_1utils.html#ac632b46c9dd7989fdfd8cee7b6adf0d8">bcf_check_equal_primitive&lt;float&gt;</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> x, <span class="keyword">const</span> <span class="keywordtype">float</span> y) {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordflow">return</span> ((x == y) || (bcf_float_is_missing(x) &amp;&amp; bcf_float_is_missing(y))</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  || (bcf_float_is_vector_end(x) &amp;&amp; bcf_float_is_vector_end(y)));</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;} <span class="comment">// end utils namespace</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;} <span class="comment">// end gamgee namespace</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif // gamgee__utils__guard</span></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a740716d2b795a26787bf1000ae62ddb2"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a740716d2b795a26787bf1000ae62ddb2">gamgee::utils::reverse_complement</a></div><div class="ttdeci">std::string reverse_complement(const std::string &amp;sequence)</div><div class="ttdoc">calculates the reverse complement of a sequence </div><div class="ttdef"><b>Definition:</b> utils.cpp:46</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_af406bde810c85ea1749461ed137ab59b"><div class="ttname"><a href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">gamgee::utils::complement</a></div><div class="ttdeci">std::string complement(std::string &amp;sequence)</div><div class="ttdoc">calculates the complement of a sequence in-place </div><div class="ttdef"><b>Definition:</b> utils.cpp:34</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_aa3f1ec8c7415419a0e1c57c8255873a9"><div class="ttname"><a href="namespacegamgee_1_1utils.html#aa3f1ec8c7415419a0e1c57c8255873a9">gamgee::utils::hts_string_array_to_vector</a></div><div class="ttdeci">std::vector&lt; std::string &gt; hts_string_array_to_vector(const char *const *const string_array, const uint32_t array_size)</div><div class="ttdoc">converts an array of c-strings into a vector<string> </div><div class="ttdef"><b>Definition:</b> utils.cpp:53</div></div>
-<div class="ttc" id="namespacegamgee_1_1utils_html_a0f228e0091b6df37b21d4a58c7ad372c"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">gamgee::utils::check_max_boundary</a></div><div class="ttdeci">void check_max_boundary(const uint32_t index, const uint32_t size)</div><div class="ttdoc">checks that an index is greater than or equal to size </div><div class="ttdef"><b>Definition:</b> utils.h:61</div></div>
+<div class="ttc" id="namespacegamgee_1_1utils_html_a0f228e0091b6df37b21d4a58c7ad372c"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">gamgee::utils::check_max_boundary</a></div><div class="ttdeci">void check_max_boundary(const uint32_t index, const uint32_t size)</div><div class="ttdoc">checks that an index is greater than or equal to size </div><div class="ttdef"><b>Definition:</b> utils.h:62</div></div>
+<div class="ttc" id="namespacegamgee_1_1utils_html_a9e21ed8e0db5a468b1a8cdd63e3437ec"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a9e21ed8e0db5a468b1a8cdd63e3437ec">gamgee::utils::bcf_check_equal_primitive</a></div><div class="ttdeci">bool bcf_check_equal_primitive(const TYPE x, const TYPE y)</div><div class="ttdoc">Check whether two values from VCF fields of primitive types (for which the == operator is defined) * ...</div><div class="ttdef"><b>Definition:</b> utils.h:75</div></div>
+<div class="ttc" id="namespacegamgee_1_1utils_html_ac632b46c9dd7989fdfd8cee7b6adf0d8"><div class="ttname"><a href="namespacegamgee_1_1utils.html#ac632b46c9dd7989fdfd8cee7b6adf0d8">gamgee::utils::bcf_check_equal_primitive&lt; float &gt;</a></div><div class="ttdeci">bool bcf_check_equal_primitive&lt; float &gt;(const float x, const float y)</div><div class="ttdoc">: Check whether two float values from VCF fields are equal </div><div class="ttdef"><b>Definition:</b> utils.h:84</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 24 2014 20:39:46 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 24 2014 21:33:34 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
