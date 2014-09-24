@@ -46,8 +46,8 @@ class Interval {
    * @param stop        stop location (inclusive)
    * @param output_type desired output format (only used if Interval is sent to output stream)
    */
-  explicit Interval(std::string chr, const uint32_t start, const uint32_t stop, const IntervalType output_type = IntervalType::GATK) :
-    m_chr{std::move(chr)},
+  explicit Interval(const std::string& chr, const uint32_t start, const uint32_t stop, const IntervalType output_type = IntervalType::GATK) :
+    m_chr{chr},
     m_start{start},
     m_stop{stop},
     m_output_type{output_type} 

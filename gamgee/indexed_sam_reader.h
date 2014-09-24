@@ -42,11 +42,11 @@ class IndexedSamReader {
      * @param filename the name of the bam/cram file
      * @param interval_list Samtools style intervals to look for records
      */
-    IndexedSamReader(const std::string& filename, std::vector<std::string> interval_list) :
+    IndexedSamReader(const std::string& filename, const std::vector<std::string>& interval_list) :
       m_sam_file_ptr {utils::make_shared_hts_file(sam_open(filename.c_str(), "r"))}, // TODO: Not checking for errors.
       m_sam_index_ptr {utils::make_shared_hts_index(sam_index_load(m_sam_file_ptr.get(), filename.c_str()))}, // TODO: Not checking for errors.
       m_sam_header_ptr { utils::make_shared_sam_header(sam_hdr_read(m_sam_file_ptr.get())) }, // TODO: Not checking for errors.
-      m_interval_list {std::move(interval_list)} {
+      m_interval_list {interval_list} {
     }
 
     /**

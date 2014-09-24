@@ -34,7 +34,7 @@ class IndexedVariantIterator : public VariantIterator {
   IndexedVariantIterator(const std::shared_ptr<htsFile>& file_ptr,
                          const std::shared_ptr<hts_idx_t>& index_ptr,
                          const std::shared_ptr<bcf_hdr_t>& header_ptr,
-                         const std::vector<std::string> interval_list = all_intervals);
+                         const std::vector<std::string>& interval_list = all_intervals);
 
   /**
    * @brief an IndexedVariantIterator cannot be copied safely, as it is iterating over a stream.
