@@ -33,6 +33,7 @@ BOOST_AUTO_TEST_CASE( hom_ref_test ){
     dynamic_bitset<>(string("010")),
     dynamic_bitset<>(string("010")),
     dynamic_bitset<>(string("010")),
+    dynamic_bitset<>(string("010")),
     dynamic_bitset<>(string("010"))};
 
   select_if_test(truth, diploid, hom_ref  );
@@ -49,6 +50,7 @@ BOOST_AUTO_TEST_CASE( hom_ref_alternate_ploidy_test ){
 
 BOOST_AUTO_TEST_CASE( hom_var_test ){
   const auto truth = vector<dynamic_bitset<>>{
+    dynamic_bitset<>(string("100")),
     dynamic_bitset<>(string("100")),
     dynamic_bitset<>(string("100")),
     dynamic_bitset<>(string("100")),

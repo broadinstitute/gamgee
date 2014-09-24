@@ -5,6 +5,7 @@
 #include <memory>
 #include <vector>
 #include <sstream>
+#include "htslib/vcf.h" 
 
 namespace gamgee {
 
@@ -65,6 +66,26 @@ inline void check_max_boundary(const uint32_t index, const uint32_t size) {
     throw std::out_of_range(error_message.str());
   }
 }
+
+/**
+ * @brief - Check whether two values from VCF fields of primitive types (for which the == operator is defined) * are equal
+ * The function template is specialized for float fields
+ */
+template<class TYPE>
+inline bool bcf_check_equal_primitive(const TYPE x, const TYPE y) {
+  return (x == y);
+}
+/**
+ * @brief: Check whether two float values from VCF fields  are equal
+ * @note: since bcf_float_missing and bcf_float_vector_end are represented as NaNs and (nan == nan) returns false,
+ * a special check needs to be done for checking equality of float values in VCFs
+ */
+template<>
+inline bool bcf_check_equal_primitive<float>(const float x, const float y) {
+  return ((x == y) || (bcf_float_is_missing(x) && bcf_float_is_missing(y))
+	|| (bcf_float_is_vector_end(x) && bcf_float_is_vector_end(y)));
+}
+
 
 } // end utils namespace
 } // end gamgee namespace

@@ -9,12 +9,18 @@ namespace gamgee {
 namespace utils {
 
 int32_t convert_data_to_integer(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const VariantFieldType& type) {
+  auto return_val = -1;
   const auto p = data_ptr + (index * num_bytes_per_value);
+  auto end_val = -1;
   switch (type) {
     case VariantFieldType::INT8:
-      return *(reinterpret_cast<const int8_t*>(p));
+      return_val = *(reinterpret_cast<const int8_t*>(p));
+      end_val = bcf_int8_vector_end;
+      break;
     case VariantFieldType::INT16:
-      return *(reinterpret_cast<const int16_t*>(p));
+      return_val = *(reinterpret_cast<const int16_t*>(p));
+      end_val = bcf_int16_vector_end;
+      break;
     case VariantFieldType::INT32:
       return *(reinterpret_cast<const int32_t*>(p));
     case VariantFieldType::FLOAT:
@@ -24,17 +30,31 @@ int32_t convert_data_to_integer(const uint8_t* data_ptr, const int index, const 
     default:
       return 0; // undefined or NULL type -- impossible to happen just so the compiler doesn't warn us 
   }
+  //diff = 0 if return_val == vector_end, 1 if return_val == missing, < 0 if return_val is 'normal'
+  auto diff = end_val - return_val;
+  if(diff >= 0)
+    return bcf_int32_vector_end - diff;
+  else
+    return return_val;
 }
 
 float convert_data_to_float(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const VariantFieldType& type) {
+  auto return_val = -1;
+  auto end_val = -1;
   const auto p = data_ptr + (index * num_bytes_per_value);
   switch (type) {
     case VariantFieldType::INT8:
-      return *(reinterpret_cast<const int8_t*>(p)); 
+      return_val = *(reinterpret_cast<const int8_t*>(p)); 
+      end_val = bcf_int8_vector_end;
+      break;
     case VariantFieldType::INT16:
-      return *(reinterpret_cast<const int16_t*>(p)); 
+      return_val = *(reinterpret_cast<const int16_t*>(p));
+      end_val = bcf_int16_vector_end;
+      break;
     case VariantFieldType::INT32:
-      return *(reinterpret_cast<const int32_t*>(p)); 
+      return_val = *(reinterpret_cast<const int32_t*>(p)); 
+      end_val = bcf_int32_vector_end;
+      break;
     case VariantFieldType::FLOAT:
       return *(reinterpret_cast<const float*>(p)); 
     case VariantFieldType::STRING:
@@ -42,6 +62,16 @@ float convert_data_to_float(const uint8_t* data_ptr, const int index, const uint
     default:
       return 0.0f; // undefined or NULL type -- impossible to happen just so the compiler doesn't warn us 
   }
+  if(end_val >= return_val)	//can't use diff because INT32 types are also checked here and diff will wrap-around 
+  {
+    auto tmp = 0.0f;	//pack bcf_float_missing or bcf_float_vector_end into tmp and return tmp
+    //diff = 0 if return_val == vector_end, 1 if return_val == missing, 
+    auto diff = end_val - return_val;
+    bcf_float_set(&tmp, bcf_float_vector_end - diff);
+    return tmp;
+  }
+  else
+    return return_val;
 }
 
 std::string convert_data_to_string(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const VariantFieldType& type) {

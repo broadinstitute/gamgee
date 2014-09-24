@@ -45,8 +45,8 @@ BOOST_AUTO_TEST_CASE( select_if_individual_fields ) {
 }
 
 BOOST_AUTO_TEST_CASE( select_if_shared_field ) {
-  const auto truth_an_counts = std::vector<uint32_t>{1,1,1,1,1};
-  const auto truth_af_counts = std::vector<uint32_t>{0,0,0,0,1};
+  const auto truth_an_counts = std::vector<uint32_t>{1,1,1,1,1,1};
+  const auto truth_af_counts = std::vector<uint32_t>{0,0,0,0,1,0};
   auto truth_index = 0u;
   for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf"}) {
     const auto an = record.integer_shared_field("AN");
