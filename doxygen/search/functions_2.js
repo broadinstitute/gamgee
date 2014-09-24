@@ -5,6 +5,7 @@ var searchData=
   ['chop',['chop',['../classgamgee_1_1_fastq.html#a7194ef6a3e1799b6e0dbc4817c61455d',1,'gamgee::Fastq']]],
   ['chr',['chr',['../classgamgee_1_1_interval.html#ad603748829718238d8d408f2bc0ed5be',1,'gamgee::Interval']]],
   ['chromosome',['chromosome',['../classgamgee_1_1_sam.html#ac6b0aa48ad5673b617d11b97950e4e91',1,'gamgee::Sam::chromosome()'],['../classgamgee_1_1_variant.html#ae7ff7ad4733aaa8c66a65993b1ae6fa9',1,'gamgee::Variant::chromosome()']]],
+  ['chromosome_5fname',['chromosome_name',['../classgamgee_1_1_variant.html#a41f32b30d8969ce1d32ef5327472686e',1,'gamgee::Variant']]],
   ['chromosomenotfoundexception',['ChromosomeNotFoundException',['../classgamgee_1_1_chromosome_not_found_exception.html#a223216cf0fa4e78890f65e3c0af6e839',1,'gamgee::ChromosomeNotFoundException']]],
   ['chromosomes',['chromosomes',['../classgamgee_1_1_variant_header.html#a636d949964cad4438e133da1639cd87e',1,'gamgee::VariantHeader']]],
   ['chromosomesizeexception',['ChromosomeSizeException',['../classgamgee_1_1_chromosome_size_exception.html#a8b1235887db863df00142942190feb6f',1,'gamgee::ChromosomeSizeException']]],
