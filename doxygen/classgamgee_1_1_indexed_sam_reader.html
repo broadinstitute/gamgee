@@ -103,9 +103,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0344c7b0e65ba0a14a6b11ce58b0b721"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_indexed_sam_reader.html#a0344c7b0e65ba0a14a6b11ce58b0b721">IndexedSamReader</a> (const std::string &amp;filename, std::vector&lt; std::string &gt; interval_list)</td></tr>
-<tr class="memdesc:a0344c7b0e65ba0a14a6b11ce58b0b721"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads through all records in a file parsing them into <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> objects  <a href="#a0344c7b0e65ba0a14a6b11ce58b0b721">More...</a><br /></td></tr>
-<tr class="separator:a0344c7b0e65ba0a14a6b11ce58b0b721"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a830ef460ef6615d876aa7ae31d73cd94"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_indexed_sam_reader.html#a830ef460ef6615d876aa7ae31d73cd94">IndexedSamReader</a> (const std::string &amp;filename, const std::vector&lt; std::string &gt; &amp;interval_list)</td></tr>
+<tr class="memdesc:a830ef460ef6615d876aa7ae31d73cd94"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads through all records in a file parsing them into <a class="el" href="classgamgee_1_1_sam.html" title="Utility class to manipulate a Sam record. ">Sam</a> objects  <a href="#a830ef460ef6615d876aa7ae31d73cd94">More...</a><br /></td></tr>
+<tr class="separator:a830ef460ef6615d876aa7ae31d73cd94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c4c3e8d98553601ad83b0748789b5bc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_indexed_sam_reader.html#a2c4c3e8d98553601ad83b0748789b5bc">IndexedSamReader</a> (<a class="el" href="classgamgee_1_1_indexed_sam_reader.html">IndexedSamReader</a> &amp;&amp;other)=default</td></tr>
 <tr class="memdesc:a2c4c3e8d98553601ad83b0748789b5bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">iterators and readers can be moved  <a href="#a2c4c3e8d98553601ad83b0748789b5bc">More...</a><br /></td></tr>
 <tr class="separator:a2c4c3e8d98553601ad83b0748789b5bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,7 +137,7 @@ class gamgee::IndexedSamReader&lt; ITERATOR &gt;</h3>
 </div><!-- fragment --><p>Most iterators have aliases defined by this module so you can use it like so: </p><div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; record : <a class="code" href="namespacegamgee.html#ad57cad9569e33a2a0708f90784652a38">IndexedSingleSamReader</a>{filename, interval_list})</div>
 <div class="line">  do_something_with_sam(record);</div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a0344c7b0e65ba0a14a6b11ce58b0b721"></a>
+<a class="anchor" id="a830ef460ef6615d876aa7ae31d73cd94"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -155,7 +155,7 @@ template&lt;class ITERATOR &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
           <td class="paramname"><em>interval_list</em>&#160;</td>
         </tr>
         <tr>
@@ -383,7 +383,7 @@ template&lt;class ITERATOR &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 24 2014 17:40:15 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 24 2014 19:27:15 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
