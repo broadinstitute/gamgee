@@ -37,11 +37,11 @@ class IndexedVariantReader {
    * @param interval_list a vector of intervals represented by strings.  Empty vector for all intervals.
    *
    */
-  IndexedVariantReader(const std::string& filename, const std::vector<std::string> interval_list) :
+  IndexedVariantReader(const std::string& filename, const std::vector<std::string>& interval_list) :
     m_variant_file_ptr { utils::make_shared_hts_file(bcf_open(filename.c_str(), "r")) },
     m_variant_index_ptr { utils::make_shared_hts_index(bcf_index_load(filename.c_str())) },
     m_variant_header_ptr { utils::make_shared_variant_header(bcf_hdr_read(m_variant_file_ptr.get())) },
-    m_interval_list { std::move(interval_list) }
+    m_interval_list { interval_list }
   {}
 
   /**

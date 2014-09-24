@@ -7,7 +7,7 @@ MultipleVariantIterator::MultipleVariantIterator() :
   m_variant_vector {}
 {}
 
-MultipleVariantIterator::MultipleVariantIterator(const std::vector<std::shared_ptr<htsFile>> variant_files, const std::shared_ptr<bcf_hdr_t> variant_header) :
+MultipleVariantIterator::MultipleVariantIterator(const std::vector<std::shared_ptr<htsFile>>& variant_files, const std::shared_ptr<bcf_hdr_t>& variant_header) :
   m_queue {},
   m_variant_vector {}
 {

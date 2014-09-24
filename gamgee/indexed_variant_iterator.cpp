@@ -23,10 +23,10 @@ IndexedVariantIterator::IndexedVariantIterator() :
 IndexedVariantIterator::IndexedVariantIterator(const std::shared_ptr<htsFile>& file_ptr,
                                                const std::shared_ptr<hts_idx_t>& index_ptr,
                                                const std::shared_ptr<bcf_hdr_t>& header_ptr,
-                                               const std::vector<std::string> interval_list) :
+                                               const std::vector<std::string>& interval_list) :
   VariantIterator { file_ptr, header_ptr },
   m_variant_index_ptr { index_ptr },
-  m_interval_list { interval_list.empty() ? all_intervals : move(interval_list) },
+  m_interval_list { interval_list.empty() ? all_intervals : interval_list },
   m_interval_iter { m_interval_list.begin() },
   m_index_iter_ptr { utils::make_unique_hts_itr(bcf_itr_querys(m_variant_index_ptr.get(), m_variant_header_ptr.get(), m_interval_iter->c_str())) }
 {
