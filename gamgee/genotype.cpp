@@ -1,5 +1,7 @@
 #include "genotype.h"
 
+#include <algorithm>
+
 #include "boost/algorithm/cxx11/all_of.hpp"
 
 namespace gamgee {
@@ -102,4 +104,60 @@ uint32_t Genotype::size() const {
   return utils::allele_count(m_format_ptr);
 }
 
+bool Genotype::snp(const AlleleMask& mask) const {
+  const auto keys = allele_keys();
+  return allele_is_type_or_ref(AlleleType::SNP, keys, mask);
 }
+
+bool Genotype::insertion(const AlleleMask& mask) const {
+  const auto keys = allele_keys();
+  return allele_is_type_or_ref(AlleleType::INSERTION, keys, mask);
+}
+
+bool Genotype::deletion(const AlleleMask& mask) const {
+  const auto keys = allele_keys();
+  return allele_is_type_or_ref(AlleleType::DELETION, keys, mask);
+}
+
+bool Genotype::indel(const AlleleMask& mask) const {
+  const auto keys = allele_keys();
+  auto found_type = false;
+  const auto result = std::all_of(keys.begin(), keys.end(), [&mask,&found_type](const auto& k) {
+      if (mask[k] == AlleleType::INSERTION || mask[k] == AlleleType::DELETION) {
+        found_type = true;
+        return true;
+      }
+      return mask[k] == AlleleType::REFERENCE ? true : false;
+  });
+  return result && found_type;
+}
+
+bool Genotype::biallelic() const {
+  const auto keys = allele_keys();
+  const auto first_it = find_if(keys.begin(), keys.end(), [](const auto& k){return k != 0;}); // 0 = reference key
+  if (first_it == keys.end()) 
+    return true;
+  return all_of(first_it, keys.end(), [&first_it](const auto& k){return k == 0 || k == *first_it;});
+}
+
+bool Genotype::mixed() const {
+  const auto keys = allele_keys();
+  const auto first_it = find_if(keys.begin(), keys.end(), [](const auto& k){return k != 0;}); // 0 = reference key
+  if (first_it == keys.end()) 
+    return false;
+  return keys.end() != find_if(first_it, keys.end(), [&first_it](const auto& k){return k != 0 && k != *first_it;});
+}
+
+bool Genotype::allele_is_type_or_ref(const AlleleType& type, const std::vector<int32_t>& keys, const AlleleMask& mask) const {
+  auto found_type = false;
+  const auto result = std::all_of(keys.begin(), keys.end(), [&type,&mask,&found_type](const auto& k) {
+      if (mask[k] == type) {
+        found_type = true;
+        return true;
+      }
+      return mask[k] == AlleleType::REFERENCE ? true : false;
+  });
+  return result && found_type;
+}
+
+} // end of namespace

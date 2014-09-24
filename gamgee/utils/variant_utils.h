@@ -17,6 +17,10 @@ namespace gamgee {
  */
 void subset_variant_samples(bcf_hdr_t* hdr_ptr, const std::vector<std::string>& samples, const bool include);
 
+enum class AlleleType { REFERENCE, SNP, INSERTION, DELETION };
+
+using AlleleMask = std::vector<AlleleType>;
+
 }
 
 #endif /* gamgee__variant_utils__guard */

@@ -6,10 +6,11 @@
 #include "individual_field_value.h"
 #include "shared_field.h"
 #include "variant_filters.h"
-#include "boost/dynamic_bitset.hpp"
 #include "genotype.h"
+#include "utils/variant_utils.h"
 
 #include "htslib/sam.h"
+#include "boost/dynamic_bitset.hpp"
 
 #include <string>
 #include <memory>
@@ -20,6 +21,7 @@ namespace gamgee {
  * @brief simple enum to keep the indices of the genotypes in the PL field of diploid individuals
  */
 enum class DiploidPLGenotype { HOM_REF = 0, HET = 1, HOM_VAR = 2};
+
 
 /**
  * @brief Utility class to manipulate a Variant record.
@@ -41,7 +43,7 @@ class Variant {
   uint32_t alignment_stop()     const {return uint32_t(m_body->pos + m_body->rlen);}                          ///< returns a 1-based alignment stop position, as you would see in a VCF INFO END tag, or the end position of the reference allele if there is no END tag.
   float    qual()               const {return m_body->qual;}                                                  ///< returns the Phred scaled site qual (probability that the site is not reference). See VCF spec.
   uint32_t n_samples()          const {return uint32_t(m_body->n_sample);}                                    ///< returns the number of samples in this Variant record
-  uint32_t n_alleles()          const {return uint32_t(m_body->n_allele);}                                    ///< returns the number of alleles in this Variant record
+  uint32_t n_alleles()          const {return uint32_t(m_body->n_allele);}                                    ///< returns the number of alleles in this Variant record including the reference allele
 
   std::string id() const;                                                                                     ///< returns the variant id field (typically dbsnp id)
   std::string ref() const;                                                                                    ///< returns the ref allele in this Variant record
@@ -147,6 +149,18 @@ class Variant {
     return selected_samples;
   }
 
+  /**
+   * @brief computes the allele types for all allels (including the reference allele)
+   *
+   * This function gives you an index vector (AlleleMask) that can be used to
+   * query genotypes for snp(), indel(), complex(), ...
+   *
+   * Complexity is O(N) on the number of alleles. 
+   *
+   * @return a vector of AlleleType that can be used with many of Genotype member functions
+   */
+  AlleleMask allele_mask() const;
+
  private:
   std::shared_ptr<bcf_hdr_t> m_header;                                                                        ///< htslib variant header pointer
   std::shared_ptr<bcf1_t> m_body;                                                                             ///< htslib variant body pointer
@@ -159,6 +173,7 @@ class Variant {
   bcf_fmt_t*  find_individual_field(const uint32_t index) const { return bcf_get_fmt_idx(m_body.get(), index);                    }
   bcf_info_t* find_shared_field(const uint32_t index)     const { return bcf_get_info_idx(m_body.get(), index);                   }
   bool check_field(const int32_t type_field, const int32_t type_value, const int32_t index) const;
+  inline AlleleType allele_type_from_difference(const int diff) const;
 
   template<class FIELD_TYPE, class INDEX_OR_TAG> SharedField<FIELD_TYPE> shared_field_as(const INDEX_OR_TAG& p) const;
   template<class FIELD_TYPE, class INDEX_OR_TAG> IndividualField<IndividualFieldValue<FIELD_TYPE>> individual_field_as(const INDEX_OR_TAG& p) const;
