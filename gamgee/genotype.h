@@ -155,9 +155,9 @@ class Genotype{
   // ? begin() const;
   // ? end() const;
 
-  private:
-  const std::shared_ptr<bcf1_t> m_body;
-  const bcf_fmt_t* const m_format_ptr;
+ private:
+  std::shared_ptr<bcf1_t> m_body;
+  const bcf_fmt_t* m_format_ptr;
   const uint8_t* m_data_ptr;
 };
 
