@@ -638,8 +638,13 @@ BOOST_AUTO_TEST_CASE( single_variant_reader_missing_data )
   for (const auto& record : SingleVariantReader{"testdata/test_variants_missing_data.vcf"}){ // include all 11 samples
     BOOST_CHECK_EQUAL(record.n_samples(), 11u); 
     const auto gt_for_all_samples = record.genotypes();
+    const auto ad_for_all_samples = record.integer_individual_field("AD");
+    const auto gq_for_all_samples = record.integer_individual_field("GQ");
+    const auto pl_for_all_samples = record.integer_individual_field("PL");
+
     for (const auto& gt_for_single_sample: gt_for_all_samples) {
       BOOST_CHECK(missing(gt_for_single_sample));
+      BOOST_CHECK(gt_for_single_sample.missing());
       BOOST_CHECK_EQUAL(gt_for_single_sample.size(), 2u);
       BOOST_CHECK(missing(gt_for_single_sample.allele_string(0)));
       BOOST_CHECK(missing(gt_for_single_sample.allele_string(1)));
@@ -647,6 +652,18 @@ BOOST_AUTO_TEST_CASE( single_variant_reader_missing_data )
       BOOST_CHECK(missing(gt_for_single_sample.allele_key(1)));
       BOOST_CHECK(missing(gt_for_single_sample[0]));
       BOOST_CHECK(missing(gt_for_single_sample[1]));
+    }
+    for (const auto& ad_for_single_sample: ad_for_all_samples) {
+      BOOST_CHECK(missing(ad_for_single_sample));
+      BOOST_CHECK(ad_for_single_sample.missing());
+    }
+    for (const auto& gq_for_single_sample: gq_for_all_samples) {
+      BOOST_CHECK(missing(gq_for_single_sample));
+      BOOST_CHECK(gq_for_single_sample.missing());
+    }
+    for (const auto& pl_for_single_sample: pl_for_all_samples) {
+      BOOST_CHECK(missing(pl_for_single_sample));
+      BOOST_CHECK(pl_for_single_sample.missing());
     }
   }
 }
