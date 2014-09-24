@@ -34,3 +34,6 @@ dox/
 .settings/
 .cproject
 .project
+
+# Jekyll site cache
+_site/
