@@ -162,9 +162,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="classgamgee_1_1_shared_field.html#add28b8338b921305a4d9956e6487b6d4">  139</a></span>&#160;  TYPE <a class="code" href="classgamgee_1_1_shared_field.html#add28b8338b921305a4d9956e6487b6d4">back</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classgamgee_1_1_shared_field.html#a4bf4b6e8ec83dc2bbb368c0ef4ca760b">operator[]</a>(m_info_ptr-&gt;len - 1); }   </div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  <span class="keyword">const</span> std::shared_ptr&lt;bcf1_t&gt; m_body;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keyword">const</span> bcf_info_t* <span class="keyword">const</span> m_info_ptr;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keyword">const</span> uint8_t m_bytes_per_value;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  std::shared_ptr&lt;bcf1_t&gt; m_body;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keyword">const</span> bcf_info_t* m_info_ptr;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  uint8_t m_bytes_per_value;</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  TYPE convert_from_byte_array(<span class="keywordtype">int</span> index) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;};</div>
@@ -217,7 +217,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 24 2014 19:27:15 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 24 2014 20:39:46 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
