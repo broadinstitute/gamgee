@@ -136,3 +136,19 @@ BOOST_AUTO_TEST_CASE( interval_copy_and_move_constructors ) {
   auto m1 = check_move_constructor(get<0>(copies));
   BOOST_CHECK(i0 == m1);
 }
+
+BOOST_AUTO_TEST_CASE( string_output )
+{
+  const auto testfile = "testdata/test_gatk.intervals";
+  auto intervals = vector<Interval>{read_intervals(testfile)};
+  const auto test_str = intervals[0].str();
+
+  ifstream truth_stream{testfile};
+  auto truth = string{};
+  while (truth_stream.peek() == '@')
+    getline(truth_stream, truth);
+  getline(truth_stream, truth);
+  BOOST_CHECK_EQUAL(test_str, truth);
+}
+
+
