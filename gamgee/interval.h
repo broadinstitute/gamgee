@@ -129,6 +129,8 @@ class Interval {
                                     const uint32_t flanking     ///< region before and after the target to include in the tiling
                                    );
 
+  std::string str() const;    ///< @brief returns a string representation of the interval
+
   std::string chr() const                              { return m_chr;                }
   uint32_t start()  const                              { return m_start;              }
   uint32_t stop()   const                              { return m_stop;               }

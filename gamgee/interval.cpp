@@ -82,7 +82,14 @@ bool Interval::operator==(const Interval& rhs) const {
   return (this == &rhs) || ((m_chr == rhs.m_chr) && (m_start == rhs.m_start) && (m_stop == rhs.m_stop));
 }
 
+std::string Interval::str() const{
+  ostringstream tmp;
+  tmp << *this;
+  return tmp.str();
+}
+
 }  // end of namespace
+
 
 ostream& operator<< (std::ostream& os, const gamgee::Interval& i) {
   using IT = gamgee::Interval::IntervalType;
