@@ -21,6 +21,8 @@
 #include "multiple_variant_iterator.h"
 #include "multiple_variant_reader.h"
 #include "read_bases.h"
+#include "reference_iterator.h"
+#include "reference_map.h"
 #include "sam.h"
 #include "sam_builder.h"
 #include "sam_builder_data_field.h"
