@@ -51,4 +51,9 @@ void IndexedSamIterator::fetch_next_record() {
   }
 }
 
+const std::string& IndexedSamIterator::current_interval() const{
+  return *m_interval_iterator;
+}
+
+
 }
