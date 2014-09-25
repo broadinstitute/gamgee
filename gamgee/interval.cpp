@@ -50,7 +50,7 @@ vector<Interval> read_intervals(istream& input) {
   return result;
 }
 
-vector<Interval> Interval::tsca_tiling(const uint32_t spacing, const uint32_t insert_size, const uint32_t flanking) {
+vector<Interval> Interval::tsca_tiling(const uint32_t spacing, const uint32_t insert_size, const uint32_t flanking) const {
   auto result = vector<Interval>{};
   const auto tile_length = insert_size + spacing;
   const auto start = max(1u, m_start - flanking);

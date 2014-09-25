@@ -127,7 +127,7 @@ class Interval {
   std::vector<Interval> tsca_tiling(const uint32_t spacing,     ///< number of loci in between the tiles
                                     const uint32_t insert_size, ///< insert size intended to be used with these baits
                                     const uint32_t flanking     ///< region before and after the target to include in the tiling
-                                   );
+                                   ) const;
 
   std::string str() const;    ///< @brief returns a string representation of the interval
 
