@@ -37,6 +37,12 @@ class VariantHeader {
   std::vector<std::string> shared_fields() const;     ///< @brief builds a vector with the info fields
   std::vector<std::string> individual_fields() const; ///< @brief builds a vector with the format fields
 
+  // type checking functions: returns BCF_HT_FLAG, BCF_HT_INT, BCF_HT_REAL, BCF_HT_STR from htslib/vcf.h
+  uint8_t shared_field_type(const std::string& tag) const;      ///< returns the type of this shared (INFO) field
+  uint8_t shared_field_type(const int32_t index) const;         ///< returns the type of this shared (INFO) field
+  uint8_t individual_field_type(const std::string& tag) const;  ///< returns the type of this individual (FORMAT) field
+  uint8_t individual_field_type(const int32_t index) const;     ///< returns the type of this individual (FORMAT) field
+
   bool has_filter(const std::string&) const;           ///< @brief checks if the given filter is present
   bool has_shared_field(const std::string&) const;     ///< @brief checks if the given shared (INFO) field is present
   bool has_individual_field(const std::string&) const; ///< @brief checks if the given individual (FORMAT) field is present

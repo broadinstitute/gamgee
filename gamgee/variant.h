@@ -51,12 +51,6 @@ class Variant {
   VariantFilters filters() const;                                                                             ///< returns a vector-like object with all the filters for this record
   bool has_filter(const std::string& filter) const;                                                           ///< checks for the existence of a filter in this record
 
-  // type checking functions: returns BCF_HT_FLAG, BCF_HT_INT, BCF_HT_REAL, BCF_HT_STR from htslib/vcf.h
-  uint8_t shared_field_type(const std::string& tag) const;                                                    ///< returns the type of this shared (info) field
-  uint8_t shared_field_type(const int32_t index) const;                                                       ///< returns the type of this shared (info) field
-  uint8_t individual_field_type(const std::string& tag) const;                                                ///< returns the type of this individual (format) field
-  uint8_t individual_field_type(const int32_t index) const;                                                   ///< returns the type of this individual (format) field
-
   // individual field getters (a.k.a "format fields")
   IndividualField<Genotype> genotypes() const;                                                                 ///< special getter for the Genotype (GT) field. Returns a random access object with all the values in a given GT tag for all samples contiguous in memory. @warning Only int8_t GT fields have been tested. @warning Missing GT fields are untested. @warning creates a new object but makes no copies of the underlying values.
   IndividualField<IndividualFieldValue<int32_t>> integer_individual_field(const std::string& tag) const;       ///< returns a random access object with all the values in a given individual field tag in integer format for all samples contiguous in memory.  @warning creates a new object but makes no copies of the underlying values.

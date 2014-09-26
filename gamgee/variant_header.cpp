@@ -75,6 +75,22 @@ vector<string> VariantHeader::individual_fields() const {
   return find_fields_of_type(m_header.get(), BCF_HL_FMT);
 }
 
+uint8_t VariantHeader::shared_field_type(const std::string& tag) const {
+  return shared_field_type(field_index(tag));
+}
+
+uint8_t VariantHeader::shared_field_type(const int32_t index) const {
+  return bcf_hdr_id2type(m_header.get(), BCF_HL_INFO, index);
+}
+
+uint8_t VariantHeader::individual_field_type(const std::string& tag) const {
+  return individual_field_type(field_index(tag));
+}
+
+uint8_t VariantHeader::individual_field_type(const int32_t index) const {
+  return bcf_hdr_id2type(m_header.get(), BCF_HL_FMT, index);
+}
+
 bool VariantHeader::has_filter(const string& field) const {
   const auto& fields = filters();
   return find(fields.begin(), fields.end(), field) != fields.end();
