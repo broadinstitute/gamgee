@@ -108,14 +108,6 @@ bool Variant::has_filter(const std::string& filter) const {
 /******************************************************************************
  * Individual field API                                                       *
  ******************************************************************************/
-uint8_t Variant::individual_field_type(const std::string& tag) const {
-  return individual_field_type(get_field_index(tag));
-}
-
-uint8_t Variant::individual_field_type(const int32_t index) const {
-  return bcf_hdr_id2type(m_header.get(), BCF_HL_FMT, index);
-}
-
 IndividualField<IndividualFieldValue<int32_t>> Variant::integer_individual_field(const std::string& tag) const {
   return integer_individual_field(get_field_index(tag)); 
 }
@@ -174,14 +166,6 @@ IndividualField<IndividualFieldValue<std::string>> Variant::individual_field_as_
 /******************************************************************************
  * Shared field API                                                           *
  ******************************************************************************/
-uint8_t Variant::shared_field_type(const std::string& tag) const {
-  return shared_field_type(get_field_index(tag));
-}
-
-uint8_t Variant::shared_field_type(const int32_t index) const {
-  return bcf_hdr_id2type(m_header.get(), BCF_HL_INFO, index);
-}
-
 bool Variant::boolean_shared_field(const std::string& tag) const {
   return find_shared_field(tag) != nullptr;
 }

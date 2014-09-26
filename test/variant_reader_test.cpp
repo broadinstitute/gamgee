@@ -291,12 +291,12 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
   BOOST_CHECK(as_string != record.individual_field_as_string("PL"));
 
   // check types
-  BOOST_CHECK_EQUAL(record.individual_field_type("GQ"), BCF_HT_INT);
-  BOOST_CHECK_EQUAL(record.individual_field_type("AF"), BCF_HT_REAL);
-  BOOST_CHECK_EQUAL(record.individual_field_type("AS"), BCF_HT_STR);
-  BOOST_CHECK_EQUAL(record.individual_field_type(header.field_index("GQ")), BCF_HT_INT);
-  BOOST_CHECK_EQUAL(record.individual_field_type(header.field_index("AF")), BCF_HT_REAL);
-  BOOST_CHECK_EQUAL(record.individual_field_type(header.field_index("AS")), BCF_HT_STR);
+  BOOST_CHECK_EQUAL(record.header().individual_field_type("GQ"), BCF_HT_INT);
+  BOOST_CHECK_EQUAL(record.header().individual_field_type("AF"), BCF_HT_REAL);
+  BOOST_CHECK_EQUAL(record.header().individual_field_type("AS"), BCF_HT_STR);
+  BOOST_CHECK_EQUAL(record.header().individual_field_type(header.field_index("GQ")), BCF_HT_INT);
+  BOOST_CHECK_EQUAL(record.header().individual_field_type(header.field_index("AF")), BCF_HT_REAL);
+  BOOST_CHECK_EQUAL(record.header().individual_field_type(header.field_index("AS")), BCF_HT_STR);
 
   for(auto i=0u; i != record.n_samples(); ++i) {
     BOOST_CHECK_EQUAL(gq_int[i][0], truth_gq[truth_index][i]);
@@ -399,14 +399,14 @@ void check_shared_field_api(const Variant& record, const uint32_t truth_index) {
   BOOST_CHECK(missing(record.float_shared_field(-1)));  
   BOOST_CHECK(missing(record.string_shared_field(-1))); 
   // type checking
-  BOOST_CHECK_EQUAL(record.shared_field_type("VALIDATED"), BCF_HT_FLAG);
-  BOOST_CHECK_EQUAL(record.shared_field_type("AN"), BCF_HT_INT);
-  BOOST_CHECK_EQUAL(record.shared_field_type("AF"), BCF_HT_REAL);
-  BOOST_CHECK_EQUAL(record.shared_field_type("DESC"), BCF_HT_STR);
-  BOOST_CHECK_EQUAL(record.shared_field_type(header.field_index("VALIDATED")), BCF_HT_FLAG);
-  BOOST_CHECK_EQUAL(record.shared_field_type(header.field_index("AN")), BCF_HT_INT);
-  BOOST_CHECK_EQUAL(record.shared_field_type(header.field_index("AF")), BCF_HT_REAL);
-  BOOST_CHECK_EQUAL(record.shared_field_type(header.field_index("DESC")), BCF_HT_STR);
+  BOOST_CHECK_EQUAL(record.header().shared_field_type("VALIDATED"), BCF_HT_FLAG);
+  BOOST_CHECK_EQUAL(record.header().shared_field_type("AN"), BCF_HT_INT);
+  BOOST_CHECK_EQUAL(record.header().shared_field_type("AF"), BCF_HT_REAL);
+  BOOST_CHECK_EQUAL(record.header().shared_field_type("DESC"), BCF_HT_STR);
+  BOOST_CHECK_EQUAL(record.header().shared_field_type(header.field_index("VALIDATED")), BCF_HT_FLAG);
+  BOOST_CHECK_EQUAL(record.header().shared_field_type(header.field_index("AN")), BCF_HT_INT);
+  BOOST_CHECK_EQUAL(record.header().shared_field_type(header.field_index("AF")), BCF_HT_REAL);
+  BOOST_CHECK_EQUAL(record.header().shared_field_type(header.field_index("DESC")), BCF_HT_STR);
   // check type conversions in the unforgiving API
   BOOST_CHECK_THROW(record.float_shared_field("AN"), runtime_error);
   BOOST_CHECK_THROW(record.string_shared_field("AN"), runtime_error);
