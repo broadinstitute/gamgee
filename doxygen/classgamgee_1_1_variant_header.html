@@ -142,6 +142,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab91f74aac68c2909aa4539fe3dc4edbe"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#ab91f74aac68c2909aa4539fe3dc4edbe">individual_fields</a> () const </td></tr>
 <tr class="memdesc:ab91f74aac68c2909aa4539fe3dc4edbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">builds a vector with the format fields  <a href="#ab91f74aac68c2909aa4539fe3dc4edbe">More...</a><br /></td></tr>
 <tr class="separator:ab91f74aac68c2909aa4539fe3dc4edbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ba704b46548ae45fedc3231de1b712e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a6ba704b46548ae45fedc3231de1b712e">shared_field_type</a> (const std::string &amp;tag) const </td></tr>
+<tr class="memdesc:a6ba704b46548ae45fedc3231de1b712e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the type of this shared (INFO) field  <a href="#a6ba704b46548ae45fedc3231de1b712e">More...</a><br /></td></tr>
+<tr class="separator:a6ba704b46548ae45fedc3231de1b712e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17011816345b38ce60a4ac6ce761a431"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a17011816345b38ce60a4ac6ce761a431">shared_field_type</a> (const int32_t index) const </td></tr>
+<tr class="memdesc:a17011816345b38ce60a4ac6ce761a431"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the type of this shared (INFO) field  <a href="#a17011816345b38ce60a4ac6ce761a431">More...</a><br /></td></tr>
+<tr class="separator:a17011816345b38ce60a4ac6ce761a431"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bd34a56ccfc1311b92bb2012b2f6b64"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a9bd34a56ccfc1311b92bb2012b2f6b64">individual_field_type</a> (const std::string &amp;tag) const </td></tr>
+<tr class="memdesc:a9bd34a56ccfc1311b92bb2012b2f6b64"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the type of this individual (FORMAT) field  <a href="#a9bd34a56ccfc1311b92bb2012b2f6b64">More...</a><br /></td></tr>
+<tr class="separator:a9bd34a56ccfc1311b92bb2012b2f6b64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d540e364a5cb454479af72e6365b20e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a4d540e364a5cb454479af72e6365b20e">individual_field_type</a> (const int32_t index) const </td></tr>
+<tr class="memdesc:a4d540e364a5cb454479af72e6365b20e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the type of this individual (FORMAT) field  <a href="#a4d540e364a5cb454479af72e6365b20e">More...</a><br /></td></tr>
+<tr class="separator:a4d540e364a5cb454479af72e6365b20e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a5cd38783d7c9071aa5b8508aea5407"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a2a5cd38783d7c9071aa5b8508aea5407">has_filter</a> (const std::string &amp;) const </td></tr>
 <tr class="memdesc:a2a5cd38783d7c9071aa5b8508aea5407"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if the given filter is present  <a href="#a2a5cd38783d7c9071aa5b8508aea5407">More...</a><br /></td></tr>
 <tr class="separator:a2a5cd38783d7c9071aa5b8508aea5407"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -421,6 +433,42 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 
 </div>
 </div>
+<a class="anchor" id="a9bd34a56ccfc1311b92bb2012b2f6b64"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gamgee::VariantHeader::individual_field_type </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>tag</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the type of this individual (FORMAT) field </p>
+
+</div>
+</div>
+<a class="anchor" id="a4d540e364a5cb454479af72e6365b20e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gamgee::VariantHeader::individual_field_type </td>
+          <td>(</td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the type of this individual (FORMAT) field </p>
+
+</div>
+</div>
 <a class="anchor" id="ab91f74aac68c2909aa4539fe3dc4edbe"></a>
 <div class="memitem">
 <div class="memproto">
@@ -528,6 +576,42 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 
 </div>
 </div>
+<a class="anchor" id="a6ba704b46548ae45fedc3231de1b712e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gamgee::VariantHeader::shared_field_type </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>tag</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the type of this shared (INFO) field </p>
+
+</div>
+</div>
+<a class="anchor" id="a17011816345b38ce60a4ac6ce761a431"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gamgee::VariantHeader::shared_field_type </td>
+          <td>(</td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the type of this shared (INFO) field </p>
+
+</div>
+</div>
 <a class="anchor" id="a1068a7fdb23dc67166a8df908cdc2116"></a>
 <div class="memitem">
 <div class="memproto">
@@ -573,7 +657,7 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 26 2014 15:10:59 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 26 2014 19:52:33 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
