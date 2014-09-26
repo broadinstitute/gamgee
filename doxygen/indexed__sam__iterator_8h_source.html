@@ -124,22 +124,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="classgamgee_1_1_sam.html">Sam</a>&amp; <a class="code" href="classgamgee_1_1_indexed_sam_iterator.html#aae0a35244bf90b320797a91fd8ab06b2">operator++</a>();</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    std::shared_ptr&lt;htsFile&gt; m_sam_file_ptr;                </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    std::shared_ptr&lt;hts_idx_t&gt; m_sam_index_ptr;             </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    std::shared_ptr&lt;bam_hdr_t&gt; m_sam_header_ptr;            </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::vector&lt;std::string&gt; m_interval_list;               </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    std::vector&lt;std::string&gt;::iterator m_interval_iterator; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    std::unique_ptr&lt;hts_itr_t, utils::HtsIteratorDeleter&gt; m_sam_itr_ptr; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    std::shared_ptr&lt;bam1_t&gt; m_sam_record_ptr;               </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="classgamgee_1_1_sam.html">Sam</a> m_sam_record;                                       </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> fetch_next_record();                               </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;};</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">const</span> std::string&amp; <a class="code" href="classgamgee_1_1_indexed_sam_iterator.html#ae0d87943e6d93415ee6594054de888e1">current_interval</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    std::shared_ptr&lt;htsFile&gt; m_sam_file_ptr;                </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::shared_ptr&lt;hts_idx_t&gt; m_sam_index_ptr;             </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    std::shared_ptr&lt;bam_hdr_t&gt; m_sam_header_ptr;            </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    std::vector&lt;std::string&gt; m_interval_list;               </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    std::vector&lt;std::string&gt;::iterator m_interval_iterator; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    std::unique_ptr&lt;hts_itr_t, utils::HtsIteratorDeleter&gt; m_sam_itr_ptr; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    std::shared_ptr&lt;bam1_t&gt; m_sam_record_ptr;               </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="classgamgee_1_1_sam.html">Sam</a> m_sam_record;                                       </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> fetch_next_record();                               </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;};</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="sam_8h_html"><div class="ttname"><a href="sam_8h.html">sam.h</a></div></div>
 <div class="ttc" id="classgamgee_1_1_indexed_sam_iterator_html_a1ade1d148e49365f3f115c647b599c8d"><div class="ttname"><a href="classgamgee_1_1_indexed_sam_iterator.html#a1ade1d148e49365f3f115c647b599c8d">gamgee::IndexedSamIterator::operator*</a></div><div class="ttdeci">Sam &amp; operator*()</div><div class="ttdoc">dereference operator (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> indexed_sam_iterator.cpp:30</div></div>
 <div class="ttc" id="classgamgee_1_1_indexed_sam_iterator_html"><div class="ttname"><a href="classgamgee_1_1_indexed_sam_iterator.html">gamgee::IndexedSamIterator</a></div><div class="ttdoc">Utility class to enable for-each style iteration in the IndexedSamReader class. </div><div class="ttdef"><b>Definition:</b> indexed_sam_iterator.h:19</div></div>
@@ -147,13 +149,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classgamgee_1_1_indexed_sam_iterator_html_a70de71ebe46f57fa7d949bd69bb4079d"><div class="ttname"><a href="classgamgee_1_1_indexed_sam_iterator.html#a70de71ebe46f57fa7d949bd69bb4079d">gamgee::IndexedSamIterator::operator!=</a></div><div class="ttdeci">bool operator!=(const IndexedSamIterator &amp;rhs)</div><div class="ttdoc">inequality operator (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> indexed_sam_iterator.cpp:39</div></div>
 <div class="ttc" id="namespacegamgee_html"><div class="ttname"><a href="namespacegamgee.html">gamgee</a></div><div class="ttdef"><b>Definition:</b> base_quals.cpp:11</div></div>
 <div class="ttc" id="classgamgee_1_1_indexed_sam_iterator_html_ae37828e7a80fa750a44b3b86b88557a5"><div class="ttname"><a href="classgamgee_1_1_indexed_sam_iterator.html#ae37828e7a80fa750a44b3b86b88557a5">gamgee::IndexedSamIterator::operator=</a></div><div class="ttdeci">IndexedSamIterator &amp; operator=(IndexedSamIterator &amp;&amp;other)=default</div></div>
+<div class="ttc" id="classgamgee_1_1_indexed_sam_iterator_html_ae0d87943e6d93415ee6594054de888e1"><div class="ttname"><a href="classgamgee_1_1_indexed_sam_iterator.html#ae0d87943e6d93415ee6594054de888e1">gamgee::IndexedSamIterator::current_interval</a></div><div class="ttdeci">const std::string &amp; current_interval() const </div><div class="ttdef"><b>Definition:</b> indexed_sam_iterator.cpp:54</div></div>
 <div class="ttc" id="hts__memory_8h_html"><div class="ttname"><a href="hts__memory_8h.html">hts_memory.h</a></div></div>
 <div class="ttc" id="classgamgee_1_1_sam_html"><div class="ttname"><a href="classgamgee_1_1_sam.html">gamgee::Sam</a></div><div class="ttdoc">Utility class to manipulate a Sam record. </div><div class="ttdef"><b>Definition:</b> sam.h:20</div></div>
 <div class="ttc" id="classgamgee_1_1_indexed_sam_iterator_html_aae0a35244bf90b320797a91fd8ab06b2"><div class="ttname"><a href="classgamgee_1_1_indexed_sam_iterator.html#aae0a35244bf90b320797a91fd8ab06b2">gamgee::IndexedSamIterator::operator++</a></div><div class="ttdeci">Sam &amp; operator++()</div><div class="ttdoc">pre-fetches the next record and tests for end of file </div><div class="ttdef"><b>Definition:</b> indexed_sam_iterator.cpp:34</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 26 2014 15:00:45 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 26 2014 15:10:59 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -30,5 +30,6 @@ var searchData=
   ['convert_5fdata_5fto_5ffloat',['convert_data_to_float',['../namespacegamgee_1_1utils.html#ac9875414c3301e1504febd91376d0672',1,'gamgee::utils']]],
   ['convert_5fdata_5fto_5finteger',['convert_data_to_integer',['../namespacegamgee_1_1utils.html#a8b57ec3415d2ed156dbd52b8c5b16dcb',1,'gamgee::utils']]],
   ['convert_5fdata_5fto_5fstring',['convert_data_to_string',['../namespacegamgee_1_1utils.html#a047abcf196c22d47e3e567df353b73df',1,'gamgee::utils']]],
-  ['copy_5finto',['copy_into',['../classgamgee_1_1_sam_builder_data_field.html#aa0ae1be79bdb3ae574017173ac53918d',1,'gamgee::SamBuilderDataField']]]
+  ['copy_5finto',['copy_into',['../classgamgee_1_1_sam_builder_data_field.html#aa0ae1be79bdb3ae574017173ac53918d',1,'gamgee::SamBuilderDataField']]],
+  ['current_5finterval',['current_interval',['../classgamgee_1_1_indexed_sam_iterator.html#ae0d87943e6d93415ee6594054de888e1',1,'gamgee::IndexedSamIterator']]]
 ];
