@@ -208,8 +208,9 @@ class IndividualFieldIterator : public std::iterator<std::random_access_iterator
    * @return the value if it is a basic type (e.g. GQ, GL), or a specific object if it is a complex type (e.g. PL, AD,...)
    */
   TYPE operator[](const uint32_t sample) const {
-    utils::check_max_boundary(sample, m_body->n_sample);
-    return TYPE{m_body, m_format_ptr, m_format_ptr->p + (sample * m_format_ptr->size)};
+    uint32_t curr_sample_idx = (uint32_t)(((uint64_t)(m_data_ptr - m_format_ptr->p))/(m_format_ptr->size));
+    utils::check_max_boundary(curr_sample_idx + sample, m_body->n_sample);
+    return TYPE{m_body, m_format_ptr, m_data_ptr + (sample * m_format_ptr->size)};
   }
 
   /**

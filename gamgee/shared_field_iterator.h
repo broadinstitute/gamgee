@@ -36,49 +36,82 @@ class SharedFieldIterator : public std::iterator<std::random_access_iterator_tag
     m_body {nullptr},
     m_current_data_ptr {nullptr},
     m_original_data_ptr{nullptr},
+    m_end_data_ptr{nullptr},
     m_bytes_per_value{0},
-    m_type{utils::VariantFieldType::NIL} 
+    m_type{utils::VariantFieldType::NIL},
+    m_is_current_pointee_cached{false}
+  {}
+ 
+  /**
+   * @brief Constructor with bcf1_t structure and start and end pointers of the vector/array
+   * @param body a pointer to the bcf1_t data structure to be held as a shared pointer
+   * @param data_ptr the byte array containing the value(s) for this shared field
+   * @param end_ptr the end pointer value of the data array
+   * @param bytes_per_value number of bytes in each value
+   * @param type the encoding of the value 
+   * @note this constructor is probably only used by SharedField::begin() and SharedField::end()
+   */  
+  explicit SharedFieldIterator(const std::shared_ptr<bcf1_t>& body, uint8_t* data_ptr, uint8_t* end_ptr, const uint8_t bytes_per_value, const utils::VariantFieldType& type) :
+    m_body {body},
+    m_current_data_ptr {data_ptr},
+    m_original_data_ptr {data_ptr},
+    m_end_data_ptr {end_ptr},
+    m_bytes_per_value {bytes_per_value},
+    m_type {type},
+    m_is_current_pointee_cached{false}
   {}
 
   /**
-   * @brief simple constructor
+   * @brief Constructor with bcf1_t structure and start pointer of the vector/array
    * @param body a pointer to the bcf1_t data structure to be held as a shared pointer
    * @param data_ptr the byte array containing the value(s) for this shared field
    * @param bytes_per_value number of bytes in each value
    * @param type the encoding of the value 
    * @note this constructor is probably only used by SharedField::begin() and SharedField::end()
    */
-  explicit SharedFieldIterator(const std::shared_ptr<bcf1_t>& body, uint8_t* data_ptr, const uint8_t bytes_per_value, const utils::VariantFieldType& type) :
-    m_body {body},
-    m_current_data_ptr {data_ptr},
-    m_original_data_ptr {data_ptr},
-    m_bytes_per_value {bytes_per_value},
-    m_type {type}
+  explicit SharedFieldIterator(const std::shared_ptr<bcf1_t>& body, uint8_t* data_ptr, const uint8_t bytes_per_value, const utils::VariantFieldType& type): SharedFieldIterator(body, data_ptr, nullptr, bytes_per_value, type)
   {}
-      
+   
   SharedFieldIterator(const SharedFieldIterator& other) = default; ///< standard copy constructor creates a new iterator pointing to the same underlying data
   SharedFieldIterator(SharedFieldIterator&& other) = default; ///< standard move constructor
   SharedFieldIterator& operator=(const SharedFieldIterator& other) = default;  ///< standard copy assignment operator creates a new iterator pointing to the same underlying data
   SharedFieldIterator& operator=(SharedFieldIterator&& other) = default; ///< standard move assignment operator
-
-  bool operator==(const SharedFieldIterator& other) { return m_body == other.m_body && m_current_data_ptr == other.m_current_data_ptr;} ///< two iterators are equal if they are in exactly the same state (pointing at the same location in memory
+  ///< two iterators are equal if they are in exactly the same state (pointing at the same location in memory
+  bool operator==(const SharedFieldIterator& other) { return (m_body == other.m_body && m_current_data_ptr == other.m_current_data_ptr); } 
   bool operator!=(const SharedFieldIterator& other) { return !(*this == other); }                                                       ///< the negation of SharedFieldIterator::operator==()
   bool operator<(const SharedFieldIterator& other) { return m_body == other.m_body && m_current_data_ptr < other.m_current_data_ptr;}   ///< an operator is greater/less than another iterator if it is pointing to a previous element in the SharedField object. The order is determined by the Variant record.
-  bool operator>(const SharedFieldIterator& other) { return m_body == other.m_body && m_current_data_ptr > other.m_curent_data_ptr;}    ///< not smaller than other neither equal to other
+  bool operator>(const SharedFieldIterator& other) { return m_body == other.m_body && m_current_data_ptr > other.m_current_data_ptr;}    ///< not smaller than other neither equal to other
   bool operator<=(const SharedFieldIterator& other) { return m_body == other.m_body && m_current_data_ptr <= other.m_current_data_ptr;} ///< not greater than other
   bool operator>=(const SharedFieldIterator& other) { return m_body == other.m_body && m_current_data_ptr >= other.m_current_data_ptr;} ///< not smaller than other
 
-  VALUE_TYPE operator*() const noexcept { return convert_from_byte_array(m_current_data_ptr, 0); } ///< direct access to the current value 
+  VALUE_TYPE operator*() const noexcept {
+    if(m_is_current_pointee_cached)
+      return m_current_data_value;
+    else
+      return convert_from_byte_array(m_current_data_ptr, 0);
+  }
+
+  /*
+ * @brief - operator* is const function, hence cannot set m_current_data_value and m_is_current_pointee_cached
+ */
+  VALUE_TYPE read_and_cache_current_pointee() noexcept {
+    m_current_data_value = *(*this);
+    m_is_current_pointee_cached = true;
+    return m_current_data_value;
+  }
 
   /** advance n values */
   SharedFieldIterator& operator+=(const int n) {
     m_current_data_ptr += n * m_bytes_per_value;
+    m_is_current_pointee_cached = false;
+    m_current_data_ptr = utils::cache_and_advance_to_end_if_necessary(m_current_data_ptr, m_end_data_ptr, *this);
     return *this;
   }
 
   /** moves back n values */
   SharedFieldIterator& operator-=(const int n) {
     m_current_data_ptr -= n * m_bytes_per_value;
+    m_is_current_pointee_cached = false;
     return *this;
   }
 
@@ -90,6 +123,8 @@ class SharedFieldIterator : public std::iterator<std::random_access_iterator_tag
    */
   VALUE_TYPE operator++() noexcept {
     m_current_data_ptr += m_bytes_per_value;
+    m_is_current_pointee_cached = false;
+    m_current_data_ptr = utils::cache_and_advance_to_end_if_necessary(m_current_data_ptr, m_end_data_ptr, *this);
     return convert_from_byte_array(m_current_data_ptr, 0);
   }
 
@@ -114,6 +149,7 @@ class SharedFieldIterator : public std::iterator<std::random_access_iterator_tag
    */
   VALUE_TYPE operator--() {
     m_current_data_ptr -= m_bytes_per_value;
+    m_is_current_pointee_cached = false;
     return convert_from_byte_array(m_current_data_ptr, 0);
   }
 
@@ -134,15 +170,18 @@ class SharedFieldIterator : public std::iterator<std::random_access_iterator_tag
    * @return the value in it's native type
    */
   VALUE_TYPE operator[](const uint32_t index) const {
-    return convert_from_byte_array(m_original_data_ptr, index);
+    return (index == 0 ? *(*this) : convert_from_byte_array(m_current_data_ptr, index));
   }
 
  private:
   std::shared_ptr<bcf1_t> m_body;
   const uint8_t* m_current_data_ptr;
   const uint8_t* m_original_data_ptr;
+  const uint8_t* m_end_data_ptr;
   uint8_t m_bytes_per_value;
   utils::VariantFieldType m_type;
+  VALUE_TYPE m_current_data_value;
+  bool m_is_current_pointee_cached;
 
   VALUE_TYPE convert_from_byte_array(const uint8_t* data_ptr, int index) const;
 };

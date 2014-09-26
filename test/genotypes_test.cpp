@@ -35,6 +35,7 @@ BOOST_AUTO_TEST_CASE( hom_ref_test ){
     dynamic_bitset<>(string("010")),
     dynamic_bitset<>(string("010")),
     dynamic_bitset<>(string("010")),
+    dynamic_bitset<>(string("010")),
     dynamic_bitset<>(string("010"))};
 
   select_if_test(truth, diploid, hom_ref  );
@@ -51,6 +52,7 @@ BOOST_AUTO_TEST_CASE( hom_ref_alternate_ploidy_test ){
 
 BOOST_AUTO_TEST_CASE( hom_var_test ){
   const auto truth = vector<dynamic_bitset<>>{
+    dynamic_bitset<>(string("100")),
     dynamic_bitset<>(string("100")),
     dynamic_bitset<>(string("100")),
     dynamic_bitset<>(string("100")),
@@ -112,7 +114,7 @@ BOOST_AUTO_TEST_CASE( het_indel_is_true ) {
     auto mask = r.allele_mask();
     BOOST_CHECK_EQUAL(r.genotypes()[0].indel(mask), t);
   };
-  const auto truth = vector<bool>{false, false, true, true, true, true};
+  const auto truth = vector<bool>{false, false, true, true, true, true, true};
   auto i = 0;
   for (const auto& rec : SingleVariantReader{"testdata/test_variants.bcf"}) {
     test_rec(rec, truth[i]);
@@ -125,7 +127,7 @@ BOOST_AUTO_TEST_CASE( complex_test ) {
     auto mask = r.allele_mask();
     BOOST_CHECK_EQUAL(r.genotypes()[0].complex(), t);
   };
-  const auto truth = vector<bool> {false, false, false, false, true, false};
+  const auto truth = vector<bool> {false, false, false, false, true, false, false};
   auto i = 0;
   for (const auto& rec : SingleVariantReader{"testdata/test_variants.bcf"}) {
     test_rec(rec, truth[i]);
@@ -138,7 +140,7 @@ BOOST_AUTO_TEST_CASE( mixed_test ) {
     auto mask = r.allele_mask();
     BOOST_CHECK_EQUAL(r.genotypes()[0].mixed(), t);
   };
-  const auto truth = vector<bool> {false, false, false, false, true, false};
+  const auto truth = vector<bool> {false, false, false, false, true, false, false};
   auto i = 0;
   for (const auto& rec : SingleVariantReader{"testdata/test_variants.bcf"}) {
     test_rec(rec, truth[i]);

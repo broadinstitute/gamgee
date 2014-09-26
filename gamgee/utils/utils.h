@@ -86,6 +86,44 @@ inline bool bcf_check_equal_primitive<float>(const float x, const float y) {
 	|| (bcf_float_is_vector_end(x) && bcf_float_is_vector_end(y)));
 }
 
+/*
+ * @brief: returns true if value is the vector end for current TYPE
+ * @note: for non numeric types returns false, as vector end is undefined
+ */
+template<class TYPE> inline
+bool bcf_is_vector_end_value(TYPE value) {
+  return false;
+}
+
+/*
+ * @brief specialization of the bcf_is_vector_end_value function for int32_t
+ */
+template<> inline
+bool bcf_is_vector_end_value<int32_t>(int32_t value) {
+  return (value == bcf_int32_vector_end);
+}
+
+/*
+ * @brief specialization of the bcf_is_vector_end_value function for float
+ */
+template<> inline
+bool bcf_is_vector_end_value<float>(float value) {
+  return bcf_float_is_vector_end(value);
+}
+
+
+
+/**
+ * @brief advances current ptr to end of the vector if the current element is bcf_*_vector_end
+ */
+template<class ITER> inline
+const uint8_t* cache_and_advance_to_end_if_necessary(const uint8_t* current_ptr, const uint8_t* end_ptr, ITER& it) {
+  if(end_ptr != nullptr && current_ptr < end_ptr 
+      && utils::bcf_is_vector_end_value(it.read_and_cache_current_pointee()))
+    return end_ptr;
+  return current_ptr;
+}
+
 
 } // end utils namespace
 } // end gamgee namespace
