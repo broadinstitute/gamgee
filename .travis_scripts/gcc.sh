@@ -1,5 +1,5 @@
 #!/bin/bash
 
-sudo apt-get install -qq g++-4.8;
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50;
-
+wget http://www.broadinstitute.org/~carneiro/travis/gcc_4.9.1-1_amd64.deb
+sudo apt-get remove cpp libffi-dev
+sudo dpkg --install gcc_4.9.1-1_amd64.deb
