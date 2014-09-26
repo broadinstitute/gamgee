@@ -144,14 +144,14 @@ class IndividualFieldValue {
    * @brief create a new begin iterator over the values for this sample
    */
   IndividualFieldValueIterator<VALUE_TYPE> begin() const {
-    return IndividualFieldValueIterator<VALUE_TYPE>{m_body, m_data_ptr, m_num_bytes, static_cast<utils::VariantFieldType>(m_format_ptr->type)};
+    return IndividualFieldValueIterator<VALUE_TYPE>{m_body, m_data_ptr, m_data_ptr + m_format_ptr->size, m_num_bytes, static_cast<utils::VariantFieldType>(m_format_ptr->type)};
   }
 
   /**
    * @brief create a new end iterator over the values for this sample
    */
   IndividualFieldValueIterator<VALUE_TYPE> end() const {
-    return IndividualFieldValueIterator<VALUE_TYPE>{m_body, m_data_ptr + m_format_ptr->size, m_num_bytes, static_cast<utils::VariantFieldType>(m_format_ptr->type)};
+    return IndividualFieldValueIterator<VALUE_TYPE>{m_body, m_data_ptr + m_format_ptr->size, m_data_ptr + m_format_ptr->size, m_num_bytes, static_cast<utils::VariantFieldType>(m_format_ptr->type)};
   }
 
   uint32_t size() const { return m_format_ptr->n; } ///< @brief the number of values in this IndividualFieldValue (values per sample)

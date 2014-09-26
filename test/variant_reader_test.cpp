@@ -42,6 +42,11 @@ vector<vector<vector<float>>> truth_af;
 vector<int32_t> truth_pl_bt_type;
 vector<vector<vector<int32_t>>> truth_pl;
 vector<vector<string>> truth_as;
+vector<vector<int32_t>> truth_shared_vlint;
+vector<vector<float>> truth_shared_vlfloat;
+vector<int32_t> truth_vlint_bt_type;
+vector<vector<vector<int32_t>>> truth_vlint;
+vector<vector<vector<float>>> truth_vlfloat;
 
 // This gloabl fixture will bear the initialization of all the global variables in this test. 
 // The reason we need this is because some of these variables need to be initialized using function
@@ -57,39 +62,41 @@ vector<vector<string>> truth_as;
 struct TruthInitializationFixture {
   TruthInitializationFixture() {
     bcf_float_set_missing(g_bcf_float_missing);
-    truth_chromosome        = vector<uint32_t>{0, 1, 1, 1, 2, 2};
-    truth_alignment_starts  = vector<uint32_t>{10000000, 10001000, 10002000, 10003000, 10004000, 10005000 };
-    truth_alignment_stops   = vector<uint32_t>{10000000, 10001001, 10002006, 10003000, 10004002, 10005002 };
-    truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 3, 3};
-    truth_filter_name       = vector<string>{"PASS", "PASS", "LOW_QUAL", "NOT_DEFINED", "PASS", "PASS"};
-    truth_filter_size       = vector<uint32_t>{1,1,1,1,2,1};
-    truth_quals             = vector<float>{80,8.4,-1,-1,-1,-1};
-    truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "A", "GAT","GAT"};
-    truth_alt               = vector< vector<string>> {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"},  {"G","GATAT"}};
+    truth_chromosome        = vector<uint32_t>{0, 1, 1, 1, 2, 2, 2};
+    truth_alignment_starts  = vector<uint32_t>{10000000, 10001000, 10002000, 10003000, 10004000, 10005000, 10006000 };
+    truth_alignment_stops   = vector<uint32_t>{10000000, 10001001, 10002006, 10003000, 10004002, 10005002, 10006002 };
+    truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 3, 3, 3};
+    truth_filter_name       = vector<string>{"PASS", "PASS", "LOW_QUAL", "NOT_DEFINED", "PASS", "PASS", "PASS"};
+    truth_filter_size       = vector<uint32_t>{1,1,1,1,2,1,1};
+    truth_quals             = vector<float>{80,8.4,-1,-1,-1,-1,-1};
+    truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "A", "GAT","GAT","GAT"};
+    truth_alt               = vector< vector<string>> {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"},  {"G","GATAT"}, {"G", "GATAT"}};
     truth_high_quality_hets = boost::dynamic_bitset<>{std::string{"001"}};
-    truth_id                = vector<string>{"db2342", "rs837472", ".", ".", ".","."};
-    truth_shared_af         = vector<vector<float>>{{0.5}, {0.5}, {0.5}, {0.5}, {0.5, 0.0}, {0.5, g_bcf_float_missing}};
-    truth_shared_an         = vector<vector<int32_t>>{{6}, {6}, {6}, {6}, {6}, {6}};
-    truth_shared_desc       = vector<vector<string>>{{"Test1,Test2"}, {}, {}, {}, {}, {}};
-    truth_shared_validated  = vector<bool>{true, false, true, false, false, false};
-    truth_gq_bt_type        =  vector<int32_t>{BCF_BT_INT16, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8};
-    truth_gq                = vector<vector<int32_t>>{{25,12,650}, {35,35,35}, {35,35,35}, {35,35,35}, {35,35,35}, {35,bcf_int32_missing,35}};
+    truth_id                = vector<string>{"db2342", "rs837472", ".", ".", ".",".","."};
+    truth_shared_af         = vector<vector<float>>{{0.5}, {0.5}, {0.5}, {0.5}, {0.5, 0.0}, {0.5, g_bcf_float_missing}, {0.5, 0.0}};
+    truth_shared_an         = vector<vector<int32_t>>{{6}, {6}, {6}, {6}, {6}, {6}, {6}};
+    truth_shared_desc       = vector<vector<string>>{{"Test1,Test2"}, {}, {}, {}, {}, {}, {}};
+    truth_shared_validated  = vector<bool>{true, false, true, false, false, false, false};
+    truth_gq_bt_type        =  vector<int32_t>{BCF_BT_INT16, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8};
+    truth_gq                = vector<vector<int32_t>>{{25,12,650}, {35,35,35}, {35,35,35}, {35,35,35}, {35,35,35}, {35,bcf_int32_missing,35}, {35,35,35}};
     truth_af                = vector<vector<vector<float>>> {
       { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
         { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
         { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
         { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
         { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
-        { {3.1,g_bcf_float_missing}, {3.1,2.2}, {3.1,2.2} } 
+        { {3.1,g_bcf_float_missing}, {3.1,2.2}, {3.1,2.2} },
+        { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }
     };
-    truth_pl_bt_type = vector<int32_t>{ BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT32, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8 };
+    truth_pl_bt_type = vector<int32_t>{ BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT32, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8 };
     truth_pl                = vector<vector<vector<int32_t>>>{
       {{10,0,100      }, {0,10,1000      }, {10,100,0}      },
         {{10,0,100      }, {0,10,100       }, {10,100,0}      },
         {{10,0,100      }, {0,10,2000000000}, {10,100,0}      },
         {{10,0,100      }, {0,10,100       }, {10,100,0}      },
         {{10,0,100,2,4,8}, {0,10,100,2,4,8 }, {10,100,0,2,4,8}},
-        {{10,0,100,bcf_int32_missing,4,bcf_int32_missing}, {0,10,100,2,4,8 }, {10,100,0,2,4,8}}
+        {{10,0,100,bcf_int32_missing,4,bcf_int32_missing}, {0,10,100,2,4,8 }, {10,100,0,2,4,8}},
+        {{10,0,100,2,4,8}, {0,10,100,2,4,8 }, {10,100,0,2,4,8}}
     };
     truth_as                = vector<vector<string>>{ 
       {"ABA","CA","XISPAFORRO"}, 
@@ -97,7 +104,29 @@ struct TruthInitializationFixture {
         {"ABA","ABA","ABA"}, 
         {"ABA","ABA","ABA"}, 
         {"ABA","ABA","ABA"}, 
-        {"ABA","ABA","."} 
+        {"ABA","ABA","."},
+        {"ABA","ABA","ABA"}
+    };
+    truth_shared_vlint = vector<vector<int32_t>>{{}, {}, {}, {}, {}, {}, {27, 57, 122}};
+    truth_shared_vlfloat = vector<vector<float>>{{}, {}, {}, {}, {}, {}, {5.3, -127.65, 24245.9, 435.78}};
+    truth_vlint_bt_type = vector<int32_t>{ -1, -1, -1, -1, -1, -1, BCF_BT_INT16 };
+    truth_vlint                = vector<vector<vector<int32_t>>>{
+      {{ }, { }, { }},
+	{{ }, { }, { }},
+	{{ }, { }, { }},
+	{{ }, { }, { }},
+	{{ }, { }, { }},
+	{{ }, { }, { }},
+	{{4,56,21}, {36,bcf_int32_missing,1024,5196}, {2,1}}
+    };
+    truth_vlfloat                = vector<vector<vector<float>>>{
+      {{ }, { }, { }},
+	{{ }, { }, { }},
+	{{ }, { }, { }},
+	{{ }, { }, { }},
+	{{ }, { }, { }},
+	{{ }, { }, { }},
+	{{4.5}, {9.25,-15.125}, {100.5,g_bcf_float_missing,-92.75,-16345.25}}
     };
   }
 };
@@ -198,8 +227,10 @@ float bcf_int32_to_float(int32_t v, int32_t bcf_bt_type)
  */
 bool bcf_compare_float(const float v1, const float v2, const float threshold)
 {
+  auto abs_diff = fabsf(v1-v2);
+  auto rel_diff = (v1 != 0) ? abs_diff/fabsf(v1) : 0;
   return ((bcf_float_is_missing(v1) && bcf_float_is_missing(v2)) || (bcf_float_is_vector_end(v1) && bcf_float_is_vector_end(v2))
-	|| (fabsf(v1-v2) <= threshold));
+	|| (abs_diff <= threshold || rel_diff <= threshold));
 }
 
 
@@ -270,6 +301,141 @@ void check_phred_likelihoods_api(const Variant& record, const uint32_t truth_ind
   }
 }      
 
+void check_variable_length_field_api(const Variant& record, const uint32_t truth_index) {
+  const auto header = record.header();
+  const auto vlint_int = record.individual_field_as_integer("VLINT");
+  const auto vlint_float = record.individual_field_as_float("VLINT");
+  const auto vlint_string = record.individual_field_as_string("VLINT");
+  const auto vlfloat_int = record.individual_field_as_integer("VLFLOAT");
+  const auto vlfloat_float = record.individual_field_as_float("VLFLOAT");
+  const auto vlfloat_string = record.individual_field_as_string("VLFLOAT");
+  const auto vlint_idx = header.field_index("VLINT");
+  const auto vlfloat_idx = header.field_index("VLFLOAT");
+  const auto vlint_int_idx    = record.individual_field_as_integer(vlint_idx);
+  const auto vlint_float_idx  = record.individual_field_as_float(vlint_idx);
+  const auto vlint_string_idx = record.individual_field_as_string(vlint_idx); 
+  const auto vlfloat_int_idx    = record.individual_field_as_integer(vlfloat_idx);
+  const auto vlfloat_float_idx  = record.individual_field_as_float(vlfloat_idx);
+  const auto vlfloat_string_idx = record.individual_field_as_string(vlfloat_idx); 
+  BOOST_CHECK(vlint_int == record.integer_individual_field("VLINT"));
+  BOOST_CHECK(vlfloat_float == record.float_individual_field("VLFLOAT"));
+  if(!vlfloat_float.empty())
+    BOOST_CHECK(vlfloat_float != record.individual_field_as_float("VLINT"));
+  for(auto i=0u; i != record.n_samples(); ++i) {
+    if(!vlint_int.empty())
+    {
+      auto j = 0u;
+      //the vector shoud have at least as many values as the truth
+      BOOST_CHECK(truth_vlint[truth_index][i].size() <= vlint_int[i].size());
+      for (auto vlint_value : vlint_int[i])
+      {
+	BOOST_CHECK_MESSAGE(!utils::bcf_is_vector_end_value<int32_t>(vlint_value), "Saw vector end value : hex value "<<hex<<vlint_value);
+	BOOST_CHECK(j < truth_vlint[truth_index][i].size());
+	if(j >= truth_vlint[truth_index][i].size())
+	  break;
+	BOOST_CHECK_EQUAL(vlint_value, truth_vlint[truth_index][i][j]);
+	BOOST_CHECK_EQUAL(vlint_int_idx[i][j], truth_vlint[truth_index][i][j]);
+	BOOST_CHECK(bcf_compare_float(vlint_float[i][j], bcf_int32_to_float(truth_vlint[truth_index][i][j], truth_vlint_bt_type[truth_index]), FLOAT_COMPARISON_THRESHOLD));
+	BOOST_CHECK(bcf_compare_float(vlint_float_idx[i][j], bcf_int32_to_float(truth_vlint[truth_index][i][j], truth_vlint_bt_type[truth_index]), FLOAT_COMPARISON_THRESHOLD));
+	BOOST_CHECK_EQUAL(vlint_string[i][j], bcf_int32_to_string(truth_vlint[truth_index][i][j], truth_vlint_bt_type[truth_index]));
+	BOOST_CHECK_EQUAL(vlint_string_idx[i][j], bcf_int32_to_string(truth_vlint[truth_index][i][j], truth_vlint_bt_type[truth_index]));
+	++j;
+      }
+    }
+    if(!vlfloat_float.empty())
+    {
+      auto j = 0u;
+      //the vector shoud have at least as many values as the truth
+      BOOST_CHECK(truth_vlfloat[truth_index][i].size() <= vlfloat_float[i].size());
+      for (auto vlfloat_value : vlfloat_float[i])
+      {
+	BOOST_CHECK_MESSAGE(!utils::bcf_is_vector_end_value<float>(vlfloat_value), "Saw vector end value "<<vlfloat_value);
+	BOOST_CHECK(j < truth_vlfloat[truth_index][i].size());
+	if(j >= truth_vlfloat[truth_index][i].size())
+	  break;
+	BOOST_CHECK_EQUAL(vlfloat_int[i][j], int32_t(truth_vlfloat[truth_index][i][j]));
+	BOOST_CHECK_EQUAL(vlfloat_int_idx[i][j], int32_t(truth_vlfloat[truth_index][i][j]));
+	BOOST_CHECK(bcf_compare_float(vlfloat_float[i][j], truth_vlfloat[truth_index][i][j], FLOAT_COMPARISON_THRESHOLD));
+	BOOST_CHECK(bcf_compare_float(vlfloat_float_idx[i][j], truth_vlfloat[truth_index][i][j], FLOAT_COMPARISON_THRESHOLD));
+	//For large floating point values, the to_string does not always match
+	//For example, 16457.24 and 16457.09 are relatively close but not absolutely close wrt threshold
+	//BOOST_CHECK_EQUAL(vlfloat_string[i][j], to_string(truth_vlfloat[truth_index][i][j]));
+	//BOOST_CHECK_EQUAL(vlfloat_string_idx[i][j], to_string(truth_vlfloat[truth_index][i][j]));
+	++j;
+      }
+    }
+  }
+}
+
+//check operator[] for shared and individual iterators
+void check_operator_index_for_iterators(const Variant& record)
+{
+  //Check operator[] for SharedFieldIterator
+  const auto af_float  = record.individual_field_as_float("AF");
+  auto af_float_iter = af_float.begin();
+  for(auto af_float_element : af_float)
+  {
+    //test offset 0 for iter
+    BOOST_CHECK(af_float_element == af_float_iter[0]);
+    ++af_float_iter;
+    //test non-0 offset for iter
+    if(af_float.size() > 0)
+    {
+      auto af_float_iter_1 = af_float.begin();
+      ++af_float_iter_1;
+      auto j = 0u;
+      for(auto af_float_element : af_float)
+      {
+	if(j > 0)
+	  BOOST_CHECK(af_float_element == af_float_iter_1[j-1]);
+	++j;
+      }
+    }
+  }
+  //Check operator[] for IndividualFieldIterator & IndividualFieldValueIterator
+  const auto pl_int    = record.individual_field_as_integer("PL");
+  auto pl_int_iter = pl_int.begin();
+  //test offset 0 for iter
+  for(auto pl_int_sample : pl_int)
+  {
+    BOOST_CHECK(pl_int_sample == pl_int_iter[0]);
+    ++pl_int_iter;
+    //test offset 0 for iter
+    auto pl_int_sample_iter = pl_int_sample.begin();
+    for(auto pl_int_sample_element : pl_int_sample)
+    {
+      BOOST_CHECK(pl_int_sample_element == pl_int_sample_iter[0]);
+      ++pl_int_sample_iter;
+    }
+    //test non-0 offset for iter
+    if(pl_int_sample.size() > 0)
+    {
+      auto pl_int_sample_iter_1 = pl_int_sample.begin();
+      ++pl_int_sample_iter_1;
+      auto j = 0u;
+      for(auto pl_int_sample_element : pl_int_sample)
+      {
+	if(j > 0)
+	  BOOST_CHECK(pl_int_sample_element == pl_int_sample_iter_1[j-1]);
+	++j;
+      }
+    }
+  }
+  //test non-0 offset for iter
+  if(pl_int.size() > 0)
+  {
+    auto pl_int_iter_1 = pl_int.begin();
+    ++pl_int_iter_1;
+    auto j = 0u;
+    for(auto pl_int_sample : pl_int)
+    {
+      if(j > 0)
+	BOOST_CHECK(pl_int_sample == pl_int_iter_1[j-1]);
+      ++j;
+    }
+  }
+}
+
 void check_individual_field_api(const Variant& record, const uint32_t truth_index) {
   const auto gq_int    = record.individual_field_as_integer("GQ");
   const auto gq_float  = record.individual_field_as_float("GQ");
@@ -283,7 +449,7 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
   const auto as_int    = record.individual_field_as_integer("AS"); // this is a string field, we should be able to create the object but not access it's elements due to lazy initialization
   const auto as_float  = record.individual_field_as_float("AS");   // this is a string field, we should be able to create the object but not access it's elements due to lazy initialization
   const auto as_string = record.individual_field_as_string("AS");
-  
+
   // index based API
   const auto header = record.header();
   const auto gq_idx = header.field_index("GQ");
@@ -303,7 +469,6 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
   const auto as_float_idx  = record.individual_field_as_float(as_idx);   // this is a string field, we should be able to create the object but not access it's elements due to lazy initialization
   const auto as_string_idx = record.individual_field_as_string(as_idx);
 
-
   // test the conversions using unforgiving API
   BOOST_CHECK_THROW(record.float_individual_field("GQ"), runtime_error);
   BOOST_CHECK_THROW(record.string_individual_field("GQ"), runtime_error);
@@ -321,6 +486,7 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
   BOOST_CHECK_THROW(record.string_individual_field(pl_idx), runtime_error);
   BOOST_CHECK_THROW(record.integer_individual_field(as_idx), runtime_error);
   BOOST_CHECK_THROW(record.float_individual_field(as_idx), runtime_error);
+
   
   BOOST_CHECK(gq_int == record.integer_individual_field("GQ"));
   BOOST_CHECK(af_float == record.float_individual_field("AF"));
@@ -392,6 +558,8 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
   BOOST_CHECK(missing(record.string_individual_field(-1)));
   BOOST_CHECK_THROW(record.float_individual_field("NON_EXISTING")[0], out_of_range);
   BOOST_CHECK_THROW(record.float_individual_field(-1)[0], out_of_range);
+  check_variable_length_field_api(record, truth_index);
+  check_operator_index_for_iterators(record);
 }
 
 void check_shared_field_api(const Variant& record, const uint32_t truth_index) {
@@ -421,6 +589,18 @@ void check_shared_field_api(const Variant& record, const uint32_t truth_index) {
     BOOST_CHECK_MESSAGE(bcf_compare_float(af_value, truth_shared_af[truth_index][af_index], FLOAT_COMPARISON_THRESHOLD),
 	"["<<af_value<<" != "<<truth_shared_af[truth_index][af_index]<<"]");
     ++af_index;
+  }
+  const auto vlint = record.integer_shared_field("VLINT");
+  if(!vlint.empty())
+  {
+    BOOST_CHECK_EQUAL(vlint.size(), truth_shared_vlint[truth_index].size());
+    BOOST_CHECK_EQUAL_COLLECTIONS(vlint.begin(), vlint.end(), truth_shared_vlint[truth_index].begin(), truth_shared_vlint[truth_index].end());
+  }
+  const auto vlfloat = record.float_shared_field("VLFLOAT");
+  if(!vlfloat.empty())
+  {
+    BOOST_CHECK_EQUAL(vlfloat.size(), truth_shared_vlfloat[truth_index].size());
+    BOOST_CHECK_EQUAL_COLLECTIONS(vlfloat.begin(), vlfloat.end(), truth_shared_vlfloat[truth_index].begin(), truth_shared_vlfloat[truth_index].end());
   }
   const auto desc = record.string_shared_field("DESC");
   BOOST_CHECK_EQUAL_COLLECTIONS(desc.begin(), desc.end(), truth_shared_desc[truth_index].begin(), truth_shared_desc[truth_index].end());
@@ -635,7 +815,7 @@ BOOST_AUTO_TEST_CASE( genotype_api )          { generic_variant_reader_test(chec
 
 BOOST_AUTO_TEST_CASE( missing_id_field )
 {
-  const auto truth_missing = vector<bool>{false, false, true, true, true, true};
+  const auto truth_missing = vector<bool>{false, false, true, true, true, true, true};
   auto i = 0u;
   for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf"})
     BOOST_CHECK_EQUAL(missing(record.id()), truth_missing[i++]); // check that the missing and non-missing values in the vcf actually return the right missingness
@@ -776,12 +956,12 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_test ) {
   }
 }
 
-const auto multi_diff_truth_record_count      = vector<uint32_t>{4, 1, 1, 1, 2, 1, 1};
-const auto multi_diff_truth_chromosome        = vector<uint32_t>{0, 1, 1, 1, 1, 2, 2};
-const auto multi_diff_truth_alignment_starts  = vector<uint32_t>{10000000, 10001000, 10001999, 10002000, 10003000, 10004000, 10005000};
-const auto multi_diff_truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "TAGTGQA", "A", "GAT", "GAT"};
-const auto multi_diff_truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 2, 3, 3};
-const auto multi_diff_truth_id                = vector<string>{"db2342", "rs837472", ".", ".", ".", ".", "."};
+const auto multi_diff_truth_record_count      = vector<uint32_t>{4, 1, 1, 1, 2, 1, 1, 1};
+const auto multi_diff_truth_chromosome        = vector<uint32_t>{0, 1, 1, 1, 1, 2, 2, 2};
+const auto multi_diff_truth_alignment_starts  = vector<uint32_t>{10000000, 10001000, 10001999, 10002000, 10003000, 10004000, 10005000, 10006000};
+const auto multi_diff_truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "TAGTGQA", "A", "GAT", "GAT", "GAT"};
+const auto multi_diff_truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 2, 3, 3, 3};
+const auto multi_diff_truth_id                = vector<string>{"db2342", "rs837472", ".", ".", ".", ".", ".", "."};
 
 BOOST_AUTO_TEST_CASE( multiple_variant_reader_difference_test ) {
   auto truth_index = 0u;
@@ -798,7 +978,7 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_difference_test ) {
     }
     ++truth_index;
   }
-  BOOST_CHECK_EQUAL(truth_index, 7u);
+  BOOST_CHECK_EQUAL(truth_index, 8u);
 }
 
 void multiple_variant_reader_sample_test(const vector<string> samples, const bool include, const uint desired_samples) {

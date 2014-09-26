@@ -123,7 +123,7 @@ class SharedField {
   /** @brief create a new iterator pointing to the begining of the values of this field */
   SharedFieldIterator<TYPE> begin() const {
     if (empty()) return SharedFieldIterator<TYPE>();
-    return SharedFieldIterator<TYPE>{m_body, m_info_ptr->vptr, m_bytes_per_value, static_cast<utils::VariantFieldType>(m_info_ptr->type)};
+    return SharedFieldIterator<TYPE>{m_body, m_info_ptr->vptr, m_info_ptr->vptr + size() * m_bytes_per_value, m_bytes_per_value, static_cast<utils::VariantFieldType>(m_info_ptr->type)};
   }
 
   /** @brief create a new iterator pointing to the end of the values of this field */
