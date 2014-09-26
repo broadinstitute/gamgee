@@ -71,6 +71,8 @@ class IndexedSamIterator {
      */
     Sam& operator++();
 
+    const std::string& current_interval() const;
+
   private:
     std::shared_ptr<htsFile> m_sam_file_ptr;                ///< pointer to the bam file
     std::shared_ptr<hts_idx_t> m_sam_index_ptr;             ///< pointer to the bam index

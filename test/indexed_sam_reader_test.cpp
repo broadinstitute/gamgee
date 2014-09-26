@@ -36,6 +36,25 @@ BOOST_AUTO_TEST_CASE( indexed_single_readers_intervals )
   }
 }
 
+
+BOOST_AUTO_TEST_CASE( current_interval )
+{
+  for (const auto& filename : {"testdata/test_simple.bam"}) {
+    const auto interval_list = vector<string>{"chr1:201-257", "chr1:30001-40000", "chr1:59601-70000", "chr1:94001"};
+    const auto results = vector<string>{ "chr1:201-257", "chr1:201-257", "chr1:201-257", 
+      "chr1:30001-40000", "chr1:30001-40000", "chr1:30001-40000", "chr1:30001-40000",
+      "chr1:59601-70000", "chr1:59601-70000", "chr1:59601-70000", "chr1:59601-70000",
+      "chr1:94001","chr1:94001", "chr1:94001", "chr1:94001"};
+    auto reader = IndexedSingleSamReader{filename, interval_list};
+    auto iter = reader.begin();
+    const auto stop = reader.end();
+    auto i=0u;
+    for (; iter != stop; ++iter) {
+      BOOST_CHECK_EQUAL(iter.current_interval(), results[i++]);
+    }
+  }
+}
+
 BOOST_AUTO_TEST_CASE( indexed_single_readers_entire_file )
 {
   const auto entire_file = vector<string>{"."};
