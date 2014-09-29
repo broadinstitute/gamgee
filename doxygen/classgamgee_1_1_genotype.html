@@ -163,6 +163,29 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af5c9fc27656bda0a716982f073d5f794"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#af5c9fc27656bda0a716982f073d5f794">size</a> () const </td></tr>
 <tr class="memdesc:af5c9fc27656bda0a716982f073d5f794"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of alleles.  <a href="#af5c9fc27656bda0a716982f073d5f794">More...</a><br /></td></tr>
 <tr class="separator:af5c9fc27656bda0a716982f073d5f794"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3826cabaacce33beb30e8a1626cc8fee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#a3826cabaacce33beb30e8a1626cc8fee">snp</a> (const <a class="el" href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">AlleleMask</a> &amp;mask) const </td></tr>
+<tr class="memdesc:a3826cabaacce33beb30e8a1626cc8fee"><td class="mdescLeft">&#160;</td><td class="mdescRight">whether or not this genotype represents a snp  <a href="#a3826cabaacce33beb30e8a1626cc8fee">More...</a><br /></td></tr>
+<tr class="separator:a3826cabaacce33beb30e8a1626cc8fee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9d1aa1e199d3ec48c22b1e95c5d0f2b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#af9d1aa1e199d3ec48c22b1e95c5d0f2b">insertion</a> (const <a class="el" href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">AlleleMask</a> &amp;mask) const </td></tr>
+<tr class="memdesc:af9d1aa1e199d3ec48c22b1e95c5d0f2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">whether or not this genotype represents an insertion  <a href="#af9d1aa1e199d3ec48c22b1e95c5d0f2b">More...</a><br /></td></tr>
+<tr class="separator:af9d1aa1e199d3ec48c22b1e95c5d0f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7190bf6a07c7087e1cc85b9ce3a6ec6b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#a7190bf6a07c7087e1cc85b9ce3a6ec6b">deletion</a> (const <a class="el" href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">AlleleMask</a> &amp;mask) const </td></tr>
+<tr class="memdesc:a7190bf6a07c7087e1cc85b9ce3a6ec6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">whether or not this genotype represents an deletion  <a href="#a7190bf6a07c7087e1cc85b9ce3a6ec6b">More...</a><br /></td></tr>
+<tr class="separator:a7190bf6a07c7087e1cc85b9ce3a6ec6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7eda29ef8b52af32d7032889aed5c793"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#a7eda29ef8b52af32d7032889aed5c793">indel</a> (const <a class="el" href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">AlleleMask</a> &amp;mask) const </td></tr>
+<tr class="memdesc:a7eda29ef8b52af32d7032889aed5c793"><td class="mdescLeft">&#160;</td><td class="mdescRight">whether or not this genotype represents an insertion or deletion  <a href="#a7eda29ef8b52af32d7032889aed5c793">More...</a><br /></td></tr>
+<tr class="separator:a7eda29ef8b52af32d7032889aed5c793"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dbd0e337861f917b6a0c83ae222b1cf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#a9dbd0e337861f917b6a0c83ae222b1cf">biallelic</a> () const </td></tr>
+<tr class="memdesc:a9dbd0e337861f917b6a0c83ae222b1cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">whether or not this genotype has <em>at most</em> one alternate allele  <a href="#a9dbd0e337861f917b6a0c83ae222b1cf">More...</a><br /></td></tr>
+<tr class="separator:a9dbd0e337861f917b6a0c83ae222b1cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a440f136f7b9f2a05ad0fc8223159c193"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#a440f136f7b9f2a05ad0fc8223159c193">complex</a> () const </td></tr>
+<tr class="memdesc:a440f136f7b9f2a05ad0fc8223159c193"><td class="mdescLeft">&#160;</td><td class="mdescRight">literally the negation of biallelic(mask)  <a href="#a440f136f7b9f2a05ad0fc8223159c193">More...</a><br /></td></tr>
+<tr class="separator:a440f136f7b9f2a05ad0fc8223159c193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80f98ec5ab562872f20e18dccd85063b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#a80f98ec5ab562872f20e18dccd85063b">mixed</a> () const </td></tr>
+<tr class="memdesc:a80f98ec5ab562872f20e18dccd85063b"><td class="mdescLeft">&#160;</td><td class="mdescRight">identifies variants with two different types of alleles  <a href="#a80f98ec5ab562872f20e18dccd85063b">More...</a><br /></td></tr>
+<tr class="separator:a80f98ec5ab562872f20e18dccd85063b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bc8bb03185dd4423b65feb881e97f36"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#a0bc8bb03185dd4423b65feb881e97f36">variant</a> () const </td></tr>
+<tr class="separator:a0bc8bb03185dd4423b65feb881e97f36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Encodes a genotype. </p>
@@ -380,6 +403,74 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a9dbd0e337861f917b6a0c83ae222b1cf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::Genotype::biallelic </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>whether or not this genotype has <em>at most</em> one alternate allele </p>
+<p>This function will check whether this is a simple heterozygous or homozygous site where both alleles are either the same, or reference and one alternate allele. No two different alleles would pass.</p>
+<dl class="section warning"><dt>Warning</dt><dd>complexity is O(n) in the number of alleles. If you are using many of these convenience functions (<a class="el" href="classgamgee_1_1_genotype.html#a3826cabaacce33beb30e8a1626cc8fee" title="whether or not this genotype represents a snp ">snp()</a>, <a class="el" href="classgamgee_1_1_genotype.html#af9d1aa1e199d3ec48c22b1e95c5d0f2b" title="whether or not this genotype represents an insertion ">insertion()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a7190bf6a07c7087e1cc85b9ce3a6ec6b" title="whether or not this genotype represents an deletion ">deletion()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a7eda29ef8b52af32d7032889aed5c793" title="whether or not this genotype represents an insertion or deletion ">indel()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a440f136f7b9f2a05ad0fc8223159c193" title="literally the negation of biallelic(mask) ">complex()</a>,...), you will be better off implementing one loop that makes all the checks in one pass instead of calling many O(n) functions.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>whether or not all alleles are either the same, or there is one alt allele mixed with reference alleles. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a440f136f7b9f2a05ad0fc8223159c193"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::Genotype::complex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>literally the negation of biallelic(mask) </p>
+<dl class="section warning"><dt>Warning</dt><dd>complexity is O(n) in the number of alleles. If you are using many of these convenience functions (<a class="el" href="classgamgee_1_1_genotype.html#a3826cabaacce33beb30e8a1626cc8fee" title="whether or not this genotype represents a snp ">snp()</a>, <a class="el" href="classgamgee_1_1_genotype.html#af9d1aa1e199d3ec48c22b1e95c5d0f2b" title="whether or not this genotype represents an insertion ">insertion()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a7190bf6a07c7087e1cc85b9ce3a6ec6b" title="whether or not this genotype represents an deletion ">deletion()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a7eda29ef8b52af32d7032889aed5c793" title="whether or not this genotype represents an insertion or deletion ">indel()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a440f136f7b9f2a05ad0fc8223159c193" title="literally the negation of biallelic(mask) ">complex()</a>,...), you will be better off implementing one loop that makes all the checks in one pass instead of calling many O(n) functions.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>whether or not there are more than one alt allele in this record </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7190bf6a07c7087e1cc85b9ce3a6ec6b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::Genotype::deletion </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">AlleleMask</a> &amp;&#160;</td>
+          <td class="paramname"><em>mask</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>whether or not this genotype represents an deletion </p>
+<p>This function will check that at least one deletion exists and that no other type of allele (snp or insertion) is present. Multiple deletions will return true.</p>
+<dl class="section warning"><dt>Warning</dt><dd>complexity is O(n) in the number of alleles. If you are using many of these convenience functions (<a class="el" href="classgamgee_1_1_genotype.html#a3826cabaacce33beb30e8a1626cc8fee" title="whether or not this genotype represents a snp ">snp()</a>, <a class="el" href="classgamgee_1_1_genotype.html#af9d1aa1e199d3ec48c22b1e95c5d0f2b" title="whether or not this genotype represents an insertion ">insertion()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a7190bf6a07c7087e1cc85b9ce3a6ec6b" title="whether or not this genotype represents an deletion ">deletion()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a7eda29ef8b52af32d7032889aed5c793" title="whether or not this genotype represents an insertion or deletion ">indel()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a440f136f7b9f2a05ad0fc8223159c193" title="literally the negation of biallelic(mask) ">complex()</a>,...), you will be better off implementing one loop that makes all the checks in one pass instead of calling many O(n) functions.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>whether or not there is at least one deletion in this genotype and nothing else but deletions and reference alleles </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a05e3002b133d74e407306a7aa7aeb8d5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -454,6 +545,49 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a7eda29ef8b52af32d7032889aed5c793"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::Genotype::indel </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">AlleleMask</a> &amp;&#160;</td>
+          <td class="paramname"><em>mask</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>whether or not this genotype represents an insertion or deletion </p>
+<p>This function will check that at least one insertion or deletion exists and that no other type of allele (snp or insertion) is present. Multiple deletions will return true.</p>
+<dl class="section note"><dt>Note</dt><dd>this is not the same as insertion(mask) || deletion(mask) because it will also tolerate sites with insertions and deletions, while both other functions would return false to such a site.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>complexity is O(n) in the number of alleles. If you are using many of these convenience functions (<a class="el" href="classgamgee_1_1_genotype.html#a3826cabaacce33beb30e8a1626cc8fee" title="whether or not this genotype represents a snp ">snp()</a>, <a class="el" href="classgamgee_1_1_genotype.html#af9d1aa1e199d3ec48c22b1e95c5d0f2b" title="whether or not this genotype represents an insertion ">insertion()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a7190bf6a07c7087e1cc85b9ce3a6ec6b" title="whether or not this genotype represents an deletion ">deletion()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a7eda29ef8b52af32d7032889aed5c793" title="whether or not this genotype represents an insertion or deletion ">indel()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a440f136f7b9f2a05ad0fc8223159c193" title="literally the negation of biallelic(mask) ">complex()</a>,...), you will be better off implementing one loop that makes all the checks in one pass instead of calling many O(n) functions.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>whether or not there is at least one insertion or deletion in this genotype and nothing else but insertions, deletions and reference alleles </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af9d1aa1e199d3ec48c22b1e95c5d0f2b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::Genotype::insertion </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">AlleleMask</a> &amp;&#160;</td>
+          <td class="paramname"><em>mask</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>whether or not this genotype represents an insertion </p>
+<p>This function will check that at least one insertion exists and that no other type of allele (snp or deletion) is present. Multiple insertions will return true.</p>
+<dl class="section warning"><dt>Warning</dt><dd>complexity is O(n) in the number of alleles. If you are using many of these convenience functions (<a class="el" href="classgamgee_1_1_genotype.html#a3826cabaacce33beb30e8a1626cc8fee" title="whether or not this genotype represents a snp ">snp()</a>, <a class="el" href="classgamgee_1_1_genotype.html#af9d1aa1e199d3ec48c22b1e95c5d0f2b" title="whether or not this genotype represents an insertion ">insertion()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a7190bf6a07c7087e1cc85b9ce3a6ec6b" title="whether or not this genotype represents an deletion ">deletion()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a7eda29ef8b52af32d7032889aed5c793" title="whether or not this genotype represents an insertion or deletion ">indel()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a440f136f7b9f2a05ad0fc8223159c193" title="literally the negation of biallelic(mask) ">complex()</a>,...), you will be better off implementing one loop that makes all the checks in one pass instead of calling many O(n) functions.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>whether or not there is at least one insertion in this genotype and nothing else but insertions and reference alleles </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a0fa76a9c8da2da98315a22dd81528143"></a>
 <div class="memitem">
 <div class="memproto">
@@ -470,6 +604,25 @@ Public Member Functions</h2></td></tr>
 <p>Checks if all alleles are missing. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if all alleles are missing. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Missing GT fields are untested. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a80f98ec5ab562872f20e18dccd85063b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::Genotype::mixed </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>identifies variants with two different types of alleles </p>
+<dl class="section warning"><dt>Warning</dt><dd>complexity is O(n) in the number of alleles. If you are using many of these convenience functions (<a class="el" href="classgamgee_1_1_genotype.html#a3826cabaacce33beb30e8a1626cc8fee" title="whether or not this genotype represents a snp ">snp()</a>, <a class="el" href="classgamgee_1_1_genotype.html#af9d1aa1e199d3ec48c22b1e95c5d0f2b" title="whether or not this genotype represents an insertion ">insertion()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a7190bf6a07c7087e1cc85b9ce3a6ec6b" title="whether or not this genotype represents an deletion ">deletion()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a7eda29ef8b52af32d7032889aed5c793" title="whether or not this genotype represents an insertion or deletion ">indel()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a440f136f7b9f2a05ad0fc8223159c193" title="literally the negation of biallelic(mask) ">complex()</a>,...), you will be better off implementing one loop that makes all the checks in one pass instead of calling many O(n) functions.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>whether or not there are more than one types of alt allele in this record </dd></dl>
 
 </div>
 </div>
@@ -650,6 +803,50 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a3826cabaacce33beb30e8a1626cc8fee"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::Genotype::snp </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">AlleleMask</a> &amp;&#160;</td>
+          <td class="paramname"><em>mask</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>whether or not this genotype represents a snp </p>
+<p>In the true sense of the word, single nucleotide polymorphism restricts the number of loci (nucleotides) that are polymorphic, but not the number of potentially different alleles it may have (as long as they are all single nucleotide polymorphisms). This function will check that at least one of these SNPs exists and that no other type of allele (insertion or deletion) is present. Multiple SNPs will return true.</p>
+<dl class="section warning"><dt>Warning</dt><dd>complexity is O(n) in the number of alleles. If you are using many of these convenience functions (<a class="el" href="classgamgee_1_1_genotype.html#a3826cabaacce33beb30e8a1626cc8fee" title="whether or not this genotype represents a snp ">snp()</a>, <a class="el" href="classgamgee_1_1_genotype.html#af9d1aa1e199d3ec48c22b1e95c5d0f2b" title="whether or not this genotype represents an insertion ">insertion()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a7190bf6a07c7087e1cc85b9ce3a6ec6b" title="whether or not this genotype represents an deletion ">deletion()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a7eda29ef8b52af32d7032889aed5c793" title="whether or not this genotype represents an insertion or deletion ">indel()</a>, <a class="el" href="classgamgee_1_1_genotype.html#a440f136f7b9f2a05ad0fc8223159c193" title="literally the negation of biallelic(mask) ">complex()</a>,...), you will be better off implementing one loop that makes all the checks in one pass instead of calling many O(n) functions.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>whether or not there is at least one snp in this genotype and nothing else but snps and reference alleles </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0bc8bb03185dd4423b65feb881e97f36"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::Genotype::variant </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>gamgee/<a class="el" href="genotype_8h_source.html">genotype.h</a></li>
 <li>gamgee/<a class="el" href="genotype_8cpp.html">genotype.cpp</a></li>
@@ -657,7 +854,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 26 2014 19:52:33 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 29 2014 17:16:18 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

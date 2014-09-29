@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['intervaltype',['IntervalType',['../classgamgee_1_1_interval.html#a39ae00ed7ba01463377ff3eda87885e8',1,'gamgee::Interval']]]
+  ['diploidplgenotype',['DiploidPLGenotype',['../namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75',1,'gamgee']]]
 ];

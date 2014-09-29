@@ -102,15 +102,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacegamgee.html#a37644d067ba6f6fb7d010656ba781a7d">subset_variant_samples</a>(bcf_hdr_t* hdr_ptr, <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; samples, <span class="keyword">const</span> <span class="keywordtype">bool</span> include);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11d">   20</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11d">AlleleType</a> { <a class="code" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11dadcd320d017d7f3c317bc8b234287bc9f">REFERENCE</a>, <a class="code" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11da4fc6d34599195146117224f81f5097ff">SNP</a>, <a class="code" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11dac9d0595a83bd5a7342a7629db4e43bb8">INSERTION</a>, <a class="code" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11dae570769137fbed1ec0cf402f5eb66607">DELETION</a> };</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* gamgee__variant_utils__guard */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">   22</a></span>&#160;<span class="keyword">using</span> <a class="code" href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">AlleleMask</a> = std::vector&lt;AlleleType&gt;;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* gamgee__variant_utils__guard */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="namespacegamgee_html_a2812b6cab5cc9468e453d345c548c11dac9d0595a83bd5a7342a7629db4e43bb8"><div class="ttname"><a href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11dac9d0595a83bd5a7342a7629db4e43bb8">gamgee::AlleleType::INSERTION</a></div></div>
+<div class="ttc" id="namespacegamgee_html_a2812b6cab5cc9468e453d345c548c11dadcd320d017d7f3c317bc8b234287bc9f"><div class="ttname"><a href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11dadcd320d017d7f3c317bc8b234287bc9f">gamgee::AlleleType::REFERENCE</a></div></div>
+<div class="ttc" id="namespacegamgee_html_a2812b6cab5cc9468e453d345c548c11dae570769137fbed1ec0cf402f5eb66607"><div class="ttname"><a href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11dae570769137fbed1ec0cf402f5eb66607">gamgee::AlleleType::DELETION</a></div></div>
 <div class="ttc" id="namespacegamgee_html_a37644d067ba6f6fb7d010656ba781a7d"><div class="ttname"><a href="namespacegamgee.html#a37644d067ba6f6fb7d010656ba781a7d">gamgee::subset_variant_samples</a></div><div class="ttdeci">void subset_variant_samples(bcf_hdr_t *hdr_ptr, const std::vector&lt; std::string &gt; &amp;samples, const bool include)</div><div class="ttdoc">allows the caller to include only selected samples in a Variant Reader. To create a sites only file...</div><div class="ttdef"><b>Definition:</b> variant_utils.cpp:11</div></div>
+<div class="ttc" id="namespacegamgee_html_a2812b6cab5cc9468e453d345c548c11d"><div class="ttname"><a href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11d">gamgee::AlleleType</a></div><div class="ttdeci">AlleleType</div><div class="ttdef"><b>Definition:</b> variant_utils.h:20</div></div>
 <div class="ttc" id="namespacegamgee_html"><div class="ttname"><a href="namespacegamgee.html">gamgee</a></div><div class="ttdef"><b>Definition:</b> base_quals.cpp:11</div></div>
+<div class="ttc" id="namespacegamgee_html_a59662b9ac19e4dc28f4ea79e7566a348"><div class="ttname"><a href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">gamgee::AlleleMask</a></div><div class="ttdeci">std::vector&lt; AlleleType &gt; AlleleMask</div><div class="ttdef"><b>Definition:</b> variant_utils.h:22</div></div>
+<div class="ttc" id="namespacegamgee_html_a2812b6cab5cc9468e453d345c548c11da4fc6d34599195146117224f81f5097ff"><div class="ttname"><a href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11da4fc6d34599195146117224f81f5097ff">gamgee::AlleleType::SNP</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 26 2014 19:52:33 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 29 2014 17:16:17 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

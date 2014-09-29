@@ -144,7 +144,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a1f9c3c41edcfbeb0600b6f602ed35de1"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of samples in this <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record  <a href="#a1f9c3c41edcfbeb0600b6f602ed35de1">More...</a><br /></td></tr>
 <tr class="separator:a1f9c3c41edcfbeb0600b6f602ed35de1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a093b25862a15ebb982fa683fc3298662"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a093b25862a15ebb982fa683fc3298662">n_alleles</a> () const </td></tr>
-<tr class="memdesc:a093b25862a15ebb982fa683fc3298662"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of alleles in this <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record  <a href="#a093b25862a15ebb982fa683fc3298662">More...</a><br /></td></tr>
+<tr class="memdesc:a093b25862a15ebb982fa683fc3298662"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of alleles in this <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record including the reference allele  <a href="#a093b25862a15ebb982fa683fc3298662">More...</a><br /></td></tr>
 <tr class="separator:a093b25862a15ebb982fa683fc3298662"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10dc2d54a1555f04b0125e2d50aa8027"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a10dc2d54a1555f04b0125e2d50aa8027">id</a> () const </td></tr>
 <tr class="memdesc:a10dc2d54a1555f04b0125e2d50aa8027"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the variant id field (typically dbsnp id)  <a href="#a10dc2d54a1555f04b0125e2d50aa8027">More...</a><br /></td></tr>
@@ -262,6 +262,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae004d76914200d20885008ff9a9958ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_shared_field.html">SharedField</a>&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#ae004d76914200d20885008ff9a9958ac">shared_field_as_string</a> (const int32_t index) const </td></tr>
 <tr class="memdesc:ae004d76914200d20885008ff9a9958ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">same as string_shared_field but will attempt to convert underlying data to string if possible.  <a href="#ae004d76914200d20885008ff9a9958ac">More...</a><br /></td></tr>
 <tr class="separator:ae004d76914200d20885008ff9a9958ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45848ed757cd7970faf9c9e322064052"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">AlleleMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#a45848ed757cd7970faf9c9e322064052">allele_mask</a> () const </td></tr>
+<tr class="memdesc:a45848ed757cd7970faf9c9e322064052"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes the allele types for all allels (including the reference allele)  <a href="#a45848ed757cd7970faf9c9e322064052">More...</a><br /></td></tr>
+<tr class="separator:a45848ed757cd7970faf9c9e322064052"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -440,6 +443,26 @@ the resulting <a class="el" href="classgamgee_1_1_variant.html" title="Utility c
 </div><div class="memdoc">
 
 <p>returns a 1-based alignment stop position, as you would see in a VCF INFO END tag, or the end position of the reference allele if there is no END tag. </p>
+
+</div>
+</div>
+<a class="anchor" id="a45848ed757cd7970faf9c9e322064052"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">AlleleMask</a> gamgee::Variant::allele_mask </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>computes the allele types for all allels (including the reference allele) </p>
+<p>This function gives you an index vector (AlleleMask) that can be used to query genotypes for snp(), indel(), complex(), ...</p>
+<p>Complexity is O(N) on the number of alleles.</p>
+<dl class="section return"><dt>Returns</dt><dd>a vector of AlleleType that can be used with many of <a class="el" href="classgamgee_1_1_genotype.html" title="Encodes a genotype. ">Genotype</a> member functions </dd></dl>
 
 </div>
 </div>
@@ -933,7 +956,7 @@ creates a new object but makes no copies of the underlying values. </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p>returns the number of alleles in this <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record </p>
+<p>returns the number of alleles in this <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record including the reference allele </p>
 
 </div>
 </div>
@@ -1349,7 +1372,7 @@ This function can be called directly (ignoring the template parameters) as all t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 26 2014 19:52:33 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 29 2014 17:16:18 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

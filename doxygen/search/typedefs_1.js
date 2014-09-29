@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['indexedsinglesamreader',['IndexedSingleSamReader',['../namespacegamgee.html#ad57cad9569e33a2a0708f90784652a38',1,'gamgee']]]
+  ['cigarelement',['CigarElement',['../namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4',1,'gamgee']]]
 ];

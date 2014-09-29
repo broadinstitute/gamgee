@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cigaroperator',['CigarOperator',['../namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139',1,'gamgee']]]
+  ['base',['Base',['../namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49',1,'gamgee']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['diploidplgenotype',['DiploidPLGenotype',['../namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75',1,'gamgee']]]
+  ['cigaroperator',['CigarOperator',['../namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139',1,'gamgee']]]
 ];

@@ -8,6 +8,7 @@ var searchData=
   ['readbases',['ReadBases',['../classgamgee_1_1_read_bases.html#acb41dd049c1fb231ee6f72b55195de53',1,'gamgee::ReadBases::ReadBases(const std::shared_ptr&lt; bam1_t &gt; &amp;sam_record)'],['../classgamgee_1_1_read_bases.html#abbfd890517b0c6a0bc61a498c5594577',1,'gamgee::ReadBases::ReadBases(const ReadBases &amp;other)'],['../classgamgee_1_1_read_bases.html#a5980c16ea147dfcd7da14fec216e6962',1,'gamgee::ReadBases::ReadBases(ReadBases &amp;&amp;other)=default']]],
   ['ref',['ref',['../classgamgee_1_1_variant.html#a5a5d1e31d3c567bf372bae48449d9b52',1,'gamgee::Variant']]],
   ['ref_5fbase',['ref_base',['../classgamgee_1_1_reference_iterator.html#a0fa0f0aefb03cddebe59c9ad7b59fc42',1,'gamgee::ReferenceIterator']]],
+  ['reference',['REFERENCE',['../namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11dadcd320d017d7f3c317bc8b234287bc9f',1,'gamgee']]],
   ['reference_5fiterator_2ecpp',['reference_iterator.cpp',['../reference__iterator_8cpp.html',1,'']]],
   ['reference_5fiterator_2eh',['reference_iterator.h',['../reference__iterator_8h.html',1,'']]],
   ['reference_5fmap_2ecpp',['reference_map.cpp',['../reference__map_8cpp.html',1,'']]],

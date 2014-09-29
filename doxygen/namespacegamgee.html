@@ -249,6 +249,8 @@ Typedefs</h2></td></tr>
 <tr class="separator:a16ea322e9da7062215c1e9512baa49eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7286f2e8ef592ae858c97b6f9045d0c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#aa7286f2e8ef592ae858c97b6f9045d0c">PairSamReader</a> = <a class="el" href="classgamgee_1_1_sam_reader.html">SamReader</a>&lt; <a class="el" href="classgamgee_1_1_sam_pair_iterator.html">SamPairIterator</a> &gt;</td></tr>
 <tr class="separator:aa7286f2e8ef592ae858c97b6f9045d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59662b9ac19e4dc28f4ea79e7566a348"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">AlleleMask</a> = std::vector&lt; <a class="el" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11d">AlleleType</a> &gt;</td></tr>
+<tr class="separator:a59662b9ac19e4dc28f4ea79e7566a348"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fb9354407ff91cd6b2a1e748b985891"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a9fb9354407ff91cd6b2a1e748b985891">SingleVariantReader</a> = <a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a>&lt; <a class="el" href="classgamgee_1_1_variant_iterator.html">VariantIterator</a> &gt;</td></tr>
 <tr class="separator:a9fb9354407ff91cd6b2a1e748b985891"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -282,6 +284,12 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:ab33f4f3d734f661e6917eb693df3aa49"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple enum to hold all valid bases in the SAM format  <a href="namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49">More...</a><br /></td></tr>
 <tr class="separator:ab33f4f3d734f661e6917eb693df3aa49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2812b6cab5cc9468e453d345c548c11d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11d">AlleleType</a> { <a class="el" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11dadcd320d017d7f3c317bc8b234287bc9f">AlleleType::REFERENCE</a>, 
+<a class="el" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11da4fc6d34599195146117224f81f5097ff">AlleleType::SNP</a>, 
+<a class="el" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11dac9d0595a83bd5a7342a7629db4e43bb8">AlleleType::INSERTION</a>, 
+<a class="el" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11dae570769137fbed1ec0cf402f5eb66607">AlleleType::DELETION</a>
+ }</td></tr>
+<tr class="separator:a2812b6cab5cc9468e453d345c548c11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acea451c2c3a6601c111c7be6cfa9ca75"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75">DiploidPLGenotype</a> { <a class="el" href="namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75aeabe5de140c3cafc05190e91f2f150a5">DiploidPLGenotype::HOM_REF</a> = 0, 
 <a class="el" href="namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75a0ab7f9d03ee3503ccca933fa498414ad">DiploidPLGenotype::HET</a> = 1, 
 <a class="el" href="namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75a46226a303b65d0b265550d36d68a6e32">DiploidPLGenotype::HOM_VAR</a> = 2
@@ -346,6 +354,18 @@ Variables</h2></td></tr>
 <tr class="separator:abeab9f8f8d7f7b19a8a2ae3f2fee85a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
+<a class="anchor" id="a59662b9ac19e4dc28f4ea79e7566a348"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">gamgee::AlleleMask</a> = typedef std::vector&lt;<a class="el" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11d">AlleleType</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a49c55b29731ee8e3f0e80a29fd5718b4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -407,6 +427,36 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="a2812b6cab5cc9468e453d345c548c11d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11d">gamgee::AlleleType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a2812b6cab5cc9468e453d345c548c11dadcd320d017d7f3c317bc8b234287bc9f"></a>REFERENCE&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a2812b6cab5cc9468e453d345c548c11da4fc6d34599195146117224f81f5097ff"></a>SNP&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a2812b6cab5cc9468e453d345c548c11dac9d0595a83bd5a7342a7629db4e43bb8"></a>INSERTION&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a2812b6cab5cc9468e453d345c548c11dae570769137fbed1ec0cf402f5eb66607"></a>DELETION&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+</div>
+</div>
 <a class="anchor" id="ab33f4f3d734f661e6917eb693df3aa49"></a>
 <div class="memitem">
 <div class="memproto">
@@ -967,7 +1017,7 @@ template&lt;class VALUE &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 26 2014 19:52:33 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 29 2014 17:16:18 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

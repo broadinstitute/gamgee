@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['base',['Base',['../namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49',1,'gamgee']]]
+  ['alleletype',['AlleleType',['../namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11d',1,'gamgee']]]
 ];

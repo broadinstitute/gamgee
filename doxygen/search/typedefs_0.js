@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cigarelement',['CigarElement',['../namespacegamgee.html#a49c55b29731ee8e3f0e80a29fd5718b4',1,'gamgee']]]
+  ['allelemask',['AlleleMask',['../namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348',1,'gamgee']]]
 ];
