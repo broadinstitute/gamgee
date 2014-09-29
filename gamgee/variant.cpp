@@ -37,6 +37,14 @@ SharedField<FIELD_TYPE> Variant::shared_field_as(const INDEX_OR_TAG& p) const {
   return SharedField<FIELD_TYPE>{m_body, field_ptr};
 }
 
+AlleleType Variant::allele_type_from_difference(const int diff) const {
+  if (diff == 0)
+    return AlleleType::SNP;
+  return (diff > 0) ? AlleleType::INSERTION : AlleleType::DELETION;
+}
+
+
+
 /******************************************************************************
  * Constructors and operator overloads                                        *
  ******************************************************************************/
@@ -103,6 +111,18 @@ VariantFilters Variant::filters() const {
 
 bool Variant::has_filter(const std::string& filter) const {
   return bcf_has_filter(m_header.get(), m_body.get(), const_cast<char*>(filter.c_str())) > 0; // have to cast away the constness here for the C api to work. But the promise still remains as the C function is not modifying the string.
+}
+
+AlleleMask Variant::allele_mask() const {
+  auto result = AlleleMask{};
+  result.reserve(n_alleles());
+  result.emplace_back(AlleleType::REFERENCE); // add the reference first
+  const auto ref_allele = ref();
+  for (const auto& alt_allele : alt()) {
+    const auto diff = int32_t(alt_allele.size() - ref_allele.size());
+    result.emplace_back(allele_type_from_difference(diff));
+  }
+  return result;
 }
 
 /******************************************************************************

@@ -1,6 +1,8 @@
 #ifndef gamgee__genotype__guard
 #define gamgee__genotype__guard
 
+#include "utils/variant_utils.h"
+
 #include "utils/hts_memory.h"
 #include "utils/utils.h"
 #include "utils/variant_field_type.h"
@@ -16,7 +18,7 @@ namespace gamgee {
  */
 class Genotype{
 
-  public:
+ public:
   /**
    * @brief Constructs a genotype.
    * @param body The shared memory variant "line" from a vcf, or bcf.
@@ -151,14 +153,133 @@ class Genotype{
    */
   uint32_t size() const;
 
-  // TODO: Discussions around having VariantFieldValueIterator work on Genotype objects too, or return some other iterator.
-  // ? begin() const;
-  // ? end() const;
+  /**
+   * @brief whether or not this genotype represents a snp
+   *
+   * In the true sense of the word, single nucleotide polymorphism restricts
+   * the number of loci (nucleotides) that are polymorphic, but not the number
+   * of potentially different alleles it may have (as long as they are all
+   * single nucleotide polymorphisms). This function will check that at least
+   * one of these SNPs exists and that no other type of allele (insertion or
+   * deletion) is present. Multiple SNPs will return true.
+   *
+   * @warning complexity is O(n) in the number of alleles. If you are using
+   * many of these convenience functions (snp(), insertion(), deletion(),
+   * indel(), complex(),...), you will be better off implementing one loop that
+   * makes all the checks in one pass instead of calling many O(n) functions.
+   *
+   * @return whether or not there is at least one snp in this genotype and
+   * nothing else but snps and reference alleles
+   *
+   */
+  bool snp(const AlleleMask& mask) const;
+
+  /** 
+   * @brief whether or not this genotype represents an insertion
+   *
+   * This function will check that at least one insertion exists and that
+   * no other type of allele (snp or deletion) is present. Multiple insertions
+   * will return true.
+   *
+   * @warning complexity is O(n) in the number of alleles. If you are using
+   * many of these convenience functions (snp(), insertion(), deletion(),
+   * indel(), complex(),...), you will be better off implementing one loop that
+   * makes all the checks in one pass instead of calling many O(n) functions.
+   *
+   * @return whether or not there is at least one insertion in this genotype and
+   * nothing else but insertions and reference alleles
+   */
+  bool insertion(const AlleleMask& mask) const;
+
+  /** 
+   * @brief whether or not this genotype represents an deletion
+   *
+   * This function will check that at least one deletion exists and that
+   * no other type of allele (snp or insertion) is present. Multiple deletions
+   * will return true.
+   *
+   * @warning complexity is O(n) in the number of alleles. If you are using
+   * many of these convenience functions (snp(), insertion(), deletion(),
+   * indel(), complex(),...), you will be better off implementing one loop that
+   * makes all the checks in one pass instead of calling many O(n) functions.
+   *
+   * @return whether or not there is at least one deletion in this genotype and
+   * nothing else but deletions and reference alleles
+   */
+  bool deletion(const AlleleMask& mask) const;
+
+  /** 
+   * @brief whether or not this genotype represents an insertion or deletion
+   *
+   * This function will check that at least one insertion or deletion exists
+   * and that no other type of allele (snp or insertion) is present. Multiple
+   * deletions will return true.
+   *
+   * @note this is not the same as insertion(mask) || deletion(mask) because it
+   * will also tolerate sites with insertions and deletions, while both other
+   * functions would return false to such a site.
+   *
+   * @warning complexity is O(n) in the number of alleles. If you are using
+   * many of these convenience functions (snp(), insertion(), deletion(),
+   * indel(), complex(),...), you will be better off implementing one loop that
+   * makes all the checks in one pass instead of calling many O(n) functions.
+   *
+   * @return whether or not there is at least one insertion or deletion in this
+   * genotype and nothing else but insertions, deletions and reference alleles
+   */
+  bool indel(const AlleleMask& mask) const;
+
+  /** 
+   * @brief whether or not this genotype has *at most* one alternate allele
+   *
+   * This function will check whether this is a simple heterozygous or 
+   * homozygous site where both alleles are either the same, or reference and 
+   * one alternate allele. No two different alleles would pass.
+   *
+   * @warning complexity is O(n) in the number of alleles. If you are using
+   * many of these convenience functions (snp(), insertion(), deletion(),
+   * indel(), complex(),...), you will be better off implementing one loop that
+   * makes all the checks in one pass instead of calling many O(n) functions.
+   *
+   * @return whether or not all alleles are either the same, or there is one alt allele 
+   * mixed with reference alleles.
+   */
+  bool biallelic() const;
+
+  /**
+   * @brief literally the negation of biallelic(mask)
+   *
+   * @warning complexity is O(n) in the number of alleles. If you are using
+   * many of these convenience functions (snp(), insertion(), deletion(),
+   * indel(), complex(),...), you will be better off implementing one loop that
+   * makes all the checks in one pass instead of calling many O(n) functions.
+   *
+   * @return whether or not there are more than one alt allele in this record
+   */
+  bool complex() const { return !biallelic(); }
+
+  /**
+   * @brief identifies variants with two different types of alleles 
+   *
+   * @warning complexity is O(n) in the number of alleles. If you are using
+   * many of these convenience functions (snp(), insertion(), deletion(),
+   * indel(), complex(),...), you will be better off implementing one loop that
+   * makes all the checks in one pass instead of calling many O(n) functions.
+   *
+   * @return whether or not there are more than one types of alt allele in this record
+   */
+  bool mixed() const;
+
+  bool variant() const {
+    return !missing() && !hom_ref();
+  }
 
  private:
   std::shared_ptr<bcf1_t> m_body;
   const bcf_fmt_t* m_format_ptr;
   const uint8_t* m_data_ptr;
+
+  bool allele_is_type_or_ref(const AlleleType& type, const std::vector<int32_t>& keys, const AlleleMask& mask) const;
 };
 
 }

@@ -1,9 +1,10 @@
 #include <boost/test/unit_test.hpp>
-#include <boost/dynamic_bitset.hpp>
+
 #include "variant_reader.h"
 #include "variant.h"
 #include "genotype.h"
 
+#include <boost/dynamic_bitset.hpp>
 
 using namespace std;
 using namespace gamgee;
@@ -78,4 +79,78 @@ BOOST_AUTO_TEST_CASE( het_alternate_ploidy_test ){
   select_if_test(truth, multi_ploidy, [](const auto& g) {return g.het(); });
 }
 
+BOOST_AUTO_TEST_CASE( het_snp_is_true ) {
+  const auto rec = *(SingleVariantReader{"testdata/test_variants.bcf"}.begin());
+  const auto mask = rec.allele_mask();
+  BOOST_CHECK(rec.genotypes()[0].snp(mask));
+  BOOST_CHECK(!rec.genotypes()[0].insertion(mask));
+  BOOST_CHECK(!rec.genotypes()[0].deletion(mask));
+}
+
+BOOST_AUTO_TEST_CASE( het_insertion_is_true ) {
+  auto it = SingleVariantReader{"testdata/test_variants.bcf"}.begin();
+  ++it; ++it; ++it;
+  const auto rec = *it;
+  const auto mask = rec.allele_mask();
+  BOOST_CHECK(rec.genotypes()[0].insertion(mask));
+  BOOST_CHECK(!rec.genotypes()[0].snp(mask));
+  BOOST_CHECK(!rec.genotypes()[0].deletion(mask));
+}
+
+BOOST_AUTO_TEST_CASE( het_deletion_is_true ) {
+  auto it = SingleVariantReader{"testdata/test_variants.bcf"}.begin();
+  ++it; ++it; 
+  const auto rec = *it;
+  const auto mask = rec.allele_mask();
+  BOOST_CHECK(rec.genotypes()[0].deletion(mask));
+  BOOST_CHECK(!rec.genotypes()[0].insertion(mask));
+  BOOST_CHECK(!rec.genotypes()[0].snp(mask));
+}
+
+BOOST_AUTO_TEST_CASE( het_indel_is_true ) {
+  const auto test_rec = [](const Variant& r, const bool t){
+    auto mask = r.allele_mask();
+    BOOST_CHECK_EQUAL(r.genotypes()[0].indel(mask), t);
+  };
+  const auto truth = vector<bool>{false, false, true, true, true, true};
+  auto i = 0;
+  for (const auto& rec : SingleVariantReader{"testdata/test_variants.bcf"}) {
+    test_rec(rec, truth[i]);
+    ++i;
+  }
+}
+
+BOOST_AUTO_TEST_CASE( complex_test ) {
+  auto test_rec = [](const Variant& r, const bool t){
+    auto mask = r.allele_mask();
+    BOOST_CHECK_EQUAL(r.genotypes()[0].complex(), t);
+  };
+  const auto truth = vector<bool> {false, false, false, false, true, false};
+  auto i = 0;
+  for (const auto& rec : SingleVariantReader{"testdata/test_variants.bcf"}) {
+    test_rec(rec, truth[i]);
+    ++i;
+  }
+}
+
+BOOST_AUTO_TEST_CASE( mixed_test ) {
+  auto test_rec = [](const Variant& r, const bool t){
+    auto mask = r.allele_mask();
+    BOOST_CHECK_EQUAL(r.genotypes()[0].mixed(), t);
+  };
+  const auto truth = vector<bool> {false, false, false, false, true, false};
+  auto i = 0;
+  for (const auto& rec : SingleVariantReader{"testdata/test_variants.bcf"}) {
+    test_rec(rec, truth[i]);
+    ++i;
+  }
+}
+
+BOOST_AUTO_TEST_CASE( is_variant ) {
+  const auto truth = vector<bool>{true, false, true};
+  const auto rec = *(SingleVariantReader{"testdata/test_variants.bcf"}.begin());
+  const auto genotypes = rec.genotypes();
+  for (auto i=0u; i != genotypes.size(); ++i) 
+    BOOST_CHECK_EQUAL(genotypes[i].variant(), truth[i]);
+}
 
