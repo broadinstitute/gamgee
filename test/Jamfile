@@ -4,5 +4,7 @@ lib boost_unit_test_framework ;
 run [ glob *.cpp ] /gamgee//gamgee /gamgee/libs//hts boost_unit_test_framework 
     : 
     : 
-    : <define>BOOST_ALL_DYN_LINK <threading>multi <include>../gamgee <variant>debug
-    : run ;
+    : <define>BOOST_ALL_DYN_LINK <threading>multi <include>../gamgee 
+    : run 
+    : <variant>debug
+;

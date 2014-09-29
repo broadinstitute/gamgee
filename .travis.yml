@@ -20,7 +20,8 @@ install:
   - if [ "$CXX" == "g++"     ]; then .travis_scripts/gcc.sh; fi
 
 script:
-  - b2 -a toolset=${CC} test cxxflags=--coverage linkflags=--coverage
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then b2 -a toolset=${CC} test variant=production; fi
+  - b2 -a toolset=${CC} test variant=debug cxxflags=--coverage linkflags=--coverage
 
 after_success:
   - .travis_scripts/update_website_dox.sh 

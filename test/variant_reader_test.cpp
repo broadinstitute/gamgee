@@ -20,51 +20,89 @@ using namespace gamgee;
 
 constexpr auto FLOAT_COMPARISON_THRESHOLD = 0.0001f;
 
-float g_bcf_float_missing = reinterpret_cast<float&>(bcf_float_missing);
+float g_bcf_float_missing;
+vector<uint32_t> truth_chromosome;
+vector<uint32_t> truth_alignment_starts;
+vector<uint32_t> truth_alignment_stops;
+vector<uint32_t> truth_n_alleles;
+vector<string> truth_filter_name;
+vector<uint32_t> truth_filter_size;
+vector<float> truth_quals;
+vector<string> truth_ref;
+vector<vector<string>> truth_alt;
+boost::dynamic_bitset<> truth_high_quality_hets;
+vector<string> truth_id;
+vector<vector<float>> truth_shared_af;
+vector<vector<int32_t>> truth_shared_an;
+vector<vector<string>> truth_shared_desc;
+vector<bool> truth_shared_validated;
+vector<int32_t> truth_gq_bt_type;
+vector<vector<int32_t>> truth_gq;
+vector<vector<vector<float>>> truth_af;
+vector<int32_t> truth_pl_bt_type;
+vector<vector<vector<int32_t>>> truth_pl;
+vector<vector<string>> truth_as;
 
-const auto truth_chromosome        = vector<uint32_t>{0, 1, 1, 1, 2, 2};
-const auto truth_alignment_starts  = vector<uint32_t>{10000000, 10001000, 10002000, 10003000, 10004000, 10005000 };
-const auto truth_alignment_stops   = vector<uint32_t>{10000000, 10001001, 10002006, 10003000, 10004002, 10005002 };
-const auto truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 3, 3};
-const auto truth_filter_name       = vector<string>{"PASS", "PASS", "LOW_QUAL", "NOT_DEFINED", "PASS", "PASS"};
-const auto truth_filter_size       = vector<uint32_t>{1,1,1,1,2,1};
-const auto truth_quals             = vector<float>{80,8.4,-1,-1,-1,-1};
-const auto truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "A", "GAT","GAT"};
-const auto truth_alt               = vector< vector<string>> {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"},  {"G","GATAT"}};
-const auto truth_high_quality_hets = boost::dynamic_bitset<>{std::string{"001"}};
-const auto truth_id                = vector<string>{"db2342", "rs837472", ".", ".", ".","."};
-const auto truth_shared_af         = vector<vector<float>>{{0.5}, {0.5}, {0.5}, {0.5}, {0.5, 0.0}, {0.5, g_bcf_float_missing}};
-const auto truth_shared_an         = vector<vector<int32_t>>{{6}, {6}, {6}, {6}, {6}, {6}};
-const auto truth_shared_desc       = vector<vector<string>>{{"Test1,Test2"}, {}, {}, {}, {}, {}};
-const auto truth_shared_validated  = vector<bool>{true, false, true, false, false, false};
-const auto truth_gq_bt_type =  vector<int32_t>{BCF_BT_INT16, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8};
-const auto truth_gq                = vector<vector<int32_t>>{{25,12,650}, {35,35,35}, {35,35,35}, {35,35,35}, {35,35,35}, {35,bcf_int32_missing,35}};
-const auto truth_af                = vector<vector<vector<float>>> {
-  { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
-  { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
-  { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
-  { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
-  { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
-  { {3.1,g_bcf_float_missing}, {3.1,2.2}, {3.1,2.2} } 
+// This gloabl fixture will bear the initialization of all the global variables in this test. 
+// The reason we need this is because some of these variables need to be initialized using function
+// calls (e.g. bcf_float_set_missing) and having them all initialized as global consts didn't allow me 
+// to do this. 
+//
+// I DO NOT RECOMMEND OR ENDORSE THIS PATTERN
+//
+// but given that this test file has gone out of control with 
+// over 1000 lines that depend on this global initialization pattern, this was the simplest way to dig 
+// us out of this hole. In the future, please let's make more use of test facilities (like fixtures) in
+// order to avoid getting us deep in the hole again.
+struct TruthInitializationFixture {
+  TruthInitializationFixture() {
+    bcf_float_set_missing(g_bcf_float_missing);
+    truth_chromosome        = vector<uint32_t>{0, 1, 1, 1, 2, 2};
+    truth_alignment_starts  = vector<uint32_t>{10000000, 10001000, 10002000, 10003000, 10004000, 10005000 };
+    truth_alignment_stops   = vector<uint32_t>{10000000, 10001001, 10002006, 10003000, 10004002, 10005002 };
+    truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 3, 3};
+    truth_filter_name       = vector<string>{"PASS", "PASS", "LOW_QUAL", "NOT_DEFINED", "PASS", "PASS"};
+    truth_filter_size       = vector<uint32_t>{1,1,1,1,2,1};
+    truth_quals             = vector<float>{80,8.4,-1,-1,-1,-1};
+    truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "A", "GAT","GAT"};
+    truth_alt               = vector< vector<string>> {  { "C" } , {"AA"},  {"T"},  {"AGCT"},  {"G","GATAT"},  {"G","GATAT"}};
+    truth_high_quality_hets = boost::dynamic_bitset<>{std::string{"001"}};
+    truth_id                = vector<string>{"db2342", "rs837472", ".", ".", ".","."};
+    truth_shared_af         = vector<vector<float>>{{0.5}, {0.5}, {0.5}, {0.5}, {0.5, 0.0}, {0.5, g_bcf_float_missing}};
+    truth_shared_an         = vector<vector<int32_t>>{{6}, {6}, {6}, {6}, {6}, {6}};
+    truth_shared_desc       = vector<vector<string>>{{"Test1,Test2"}, {}, {}, {}, {}, {}};
+    truth_shared_validated  = vector<bool>{true, false, true, false, false, false};
+    truth_gq_bt_type        =  vector<int32_t>{BCF_BT_INT16, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8};
+    truth_gq                = vector<vector<int32_t>>{{25,12,650}, {35,35,35}, {35,35,35}, {35,35,35}, {35,35,35}, {35,bcf_int32_missing,35}};
+    truth_af                = vector<vector<vector<float>>> {
+      { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
+        { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
+        { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
+        { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
+        { {3.1,2.2}, 		   {3.1,2.2}, {3.1,2.2} }, 
+        { {3.1,g_bcf_float_missing}, {3.1,2.2}, {3.1,2.2} } 
+    };
+    truth_pl_bt_type = vector<int32_t>{ BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT32, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8 };
+    truth_pl                = vector<vector<vector<int32_t>>>{
+      {{10,0,100      }, {0,10,1000      }, {10,100,0}      },
+        {{10,0,100      }, {0,10,100       }, {10,100,0}      },
+        {{10,0,100      }, {0,10,2000000000}, {10,100,0}      },
+        {{10,0,100      }, {0,10,100       }, {10,100,0}      },
+        {{10,0,100,2,4,8}, {0,10,100,2,4,8 }, {10,100,0,2,4,8}},
+        {{10,0,100,bcf_int32_missing,4,bcf_int32_missing}, {0,10,100,2,4,8 }, {10,100,0,2,4,8}}
+    };
+    truth_as                = vector<vector<string>>{ 
+      {"ABA","CA","XISPAFORRO"}, 
+        {"ABA","ABA","ABA"}, 
+        {"ABA","ABA","ABA"}, 
+        {"ABA","ABA","ABA"}, 
+        {"ABA","ABA","ABA"}, 
+        {"ABA","ABA","."} 
+    };
+  }
 };
 
-const auto truth_pl_bt_type = vector<int32_t>{ BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT32, BCF_BT_INT8, BCF_BT_INT8, BCF_BT_INT8 };
-const auto truth_pl                = vector<vector<vector<int32_t>>>{
-  {{10,0,100      }, {0,10,1000      }, {10,100,0}      },
-  {{10,0,100      }, {0,10,100       }, {10,100,0}      },
-  {{10,0,100      }, {0,10,2000000000}, {10,100,0}      },
-  {{10,0,100      }, {0,10,100       }, {10,100,0}      },
-  {{10,0,100,2,4,8}, {0,10,100,2,4,8 }, {10,100,0,2,4,8}},
-  {{10,0,100,bcf_int32_missing,4,bcf_int32_missing}, {0,10,100,2,4,8 }, {10,100,0,2,4,8}}
-};
-const auto truth_as                = vector<vector<string>>{ 
-  {"ABA","CA","XISPAFORRO"}, 
-  {"ABA","ABA","ABA"}, 
-  {"ABA","ABA","ABA"}, 
-  {"ABA","ABA","ABA"}, 
-  {"ABA","ABA","ABA"}, 
-  {"ABA","ABA","."} 
-};
+BOOST_GLOBAL_FIXTURE(TruthInitializationFixture);
 
 /*
  * @brief given the data type (BCF_BT_*), returns the int32_t with the value of bcf_*_vector_end

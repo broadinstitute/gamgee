@@ -4,7 +4,7 @@ if [ "$CXX" == "clang++" ] && [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PUL
 then 
   echo -e "Downloading latest Doxygen...";
   cd ${HOME};
-  wget http://www.broadinstitute.org/~carneiro/travis/doxygen_1.8.8-1_amd64.deb
+  wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/travis/doxygen_1.8.8-1_amd64.deb
   sudo dpkg --install doxygen_1.8.8-1_amd64.deb
   cd ${HOME}/build/broadinstitute/gamgee;
   doxygen
