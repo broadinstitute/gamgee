@@ -137,3 +137,71 @@ BOOST_AUTO_TEST_CASE( variant_header_builder_chained ) {
 
   variant_header_builder_checks(builder.build());
 }
+
+const auto merge_file_1 = "testdata/var_hdr_merge/test1.vcf";
+const auto merge_file_2 = "testdata/var_hdr_merge/test2.vcf";
+const auto merge_file_3 = "testdata/var_hdr_merge/test3.vcf";
+
+BOOST_AUTO_TEST_CASE( variant_header_merge_test ) {
+  auto header1 = SingleVariantReader{merge_file_1}.header();
+  auto header2 = SingleVariantReader{merge_file_2}.header();
+  auto header3 = SingleVariantReader{merge_file_3}.header();
+  BOOST_CHECK(header1 != header2);
+  BOOST_CHECK(header1 != header3);
+  BOOST_CHECK(header2 != header3);
+
+  // header 3 = the contents of header 1 and header 2 combined
+
+  auto builder = VariantHeaderBuilder{header1};
+  builder.merge(header2);
+
+  auto built = builder.build();
+  BOOST_CHECK(built != header1);
+  BOOST_CHECK(built != header2);
+  BOOST_CHECK(built == header3);
+
+  // the contents of header 3 are already present so it should do nothing
+
+  built = builder.merge(header3).build();
+  BOOST_CHECK(built == header3);
+}
+
+BOOST_AUTO_TEST_CASE( variant_header_file_and_construct ) {
+  auto header1 = SingleVariantReader{merge_file_1}.header();
+  auto header2 = SingleVariantReader{merge_file_2}.header();
+  auto header3 = SingleVariantReader{merge_file_3}.header();
+
+  // start with header1 contents
+  auto builder_from_header = VariantHeaderBuilder{header1};
+
+  // add header2 contents
+  builder_from_header
+    .add_chromosome("20", "64000000")
+    .add_chromosome("22", "120000000")
+    .add_sample("SAMPLE2")
+    .add_sample("SAMPLE3")
+    .add_filter("LOW_QUAL", "Low quality call", "")
+    .add_filter("MISSED", "Missed by the variant caller", "")
+    .add_shared_field("AN", "1", "Integer", "Total number of alleles in called genotypes", "", "", "")
+    .add_shared_field("VALIDATED", "0", "Flag", "Validated By Follow-up Experiment", "", "", "")
+    .add_individual_field("GQ", "1", "Integer", "Genotype quality", "")
+    .add_individual_field("PL", "G", "Integer", "Phred scaled relative Likelihoods of the genotypes", "");
+
+  BOOST_CHECK(builder_from_header.build() == header3);
+
+  // start with header1 contents
+  auto builder_from_scratch = VariantHeaderBuilder{};
+  builder_from_scratch
+    .add_chromosome("1", "300000000")
+    .add_sample("SAMPLE1")
+    .add_filter("PASS", "All filters passed", "")
+    // need to escape the quotes because the text contains commas
+    .add_shared_field("AF", "A", "Float", "\"Allele Frequency, for each ALT allele, in the same order as listed\"", "", "", "")
+    .add_individual_field("GT", "1", "String", "Genotype", "");
+
+  // add header2 contents
+  builder_from_scratch.merge(header2);
+
+  BOOST_CHECK(builder_from_scratch.build() == header3);
+}
+

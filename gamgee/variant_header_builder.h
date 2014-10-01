@@ -2,6 +2,7 @@
 #define gamgee__variant_header_builder__guard
 
 #include "variant_header.h"
+#include "variant_reader.h"
 
 #include "utils/utils.h"
 #include "utils/hts_memory.h"
@@ -24,6 +25,13 @@ class VariantHeaderBuilder {
    * @warning       you should only call this explicitly if you are building a VariantHeader from scratch.
    */
   VariantHeaderBuilder() noexcept;
+  /**
+   * @brief         initializes a variant header builder from a variant header using copy semantics
+   * @note          VariantReader and VariantWriter will take care of creating objects for reading and writing respectively if your goal is to write a VCF/BCF file to disk or stream.
+   * @param header the VariantHeader to use as a source for this builder
+   */
+  VariantHeaderBuilder(const VariantHeader& header);
+  // TODO: version with move semantics
 
   VariantHeaderBuilder(const VariantHeaderBuilder& other) = delete;
   VariantHeaderBuilder& operator=(const VariantHeaderBuilder& other) = delete;
@@ -39,6 +47,12 @@ class VariantHeaderBuilder {
   VariantHeaderBuilder& add_source(const std::string& source);
 
   VariantHeaderBuilder& advanced_add_arbitrary_line(const std::string& line);
+
+  /**
+   * @brief merges a variant header into this builder, using bcf_hdr_combine() from htslib
+   * @param header the VariantHeader to merge into this builder
+   */
+  VariantHeaderBuilder& merge(const VariantHeader& other_header);
 
   /**
    * @brief create a new VariantHeader by copying the contents of this builder into a new object.  Allows for reuse.

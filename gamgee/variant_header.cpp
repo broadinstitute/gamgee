@@ -51,6 +51,31 @@ VariantHeader& VariantHeader::operator=(VariantHeader&& other) noexcept {
   return *this;
 }
 
+bool VariantHeader::operator==(const VariantHeader& rhs) const {
+  // compare names
+  if (samples() != rhs.samples()) return false;
+  if (chromosomes() != rhs.chromosomes()) return false;
+  if (filters() != rhs.filters()) return false;
+  if (shared_fields() != rhs.shared_fields()) return false;
+  if (individual_fields() != rhs.individual_fields()) return false;
+
+  // can't use index here because filters/shared/individual indices depend on the insertion order of the others
+
+  for (const auto& field : shared_fields()) {
+    if (shared_field_type(field) != rhs.shared_field_type(field))
+      return false;
+  }
+
+  for (const auto& field : individual_fields()) {
+    if (individual_field_type(field) != rhs.individual_field_type(field))
+      return false;
+  }
+
+  // TODO? This covers everything that VariantHeader provides access to,
+  // but the underlying structures have additional information like number and description
+  return true;
+}
+
 /**
  * This implementation is simply transforming the char ** representation of the sample names into a 
  * contiguous vector<string>. As efficient as it gets.

@@ -1,0 +1,6 @@
+##fileformat=VCFv4.1
+##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+##FILTER=<ID=PASS,Description=All filters passed>
+##contig=<ID=1,Length=300000000,Description=the first chromosome>
+##FORMAT=<ID=GT,Number=1,Type=String,Description=Genotype>
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	SAMPLE1
