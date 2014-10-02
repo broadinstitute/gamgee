@@ -43,11 +43,11 @@ VariantHeaderBuilder& VariantHeaderBuilder::add_filter(const string& id, const s
 
 VariantHeaderBuilder& VariantHeaderBuilder::add_shared_field(const string& id, const string& number, const string& type, const string& description, const string& source, const string& version, const string& extra) {
   auto s = string{"##INFO=<ID=" + id};
-  s.append(required_parameter("number=", number));
-  s.append(required_parameter("type=", type));
+  s.append(required_parameter("Number=", number));
+  s.append(required_parameter("Type=", type));
   s.append(optional_parameter("Description=", description));
-  s.append(optional_parameter("source=", source));
-  s.append(optional_parameter("version=", version));
+  s.append(optional_parameter("Source=", source));
+  s.append(optional_parameter("Version=", version));
   s.append(optional_parameter("", extra));
   s.append(">");
   bcf_hdr_append(m_header.get(), s.c_str());
@@ -56,8 +56,8 @@ VariantHeaderBuilder& VariantHeaderBuilder::add_shared_field(const string& id, c
 
 VariantHeaderBuilder& VariantHeaderBuilder::add_individual_field(const string& id, const string& number, const string& type, const string& description, const string& extra) {
   auto s = string{"##FORMAT=<ID=" + id};
-  s.append(required_parameter("number=", number));
-  s.append(required_parameter("type=", type));
+  s.append(required_parameter("Number=", number));
+  s.append(required_parameter("Type=", type));
   s.append(optional_parameter("Description=", description));
   s.append(optional_parameter("", extra));
   s.append(">");
