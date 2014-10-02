@@ -26,6 +26,15 @@ class VariantHeader {
   ~VariantHeader() = default;
 
   /**
+   * @brief equality operators
+   * @param rhs the other VariantHeader to compare to
+   * @warn work in progress: does not fully compare underlying structures
+   * @return whether these variant headers are equal
+   */
+  bool operator==(const VariantHeader& rhs) const;
+  bool operator!=(const VariantHeader& rhs) const { return !operator==(rhs); }
+
+  /**
    * @brief returns the number of samples in the header 
    * @note much faster than getting the actual list of samples
    */
@@ -47,8 +56,6 @@ class VariantHeader {
   bool has_shared_field(const std::string&) const;     ///< @brief checks if the given shared (INFO) field is present
   bool has_individual_field(const std::string&) const; ///< @brief checks if the given individual (FORMAT) field is present
 
-  void advanced_merge_header(const VariantHeader& other) { bcf_hdr_combine(other.m_header.get(), m_header.get()); }
-
   /**
    * @brief looks up the index of a particular filter, shared or individual field tag, enabling subsequent O(1) random-access lookups for that field throughout the iteration. 
    * @return missing_values::int32_t if the tag is not present in the header (you can use missing() on the return value to check)
@@ -61,6 +68,7 @@ class VariantHeader {
   std::shared_ptr<bcf_hdr_t> m_header;
   
   friend class VariantWriter;
+  friend class VariantHeaderBuilder;
 };
 
 }

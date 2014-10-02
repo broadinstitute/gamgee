@@ -1,5 +1,6 @@
 #include "variant_header_builder.h"
 #include "utils/hts_memory.h"
+#include "utils/variant_utils.h"
 
 #include "htslib/vcf.h"
 
@@ -20,6 +21,10 @@ static inline string optional_parameter(const string& prefix, const string& para
 
 VariantHeaderBuilder::VariantHeaderBuilder() noexcept : 
   m_header {bcf_hdr_init("w"), utils::VariantHeaderDeleter()}
+{}
+
+VariantHeaderBuilder::VariantHeaderBuilder(const VariantHeader& header) :
+  m_header {utils::make_shared_variant_header(utils::variant_header_deep_copy(header.m_header.get()))}
 {}
 
 VariantHeaderBuilder& VariantHeaderBuilder::add_chromosome(const string& id, const string& length, const string& url, const string& extra) {
@@ -78,6 +83,11 @@ VariantHeaderBuilder& VariantHeaderBuilder::add_sample(const string& sample) {
 
 VariantHeaderBuilder& VariantHeaderBuilder::advanced_add_arbitrary_line(const std::string& line) {
   bcf_hdr_append(m_header.get(), line.c_str());
+  return *this;
+}
+
+VariantHeaderBuilder& VariantHeaderBuilder::merge(const VariantHeader& other_header) {
+  merge_variant_headers(m_header, other_header.m_header);
   return *this;
 }
 

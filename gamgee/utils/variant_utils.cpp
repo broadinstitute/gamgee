@@ -1,5 +1,8 @@
 #include "variant_utils.h"
 
+#include "../exceptions.h"
+#include "hts_memory.h"
+
 #include "htslib/vcf.h"
 
 #include <algorithm>
@@ -21,6 +24,21 @@ void subset_variant_samples(bcf_hdr_t* hdr_ptr, const std::vector<std::string>& 
     sample_list.erase(sample_list.size() - 1);
     bcf_hdr_set_samples(hdr_ptr, sample_list.c_str(), false);
   }
+}
+
+void merge_variant_headers(const std::shared_ptr<bcf_hdr_t>& dest_hdr_ptr, const std::shared_ptr<bcf_hdr_t>& src_hdr_ptr) {
+  auto success = bcf_hdr_combine(dest_hdr_ptr.get(), src_hdr_ptr.get());
+  if (success != 0)
+    throw HtslibException(success);
+
+  // TODO: there is probably a more efficient way
+  for (auto sample_counter = 0; sample_counter < bcf_hdr_nsamples(src_hdr_ptr.get()); ++sample_counter) {
+    // don't check for error code because the only "error" is ignoring a duplicate sample, not an error for us
+    bcf_hdr_add_sample(dest_hdr_ptr.get(), src_hdr_ptr->samples[sample_counter]);
+  }
+
+  // vcf.h    "After all samples have been added, NULL must be passed to update internal header structures."
+  bcf_hdr_add_sample(dest_hdr_ptr.get(), nullptr);
 }
 
 }
