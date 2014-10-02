@@ -6,6 +6,8 @@
 #include "indexed_variant_iterator.h"
 #include "synced_variant_reader.h"
 #include "synced_variant_iterator.h"
+#include "variant_header_builder.h"
+
 #include "missing.h"
 #include "test_utils.h"
 
@@ -761,12 +763,11 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_difference_test ) {
   BOOST_CHECK_EQUAL(truth_index, 7u);
 }
 
-void multiple_variant_reader_sample_test(const vector<string> samples, const bool include, const int desired_samples) {
+void multiple_variant_reader_sample_test(const vector<string> samples, const bool include, const uint desired_samples) {
   auto filenames = vector<string>{"testdata/test_variants.vcf", "testdata/test_variants.bcf"};
 
-  for (const auto& vec : MultipleVariantReader<MultipleVariantIterator>{filenames, false, samples, include})
-    for (const auto& record : vec)
-      BOOST_CHECK_EQUAL(record.n_samples(), static_cast<uint32_t>(desired_samples));
+  auto reader = MultipleVariantReader<MultipleVariantIterator>{filenames, false, samples, include};
+  BOOST_CHECK_EQUAL(reader.combined_header().n_samples(), desired_samples);
 }
 
 /*      TODO: Issue #209
@@ -821,6 +822,27 @@ BOOST_AUTO_TEST_CASE( multiple_variant_iterator_move_test ) {
   for (auto vec : {record0, moved_record}) {
     for (auto record : vec)
       check_all_apis(record, truth_index);
+  }
+}
+
+BOOST_AUTO_TEST_CASE( multiple_variant_reader_headers_test ) {
+  const auto file1 = "testdata/mvr_hdr/test1.vcf";
+  const auto file2 = "testdata/mvr_hdr/test2.vcf";
+
+  auto header1 = SingleVariantReader{file1}.header();
+  auto header2 = SingleVariantReader{file2}.header();
+  auto combined_header = VariantHeaderBuilder{header1}.merge(header2).build();
+
+  const auto reader = MultipleVariantReader<MultipleVariantIterator>{{file1, file2}};
+  BOOST_CHECK(reader.combined_header() != header1);
+  BOOST_CHECK(reader.combined_header() != header2);
+  BOOST_CHECK(reader.combined_header() == combined_header);
+  for (auto vec : reader) {
+    for (auto variant : vec) {
+      BOOST_CHECK(variant.header() != combined_header);
+      // order is determined by priority queue - hard to predict
+      BOOST_CHECK(variant.header() == header1 || variant.header() == header2);
+    }
   }
 }
 
