@@ -106,6 +106,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af54a5bce54c26290049176c6ebfa2d4c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header_builder.html#af54a5bce54c26290049176c6ebfa2d4c">VariantHeaderBuilder</a> () noexcept</td></tr>
 <tr class="memdesc:af54a5bce54c26290049176c6ebfa2d4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes a variant header builder  <a href="#af54a5bce54c26290049176c6ebfa2d4c">More...</a><br /></td></tr>
 <tr class="separator:af54a5bce54c26290049176c6ebfa2d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a159708990910b841ce49e575a3f479d8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header_builder.html#a159708990910b841ce49e575a3f479d8">VariantHeaderBuilder</a> (const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> &amp;header)</td></tr>
+<tr class="memdesc:a159708990910b841ce49e575a3f479d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes a variant header builder from a variant header using copy semantics  <a href="#a159708990910b841ce49e575a3f479d8">More...</a><br /></td></tr>
+<tr class="separator:a159708990910b841ce49e575a3f479d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7d5c48c0980d680b42d5efc2df447e8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header_builder.html#af7d5c48c0980d680b42d5efc2df447e8">VariantHeaderBuilder</a> (const <a class="el" href="classgamgee_1_1_variant_header_builder.html">VariantHeaderBuilder</a> &amp;other)=delete</td></tr>
 <tr class="separator:af7d5c48c0980d680b42d5efc2df447e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07229f3926412e2acdfefd9f4b9e29e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_header_builder.html">VariantHeaderBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header_builder.html#a07229f3926412e2acdfefd9f4b9e29e9">operator=</a> (const <a class="el" href="classgamgee_1_1_variant_header_builder.html">VariantHeaderBuilder</a> &amp;other)=delete</td></tr>
@@ -128,6 +131,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acf546af677651543e948682dc74b3c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c8c3848c2cb4a7ccccf517f520cc23b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_header_builder.html">VariantHeaderBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header_builder.html#a5c8c3848c2cb4a7ccccf517f520cc23b">advanced_add_arbitrary_line</a> (const std::string &amp;line)</td></tr>
 <tr class="separator:a5c8c3848c2cb4a7ccccf517f520cc23b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af420a8dceb6bcb1944beae2dc6ef6e50"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_header_builder.html">VariantHeaderBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header_builder.html#af420a8dceb6bcb1944beae2dc6ef6e50">merge</a> (const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> &amp;other_header)</td></tr>
+<tr class="memdesc:af420a8dceb6bcb1944beae2dc6ef6e50"><td class="mdescLeft">&#160;</td><td class="mdescRight">merges a variant header into this builder, using bcf_hdr_combine() from htslib  <a href="#af420a8dceb6bcb1944beae2dc6ef6e50">More...</a><br /></td></tr>
+<tr class="separator:af420a8dceb6bcb1944beae2dc6ef6e50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad681c411de36e1d8b728e81c448aa1fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header_builder.html#ad681c411de36e1d8b728e81c448aa1fb">build</a> () const </td></tr>
 <tr class="memdesc:ad681c411de36e1d8b728e81c448aa1fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a new <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a> by copying the contents of this builder into a new object. Allows for reuse.  <a href="#ad681c411de36e1d8b728e81c448aa1fb">More...</a><br /></td></tr>
 <tr class="separator:ad681c411de36e1d8b728e81c448aa1fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -162,6 +168,31 @@ Public Member Functions</h2></td></tr>
 <p>initializes a variant header builder </p>
 <dl class="section note"><dt>Note</dt><dd><a class="el" href="classgamgee_1_1_variant_reader.html" title="Utility class to read a VCF/BCF file with an appropriate Variant iterator from a stream (e...">VariantReader</a> and <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a VCF/BCF file to any stream ">VariantWriter</a> will take care of creating objects for reading and writing respectively if your goal is to write a VCF/BCF file to disk or stream. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>you should only call this explicitly if you are building a <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a> from scratch. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a159708990910b841ce49e575a3f479d8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">gamgee::VariantHeaderBuilder::VariantHeaderBuilder </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> &amp;&#160;</td>
+          <td class="paramname"><em>header</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initializes a variant header builder from a variant header using copy semantics </p>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="classgamgee_1_1_variant_reader.html" title="Utility class to read a VCF/BCF file with an appropriate Variant iterator from a stream (e...">VariantReader</a> and <a class="el" href="classgamgee_1_1_variant_writer.html" title="utility class to write out a VCF/BCF file to any stream ">VariantWriter</a> will take care of creating objects for reading and writing respectively if your goal is to write a VCF/BCF file to disk or stream. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">header</td><td>the <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a> to use as a source for this builder </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -457,6 +488,30 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="af420a8dceb6bcb1944beae2dc6ef6e50"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_variant_header_builder.html">VariantHeaderBuilder</a> &amp; gamgee::VariantHeaderBuilder::merge </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> &amp;&#160;</td>
+          <td class="paramname"><em>other_header</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>merges a variant header into this builder, using bcf_hdr_combine() from htslib </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">header</td><td>the <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a> to merge into this builder </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a37edada4031eed7edbdee52796daca9d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -537,7 +592,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 2 2014 17:06:22 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 2 2014 18:09:46 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

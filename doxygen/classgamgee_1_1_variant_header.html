@@ -124,6 +124,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0b3d1847b24cf99ab20020b6db51684d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5d4c86162bb98f2e1a3d2b96ccc6055"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#ac5d4c86162bb98f2e1a3d2b96ccc6055">~VariantHeader</a> ()=default</td></tr>
 <tr class="separator:ac5d4c86162bb98f2e1a3d2b96ccc6055"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82807e6d6342467aa9121c1a7c888934"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a82807e6d6342467aa9121c1a7c888934">operator==</a> (const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> &amp;rhs) const </td></tr>
+<tr class="memdesc:a82807e6d6342467aa9121c1a7c888934"><td class="mdescLeft">&#160;</td><td class="mdescRight">equality operators  <a href="#a82807e6d6342467aa9121c1a7c888934">More...</a><br /></td></tr>
+<tr class="separator:a82807e6d6342467aa9121c1a7c888934"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a649ab8fbe0d532ab590c94ab520fd3a5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a649ab8fbe0d532ab590c94ab520fd3a5">operator!=</a> (const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> &amp;rhs) const </td></tr>
+<tr class="separator:a649ab8fbe0d532ab590c94ab520fd3a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeedbe07ffb000dcba041d8d0c0d9d53d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#aeedbe07ffb000dcba041d8d0c0d9d53d">n_samples</a> () const </td></tr>
 <tr class="memdesc:aeedbe07ffb000dcba041d8d0c0d9d53d"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of samples in the header  <a href="#aeedbe07ffb000dcba041d8d0c0d9d53d">More...</a><br /></td></tr>
 <tr class="separator:aeedbe07ffb000dcba041d8d0c0d9d53d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,8 +168,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab2403bf1aa48e03d0891db9a9fda223b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#ab2403bf1aa48e03d0891db9a9fda223b">has_individual_field</a> (const std::string &amp;) const </td></tr>
 <tr class="memdesc:ab2403bf1aa48e03d0891db9a9fda223b"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if the given individual (FORMAT) field is present  <a href="#ab2403bf1aa48e03d0891db9a9fda223b">More...</a><br /></td></tr>
 <tr class="separator:ab2403bf1aa48e03d0891db9a9fda223b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac47788376bfeb8ff015a6d6f7037b805"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#ac47788376bfeb8ff015a6d6f7037b805">advanced_merge_header</a> (const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> &amp;other)</td></tr>
-<tr class="separator:ac47788376bfeb8ff015a6d6f7037b805"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa8e8fe7f0b76390f78b95ac2fab602f"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#afa8e8fe7f0b76390f78b95ac2fab602f">field_index</a> (const std::string &amp;tag) const </td></tr>
 <tr class="memdesc:afa8e8fe7f0b76390f78b95ac2fab602f"><td class="mdescLeft">&#160;</td><td class="mdescRight">looks up the index of a particular filter, shared or individual field tag, enabling subsequent O(1) random-access lookups for that field throughout the iteration.  <a href="#afa8e8fe7f0b76390f78b95ac2fab602f">More...</a><br /></td></tr>
 <tr class="separator:afa8e8fe7f0b76390f78b95ac2fab602f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -173,6 +176,8 @@ Public Member Functions</h2></td></tr>
 Friends</h2></td></tr>
 <tr class="memitem:a24da1ae869010cf623de7749910a86e2"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a24da1ae869010cf623de7749910a86e2">VariantWriter</a></td></tr>
 <tr class="separator:a24da1ae869010cf623de7749910a86e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af17dc6e3178d144772bce073ab1e773a"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#af17dc6e3178d144772bce073ab1e773a">VariantHeaderBuilder</a></td></tr>
+<tr class="separator:af17dc6e3178d144772bce073ab1e773a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utility class to hold a variant header. </p>
@@ -299,30 +304,6 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ac47788376bfeb8ff015a6d6f7037b805"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void gamgee::VariantHeader::advanced_merge_header </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="a636d949964cad4438e133da1639cd87e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -512,6 +493,30 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 
 </div>
 </div>
+<a class="anchor" id="a649ab8fbe0d532ab590c94ab520fd3a5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::VariantHeader::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a0bf57a8272c281303d3bd4e824440108"></a>
 <div class="memitem">
 <div class="memproto">
@@ -555,6 +560,31 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 
 <p>move assignment of a <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a>. Shared pointers maintain state to all other associated objects correctly. </p>
 <p>other is an r-value reference, so it will disappear into the nether right after the swap </p>
+
+</div>
+</div>
+<a class="anchor" id="a82807e6d6342467aa9121c1a7c888934"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::VariantHeader::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>equality operators </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>the other <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a> to compare to  work in progress: does not fully compare underlying structures </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>whether these variant headers are equal </dd></dl>
 
 </div>
 </div>
@@ -630,6 +660,26 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a class="anchor" id="af17dc6e3178d144772bce073ab1e773a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classgamgee_1_1_variant_header_builder.html">VariantHeaderBuilder</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a24da1ae869010cf623de7749910a86e2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -657,7 +707,7 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 2 2014 17:06:22 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 2 2014 18:09:46 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

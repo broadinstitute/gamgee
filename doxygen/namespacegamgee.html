@@ -343,6 +343,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a37644d067ba6f6fb7d010656ba781a7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a37644d067ba6f6fb7d010656ba781a7d">subset_variant_samples</a> (bcf_hdr_t *hdr_ptr, const std::vector&lt; std::string &gt; &amp;samples, const bool include)</td></tr>
 <tr class="memdesc:a37644d067ba6f6fb7d010656ba781a7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">allows the caller to include only selected samples in a <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> Reader. To create a sites only file, simply pass an empty vector of samples.  <a href="#a37644d067ba6f6fb7d010656ba781a7d">More...</a><br /></td></tr>
 <tr class="separator:a37644d067ba6f6fb7d010656ba781a7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09e22e26caa26c27d796baa0aad68138"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a09e22e26caa26c27d796baa0aad68138">merge_variant_headers</a> (const std::shared_ptr&lt; bcf_hdr_t &gt; &amp;dest_hdr_ptr, const std::shared_ptr&lt; bcf_hdr_t &gt; &amp;src_hdr_ptr)</td></tr>
+<tr class="memdesc:a09e22e26caa26c27d796baa0aad68138"><td class="mdescLeft">&#160;</td><td class="mdescRight">merges a variant header into another  <a href="#a09e22e26caa26c27d796baa0aad68138">More...</a><br /></td></tr>
+<tr class="separator:a09e22e26caa26c27d796baa0aad68138"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -568,6 +571,41 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a09e22e26caa26c27d796baa0aad68138"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gamgee::merge_variant_headers </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; bcf_hdr_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dest_hdr_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; bcf_hdr_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>src_hdr_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>merges a variant header into another </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dest_hdr_ptr</td><td>a shared pointer to a bcf_hdr_t containing the header to be merged into </td></tr>
+    <tr><td class="paramname">src_hdr_ptr</td><td>a shared pointer to a bcf_hdr_t containing the header to be merged from </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a659c46d5b1420346543fb1afc4a575de"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1017,7 +1055,7 @@ template&lt;class VALUE &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 2 2014 17:06:21 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 2 2014 18:09:45 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
