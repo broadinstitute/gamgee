@@ -1,0 +1,19 @@
+##fileformat=VCFv4.1
+##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+##INFO=<ID=AN,Number=1,Type=Integer,Description="Total number of alleles in called genotypes">
+##FILTER=<ID=PASS,Description=All filters passed>
+##FILTER=<ID=LOW_QUAL,Description=Low quality call>
+##contig=<ID=1,Length=300000000,Description=the first chromosome>
+##contig=<ID=20,Length=64000000>
+##contig=<ID=22,Length=120000000>
+##FORMAT=<ID=GT,Number=1,Type=String,Description=Genotype>
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description=Genotype quality>
+##FORMAT=<ID=PL,Number=G,Type=Integer,Description=Phred scaled relative Likelihoods of the genotypes>
+##FORMAT=<ID=AF,Number=2,Type=Float,Description=Arbitrary float field with 2 values (test purposes only)>
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	SAMPLE1	SAMPLE2
+1	10000000	db2342	T	C	80	PASS	AF=0.5;AN=6	GT:GQ:PL:AF	0/1:25:10,0,100:3.1,2.2	0/0:12:0,10,1000:3.1,2.2
+20	10001000	rs837472	GG	AA	8.4	PASS	AF=0.5;AN=6	GT:GQ:PL:AF	0/1:35:10,0,100:3.1,2.2	0/0:35:0,10,100:3.1,2.2
+20	10002000	.	TAGTGQA	T	.	LOW_QUAL	AF=0.5;AN=6	GT:GQ:PL:AF	0/1:35:10,0,100:3.1,2.2	0/0:35:0,10,2000000000:3.1,2.2
+20	10003000	.	A	AGCT	.	LOW_QUAL	AF=0.5;AN=6	GT:GQ:PL:AF	0/1:35:10,0,100:3.1,2.2	0/0:35:0,10,100:3.1,2.2
+22	4000	.	GAT	G,GATAT	.	PASS	AF=0.5,0;AN=6	GT:GQ:PL:AF	1/2:35:10,0,100,2,4,8:3.1,2.2	0/0:35:0,10,100,2,4,8:3.1,2.2
+22	5000	.	GAT	G,GATAT	.	PASS	AF=0.5,.;AN=6	GT:GQ:PL:AF	0/1:35:10,0,100,.,4,.:3.1,.	0/0:.:0,10,100,2,4,8:3.1,2.2

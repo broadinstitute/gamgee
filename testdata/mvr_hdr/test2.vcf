@@ -1,0 +1,19 @@
+##fileformat=VCFv4.1
+##INFO=<ID=AN,Number=1,Type=Integer,Description="Total number of alleles in called genotypes">
+##INFO=<ID=VALIDATED,Number=0,Type=Flag,Description="Validated By Follow-up Experiment">
+##FILTER=<ID=LOW_QUAL,Description=Low quality call>
+##FILTER=<ID=MISSED,Description=Missed by the variant caller>
+##contig=<ID=1,Length=300000000,Description=the first chromosome>
+##contig=<ID=20,Length=64000000>
+##contig=<ID=22,Length=120000000>
+##FORMAT=<ID=GT,Number=1,Type=String,Description=Genotype>
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description=Genotype quality>
+##FORMAT=<ID=PL,Number=G,Type=Integer,Description=Phred scaled relative Likelihoods of the genotypes>
+##FORMAT=<ID=AS,Number=1,Type=String,Description=Arbitrary string field with 1 value (test purposes only)>
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	SAMPLE2	SAMPLE3
+1	10000000	db2342	T	C	80	LOW_QUAL	AN=6;VALIDATED	GT:GQ:PL:AS	0/0:12:0,10,1000:CA	1/1:650:10,100,0:XISPAFORRO
+20	10001000	rs837472	GG	AA	8.4	LOW_QUAL	AN=6	GT:GQ:PL:AS	0/0:35:0,10,100:ABA	1/1:35:10,100,0:ABA
+20	10002000	.	TAGTGQA	T	.	LOW_QUAL	AN=6;VALIDATED	GT:GQ:PL:AS	0/0:35:0,10,2000000000:ABA	1/1:35:10,100,0:ABA
+20	10003000	.	A	AGCT	.	MISSED	AN=6	GT:GQ:PL:AS	0/0:35:0,10,100:ABA	1/1:35:10,100,0:ABA
+22	10004000	.	GAT	G,GATAT	.	MISSED	AN=6	GT:GQ:PL:AS	0/0:35:0,10,100,2,4,8:ABA	1/1:35:10,100,0,2,4,8:ABA
+22	10005000	.	GAT	G,GATAT	.	MISSED	AN=6	GT:GQ:PL:AS	0/0:.:0,10,100,2,4,8:ABA	1/1:35:10,100,0,2,4,8:.
