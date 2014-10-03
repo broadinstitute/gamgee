@@ -175,9 +175,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a56eb3079fbaa3dc854fc541667e4d22d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a56eb3079fbaa3dc854fc541667e4d22d">allele_count</a> (const bcf_fmt_t *const format_ptr)</td></tr>
 <tr class="memdesc:a56eb3079fbaa3dc854fc541667e4d22d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts the genotype alleles.  <a href="#a56eb3079fbaa3dc854fc541667e4d22d">More...</a><br /></td></tr>
 <tr class="separator:a56eb3079fbaa3dc854fc541667e4d22d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af66b0baa8941c1a24e6dacc9a522cd07"><td class="memTemplParams" colspan="2">template&lt;class TYPE &gt; </td></tr>
-<tr class="memitem:af66b0baa8941c1a24e6dacc9a522cd07"><td class="memTemplItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#af66b0baa8941c1a24e6dacc9a522cd07">allele_key</a> (const uint8_t *data_ptr, const uint32_t allele_index, const TYPE <a class="el" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>)</td></tr>
-<tr class="separator:af66b0baa8941c1a24e6dacc9a522cd07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0145f214e3f7d9376f84f5da9a0c4141"><td class="memTemplParams" colspan="2">template&lt;class TYPE &gt; </td></tr>
+<tr class="memitem:a0145f214e3f7d9376f84f5da9a0c4141"><td class="memTemplItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a0145f214e3f7d9376f84f5da9a0c4141">allele_key</a> (const uint8_t *data_ptr, const uint32_t allele_index, const TYPE <a class="el" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>, const TYPE vector_end)</td></tr>
+<tr class="separator:a0145f214e3f7d9376f84f5da9a0c4141"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a771649e6d3a864010772e1c1accbde26"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a771649e6d3a864010772e1c1accbde26">allele_key</a> (const bcf_fmt_t *const format_ptr, const uint8_t *data_ptr, const uint32_t allele_index)</td></tr>
 <tr class="memdesc:a771649e6d3a864010772e1c1accbde26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the genotype allele at position allele_index.  <a href="#a771649e6d3a864010772e1c1accbde26">More...</a><br /></td></tr>
 <tr class="separator:a771649e6d3a864010772e1c1accbde26"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -358,7 +358,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af66b0baa8941c1a24e6dacc9a522cd07"></a>
+<a class="anchor" id="a0145f214e3f7d9376f84f5da9a0c4141"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -383,7 +383,13 @@ template&lt;class TYPE &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const TYPE&#160;</td>
-          <td class="paramname"><em>missing</em>&#160;</td>
+          <td class="paramname"><em>missing</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const TYPE&#160;</td>
+          <td class="paramname"><em>vector_end</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1681,7 +1687,7 @@ template&lt;typename... T&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 2 2014 22:02:24 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Oct 3 2014 18:24:20 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

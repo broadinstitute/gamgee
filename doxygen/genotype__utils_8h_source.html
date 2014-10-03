@@ -115,40 +115,43 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="namespacegamgee_1_1utils.html#a5ee633d9c3a8da271e79ba212980ff21">allele_missing</a>(<span class="keyword">const</span> bcf_fmt_t* <span class="keyword">const</span> format_ptr, <span class="keyword">const</span> uint8_t* data_ptr, <span class="keyword">const</span> uint32_t allele_index);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">class</span> TYPE&gt;</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#af66b0baa8941c1a24e6dacc9a522cd07">   41</a></span>&#160;  <span class="keyword">inline</span> int32_t <a class="code" href="namespacegamgee_1_1utils.html#af66b0baa8941c1a24e6dacc9a522cd07">allele_key</a>(<span class="keyword">const</span> uint8_t* data_ptr, <span class="keyword">const</span> uint32_t allele_index, <span class="keyword">const</span> TYPE <a class="code" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#a0145f214e3f7d9376f84f5da9a0c4141">   41</a></span>&#160;  <span class="keyword">inline</span> int32_t <a class="code" href="namespacegamgee_1_1utils.html#a0145f214e3f7d9376f84f5da9a0c4141">allele_key</a>(<span class="keyword">const</span> uint8_t* data_ptr, <span class="keyword">const</span> uint32_t allele_index, <span class="keyword">const</span> TYPE <a class="code" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>, <span class="keyword">const</span> TYPE vector_end) {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// mostly copied from htslib</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> p = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>TYPE*<span class="keyword">&gt;</span>(data_ptr);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">if</span> ( !(p[allele_index]&gt;&gt;1) || p[allele_index]==<a class="code" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a> ) {</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="namespacegamgee_1_1missing__values.html#a8211dad6a9c794845dc7f8f9b2fac530">missing_values::int32</a>;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> (p[allele_index]&gt;&gt;1)-1;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#a771649e6d3a864010772e1c1accbde26">   58</a></span>&#160;  <span class="keyword">inline</span> int32_t <a class="code" href="namespacegamgee_1_1utils.html#af66b0baa8941c1a24e6dacc9a522cd07">allele_key</a>(</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <span class="keyword">const</span> bcf_fmt_t* <span class="keyword">const</span> format_ptr, <span class="keyword">const</span> uint8_t* data_ptr, <span class="keyword">const</span> uint32_t allele_index) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">switch</span> (format_ptr-&gt;type) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">case</span> BCF_BT_INT8:</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keywordflow">return</span> allele_key&lt;int8_t&gt;(data_ptr, allele_index, bcf_int8_missing);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">case</span> BCF_BT_INT16:</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      <span class="keywordflow">return</span> allele_key&lt;int16_t&gt;(data_ptr, allele_index, bcf_int16_missing);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">case</span> BCF_BT_INT32:</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="keywordflow">return</span> allele_key&lt;int32_t&gt;(data_ptr, allele_index, bcf_int32_missing);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="keywordflow">throw</span> invalid_argument(<span class="stringliteral">&quot;unknown GT field type: &quot;</span> + to_string(format_ptr-&gt;type));</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  vector&lt;int32_t&gt; <a class="code" href="namespacegamgee_1_1utils.html#a1ecd589903b5395d15527e3b0a6481cf">allele_keys</a>(<span class="keyword">const</span> std::shared_ptr&lt;bcf1_t&gt;&amp; body, <span class="keyword">const</span> bcf_fmt_t* <span class="keyword">const</span> format_ptr, <span class="keyword">const</span> uint8_t* data_ptr);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  vector&lt;string&gt; <a class="code" href="namespacegamgee_1_1utils.html#a2ec32c97f1f7c6ee9f97179bcbca45bb">allele_strings</a>(<span class="keyword">const</span> std::shared_ptr&lt;bcf1_t&gt;&amp; body,</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      <span class="keyword">const</span> bcf_fmt_t* <span class="keyword">const</span> format_ptr, <span class="keyword">const</span> uint8_t* data_ptr); <span class="comment">// returns the actual alleles (e.g. A/T or TG/C or T/T/C or T/T/T/T/T ... )</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordtype">string</span> <a class="code" href="namespacegamgee_1_1utils.html#abece8890c17e6f5ac54a4922fc24f05c">allele_key_to_string</a>(<span class="keyword">const</span> std::shared_ptr&lt;bcf1_t&gt;&amp; body, <span class="keyword">const</span> int32_t key_index);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( p[allele_index] == vector_end ) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <span class="keywordflow">return</span> bcf_int32_vector_end;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> (p[allele_index]&gt;&gt;1)-1;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#a771649e6d3a864010772e1c1accbde26">   61</a></span>&#160;  <span class="keyword">inline</span> int32_t <a class="code" href="namespacegamgee_1_1utils.html#a0145f214e3f7d9376f84f5da9a0c4141">allele_key</a>(</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keyword">const</span> bcf_fmt_t* <span class="keyword">const</span> format_ptr, <span class="keyword">const</span> uint8_t* data_ptr, <span class="keyword">const</span> uint32_t allele_index) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">switch</span> (format_ptr-&gt;type) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">case</span> BCF_BT_INT8:</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      <span class="keywordflow">return</span> allele_key&lt;int8_t&gt;(data_ptr, allele_index, bcf_int8_missing, bcf_int8_vector_end);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">case</span> BCF_BT_INT16:</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <span class="keywordflow">return</span> allele_key&lt;int16_t&gt;(data_ptr, allele_index, bcf_int16_missing, bcf_int16_vector_end);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">case</span> BCF_BT_INT32:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      <span class="keywordflow">return</span> allele_key&lt;int32_t&gt;(data_ptr, allele_index, bcf_int32_missing, bcf_int32_vector_end);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="keywordflow">throw</span> invalid_argument(<span class="stringliteral">&quot;unknown GT field type: &quot;</span> + to_string(format_ptr-&gt;type));</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  vector&lt;int32_t&gt; <a class="code" href="namespacegamgee_1_1utils.html#a1ecd589903b5395d15527e3b0a6481cf">allele_keys</a>(<span class="keyword">const</span> std::shared_ptr&lt;bcf1_t&gt;&amp; body, <span class="keyword">const</span> bcf_fmt_t* <span class="keyword">const</span> format_ptr, <span class="keyword">const</span> uint8_t* data_ptr);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  vector&lt;string&gt; <a class="code" href="namespacegamgee_1_1utils.html#a2ec32c97f1f7c6ee9f97179bcbca45bb">allele_strings</a>(<span class="keyword">const</span> std::shared_ptr&lt;bcf1_t&gt;&amp; body,</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      <span class="keyword">const</span> bcf_fmt_t* <span class="keyword">const</span> format_ptr, <span class="keyword">const</span> uint8_t* data_ptr); <span class="comment">// returns the actual alleles (e.g. A/T or TG/C or T/T/C or T/T/T/T/T ... )</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordtype">string</span> <a class="code" href="namespacegamgee_1_1utils.html#abece8890c17e6f5ac54a4922fc24f05c">allele_key_to_string</a>(<span class="keyword">const</span> std::shared_ptr&lt;bcf1_t&gt;&amp; body, <span class="keyword">const</span> int32_t key_index);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a1ecd589903b5395d15527e3b0a6481cf"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a1ecd589903b5395d15527e3b0a6481cf">gamgee::utils::allele_keys</a></div><div class="ttdeci">vector&lt; int32_t &gt; allele_keys(const std::shared_ptr&lt; bcf1_t &gt; &amp;body, const bcf_fmt_t *const format_ptr, const uint8_t *data_ptr, const TYPE missing, const TYPE vector_end)</div><div class="ttdef"><b>Definition:</b> genotype_utils.cpp:59</div></div>
 <div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
 <div class="ttc" id="variant__field__type_8h_html"><div class="ttname"><a href="variant__field__type_8h.html">variant_field_type.h</a></div></div>
@@ -156,16 +159,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="namespacegamgee_1_1missing__values_html_a8211dad6a9c794845dc7f8f9b2fac530"><div class="ttname"><a href="namespacegamgee_1_1missing__values.html#a8211dad6a9c794845dc7f8f9b2fac530">gamgee::missing_values::int32</a></div><div class="ttdeci">constexpr auto int32</div><div class="ttdoc">missing value for an int32 </div><div class="ttdef"><b>Definition:</b> missing.h:17</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a2ec32c97f1f7c6ee9f97179bcbca45bb"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a2ec32c97f1f7c6ee9f97179bcbca45bb">gamgee::utils::allele_strings</a></div><div class="ttdeci">vector&lt; string &gt; allele_strings(const std::shared_ptr&lt; bcf1_t &gt; &amp;body, const bcf_fmt_t *const format_ptr, const uint8_t *data_ptr, const TYPE missing, const TYPE vector_end)</div><div class="ttdef"><b>Definition:</b> genotype_utils.cpp:99</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a5ee633d9c3a8da271e79ba212980ff21"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a5ee633d9c3a8da271e79ba212980ff21">gamgee::utils::allele_missing</a></div><div class="ttdeci">bool allele_missing(const uint8_t *data_ptr, const uint32_t allele_index, const TYPE missing)</div><div class="ttdef"><b>Definition:</b> genotype_utils.cpp:38</div></div>
-<div class="ttc" id="namespacegamgee_1_1utils_html_af66b0baa8941c1a24e6dacc9a522cd07"><div class="ttname"><a href="namespacegamgee_1_1utils.html#af66b0baa8941c1a24e6dacc9a522cd07">gamgee::utils::allele_key</a></div><div class="ttdeci">int32_t allele_key(const uint8_t *data_ptr, const uint32_t allele_index, const TYPE missing)</div><div class="ttdef"><b>Definition:</b> genotype_utils.h:41</div></div>
 <div class="ttc" id="namespacegamgee_html"><div class="ttname"><a href="namespacegamgee.html">gamgee</a></div><div class="ttdef"><b>Definition:</b> base_quals.cpp:11</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a56eb3079fbaa3dc854fc541667e4d22d"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a56eb3079fbaa3dc854fc541667e4d22d">gamgee::utils::allele_count</a></div><div class="ttdeci">uint32_t allele_count(const bcf_fmt_t *const format_ptr)</div><div class="ttdoc">Counts the genotype alleles. </div><div class="ttdef"><b>Definition:</b> genotype_utils.h:25</div></div>
 <div class="ttc" id="hts__memory_8h_html"><div class="ttname"><a href="hts__memory_8h.html">hts_memory.h</a></div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_abece8890c17e6f5ac54a4922fc24f05c"><div class="ttname"><a href="namespacegamgee_1_1utils.html#abece8890c17e6f5ac54a4922fc24f05c">gamgee::utils::allele_key_to_string</a></div><div class="ttdeci">string allele_key_to_string(const std::shared_ptr&lt; bcf1_t &gt; &amp;body, const int32_t allele_int)</div><div class="ttdoc">Returns the genotype allele string from this line. </div><div class="ttdef"><b>Definition:</b> genotype_utils.cpp:125</div></div>
+<div class="ttc" id="namespacegamgee_1_1utils_html_a0145f214e3f7d9376f84f5da9a0c4141"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a0145f214e3f7d9376f84f5da9a0c4141">gamgee::utils::allele_key</a></div><div class="ttdeci">int32_t allele_key(const uint8_t *data_ptr, const uint32_t allele_index, const TYPE missing, const TYPE vector_end)</div><div class="ttdef"><b>Definition:</b> genotype_utils.h:41</div></div>
 <div class="ttc" id="namespacegamgee_html_a659c46d5b1420346543fb1afc4a575de"><div class="ttname"><a href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">gamgee::missing</a></div><div class="ttdeci">bool missing(const bool value)</div><div class="ttdoc">Returns true if bool is false (missing). </div><div class="ttdef"><b>Definition:</b> missing.h:22</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 2 2014 22:02:24 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Oct 3 2014 18:24:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
