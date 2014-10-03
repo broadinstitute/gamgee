@@ -154,3 +154,15 @@ BOOST_AUTO_TEST_CASE( is_variant ) {
     BOOST_CHECK_EQUAL(genotypes[i].variant(), truth[i]);
 }
 
+BOOST_AUTO_TEST_CASE( mixed_ploidy_random_access ) {
+  const auto rec = (*(SingleVariantReader("testdata/test_variants_mixed_ploidy.vcf").begin()));
+  const auto expected = vector<vector<int32_t>>{ {0, 1}, {0, bcf_int32_vector_end}, {1, bcf_int32_vector_end} };
+
+  auto sample_idx = 0u;
+  for ( const auto& genotype : rec.genotypes() ) {
+    for ( auto allele_idx = 0u; allele_idx < genotype.size(); ++allele_idx ) {
+      BOOST_CHECK_EQUAL(genotype[allele_idx], expected[sample_idx][allele_idx]);
+    }
+    ++sample_idx;
+  }
+}

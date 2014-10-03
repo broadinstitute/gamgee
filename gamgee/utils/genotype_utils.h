@@ -38,11 +38,14 @@ using namespace std;
   bool allele_missing(const bcf_fmt_t* const format_ptr, const uint8_t* data_ptr, const uint32_t allele_index);
 
   template<class TYPE>
-  inline int32_t allele_key(const uint8_t* data_ptr, const uint32_t allele_index, const TYPE missing) {
+  inline int32_t allele_key(const uint8_t* data_ptr, const uint32_t allele_index, const TYPE missing, const TYPE vector_end) {
     // mostly copied from htslib
     const auto p = reinterpret_cast<const TYPE*>(data_ptr);
     if ( !(p[allele_index]>>1) || p[allele_index]==missing ) {
       return missing_values::int32;
+    }
+    else if ( p[allele_index] == vector_end ) {
+      return bcf_int32_vector_end;
     }
     return (p[allele_index]>>1)-1;
   }
@@ -59,11 +62,11 @@ using namespace std;
       const bcf_fmt_t* const format_ptr, const uint8_t* data_ptr, const uint32_t allele_index) {
     switch (format_ptr->type) {
     case BCF_BT_INT8:
-      return allele_key<int8_t>(data_ptr, allele_index, bcf_int8_missing);
+      return allele_key<int8_t>(data_ptr, allele_index, bcf_int8_missing, bcf_int8_vector_end);
     case BCF_BT_INT16:
-      return allele_key<int16_t>(data_ptr, allele_index, bcf_int16_missing);
+      return allele_key<int16_t>(data_ptr, allele_index, bcf_int16_missing, bcf_int16_vector_end);
     case BCF_BT_INT32:
-      return allele_key<int32_t>(data_ptr, allele_index, bcf_int32_missing);
+      return allele_key<int32_t>(data_ptr, allele_index, bcf_int32_missing, bcf_int32_vector_end);
     default:
       throw invalid_argument("unknown GT field type: " + to_string(format_ptr->type));
     }
