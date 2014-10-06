@@ -16,6 +16,16 @@ BOOST_AUTO_TEST_CASE( sam_header ) {
   BOOST_CHECK_EQUAL(1u, header.n_sequences());
 }
 
+BOOST_AUTO_TEST_CASE( sam_header_read_groups ) {
+  auto reader = SingleSamReader{"testdata/test_simple.bam"};
+  auto header = reader.header();
+  auto rgs = header.read_groups();
+  BOOST_CHECK_EQUAL(1u, rgs.size());
+  BOOST_CHECK_EQUAL(rgs[0].id, "exampleBAM.bam");
+  BOOST_CHECK_EQUAL(rgs[0].platform, "illumina");
+  BOOST_CHECK_EQUAL(rgs[0].library, "exampleBAM.bam");
+}
+
 /** @todo Need a way to modify the header in between these copies/moves to make sure these are working properly! */
 BOOST_AUTO_TEST_CASE( sam_header_constructors ) {
   auto reader = SingleSamReader{"testdata/test_simple.bam"};
