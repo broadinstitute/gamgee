@@ -15,6 +15,7 @@ void check_fields(T actual, T truth) {
 }
 
 const auto samples     = vector<string>{"S1", "S292", "S30034"};
+const auto samples_indices = vector<int32_t>{0, 1, 2};
 const auto chromosomes = vector<string>{"chr1", "chr2", "chr3", "chr4"};
 const auto filters     = vector<string>{"LOW_QUAL", "PASS", "VQSR_FAILED"};
 const auto shareds       = vector<string>{"DP", "MQ", "RankSum"};
@@ -41,6 +42,8 @@ void variant_header_builder_checks(const VariantHeader& vh) {
     BOOST_CHECK_EQUAL(shareds_indices[i], vh.field_index(shareds[i]));
   for (auto i = 0u; i != individuals.size(); ++i)
     BOOST_CHECK_EQUAL(individuals_indices[i], vh.field_index(individuals[i]));
+  for (auto i = 0u; i != samples.size(); ++i)
+    BOOST_CHECK_EQUAL(samples_indices[i], vh.sample_index(samples[i]));
   BOOST_CHECK(missing(vh.field_index("MISSING")));
   BOOST_CHECK(missing(vh.field_index("MISSING")));
   BOOST_CHECK_EQUAL(vh.field_index("PASS"), 0);

@@ -136,4 +136,9 @@ int32_t VariantHeader::field_index(const string& tag) const {
   return index >= 0 ? index : missing_values::int32;
 }
 
+int32_t VariantHeader::sample_index(const string& tag) const {
+  const auto index = bcf_hdr_id2int(m_header.get(), BCF_DT_SAMPLE, tag.c_str());
+  return index >= 0 ? index : missing_values::int32;
+}
+
 }

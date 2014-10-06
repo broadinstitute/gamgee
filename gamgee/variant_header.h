@@ -63,6 +63,12 @@ class VariantHeader {
    * @note if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), they will also have the same index internally, so this function will do the right thing. The accessors for individual and shared field will know how to use the index to retrieve the correct field.
    */
   int32_t field_index(const std::string& tag) const;                                      
+  /**
+   * @brief looks up the index of a particular sample, enabling subsequent O(1) random-access lookups for that sample throughout the iteration.
+   * @return missing_values::int32_t if the tag is not present in the header (you can use missing() on the return value to check)
+   * @note prefer this to looking up sample names during the iteration if you are looking for samples multiple times.
+   */
+  int32_t sample_index(const std::string& tag) const;
 
  private:
   std::shared_ptr<bcf_hdr_t> m_header;
