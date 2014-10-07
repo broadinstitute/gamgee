@@ -171,6 +171,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afa8e8fe7f0b76390f78b95ac2fab602f"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#afa8e8fe7f0b76390f78b95ac2fab602f">field_index</a> (const std::string &amp;tag) const </td></tr>
 <tr class="memdesc:afa8e8fe7f0b76390f78b95ac2fab602f"><td class="mdescLeft">&#160;</td><td class="mdescRight">looks up the index of a particular filter, shared or individual field tag, enabling subsequent O(1) random-access lookups for that field throughout the iteration.  <a href="#afa8e8fe7f0b76390f78b95ac2fab602f">More...</a><br /></td></tr>
 <tr class="separator:afa8e8fe7f0b76390f78b95ac2fab602f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b53ff875349362598ce88fbd6c3a566"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a6b53ff875349362598ce88fbd6c3a566">sample_index</a> (const std::string &amp;tag) const </td></tr>
+<tr class="memdesc:a6b53ff875349362598ce88fbd6c3a566"><td class="mdescLeft">&#160;</td><td class="mdescRight">looks up the index of a particular sample, enabling subsequent O(1) random-access lookups for that sample throughout the iteration.  <a href="#a6b53ff875349362598ce88fbd6c3a566">More...</a><br /></td></tr>
+<tr class="separator:a6b53ff875349362598ce88fbd6c3a566"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -588,6 +591,26 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 
 </div>
 </div>
+<a class="anchor" id="a6b53ff875349362598ce88fbd6c3a566"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t gamgee::VariantHeader::sample_index </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>tag</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>looks up the index of a particular sample, enabling subsequent O(1) random-access lookups for that sample throughout the iteration. </p>
+<dl class="section return"><dt>Returns</dt><dd>missing_values::int32_t if the tag is not present in the header (you can use <a class="el" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de" title="Returns true if bool is false (missing). ">missing()</a> on the return value to check) </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>prefer this to looking up sample names during the iteration if you are looking for samples multiple times. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a6fbed78411ee02cf1ce5fc2aa6115fac"></a>
 <div class="memitem">
 <div class="memproto">
@@ -707,7 +730,7 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 3 2014 18:24:20 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Oct 7 2014 16:47:08 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

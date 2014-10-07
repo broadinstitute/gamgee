@@ -133,19 +133,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classgamgee_1_1_variant_header.html#ab2403bf1aa48e03d0891db9a9fda223b">has_individual_field</a>(<span class="keyword">const</span> std::string&amp;) <span class="keyword">const</span>; </div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  int32_t <a class="code" href="classgamgee_1_1_variant_header.html#afa8e8fe7f0b76390f78b95ac2fab602f">field_index</a>(<span class="keyword">const</span> std::string&amp; tag) <span class="keyword">const</span>;                                      </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  std::shared_ptr&lt;bcf_hdr_t&gt; m_header;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  </div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classgamgee_1_1_variant_header.html#a24da1ae869010cf623de7749910a86e2">   70</a></span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classgamgee_1_1_variant_writer.html">VariantWriter</a>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classgamgee_1_1_variant_header.html#af17dc6e3178d144772bce073ab1e773a">   71</a></span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classgamgee_1_1_variant_header_builder.html">VariantHeaderBuilder</a>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;};</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif // gamgee__variant_header__guard</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  int32_t <a class="code" href="classgamgee_1_1_variant_header.html#a6b53ff875349362598ce88fbd6c3a566">sample_index</a>(<span class="keyword">const</span> std::string&amp; tag) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  std::shared_ptr&lt;bcf_hdr_t&gt; m_header;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classgamgee_1_1_variant_header.html#a24da1ae869010cf623de7749910a86e2">   76</a></span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classgamgee_1_1_variant_writer.html">VariantWriter</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classgamgee_1_1_variant_header.html#af17dc6e3178d144772bce073ab1e773a">   77</a></span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classgamgee_1_1_variant_header_builder.html">VariantHeaderBuilder</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#endif // gamgee__variant_header__guard</span></div>
 <div class="ttc" id="classgamgee_1_1_variant_header_html_a9bd34a56ccfc1311b92bb2012b2f6b64"><div class="ttname"><a href="classgamgee_1_1_variant_header.html#a9bd34a56ccfc1311b92bb2012b2f6b64">gamgee::VariantHeader::individual_field_type</a></div><div class="ttdeci">uint8_t individual_field_type(const std::string &amp;tag) const </div><div class="ttdoc">returns the type of this individual (FORMAT) field </div><div class="ttdef"><b>Definition:</b> variant_header.cpp:111</div></div>
 <div class="ttc" id="classgamgee_1_1_variant_header_html_ab2403bf1aa48e03d0891db9a9fda223b"><div class="ttname"><a href="classgamgee_1_1_variant_header.html#ab2403bf1aa48e03d0891db9a9fda223b">gamgee::VariantHeader::has_individual_field</a></div><div class="ttdeci">bool has_individual_field(const std::string &amp;) const </div><div class="ttdoc">checks if the given individual (FORMAT) field is present </div><div class="ttdef"><b>Definition:</b> variant_header.cpp:129</div></div>
+<div class="ttc" id="classgamgee_1_1_variant_header_html_a6b53ff875349362598ce88fbd6c3a566"><div class="ttname"><a href="classgamgee_1_1_variant_header.html#a6b53ff875349362598ce88fbd6c3a566">gamgee::VariantHeader::sample_index</a></div><div class="ttdeci">int32_t sample_index(const std::string &amp;tag) const </div><div class="ttdoc">looks up the index of a particular sample, enabling subsequent O(1) random-access lookups for that sa...</div><div class="ttdef"><b>Definition:</b> variant_header.cpp:139</div></div>
 <div class="ttc" id="classgamgee_1_1_variant_header_html_a636d949964cad4438e133da1639cd87e"><div class="ttname"><a href="classgamgee_1_1_variant_header.html#a636d949964cad4438e133da1639cd87e">gamgee::VariantHeader::chromosomes</a></div><div class="ttdeci">std::vector&lt; std::string &gt; chromosomes() const </div><div class="ttdoc">builds a vector with the contigs </div><div class="ttdef"><b>Definition:</b> variant_header.cpp:87</div></div>
 <div class="ttc" id="classgamgee_1_1_variant_header_html_a9903aa559390cfda45ae2e645005b667"><div class="ttname"><a href="classgamgee_1_1_variant_header.html#a9903aa559390cfda45ae2e645005b667">gamgee::VariantHeader::filters</a></div><div class="ttdeci">std::vector&lt; std::string &gt; filters() const </div><div class="ttdoc">builds a vector with the filters </div><div class="ttdef"><b>Definition:</b> variant_header.cpp:91</div></div>
 <div class="ttc" id="classgamgee_1_1_variant_header_builder_html"><div class="ttname"><a href="classgamgee_1_1_variant_header_builder.html">gamgee::VariantHeaderBuilder</a></div><div class="ttdoc">Utility class to build VariantHeader objects from scratch. </div><div class="ttdef"><b>Definition:</b> variant_header_builder.h:19</div></div>
@@ -166,7 +168,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 3 2014 18:24:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Oct 7 2014 16:47:07 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
