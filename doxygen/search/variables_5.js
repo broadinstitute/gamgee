@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['m_5fvariant_5ffile_5fptr',['m_variant_file_ptr',['../classgamgee_1_1_variant_iterator.html#af73c3d98399b4a6ab950c2d47c45fbac',1,'gamgee::VariantIterator']]],
-  ['m_5fvariant_5fheader_5fptr',['m_variant_header_ptr',['../classgamgee_1_1_variant_iterator.html#aa97ec226db2093779a1119fc18933b1a',1,'gamgee::VariantIterator']]],
-  ['m_5fvariant_5frecord',['m_variant_record',['../classgamgee_1_1_variant_iterator.html#aa82ee96fa2f302844ff2d6e09d273899',1,'gamgee::VariantIterator']]],
-  ['m_5fvariant_5frecord_5fptr',['m_variant_record_ptr',['../classgamgee_1_1_variant_iterator.html#aa37d1a3df410df49f47faade4414a251',1,'gamgee::VariantIterator']]],
-  ['mate_5fcigar_5ftag',['MATE_CIGAR_TAG',['../namespacegamgee.html#abeab9f8f8d7f7b19a8a2ae3f2fee85a7',1,'gamgee']]]
+  ['sep',['sep',['../namespacegamgee.html#abd7ef74f462df5f454db18082baefd87',1,'gamgee']]],
+  ['string_5fdot',['string_dot',['../namespacegamgee_1_1missing__values.html#ae4abf96097fd03be084479871201ff83',1,'gamgee::missing_values']]],
+  ['string_5fempty',['string_empty',['../namespacegamgee_1_1missing__values.html#a6242a9906efbe8b441e098b94095ffa7',1,'gamgee::missing_values']]]
 ];

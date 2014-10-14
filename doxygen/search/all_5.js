@@ -20,8 +20,6 @@ var searchData=
   ['file_5futils_2eh',['file_utils.h',['../file__utils_8h.html',1,'']]],
   ['filters',['filters',['../classgamgee_1_1_variant.html#a52a8562b1b0ed982d08c9fd09cb50353',1,'gamgee::Variant::filters()'],['../classgamgee_1_1_variant_header.html#a9903aa559390cfda45ae2e645005b667',1,'gamgee::VariantHeader::filters()']]],
   ['first',['first',['../classgamgee_1_1_sam.html#ad185f2ed5703a759f287a95c80aca107',1,'gamgee::Sam']]],
-  ['flags',['flags',['../_8ycm__extra__conf_8py.html#abd73d8e4551f1a637280b3876d1ae2e3',1,'.ycm_extra_conf.py']]],
-  ['flagsforfile',['FlagsForFile',['../_8ycm__extra__conf_8py.html#af1c9418abf3c686550f9a8be0dc6b2ef',1,'.ycm_extra_conf.py']]],
   ['float',['FLOAT',['../namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ecae738c26bf4ce1037fa81b039a915cbf6',1,'gamgee::utils']]],
   ['float_5findividual_5ffield',['float_individual_field',['../classgamgee_1_1_variant.html#a2e1d38d0643d63e354b7f3ff047252b5',1,'gamgee::Variant::float_individual_field(const std::string &amp;tag) const '],['../classgamgee_1_1_variant.html#a3b670b41f3cfa43f180093fc712fc662',1,'gamgee::Variant::float_individual_field(const int32_t index) const ']]],
   ['float_5fshared_5ffield',['float_shared_field',['../classgamgee_1_1_variant.html#af6e2c16c4645a6e56af983d6e0e5146f',1,'gamgee::Variant::float_shared_field(const std::string &amp;tag) const '],['../classgamgee_1_1_variant.html#a70949ba5d2272433950034c0dac62a2c',1,'gamgee::Variant::float_shared_field(const int32_t index) const ']]],
