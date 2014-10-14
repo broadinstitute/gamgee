@@ -22,5 +22,6 @@ var searchData=
   ['integer_5fshared_5ffield',['integer_shared_field',['../classgamgee_1_1_variant.html#a1daafb0a90ffa01e48ffc4fd9968d0a4',1,'gamgee::Variant::integer_shared_field(const std::string &amp;tag) const '],['../classgamgee_1_1_variant.html#a2482546cc878c2b31f5c83cb12e4fc21',1,'gamgee::Variant::integer_shared_field(const int32_t index) const ']]],
   ['integer_5ftag',['integer_tag',['../classgamgee_1_1_sam.html#a2fd2ca2887d67a6536c0a01e43641d5e',1,'gamgee::Sam']]],
   ['interval',['Interval',['../classgamgee_1_1_interval.html#a5d01de449ec8d730eac077e8983a77a0',1,'gamgee::Interval::Interval()'],['../classgamgee_1_1_interval.html#a653307c19a6a29281b07402c39fef93b',1,'gamgee::Interval::Interval(const std::string &amp;chr, const uint32_t start, const uint32_t stop, const IntervalType output_type=IntervalType::GATK)'],['../classgamgee_1_1_interval.html#a9b7d90cda079dcfb69328ee8b44ba8e4',1,'gamgee::Interval::Interval(const Interval &amp;)=default'],['../classgamgee_1_1_interval.html#aabd554ebc595b614b0831e83a02a3ad1',1,'gamgee::Interval::Interval(Interval &amp;&amp;)=default']]],
-  ['is_5ffastq',['is_fastq',['../classgamgee_1_1_fastq.html#a03c044cb24a8c4c9b2439b681fe6af30',1,'gamgee::Fastq']]]
+  ['is_5ffastq',['is_fastq',['../classgamgee_1_1_fastq.html#a03c044cb24a8c4c9b2439b681fe6af30',1,'gamgee::Fastq']]],
+  ['isheaderfile',['IsHeaderFile',['../_8ycm__extra__conf_8py.html#a38a706def8307cce6e9348c3379274bd',1,'.ycm_extra_conf.py']]]
 ];
