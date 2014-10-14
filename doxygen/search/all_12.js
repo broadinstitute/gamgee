@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['unclipped_5fstart',['unclipped_start',['../classgamgee_1_1_sam.html#afdf0b3651128a0f8787ec1f5c0236899',1,'gamgee::Sam']]],
-  ['unclipped_5fstop',['unclipped_stop',['../classgamgee_1_1_sam.html#aa4801927f70100f120c882ddf7b0acf4',1,'gamgee::Sam']]],
-  ['unmapped',['unmapped',['../classgamgee_1_1_sam.html#aa0f9db386415b7dcd886325682959ebf',1,'gamgee::Sam']]],
-  ['update',['update',['../classgamgee_1_1_sam_builder_data_field.html#ac2f2a717e15c1cceaadc5099072c9a1a',1,'gamgee::SamBuilderDataField::update(const void *copy_source, const uint32_t bytes_to_copy, const uint32_t num_elements)'],['../classgamgee_1_1_sam_builder_data_field.html#aa8fb8168194afd5b3e614e4c2238a80d',1,'gamgee::SamBuilderDataField::update(std::unique_ptr&lt; uint8_t[]&gt; &amp;&amp;move_source, const uint32_t source_bytes, const uint32_t num_elements)']]],
-  ['utils_2ecpp',['utils.cpp',['../utils_8cpp.html',1,'']]],
-  ['utils_2eh',['utils.h',['../utils_8h.html',1,'']]]
+  ['t',['T',['../namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49ab9ece18c950afbfa6b0fdbfa4ff731d3',1,'gamgee']]],
+  ['tile_5fleft',['tile_left',['../classgamgee_1_1_interval.html#a9a697768a6abbb228d55ad3cdad4ac49',1,'gamgee::Interval']]],
+  ['tile_5fright',['tile_right',['../classgamgee_1_1_interval.html#a7b4c98f6d065175d3322d4ebd7968afa',1,'gamgee::Interval']]],
+  ['to_5fstring',['to_string',['../classgamgee_1_1_base_quals.html#a9fb2b6c9c98f1f9b0684ab78374496aa',1,'gamgee::BaseQuals::to_string()'],['../classgamgee_1_1_cigar.html#a2a2f18fe4bdf85b12f641b2d56dad656',1,'gamgee::Cigar::to_string()'],['../classgamgee_1_1_read_bases.html#af30b8f81073f583fd5e2cc38afd92876',1,'gamgee::ReadBases::to_string()']]],
+  ['todo_20list',['Todo List',['../todo.html',1,'']]],
+  ['tsca_5ftiling',['tsca_tiling',['../classgamgee_1_1_interval.html#a1e8456b8177ac09874db97b74ed08bee',1,'gamgee::Interval']]]
 ];

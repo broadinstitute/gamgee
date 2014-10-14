@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['flags',['flags',['../_8ycm__extra__conf_8py.html#abd73d8e4551f1a637280b3876d1ae2e3',1,'.ycm_extra_conf.py']]]
+  ['flow_5forder',['flow_order',['../classgamgee_1_1_read_group.html#a762af5389db7d7e4a51c39640fc8e375',1,'gamgee::ReadGroup']]]
 ];
