@@ -50,4 +50,21 @@ namespace gamgee {
 	  return 0;
   }
 
+  /**
+   * @brief extracts read group objects from a SAM header
+   */
+  vector<ReadGroup> SamHeader::read_groups() const {
+    const static auto RG_TAG = "@RG";
+    const static auto NOT_FOUND = string::npos;
+    auto result = vector<ReadGroup>();
+    auto text = header_text();
+
+    for (auto rg_start=text.find(RG_TAG), rg_end=rg_start; rg_start!=NOT_FOUND; rg_start=text.find(RG_TAG,rg_end+1) ) {
+      rg_end = text.find('\n', rg_start+1);
+      auto rg_record = text.substr(rg_start, rg_end-rg_start);
+      result.push_back(ReadGroup(rg_record));
+    }
+    return result;
+  }
+
 }
