@@ -108,8 +108,10 @@ class VariantReader {
   {
     if (filenames.size() > 1)
       throw SingleInputException{"filenames", filenames.size()};
-    if (!filenames.empty())
+    if (!filenames.empty()){
       init_reader(filenames.front());
+      subset_variant_samples(m_variant_header_ptr.get(), samples, include);
+    }
   }
 
   /**
