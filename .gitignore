@@ -28,6 +28,9 @@ dox/
 *.swp
 .vimbup/
 
+#emacs temporaries
+*.*~
+
 # Haroopad temporaries
 *.bak
 
