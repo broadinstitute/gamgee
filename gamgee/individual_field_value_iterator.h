@@ -31,8 +31,28 @@ template<class VALUE_TYPE>
 class IndividualFieldValueIterator : public std::iterator<std::random_access_iterator_tag, VALUE_TYPE> {
  public:
 
+   /**
+   * @brief Constructor with bcf1_t structure and start and end pointers of the array/vector 
+   * @param body a pointer to the bcf1_t data structure to be held as a shared pointer
+   * @param data_ptr the byte array containing the value(s) for this sample
+   * @param end_ptr pointer to the end of the byte array
+   * @param num_bytes number of bytes in each value
+   * @param type the encoding of the value 
+   * @note this constructor is probably only used by IndividualFieldValue::begin() and
+   * IndividualFieldValue::end()
+   */
+  explicit IndividualFieldValueIterator(const std::shared_ptr<bcf1_t>& body, uint8_t* data_ptr, uint8_t* end_ptr, const uint8_t num_bytes, const utils::VariantFieldType& type) :
+    m_body {body},
+    m_current_data_ptr {data_ptr},
+    m_original_data_ptr {data_ptr},
+    m_end_data_ptr {end_ptr},
+    m_num_bytes {num_bytes},
+    m_type {type},
+    m_is_current_pointee_cached {false}
+  {}
+
   /**
-   * @brief simple constructor
+   * @brief Constructor with bcf1_t structure and start pointer of the array/vector 
    * @param body a pointer to the bcf1_t data structure to be held as a shared pointer
    * @param data_ptr the byte array containing the value(s) for this sample
    * @param num_bytes number of bytes in each value
@@ -40,14 +60,9 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
    * @note this constructor is probably only used by IndividualFieldValue::begin() and
    * IndividualFieldValue::end()
    */
-  IndividualFieldValueIterator(const std::shared_ptr<bcf1_t>& body, uint8_t* data_ptr, const uint8_t num_bytes, const utils::VariantFieldType& type) :
-    m_body {body},
-    m_current_data_ptr {data_ptr},
-    m_original_data_ptr {data_ptr},
-    m_num_bytes {num_bytes},
-    m_type {type}
+  explicit IndividualFieldValueIterator(const std::shared_ptr<bcf1_t>& body, uint8_t* data_ptr, const uint8_t num_bytes, const utils::VariantFieldType& type): IndividualFieldValueIterator(body, data_ptr, nullptr, num_bytes, type)
   {}
-      
+  
   /**
    * @copydoc IndividualFieldIterator::IndividualFieldIterator(const IndividualFieldIterator&)
    */
@@ -55,8 +70,11 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
     m_body {other.m_body},
     m_current_data_ptr {other.m_current_data_ptr},
     m_original_data_ptr {other.m_original_data_ptr},
+    m_end_data_ptr {other.m_end_data_ptr},
     m_num_bytes {other.m_num_bytes},
-    m_type {other.m_type}
+    m_type {other.m_type},
+    m_current_data_value {other.m_current_data_value},
+    m_is_current_pointee_cached {other.m_is_current_pointee_cached}
   {}
 
   /**
@@ -66,8 +84,11 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
     m_body {std::move(other.m_body)},
     m_current_data_ptr {other.m_current_data_ptr},
     m_original_data_ptr {other.m_original_data_ptr},
+    m_end_data_ptr {other.m_end_data_ptr},
     m_num_bytes {other.m_num_bytes},
-    m_type {other.m_type}
+    m_type {other.m_type},
+    m_current_data_value {other.m_current_data_value},
+    m_is_current_pointee_cached {other.m_is_current_pointee_cached}
   {}
 
   /**
@@ -79,8 +100,11 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
     m_body = std::move(other.m_body);
     m_current_data_ptr = other.m_current_data_ptr;
     m_original_data_ptr = other.m_original_data_ptr;
+    m_end_data_ptr  = other.m_end_data_ptr;
     m_num_bytes = other.m_num_bytes;
     m_type = other.m_type;
+    m_current_data_value = other.m_current_data_value;
+    m_is_current_pointee_cached = other.m_is_current_pointee_cached;
     return *this;
   }
 
@@ -94,8 +118,11 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
     m_body = std::move(other.m_body);
     m_current_data_ptr = other.m_current_data_ptr;
     m_original_data_ptr = other.m_original_data_ptr;
+    m_end_data_ptr  = other.m_end_data_ptr;
     m_num_bytes = other.m_num_bytes;
     m_type = other.m_type;
+    m_current_data_value = other.m_current_data_value;
+    m_is_current_pointee_cached = other.m_is_current_pointee_cached;
     return *this;
   }
 
@@ -104,6 +131,8 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
    */
   IndividualFieldValueIterator& operator+=(const int n) {
     m_current_data_ptr += n * m_num_bytes;
+    m_is_current_pointee_cached = false;
+    m_current_data_ptr = utils::cache_and_advance_to_end_if_necessary(m_current_data_ptr, m_end_data_ptr, *this);
     return *this;
   }
 
@@ -112,21 +141,20 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
    */
   IndividualFieldValueIterator& operator-=(const int n) {
     m_current_data_ptr -= n * m_num_bytes;
+    m_is_current_pointee_cached = false;
     return *this;
   }
 
   /**
    * @brief two iterators are equal if they are in exactly the same state (pointing at the same location in memory
    */
-  bool operator==(const IndividualFieldValueIterator& other) {
-    return m_body == other.m_body && m_current_data_ptr == other.m_current_data_ptr;
-  }
+  bool operator==(const IndividualFieldValueIterator& other) { return (m_body == other.m_body && m_current_data_ptr == other.m_current_data_ptr); }
 
   /**
    * @brief the oposite check of IndividualFieldValueIterator::operator==()
    */
   bool operator!=(const IndividualFieldValueIterator& other) {
-    return m_body != other.m_body || m_current_data_ptr != other.m_current_data_ptr;
+    return !(*this == other);
   }
 
   /**
@@ -163,9 +191,20 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
    * @return the value in its native type
    */
   VALUE_TYPE operator*() const noexcept {
-    return convert_from_byte_array(m_current_data_ptr, 0);
+    if(m_is_current_pointee_cached)
+      return m_current_data_value;
+    else
+      return convert_from_byte_array(m_current_data_ptr, 0);
   }
 
+  /*
+   * @brief - operator* is const function, hence cannot set m_current_data_value and m_is_current_pointee_cached
+   */
+  VALUE_TYPE read_and_cache_current_pointee() noexcept {
+    m_current_data_value = *(*this);
+    m_is_current_pointee_cached = true;
+    return m_current_data_value;
+  }
   /**
    * @brief advances to the next sample
    * @note mainly designed for iterators
@@ -174,6 +213,8 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
    */
   VALUE_TYPE operator++() noexcept {
     m_current_data_ptr += m_num_bytes;
+    m_is_current_pointee_cached = false;
+    m_current_data_ptr = utils::cache_and_advance_to_end_if_necessary(m_current_data_ptr, m_end_data_ptr, *this);
     return convert_from_byte_array(m_current_data_ptr, 0);
   }
 
@@ -185,6 +226,7 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
    */
   VALUE_TYPE operator--() {
     m_current_data_ptr -= m_num_bytes;
+    m_is_current_pointee_cached = false;
     return convert_from_byte_array(m_current_data_ptr, 0);
   }
 
@@ -196,15 +238,19 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
    * @return the value in it's native type
    */
   VALUE_TYPE operator[](const uint32_t index) const {
-    return convert_from_byte_array(m_original_data_ptr, index);
+    //if index == 0, use the cached value logic in operator*
+    return (index == 0 ? *(*this) : convert_from_byte_array(m_current_data_ptr, index));
   }
 
  private:
   std::shared_ptr<bcf1_t> m_body;
   const uint8_t* m_current_data_ptr;
   const uint8_t* m_original_data_ptr;
+  const uint8_t* m_end_data_ptr;
   uint8_t m_num_bytes;
   utils::VariantFieldType m_type;
+  VALUE_TYPE m_current_data_value;
+  bool m_is_current_pointee_cached;
 
   VALUE_TYPE convert_from_byte_array(const uint8_t* data_ptr, int index) const;
 };
