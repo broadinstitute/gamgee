@@ -1,6 +1,7 @@
 var searchData=
 [
   ['c',['C',['../namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49a0d61f8370cad1d412f80b84d143e1257',1,'gamgee']]],
+  ['cache_5fand_5fadvance_5fto_5fend_5fif_5fnecessary',['cache_and_advance_to_end_if_necessary',['../namespacegamgee_1_1utils.html#abedab4665606056c0425680e3db92cee',1,'gamgee::utils']]],
   ['center',['center',['../classgamgee_1_1_read_group.html#a30d20f7eef3f7561ee793c86ac40efc2',1,'gamgee::ReadGroup']]],
   ['char_5ftag',['char_tag',['../classgamgee_1_1_sam.html#a1271912c9905795941b4dd14d02196a6',1,'gamgee::Sam']]],
   ['check_5fmax_5fboundary',['check_max_boundary',['../namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c',1,'gamgee::utils']]],

@@ -1,6 +1,7 @@
 var searchData=
 [
   ['raw_5fdata_5fptr',['raw_data_ptr',['../classgamgee_1_1_sam_builder_data_field.html#a093d4cba4cc13ab683274ee0bfe413d8',1,'gamgee::SamBuilderDataField']]],
+  ['read_5fand_5fcache_5fcurrent_5fpointee',['read_and_cache_current_pointee',['../classgamgee_1_1_individual_field_value_iterator.html#a515aad824cb9bb6af4398ad6dc99e866',1,'gamgee::IndividualFieldValueIterator::read_and_cache_current_pointee()'],['../classgamgee_1_1_shared_field_iterator.html#abcd44090a37ad9d85ebc2bea1c5254fc',1,'gamgee::SharedFieldIterator::read_and_cache_current_pointee()']]],
   ['read_5fbases_2ecpp',['read_bases.cpp',['../read__bases_8cpp.html',1,'']]],
   ['read_5fbases_2eh',['read_bases.h',['../read__bases_8h.html',1,'']]],
   ['read_5fgroup_2ecpp',['read_group.cpp',['../read__group_8cpp.html',1,'']]],

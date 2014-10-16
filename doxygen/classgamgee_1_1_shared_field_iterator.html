@@ -114,8 +114,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a566e057f52c9d91a4bad294683ef58e5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field_iterator.html#a566e057f52c9d91a4bad294683ef58e5">SharedFieldIterator</a> ()</td></tr>
 <tr class="memdesc:a566e057f52c9d91a4bad294683ef58e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">default constructor of an empty iterator  <a href="#a566e057f52c9d91a4bad294683ef58e5">More...</a><br /></td></tr>
 <tr class="separator:a566e057f52c9d91a4bad294683ef58e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69f4db27b4d6b1266060d543534359eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field_iterator.html#a69f4db27b4d6b1266060d543534359eb">SharedFieldIterator</a> (const std::shared_ptr&lt; bcf1_t &gt; &amp;body, uint8_t *data_ptr, uint8_t *end_ptr, const uint8_t bytes_per_value, const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">utils::VariantFieldType</a> &amp;type)</td></tr>
+<tr class="memdesc:a69f4db27b4d6b1266060d543534359eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with bcf1_t structure and start and end pointers of the vector/array.  <a href="#a69f4db27b4d6b1266060d543534359eb">More...</a><br /></td></tr>
+<tr class="separator:a69f4db27b4d6b1266060d543534359eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97fcaa2cc77a743dec17eabbfcd8e9fc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field_iterator.html#a97fcaa2cc77a743dec17eabbfcd8e9fc">SharedFieldIterator</a> (const std::shared_ptr&lt; bcf1_t &gt; &amp;body, uint8_t *data_ptr, const uint8_t bytes_per_value, const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">utils::VariantFieldType</a> &amp;type)</td></tr>
-<tr class="memdesc:a97fcaa2cc77a743dec17eabbfcd8e9fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple constructor  <a href="#a97fcaa2cc77a743dec17eabbfcd8e9fc">More...</a><br /></td></tr>
+<tr class="memdesc:a97fcaa2cc77a743dec17eabbfcd8e9fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with bcf1_t structure and start pointer of the vector/array.  <a href="#a97fcaa2cc77a743dec17eabbfcd8e9fc">More...</a><br /></td></tr>
 <tr class="separator:a97fcaa2cc77a743dec17eabbfcd8e9fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4da0c5d03b8fc9645b1ec836ffce096e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field_iterator.html#a4da0c5d03b8fc9645b1ec836ffce096e">SharedFieldIterator</a> (const <a class="el" href="classgamgee_1_1_shared_field_iterator.html">SharedFieldIterator</a> &amp;other)=default</td></tr>
 <tr class="memdesc:a4da0c5d03b8fc9645b1ec836ffce096e"><td class="mdescLeft">&#160;</td><td class="mdescRight">standard copy constructor creates a new iterator pointing to the same underlying data  <a href="#a4da0c5d03b8fc9645b1ec836ffce096e">More...</a><br /></td></tr>
@@ -127,13 +130,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a6676cf9aad2b98de54fb06c0a189a918"><td class="mdescLeft">&#160;</td><td class="mdescRight">standard copy assignment operator creates a new iterator pointing to the same underlying data  <a href="#a6676cf9aad2b98de54fb06c0a189a918">More...</a><br /></td></tr>
 <tr class="separator:a6676cf9aad2b98de54fb06c0a189a918"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82e06418ed6d8c026f6a3050bf72719d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_shared_field_iterator.html">SharedFieldIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field_iterator.html#a82e06418ed6d8c026f6a3050bf72719d">operator=</a> (<a class="el" href="classgamgee_1_1_shared_field_iterator.html">SharedFieldIterator</a> &amp;&amp;other)=default</td></tr>
-<tr class="memdesc:a82e06418ed6d8c026f6a3050bf72719d"><td class="mdescLeft">&#160;</td><td class="mdescRight">standard move assignment operator  <a href="#a82e06418ed6d8c026f6a3050bf72719d">More...</a><br /></td></tr>
+<tr class="memdesc:a82e06418ed6d8c026f6a3050bf72719d"><td class="mdescLeft">&#160;</td><td class="mdescRight">two iterators are equal if they are in exactly the same state (pointing at the same location in memory  <a href="#a82e06418ed6d8c026f6a3050bf72719d">More...</a><br /></td></tr>
 <tr class="separator:a82e06418ed6d8c026f6a3050bf72719d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad02c85ea899a32542a9c284af211e8ee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field_iterator.html#ad02c85ea899a32542a9c284af211e8ee">operator==</a> (const <a class="el" href="classgamgee_1_1_shared_field_iterator.html">SharedFieldIterator</a> &amp;other)</td></tr>
-<tr class="memdesc:ad02c85ea899a32542a9c284af211e8ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">two iterators are equal if they are in exactly the same state (pointing at the same location in memory  <a href="#ad02c85ea899a32542a9c284af211e8ee">More...</a><br /></td></tr>
 <tr class="separator:ad02c85ea899a32542a9c284af211e8ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b5febd3d087c707390fea3b36caaf33"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field_iterator.html#a1b5febd3d087c707390fea3b36caaf33">operator!=</a> (const <a class="el" href="classgamgee_1_1_shared_field_iterator.html">SharedFieldIterator</a> &amp;other)</td></tr>
-<tr class="memdesc:a1b5febd3d087c707390fea3b36caaf33"><td class="mdescLeft">&#160;</td><td class="mdescRight">the negation of <a class="el" href="classgamgee_1_1_shared_field_iterator.html#ad02c85ea899a32542a9c284af211e8ee" title="two iterators are equal if they are in exactly the same state (pointing at the same location in memor...">SharedFieldIterator::operator==()</a>  <a href="#a1b5febd3d087c707390fea3b36caaf33">More...</a><br /></td></tr>
+<tr class="memdesc:a1b5febd3d087c707390fea3b36caaf33"><td class="mdescLeft">&#160;</td><td class="mdescRight">the negation of <a class="el" href="classgamgee_1_1_shared_field_iterator.html#ad02c85ea899a32542a9c284af211e8ee">SharedFieldIterator::operator==()</a>  <a href="#a1b5febd3d087c707390fea3b36caaf33">More...</a><br /></td></tr>
 <tr class="separator:a1b5febd3d087c707390fea3b36caaf33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40003b7df862a761a1c4f7265a9d15ad"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field_iterator.html#a40003b7df862a761a1c4f7265a9d15ad">operator&lt;</a> (const <a class="el" href="classgamgee_1_1_shared_field_iterator.html">SharedFieldIterator</a> &amp;other)</td></tr>
 <tr class="memdesc:a40003b7df862a761a1c4f7265a9d15ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">an operator is greater/less than another iterator if it is pointing to a previous element in the <a class="el" href="classgamgee_1_1_shared_field.html" title="A class template to hold the values of a specific Variant&#39;s shared field. ">SharedField</a> object. The order is determined by the <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record.  <a href="#a40003b7df862a761a1c4f7265a9d15ad">More...</a><br /></td></tr>
@@ -148,8 +150,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5e5999eecb0ec044531cca3cb6d38412"><td class="mdescLeft">&#160;</td><td class="mdescRight">not smaller than other  <a href="#a5e5999eecb0ec044531cca3cb6d38412">More...</a><br /></td></tr>
 <tr class="separator:a5e5999eecb0ec044531cca3cb6d38412"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c9d7e8471a9600eb681c5b9f71ef8e5"><td class="memItemLeft" align="right" valign="top">VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field_iterator.html#a6c9d7e8471a9600eb681c5b9f71ef8e5">operator*</a> () const noexcept</td></tr>
-<tr class="memdesc:a6c9d7e8471a9600eb681c5b9f71ef8e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">direct access to the current value  <a href="#a6c9d7e8471a9600eb681c5b9f71ef8e5">More...</a><br /></td></tr>
 <tr class="separator:a6c9d7e8471a9600eb681c5b9f71ef8e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcd44090a37ad9d85ebc2bea1c5254fc"><td class="memItemLeft" align="right" valign="top">VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field_iterator.html#abcd44090a37ad9d85ebc2bea1c5254fc">read_and_cache_current_pointee</a> () noexcept</td></tr>
+<tr class="separator:abcd44090a37ad9d85ebc2bea1c5254fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35e0b9bed774e8000a5c0f51a17980fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_shared_field_iterator.html">SharedFieldIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field_iterator.html#a35e0b9bed774e8000a5c0f51a17980fe">operator+=</a> (const int n)</td></tr>
 <tr class="separator:a35e0b9bed774e8000a5c0f51a17980fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2841a54bafd61a106576cdf182748d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_shared_field_iterator.html">SharedFieldIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field_iterator.html#ab2841a54bafd61a106576cdf182748d6">operator-=</a> (const int n)</td></tr>
@@ -208,6 +211,73 @@ template&lt;class VALUE_TYPE &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a69f4db27b4d6b1266060d543534359eb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class VALUE_TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_shared_field_iterator.html">gamgee::SharedFieldIterator</a>&lt; VALUE_TYPE &gt;::<a class="el" href="classgamgee_1_1_shared_field_iterator.html">SharedFieldIterator</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; bcf1_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>body</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>end_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>bytes_per_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">utils::VariantFieldType</a> &amp;&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor with bcf1_t structure and start and end pointers of the vector/array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">body</td><td>a pointer to the bcf1_t data structure to be held as a shared pointer </td></tr>
+    <tr><td class="paramname">data_ptr</td><td>the byte array containing the value(s) for this shared field </td></tr>
+    <tr><td class="paramname">end_ptr</td><td>the end pointer value of the data array </td></tr>
+    <tr><td class="paramname">bytes_per_value</td><td>number of bytes in each value </td></tr>
+    <tr><td class="paramname">type</td><td>the encoding of the value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>this constructor is probably only used by <a class="el" href="classgamgee_1_1_shared_field.html#a360f53155fef58cc0c75095ea1a9797d" title="create a new iterator pointing to the begining of the values of this field ">SharedField::begin()</a> and <a class="el" href="classgamgee_1_1_shared_field.html#a062bcb80b1818db3eb3677f2f1391c4d" title="create a new iterator pointing to the end of the values of this field ">SharedField::end()</a> </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a97fcaa2cc77a743dec17eabbfcd8e9fc"></a>
 <div class="memitem">
 <div class="memproto">
@@ -254,7 +324,7 @@ template&lt;class VALUE_TYPE &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>simple constructor </p>
+<p>Constructor with bcf1_t structure and start pointer of the vector/array. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">body</td><td>a pointer to the bcf1_t data structure to be held as a shared pointer </td></tr>
@@ -349,7 +419,7 @@ template&lt;class VALUE_TYPE &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>the negation of <a class="el" href="classgamgee_1_1_shared_field_iterator.html#ad02c85ea899a32542a9c284af211e8ee" title="two iterators are equal if they are in exactly the same state (pointing at the same location in memor...">SharedFieldIterator::operator==()</a> </p>
+<p>the negation of <a class="el" href="classgamgee_1_1_shared_field_iterator.html#ad02c85ea899a32542a9c284af211e8ee">SharedFieldIterator::operator==()</a> </p>
 
 </div>
 </div>
@@ -375,8 +445,6 @@ template&lt;class VALUE_TYPE &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>direct access to the current value </p>
 
 </div>
 </div>
@@ -668,6 +736,7 @@ template&lt;class VALUE_TYPE &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>two iterators are equal if they are in exactly the same state (pointing at the same location in memory </p>
 <p>standard move assignment operator </p>
 
 </div>
@@ -695,8 +764,6 @@ template&lt;class VALUE_TYPE &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>two iterators are equal if they are in exactly the same state (pointing at the same location in memory </p>
 
 </div>
 </div>
@@ -793,13 +860,38 @@ template&lt;class VALUE_TYPE &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="abcd44090a37ad9d85ebc2bea1c5254fc"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class VALUE_TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VALUE_TYPE <a class="el" href="classgamgee_1_1_shared_field_iterator.html">gamgee::SharedFieldIterator</a>&lt; VALUE_TYPE &gt;::read_and_cache_current_pointee </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>gamgee/<a class="el" href="shared__field__iterator_8h_source.html">shared_field_iterator.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 15 2014 04:05:56 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 16 2014 17:22:51 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

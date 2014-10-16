@@ -111,8 +111,11 @@ Inheritance diagram for gamgee::IndividualFieldValueIterator&lt; VALUE_TYPE &gt;
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:abb9ebf963d147dc077ec531d3d0aff43"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#abb9ebf963d147dc077ec531d3d0aff43">IndividualFieldValueIterator</a> (const std::shared_ptr&lt; bcf1_t &gt; &amp;body, uint8_t *data_ptr, uint8_t *end_ptr, const uint8_t num_bytes, const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">utils::VariantFieldType</a> &amp;type)</td></tr>
+<tr class="memdesc:abb9ebf963d147dc077ec531d3d0aff43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with bcf1_t structure and start and end pointers of the array/vector.  <a href="#abb9ebf963d147dc077ec531d3d0aff43">More...</a><br /></td></tr>
+<tr class="separator:abb9ebf963d147dc077ec531d3d0aff43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ac02e9bb23d99543c25936cfd8f856b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#a1ac02e9bb23d99543c25936cfd8f856b">IndividualFieldValueIterator</a> (const std::shared_ptr&lt; bcf1_t &gt; &amp;body, uint8_t *data_ptr, const uint8_t num_bytes, const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">utils::VariantFieldType</a> &amp;type)</td></tr>
-<tr class="memdesc:a1ac02e9bb23d99543c25936cfd8f856b"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple constructor  <a href="#a1ac02e9bb23d99543c25936cfd8f856b">More...</a><br /></td></tr>
+<tr class="memdesc:a1ac02e9bb23d99543c25936cfd8f856b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with bcf1_t structure and start pointer of the array/vector.  <a href="#a1ac02e9bb23d99543c25936cfd8f856b">More...</a><br /></td></tr>
 <tr class="separator:a1ac02e9bb23d99543c25936cfd8f856b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0199fad8b65f9008d25ab1fda15ec67e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#a0199fad8b65f9008d25ab1fda15ec67e">IndividualFieldValueIterator</a> (const <a class="el" href="classgamgee_1_1_individual_field_value_iterator.html">IndividualFieldValueIterator</a> &amp;other)</td></tr>
 <tr class="memdesc:a0199fad8b65f9008d25ab1fda15ec67e"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy constructor is only meant for internal STL functions use. It makes a shallow copy of the underlying object which is sufficient for an iterator, but not exactly what a user would expect (user should expect copy constructors to make deep copies). But a deep copied iterator makes no sense.  <a href="#a0199fad8b65f9008d25ab1fda15ec67e">More...</a><br /></td></tr>
@@ -153,6 +156,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1419c20a41bb3e9b117ef6317f94ff2a"><td class="memItemLeft" align="right" valign="top">VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#a1419c20a41bb3e9b117ef6317f94ff2a">operator*</a> () const noexcept</td></tr>
 <tr class="memdesc:a1419c20a41bb3e9b117ef6317f94ff2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">direct access to the value of the current sample  <a href="#a1419c20a41bb3e9b117ef6317f94ff2a">More...</a><br /></td></tr>
 <tr class="separator:a1419c20a41bb3e9b117ef6317f94ff2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a515aad824cb9bb6af4398ad6dc99e866"><td class="memItemLeft" align="right" valign="top">VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#a515aad824cb9bb6af4398ad6dc99e866">read_and_cache_current_pointee</a> () noexcept</td></tr>
+<tr class="separator:a515aad824cb9bb6af4398ad6dc99e866"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98339af3358a083a7b9d43358377b360"><td class="memItemLeft" align="right" valign="top">VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#a98339af3358a083a7b9d43358377b360">operator++</a> () noexcept</td></tr>
 <tr class="memdesc:a98339af3358a083a7b9d43358377b360"><td class="mdescLeft">&#160;</td><td class="mdescRight">advances to the next sample  <a href="#a98339af3358a083a7b9d43358377b360">More...</a><br /></td></tr>
 <tr class="separator:a98339af3358a083a7b9d43358377b360"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,6 +179,73 @@ class gamgee::IndividualFieldValueIterator&lt; VALUE_TYPE &gt;</h3>
 this iterator never makes any copies of the underlying memory. It is implemented with pointer acrobatics behind the scenes for maximum performance while maintaining a friendly interface.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>modifying any elements via this iterator <b>will modify</b> the values in the <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="abb9ebf963d147dc077ec531d3d0aff43"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class VALUE_TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html">gamgee::IndividualFieldValueIterator</a>&lt; VALUE_TYPE &gt;::<a class="el" href="classgamgee_1_1_individual_field_value_iterator.html">IndividualFieldValueIterator</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; bcf1_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>body</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>end_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>num_bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">utils::VariantFieldType</a> &amp;&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor with bcf1_t structure and start and end pointers of the array/vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">body</td><td>a pointer to the bcf1_t data structure to be held as a shared pointer </td></tr>
+    <tr><td class="paramname">data_ptr</td><td>the byte array containing the value(s) for this sample </td></tr>
+    <tr><td class="paramname">end_ptr</td><td>pointer to the end of the byte array </td></tr>
+    <tr><td class="paramname">num_bytes</td><td>number of bytes in each value </td></tr>
+    <tr><td class="paramname">type</td><td>the encoding of the value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>this constructor is probably only used by <a class="el" href="classgamgee_1_1_individual_field_value.html#a834c5e22eebffc2d4220c61019575d51" title="create a new begin iterator over the values for this sample ">IndividualFieldValue::begin()</a> and <a class="el" href="classgamgee_1_1_individual_field_value.html#aae974d622b2d08b87b40eef907f38805" title="create a new end iterator over the values for this sample ">IndividualFieldValue::end()</a> </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a1ac02e9bb23d99543c25936cfd8f856b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -215,12 +287,12 @@ template&lt;class VALUE_TYPE &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>simple constructor </p>
+<p>Constructor with bcf1_t structure and start pointer of the array/vector. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">body</td><td>a pointer to the bcf1_t data structure to be held as a shared pointer </td></tr>
@@ -719,13 +791,38 @@ template&lt;class VALUE_TYPE &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a515aad824cb9bb6af4398ad6dc99e866"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class VALUE_TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VALUE_TYPE <a class="el" href="classgamgee_1_1_individual_field_value_iterator.html">gamgee::IndividualFieldValueIterator</a>&lt; VALUE_TYPE &gt;::read_and_cache_current_pointee </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>gamgee/<a class="el" href="individual__field__value__iterator_8h_source.html">individual_field_value_iterator.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 15 2014 04:05:55 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 16 2014 17:22:50 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

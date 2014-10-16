@@ -262,6 +262,19 @@ Functions</h2></td></tr>
 <tr class="memitem:ac632b46c9dd7989fdfd8cee7b6adf0d8"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ac632b46c9dd7989fdfd8cee7b6adf0d8">bcf_check_equal_primitive&lt; float &gt;</a> (const float x, const float y)</td></tr>
 <tr class="memdesc:ac632b46c9dd7989fdfd8cee7b6adf0d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Check whether two float values from VCF fields are equal  <a href="#ac632b46c9dd7989fdfd8cee7b6adf0d8">More...</a><br /></td></tr>
 <tr class="separator:ac632b46c9dd7989fdfd8cee7b6adf0d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78631a24b566a59e74bf6dd2738eb5a2"><td class="memTemplParams" colspan="2">template&lt;class TYPE &gt; </td></tr>
+<tr class="memitem:a78631a24b566a59e74bf6dd2738eb5a2"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a78631a24b566a59e74bf6dd2738eb5a2">bcf_is_vector_end_value</a> (TYPE value)</td></tr>
+<tr class="separator:a78631a24b566a59e74bf6dd2738eb5a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50c435323a8cf941e9e44a952b162991"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a50c435323a8cf941e9e44a952b162991"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a50c435323a8cf941e9e44a952b162991">bcf_is_vector_end_value&lt; int32_t &gt;</a> (int32_t value)</td></tr>
+<tr class="separator:a50c435323a8cf941e9e44a952b162991"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1949a34b40d043c66d6446457b91b74"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:aa1949a34b40d043c66d6446457b91b74"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#aa1949a34b40d043c66d6446457b91b74">bcf_is_vector_end_value&lt; float &gt;</a> (float value)</td></tr>
+<tr class="separator:aa1949a34b40d043c66d6446457b91b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abedab4665606056c0425680e3db92cee"><td class="memTemplParams" colspan="2">template&lt;class ITER &gt; </td></tr>
+<tr class="memitem:abedab4665606056c0425680e3db92cee"><td class="memTemplItemLeft" align="right" valign="top">const uint8_t *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#abedab4665606056c0425680e3db92cee">cache_and_advance_to_end_if_necessary</a> (const uint8_t *current_ptr, const uint8_t *end_ptr, ITER &amp;it)</td></tr>
+<tr class="memdesc:abedab4665606056c0425680e3db92cee"><td class="mdescLeft">&#160;</td><td class="mdescRight">advances current ptr to end of the vector if the current element is bcf_*_vector_end  <a href="#abedab4665606056c0425680e3db92cee">More...</a><br /></td></tr>
+<tr class="separator:abedab4665606056c0425680e3db92cee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b57ec3415d2ed156dbd52b8c5b16dcb"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a8b57ec3415d2ed156dbd52b8c5b16dcb">convert_data_to_integer</a> (const uint8_t *data_ptr, const int index, const uint8_t num_bytes_per_value, const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">VariantFieldType</a> &amp;type)</td></tr>
 <tr class="memdesc:a8b57ec3415d2ed156dbd52b8c5b16dcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">converts the value in an index from the byte array into int32_t  <a href="#a8b57ec3415d2ed156dbd52b8c5b16dcb">More...</a><br /></td></tr>
 <tr class="separator:a8b57ec3415d2ed156dbd52b8c5b16dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -832,6 +845,128 @@ template&lt;&gt; </div>
 
 <p>: Check whether two float values from VCF fields are equal </p>
 <dl class="section note"><dt>Note</dt><dd>: since bcf_float_missing and bcf_float_vector_end are represented as NaNs and (nan == nan) returns false, a special check needs to be done for checking equality of float values in VCFs </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a78631a24b566a59e74bf6dd2738eb5a2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::utils::bcf_is_vector_end_value </td>
+          <td>(</td>
+          <td class="paramtype">TYPE&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa1949a34b40d043c66d6446457b91b74"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="namespacegamgee_1_1utils.html#a78631a24b566a59e74bf6dd2738eb5a2">gamgee::utils::bcf_is_vector_end_value</a>&lt; float &gt; </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a50c435323a8cf941e9e44a952b162991"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="namespacegamgee_1_1utils.html#a78631a24b566a59e74bf6dd2738eb5a2">gamgee::utils::bcf_is_vector_end_value</a>&lt; int32_t &gt; </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abedab4665606056c0425680e3db92cee"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ITER &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t* gamgee::utils::cache_and_advance_to_end_if_necessary </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>current_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>end_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ITER &amp;&#160;</td>
+          <td class="paramname"><em>it</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>advances current ptr to end of the vector if the current element is bcf_*_vector_end </p>
 
 </div>
 </div>
@@ -1687,7 +1822,7 @@ template&lt;typename... T&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 15 2014 04:05:56 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 16 2014 17:22:51 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

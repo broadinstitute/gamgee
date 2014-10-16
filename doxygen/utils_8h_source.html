@@ -131,22 +131,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  || (bcf_float_is_vector_end(x) &amp;&amp; bcf_float_is_vector_end(y)));</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;} <span class="comment">// end utils namespace</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;} <span class="comment">// end gamgee namespace</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif // gamgee__utils__guard</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment"> * @brief: returns true if value is the vector end for current TYPE</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment"> * @note: for non numeric types returns false, as vector end is undefined</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> TYPE&gt; <span class="keyword">inline</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#a78631a24b566a59e74bf6dd2738eb5a2">   94</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespacegamgee_1_1utils.html#a78631a24b566a59e74bf6dd2738eb5a2">bcf_is_vector_end_value</a>(TYPE value) {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment"> * @brief specialization of the bcf_is_vector_end_value function for int32_t</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#a50c435323a8cf941e9e44a952b162991">  102</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespacegamgee_1_1utils.html#a50c435323a8cf941e9e44a952b162991">bcf_is_vector_end_value&lt;int32_t&gt;</a>(int32_t value) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordflow">return</span> (value == bcf_int32_vector_end);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment"> * @brief specialization of the bcf_is_vector_end_value function for float</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#aa1949a34b40d043c66d6446457b91b74">  110</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespacegamgee_1_1utils.html#aa1949a34b40d043c66d6446457b91b74">bcf_is_vector_end_value&lt;float&gt;</a>(<span class="keywordtype">float</span> value) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordflow">return</span> bcf_float_is_vector_end(value);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> ITER&gt; <span class="keyword">inline</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#abedab4665606056c0425680e3db92cee">  120</a></span>&#160;<span class="keyword">const</span> uint8_t* <a class="code" href="namespacegamgee_1_1utils.html#abedab4665606056c0425680e3db92cee">cache_and_advance_to_end_if_necessary</a>(<span class="keyword">const</span> uint8_t* current_ptr, <span class="keyword">const</span> uint8_t* end_ptr, ITER&amp; it) {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keywordflow">if</span>(end_ptr != <span class="keyword">nullptr</span> &amp;&amp; current_ptr &lt; end_ptr </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      &amp;&amp; <a class="code" href="namespacegamgee_1_1utils.html#a78631a24b566a59e74bf6dd2738eb5a2">utils::bcf_is_vector_end_value</a>(it.read_and_cache_current_pointee()))</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">return</span> end_ptr;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordflow">return</span> current_ptr;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;} <span class="comment">// end utils namespace</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;} <span class="comment">// end gamgee namespace</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">#endif // gamgee__utils__guard</span></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a740716d2b795a26787bf1000ae62ddb2"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a740716d2b795a26787bf1000ae62ddb2">gamgee::utils::reverse_complement</a></div><div class="ttdeci">std::string reverse_complement(const std::string &amp;sequence)</div><div class="ttdoc">calculates the reverse complement of a sequence </div><div class="ttdef"><b>Definition:</b> utils.cpp:46</div></div>
+<div class="ttc" id="namespacegamgee_1_1utils_html_a50c435323a8cf941e9e44a952b162991"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a50c435323a8cf941e9e44a952b162991">gamgee::utils::bcf_is_vector_end_value&lt; int32_t &gt;</a></div><div class="ttdeci">bool bcf_is_vector_end_value&lt; int32_t &gt;(int32_t value)</div><div class="ttdef"><b>Definition:</b> utils.h:102</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_af406bde810c85ea1749461ed137ab59b"><div class="ttname"><a href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">gamgee::utils::complement</a></div><div class="ttdeci">std::string complement(std::string &amp;sequence)</div><div class="ttdoc">calculates the complement of a sequence in-place </div><div class="ttdef"><b>Definition:</b> utils.cpp:34</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_aa3f1ec8c7415419a0e1c57c8255873a9"><div class="ttname"><a href="namespacegamgee_1_1utils.html#aa3f1ec8c7415419a0e1c57c8255873a9">gamgee::utils::hts_string_array_to_vector</a></div><div class="ttdeci">std::vector&lt; std::string &gt; hts_string_array_to_vector(const char *const *const string_array, const uint32_t array_size)</div><div class="ttdoc">converts an array of c-strings into a vector<string> </div><div class="ttdef"><b>Definition:</b> utils.cpp:53</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a0f228e0091b6df37b21d4a58c7ad372c"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a0f228e0091b6df37b21d4a58c7ad372c">gamgee::utils::check_max_boundary</a></div><div class="ttdeci">void check_max_boundary(const uint32_t index, const uint32_t size)</div><div class="ttdoc">checks that an index is greater than or equal to size </div><div class="ttdef"><b>Definition:</b> utils.h:62</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a9e21ed8e0db5a468b1a8cdd63e3437ec"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a9e21ed8e0db5a468b1a8cdd63e3437ec">gamgee::utils::bcf_check_equal_primitive</a></div><div class="ttdeci">bool bcf_check_equal_primitive(const TYPE x, const TYPE y)</div><div class="ttdoc">Check whether two values from VCF fields of primitive types (for which the == operator is defined) * ...</div><div class="ttdef"><b>Definition:</b> utils.h:75</div></div>
+<div class="ttc" id="namespacegamgee_1_1utils_html_a78631a24b566a59e74bf6dd2738eb5a2"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a78631a24b566a59e74bf6dd2738eb5a2">gamgee::utils::bcf_is_vector_end_value</a></div><div class="ttdeci">bool bcf_is_vector_end_value(TYPE value)</div><div class="ttdef"><b>Definition:</b> utils.h:94</div></div>
+<div class="ttc" id="namespacegamgee_1_1utils_html_abedab4665606056c0425680e3db92cee"><div class="ttname"><a href="namespacegamgee_1_1utils.html#abedab4665606056c0425680e3db92cee">gamgee::utils::cache_and_advance_to_end_if_necessary</a></div><div class="ttdeci">const uint8_t * cache_and_advance_to_end_if_necessary(const uint8_t *current_ptr, const uint8_t *end_ptr, ITER &amp;it)</div><div class="ttdoc">advances current ptr to end of the vector if the current element is bcf_*_vector_end ...</div><div class="ttdef"><b>Definition:</b> utils.h:120</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_ac632b46c9dd7989fdfd8cee7b6adf0d8"><div class="ttname"><a href="namespacegamgee_1_1utils.html#ac632b46c9dd7989fdfd8cee7b6adf0d8">gamgee::utils::bcf_check_equal_primitive&lt; float &gt;</a></div><div class="ttdeci">bool bcf_check_equal_primitive&lt; float &gt;(const float x, const float y)</div><div class="ttdoc">: Check whether two float values from VCF fields are equal </div><div class="ttdef"><b>Definition:</b> utils.h:84</div></div>
 <div class="ttc" id="namespacegamgee_html"><div class="ttname"><a href="namespacegamgee.html">gamgee</a></div><div class="ttdef"><b>Definition:</b> base_quals.cpp:11</div></div>
+<div class="ttc" id="namespacegamgee_1_1utils_html_aa1949a34b40d043c66d6446457b91b74"><div class="ttname"><a href="namespacegamgee_1_1utils.html#aa1949a34b40d043c66d6446457b91b74">gamgee::utils::bcf_is_vector_end_value&lt; float &gt;</a></div><div class="ttdeci">bool bcf_is_vector_end_value&lt; float &gt;(float value)</div><div class="ttdef"><b>Definition:</b> utils.h:110</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 15 2014 04:05:55 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 16 2014 17:22:50 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
