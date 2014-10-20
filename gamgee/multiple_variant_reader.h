@@ -44,7 +44,8 @@ class MultipleVariantReader {
    */
   explicit MultipleVariantReader(const std::vector<std::string>& filenames, const bool validate_headers = true) :
     m_variant_files { },
-    m_variant_header { }
+    m_variant_headers { },
+    m_combined_header { }
   {
     init_reader(filenames, validate_headers);
   }
@@ -60,10 +61,11 @@ class MultipleVariantReader {
   MultipleVariantReader(const std::vector<std::string>& filenames, const bool validate_headers,
                         const std::vector<std::string>& samples, const bool include = true) :
     m_variant_files { },
-    m_variant_header { nullptr }
+    m_variant_headers { },
+    m_combined_header { }
   {
     init_reader(filenames, validate_headers);
-    subset_variant_samples(m_variant_header.get(), samples, include);
+    subset_variant_samples(m_combined_header.get(), samples, include);
   }
 
   /**
@@ -73,17 +75,26 @@ class MultipleVariantReader {
    * @param validate_headers should we validate that the header files have identical chromosomes?
    */
   void init_reader(const std::vector<std::string>& filenames, const bool validate_headers) {
+    m_variant_files.reserve(filenames.size());
+    m_variant_headers.reserve(filenames.size());
+
     for (const auto& filename : filenames) {
       // TODO? check for maximum one stream
       auto* file_ptr = bcf_open(filename.empty() ? "-" : filename.c_str(), "r");
-      m_variant_files.push_back(utils::make_shared_hts_file(file_ptr));
+      m_variant_files.emplace_back(utils::make_shared_hts_file(file_ptr));
 
       const auto& header_ptr = utils::make_shared_variant_header(bcf_hdr_read(file_ptr));
-      if (!m_variant_header)
-        m_variant_header = header_ptr;
+      m_variant_headers.emplace_back(header_ptr);
 
-      if (validate_headers)
-        validate_header(header_ptr);
+      if (m_combined_header) {
+        if (validate_headers)
+          validate_header(header_ptr);
+
+        merge_variant_headers(m_combined_header, header_ptr);
+      }
+      else
+        m_combined_header = utils::make_shared_variant_header(utils::variant_header_deep_copy(header_ptr.get()));
+
     }
   }
 
@@ -106,7 +117,7 @@ class MultipleVariantReader {
    * @return an ITERATOR ready to start parsing the files
    */
   ITERATOR begin() const {
-    return ITERATOR{m_variant_files, m_variant_header};
+    return ITERATOR{m_variant_files, m_variant_headers};
   }
 
   /**
@@ -119,11 +130,10 @@ class MultipleVariantReader {
   }
 
   /**
-   * @brief returns a representative header for the files being read
-   *
-   * @return a VariantHeader object constructed from the header of the first file read
+   * @brief returns a combined header for the files being read
+   * @return a VariantHeader object constructed by combining the headers of the incmoing files
    */
-  const inline VariantHeader header() { return VariantHeader {m_variant_header}; }
+  const inline VariantHeader combined_header() const { return VariantHeader {m_combined_header}; }
 
   class HeaderException : public std::runtime_error {
    public:
@@ -131,13 +141,14 @@ class MultipleVariantReader {
   };
  private:
   std::vector<std::shared_ptr<htsFile>> m_variant_files;        ///< vector of the internal file structures of the variant files
-  std::shared_ptr<bcf_hdr_t> m_variant_header;                  ///< the internal header structure of the first variant file
+  std::vector<std::shared_ptr<bcf_hdr_t>> m_variant_headers;    ///< vector of the internal header structures of the variant files
+  std::shared_ptr<bcf_hdr_t> m_combined_header;                 ///< the combined header created from the variant headers
 
   ///< confirms that the chromosomes in the headers of all of the input files are identical
   // TODO? only handles chromosome names, not lengths
   void validate_header(const std::shared_ptr<bcf_hdr_t>& other_header_ptr) {
     const auto& other_header = VariantHeader{other_header_ptr};
-    if (header().chromosomes() != other_header.chromosomes())
+    if (combined_header().chromosomes() != other_header.chromosomes())
       throw HeaderException{};
   }
 };
