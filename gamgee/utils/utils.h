@@ -57,22 +57,32 @@ std::vector<std::string> hts_string_array_to_vector(const char * const * const s
  * @brief checks that an index is greater than or equal to size
  * @param index the index between 0 and size to check
  * @param size one past the maximum valid index
+ * @param prefix_msg additional string to prefix error message
  * @exception throws an out_of_bounds exception if index is out of limits
  */
-inline void check_max_boundary(const uint32_t index, const uint32_t size) {
+inline void check_max_boundary(const uint32_t index, const uint32_t size, const std::string& prefix_msg) {
   if (index >= size) {
     std::stringstream error_message {};  ///< @todo update this to auto when gcc-4.9 is available on travis-ci
-    error_message << "Index:  " << index << " must be less than " << size << std::endl;
+    error_message << prefix_msg << "Index:  " << index << " must be less than " << size << std::endl;
     throw std::out_of_range(error_message.str());
   }
 }
 
 /**
+ * @brief checks that an index is greater than or equal to size
+ * @param index the index between 0 and size to check
+ * @param size one past the maximum valid index
+ * @exception throws an out_of_bounds exception if index is out of limits
+ */
+inline void check_max_boundary(const uint32_t index, const uint32_t size) {
+  check_max_boundary(index, size, "");
+}
+/**
  * @brief - Check whether two values from VCF fields of primitive types (for which the == operator is defined) * are equal
  * The function template is specialized for float fields
  */
 template<class TYPE>
-inline bool bcf_check_equal_primitive(const TYPE x, const TYPE y) {
+inline bool bcf_check_equal_element(const TYPE& x, const TYPE& y) {
   return (x == y);
 }
 /**
@@ -81,7 +91,7 @@ inline bool bcf_check_equal_primitive(const TYPE x, const TYPE y) {
  * a special check needs to be done for checking equality of float values in VCFs
  */
 template<>
-inline bool bcf_check_equal_primitive<float>(const float x, const float y) {
+inline bool bcf_check_equal_element<float>(const float& x, const float& y) {
   return ((x == y) || (bcf_float_is_missing(x) && bcf_float_is_missing(y))
 	|| (bcf_float_is_vector_end(x) && bcf_float_is_vector_end(y)));
 }
@@ -91,7 +101,7 @@ inline bool bcf_check_equal_primitive<float>(const float x, const float y) {
  * @note: for non numeric types returns false, as vector end is undefined
  */
 template<class TYPE> inline
-bool bcf_is_vector_end_value(TYPE value) {
+bool bcf_is_vector_end_value(const TYPE& value) {
   return false;
 }
 
@@ -99,7 +109,7 @@ bool bcf_is_vector_end_value(TYPE value) {
  * @brief specialization of the bcf_is_vector_end_value function for int32_t
  */
 template<> inline
-bool bcf_is_vector_end_value<int32_t>(int32_t value) {
+bool bcf_is_vector_end_value<int32_t>(const int32_t& value) {
   return (value == bcf_int32_vector_end);
 }
 
@@ -107,7 +117,7 @@ bool bcf_is_vector_end_value<int32_t>(int32_t value) {
  * @brief specialization of the bcf_is_vector_end_value function for float
  */
 template<> inline
-bool bcf_is_vector_end_value<float>(float value) {
+bool bcf_is_vector_end_value<float>(const float& value) {
   return bcf_float_is_vector_end(value);
 }
 

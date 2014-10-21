@@ -131,6 +131,9 @@ uint8_t size_for_type(const VariantFieldType& type, const bcf_info_t* const info
   }
 }
 
+bool is_string_type(const int32_t& type) {
+  return (static_cast<utils::VariantFieldType>(type) == VariantFieldType::STRING); 
+}
 
 } // end namespace utils
 } // end namespace gamgee

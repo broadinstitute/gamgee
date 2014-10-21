@@ -537,6 +537,14 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
     }
     BOOST_CHECK_EQUAL(as_string[i][0], truth_as[truth_index][i]);
     BOOST_CHECK_EQUAL(as_string_idx[i][0], truth_as[truth_index][i]);
+    auto exception_caught = false;
+    try {
+      auto value = as_string[i][1];
+    }
+    catch (std::out_of_range& e) { 
+      exception_caught = true;
+    }
+    BOOST_CHECK(exception_caught);
   }
   BOOST_CHECK_EQUAL(gq_int.front()[0], truth_gq[truth_index][0]);
   BOOST_CHECK_EQUAL(gq_int.back()[0], truth_gq[truth_index][gq_int.size() - 1]);

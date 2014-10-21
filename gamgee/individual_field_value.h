@@ -113,11 +113,11 @@ class IndividualFieldValue {
     //Use iterators where possible as they take care of field sizes, bcf_*_vector_end
     auto other_iter = other.begin();
     auto other_end = other.end();
-    for(auto curr_val : *this)
+    for(const auto& curr_val : *this)
     {
       if(other_iter == other_end)	//different length, this is longer (more valid values) than other
 	return false;
-      if(!utils::bcf_check_equal_primitive(curr_val, *other_iter))
+      if(!utils::bcf_check_equal_element(curr_val, *other_iter))
 	return false;
       ++other_iter;
     }
@@ -210,6 +210,17 @@ std::string IndividualFieldValue<std::string>::convert_from_byte_array(int index
   return utils::convert_data_to_string(m_data_ptr, index, m_num_bytes, static_cast<utils::VariantFieldType>(m_format_ptr->type));
 }
 
+/**
+ * @brief  specialization for operator[] for strings
+ * String fields have 1 string (at most), it is wrong to have a non-0 index 
+ */
+template<> inline
+std::string IndividualFieldValue<std::string>::operator[](const uint32_t index) const {
+  auto limit = utils::is_string_type(m_format_ptr->type) ? 1u : size();
+  auto prefix_msg = utils::is_string_type(m_format_ptr->type) ? "FORMAT fields of type string in VCFs have only 1 element per sample :: " : "";
+  utils::check_max_boundary(index, limit, prefix_msg);
+  return convert_from_byte_array(index); 
+}
 
 }
 
