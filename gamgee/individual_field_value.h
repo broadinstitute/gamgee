@@ -110,12 +110,20 @@ class IndividualFieldValue {
   bool operator==(const IndividualFieldValue& other) const {
     if (this == &other) 
       return true;
-    if (size() != other.size()) 
-      return false;
-    for (auto i=0u; i != size(); ++i) {
-      if (!utils::bcf_check_equal_primitive(operator[](i), other[i]))
-        return false;
+    //Use iterators where possible as they take care of field sizes, bcf_*_vector_end
+    auto other_iter = other.begin();
+    auto other_end = other.end();
+    for(auto curr_val : *this)
+    {
+      if(other_iter == other_end)	//different length, this is longer (more valid values) than other
+	return false;
+      if(!utils::bcf_check_equal_primitive(curr_val, *other_iter))
+	return false;
+      ++other_iter;
     }
+    //Check if other still has more valid values
+    if(other_iter != other_end)
+      return false;
     return true;
   }
 
