@@ -87,12 +87,20 @@ class SharedField {
   bool operator==(const SharedField& other) const {
     if (this == &other) 
       return true;
-    if (size() != other.size()) 
-      return false;
-    for (auto i=0u; i != size(); ++i) {
-      if (!utils::bcf_check_equal_primitive(operator[](i), other[i]))
-        return false;
+    //Use iterators where possible as they take care of field sizes, bcf_*_vector_end
+    auto other_iter = other.begin();
+    auto other_end = other.end();
+    for(const auto& curr_val : *this)
+    {
+      if(other_iter == other_end)	//different length, this is longer (more valid values) than other
+	return false;
+      if(!utils::bcf_check_equal_element(curr_val, *other_iter))
+	return false;
+      ++other_iter;
     }
+    //Check if other still has more valid values
+    if(other_iter != other_end)
+      return false;
     return true;
   }
 
@@ -173,6 +181,25 @@ std::string SharedField<std::string>::convert_from_byte_array(int index) const {
   return utils::convert_data_to_string(m_info_ptr->vptr, index, m_bytes_per_value, static_cast<utils::VariantFieldType>(m_info_ptr->type));
 }
 
+/**
+ * @brief  specialization for operator[] for strings
+ * String fields have 1 string (at most), it is wrong to have a non-0 index 
+ */
+template<> inline
+std::string SharedField<std::string>::operator[](const uint32_t index) const {
+  if (empty())
+    throw std::out_of_range("Tried to index a shared field that is missing with operator[]");
+  auto is_string_type = utils::is_string_type(m_info_ptr->type);
+  auto limit = m_info_ptr->len; //cannot use size here as size<string> is specialized to return 1
+  auto prefix_msg = "";
+  if(is_string_type)
+  {
+    limit = 1u;
+    prefix_msg = "INFO fields of type string in VCFs have only 1 element per sample :: ";
+  }
+  utils::check_max_boundary(index, limit, prefix_msg);
+  return convert_from_byte_array(index); 
+}
 
 } // end of namespace gamgee
 

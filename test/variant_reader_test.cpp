@@ -436,6 +436,51 @@ void check_operator_index_for_iterators(const Variant& record)
   }
 }
 
+void check_out_of_bound_exceptions(const Variant& record) {
+  const auto vlint_shared = record.integer_shared_field("VLINT");
+  const auto af_float_shared  = record.shared_field_as_float("AF");
+  if(!vlint_shared.empty())
+    BOOST_CHECK_THROW(vlint_shared[vlint_shared.size()], out_of_range);
+  if(!af_float_shared.empty())
+    BOOST_CHECK_THROW(af_float_shared[record.n_alleles()], out_of_range);
+
+  const auto as_string = record.individual_field_as_string("AS");
+  const auto pl_int    = record.individual_field_as_integer("PL");
+  const auto vlfloat  = record.individual_field_as_float("VLFLOAT");
+  auto n_alleles = record.n_alleles();
+  auto num_gts = (n_alleles*(n_alleles+1))/2;
+  auto n_samples = record.n_samples(); 
+  for(auto i=0u; i != record.n_samples(); ++i) {
+    if(as_string.empty())
+    {
+      BOOST_CHECK_THROW(as_string[i][0], out_of_range);
+    }
+    else
+    {
+      BOOST_CHECK_THROW(as_string[n_samples][0], out_of_range);
+      BOOST_CHECK_THROW(as_string[i][1], out_of_range);
+    }
+    if(pl_int.empty())
+    {
+      BOOST_CHECK_THROW(pl_int[i][0], out_of_range);
+    }
+    else
+    {
+      BOOST_CHECK_THROW(pl_int[n_samples][0], out_of_range);
+      BOOST_CHECK_THROW(pl_int[i][num_gts], out_of_range);
+    }
+    if(vlfloat.empty())
+    {
+      BOOST_CHECK_THROW(vlfloat[i][0], out_of_range);
+    }
+    else
+    {
+      BOOST_CHECK_THROW(vlfloat[n_samples][0], out_of_range);
+      BOOST_CHECK_THROW(vlfloat[i][vlfloat[i].size()], out_of_range);
+    }
+  }
+}
+
 void check_individual_field_api(const Variant& record, const uint32_t truth_index) {
   const auto gq_int    = record.individual_field_as_integer("GQ");
   const auto gq_float  = record.individual_field_as_float("GQ");
@@ -560,6 +605,7 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
   BOOST_CHECK_THROW(record.float_individual_field(-1)[0], out_of_range);
   check_variable_length_field_api(record, truth_index);
   check_operator_index_for_iterators(record);
+  check_out_of_bound_exceptions(record);
 }
 
 void check_shared_field_api(const Variant& record, const uint32_t truth_index) {
