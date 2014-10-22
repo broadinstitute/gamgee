@@ -216,8 +216,14 @@ std::string IndividualFieldValue<std::string>::convert_from_byte_array(int index
  */
 template<> inline
 std::string IndividualFieldValue<std::string>::operator[](const uint32_t index) const {
-  auto limit = utils::is_string_type(m_format_ptr->type) ? 1u : size();
-  auto prefix_msg = utils::is_string_type(m_format_ptr->type) ? "FORMAT fields of type string in VCFs have only 1 element per sample :: " : "";
+  auto is_string_type = utils::is_string_type(m_format_ptr->type);
+  auto limit = size();
+  auto prefix_msg = "";
+  if(is_string_type)
+  {
+    limit = 1u;
+    prefix_msg = "FORMAT fields of type string in VCFs have only 1 element per sample :: ";
+  }
   utils::check_max_boundary(index, limit, prefix_msg);
   return convert_from_byte_array(index); 
 }

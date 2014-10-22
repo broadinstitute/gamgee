@@ -187,11 +187,18 @@ std::string SharedField<std::string>::convert_from_byte_array(int index) const {
  */
 template<> inline
 std::string SharedField<std::string>::operator[](const uint32_t index) const {
-  auto limit = utils::is_string_type(m_info_ptr->type) ? 1u : m_info_ptr->len;	//cannot use size here as size<string> is specialized
-  auto prefix_msg = utils::is_string_type(m_info_ptr->type) ? "INFO fields of type string in VCFs have only 1 element per sample :: " : "";
-  utils::check_max_boundary(index, empty() ? 0 : limit, prefix_msg);
+  if (empty())
+    throw std::out_of_range("Tried to index a shared field that is missing with operator[]");
+  auto is_string_type = utils::is_string_type(m_info_ptr->type);
+  auto limit = m_info_ptr->len; //cannot use size here as size<string> is specialized to return 1
+  auto prefix_msg = "";
+  if(is_string_type)
+  {
+    limit = 1u;
+    prefix_msg = "INFO fields of type string in VCFs have only 1 element per sample :: ";
+  }
+  utils::check_max_boundary(index, limit, prefix_msg);
   return convert_from_byte_array(index); 
-
 }
 
 } // end of namespace gamgee
