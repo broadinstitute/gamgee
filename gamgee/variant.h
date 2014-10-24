@@ -22,7 +22,6 @@ namespace gamgee {
  */
 enum class DiploidPLGenotype { HOM_REF = 0, HET = 1, HOM_VAR = 2};
 
-
 /**
  * @brief Utility class to manipulate a Variant record.
  */
@@ -179,6 +178,7 @@ class Variant {
   template<class FIELD_TYPE, class INDEX_OR_TAG> IndividualField<IndividualFieldValue<FIELD_TYPE>> individual_field_as(const INDEX_OR_TAG& p) const;
 
   friend class VariantWriter;
+  friend class VariantBuilder; ///< builder needs access to the internals in order to build efficiently
 };
 
 }  // end of namespace
