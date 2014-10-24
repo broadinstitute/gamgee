@@ -88,6 +88,32 @@ class Variant {
   inline void set_alignment_start(const int32_t start) { m_body->pos = start - 1; }
   inline void set_alignment_stop(const int32_t end) { m_body->rlen = end - m_body->pos; }
 
+  inline void set_reference_allele(const char* ref, const int32_t ref_length)
+  {
+    bcf_unpack(m_body.get(), BCF_UN_STR);
+    //Try to avoid calling bcf_update_alleles as it causes significant overhead in 
+    //terms of memory re-allocation etc.
+    //If enough space is available, over-write the current reference allele value
+    //Seems like an un-necessary hack, but trust me every single such overhead counts
+    if(m_body->rlen >= ref_length)
+    {
+      memcpy(m_body->d.allele[0], ref, ref_length);	//memcpy is slightly faster than strcpy
+      m_body->d.allele[0][ref_length] = '\0';		//append null - why not include in memcpy? see set_reference_allele with char option
+      m_body->d.shared_dirty |= BCF1_DIRTY_ALS;
+    }
+    else
+    {
+      //expensive - causes significant reallocs within htslib
+      //hacks to interpret const ptrs to non-const. Again, saves some overhead
+      //No need to free d.allele[0] because it points to shared string within bcf1_1.shared 
+      m_body->d.allele[0] = const_cast<char*>(ref);
+      //Re-use same d.allele char** as update_alleles writes to different region of memory anyway
+      bcf_update_alleles(const_cast<const bcf_hdr_t*>(m_header.get()), m_body.get(), const_cast<const char**>(m_body->d.allele), m_body->n_allele);
+    }
+  }
+  inline void set_reference_allele(const char* ref)  { set_reference_allele(ref, static_cast<int32_t>(strlen(ref))); }
+  inline void set_reference_allele(const char ref_base)  { set_reference_allele(&ref_base, 1); }
+
   /**
    * @brief functional-style set logic operations for variant field vectors
    *

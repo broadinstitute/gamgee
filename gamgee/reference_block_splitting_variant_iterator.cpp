@@ -40,6 +40,17 @@ void ReferenceBlockSplittingVariantIterator::populate_split_variants () {
   // m_pending_chrom can only change when pending is empty
   auto new_pending_start = -1;
   auto new_pending_end = UINT_MAX;
+  //default value of reference if a REF interval is split
+  auto new_reference_allele = 'N';
+  //Try to see if the next record begins immediately after end of current interval
+  //If yes, then new_reference_base can be obtained from the next record
+  //FIXME: should remove these checks to avoid overhead every time
+  auto& next_pos_variant_vector = MultipleVariantIterator::operator*();
+  if (!next_pos_variant_vector.empty()
+          && next_pos_variant_vector[0].chromosome() == m_pending_chrom
+          && next_pos_variant_vector[0].alignment_start() == m_pending_min_end+1
+	  && !gamgee::missing(next_pos_variant_vector[0].ref()))
+    new_reference_allele =  next_pos_variant_vector[0].ref()[0];	//only the first character is needed
 
   // advance iter by erase() or ++ depending on if
   for (auto iter = m_pending_variants.begin(); iter != m_pending_variants.end(); ) {
@@ -61,6 +72,7 @@ void ReferenceBlockSplittingVariantIterator::populate_split_variants () {
       new_pending_end = std::min(new_pending_end, var_end);
       variant.set_alignment_start(new_pending_start);
       variant.set_alignment_stop(var_end);      // stop is internally an offset to start, so we need to reset it after updating stop
+      variant.set_reference_allele(new_reference_allele);
       iter++;
     }
   }
