@@ -16,7 +16,7 @@ const auto truth_contigs = vector<uint32_t>{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 const auto truth_block_starts = vector<uint32_t>{1, 20, 41, 42, 50, 61, 81, 101, 102, 103, 151, 201, 300, 401, 600, 650, 701, 10};
 const auto truth_block_stops = vector<uint32_t>{19, 40, 41, 49, 60, 80, 100, 101, 102, 150, 200, 299, 400, 500, 649, 700, 750, 11};
 // note: final block is not a ref block, but the block ends at start + 1 because the reference allele length is 2
-//TODO const auto truth_refs = vector<string>{"T", "T", "T", "T", "T", "61", "81", "T", "T", "T", "151", "201", "T", "401", "T", "T", "701", "GG"};
+const auto truth_refs = vector<string>{"T", "T", "T", "T", "T", "N", "N", "T", "T", "T", "N", "N", "T", "N", "T", "T", "N", "GG"};
 
 BOOST_AUTO_TEST_CASE( split_reference_blocks )
 {
@@ -27,11 +27,11 @@ BOOST_AUTO_TEST_CASE( split_reference_blocks )
       BOOST_CHECK_EQUAL(record.chromosome(), truth_contigs[position_counter]);
       BOOST_CHECK_EQUAL(record.alignment_start(), truth_block_starts[position_counter]);
       BOOST_CHECK_EQUAL(record.alignment_stop(), truth_block_stops[position_counter]);
-      //TODO BOOST_CHECK_EQUAL(record.ref(), truth_refs[position_counter]);
+      BOOST_CHECK_EQUAL(record.ref(), truth_refs[position_counter]);
     }
     ++position_counter;
   }
-  BOOST_CHECK_EQUAL(position_counter, 18u);
+  BOOST_CHECK_EQUAL(position_counter, truth_contigs.size());
 }
 
 BOOST_AUTO_TEST_CASE( reference_block_iterator_move_test ) {
@@ -50,7 +50,7 @@ BOOST_AUTO_TEST_CASE( reference_block_iterator_move_test ) {
       BOOST_CHECK_EQUAL(record.chromosome(), truth_contigs[position_counter]);
       BOOST_CHECK_EQUAL(record.alignment_start(), truth_block_starts[position_counter]);
       BOOST_CHECK_EQUAL(record.alignment_stop(), truth_block_stops[position_counter]);
-      //TODO BOOST_CHECK_EQUAL(record.ref(), truth_refs[position_counter]);
+      BOOST_CHECK_EQUAL(record.ref(), truth_refs[position_counter]);
     }
   }
 }
