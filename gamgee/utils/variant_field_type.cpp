@@ -131,7 +131,6 @@ uint8_t size_for_type(const VariantFieldType& type, const bcf_info_t* const info
   }
 }
 
-
 } // end namespace utils
 } // end namespace gamgee
 
