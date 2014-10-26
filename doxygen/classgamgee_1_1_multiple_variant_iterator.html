@@ -107,9 +107,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afc06be010061f3b2fea15dac17d286f0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#afc06be010061f3b2fea15dac17d286f0">MultipleVariantIterator</a> ()</td></tr>
 <tr class="memdesc:afc06be010061f3b2fea15dac17d286f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates an empty iterator (used for the end() method)  <a href="#afc06be010061f3b2fea15dac17d286f0">More...</a><br /></td></tr>
 <tr class="separator:afc06be010061f3b2fea15dac17d286f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f1bddd618788eb8235857e73b09195e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#a5f1bddd618788eb8235857e73b09195e">MultipleVariantIterator</a> (const std::vector&lt; std::shared_ptr&lt; htsFile &gt;&gt; &amp;variant_files, const std::shared_ptr&lt; bcf_hdr_t &gt; &amp;variant_header)</td></tr>
-<tr class="memdesc:a5f1bddd618788eb8235857e73b09195e"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes a new iterator based on a vector of input files (vcf or bcf)  <a href="#a5f1bddd618788eb8235857e73b09195e">More...</a><br /></td></tr>
-<tr class="separator:a5f1bddd618788eb8235857e73b09195e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad36d6eff9a8fd3ca59edac1929dcdd27"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#ad36d6eff9a8fd3ca59edac1929dcdd27">MultipleVariantIterator</a> (const std::vector&lt; std::shared_ptr&lt; htsFile &gt;&gt; &amp;variant_files, const std::vector&lt; std::shared_ptr&lt; bcf_hdr_t &gt;&gt; &amp;variant_headers)</td></tr>
+<tr class="memdesc:ad36d6eff9a8fd3ca59edac1929dcdd27"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes a new iterator based on a vector of input files (vcf or bcf)  <a href="#ad36d6eff9a8fd3ca59edac1929dcdd27">More...</a><br /></td></tr>
+<tr class="separator:ad36d6eff9a8fd3ca59edac1929dcdd27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fb144b0365cb6dffc3abdd92ef5bda6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#a6fb144b0365cb6dffc3abdd92ef5bda6">MultipleVariantIterator</a> (<a class="el" href="classgamgee_1_1_multiple_variant_iterator.html">MultipleVariantIterator</a> &amp;&amp;)=default</td></tr>
 <tr class="memdesc:a6fb144b0365cb6dffc3abdd92ef5bda6"><td class="mdescLeft">&#160;</td><td class="mdescRight">a <a class="el" href="classgamgee_1_1_multiple_variant_iterator.html" title="Utility class to enable for-each style iteration in the MultipleVariantReader class. ">MultipleVariantIterator</a> move constructor guarantees all objects will have the same state.  <a href="#a6fb144b0365cb6dffc3abdd92ef5bda6">More...</a><br /></td></tr>
 <tr class="separator:a6fb144b0365cb6dffc3abdd92ef5bda6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,7 +150,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a5f1bddd618788eb8235857e73b09195e"></a>
+<a class="anchor" id="ad36d6eff9a8fd3ca59edac1929dcdd27"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -163,8 +163,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::shared_ptr&lt; bcf_hdr_t &gt; &amp;&#160;</td>
-          <td class="paramname"><em>variant_header</em>&#160;</td>
+          <td class="paramtype">const std::vector&lt; std::shared_ptr&lt; bcf_hdr_t &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>variant_headers</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -178,7 +178,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">variant_files</td><td>vector of vcf/bcf files opened via the bcf_open() macro from htslib </td></tr>
-    <tr><td class="paramname">variant_header</td><td>the combined vcf/bcf file header </td></tr>
+    <tr><td class="paramname">variant_headers</td><td>vector of headers corresponding to the files </td></tr>
   </table>
   </dd>
 </dl>
@@ -355,7 +355,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 16 2014 17:22:50 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Oct 26 2014 21:41:37 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

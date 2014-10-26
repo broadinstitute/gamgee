@@ -114,16 +114,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;uint8_t <a class="code" href="namespacegamgee_1_1utils.html#ac118cf603c756fa858ce1c63deb11bb8">size_for_type</a>(<span class="keyword">const</span> <a class="code" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">VariantFieldType</a>&amp; type, <span class="keyword">const</span> bcf_info_t* <span class="keyword">const</span> info_ptr);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;} <span class="comment">// end namespace utils</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;} <span class="comment">// end namespace gamgee</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif // gamgee__variant_field_utils__guard</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="namespacegamgee_1_1utils.html#a411927fb159d2fb6cfbd183655ea454b">   59</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="namespacegamgee_1_1utils.html#a411927fb159d2fb6cfbd183655ea454b">is_string_type</a>(<span class="keyword">const</span> int32_t&amp; type) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">return</span> (static_cast&lt;utils::VariantFieldType&gt;(type) == <a class="code" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039eca63b588d5559f64f89a416e656880b949">VariantFieldType::STRING</a>); </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <span class="comment">// end namespace utils</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <span class="comment">// end namespace gamgee</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif // gamgee__variant_field_utils__guard</span></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a04f2f42b3960b33e4edc7478ce6039eca5f90af42814c0a419d715d43ae54fd7a"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039eca5f90af42814c0a419d715d43ae54fd7a">gamgee::utils::VariantFieldType::INT16</a></div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a04f2f42b3960b33e4edc7478ce6039ec"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">gamgee::utils::VariantFieldType</a></div><div class="ttdeci">VariantFieldType</div><div class="ttdoc">an enumeration of the types in htslib for the format field values </div><div class="ttdef"><b>Definition:</b> variant_field_type.h:16</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a04f2f42b3960b33e4edc7478ce6039eca6495adba09844fac8eeb0aba86e6f1bf"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039eca6495adba09844fac8eeb0aba86e6f1bf">gamgee::utils::VariantFieldType::INT32</a></div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a04f2f42b3960b33e4edc7478ce6039ecaee9d73311ff0658494edfff14c3ec1e3"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ecaee9d73311ff0658494edfff14c3ec1e3">gamgee::utils::VariantFieldType::INT8</a></div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a047abcf196c22d47e3e567df353b73df"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a047abcf196c22d47e3e567df353b73df">gamgee::utils::convert_data_to_string</a></div><div class="ttdeci">std::string convert_data_to_string(const uint8_t *data_ptr, const int index, const uint8_t num_bytes_per_value, const VariantFieldType &amp;type)</div><div class="ttdoc">converts the value in an index from the byte array into string </div><div class="ttdef"><b>Definition:</b> variant_field_type.cpp:77</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a04f2f42b3960b33e4edc7478ce6039ecae738c26bf4ce1037fa81b039a915cbf6"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ecae738c26bf4ce1037fa81b039a915cbf6">gamgee::utils::VariantFieldType::FLOAT</a></div></div>
+<div class="ttc" id="namespacegamgee_1_1utils_html_a411927fb159d2fb6cfbd183655ea454b"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a411927fb159d2fb6cfbd183655ea454b">gamgee::utils::is_string_type</a></div><div class="ttdeci">bool is_string_type(const int32_t &amp;type)</div><div class="ttdoc">check if type is of type string </div><div class="ttdef"><b>Definition:</b> variant_field_type.h:59</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a04f2f42b3960b33e4edc7478ce6039eca63b588d5559f64f89a416e656880b949"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039eca63b588d5559f64f89a416e656880b949">gamgee::utils::VariantFieldType::STRING</a></div></div>
 <div class="ttc" id="namespacegamgee_html"><div class="ttname"><a href="namespacegamgee.html">gamgee</a></div><div class="ttdef"><b>Definition:</b> base_quals.cpp:11</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a04f2f42b3960b33e4edc7478ce6039ecabc0b1e8b63f3f00318eee5aeabc14255"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ecabc0b1e8b63f3f00318eee5aeabc14255">gamgee::utils::VariantFieldType::NIL</a></div></div>
@@ -133,7 +138,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 16 2014 17:22:50 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Oct 26 2014 21:41:37 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

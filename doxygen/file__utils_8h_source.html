@@ -101,17 +101,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>utils {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structgamgee_1_1utils_1_1_i_f_stream_deleter.html">   14</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgamgee_1_1utils_1_1_i_f_stream_deleter.html">IFStreamDeleter</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structgamgee_1_1utils_1_1_i_f_stream_deleter.html#adb2cee790743efe4b9cbd2529a809ad5">   15</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="structgamgee_1_1utils_1_1_i_f_stream_deleter.html#adb2cee790743efe4b9cbd2529a809ad5">operator()</a>(std::ifstream* p)<span class="keyword"> const </span>{ p-&gt;close(); }</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;std::shared_ptr&lt;std::ifstream&gt; <a class="code" href="namespacegamgee_1_1utils.html#afcdf33f05f9af45a26afa1d18eb25bcc">make_shared_ifstream</a>(std::ifstream* ifstream_ptr);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;std::shared_ptr&lt;std::ifstream&gt; <a class="code" href="namespacegamgee_1_1utils.html#afcdf33f05f9af45a26afa1d18eb25bcc">make_shared_ifstream</a>(std::string filename);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structgamgee_1_1utils_1_1_i_f_stream_deleter.html#adb2cee790743efe4b9cbd2529a809ad5">   15</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="structgamgee_1_1utils_1_1_i_f_stream_deleter.html#adb2cee790743efe4b9cbd2529a809ad5">operator()</a>(std::ifstream* p)<span class="keyword"> const </span>{ </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    p-&gt;close();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">delete</span> p;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;std::shared_ptr&lt;std::ifstream&gt; <a class="code" href="namespacegamgee_1_1utils.html#afcdf33f05f9af45a26afa1d18eb25bcc">make_shared_ifstream</a>(std::ifstream* ifstream_ptr);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;std::shared_ptr&lt;std::ifstream&gt; <a class="code" href="namespacegamgee_1_1utils.html#afcdf33f05f9af45a26afa1d18eb25bcc">make_shared_ifstream</a>(std::string filename);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* gamgee__file_utils__guard */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* gamgee__file_utils__guard */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_afcdf33f05f9af45a26afa1d18eb25bcc"><div class="ttname"><a href="namespacegamgee_1_1utils.html#afcdf33f05f9af45a26afa1d18eb25bcc">gamgee::utils::make_shared_ifstream</a></div><div class="ttdeci">std::shared_ptr&lt; std::ifstream &gt; make_shared_ifstream(std::ifstream *ifstream_ptr)</div><div class="ttdoc">wraps a pre-allocated ifstream in a shared_ptr with correct deleter </div><div class="ttdef"><b>Definition:</b> file_utils.cpp:12</div></div>
 <div class="ttc" id="structgamgee_1_1utils_1_1_i_f_stream_deleter_html"><div class="ttname"><a href="structgamgee_1_1utils_1_1_i_f_stream_deleter.html">gamgee::utils::IFStreamDeleter</a></div><div class="ttdoc">a functor object to delete an ifstream </div><div class="ttdef"><b>Definition:</b> file_utils.h:14</div></div>
 <div class="ttc" id="structgamgee_1_1utils_1_1_i_f_stream_deleter_html_adb2cee790743efe4b9cbd2529a809ad5"><div class="ttname"><a href="structgamgee_1_1utils_1_1_i_f_stream_deleter.html#adb2cee790743efe4b9cbd2529a809ad5">gamgee::utils::IFStreamDeleter::operator()</a></div><div class="ttdeci">void operator()(std::ifstream *p) const </div><div class="ttdef"><b>Definition:</b> file_utils.h:15</div></div>
@@ -119,7 +122,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 16 2014 17:22:50 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Oct 26 2014 21:41:37 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

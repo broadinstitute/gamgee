@@ -134,9 +134,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab926e41b8951295d88b3a20983200eae"><td class="memItemLeft" align="right" valign="top">ITERATOR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_reader.html#ab926e41b8951295d88b3a20983200eae">end</a> () const </td></tr>
 <tr class="memdesc:ab926e41b8951295d88b3a20983200eae"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a default ITERATOR (needed by for-each loop)  <a href="#ab926e41b8951295d88b3a20983200eae">More...</a><br /></td></tr>
 <tr class="separator:ab926e41b8951295d88b3a20983200eae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b7932f8380702f7b589ce0bb2eb6927"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_reader.html#a3b7932f8380702f7b589ce0bb2eb6927">header</a> ()</td></tr>
-<tr class="memdesc:a3b7932f8380702f7b589ce0bb2eb6927"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a representative header for the files being read  <a href="#a3b7932f8380702f7b589ce0bb2eb6927">More...</a><br /></td></tr>
-<tr class="separator:a3b7932f8380702f7b589ce0bb2eb6927"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38335aed90579cc4fb9c9b066788c881"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_reader.html#a38335aed90579cc4fb9c9b066788c881">combined_header</a> () const </td></tr>
+<tr class="memdesc:a38335aed90579cc4fb9c9b066788c881"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a combined header for the files being read  <a href="#a38335aed90579cc4fb9c9b066788c881">More...</a><br /></td></tr>
+<tr class="separator:a38335aed90579cc4fb9c9b066788c881"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class ITERATOR&gt;<br />
@@ -340,6 +340,34 @@ template&lt;class ITERATOR &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a38335aed90579cc4fb9c9b066788c881"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ITERATOR &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> <a class="el" href="classgamgee_1_1_multiple_variant_reader.html">gamgee::MultipleVariantReader</a>&lt; ITERATOR &gt;::combined_header </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>returns a combined header for the files being read </p>
+<dl class="section return"><dt>Returns</dt><dd>a <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a> object constructed by combining the headers of the incmoing files </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ab926e41b8951295d88b3a20983200eae"></a>
 <div class="memitem">
 <div class="memproto">
@@ -365,34 +393,6 @@ template&lt;class ITERATOR &gt; </div>
 
 <p>creates a default ITERATOR (needed by for-each loop) </p>
 <dl class="section return"><dt>Returns</dt><dd>an ITERATOR that will match the end status of the iterator at the end of the streams </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a3b7932f8380702f7b589ce0bb2eb6927"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class ITERATOR &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> <a class="el" href="classgamgee_1_1_multiple_variant_reader.html">gamgee::MultipleVariantReader</a>&lt; ITERATOR &gt;::header </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>returns a representative header for the files being read </p>
-<dl class="section return"><dt>Returns</dt><dd>a <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a> object constructed from the header of the first file read </dd></dl>
 
 </div>
 </div>
@@ -499,7 +499,7 @@ template&lt;class ITERATOR &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 16 2014 17:22:50 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Oct 26 2014 21:41:37 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
