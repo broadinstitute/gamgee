@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['sample',['sample',['../classgamgee_1_1_read_group.html#a7941206dfde9efbb2926028c21760e4e',1,'gamgee::ReadGroup']]],
-  ['sep',['sep',['../namespacegamgee.html#abd7ef74f462df5f454db18082baefd87',1,'gamgee']]],
-  ['string_5fdot',['string_dot',['../namespacegamgee_1_1missing__values.html#ae4abf96097fd03be084479871201ff83',1,'gamgee::missing_values']]],
-  ['string_5fempty',['string_empty',['../namespacegamgee_1_1missing__values.html#a6242a9906efbe8b441e098b94095ffa7',1,'gamgee::missing_values']]]
+  ['picard_5fheader_5ftag',['PICARD_HEADER_TAG',['../namespacegamgee.html#a1933c2d89760c1391c192e44dd7caef5',1,'gamgee']]],
+  ['platform',['platform',['../classgamgee_1_1_read_group.html#a713e6e85bdbd62be1c29380b6640f835',1,'gamgee::ReadGroup']]],
+  ['platform_5funit',['platform_unit',['../classgamgee_1_1_read_group.html#a478c29b5e201306d696fcc6b71f2e950',1,'gamgee::ReadGroup']]],
+  ['programs',['programs',['../classgamgee_1_1_read_group.html#a9d436ee1f701bd3c2c8ae0a065613bef',1,'gamgee::ReadGroup']]]
 ];

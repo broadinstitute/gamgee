@@ -89,7 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">gamgee::utils Namespace Reference</div>  </div>
 </div><!--header-->
@@ -117,6 +118,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_sam_header_deleter.html">SamHeaderDeleter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a bam_hdr_t pointer  <a href="structgamgee_1_1utils_1_1_sam_header_deleter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1utils_1_1_short_value_optimized_storage.html">ShortValueOptimizedStorage</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_synced_reader_deleter.html">SyncedReaderDeleter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a bcf_srs_t pointer  <a href="structgamgee_1_1utils_1_1_synced_reader_deleter.html#details">More...</a><br /></td></tr>
@@ -231,6 +234,21 @@ Functions</h2></td></tr>
 <tr class="memitem:a7e1092478e0b19aa3887ff5ee6c82cb9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a7e1092478e0b19aa3887ff5ee6c82cb9">htslib_filter_name</a> (bcf_hdr_t *header, bcf1_t *body, int index)</td></tr>
 <tr class="memdesc:a7e1092478e0b19aa3887ff5ee6c82cb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">helper function to translate an index into a string in the filter list  <a href="#a7e1092478e0b19aa3887ff5ee6c82cb9">More...</a><br /></td></tr>
 <tr class="separator:a7e1092478e0b19aa3887ff5ee6c82cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45938b6242445c448f9c2d3d5c29f5a3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a45938b6242445c448f9c2d3d5c29f5a3">bcf_type_to_element_size</a> (const int32_t htslib_type)</td></tr>
+<tr class="memdesc:a45938b6242445c448f9c2d3d5c29f5a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of bytes required to store each BCF_BT_* type.  <a href="#a45938b6242445c448f9c2d3d5c29f5a3">More...</a><br /></td></tr>
+<tr class="separator:a45938b6242445c448f9c2d3d5c29f5a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02221ecf3b71fe574724d34e70d35afd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a02221ecf3b71fe574724d34e70d35afd">int_encoded_type</a> (const int32_t min_val, const int32_t max_val)</td></tr>
+<tr class="memdesc:a02221ecf3b71fe574724d34e70d35afd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a min and max value, determines whether int8, int16, or int32 BCF encoding is required.  <a href="#a02221ecf3b71fe574724d34e70d35afd">More...</a><br /></td></tr>
+<tr class="separator:a02221ecf3b71fe574724d34e70d35afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a000da2b95d7f8bb889076c2af3272470"><td class="memItemLeft" align="right" valign="top">kstring_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a000da2b95d7f8bb889076c2af3272470">initialize_htslib_buffer</a> (const uint32_t initial_capacity)</td></tr>
+<tr class="memdesc:a000da2b95d7f8bb889076c2af3272470"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a newly-allocated kstring_t buffer suitable for passing to htslib.  <a href="#a000da2b95d7f8bb889076c2af3272470">More...</a><br /></td></tr>
+<tr class="separator:a000da2b95d7f8bb889076c2af3272470"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa093d879335fb425cea4802085e192c7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#aa093d879335fb425cea4802085e192c7">int_encoded_type</a> (const int32_t val)</td></tr>
+<tr class="separator:aa093d879335fb425cea4802085e192c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b52643810d7b04e80edd35f488035c3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a8b52643810d7b04e80edd35f488035c3">int_encoded_size</a> (const int32_t val)</td></tr>
+<tr class="separator:a8b52643810d7b04e80edd35f488035c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eb0c7f2fcaa1820c83dde23242150dc"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a2eb0c7f2fcaa1820c83dde23242150dc">encoded_size</a> (const int8_t field_type, const uint32_t field_length, bool add_type_descriptor=true)</td></tr>
+<tr class="separator:a2eb0c7f2fcaa1820c83dde23242150dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa77e0e092d799249e1843b35b6fc33a"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#afa77e0e092d799249e1843b35b6fc33a">complement_base</a> (const char base)</td></tr>
 <tr class="separator:afa77e0e092d799249e1843b35b6fc33a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af406bde810c85ea1749461ed137ab59b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#af406bde810c85ea1749461ed137ab59b">complement</a> (std::string &amp;sequence)</td></tr>
@@ -303,6 +321,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a4eeafb551287063423ea31a173c264e0"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a4eeafb551287063423ea31a173c264e0">zip</a> (const T &amp;...containers) -&gt; boost::iterator_range&lt; boost::zip_iterator&lt; decltype(boost::make_tuple(containers.begin()...))&gt;&gt;</td></tr>
 <tr class="memdesc:a4eeafb551287063423ea31a173c264e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">utility method to zip iterators together with simpler syntax than boost  <a href="#a4eeafb551287063423ea31a173c264e0">More...</a><br /></td></tr>
 <tr class="separator:a4eeafb551287063423ea31a173c264e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a1535dbeb8b81258abb0cdca9545229eb"><td class="memItemLeft" align="right" valign="top">const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a1535dbeb8b81258abb0cdca9545229eb">bcf_type_sizes</a> [] = { 0, 1, 2, 4, 0, 4, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 }</td></tr>
+<tr class="separator:a1535dbeb8b81258abb0cdca9545229eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>utility functions for the gamgee library </p>
@@ -935,6 +958,24 @@ template&lt;&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a45938b6242445c448f9c2d3d5c29f5a3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gamgee::utils::bcf_type_to_element_size </td>
+          <td>(</td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>htslib_type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the number of bytes required to store each BCF_BT_* type. </p>
+
+</div>
+</div>
 <a class="anchor" id="abedab4665606056c0425680e3db92cee"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1304,6 +1345,46 @@ template&lt;class ITER &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a2eb0c7f2fcaa1820c83dde23242150dc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gamgee::utils::encoded_size </td>
+          <td>(</td>
+          <td class="paramtype">const int8_t&#160;</td>
+          <td class="paramname"><em>field_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramname"><em>field_length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>add_type_descriptor</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="aa3f1ec8c7415419a0e1c57c8255873a9"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1372,6 +1453,102 @@ template&lt;class ITER &gt; </div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a000da2b95d7f8bb889076c2af3272470"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">kstring_t gamgee::utils::initialize_htslib_buffer </td>
+          <td>(</td>
+          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramname"><em>initial_capacity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a newly-allocated kstring_t buffer suitable for passing to htslib. </p>
+<p>The returned buffer is safe for htslib to call realloc() on, since it is initially allocated with malloc().</p>
+<dl class="section warning"><dt>Warning</dt><dd>Use this function ONLY when the memory will be handled to htslib for management and eventual release (eg., copying the buffer pointer into a bcf1_t) &ndash; it is the caller's responsibility to make sure deallocation is taken care of. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8b52643810d7b04e80edd35f488035c3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gamgee::utils::int_encoded_size </td>
+          <td>(</td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa093d879335fb425cea4802085e192c7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gamgee::utils::int_encoded_type </td>
+          <td>(</td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a02221ecf3b71fe574724d34e70d35afd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gamgee::utils::int_encoded_type </td>
+          <td>(</td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>min_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>max_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Given a min and max value, determines whether int8, int16, or int32 BCF encoding is required. </p>
 
 </div>
 </div>
@@ -1913,10 +2090,23 @@ template&lt;typename... T&gt; </div>
 
 </div>
 </div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="a1535dbeb8b81258abb0cdca9545229eb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t gamgee::utils::bcf_type_sizes[] = { 0, 1, 2, 4, 0, 4, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 26 2014 21:41:37 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Oct 27 2014 20:10:49 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

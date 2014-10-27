@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['variantfieldtype',['VariantFieldType',['../namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec',1,'gamgee::utils']]]
+  ['sharedfieldindex',['SharedFieldIndex',['../namespacegamgee.html#a7e0cff57cb601cc78e8babf0042efef9',1,'gamgee']]]
 ];

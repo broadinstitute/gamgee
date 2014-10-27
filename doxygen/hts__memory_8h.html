@@ -97,6 +97,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><code>#include &quot;htslib/sam.h&quot;</code><br />
 <code>#include &quot;htslib/vcf.h&quot;</code><br />
 <code>#include &quot;htslib/synced_bcf_reader.h&quot;</code><br />
+<code>#include &quot;htslib/kstring.h&quot;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
@@ -190,11 +191,26 @@ HtsIteratorDeleter &gt;&#160;</td><td class="memItemRight" valign="bottom"><a cl
 <tr class="memitem:a7e1092478e0b19aa3887ff5ee6c82cb9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a7e1092478e0b19aa3887ff5ee6c82cb9">gamgee::utils::htslib_filter_name</a> (bcf_hdr_t *header, bcf1_t *body, int index)</td></tr>
 <tr class="memdesc:a7e1092478e0b19aa3887ff5ee6c82cb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">helper function to translate an index into a string in the filter list  <a href="#a7e1092478e0b19aa3887ff5ee6c82cb9">More...</a><br /></td></tr>
 <tr class="separator:a7e1092478e0b19aa3887ff5ee6c82cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45938b6242445c448f9c2d3d5c29f5a3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a45938b6242445c448f9c2d3d5c29f5a3">gamgee::utils::bcf_type_to_element_size</a> (const int32_t htslib_type)</td></tr>
+<tr class="memdesc:a45938b6242445c448f9c2d3d5c29f5a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of bytes required to store each BCF_BT_* type.  <a href="#a45938b6242445c448f9c2d3d5c29f5a3">More...</a><br /></td></tr>
+<tr class="separator:a45938b6242445c448f9c2d3d5c29f5a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa093d879335fb425cea4802085e192c7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#aa093d879335fb425cea4802085e192c7">gamgee::utils::int_encoded_type</a> (const int32_t val)</td></tr>
+<tr class="separator:aa093d879335fb425cea4802085e192c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02221ecf3b71fe574724d34e70d35afd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a02221ecf3b71fe574724d34e70d35afd">gamgee::utils::int_encoded_type</a> (const int32_t min_val, const int32_t max_val)</td></tr>
+<tr class="memdesc:a02221ecf3b71fe574724d34e70d35afd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a min and max value, determines whether int8, int16, or int32 BCF encoding is required.  <a href="#a02221ecf3b71fe574724d34e70d35afd">More...</a><br /></td></tr>
+<tr class="separator:a02221ecf3b71fe574724d34e70d35afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b52643810d7b04e80edd35f488035c3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a8b52643810d7b04e80edd35f488035c3">gamgee::utils::int_encoded_size</a> (const int32_t val)</td></tr>
+<tr class="separator:a8b52643810d7b04e80edd35f488035c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eb0c7f2fcaa1820c83dde23242150dc"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a2eb0c7f2fcaa1820c83dde23242150dc">gamgee::utils::encoded_size</a> (const int8_t field_type, const uint32_t field_length, bool add_type_descriptor=true)</td></tr>
+<tr class="separator:a2eb0c7f2fcaa1820c83dde23242150dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a000da2b95d7f8bb889076c2af3272470"><td class="memItemLeft" align="right" valign="top">kstring_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a000da2b95d7f8bb889076c2af3272470">gamgee::utils::initialize_htslib_buffer</a> (const uint32_t initial_capacity)</td></tr>
+<tr class="memdesc:a000da2b95d7f8bb889076c2af3272470"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a newly-allocated kstring_t buffer suitable for passing to htslib.  <a href="#a000da2b95d7f8bb889076c2af3272470">More...</a><br /></td></tr>
+<tr class="separator:a000da2b95d7f8bb889076c2af3272470"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 26 2014 21:41:37 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Oct 27 2014 20:10:49 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

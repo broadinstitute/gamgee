@@ -202,6 +202,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_sam_writer.html">SamWriter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">utility class to write out a SAM/BAM/CRAM file to any stream  <a href="classgamgee_1_1_sam_writer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1_shared_buffer_span.html">SharedBufferSpan</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a section (range of bytes) in the shared memory pool VariantBuilderSharedRegion::m_shared_buffer that is currently in use to store encoded field data.  <a href="structgamgee_1_1_shared_buffer_span.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_shared_field.html">SharedField</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class template to hold the values of a specific <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a>'s shared field.  <a href="classgamgee_1_1_shared_field.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -219,6 +222,21 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html">Variant</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility class to manipulate a <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record.  <a href="classgamgee_1_1_variant.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a>: construct <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> records from scratch (and, coming soon, from existing <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> records)  <a href="classgamgee_1_1_variant_builder.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_core_field.html">VariantBuilderCoreField</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a> class to represent "core" (non-data-region) fields such as the alignment start and the qual.  <a href="classgamgee_1_1_variant_builder_core_field.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_individual_field.html">VariantBuilderIndividualField</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper class for <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a> to manage the storage and encoding of a single multi-sample individual field.  <a href="classgamgee_1_1_variant_builder_individual_field.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_individual_region.html">VariantBuilderIndividualRegion</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper class for <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a> to manage the fields belonging to the individual region of <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> records.  <a href="classgamgee_1_1_variant_builder_individual_region.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_shared_region.html">VariantBuilderSharedRegion</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper class for <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a> to manage the fields belonging to the shared region of <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> records.  <a href="classgamgee_1_1_variant_builder_shared_region.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_filters.html">VariantFilters</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">class to manipulate filter field objects without making copies.  <a href="classgamgee_1_1_variant_filters.html#details">More...</a><br /></td></tr>
@@ -299,6 +317,17 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:acea451c2c3a6601c111c7be6cfa9ca75"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple enum to keep the indices of the genotypes in the PL field of diploid individuals  <a href="namespacegamgee.html#acea451c2c3a6601c111c7be6cfa9ca75">More...</a><br /></td></tr>
 <tr class="separator:acea451c2c3a6601c111c7be6cfa9ca75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e0cff57cb601cc78e8babf0042efef9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a7e0cff57cb601cc78e8babf0042efef9">SharedFieldIndex</a> { <br />
+&#160;&#160;<a class="el" href="namespacegamgee.html#a7e0cff57cb601cc78e8babf0042efef9ab7196e7053b97cb3c63ef839b3b4fa67">SharedFieldIndex::ID_INDEX</a> = 0, 
+<a class="el" href="namespacegamgee.html#a7e0cff57cb601cc78e8babf0042efef9a3e8c713f6ed263e10fcc9c86e27907cc">SharedFieldIndex::REF_ALLELE_INDEX</a> = 1, 
+<a class="el" href="namespacegamgee.html#a7e0cff57cb601cc78e8babf0042efef9a0c9da4f8a5eb24b94d4128afd43ecb6e">SharedFieldIndex::ALT_ALLELES_INDEX</a> = 2, 
+<a class="el" href="namespacegamgee.html#a7e0cff57cb601cc78e8babf0042efef9a378dce52c549f249226b48356642eee7">SharedFieldIndex::FILTERS_INDEX</a> = 3, 
+<br />
+&#160;&#160;<a class="el" href="namespacegamgee.html#a7e0cff57cb601cc78e8babf0042efef9a1455c444432434c1c0ebfae6b53d732e">SharedFieldIndex::INFO_START_INDEX</a> = 4
+<br />
+ }</td></tr>
+<tr class="memdesc:a7e0cff57cb601cc78e8babf0042efef9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum to represent the ordering of the various shared fields as they are physically laid out in the encoded data.  <a href="namespacegamgee.html#a7e0cff57cb601cc78e8babf0042efef9">More...</a><br /></td></tr>
+<tr class="separator:a7e0cff57cb601cc78e8babf0042efef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -568,6 +597,40 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a class="anchor" id="acea451c2c3a6601c111c7be6cfa9ca75a0ab7f9d03ee3503ccca933fa498414ad"></a>HET&#160;</td><td class="fielddoc">
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="acea451c2c3a6601c111c7be6cfa9ca75a46226a303b65d0b265550d36d68a6e32"></a>HOM_VAR&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+</div>
+</div>
+<a class="anchor" id="a7e0cff57cb601cc78e8babf0042efef9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacegamgee.html#a7e0cff57cb601cc78e8babf0042efef9">gamgee::SharedFieldIndex</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Enum to represent the ordering of the various shared fields as they are physically laid out in the encoded data. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a7e0cff57cb601cc78e8babf0042efef9ab7196e7053b97cb3c63ef839b3b4fa67"></a>ID_INDEX&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7e0cff57cb601cc78e8babf0042efef9a3e8c713f6ed263e10fcc9c86e27907cc"></a>REF_ALLELE_INDEX&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7e0cff57cb601cc78e8babf0042efef9a0c9da4f8a5eb24b94d4128afd43ecb6e"></a>ALT_ALLELES_INDEX&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7e0cff57cb601cc78e8babf0042efef9a378dce52c549f249226b48356642eee7"></a>FILTERS_INDEX&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7e0cff57cb601cc78e8babf0042efef9a1455c444432434c1c0ebfae6b53d732e"></a>INFO_START_INDEX&#160;</td><td class="fielddoc">
 </td></tr>
 </table>
 
@@ -1058,7 +1121,7 @@ template&lt;class VALUE &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 26 2014 21:41:37 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Oct 27 2014 20:10:49 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

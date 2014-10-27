@@ -11,7 +11,9 @@ var searchData=
   ['genotype_5futils_2ecpp',['genotype_utils.cpp',['../genotype__utils_8cpp.html',1,'']]],
   ['genotype_5futils_2eh',['genotype_utils.h',['../genotype__utils_8h.html',1,'']]],
   ['genotypes',['genotypes',['../classgamgee_1_1_variant.html#a68607de44ef4a90f2ce24737a2aac285',1,'gamgee::Variant']]],
+  ['get',['get',['../classgamgee_1_1utils_1_1_short_value_optimized_storage.html#adac87e40f3cb04f4a39688c1d71dd6ae',1,'gamgee::utils::ShortValueOptimizedStorage']]],
   ['get_5fsequence',['get_sequence',['../classgamgee_1_1_reference_map.html#a6386a54a8d0336f9ddc6adb9eeec3844',1,'gamgee::ReferenceMap']]],
+  ['gt_5findex',['gt_index',['../classgamgee_1_1_variant_builder_individual_region.html#a101a391894973e8e5b1f31da24261679',1,'gamgee::VariantBuilderIndividualRegion']]],
   ['missing_5fvalues',['missing_values',['../namespacegamgee_1_1missing__values.html',1,'gamgee']]],
   ['utils',['utils',['../namespacegamgee_1_1utils.html',1,'gamgee']]]
 ];

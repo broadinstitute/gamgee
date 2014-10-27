@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['library',['library',['../classgamgee_1_1_read_group.html#a7e3c12e58c28ed0f3ffe837f9f758478',1,'gamgee::ReadGroup']]]
+  ['key_5fsequence',['key_sequence',['../classgamgee_1_1_read_group.html#a49cc23831acca91892a54e5054362083',1,'gamgee::ReadGroup']]]
 ];

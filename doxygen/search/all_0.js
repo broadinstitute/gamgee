@@ -23,5 +23,6 @@ var searchData=
   ['allele_5fstrings',['allele_strings',['../classgamgee_1_1_genotype.html#ac332fe91cb41bda0bdeca1ecdd504162',1,'gamgee::Genotype::allele_strings()'],['../namespacegamgee_1_1utils.html#a2ec32c97f1f7c6ee9f97179bcbca45bb',1,'gamgee::utils::allele_strings(const std::shared_ptr&lt; bcf1_t &gt; &amp;body, const bcf_fmt_t *const format_ptr, const uint8_t *data_ptr, const TYPE missing, const TYPE vector_end)'],['../namespacegamgee_1_1utils.html#afc893fb18c4ab30ac3e419a0f06141b4',1,'gamgee::utils::allele_strings(const std::shared_ptr&lt; bcf1_t &gt; &amp;body, const bcf_fmt_t *const format_ptr, const uint8_t *data_ptr)']]],
   ['allelemask',['AlleleMask',['../namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348',1,'gamgee']]],
   ['alleletype',['AlleleType',['../namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11d',1,'gamgee']]],
-  ['alt',['alt',['../classgamgee_1_1_variant.html#ad8143e5766f4cb45c5ad9fa08bc8f7cb',1,'gamgee::Variant']]]
+  ['alt',['alt',['../classgamgee_1_1_variant.html#ad8143e5766f4cb45c5ad9fa08bc8f7cb',1,'gamgee::Variant']]],
+  ['alt_5falleles_5findex',['ALT_ALLELES_INDEX',['../namespacegamgee.html#a7e0cff57cb601cc78e8babf0042efef9a0c9da4f8a5eb24b94d4128afd43ecb6e',1,'gamgee']]]
 ];
