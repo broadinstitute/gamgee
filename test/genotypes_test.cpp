@@ -5,6 +5,7 @@
 #include "genotype.h"
 
 #include <boost/dynamic_bitset.hpp>
+#include <algorithm>
 
 using namespace std;
 using namespace gamgee;
@@ -167,4 +168,76 @@ BOOST_AUTO_TEST_CASE( mixed_ploidy_random_access ) {
     }
     ++sample_idx;
   }
+}
+
+BOOST_AUTO_TEST_CASE( encode_genotype ) {
+  auto alleles = vector<int32_t>{};
+  auto expected = vector<int32_t>{};
+
+  alleles = {-1};
+  expected = {0};
+  Genotype::encode_genotype(alleles);
+  BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
+
+  alleles = {0};
+  expected = {2};
+  Genotype::encode_genotype(alleles);
+  BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
+
+  alleles = {1};
+  expected = {4};
+  Genotype::encode_genotype(alleles);
+  BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
+
+  alleles = {2};
+  expected = {6};
+  Genotype::encode_genotype(alleles);
+  BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
+
+  alleles = {0, 1};
+  expected = {2, 4};
+  Genotype::encode_genotype(alleles);
+  BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
+
+  alleles = {-1, 0};
+  expected = {0, 2};
+  Genotype::encode_genotype(alleles);
+  BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
+
+  alleles = {1, 2, 0};
+  expected = {4, 6, 2};
+  Genotype::encode_genotype(alleles);
+  BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
+
+  // First allele should not be phased when phasing is requested
+  alleles = {-1};
+  expected = {0};
+  Genotype::encode_genotype(alleles, true);
+  BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
+
+  alleles = {0};
+  expected = {2};
+  Genotype::encode_genotype(alleles, true);
+  BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
+
+  alleles = {1};
+  expected = {4};
+  Genotype::encode_genotype(alleles, true);
+  BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
+
+  // Second and subsequent alleles should be phased with respect to the previous
+  alleles = {0, 1};
+  expected = {2, 5};
+  Genotype::encode_genotype(alleles, true);
+  BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
+
+  alleles = {-1, 0};
+  expected = {0, 3};
+  Genotype::encode_genotype(alleles, true);
+  BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
+
+  alleles = {1, 2, 0};
+  expected = {4, 7, 3};
+  Genotype::encode_genotype(alleles, true);
+  BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
 }

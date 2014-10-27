@@ -1,6 +1,7 @@
 #include "hts_memory.h"
 
 #include <memory>
+#include <stdexcept>
 
 using namespace std;
 
@@ -143,6 +144,56 @@ bam1_t* sam_shallow_copy(bam1_t* original) {
 std::string htslib_filter_name(bcf_hdr_t* header, bcf1_t* body, int index) { 
   return std::string{bcf_hdr_int2id(header, BCF_DT_ID, body->d.flt[index])};
 } 
+
+// Sizes of htslib BCF types indexed by BCF_BT_* value
+const uint8_t bcf_type_sizes[] = { 0, 1, 2, 4, 0, 4, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+/**
+ * @brief Returns the number of bytes required to store each BCF_BT_* type
+ */
+uint8_t bcf_type_to_element_size(const int32_t htslib_type) {
+  return bcf_type_sizes[htslib_type];
+}
+
+/**
+ * @brief Given a min and max value, determines whether int8, int16, or int32 BCF encoding is required
+ */
+uint8_t int_encoded_type(const int32_t min_val, const int32_t max_val) {
+  if (max_val <= INT8_MAX && min_val > bcf_int8_vector_end) {
+    return BCF_BT_INT8;
+  }
+  else if (max_val <= INT16_MAX && min_val > bcf_int16_vector_end) {
+    return BCF_BT_INT16;
+  }
+  else {
+    return BCF_BT_INT32;
+  }
+}
+
+
+/**
+ * @brief Returns a newly-allocated kstring_t buffer suitable for passing to
+ *        htslib
+ *
+ * The returned buffer is safe for htslib to call realloc() on, since it is
+ * initially allocated with malloc().
+ *
+ * @warning Use this function ONLY when the memory will be handled to htslib
+ *          for management and eventual release (eg., copying the buffer pointer
+ *          into a bcf1_t) -- it is the caller's responsibility to make sure
+ *          deallocation is taken care of.
+ */
+kstring_t initialize_htslib_buffer(const uint32_t initial_capacity) {
+  kstring_t buffer {0, 0, 0};
+
+  buffer.s = (char*)malloc(initial_capacity);
+  if ( buffer.s == nullptr ) {
+    throw runtime_error{"Out of memory in initialize_htslib_buffer()"};
+  }
+
+  buffer.m = initial_capacity;
+  return buffer;
+}
 
 }
 }

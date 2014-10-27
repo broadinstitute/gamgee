@@ -274,6 +274,46 @@ class Genotype{
     return !missing() && !hom_ref();
   }
 
+  /**
+   * @brief Converts a vector of allele indices representing a genotype into BCF-encoded
+   *        format suitable for passing to VariantBuilder::set_genotypes(). No phasing
+   *        is added.
+   *
+   *        Example: if you want to encode the genotype 0/1, create a vector with {0, 1}
+   *                 and then pass it to this function
+   */
+  static inline void encode_genotype(std::vector<int32_t>& alleles) {
+    encode_genotype(alleles, false);
+  }
+
+  /**
+   * @brief Converts a vector of allele indices representing a genotype into BCF-encoded
+   *        format suitable for passing to VariantBuilder::set_genotypes(), and also
+   *        allows you to phase all alleles
+   *
+   *        Example: if you want to encode the genotype 0|1, create a vector with {0, 1}
+   *                 and then pass it to this function with phase_all_alleles set to true
+   */
+  static inline void encode_genotype(std::vector<int32_t>& alleles, bool phase_all_alleles) {
+    for ( auto allele_index = 0u; allele_index < alleles.size(); ++allele_index ) {
+      alleles[allele_index] = (alleles[allele_index] + 1) << 1 | (phase_all_alleles && allele_index > 0u ? 1 : 0);
+    }
+  }
+
+  /**
+   * @brief Converts multiple vectors of allele indices representing genotypes into
+   *        BCF_encoded format suitable for passing to VariantBuilder::set_genotypes().
+   *        No phasing is added.
+   *
+   *        Example: if you want to encode the genotypes 0/1 and 1/1, create a vector
+   *                 with { {0, 1}, {1, 1} } and pass it to this function
+   */
+  static inline void encode_genotypes(std::vector<std::vector<int32_t>>& multiple_genotypes) {
+    for ( auto& genotype : multiple_genotypes ) {
+      encode_genotype(genotype, false);
+    }
+  }
+
  private:
   std::shared_ptr<bcf1_t> m_body;
   const bcf_fmt_t* m_format_ptr;

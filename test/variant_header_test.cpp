@@ -15,9 +15,10 @@ void check_fields(T actual, T truth) {
 }
 
 const auto samples     = vector<string>{"S1", "S292", "S30034"};
-const auto samples_indices = vector<int32_t>{0, 1, 2};
+const auto sample_indices = vector<int32_t>{0, 1, 2};
 const auto chromosomes = vector<string>{"chr1", "chr2", "chr3", "chr4"};
 const auto filters     = vector<string>{"LOW_QUAL", "PASS", "VQSR_FAILED"};
+const auto filter_indices = vector<int32_t>{1, 0, 2};
 const auto shareds       = vector<string>{"DP", "MQ", "RankSum"};
 const auto shareds_indices = vector<int32_t>{3,4,5};  // looks arbitrary but these are the indices of the shared fields because the filters get 0, 1 and 2.
 const auto individuals     = vector<string>{"GQ", "PL", "DP"};
@@ -29,24 +30,72 @@ void variant_header_builder_checks(const VariantHeader& vh) {
   check_fields(vh.filters(), filters);
   check_fields(vh.shared_fields(), shareds);
   check_fields(vh.individual_fields(), individuals);
-  BOOST_CHECK(vh.has_filter("LOW_QUAL") == true);
-  BOOST_CHECK(vh.has_filter("VQSR_FAILED") == true);
-  BOOST_CHECK(vh.has_filter("BLAH") == false);
-  BOOST_CHECK(vh.has_shared_field("DP") == true);
-  BOOST_CHECK(vh.has_shared_field("MQ") == true);
-  BOOST_CHECK(vh.has_shared_field("BLAH") == false);
-  BOOST_CHECK(vh.has_individual_field("GQ") == true);
-  BOOST_CHECK(vh.has_individual_field("DP") == true);
-  BOOST_CHECK(vh.has_individual_field("BLAH") == false);
+
+  BOOST_CHECK(vh.has_filter("PASS"));
+  BOOST_CHECK(vh.has_filter(vh.field_index("PASS")));
+  BOOST_CHECK(vh.has_filter("LOW_QUAL"));
+  BOOST_CHECK(vh.has_filter(vh.field_index("LOW_QUAL")));
+  BOOST_CHECK(vh.has_filter("VQSR_FAILED"));
+  BOOST_CHECK(vh.has_filter(vh.field_index("VQSR_FAILED")));
+  BOOST_CHECK(! vh.has_filter("BLAH"));
+  BOOST_CHECK(! vh.has_filter(vh.field_index("BLAH")));
+  BOOST_CHECK(! vh.has_filter("DP"));
+  BOOST_CHECK(! vh.has_filter(vh.field_index("DP")));
+  BOOST_CHECK(! vh.has_filter("GQ"));
+  BOOST_CHECK(! vh.has_filter(vh.field_index("GQ")));
+  BOOST_CHECK(! vh.has_filter(20));
+
+  BOOST_CHECK(vh.has_shared_field("DP"));
+  BOOST_CHECK(vh.has_shared_field(vh.field_index("DP")));
+  BOOST_CHECK(vh.has_shared_field("MQ"));
+  BOOST_CHECK(vh.has_shared_field(vh.field_index("MQ")));
+  BOOST_CHECK(vh.has_shared_field("RankSum"));
+  BOOST_CHECK(vh.has_shared_field(vh.field_index("RankSum")));
+  BOOST_CHECK(! vh.has_shared_field("BLAH"));
+  BOOST_CHECK(! vh.has_shared_field(vh.field_index("BLAH")));
+  BOOST_CHECK(! vh.has_shared_field("LOW_QUAL"));
+  BOOST_CHECK(! vh.has_shared_field(vh.field_index("LOW_QUAL")));
+  BOOST_CHECK(! vh.has_shared_field("GQ"));
+  BOOST_CHECK(! vh.has_shared_field(vh.field_index("GQ")));
+  BOOST_CHECK(! vh.has_shared_field(20));
+
+  BOOST_CHECK(vh.has_individual_field("GQ"));
+  BOOST_CHECK(vh.has_individual_field(vh.field_index("GQ")));
+  BOOST_CHECK(vh.has_individual_field("PL"));
+  BOOST_CHECK(vh.has_individual_field(vh.field_index("PL")));
+  BOOST_CHECK(vh.has_individual_field("DP"));
+  BOOST_CHECK(vh.has_individual_field(vh.field_index("DP")));
+  BOOST_CHECK(! vh.has_individual_field("BLAH"));
+  BOOST_CHECK(! vh.has_individual_field(vh.field_index("BLAH")));
+  BOOST_CHECK(! vh.has_individual_field("MQ"));
+  BOOST_CHECK(! vh.has_individual_field(vh.field_index("MQ")));
+  BOOST_CHECK(! vh.has_individual_field("LOW_QUAL"));
+  BOOST_CHECK(! vh.has_individual_field(vh.field_index("LOW_QUAL")));
+  BOOST_CHECK(! vh.has_individual_field(20));
+
+  BOOST_CHECK(vh.has_sample("S1"));
+  BOOST_CHECK(vh.has_sample(vh.sample_index("S1")));
+  BOOST_CHECK(vh.has_sample("S292"));
+  BOOST_CHECK(vh.has_sample(vh.sample_index("S292")));
+  BOOST_CHECK(vh.has_sample("S30034"));
+  BOOST_CHECK(vh.has_sample(vh.sample_index("S30034")));
+  BOOST_CHECK(! vh.has_sample("BLAH"));
+  BOOST_CHECK(! vh.has_sample(vh.sample_index("BLAH")));
+  BOOST_CHECK(! vh.has_sample("DP"));
+  BOOST_CHECK(! vh.has_sample(vh.sample_index("DP")));
+  BOOST_CHECK(! vh.has_sample(20));
+
+  for (auto i = 0u; i != filters.size(); ++i)
+    BOOST_CHECK_EQUAL(filter_indices[i], vh.field_index(filters[i]));
   for (auto i = 0u; i != shareds.size(); ++i)
     BOOST_CHECK_EQUAL(shareds_indices[i], vh.field_index(shareds[i]));
   for (auto i = 0u; i != individuals.size(); ++i)
     BOOST_CHECK_EQUAL(individuals_indices[i], vh.field_index(individuals[i]));
   for (auto i = 0u; i != samples.size(); ++i)
-    BOOST_CHECK_EQUAL(samples_indices[i], vh.sample_index(samples[i]));
+    BOOST_CHECK_EQUAL(sample_indices[i], vh.sample_index(samples[i]));
+
   BOOST_CHECK(missing(vh.field_index("MISSING")));
-  BOOST_CHECK(missing(vh.field_index("MISSING")));
-  BOOST_CHECK_EQUAL(vh.field_index("PASS"), 0);
+  BOOST_CHECK(missing(vh.sample_index("MISSING")));
 }
 
 VariantHeaderBuilder simple_builder() {

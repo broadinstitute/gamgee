@@ -26,7 +26,7 @@ class VariantFilters {
    * @param header an htslib variant header to keep shared ownership of the memory
    * @param body an htslib variant body to keep shared ownership of the memory
    */
-  VariantFilters(const std::shared_ptr<bcf_hdr_t>& header, const std::shared_ptr<bcf1_t>& body) : m_header {header}, m_body {body} {} 
+  explicit VariantFilters(const std::shared_ptr<bcf_hdr_t>& header, const std::shared_ptr<bcf1_t>& body) : m_header {header}, m_body {body} {}
 
   /**
    * @brief random access operator
@@ -38,6 +38,11 @@ class VariantFilters {
    * @brief returns the number of filters in the filter field
    */
   uint32_t size() const { return uint32_t(m_body->d.n_flt); }
+
+  /**
+   * @brief returns true if the filters field is missing
+   */
+  bool missing() const { return size() == 0; }
 
   /**
    * @brief returns an iterator pointing to the first element in the list of filters.

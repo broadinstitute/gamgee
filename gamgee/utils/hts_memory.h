@@ -4,6 +4,7 @@
 #include "htslib/sam.h"
 #include "htslib/vcf.h"
 #include "htslib/synced_bcf_reader.h"
+#include "htslib/kstring.h"
 
 #include <memory>
 #include <vector>
@@ -96,6 +97,17 @@ bam1_t* sam_shallow_copy(bam1_t* original);
  * @param index the index of the filter you want access to
  */
 std::string htslib_filter_name(bcf_hdr_t* header, bcf1_t* body, int index);
+
+uint8_t bcf_type_to_element_size(const int32_t htslib_type);
+inline uint8_t int_encoded_type(const int32_t val) { return bcf_enc_inttype(val); }
+uint8_t int_encoded_type(const int32_t min_val, const int32_t max_val);
+inline uint8_t int_encoded_size(const int32_t val) { return bcf_type_to_element_size(bcf_enc_inttype(val)); }
+inline uint32_t encoded_size(const int8_t field_type, const uint32_t field_length, bool add_type_descriptor = true) {
+  const auto type_descriptor_size = add_type_descriptor ? (field_length >= 15 ? int_encoded_size(field_length) + 2 : 1) : 0;
+  return field_length * bcf_type_to_element_size(field_type) + type_descriptor_size;
+}
+
+kstring_t initialize_htslib_buffer(const uint32_t initial_capacity);
 
 }
 }
