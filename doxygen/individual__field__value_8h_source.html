@@ -179,54 +179,56 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="classgamgee_1_1_individual_field_value.html#aff33de10fd722566f56a3baaa778e607">  167</a></span>&#160;  VALUE_TYPE <a class="code" href="classgamgee_1_1_individual_field_value.html#aff33de10fd722566f56a3baaa778e607">back</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classgamgee_1_1_individual_field_value.html#a3d6dced8d3939d7a52413ad4f00b1c56">operator[]</a>(m_format_ptr-&gt;n - 1); }   </div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
 <div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="classgamgee_1_1_individual_field_value.html#a153fe55bbd371d131e2769ad39d362f9">  172</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classgamgee_1_1_individual_field_value.html#a153fe55bbd371d131e2769ad39d362f9">missing</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> value : *<span class="keyword">this</span>)</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      <span class="comment">// use qualifier to avoid recursion</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      <span class="keywordflow">if</span> (!<a class="code" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">gamgee::missing</a>(value))</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  }</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  std::shared_ptr&lt;bcf1_t&gt; m_body;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  <span class="keyword">const</span> bcf_fmt_t* m_format_ptr;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  uint8_t* m_data_ptr;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  uint8_t m_num_bytes;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  VALUE_TYPE convert_from_byte_array(<span class="keywordtype">int</span> index) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;};</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;int32_t IndividualFieldValue&lt;int32_t&gt;::convert_from_byte_array(<span class="keywordtype">int</span> index)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="namespacegamgee_1_1utils.html#a8b57ec3415d2ed156dbd52b8c5b16dcb">utils::convert_data_to_integer</a>(m_data_ptr, index, m_num_bytes, static_cast&lt;utils::VariantFieldType&gt;(m_format_ptr-&gt;type));</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;}</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="keywordtype">float</span> IndividualFieldValue&lt;float&gt;::convert_from_byte_array(<span class="keywordtype">int</span> index)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="namespacegamgee_1_1utils.html#ac9875414c3301e1504febd91376d0672">utils::convert_data_to_float</a>(m_data_ptr, index, m_num_bytes, static_cast&lt;utils::VariantFieldType&gt;(m_format_ptr-&gt;type));</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;}</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;std::string IndividualFieldValue&lt;std::string&gt;::convert_from_byte_array(<span class="keywordtype">int</span> index)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="namespacegamgee_1_1utils.html#a047abcf196c22d47e3e567df353b73df">utils::convert_data_to_string</a>(m_data_ptr, index, m_num_bytes, static_cast&lt;utils::VariantFieldType&gt;(m_format_ptr-&gt;type));</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;}</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno"><a class="line" href="classgamgee_1_1_individual_field_value.html#a31757ea3d3e5286a7413273f6ca6ef9c">  218</a></span>&#160;std::string <a class="code" href="classgamgee_1_1_individual_field_value.html#a3d6dced8d3939d7a52413ad4f00b1c56">IndividualFieldValue&lt;std::string&gt;::operator[]</a>(<span class="keyword">const</span> uint32_t index)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  <span class="keyword">auto</span> <a class="code" href="namespacegamgee_1_1utils.html#a411927fb159d2fb6cfbd183655ea454b">is_string_type</a> = <a class="code" href="namespacegamgee_1_1utils.html#a411927fb159d2fb6cfbd183655ea454b">utils::is_string_type</a>(m_format_ptr-&gt;type);</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  <span class="keyword">auto</span> limit = <a class="code" href="classgamgee_1_1_individual_field_value.html#aa83a952a7773fca06e1394d07ef15e2c">size</a>();</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  <span class="keyword">auto</span> prefix_msg = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="namespacegamgee_1_1utils.html#a411927fb159d2fb6cfbd183655ea454b">is_string_type</a>)</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  {</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    limit = 1u;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    prefix_msg = <span class="stringliteral">&quot;FORMAT fields of type string in VCFs have only 1 element per sample :: &quot;</span>;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  }</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  <a class="code" href="namespacegamgee_1_1utils.html#a7dc9761d65ea9b619029ea0f7ee1372f">utils::check_max_boundary</a>(index, limit, prefix_msg);</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  <span class="keywordflow">return</span> convert_from_byte_array(index); </div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;}</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="comment">// Important: relies on IndividualFieldValueIterator to skip vector end values, if there are any</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; value : *<span class="keyword">this</span>) {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      <span class="comment">// use qualifier to avoid recursion</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      <span class="keywordflow">if</span> (!<a class="code" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">gamgee::missing</a>(value))</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  std::shared_ptr&lt;bcf1_t&gt; m_body;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  <span class="keyword">const</span> bcf_fmt_t* m_format_ptr;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  uint8_t* m_data_ptr;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  uint8_t m_num_bytes;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  VALUE_TYPE convert_from_byte_array(<span class="keywordtype">int</span> index) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;};</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;int32_t IndividualFieldValue&lt;int32_t&gt;::convert_from_byte_array(<span class="keywordtype">int</span> index)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="namespacegamgee_1_1utils.html#a8b57ec3415d2ed156dbd52b8c5b16dcb">utils::convert_data_to_integer</a>(m_data_ptr, index, m_num_bytes, static_cast&lt;utils::VariantFieldType&gt;(m_format_ptr-&gt;type));</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;}</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="keywordtype">float</span> IndividualFieldValue&lt;float&gt;::convert_from_byte_array(<span class="keywordtype">int</span> index)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="namespacegamgee_1_1utils.html#ac9875414c3301e1504febd91376d0672">utils::convert_data_to_float</a>(m_data_ptr, index, m_num_bytes, static_cast&lt;utils::VariantFieldType&gt;(m_format_ptr-&gt;type));</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;}</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;std::string IndividualFieldValue&lt;std::string&gt;::convert_from_byte_array(<span class="keywordtype">int</span> index)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="namespacegamgee_1_1utils.html#a047abcf196c22d47e3e567df353b73df">utils::convert_data_to_string</a>(m_data_ptr, index, m_num_bytes, static_cast&lt;utils::VariantFieldType&gt;(m_format_ptr-&gt;type));</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;}</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno"><a class="line" href="classgamgee_1_1_individual_field_value.html#a31757ea3d3e5286a7413273f6ca6ef9c">  220</a></span>&#160;std::string <a class="code" href="classgamgee_1_1_individual_field_value.html#a3d6dced8d3939d7a52413ad4f00b1c56">IndividualFieldValue&lt;std::string&gt;::operator[]</a>(<span class="keyword">const</span> uint32_t index)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  <span class="keyword">auto</span> <a class="code" href="namespacegamgee_1_1utils.html#a411927fb159d2fb6cfbd183655ea454b">is_string_type</a> = <a class="code" href="namespacegamgee_1_1utils.html#a411927fb159d2fb6cfbd183655ea454b">utils::is_string_type</a>(m_format_ptr-&gt;type);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  <span class="keyword">auto</span> limit = <a class="code" href="classgamgee_1_1_individual_field_value.html#aa83a952a7773fca06e1394d07ef15e2c">size</a>();</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  <span class="keyword">auto</span> prefix_msg = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="namespacegamgee_1_1utils.html#a411927fb159d2fb6cfbd183655ea454b">is_string_type</a>)</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    limit = 1u;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    prefix_msg = <span class="stringliteral">&quot;FORMAT fields of type string in VCFs have only 1 element per sample :: &quot;</span>;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  <a class="code" href="namespacegamgee_1_1utils.html#a7dc9761d65ea9b619029ea0f7ee1372f">utils::check_max_boundary</a>(index, limit, prefix_msg);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  <span class="keywordflow">return</span> convert_from_byte_array(index); </div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;}</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="preprocessor">#endif // gamgee__individual_field_value__guard</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;}</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="preprocessor">#endif // gamgee__individual_field_value__guard</span></div>
 <div class="ttc" id="classgamgee_1_1_individual_field_value_html_a3d6dced8d3939d7a52413ad4f00b1c56"><div class="ttname"><a href="classgamgee_1_1_individual_field_value.html#a3d6dced8d3939d7a52413ad4f00b1c56">gamgee::IndividualFieldValue::operator[]</a></div><div class="ttdeci">VALUE_TYPE operator[](const uint32_t index) const </div><div class="ttdoc">random access to the value of a given sample for reading or writing </div><div class="ttdef"><b>Definition:</b> individual_field_value.h:146</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a04f2f42b3960b33e4edc7478ce6039ec"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">gamgee::utils::VariantFieldType</a></div><div class="ttdeci">VariantFieldType</div><div class="ttdoc">an enumeration of the types in htslib for the format field values </div><div class="ttdef"><b>Definition:</b> variant_field_type.h:16</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a7dc9761d65ea9b619029ea0f7ee1372f"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a7dc9761d65ea9b619029ea0f7ee1372f">gamgee::utils::check_max_boundary</a></div><div class="ttdeci">void check_max_boundary(const uint32_t index, const uint32_t size, const std::string &amp;prefix_msg)</div><div class="ttdoc">checks that an index is greater than or equal to size </div><div class="ttdef"><b>Definition:</b> utils.h:63</div></div>
@@ -260,7 +262,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 27 2014 20:10:48 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Oct 28 2014 20:00:54 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
