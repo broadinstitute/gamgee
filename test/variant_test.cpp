@@ -1,8 +1,9 @@
 #include <boost/test/unit_test.hpp>
 #include "variant_reader.h"
 #include "variant.h"
-#include "utils/variant_utils.h"
 #include "variant_builder.h"
+#include "missing.h"
+#include "utils/variant_utils.h"
 
 using namespace std;
 using namespace gamgee;
@@ -45,6 +46,17 @@ BOOST_AUTO_TEST_CASE( allele_mask_snp_and_insertion ) {
   BOOST_CHECK(am[0] == AlleleType::REFERENCE);
   BOOST_CHECK(am[1] == AlleleType::DELETION);
   BOOST_CHECK(am[2] == AlleleType::INSERTION);
+}
+
+BOOST_AUTO_TEST_CASE( test_missing_variant_record ) {
+  auto header = SingleVariantReader{"testdata/test_variants.vcf"}.header();
+  auto builder = VariantBuilder{header};
+
+  auto missing_variant = Variant{};
+  auto non_missing_variant = builder.set_chromosome("20").set_alignment_start(5).set_ref_allele("A").build();
+
+  BOOST_CHECK(missing(missing_variant));
+  BOOST_CHECK(! missing(non_missing_variant));
 }
 
 BOOST_AUTO_TEST_CASE( test_missing_integer_individual_field_values ) {
