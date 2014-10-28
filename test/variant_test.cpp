@@ -2,6 +2,7 @@
 #include "variant_reader.h"
 #include "variant.h"
 #include "utils/variant_utils.h"
+#include "variant_builder.h"
 
 using namespace std;
 using namespace gamgee;
@@ -46,3 +47,56 @@ BOOST_AUTO_TEST_CASE( allele_mask_snp_and_insertion ) {
   BOOST_CHECK(am[2] == AlleleType::INSERTION);
 }
 
+BOOST_AUTO_TEST_CASE( test_missing_integer_individual_field_values ) {
+  auto header = SingleVariantReader{"testdata/test_variants.vcf"}.header();
+  auto builder = VariantBuilder{header};
+  builder.set_chromosome("20").set_alignment_start(5).set_ref_allele("A");
+
+  // Missing integer field value of length one (will have just a missing value, no vector end)
+  auto variant = builder.set_integer_individual_field("VLINT", vector<vector<int32_t>>{{1}, {}, {3}}).build();
+  BOOST_CHECK(! missing(variant.integer_individual_field("VLINT")[0]));
+  BOOST_CHECK(missing(variant.integer_individual_field("VLINT")[1]));
+  BOOST_CHECK(! missing(variant.integer_individual_field("VLINT")[2]));
+
+  // Missing integer field value of length two (will have both a missing and a vector end value)
+  variant = builder.set_integer_individual_field("VLINT", vector<vector<int32_t>>{{1, 2}, {}, {3}}).build();
+  BOOST_CHECK(! missing(variant.integer_individual_field("VLINT")[0]));
+  BOOST_CHECK(missing(variant.integer_individual_field("VLINT")[1]));
+  BOOST_CHECK(! missing(variant.integer_individual_field("VLINT")[2]));
+}
+
+BOOST_AUTO_TEST_CASE( test_missing_float_individual_field_values ) {
+  auto header = SingleVariantReader{"testdata/test_variants.vcf"}.header();
+  auto builder = VariantBuilder{header};
+  builder.set_chromosome("20").set_alignment_start(5).set_ref_allele("A");
+
+  // Missing float field value of length one (will have just a missing value, no vector end)
+  auto variant = builder.set_float_individual_field("VLFLOAT", vector<vector<float>>{{1.0}, {}, {3.0}}).build();
+  BOOST_CHECK(! missing(variant.float_individual_field("VLFLOAT")[0]));
+  BOOST_CHECK(missing(variant.float_individual_field("VLFLOAT")[1]));
+  BOOST_CHECK(! missing(variant.float_individual_field("VLFLOAT")[2]));
+
+  // Missing float field value of length two (will have both a missing and a vector end value)
+  variant = builder.set_float_individual_field("VLFLOAT", vector<vector<float>>{{1.0, 2.0}, {}, {3.0}}).build();
+  BOOST_CHECK(! missing(variant.float_individual_field("VLFLOAT")[0]));
+  BOOST_CHECK(missing(variant.float_individual_field("VLFLOAT")[1]));
+  BOOST_CHECK(! missing(variant.float_individual_field("VLFLOAT")[2]));
+}
+
+BOOST_AUTO_TEST_CASE( test_missing_string_individual_field_values ) {
+  auto header = SingleVariantReader{"testdata/test_variants.vcf"}.header();
+  auto builder = VariantBuilder{header};
+  builder.set_chromosome("20").set_alignment_start(5).set_ref_allele("A");
+
+  // String field value with empty string
+  auto variant = builder.set_string_individual_field("AS", vector<string>{"abc", "", "def"}).build();
+  BOOST_CHECK(! missing(variant.string_individual_field("AS")[0]));
+  BOOST_CHECK(missing(variant.string_individual_field("AS")[1]));
+  BOOST_CHECK(! missing(variant.string_individual_field("AS")[2]));
+
+  // String field value with "."
+  variant = builder.set_string_individual_field("AS", vector<string>{"abc", ".", "def"}).build();
+  BOOST_CHECK(! missing(variant.string_individual_field("AS")[0]));
+  BOOST_CHECK(missing(variant.string_individual_field("AS")[1]));
+  BOOST_CHECK(! missing(variant.string_individual_field("AS")[2]));
+}
