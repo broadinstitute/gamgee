@@ -125,6 +125,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0621ba236a11c19f4186755d4e650ef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adcf70d251726d37a8a5b7fc3e5ffa0f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#adcf70d251726d37a8a5b7fc3e5ffa0f3">header</a> () const </td></tr>
 <tr class="separator:adcf70d251726d37a8a5b7fc3e5ffa0f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5ae216095a65704d719207f7d3412e2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#ad5ae216095a65704d719207f7d3412e2">missing</a> () const </td></tr>
+<tr class="memdesc:ad5ae216095a65704d719207f7d3412e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns true if this is a default-constructed <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> object with no data  <a href="#ad5ae216095a65704d719207f7d3412e2">More...</a><br /></td></tr>
+<tr class="separator:ad5ae216095a65704d719207f7d3412e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7ff7ad4733aaa8c66a65993b1ae6fa9"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant.html#ae7ff7ad4733aaa8c66a65993b1ae6fa9">chromosome</a> () const </td></tr>
 <tr class="memdesc:ae7ff7ad4733aaa8c66a65993b1ae6fa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the integer representation of the chromosome. Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). Similar to Picards getReferenceIndex()  <a href="#ae7ff7ad4733aaa8c66a65993b1ae6fa9">More...</a><br /></td></tr>
 <tr class="separator:ae7ff7ad4733aaa8c66a65993b1ae6fa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -938,6 +941,31 @@ creates a new object but makes no copies of the underlying values. </dd></dl>
 
 </div>
 </div>
+<a class="anchor" id="ad5ae216095a65704d719207f7d3412e2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::Variant::missing </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>returns true if this is a default-constructed <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> object with no data </p>
+
+</div>
+</div>
 <a class="anchor" id="a093b25862a15ebb982fa683fc3298662"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1397,7 +1425,7 @@ This function can be called directly (ignoring the template parameters) as all t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 28 2014 20:00:55 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Oct 28 2014 20:19:21 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
