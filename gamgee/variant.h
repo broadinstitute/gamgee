@@ -35,6 +35,7 @@ class Variant {
   Variant& operator=(Variant&& other) = default;                                                              ///< move assignment of a Variant and it's header. Shared pointers maintain state to all other associated objects correctly.
 
   VariantHeader header() const { return VariantHeader{m_header}; }
+  bool missing() const { return m_body == nullptr; }                 ///< returns true if this is a default-constructed Variant object with no data
 
   uint32_t chromosome()         const {return uint32_t(m_body->rid);}                                         ///< returns the integer representation of the chromosome. Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). Similar to Picards getReferenceIndex()
   std::string chromosome_name() const {return header().chromosomes()[chromosome()];}                          ///< returns the name of the chromosome by querying the header.
