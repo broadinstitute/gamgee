@@ -877,23 +877,30 @@ void single_variant_reader_sample_test(const string filename, const vector<strin
 BOOST_AUTO_TEST_CASE( single_variant_reader_sites_only )  
 {
   single_variant_reader_sample_test("testdata/test_variants.vcf", vector<string>{}, true, 0); // exclude all samples (sites-only)
+  // Fails: Issue #209
+  //single_variant_reader_sample_test("testdata/test_variants.bcf", vector<string>{}, true, 0); // exclude all samples (sites-only)
 }
 
 BOOST_AUTO_TEST_CASE( single_variant_reader_include_all_samples ) 
 {
   single_variant_reader_sample_test("testdata/test_variants.vcf", vector<string>{}, false, 3);  // include all samples by setting include == false and passing an empty list
+  single_variant_reader_sample_test("testdata/test_variants.bcf", vector<string>{}, false, 3);  // include all samples by setting include == false and passing an empty list
 }
 
 BOOST_AUTO_TEST_CASE( single_variant_reader_including )  
 {
   single_variant_reader_sample_test("testdata/test_variants.vcf", vector<string>{"NA12878"}, true, 1); // include only NA12878
   single_variant_reader_sample_test("testdata/test_variants.vcf", vector<string>{"NA12878", "NA12892"}, true, 2); // include both these samples
+  single_variant_reader_sample_test("testdata/test_variants.bcf", vector<string>{"NA12878"}, true, 1); // include only NA12878
+  single_variant_reader_sample_test("testdata/test_variants.bcf", vector<string>{"NA12878", "NA12892"}, true, 2); // include both these samples
 }
 
 BOOST_AUTO_TEST_CASE( single_variant_reader_excluding )  
 {
   single_variant_reader_sample_test("testdata/test_variants.vcf", vector<string>{"NA12891"}, false, 2);  // exclude only NA12891
   single_variant_reader_sample_test("testdata/test_variants.vcf", vector<string>{"NA12891", "NA12878"}, false, 1);  // exclude both these samples
+  single_variant_reader_sample_test("testdata/test_variants.bcf", vector<string>{"NA12891"}, false, 2);  // exclude only NA12891
+  single_variant_reader_sample_test("testdata/test_variants.bcf", vector<string>{"NA12891", "NA12878"}, false, 1);  // exclude both these samples
 }
 
 BOOST_AUTO_TEST_CASE( single_variant_reader_missing_data )
@@ -1034,12 +1041,10 @@ void multiple_variant_reader_sample_test(const vector<string> samples, const boo
   BOOST_CHECK_EQUAL(reader.combined_header().n_samples(), desired_samples);
 }
 
-/*      TODO: Issue #209
 BOOST_AUTO_TEST_CASE( multiple_variant_reader_sites_only )
 {
   multiple_variant_reader_sample_test(vector<string>{}, true, 0); // exclude all samples (sites-only)
 }
-*/
 
 BOOST_AUTO_TEST_CASE( multiple_variant_reader_include_all_samples )
 {

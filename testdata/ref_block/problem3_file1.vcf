@@ -1,0 +1,25 @@
+##fileformat=VCFv4.1
+##ALT=<ID=NON_REF,Description="Represents any possible alternative allele at this location">
+##FILTER=<ID=LowQual,Description="Low quality">
+##INFO=<ID=END,Number=1,Type=Integer,Description="Stop position of the interval">
+##FORMAT=<ID=AD,Number=.,Type=Integer,Description="Allelic depths for the ref and alt alleles in the order listed">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Approximate read depth (reads with MQ=255 or with bad mates are filtered)">
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description="Genotype Quality">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=MIN_DP,Number=1,Type=Integer,Description="Minimum DP observed within the GVCF block">
+##FORMAT=<ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+##FORMAT=<ID=SB,Number=4,Type=Integer,Description="Per-sample component statistics which comprise the Fisher's Exact Test to detect strand bias.">
+##contig=<ID=1,length=249250621>
+##reference=Homo_sapiens_assembly19.fasta
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	PROBLEM_SAMPLE1
+1	3319304	.	C	<NON_REF>	.	.	END=3319318	GT:DP:GQ:MIN_DP:PL	0/0:19:51:17:0,42,618
+1	3319319	.	A	<NON_REF>	.	.	END=3319403	GT:DP:GQ:MIN_DP:PL	0/0:29:75:21:0,63,758
+1	3319404	.	G	<NON_REF>	.	.	END=3319406	GT:DP:GQ:MIN_DP:PL	0/0:24:57:24:0,57,855
+1	3319407	.	G	<NON_REF>	.	.	END=3319409	GT:DP:GQ:MIN_DP:PL	0/0:24:63:24:0,60,900
+1	3319410	.	C	<NON_REF>	.	.	END=3319412	GT:DP:GQ:MIN_DP:PL	0/0:24:54:24:0,54,810
+1	3319413	.	G	<NON_REF>	.	.	END=3319432	GT:DP:GQ:MIN_DP:PL	0/0:24:63:22:0,60,900
+1	3319433	.	C	<NON_REF>	.	.	END=3319446	GT:DP:GQ:MIN_DP:PL	0/0:21:57:20:0,45,810
+1	3319447	.	G	<NON_REF>	.	.	END=3319557	GT:DP:GQ:MIN_DP:PL	0/0:29:72:21:0,60,715
+1	3319558	.	T	<NON_REF>	.	.	END=3319564	GT:DP:GQ:MIN_DP:PL	0/0:24:57:23:0,54,810
+1	3319565	.	G	<NON_REF>	.	.	END=3319576	GT:DP:GQ:MIN_DP:PL	0/0:22:60:21:0,60,900
+1	3319577	.	T	<NON_REF>	.	.	END=3319600	GT:DP:GQ:MIN_DP:PL	0/0:17:42:13:0,23,495
