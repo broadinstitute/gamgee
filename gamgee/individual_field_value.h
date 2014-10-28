@@ -170,10 +170,12 @@ class IndividualFieldValue {
    * @brief returns true if all of the values are missing
    */
   bool missing() const {
-    for (const auto value : *this)
+    // Important: relies on IndividualFieldValueIterator to skip vector end values, if there are any
+    for (const auto& value : *this) {
       // use qualifier to avoid recursion
       if (!gamgee::missing(value))
         return false;
+    }
     return true;
   }
 
