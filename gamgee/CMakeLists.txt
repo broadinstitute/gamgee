@@ -37,4 +37,4 @@ set(SOURCE_FILES
     variant_writer.cpp
     )
 
-add_library(gamgee ${SOURCE_FILES})
+add_library(gamgee STATIC ${SOURCE_FILES})
