@@ -1,0 +1,40 @@
+set(SOURCE_FILES
+    utils/file_utils.cpp
+    utils/genotype_utils.cpp
+    utils/hts_memory.cpp
+    utils/utils.cpp
+    utils/variant_field_type.cpp
+    utils/variant_utils.cpp
+    base_quals.cpp
+    cigar.cpp
+    fastq.cpp
+    fastq_iterator.cpp
+    fastq_reader.cpp
+    genotype.cpp
+    indexed_sam_iterator.cpp
+    indexed_variant_iterator.cpp
+    interval.cpp
+    multiple_variant_iterator.cpp
+    read_bases.cpp
+    read_group.cpp
+    reference_iterator.cpp
+    reference_map.cpp
+    sam.cpp
+    sam_builder.cpp
+    sam_builder_data_field.cpp
+    sam_header.cpp
+    sam_iterator.cpp
+    sam_pair_iterator.cpp
+    sam_writer.cpp
+    synced_variant_iterator.cpp
+    variant.cpp
+    variant_builder.cpp
+    variant_builder_individual_region.cpp
+    variant_builder_shared_region.cpp
+    variant_header.cpp
+    variant_header_builder.cpp
+    variant_iterator.cpp
+    variant_writer.cpp
+    )
+
+add_library(gamgee STATIC ${SOURCE_FILES})

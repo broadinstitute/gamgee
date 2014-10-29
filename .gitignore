@@ -41,3 +41,6 @@ dox/
 
 # Jekyll site cache
 _site/
+
+# CLion project files
+.idea/
