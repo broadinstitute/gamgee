@@ -14,17 +14,18 @@ set(SOURCE_FILES
     sam_reader_test.cpp
     sam_test.cpp
     select_if_test.cpp
+    short_value_optimized_storage_test.cpp
     utils_test.cpp
+    variant_builder_test.cpp
     variant_header_test.cpp
     variant_reader_test.cpp
     variant_test.cpp)
 
 include("../contrib/htslib.cmake")
 
-ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK)
-find_package(Boost 1.56 COMPONENTS unit_test_framework REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 
 add_executable(gamgee_test ${SOURCE_FILES})
+target_compile_definitions(gamgee_test PUBLIC -DBOOST_TEST_DYN_LINK)
 target_link_libraries(gamgee_test gamgee ${htslib_LIB} ${Boost_LIBRARIES} pthread z)
 add_dependencies(gamgee_test htslib)
