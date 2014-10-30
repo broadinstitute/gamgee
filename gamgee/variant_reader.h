@@ -14,6 +14,7 @@
 #include <fstream>
 #include <algorithm>
 #include <memory>
+#include <stdexcept>
 
 
 namespace gamgee {
@@ -163,6 +164,9 @@ class VariantReader {
    */
   void init_reader (const std::string& filename) {
     auto* file_ptr = bcf_open(filename.empty() ? "-" : filename.c_str(), "r");
+    if ( file_ptr == nullptr ) {
+      throw std::invalid_argument{std::string{"Could not open file "} + filename};
+    }
     m_variant_file_ptr = utils::make_shared_hts_file (file_ptr);
     m_variant_header_ptr = utils::make_shared_variant_header (bcf_hdr_read (file_ptr));
   }

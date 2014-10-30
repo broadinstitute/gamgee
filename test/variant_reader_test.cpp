@@ -14,6 +14,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/algorithm/string/join.hpp>
 #include <boost/iterator/zip_iterator.hpp>
+#include <stdexcept>
 
 using namespace std;
 using namespace gamgee;
@@ -1339,4 +1340,8 @@ BOOST_AUTO_TEST_CASE( synced_variant_iterator_move_test ) {
 
     BOOST_CHECK_EQUAL(record0[0].alignment_start(), moved_record[0].alignment_start());
   }
+}
+
+BOOST_AUTO_TEST_CASE( variant_reader_nonexistent_file ) {
+  BOOST_CHECK_THROW(SingleVariantReader{"foo/bar/nonexistent.vcf"}, invalid_argument);
 }
