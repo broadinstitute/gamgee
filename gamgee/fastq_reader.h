@@ -90,6 +90,8 @@ class FastqReader {
 
 private:
   std::shared_ptr<std::istream> m_input_stream; ///< a pointer to the input stream
+
+  void init_reader(const std::string& filename);
 };
 
 }  // end of namespace

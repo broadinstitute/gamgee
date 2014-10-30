@@ -18,7 +18,7 @@ FastqReader::FastqReader(const std::string& filename) :
   m_input_stream {}
 {
   if (!filename.empty()) {
-    m_input_stream = utils::make_shared_ifstream(filename);
+    init_reader(filename);
   }
 }
 
@@ -28,7 +28,7 @@ FastqReader::FastqReader(const std::vector<std::string>& filenames) :
   if (filenames.size() > 1)
     throw SingleInputException{"filenames", filenames.size()};
   if (!filenames.empty()) {
-    m_input_stream = utils::make_shared_ifstream(filenames.front());
+    init_reader(filenames.front());
   }
 }
 
@@ -42,6 +42,13 @@ FastqIterator FastqReader::begin() {
 
 FastqIterator FastqReader::end() {
   return FastqIterator{};
+}
+
+void FastqReader::init_reader(const std::string& filename) {
+  m_input_stream = utils::make_shared_ifstream(filename);
+  if ( m_input_stream->fail() ) {
+    throw FileOpenException{filename};
+  }
 }
 
 

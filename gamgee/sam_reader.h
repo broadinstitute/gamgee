@@ -118,8 +118,16 @@ class SamReader {
      */
     void init_reader (const std::string& filename) {
       auto* file_ptr = sam_open(filename.empty() ? "-" : filename.c_str(), "r");
+      if ( file_ptr == nullptr ) {
+        throw FileOpenException{filename};
+      }
       m_sam_file_ptr  = utils::make_shared_hts_file(file_ptr);
-      m_sam_header_ptr = utils::make_shared_sam_header(sam_hdr_read(file_ptr));
+
+      auto* header_ptr = sam_hdr_read(file_ptr);
+      if ( header_ptr == nullptr ) {
+        throw HeaderReadException{filename};
+      }
+      m_sam_header_ptr = utils::make_shared_sam_header(header_ptr);
     }
 };
 

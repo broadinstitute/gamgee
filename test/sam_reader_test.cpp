@@ -1,8 +1,12 @@
 #include "sam_reader.h"
+#include "indexed_sam_reader.h"
+#include "exceptions.h"
 
 #include "test_utils.h"
 
 #include <boost/test/unit_test.hpp>
+#include <vector>
+#include <string>
 
 using namespace std;
 using namespace gamgee;
@@ -62,4 +66,20 @@ BOOST_AUTO_TEST_CASE( sam_iterator_move_test ) {
   auto moved_record = *moved;
   BOOST_CHECK_EQUAL(record0.name(), moved_record.name());
   BOOST_CHECK_EQUAL(record0.chromosome(), moved_record.chromosome());
+}
+
+BOOST_AUTO_TEST_CASE( single_sam_reader_nonexistent_file ) {
+  BOOST_CHECK_THROW(SingleSamReader{"foo/bar/nonexistent.bam"}, FileOpenException);
+}
+
+BOOST_AUTO_TEST_CASE( pair_sam_reader_nonexistent_file ) {
+  BOOST_CHECK_THROW(PairSamReader{"foo/bar/nonexistent.bam"}, FileOpenException);
+}
+
+BOOST_AUTO_TEST_CASE( indexed_sam_reader_nonexistent_file ) {
+  BOOST_CHECK_THROW(IndexedSamReader<IndexedSamIterator>("foo/bar/nonexistent.bam", vector<string>{}), FileOpenException);
+}
+
+BOOST_AUTO_TEST_CASE( indexed_sam_reader_nonexistent_index ) {
+  BOOST_CHECK_THROW(IndexedSamReader<IndexedSamIterator>("testdata/unindexed/test_unindexed.bam", vector<string>{}), IndexLoadException);
 }

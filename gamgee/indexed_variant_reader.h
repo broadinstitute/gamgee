@@ -3,6 +3,7 @@
 
 #include "indexed_variant_iterator.h"
 #include "utils/hts_memory.h"
+#include "exceptions.h"
 
 #include "htslib/vcf.h"
 
@@ -38,11 +39,13 @@ class IndexedVariantReader {
    *
    */
   IndexedVariantReader(const std::string& filename, const std::vector<std::string>& interval_list) :
-    m_variant_file_ptr { utils::make_shared_hts_file(bcf_open(filename.c_str(), "r")) },
-    m_variant_index_ptr { utils::make_shared_hts_index(bcf_index_load(filename.c_str())) },
-    m_variant_header_ptr { utils::make_shared_variant_header(bcf_hdr_read(m_variant_file_ptr.get())) },
+    m_variant_file_ptr {},
+    m_variant_index_ptr {},
+    m_variant_header_ptr {},
     m_interval_list { interval_list }
-  {}
+  {
+    init_reader(filename);
+  }
 
   /**
    * @brief an IndexedVariantReader cannot be copied safely, as it is iterating over a stream.
@@ -76,6 +79,29 @@ class IndexedVariantReader {
   std::shared_ptr<hts_idx_t> m_variant_index_ptr;     ///< pointer to the internal structure of the index file
   std::shared_ptr<bcf_hdr_t> m_variant_header_ptr;    ///< pointer to the internal structure of the header file
   std::vector<std::string> m_interval_list;           ///< vector of intervals represented by strings
+
+  void init_reader(const std::string& filename) {
+    // Need to check raw pointers for null before wrapping them in a shared_ptr to avoid a segfault
+    // during destruction if an exception is thrown
+
+    auto* variant_file_ptr = bcf_open(filename.c_str(), "r");
+    if ( variant_file_ptr == nullptr ) {
+      throw FileOpenException{filename};
+    }
+    m_variant_file_ptr = utils::make_shared_hts_file(variant_file_ptr);
+
+    auto* index_file_ptr = bcf_index_load(filename.c_str());
+    if ( index_file_ptr == nullptr ) {
+      throw IndexLoadException{filename};
+    }
+    m_variant_index_ptr = utils::make_shared_hts_index(index_file_ptr);
+
+    auto* header_ptr = bcf_hdr_read(m_variant_file_ptr.get());
+    if ( header_ptr == nullptr ) {
+      throw HeaderReadException{filename};
+    }
+    m_variant_header_ptr = utils::make_shared_variant_header(header_ptr);
+  }
 };
 
 }

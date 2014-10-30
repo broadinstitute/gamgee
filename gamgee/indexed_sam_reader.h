@@ -3,6 +3,7 @@
 
 #include "indexed_sam_iterator.h"
 #include "utils/hts_memory.h"
+#include "exceptions.h"
 
 #include "htslib/sam.h"
 
@@ -43,10 +44,12 @@ class IndexedSamReader {
      * @param interval_list Samtools style intervals to look for records
      */
     IndexedSamReader(const std::string& filename, const std::vector<std::string>& interval_list) :
-      m_sam_file_ptr {utils::make_shared_hts_file(sam_open(filename.c_str(), "r"))}, // TODO: Not checking for errors.
-      m_sam_index_ptr {utils::make_shared_hts_index(sam_index_load(m_sam_file_ptr.get(), filename.c_str()))}, // TODO: Not checking for errors.
-      m_sam_header_ptr { utils::make_shared_sam_header(sam_hdr_read(m_sam_file_ptr.get())) }, // TODO: Not checking for errors.
-      m_interval_list {interval_list} {
+      m_sam_file_ptr {},
+      m_sam_index_ptr {},
+      m_sam_header_ptr {},
+      m_interval_list {interval_list}
+    {
+      init_reader(filename);
     }
 
     /**
@@ -99,6 +102,26 @@ class IndexedSamReader {
     std::shared_ptr<hts_idx_t> m_sam_index_ptr;  ///< pointer to the bam index
     std::shared_ptr<bam_hdr_t> m_sam_header_ptr; ///< pointer to the bam header
     std::vector<std::string> m_interval_list;    ///< intervals to iterate
+
+    void init_reader(const std::string& filename) {
+      auto* file_ptr = sam_open(filename.c_str(), "r");
+      if ( file_ptr == nullptr ) {
+        throw FileOpenException{filename};
+      }
+      m_sam_file_ptr = utils::make_shared_hts_file(file_ptr);
+
+      auto* index_ptr = sam_index_load(m_sam_file_ptr.get(), filename.c_str());
+      if ( index_ptr == nullptr ) {
+        throw IndexLoadException{filename};
+      }
+      m_sam_index_ptr = utils::make_shared_hts_index(index_ptr);
+
+      auto* header_ptr = sam_hdr_read(m_sam_file_ptr.get());
+      if ( header_ptr == nullptr ) {
+        throw HeaderReadException{filename};
+      }
+      m_sam_header_ptr = utils::make_shared_sam_header(header_ptr);
+    }
 };
 
 using IndexedSingleSamReader = IndexedSamReader<IndexedSamIterator>;

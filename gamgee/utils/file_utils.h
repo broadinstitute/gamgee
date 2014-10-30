@@ -13,8 +13,10 @@ namespace utils {
  */
 struct IFStreamDeleter {
   void operator()(std::ifstream* p) const { 
-    p->close();
-    delete p;
+    if ( p != nullptr ) {
+      p->close();
+      delete p;
+    }
   }
 };
 
