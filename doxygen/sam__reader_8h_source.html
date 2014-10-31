@@ -151,20 +151,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordtype">void</span> init_reader (<span class="keyword">const</span> std::string&amp; filename) {</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      <span class="keyword">auto</span>* file_ptr = sam_open(filename.empty() ? <span class="stringliteral">&quot;-&quot;</span> : filename.c_str(), <span class="stringliteral">&quot;r&quot;</span>);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      m_sam_file_ptr  = <a class="code" href="namespacegamgee_1_1utils.html#a50116d5da2ab23b2963b0e1f95eca489">utils::make_shared_hts_file</a>(file_ptr);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      m_sam_header_ptr = <a class="code" href="namespacegamgee_1_1utils.html#a72ad0cc418281effcdb1abd1a077761e">utils::make_shared_sam_header</a>(sam_hdr_read(file_ptr));</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;};</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      <span class="keywordflow">if</span> ( file_ptr == <span class="keyword">nullptr</span> ) {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classgamgee_1_1_file_open_exception.html">FileOpenException</a>{filename};</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      m_sam_file_ptr  = <a class="code" href="namespacegamgee_1_1utils.html#a50116d5da2ab23b2963b0e1f95eca489">utils::make_shared_hts_file</a>(file_ptr);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="namespacegamgee.html#a16ea322e9da7062215c1e9512baa49eb">  126</a></span>&#160;<span class="keyword">using</span> <a class="code" href="classgamgee_1_1_sam_reader.html">SingleSamReader</a> = <a class="code" href="classgamgee_1_1_sam_reader.html">SamReader&lt;SamIterator&gt;</a>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="namespacegamgee.html#aa7286f2e8ef592ae858c97b6f9045d0c">  127</a></span>&#160;<span class="keyword">using</span> <a class="code" href="classgamgee_1_1_sam_reader.html">PairSamReader</a> = <a class="code" href="classgamgee_1_1_sam_reader.html">SamReader&lt;SamPairIterator&gt;</a>;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}  <span class="comment">// end of namespace</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* defined(gamgee__sam_reader__guard) */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <span class="keyword">auto</span>* header_ptr = sam_hdr_read(file_ptr);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <span class="keywordflow">if</span> ( header_ptr == <span class="keyword">nullptr</span> ) {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">throw</span> HeaderReadException{filename};</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      m_sam_header_ptr = <a class="code" href="namespacegamgee_1_1utils.html#a72ad0cc418281effcdb1abd1a077761e">utils::make_shared_sam_header</a>(header_ptr);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;};</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="namespacegamgee.html#a16ea322e9da7062215c1e9512baa49eb">  134</a></span>&#160;<span class="keyword">using</span> <a class="code" href="classgamgee_1_1_sam_reader.html">SingleSamReader</a> = <a class="code" href="classgamgee_1_1_sam_reader.html">SamReader&lt;SamIterator&gt;</a>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="namespacegamgee.html#aa7286f2e8ef592ae858c97b6f9045d0c">  135</a></span>&#160;<span class="keyword">using</span> <a class="code" href="classgamgee_1_1_sam_reader.html">PairSamReader</a> = <a class="code" href="classgamgee_1_1_sam_reader.html">SamReader&lt;SamPairIterator&gt;</a>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}  <span class="comment">// end of namespace</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* defined(gamgee__sam_reader__guard) */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="sam__iterator_8h_html"><div class="ttname"><a href="sam__iterator_8h.html">sam_iterator.h</a></div></div>
 <div class="ttc" id="classgamgee_1_1_sam_header_html"><div class="ttname"><a href="classgamgee_1_1_sam_header.html">gamgee::SamHeader</a></div><div class="ttdoc">Utility class to hold the header of a sam file. </div><div class="ttdef"><b>Definition:</b> sam_header.h:16</div></div>
 <div class="ttc" id="classgamgee_1_1_sam_reader_html_ad83ea34dc8c04c684f6e06687da24e60"><div class="ttname"><a href="classgamgee_1_1_sam_reader.html#ad83ea34dc8c04c684f6e06687da24e60">gamgee::SamReader::end</a></div><div class="ttdeci">ITERATOR end()</div><div class="ttdoc">creates a ITERATOR with a nullified input stream (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> sam_reader.h:104</div></div>
+<div class="ttc" id="classgamgee_1_1_file_open_exception_html"><div class="ttname"><a href="classgamgee_1_1_file_open_exception.html">gamgee::FileOpenException</a></div><div class="ttdoc">Exception for the case where there is an error opening a file for reading/writing. </div><div class="ttdef"><b>Definition:</b> exceptions.h:14</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a50116d5da2ab23b2963b0e1f95eca489"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a50116d5da2ab23b2963b0e1f95eca489">gamgee::utils::make_shared_hts_file</a></div><div class="ttdeci">shared_ptr&lt; htsFile &gt; make_shared_hts_file(htsFile *hts_file_ptr)</div><div class="ttdoc">wraps a pre-allocated htsFile in a shared_ptr with correct deleter </div><div class="ttdef"><b>Definition:</b> hts_memory.cpp:15</div></div>
 <div class="ttc" id="exceptions_8h_html"><div class="ttname"><a href="exceptions_8h.html">exceptions.h</a></div></div>
 <div class="ttc" id="classgamgee_1_1_sam_reader_html"><div class="ttname"><a href="classgamgee_1_1_sam_reader.html">gamgee::SamReader</a></div><div class="ttdoc">Utility class to read a SAM/BAM/CRAM file with an appropriate Sam iterator from a stream (e...</div><div class="ttdef"><b>Definition:</b> sam_reader.h:45</div></div>
@@ -180,7 +189,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 30 2014 14:48:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Oct 31 2014 04:05:58 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

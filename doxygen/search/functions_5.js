@@ -9,6 +9,7 @@ var searchData=
   ['field_5findex',['field_index',['../classgamgee_1_1_variant_builder_individual_field.html#a915ea5d745718575cdd74992f36edf65',1,'gamgee::VariantBuilderIndividualField::field_index()'],['../classgamgee_1_1_variant_header.html#afa8e8fe7f0b76390f78b95ac2fab602f',1,'gamgee::VariantHeader::field_index()']]],
   ['field_5ftype',['field_type',['../classgamgee_1_1_variant_builder_individual_field.html#a2896a3fa64d3e3943810d09d7c001453',1,'gamgee::VariantBuilderIndividualField']]],
   ['field_5fvalue',['field_value',['../classgamgee_1_1_variant_builder_core_field.html#a0e186eb35dd6f97efd1b24f1420021bf',1,'gamgee::VariantBuilderCoreField']]],
+  ['fileopenexception',['FileOpenException',['../classgamgee_1_1_file_open_exception.html#a4cba206a3cd37b35779633effc3eed21',1,'gamgee::FileOpenException']]],
   ['filters',['filters',['../classgamgee_1_1_variant.html#a52a8562b1b0ed982d08c9fd09cb50353',1,'gamgee::Variant::filters()'],['../classgamgee_1_1_variant_header.html#a9903aa559390cfda45ae2e645005b667',1,'gamgee::VariantHeader::filters()']]],
   ['first',['first',['../classgamgee_1_1_sam.html#ad185f2ed5703a759f287a95c80aca107',1,'gamgee::Sam']]],
   ['float_5findividual_5ffield',['float_individual_field',['../classgamgee_1_1_variant.html#a2e1d38d0643d63e354b7f3ff047252b5',1,'gamgee::Variant::float_individual_field(const std::string &amp;tag) const '],['../classgamgee_1_1_variant.html#a3b670b41f3cfa43f180093fc712fc662',1,'gamgee::Variant::float_individual_field(const int32_t index) const ']]],

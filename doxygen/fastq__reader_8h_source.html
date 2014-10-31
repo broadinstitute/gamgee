@@ -124,11 +124,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  std::shared_ptr&lt;std::istream&gt; m_input_stream; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}  <span class="comment">// end of namespace</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordtype">void</span> init_reader(<span class="keyword">const</span> std::string&amp; filename);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;};</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif // gamgee__fastq_reader__guard</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}  <span class="comment">// end of namespace</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif // gamgee__fastq_reader__guard</span></div>
 <div class="ttc" id="classgamgee_1_1_fastq_reader_html"><div class="ttname"><a href="classgamgee_1_1_fastq_reader.html">gamgee::FastqReader</a></div><div class="ttdoc">Utility class to read many Fastq records from a stream (e.g. Fastq file, stdin, ...) in a for-each loop in a for-each loop. </div><div class="ttdef"><b>Definition:</b> fastq_reader.h:36</div></div>
 <div class="ttc" id="classgamgee_1_1_fastq_reader_html_aec6c7c050dacc0e4869ada74a44e6a2e"><div class="ttname"><a href="classgamgee_1_1_fastq_reader.html#aec6c7c050dacc0e4869ada74a44e6a2e">gamgee::FastqReader::FastqReader</a></div><div class="ttdeci">FastqReader(const std::string &amp;filename)</div><div class="ttdoc">reads through all records in a file (fasta or fastq) parsing them into Fastq objects ...</div><div class="ttdef"><b>Definition:</b> fastq_reader.cpp:17</div></div>
 <div class="ttc" id="classgamgee_1_1_fastq_reader_html_ae2fe35b318462d652a97523bf6d25319"><div class="ttname"><a href="classgamgee_1_1_fastq_reader.html#ae2fe35b318462d652a97523bf6d25319">gamgee::FastqReader::begin</a></div><div class="ttdeci">FastqIterator begin()</div><div class="ttdoc">creates a FastqIterator pointing at the start of the input stream (needed by for-each loop) ...</div><div class="ttdef"><b>Definition:</b> fastq_reader.cpp:39</div></div>
@@ -140,7 +142,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 30 2014 14:48:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Oct 31 2014 04:05:58 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
