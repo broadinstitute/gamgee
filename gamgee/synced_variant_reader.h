@@ -59,17 +59,6 @@ class SyncedVariantReader {
     for (const auto& filename : filenames) {
       success = bcf_sr_add_reader(m_synced_readers.get(), filename.c_str());
       if (success != 1) {        // returns 1 on success to indicate 1 file added
-
-        // Necessary hack to avoid a segfault in bcf_sr_destroy() in the case where we throw
-        // an exception on file-not-found. Note that this does not actually leak any memory --
-        // although bcf_sr_add_reader() did resize its internal arrays before returning 0,
-        // this extra memory will still get freed. We are just preventing bcf_sr_destroy()
-        // from incorrectly calling bcf_sr_destroy1() on a blank struct.
-        //
-        // This is really an htslib bug -- it should not increment nreaders in bcf_sr_add_reader()
-        // or perform any reallocs in the case where the file could not be opened.
-        --(m_synced_readers->nreaders);
-
         throw FileOpenException{filename};
       }
     }
