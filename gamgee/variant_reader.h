@@ -14,7 +14,6 @@
 #include <fstream>
 #include <algorithm>
 #include <memory>
-#include <stdexcept>
 
 
 namespace gamgee {
@@ -163,12 +162,20 @@ class VariantReader {
    * @param filename the name of the variant file
    */
   void init_reader (const std::string& filename) {
+    // Need to check raw pointers for null before wrapping them in a shared_ptr to avoid a segfault
+    // during destruction if an exception is thrown
+
     auto* file_ptr = bcf_open(filename.empty() ? "-" : filename.c_str(), "r");
     if ( file_ptr == nullptr ) {
-      throw std::invalid_argument{std::string{"Could not open file "} + filename};
+      throw FileOpenException{filename};
     }
-    m_variant_file_ptr = utils::make_shared_hts_file (file_ptr);
-    m_variant_header_ptr = utils::make_shared_variant_header (bcf_hdr_read (file_ptr));
+    m_variant_file_ptr = utils::make_shared_hts_file(file_ptr);
+
+    auto* header_ptr = bcf_hdr_read(file_ptr);
+    if ( header_ptr == nullptr ) {
+      throw HeaderReadException{filename};
+    }
+    m_variant_header_ptr = utils::make_shared_variant_header(header_ptr);
   }
 };
 

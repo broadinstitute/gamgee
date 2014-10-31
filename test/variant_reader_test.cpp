@@ -7,7 +7,7 @@
 #include "synced_variant_reader.h"
 #include "synced_variant_iterator.h"
 #include "variant_header_builder.h"
-
+#include "exceptions.h"
 #include "missing.h"
 #include "test_utils.h"
 
@@ -983,9 +983,7 @@ BOOST_AUTO_TEST_CASE( multi_variant_reader_validation )
   for (const auto filenames_v : {filenames1, filenames2})
     BOOST_CHECK_THROW(
       auto reader = MultipleVariantReader<MultipleVariantIterator>(filenames_v),
-      std::runtime_error
-      // this does not work for some reason
-      // MultipleVariantReader::HeaderException
+      HeaderCompatibilityException
     );
 
   // don't validate mismatched headers
@@ -1343,5 +1341,32 @@ BOOST_AUTO_TEST_CASE( synced_variant_iterator_move_test ) {
 }
 
 BOOST_AUTO_TEST_CASE( variant_reader_nonexistent_file ) {
-  BOOST_CHECK_THROW(SingleVariantReader{"foo/bar/nonexistent.vcf"}, invalid_argument);
+  BOOST_CHECK_THROW(SingleVariantReader{"foo/bar/nonexistent.vcf"}, FileOpenException);
 }
+
+BOOST_AUTO_TEST_CASE( indexed_variant_reader_nonexistent_file ) {
+  // VCF itself doesn't exist
+  BOOST_CHECK_THROW(IndexedVariantReader<IndexedVariantIterator>("foo/bar/nonexistent.vcf", vector<string>{}), FileOpenException);
+}
+
+BOOST_AUTO_TEST_CASE( indexed_variant_reader_nonexistent_index ) {
+  // VCF exists, but no accompanying index file
+  BOOST_CHECK_THROW(IndexedVariantReader<IndexedVariantIterator>("testdata/unindexed/test_unindexed.vcf", vector<string>{}), IndexLoadException);
+}
+
+BOOST_AUTO_TEST_CASE( multiple_variant_reader_nonexistent_file ) {
+  // Single non-existent file
+  BOOST_CHECK_THROW(MultipleVariantReader<MultipleVariantIterator>(vector<string>{"foo/bar/nonexistent.vcf"}), FileOpenException);
+
+  // Multiple files, one non-existent
+  BOOST_CHECK_THROW(MultipleVariantReader<MultipleVariantIterator>(vector<string>{"testdata/test_variants.vcf", "foo/bar/nonexistent.vcf"}), FileOpenException);
+}
+
+BOOST_AUTO_TEST_CASE( synced_variant_reader_nonexistent_file ) {
+  // Single non-existent file
+  BOOST_CHECK_THROW(SyncedVariantReader<SyncedVariantIterator>(vector<string>{"foo/bar/nonexistent.vcf"}, ""), FileOpenException);
+
+  // Multiple files, one non-existent
+  BOOST_CHECK_THROW(SyncedVariantReader<SyncedVariantIterator>(vector<string>{"testdata/var_idx/test_variants_csi.vcf.gz", "foo/bar/nonexistent.vcf"}, ""), FileOpenException);
+}
+

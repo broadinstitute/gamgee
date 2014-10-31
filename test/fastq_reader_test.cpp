@@ -2,6 +2,7 @@
 
 #include "fastq_reader.h"
 #include "test_utils.h"
+#include "exceptions.h"
 
 using namespace std;
 using namespace gamgee;
@@ -68,4 +69,8 @@ BOOST_AUTO_TEST_CASE( fastq_iterator_move_constructor ) {
   auto record0 = *iter0;
   auto moved_record = *moved;
   BOOST_CHECK(record0 == moved_record);
+}
+
+BOOST_AUTO_TEST_CASE( fastq_reader_nonexistent_file ) {
+  BOOST_CHECK_THROW(FastqReader{"foo/bar/nonexistent.fa"}, FileOpenException);
 }

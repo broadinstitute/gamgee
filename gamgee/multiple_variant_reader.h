@@ -6,6 +6,7 @@
 #include "variant_header.h"
 #include "utils/hts_memory.h"
 #include "utils/variant_utils.h"
+#include "exceptions.h"
 
 namespace gamgee {
 
@@ -81,10 +82,17 @@ class MultipleVariantReader {
     for (const auto& filename : filenames) {
       // TODO? check for maximum one stream
       auto* file_ptr = bcf_open(filename.empty() ? "-" : filename.c_str(), "r");
-      m_variant_files.emplace_back(utils::make_shared_hts_file(file_ptr));
+      if ( file_ptr == nullptr ) {
+        throw FileOpenException{filename};
+      }
+      m_variant_files.push_back(utils::make_shared_hts_file(file_ptr));
 
-      const auto& header_ptr = utils::make_shared_variant_header(bcf_hdr_read(file_ptr));
-      m_variant_headers.emplace_back(header_ptr);
+      auto* header_raw_ptr = bcf_hdr_read(file_ptr);
+      if ( header_raw_ptr == nullptr ) {
+        throw HeaderReadException{filename};
+      }
+      const auto& header_ptr = utils::make_shared_variant_header(header_raw_ptr);
+      m_variant_headers.push_back(header_ptr);
 
       if (m_combined_header) {
         if (validate_headers)
@@ -135,10 +143,6 @@ class MultipleVariantReader {
    */
   const inline VariantHeader combined_header() const { return VariantHeader {m_combined_header}; }
 
-  class HeaderException : public std::runtime_error {
-   public:
-    HeaderException() : std::runtime_error("Error: chromosomes in header files are inconsistent") { }
-  };
  private:
   std::vector<std::shared_ptr<htsFile>> m_variant_files;        ///< vector of the internal file structures of the variant files
   std::vector<std::shared_ptr<bcf_hdr_t>> m_variant_headers;    ///< vector of the internal header structures of the variant files
@@ -149,7 +153,7 @@ class MultipleVariantReader {
   void validate_header(const std::shared_ptr<bcf_hdr_t>& other_header_ptr) {
     const auto& other_header = VariantHeader{other_header_ptr};
     if (combined_header().chromosomes() != other_header.chromosomes())
-      throw HeaderException{};
+      throw HeaderCompatibilityException{"chromosomes in header files are inconsistent"};
   }
 };
 
