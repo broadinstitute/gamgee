@@ -1,4 +1,0 @@
-[submodule "lib/htslib"]
-  path = lib/htslib
-  url = ../htslib.git
-  branch = broad

@@ -21,11 +21,12 @@ set(SOURCE_FILES
     variant_reader_test.cpp
     variant_test.cpp)
 
-include("../contrib/htslib.cmake")
+add_executable(gamgee_test EXCLUDE_FROM_ALL ${SOURCE_FILES})
 
-include_directories(${Boost_INCLUDE_DIRS})
-
-add_executable(gamgee_test ${SOURCE_FILES})
-target_compile_definitions(gamgee_test PUBLIC -DBOOST_TEST_DYN_LINK)
+## This is the right way to do this, but only supported in cmake 2.8.12
+# target_compile_definitions(gamgee_test PUBLIC -DBOOST_TEST_DYN_LINK)
+set_property(TARGET gamgee_test PROPERTY COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK)
 target_link_libraries(gamgee_test gamgee ${htslib_LIB} ${Boost_LIBRARIES} pthread z)
 add_dependencies(gamgee_test htslib)
+
+add_custom_target(run_test COMMAND ${CMAKE_BINARY_DIR}/test/gamgee_test DEPENDS gamgee_test WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
