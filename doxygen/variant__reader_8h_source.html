@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -71,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,7 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="hts__memory_8h.html">utils/hts_memory.h</a>&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="variant__utils_8h.html">utils/variant_utils.h</a>&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;htslib/vcf.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vcf_8h.html">htslib/vcf.h</a>&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
@@ -175,13 +176,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="comment">// Need to check raw pointers for null before wrapping them in a shared_ptr to avoid a segfault</span></div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="comment">// during destruction if an exception is thrown</span></div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keyword">auto</span>* file_ptr = bcf_open(filename.empty() ? <span class="stringliteral">&quot;-&quot;</span> : filename.c_str(), <span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keyword">auto</span>* file_ptr = <a class="code" href="vcf_8h.html#af6d5fab61596eb300eb782b79a30fbe2">bcf_open</a>(filename.empty() ? <span class="stringliteral">&quot;-&quot;</span> : filename.c_str(), <span class="stringliteral">&quot;r&quot;</span>);</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">if</span> ( file_ptr == <span class="keyword">nullptr</span> ) {</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;      <span class="keywordflow">throw</span> <a class="code" href="classgamgee_1_1_file_open_exception.html">FileOpenException</a>{filename};</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    }</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    m_variant_file_ptr = <a class="code" href="namespacegamgee_1_1utils.html#a50116d5da2ab23b2963b0e1f95eca489">utils::make_shared_hts_file</a>(file_ptr);</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keyword">auto</span>* header_ptr = bcf_hdr_read(file_ptr);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keyword">auto</span>* header_ptr = <a class="code" href="vcf_8h.html#ac333a94a8c2c52c47ef5fbdee05a327b">bcf_hdr_read</a>(file_ptr);</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">if</span> ( header_ptr == <span class="keyword">nullptr</span> ) {</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      <span class="keywordflow">throw</span> HeaderReadException{filename};</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    }</div>
@@ -195,6 +196,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* defined(gamgee__variant_reader__guard) */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="classgamgee_1_1_variant_reader_html_a7da4d253cee3b219da4a19a763af08d2"><div class="ttname"><a href="classgamgee_1_1_variant_reader.html#a7da4d253cee3b219da4a19a763af08d2">gamgee::VariantReader::VariantReader</a></div><div class="ttdeci">VariantReader(const std::vector&lt; std::string &gt; &amp;filenames)</div><div class="ttdoc">reads through all records in a file (vcf or bcf) parsing them into Variant objects ...</div><div class="ttdef"><b>Definition:</b> variant_reader.h:69</div></div>
+<div class="ttc" id="vcf_8h_html_ac333a94a8c2c52c47ef5fbdee05a327b"><div class="ttname"><a href="vcf_8h.html#ac333a94a8c2c52c47ef5fbdee05a327b">bcf_hdr_read</a></div><div class="ttdeci">bcf_hdr_t * bcf_hdr_read(htsFile *fp)</div><div class="ttdef"><b>Definition:</b> vcf.c:736</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a2732369bc67b236fbe94bcaba720d170"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a2732369bc67b236fbe94bcaba720d170">gamgee::utils::make_shared_variant_header</a></div><div class="ttdeci">shared_ptr&lt; bcf_hdr_t &gt; make_shared_variant_header(bcf_hdr_t *bcf_hdr_ptr)</div><div class="ttdoc">wraps a pre-allocated bcf_hdr_t in a shared_ptr with correct deleter </div><div class="ttdef"><b>Definition:</b> hts_memory.cpp:63</div></div>
 <div class="ttc" id="variant__utils_8h_html"><div class="ttname"><a href="variant__utils_8h.html">variant_utils.h</a></div></div>
 <div class="ttc" id="classgamgee_1_1_variant_reader_html_a245b34aa0233953b692ab9e3a13029b9"><div class="ttname"><a href="classgamgee_1_1_variant_reader.html#a245b34aa0233953b692ab9e3a13029b9">gamgee::VariantReader::operator=</a></div><div class="ttdeci">VariantReader &amp; operator=(const VariantReader &amp;other)=delete</div></div>
@@ -213,11 +215,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classgamgee_1_1_variant_header_html"><div class="ttname"><a href="classgamgee_1_1_variant_header.html">gamgee::VariantHeader</a></div><div class="ttdoc">Utility class to hold a variant header. </div><div class="ttdef"><b>Definition:</b> variant_header.h:19</div></div>
 <div class="ttc" id="variant__iterator_8h_html"><div class="ttname"><a href="variant__iterator_8h.html">variant_iterator.h</a></div></div>
 <div class="ttc" id="classgamgee_1_1_variant_reader_html_aac54f91a115951115e08dcc9a3def2e3"><div class="ttname"><a href="classgamgee_1_1_variant_reader.html#aac54f91a115951115e08dcc9a3def2e3">gamgee::VariantReader::VariantReader</a></div><div class="ttdeci">VariantReader(const std::vector&lt; std::string &gt; &amp;filenames, const std::vector&lt; std::string &gt; &amp;samples, const bool include=true)</div><div class="ttdoc">reads through all records in a file (vcf or bcf) parsing them into Variant objects but only including...</div><div class="ttdef"><b>Definition:</b> variant_reader.h:105</div></div>
+<div class="ttc" id="vcf_8h_html"><div class="ttname"><a href="vcf_8h.html">vcf.h</a></div></div>
 <div class="ttc" id="variant__header_8h_html"><div class="ttname"><a href="variant__header_8h.html">variant_header.h</a></div></div>
+<div class="ttc" id="vcf_8h_html_af6d5fab61596eb300eb782b79a30fbe2"><div class="ttname"><a href="vcf_8h.html#af6d5fab61596eb300eb782b79a30fbe2">bcf_open</a></div><div class="ttdeci">#define bcf_open(fn, mode)</div><div class="ttdef"><b>Definition:</b> vcf.h:274</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 31 2014 18:58:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 3 2014 16:31:58 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

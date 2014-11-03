@@ -1,7 +1,22 @@
 var searchData=
 [
-  ['fastq',['Fastq',['../classgamgee_1_1_fastq.html',1,'gamgee']]],
-  ['fastqiterator',['FastqIterator',['../classgamgee_1_1_fastq_iterator.html',1,'gamgee']]],
-  ['fastqreader',['FastqReader',['../classgamgee_1_1_fastq_reader.html',1,'gamgee']]],
-  ['fileopenexception',['FileOpenException',['../classgamgee_1_1_file_open_exception.html',1,'gamgee']]]
+  ['bam1_5fcore_5ft',['bam1_core_t',['../structbam1__core__t.html',1,'']]],
+  ['bam1_5ft',['bam1_t',['../structbam1__t.html',1,'']]],
+  ['bam_5fhdr_5ft',['bam_hdr_t',['../structbam__hdr__t.html',1,'']]],
+  ['bam_5fpileup1_5ft',['bam_pileup1_t',['../structbam__pileup1__t.html',1,'']]],
+  ['basequals',['BaseQuals',['../classgamgee_1_1_base_quals.html',1,'gamgee']]],
+  ['bcf1_5ft',['bcf1_t',['../structbcf1__t.html',1,'']]],
+  ['bcf_5fdec_5ft',['bcf_dec_t',['../structbcf__dec__t.html',1,'']]],
+  ['bcf_5ffmt_5ft',['bcf_fmt_t',['../structbcf__fmt__t.html',1,'']]],
+  ['bcf_5fhdr_5ft',['bcf_hdr_t',['../structbcf__hdr__t.html',1,'']]],
+  ['bcf_5fhrec_5ft',['bcf_hrec_t',['../structbcf__hrec__t.html',1,'']]],
+  ['bcf_5fidinfo_5ft',['bcf_idinfo_t',['../structbcf__idinfo__t.html',1,'']]],
+  ['bcf_5fidpair_5ft',['bcf_idpair_t',['../structbcf__idpair__t.html',1,'']]],
+  ['bcf_5finfo_5ft',['bcf_info_t',['../structbcf__info__t.html',1,'']]],
+  ['bcf_5fsr_5ft',['bcf_sr_t',['../structbcf__sr__t.html',1,'']]],
+  ['bcf_5fsrs_5ft',['bcf_srs_t',['../structbcf__srs__t.html',1,'']]],
+  ['bgzf',['BGZF',['../struct_b_g_z_f.html',1,'']]],
+  ['bgzf_5fmtaux_5ft',['bgzf_mtaux_t',['../structbgzf__mtaux__t.html',1,'']]],
+  ['bgzidx1_5ft',['bgzidx1_t',['../structbgzidx1__t.html',1,'']]],
+  ['bins_5ft',['bins_t',['../structbins__t.html',1,'']]]
 ];

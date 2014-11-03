@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -71,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,14 +96,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="hts__memory_8h.html">hts_memory.h</a>&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;htslib/vcf.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vcf_8h.html">htslib/vcf.h</a>&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegamgee.html">gamgee</a> {</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacegamgee.html#a37644d067ba6f6fb7d010656ba781a7d">subset_variant_samples</a>(bcf_hdr_t* hdr_ptr, <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; samples, <span class="keyword">const</span> <span class="keywordtype">bool</span> include);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacegamgee.html#a37644d067ba6f6fb7d010656ba781a7d">subset_variant_samples</a>(<a class="code" href="structbcf__hdr__t.html">bcf_hdr_t</a>* hdr_ptr, <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; samples, <span class="keyword">const</span> <span class="keywordtype">bool</span> include);</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
 <div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11d">   22</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11d">AlleleType</a> { <a class="code" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11dadcd320d017d7f3c317bc8b234287bc9f">REFERENCE</a>, <a class="code" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11da4fc6d34599195146117224f81f5097ff">SNP</a>, <a class="code" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11dac9d0595a83bd5a7342a7629db4e43bb8">INSERTION</a>, <a class="code" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11dae570769137fbed1ec0cf402f5eb66607">DELETION</a> };</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
@@ -120,12 +121,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="namespacegamgee_html"><div class="ttname"><a href="namespacegamgee.html">gamgee</a></div><div class="ttdef"><b>Definition:</b> base_quals.cpp:11</div></div>
 <div class="ttc" id="hts__memory_8h_html"><div class="ttname"><a href="hts__memory_8h.html">hts_memory.h</a></div></div>
 <div class="ttc" id="namespacegamgee_html_a09e22e26caa26c27d796baa0aad68138"><div class="ttname"><a href="namespacegamgee.html#a09e22e26caa26c27d796baa0aad68138">gamgee::merge_variant_headers</a></div><div class="ttdeci">void merge_variant_headers(const std::shared_ptr&lt; bcf_hdr_t &gt; &amp;dest_hdr_ptr, const std::shared_ptr&lt; bcf_hdr_t &gt; &amp;src_hdr_ptr)</div><div class="ttdoc">merges a variant header into another </div><div class="ttdef"><b>Definition:</b> variant_utils.cpp:29</div></div>
+<div class="ttc" id="structbcf__hdr__t_html"><div class="ttname"><a href="structbcf__hdr__t.html">bcf_hdr_t</a></div><div class="ttdef"><b>Definition:</b> vcf.h:100</div></div>
+<div class="ttc" id="vcf_8h_html"><div class="ttname"><a href="vcf_8h.html">vcf.h</a></div></div>
 <div class="ttc" id="namespacegamgee_html_a59662b9ac19e4dc28f4ea79e7566a348"><div class="ttname"><a href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">gamgee::AlleleMask</a></div><div class="ttdeci">std::vector&lt; AlleleType &gt; AlleleMask</div><div class="ttdef"><b>Definition:</b> variant_utils.h:24</div></div>
 <div class="ttc" id="namespacegamgee_html_a2812b6cab5cc9468e453d345c548c11da4fc6d34599195146117224f81f5097ff"><div class="ttname"><a href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11da4fc6d34599195146117224f81f5097ff">gamgee::AlleleType::SNP</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 31 2014 18:58:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 3 2014 16:31:58 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

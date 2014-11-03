@@ -1,4 +1,23 @@
 var searchData=
 [
-  ['c',['C',['../namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49a0d61f8370cad1d412f80b84d143e1257',1,'gamgee']]]
+  ['c',['C',['../namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49a0d61f8370cad1d412f80b84d143e1257',1,'gamgee']]],
+  ['compression_5fheader',['COMPRESSION_HEADER',['../cram__structs_8h.html#af9934fb23b7763e058c4dfb074ce9a49a2e2b585e9729f519f2df9d64ba20a4f7',1,'cram_structs.h']]],
+  ['core',['CORE',['../cram__structs_8h.html#af9934fb23b7763e058c4dfb074ce9a49a6fb62912f795482b5e8a28aded6b02e9',1,'cram_structs.h']]],
+  ['cram_5fopt_5fdecode_5fmd',['CRAM_OPT_DECODE_MD',['../cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a806e8698dd75a711ab2abe0ded521b75',1,'cram_structs.h']]],
+  ['cram_5fopt_5fembed_5fref',['CRAM_OPT_EMBED_REF',['../cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a7a150d6e323c794cdacafaef55ce1a7e',1,'cram_structs.h']]],
+  ['cram_5fopt_5fignore_5fmd5',['CRAM_OPT_IGNORE_MD5',['../cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a92657751927887736bfd83cebc6df43d',1,'cram_structs.h']]],
+  ['cram_5fopt_5fmulti_5fseq_5fper_5fslice',['CRAM_OPT_MULTI_SEQ_PER_SLICE',['../cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a18c1ed671da86021cef143693ef2409d',1,'cram_structs.h']]],
+  ['cram_5fopt_5fno_5fref',['CRAM_OPT_NO_REF',['../cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a20b0754ed7366fe347d143fa9ace400c',1,'cram_structs.h']]],
+  ['cram_5fopt_5fnthreads',['CRAM_OPT_NTHREADS',['../cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a673b60fda6afddbc708460deef53e5d0',1,'cram_structs.h']]],
+  ['cram_5fopt_5fprefix',['CRAM_OPT_PREFIX',['../cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a4226b3979ec3cbfe0d204293c5a9e466',1,'cram_structs.h']]],
+  ['cram_5fopt_5frange',['CRAM_OPT_RANGE',['../cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a1ae2b82782377b17623d6b90cbab4168',1,'cram_structs.h']]],
+  ['cram_5fopt_5freference',['CRAM_OPT_REFERENCE',['../cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a231032367ca9a8d6bd15b5ec0bf22617',1,'cram_structs.h']]],
+  ['cram_5fopt_5fseqs_5fper_5fslice',['CRAM_OPT_SEQS_PER_SLICE',['../cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a1508b9c7b0407e64ca4c30043fb87c77',1,'cram_structs.h']]],
+  ['cram_5fopt_5fshared_5fref',['CRAM_OPT_SHARED_REF',['../cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a6e37cc55657a32097166047308a500af',1,'cram_structs.h']]],
+  ['cram_5fopt_5fslices_5fper_5fcontainer',['CRAM_OPT_SLICES_PER_CONTAINER',['../cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a794a06895570107d89a5419c29afca84',1,'cram_structs.h']]],
+  ['cram_5fopt_5fthread_5fpool',['CRAM_OPT_THREAD_POOL',['../cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a7add3b78aa5a76014d8a86cdac38b243',1,'cram_structs.h']]],
+  ['cram_5fopt_5fuse_5fbzip2',['CRAM_OPT_USE_BZIP2',['../cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a1d9403ecb8bb3d443f34a61133439478',1,'cram_structs.h']]],
+  ['cram_5fopt_5fverbosity',['CRAM_OPT_VERBOSITY',['../cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a03db69db5f23fd8099c8e28552ab609d',1,'cram_structs.h']]],
+  ['cram_5fopt_5fversion',['CRAM_OPT_VERSION',['../cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a440a111f5d295c477df9c04f840d7d7f',1,'cram_structs.h']]],
+  ['ct_5ferror',['CT_ERROR',['../cram__structs_8h.html#af9934fb23b7763e058c4dfb074ce9a49a953dc74397e2314430158ffa33f2ec0a',1,'cram_structs.h']]]
 ];

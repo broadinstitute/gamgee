@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -71,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -93,8 +94,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="synced__variant__iterator_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef gamgee__synced_variant_iterator__guard</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define gamgee__synced_variant_iterator__guard</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;htslib/vcf.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;htslib/synced_bcf_reader.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vcf_8h.html">htslib/vcf.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="synced__bcf__reader_8h.html">htslib/synced_bcf_reader.h</a>&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="variant_8h.html">variant.h</a>&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
@@ -133,6 +134,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}  <span class="comment">// end namespace gamgee</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* gamgee__synced_variant_iterator__guard */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="synced__bcf__reader_8h_html"><div class="ttname"><a href="synced__bcf__reader_8h.html">synced_bcf_reader.h</a></div></div>
 <div class="ttc" id="classgamgee_1_1_synced_variant_iterator_html_ac4420574e2ad2307c91eee59f5513615"><div class="ttname"><a href="classgamgee_1_1_synced_variant_iterator.html#ac4420574e2ad2307c91eee59f5513615">gamgee::SyncedVariantIterator::SyncedVariantIterator</a></div><div class="ttdeci">SyncedVariantIterator()</div><div class="ttdoc">creates an empty iterator (used for the end() method) </div><div class="ttdef"><b>Definition:</b> synced_variant_iterator.cpp:11</div></div>
 <div class="ttc" id="classgamgee_1_1_synced_variant_iterator_html"><div class="ttname"><a href="classgamgee_1_1_synced_variant_iterator.html">gamgee::SyncedVariantIterator</a></div><div class="ttdoc">Utility class to enable for-each style iteration in the SyncedVariantReader class. </div><div class="ttdef"><b>Definition:</b> synced_variant_iterator.h:16</div></div>
 <div class="ttc" id="variant_8h_html"><div class="ttname"><a href="variant_8h.html">variant.h</a></div></div>
@@ -141,10 +143,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classgamgee_1_1_synced_variant_iterator_html_a88dd115642767dd6bfb6602a6e46263b"><div class="ttname"><a href="classgamgee_1_1_synced_variant_iterator.html#a88dd115642767dd6bfb6602a6e46263b">gamgee::SyncedVariantIterator::operator++</a></div><div class="ttdeci">std::vector&lt; Variant &gt; &amp; operator++()</div><div class="ttdoc">pre-fetches the next vector and tests for end of file </div><div class="ttdef"><b>Definition:</b> synced_variant_iterator.cpp:28</div></div>
 <div class="ttc" id="namespacegamgee_html"><div class="ttname"><a href="namespacegamgee.html">gamgee</a></div><div class="ttdef"><b>Definition:</b> base_quals.cpp:11</div></div>
 <div class="ttc" id="classgamgee_1_1_synced_variant_iterator_html_ab0bf0636531f1d090b17709c7028db0b"><div class="ttname"><a href="classgamgee_1_1_synced_variant_iterator.html#ab0bf0636531f1d090b17709c7028db0b">gamgee::SyncedVariantIterator::operator!=</a></div><div class="ttdeci">bool operator!=(const SyncedVariantIterator &amp;rhs)</div><div class="ttdoc">pseudo-inequality operator (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> synced_variant_iterator.cpp:35</div></div>
+<div class="ttc" id="vcf_8h_html"><div class="ttname"><a href="vcf_8h.html">vcf.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 31 2014 18:58:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 3 2014 16:31:57 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

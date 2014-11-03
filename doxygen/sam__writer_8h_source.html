@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -71,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,12 +97,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sam_8h.html">sam.h</a>&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sam__header_8h.html">sam_header.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html">sam.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="gamgee_2sam__header_8h.html">sam_header.h</a>&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="hts__memory_8h.html">utils/hts_memory.h</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;htslib/sam.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html">htslib/sam.h</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegamgee.html">gamgee</a> {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
@@ -127,7 +128,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  std::unique_ptr&lt;htsFile, utils::HtsFileDeleter&gt; m_out_file;  </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a> m_header;                   </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">static</span> htsFile* open_file(<span class="keyword">const</span> std::string&amp; output_fname, <span class="keyword">const</span> std::string&amp; binary);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">static</span> <a class="code" href="structhts_file.html">htsFile</a>* open_file(<span class="keyword">const</span> std::string&amp; output_fname, <span class="keyword">const</span> std::string&amp; binary);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordtype">void</span> write_header() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
@@ -135,21 +136,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif // gamgee__sam_writer__guard</span></div>
-<div class="ttc" id="sam_8h_html"><div class="ttname"><a href="sam_8h.html">sam.h</a></div></div>
 <div class="ttc" id="classgamgee_1_1_sam_writer_html_a78751633b0d969df35fa159dffadcd5c"><div class="ttname"><a href="classgamgee_1_1_sam_writer.html#a78751633b0d969df35fa159dffadcd5c">gamgee::SamWriter::SamWriter</a></div><div class="ttdeci">SamWriter(const std::string &amp;output_fname=&quot;-&quot;, const bool binary=true)</div><div class="ttdoc">Creates a new SamWriter using the specified output file name. </div><div class="ttdef"><b>Definition:</b> sam_writer.cpp:7</div></div>
 <div class="ttc" id="classgamgee_1_1_sam_writer_html_a8defd7754f8bfa7eaeed62da2be09258"><div class="ttname"><a href="classgamgee_1_1_sam_writer.html#a8defd7754f8bfa7eaeed62da2be09258">gamgee::SamWriter::operator=</a></div><div class="ttdeci">SamWriter &amp; operator=(const SamWriter &amp;other)=delete</div></div>
+<div class="ttc" id="structhts_file_html"><div class="ttname"><a href="structhts_file.html">htsFile</a></div><div class="ttdef"><b>Definition:</b> hts.h:72</div></div>
 <div class="ttc" id="classgamgee_1_1_sam_header_html"><div class="ttname"><a href="classgamgee_1_1_sam_header.html">gamgee::SamHeader</a></div><div class="ttdoc">Utility class to hold the header of a sam file. </div><div class="ttdef"><b>Definition:</b> sam_header.h:16</div></div>
 <div class="ttc" id="classgamgee_1_1_sam_writer_html_a805dcb8e14a8f60dccfcefd32805d6ec"><div class="ttname"><a href="classgamgee_1_1_sam_writer.html#a805dcb8e14a8f60dccfcefd32805d6ec">gamgee::SamWriter::add_record</a></div><div class="ttdeci">void add_record(const Sam &amp;body)</div><div class="ttdoc">Adds a record to the file stream. </div><div class="ttdef"><b>Definition:</b> sam_writer.cpp:24</div></div>
 <div class="ttc" id="classgamgee_1_1_sam_writer_html_ac66a75aef5a280ffad72d6e6a48e55a0"><div class="ttname"><a href="classgamgee_1_1_sam_writer.html#ac66a75aef5a280ffad72d6e6a48e55a0">gamgee::SamWriter::add_header</a></div><div class="ttdeci">void add_header(const SamHeader &amp;header)</div><div class="ttdoc">Adds a header to the file stream. </div><div class="ttdef"><b>Definition:</b> sam_writer.cpp:19</div></div>
-<div class="ttc" id="sam__header_8h_html"><div class="ttname"><a href="sam__header_8h.html">sam_header.h</a></div></div>
+<div class="ttc" id="gamgee_2sam__header_8h_html"><div class="ttname"><a href="gamgee_2sam__header_8h.html">sam_header.h</a></div></div>
 <div class="ttc" id="classgamgee_1_1_sam_writer_html"><div class="ttname"><a href="classgamgee_1_1_sam_writer.html">gamgee::SamWriter</a></div><div class="ttdoc">utility class to write out a SAM/BAM/CRAM file to any stream </div><div class="ttdef"><b>Definition:</b> sam_writer.h:20</div></div>
 <div class="ttc" id="namespacegamgee_html"><div class="ttname"><a href="namespacegamgee.html">gamgee</a></div><div class="ttdef"><b>Definition:</b> base_quals.cpp:11</div></div>
 <div class="ttc" id="hts__memory_8h_html"><div class="ttname"><a href="hts__memory_8h.html">hts_memory.h</a></div></div>
 <div class="ttc" id="classgamgee_1_1_sam_html"><div class="ttname"><a href="classgamgee_1_1_sam.html">gamgee::Sam</a></div><div class="ttdoc">Utility class to manipulate a Sam record. </div><div class="ttdef"><b>Definition:</b> sam.h:20</div></div>
+<div class="ttc" id="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h_html"><div class="ttname"><a href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html">sam.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 31 2014 18:58:18 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 3 2014 16:31:57 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

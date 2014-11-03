@@ -1,5 +1,19 @@
 var searchData=
 [
-  ['multiplevariantiterator',['MultipleVariantIterator',['../classgamgee_1_1_multiple_variant_iterator.html',1,'gamgee']]],
-  ['multiplevariantreader',['MultipleVariantReader',['../classgamgee_1_1_multiple_variant_reader.html',1,'gamgee']]]
+  ['headercompatibilityexception',['HeaderCompatibilityException',['../classgamgee_1_1_header_compatibility_exception.html',1,'gamgee']]],
+  ['headerreadexception',['HeaderReadException',['../classgamgee_1_1_header_read_exception.html',1,'gamgee']]],
+  ['hfile',['hFILE',['../structh_f_i_l_e.html',1,'']]],
+  ['hfile_5fbackend',['hFILE_backend',['../structh_f_i_l_e__backend.html',1,'']]],
+  ['hfile_5ffd',['hFILE_fd',['../structh_f_i_l_e__fd.html',1,'']]],
+  ['hfile_5fmem',['hFILE_mem',['../structh_f_i_l_e__mem.html',1,'']]],
+  ['hfile_5fnet',['hFILE_net',['../structh_f_i_l_e__net.html',1,'']]],
+  ['hgacc_5ft',['hgacc_t',['../structhgacc__t.html',1,'']]],
+  ['hts_5fcram_5fidx_5ft',['hts_cram_idx_t',['../structhts__cram__idx__t.html',1,'']]],
+  ['hts_5fitr_5ft',['hts_itr_t',['../structhts__itr__t.html',1,'']]],
+  ['hts_5fpair64_5ft',['hts_pair64_t',['../structhts__pair64__t.html',1,'']]],
+  ['htsfile',['htsFile',['../structhts_file.html',1,'']]],
+  ['htsfiledeleter',['HtsFileDeleter',['../structgamgee_1_1utils_1_1_hts_file_deleter.html',1,'gamgee::utils']]],
+  ['htsindexdeleter',['HtsIndexDeleter',['../structgamgee_1_1utils_1_1_hts_index_deleter.html',1,'gamgee::utils']]],
+  ['htsiteratordeleter',['HtsIteratorDeleter',['../structgamgee_1_1utils_1_1_hts_iterator_deleter.html',1,'gamgee::utils']]],
+  ['htslibexception',['HtslibException',['../classgamgee_1_1_htslib_exception.html',1,'gamgee']]]
 ];

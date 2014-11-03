@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -71,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -102,7 +103,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_hts_file_deleter.html">HtsFileDeleter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete an htsFile pointer  <a href="structgamgee_1_1utils_1_1_hts_file_deleter.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete an <a class="el" href="structhts_file.html">htsFile</a> pointer  <a href="structgamgee_1_1utils_1_1_hts_file_deleter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_hts_index_deleter.html">HtsIndexDeleter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete an hts file index pointer  <a href="structgamgee_1_1utils_1_1_hts_index_deleter.html#details">More...</a><br /></td></tr>
@@ -114,21 +115,21 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete an ifstream  <a href="structgamgee_1_1utils_1_1_i_f_stream_deleter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_sam_body_deleter.html">SamBodyDeleter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a bam1_t pointer  <a href="structgamgee_1_1utils_1_1_sam_body_deleter.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a <a class="el" href="structbam1__t.html">bam1_t</a> pointer  <a href="structgamgee_1_1utils_1_1_sam_body_deleter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_sam_header_deleter.html">SamHeaderDeleter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a bam_hdr_t pointer  <a href="structgamgee_1_1utils_1_1_sam_header_deleter.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a <a class="el" href="structbam__hdr__t.html">bam_hdr_t</a> pointer  <a href="structgamgee_1_1utils_1_1_sam_header_deleter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1utils_1_1_short_value_optimized_storage.html">ShortValueOptimizedStorage</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_synced_reader_deleter.html">SyncedReaderDeleter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a bcf_srs_t pointer  <a href="structgamgee_1_1utils_1_1_synced_reader_deleter.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a <a class="el" href="structbcf__srs__t.html">bcf_srs_t</a> pointer  <a href="structgamgee_1_1utils_1_1_synced_reader_deleter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_variant_body_deleter.html">VariantBodyDeleter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a bcf1_t pointer  <a href="structgamgee_1_1utils_1_1_variant_body_deleter.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a <a class="el" href="structbcf1__t.html">bcf1_t</a> pointer  <a href="structgamgee_1_1utils_1_1_variant_body_deleter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_variant_header_deleter.html">VariantHeaderDeleter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a bcf_hdr_t pointer  <a href="structgamgee_1_1utils_1_1_variant_header_deleter.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> pointer  <a href="structgamgee_1_1utils_1_1_variant_header_deleter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -158,80 +159,80 @@ Functions</h2></td></tr>
 <tr class="memitem:a5ee633d9c3a8da271e79ba212980ff21"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a5ee633d9c3a8da271e79ba212980ff21">allele_missing</a> (const uint8_t *data_ptr, const uint32_t allele_index, const TYPE <a class="el" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>)</td></tr>
 <tr class="separator:a5ee633d9c3a8da271e79ba212980ff21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ecd589903b5395d15527e3b0a6481cf"><td class="memTemplParams" colspan="2">template&lt;class TYPE &gt; </td></tr>
-<tr class="memitem:a1ecd589903b5395d15527e3b0a6481cf"><td class="memTemplItemLeft" align="right" valign="top">vector&lt; int32_t &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a1ecd589903b5395d15527e3b0a6481cf">allele_keys</a> (const std::shared_ptr&lt; bcf1_t &gt; &amp;body, const bcf_fmt_t *const format_ptr, const uint8_t *data_ptr, const TYPE <a class="el" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>, const TYPE vector_end)</td></tr>
+<tr class="memitem:a1ecd589903b5395d15527e3b0a6481cf"><td class="memTemplItemLeft" align="right" valign="top">vector&lt; int32_t &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a1ecd589903b5395d15527e3b0a6481cf">allele_keys</a> (const std::shared_ptr&lt; <a class="el" href="structbcf1__t.html">bcf1_t</a> &gt; &amp;body, const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const format_ptr, const uint8_t *data_ptr, const TYPE <a class="el" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>, const TYPE vector_end)</td></tr>
 <tr class="separator:a1ecd589903b5395d15527e3b0a6481cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ec32c97f1f7c6ee9f97179bcbca45bb"><td class="memTemplParams" colspan="2">template&lt;class TYPE &gt; </td></tr>
-<tr class="memitem:a2ec32c97f1f7c6ee9f97179bcbca45bb"><td class="memTemplItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a2ec32c97f1f7c6ee9f97179bcbca45bb">allele_strings</a> (const std::shared_ptr&lt; bcf1_t &gt; &amp;body, const bcf_fmt_t *const format_ptr, const uint8_t *data_ptr, const TYPE <a class="el" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>, const TYPE vector_end)</td></tr>
+<tr class="memitem:a2ec32c97f1f7c6ee9f97179bcbca45bb"><td class="memTemplItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a2ec32c97f1f7c6ee9f97179bcbca45bb">allele_strings</a> (const std::shared_ptr&lt; <a class="el" href="structbcf1__t.html">bcf1_t</a> &gt; &amp;body, const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const format_ptr, const uint8_t *data_ptr, const TYPE <a class="el" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>, const TYPE vector_end)</td></tr>
 <tr class="separator:a2ec32c97f1f7c6ee9f97179bcbca45bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96237f49e03cb3ab01ccf35c0914b6f6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a96237f49e03cb3ab01ccf35c0914b6f6">allele_missing</a> (const bcf_fmt_t *const format_ptr, const uint8_t *data_ptr, const uint32_t allele_index)</td></tr>
+<tr class="memitem:a96237f49e03cb3ab01ccf35c0914b6f6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a96237f49e03cb3ab01ccf35c0914b6f6">allele_missing</a> (const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const format_ptr, const uint8_t *data_ptr, const uint32_t allele_index)</td></tr>
 <tr class="memdesc:a96237f49e03cb3ab01ccf35c0914b6f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the allele at position allele_index is missing.  <a href="#a96237f49e03cb3ab01ccf35c0914b6f6">More...</a><br /></td></tr>
 <tr class="separator:a96237f49e03cb3ab01ccf35c0914b6f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28eabcfe9e1101b620a1acbc42f68e9e"><td class="memItemLeft" align="right" valign="top">vector&lt; int32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a28eabcfe9e1101b620a1acbc42f68e9e">allele_keys</a> (const std::shared_ptr&lt; bcf1_t &gt; &amp;body, const bcf_fmt_t *const format_ptr, const uint8_t *data_ptr)</td></tr>
+<tr class="memitem:a28eabcfe9e1101b620a1acbc42f68e9e"><td class="memItemLeft" align="right" valign="top">vector&lt; int32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a28eabcfe9e1101b620a1acbc42f68e9e">allele_keys</a> (const std::shared_ptr&lt; <a class="el" href="structbcf1__t.html">bcf1_t</a> &gt; &amp;body, const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const format_ptr, const uint8_t *data_ptr)</td></tr>
 <tr class="memdesc:a28eabcfe9e1101b620a1acbc42f68e9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the genotype allele keys.  <a href="#a28eabcfe9e1101b620a1acbc42f68e9e">More...</a><br /></td></tr>
 <tr class="separator:a28eabcfe9e1101b620a1acbc42f68e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc893fb18c4ab30ac3e419a0f06141b4"><td class="memItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#afc893fb18c4ab30ac3e419a0f06141b4">allele_strings</a> (const std::shared_ptr&lt; bcf1_t &gt; &amp;body, const bcf_fmt_t *const format_ptr, const uint8_t *data_ptr)</td></tr>
+<tr class="memitem:afc893fb18c4ab30ac3e419a0f06141b4"><td class="memItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#afc893fb18c4ab30ac3e419a0f06141b4">allele_strings</a> (const std::shared_ptr&lt; <a class="el" href="structbcf1__t.html">bcf1_t</a> &gt; &amp;body, const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const format_ptr, const uint8_t *data_ptr)</td></tr>
 <tr class="memdesc:afc893fb18c4ab30ac3e419a0f06141b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the genotype allele strings.  <a href="#afc893fb18c4ab30ac3e419a0f06141b4">More...</a><br /></td></tr>
 <tr class="separator:afc893fb18c4ab30ac3e419a0f06141b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abece8890c17e6f5ac54a4922fc24f05c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#abece8890c17e6f5ac54a4922fc24f05c">allele_key_to_string</a> (const std::shared_ptr&lt; bcf1_t &gt; &amp;body, const int32_t key_index)</td></tr>
+<tr class="memitem:abece8890c17e6f5ac54a4922fc24f05c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#abece8890c17e6f5ac54a4922fc24f05c">allele_key_to_string</a> (const std::shared_ptr&lt; <a class="el" href="structbcf1__t.html">bcf1_t</a> &gt; &amp;body, const int32_t key_index)</td></tr>
 <tr class="memdesc:abece8890c17e6f5ac54a4922fc24f05c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the genotype allele string from this line.  <a href="#abece8890c17e6f5ac54a4922fc24f05c">More...</a><br /></td></tr>
 <tr class="separator:abece8890c17e6f5ac54a4922fc24f05c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56eb3079fbaa3dc854fc541667e4d22d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a56eb3079fbaa3dc854fc541667e4d22d">allele_count</a> (const bcf_fmt_t *const format_ptr)</td></tr>
+<tr class="memitem:a56eb3079fbaa3dc854fc541667e4d22d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a56eb3079fbaa3dc854fc541667e4d22d">allele_count</a> (const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const format_ptr)</td></tr>
 <tr class="memdesc:a56eb3079fbaa3dc854fc541667e4d22d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts the genotype alleles.  <a href="#a56eb3079fbaa3dc854fc541667e4d22d">More...</a><br /></td></tr>
 <tr class="separator:a56eb3079fbaa3dc854fc541667e4d22d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0145f214e3f7d9376f84f5da9a0c4141"><td class="memTemplParams" colspan="2">template&lt;class TYPE &gt; </td></tr>
 <tr class="memitem:a0145f214e3f7d9376f84f5da9a0c4141"><td class="memTemplItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a0145f214e3f7d9376f84f5da9a0c4141">allele_key</a> (const uint8_t *data_ptr, const uint32_t allele_index, const TYPE <a class="el" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a>, const TYPE vector_end)</td></tr>
 <tr class="separator:a0145f214e3f7d9376f84f5da9a0c4141"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a771649e6d3a864010772e1c1accbde26"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a771649e6d3a864010772e1c1accbde26">allele_key</a> (const bcf_fmt_t *const format_ptr, const uint8_t *data_ptr, const uint32_t allele_index)</td></tr>
+<tr class="memitem:a771649e6d3a864010772e1c1accbde26"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a771649e6d3a864010772e1c1accbde26">allele_key</a> (const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const format_ptr, const uint8_t *data_ptr, const uint32_t allele_index)</td></tr>
 <tr class="memdesc:a771649e6d3a864010772e1c1accbde26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the genotype allele at position allele_index.  <a href="#a771649e6d3a864010772e1c1accbde26">More...</a><br /></td></tr>
 <tr class="separator:a771649e6d3a864010772e1c1accbde26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50116d5da2ab23b2963b0e1f95eca489"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; htsFile &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a50116d5da2ab23b2963b0e1f95eca489">make_shared_hts_file</a> (htsFile *hts_file_ptr)</td></tr>
-<tr class="memdesc:a50116d5da2ab23b2963b0e1f95eca489"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated htsFile in a shared_ptr with correct deleter  <a href="#a50116d5da2ab23b2963b0e1f95eca489">More...</a><br /></td></tr>
+<tr class="memitem:a50116d5da2ab23b2963b0e1f95eca489"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; <a class="el" href="structhts_file.html">htsFile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a50116d5da2ab23b2963b0e1f95eca489">make_shared_hts_file</a> (<a class="el" href="structhts_file.html">htsFile</a> *hts_file_ptr)</td></tr>
+<tr class="memdesc:a50116d5da2ab23b2963b0e1f95eca489"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated <a class="el" href="structhts_file.html">htsFile</a> in a shared_ptr with correct deleter  <a href="#a50116d5da2ab23b2963b0e1f95eca489">More...</a><br /></td></tr>
 <tr class="separator:a50116d5da2ab23b2963b0e1f95eca489"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0c6a5d15fc80f2b8432bf42c386f630"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; hts_idx_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ad0c6a5d15fc80f2b8432bf42c386f630">make_shared_hts_index</a> (hts_idx_t *hts_index_ptr)</td></tr>
+<tr class="memitem:ad0c6a5d15fc80f2b8432bf42c386f630"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; <a class="el" href="hts_8h.html#a685c2ecffa2a2bff4e6e1ac04c7493cd">hts_idx_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ad0c6a5d15fc80f2b8432bf42c386f630">make_shared_hts_index</a> (<a class="el" href="hts_8h.html#a685c2ecffa2a2bff4e6e1ac04c7493cd">hts_idx_t</a> *hts_index_ptr)</td></tr>
 <tr class="memdesc:ad0c6a5d15fc80f2b8432bf42c386f630"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated hts_idx_t in a shared_ptr with correct deleter  <a href="#ad0c6a5d15fc80f2b8432bf42c386f630">More...</a><br /></td></tr>
 <tr class="separator:ad0c6a5d15fc80f2b8432bf42c386f630"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac934bb527c189299ab91b2881b4295fe"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; hts_itr_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ac934bb527c189299ab91b2881b4295fe">make_shared_hts_itr</a> (hts_itr_t *hts_itr_ptr)</td></tr>
-<tr class="memdesc:ac934bb527c189299ab91b2881b4295fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated hts_itr_t in a shared_ptr with correct deleter  <a href="#ac934bb527c189299ab91b2881b4295fe">More...</a><br /></td></tr>
+<tr class="memitem:ac934bb527c189299ab91b2881b4295fe"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; <a class="el" href="structhts__itr__t.html">hts_itr_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ac934bb527c189299ab91b2881b4295fe">make_shared_hts_itr</a> (<a class="el" href="structhts__itr__t.html">hts_itr_t</a> *hts_itr_ptr)</td></tr>
+<tr class="memdesc:ac934bb527c189299ab91b2881b4295fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated <a class="el" href="structhts__itr__t.html">hts_itr_t</a> in a shared_ptr with correct deleter  <a href="#ac934bb527c189299ab91b2881b4295fe">More...</a><br /></td></tr>
 <tr class="separator:ac934bb527c189299ab91b2881b4295fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5e4c2a62b4e2544996e8b0193e5c31a"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; bam1_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ae5e4c2a62b4e2544996e8b0193e5c31a">make_shared_sam</a> (bam1_t *sam_ptr)</td></tr>
-<tr class="memdesc:ae5e4c2a62b4e2544996e8b0193e5c31a"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated bam1_t in a shared_ptr with correct deleter  <a href="#ae5e4c2a62b4e2544996e8b0193e5c31a">More...</a><br /></td></tr>
+<tr class="memitem:ae5e4c2a62b4e2544996e8b0193e5c31a"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; <a class="el" href="structbam1__t.html">bam1_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ae5e4c2a62b4e2544996e8b0193e5c31a">make_shared_sam</a> (<a class="el" href="structbam1__t.html">bam1_t</a> *sam_ptr)</td></tr>
+<tr class="memdesc:ae5e4c2a62b4e2544996e8b0193e5c31a"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated <a class="el" href="structbam1__t.html">bam1_t</a> in a shared_ptr with correct deleter  <a href="#ae5e4c2a62b4e2544996e8b0193e5c31a">More...</a><br /></td></tr>
 <tr class="separator:ae5e4c2a62b4e2544996e8b0193e5c31a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72ad0cc418281effcdb1abd1a077761e"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; bam_hdr_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a72ad0cc418281effcdb1abd1a077761e">make_shared_sam_header</a> (bam_hdr_t *sam_header_ptr)</td></tr>
-<tr class="memdesc:a72ad0cc418281effcdb1abd1a077761e"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated bam_hdr_t in a shared_ptr with correct deleter  <a href="#a72ad0cc418281effcdb1abd1a077761e">More...</a><br /></td></tr>
+<tr class="memitem:a72ad0cc418281effcdb1abd1a077761e"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; <a class="el" href="structbam__hdr__t.html">bam_hdr_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a72ad0cc418281effcdb1abd1a077761e">make_shared_sam_header</a> (<a class="el" href="structbam__hdr__t.html">bam_hdr_t</a> *sam_header_ptr)</td></tr>
+<tr class="memdesc:a72ad0cc418281effcdb1abd1a077761e"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated <a class="el" href="structbam__hdr__t.html">bam_hdr_t</a> in a shared_ptr with correct deleter  <a href="#a72ad0cc418281effcdb1abd1a077761e">More...</a><br /></td></tr>
 <tr class="separator:a72ad0cc418281effcdb1abd1a077761e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22e4ba8eb2a8667becd53d5f10fad35f"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; bcf1_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a22e4ba8eb2a8667becd53d5f10fad35f">make_shared_variant</a> (bcf1_t *bcf_ptr)</td></tr>
-<tr class="memdesc:a22e4ba8eb2a8667becd53d5f10fad35f"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated bcf1_t in a shared_ptr with correct deleter  <a href="#a22e4ba8eb2a8667becd53d5f10fad35f">More...</a><br /></td></tr>
+<tr class="memitem:a22e4ba8eb2a8667becd53d5f10fad35f"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; <a class="el" href="structbcf1__t.html">bcf1_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a22e4ba8eb2a8667becd53d5f10fad35f">make_shared_variant</a> (<a class="el" href="structbcf1__t.html">bcf1_t</a> *bcf_ptr)</td></tr>
+<tr class="memdesc:a22e4ba8eb2a8667becd53d5f10fad35f"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated <a class="el" href="structbcf1__t.html">bcf1_t</a> in a shared_ptr with correct deleter  <a href="#a22e4ba8eb2a8667becd53d5f10fad35f">More...</a><br /></td></tr>
 <tr class="separator:a22e4ba8eb2a8667becd53d5f10fad35f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2732369bc67b236fbe94bcaba720d170"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; bcf_hdr_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a2732369bc67b236fbe94bcaba720d170">make_shared_variant_header</a> (bcf_hdr_t *bcf_hdr_ptr)</td></tr>
-<tr class="memdesc:a2732369bc67b236fbe94bcaba720d170"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated bcf_hdr_t in a shared_ptr with correct deleter  <a href="#a2732369bc67b236fbe94bcaba720d170">More...</a><br /></td></tr>
+<tr class="memitem:a2732369bc67b236fbe94bcaba720d170"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a2732369bc67b236fbe94bcaba720d170">make_shared_variant_header</a> (<a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *bcf_hdr_ptr)</td></tr>
+<tr class="memdesc:a2732369bc67b236fbe94bcaba720d170"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> in a shared_ptr with correct deleter  <a href="#a2732369bc67b236fbe94bcaba720d170">More...</a><br /></td></tr>
 <tr class="separator:a2732369bc67b236fbe94bcaba720d170"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53201a12479882cc6e6bb789a506109b"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; bcf_srs_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a53201a12479882cc6e6bb789a506109b">make_shared_synced_variant_reader</a> (bcf_srs_t *synced_reader_ptr)</td></tr>
-<tr class="memdesc:a53201a12479882cc6e6bb789a506109b"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated bcf_srs_t in a shared_ptr with correct deleter  <a href="#a53201a12479882cc6e6bb789a506109b">More...</a><br /></td></tr>
+<tr class="memitem:a53201a12479882cc6e6bb789a506109b"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="structbcf__srs__t.html">bcf_srs_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a53201a12479882cc6e6bb789a506109b">make_shared_synced_variant_reader</a> (<a class="el" href="structbcf__srs__t.html">bcf_srs_t</a> *synced_reader_ptr)</td></tr>
+<tr class="memdesc:a53201a12479882cc6e6bb789a506109b"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated <a class="el" href="structbcf__srs__t.html">bcf_srs_t</a> in a shared_ptr with correct deleter  <a href="#a53201a12479882cc6e6bb789a506109b">More...</a><br /></td></tr>
 <tr class="separator:a53201a12479882cc6e6bb789a506109b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a212198e63351e31260f9a80a0e78ae35"><td class="memItemLeft" align="right" valign="top">unique_ptr&lt; htsFile, <br class="typebreak" />
-<a class="el" href="structgamgee_1_1utils_1_1_hts_file_deleter.html">HtsFileDeleter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a212198e63351e31260f9a80a0e78ae35">make_unique_hts_file</a> (htsFile *hts_file_ptr)</td></tr>
-<tr class="memdesc:a212198e63351e31260f9a80a0e78ae35"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated htsFile in a unique_ptr with correct deleter  <a href="#a212198e63351e31260f9a80a0e78ae35">More...</a><br /></td></tr>
+<tr class="memitem:a212198e63351e31260f9a80a0e78ae35"><td class="memItemLeft" align="right" valign="top">unique_ptr&lt; <a class="el" href="structhts_file.html">htsFile</a>, <br class="typebreak" />
+<a class="el" href="structgamgee_1_1utils_1_1_hts_file_deleter.html">HtsFileDeleter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a212198e63351e31260f9a80a0e78ae35">make_unique_hts_file</a> (<a class="el" href="structhts_file.html">htsFile</a> *hts_file_ptr)</td></tr>
+<tr class="memdesc:a212198e63351e31260f9a80a0e78ae35"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated <a class="el" href="structhts_file.html">htsFile</a> in a unique_ptr with correct deleter  <a href="#a212198e63351e31260f9a80a0e78ae35">More...</a><br /></td></tr>
 <tr class="separator:a212198e63351e31260f9a80a0e78ae35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13db4dd858bb737708b44acf5d11abf4"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; hts_itr_t, <br class="typebreak" />
-<a class="el" href="structgamgee_1_1utils_1_1_hts_iterator_deleter.html">HtsIteratorDeleter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a13db4dd858bb737708b44acf5d11abf4">make_unique_hts_itr</a> (hts_itr_t *hts_itr_ptr)</td></tr>
-<tr class="memdesc:a13db4dd858bb737708b44acf5d11abf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated hts_itr_t in a unique_ptr with correct deleter  <a href="#a13db4dd858bb737708b44acf5d11abf4">More...</a><br /></td></tr>
+<tr class="memitem:a13db4dd858bb737708b44acf5d11abf4"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="structhts__itr__t.html">hts_itr_t</a>, <br class="typebreak" />
+<a class="el" href="structgamgee_1_1utils_1_1_hts_iterator_deleter.html">HtsIteratorDeleter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a13db4dd858bb737708b44acf5d11abf4">make_unique_hts_itr</a> (<a class="el" href="structhts__itr__t.html">hts_itr_t</a> *hts_itr_ptr)</td></tr>
+<tr class="memdesc:a13db4dd858bb737708b44acf5d11abf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraps a pre-allocated <a class="el" href="structhts__itr__t.html">hts_itr_t</a> in a unique_ptr with correct deleter  <a href="#a13db4dd858bb737708b44acf5d11abf4">More...</a><br /></td></tr>
 <tr class="separator:a13db4dd858bb737708b44acf5d11abf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01cd31cd2e6e4343b8e61797bed36107"><td class="memItemLeft" align="right" valign="top">bam1_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a01cd31cd2e6e4343b8e61797bed36107">sam_deep_copy</a> (bam1_t *original)</td></tr>
-<tr class="memdesc:a01cd31cd2e6e4343b8e61797bed36107"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a deep copy of an existing bam1_t  <a href="#a01cd31cd2e6e4343b8e61797bed36107">More...</a><br /></td></tr>
+<tr class="memitem:a01cd31cd2e6e4343b8e61797bed36107"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbam1__t.html">bam1_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a01cd31cd2e6e4343b8e61797bed36107">sam_deep_copy</a> (<a class="el" href="structbam1__t.html">bam1_t</a> *original)</td></tr>
+<tr class="memdesc:a01cd31cd2e6e4343b8e61797bed36107"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a deep copy of an existing <a class="el" href="structbam1__t.html">bam1_t</a>  <a href="#a01cd31cd2e6e4343b8e61797bed36107">More...</a><br /></td></tr>
 <tr class="separator:a01cd31cd2e6e4343b8e61797bed36107"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff3f8e11f250d80c1546a1d45a3aac83"><td class="memItemLeft" align="right" valign="top">bam_hdr_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#aff3f8e11f250d80c1546a1d45a3aac83">sam_header_deep_copy</a> (bam_hdr_t *original)</td></tr>
-<tr class="memdesc:aff3f8e11f250d80c1546a1d45a3aac83"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a deep copy of an existing bam_hdr_t  <a href="#aff3f8e11f250d80c1546a1d45a3aac83">More...</a><br /></td></tr>
+<tr class="memitem:aff3f8e11f250d80c1546a1d45a3aac83"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbam__hdr__t.html">bam_hdr_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#aff3f8e11f250d80c1546a1d45a3aac83">sam_header_deep_copy</a> (<a class="el" href="structbam__hdr__t.html">bam_hdr_t</a> *original)</td></tr>
+<tr class="memdesc:aff3f8e11f250d80c1546a1d45a3aac83"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a deep copy of an existing <a class="el" href="structbam__hdr__t.html">bam_hdr_t</a>  <a href="#aff3f8e11f250d80c1546a1d45a3aac83">More...</a><br /></td></tr>
 <tr class="separator:aff3f8e11f250d80c1546a1d45a3aac83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abda68bdd51970574b703657971cba5da"><td class="memItemLeft" align="right" valign="top">bcf1_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#abda68bdd51970574b703657971cba5da">variant_deep_copy</a> (bcf1_t *original)</td></tr>
-<tr class="memdesc:abda68bdd51970574b703657971cba5da"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a deep copy of an existing bcf1_t  <a href="#abda68bdd51970574b703657971cba5da">More...</a><br /></td></tr>
+<tr class="memitem:abda68bdd51970574b703657971cba5da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbcf1__t.html">bcf1_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#abda68bdd51970574b703657971cba5da">variant_deep_copy</a> (<a class="el" href="structbcf1__t.html">bcf1_t</a> *original)</td></tr>
+<tr class="memdesc:abda68bdd51970574b703657971cba5da"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a deep copy of an existing <a class="el" href="structbcf1__t.html">bcf1_t</a>  <a href="#abda68bdd51970574b703657971cba5da">More...</a><br /></td></tr>
 <tr class="separator:abda68bdd51970574b703657971cba5da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3be1d904aaf34bca9a2cf92c7f04a32"><td class="memItemLeft" align="right" valign="top">bcf_hdr_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ae3be1d904aaf34bca9a2cf92c7f04a32">variant_header_deep_copy</a> (bcf_hdr_t *original)</td></tr>
-<tr class="memdesc:ae3be1d904aaf34bca9a2cf92c7f04a32"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a deep copy of an existing bcf_hdr_t  <a href="#ae3be1d904aaf34bca9a2cf92c7f04a32">More...</a><br /></td></tr>
+<tr class="memitem:ae3be1d904aaf34bca9a2cf92c7f04a32"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ae3be1d904aaf34bca9a2cf92c7f04a32">variant_header_deep_copy</a> (<a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *original)</td></tr>
+<tr class="memdesc:ae3be1d904aaf34bca9a2cf92c7f04a32"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a deep copy of an existing <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a>  <a href="#ae3be1d904aaf34bca9a2cf92c7f04a32">More...</a><br /></td></tr>
 <tr class="separator:ae3be1d904aaf34bca9a2cf92c7f04a32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46f10b16d5788f247dc8dd3ded7e029a"><td class="memItemLeft" align="right" valign="top">bam1_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a46f10b16d5788f247dc8dd3ded7e029a">sam_shallow_copy</a> (bam1_t *original)</td></tr>
-<tr class="memdesc:a46f10b16d5788f247dc8dd3ded7e029a"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a shallow copy of an existing bam1_t: copies core fields but not the data buffer or fields related to the size of the data buffer  <a href="#a46f10b16d5788f247dc8dd3ded7e029a">More...</a><br /></td></tr>
+<tr class="memitem:a46f10b16d5788f247dc8dd3ded7e029a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbam1__t.html">bam1_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a46f10b16d5788f247dc8dd3ded7e029a">sam_shallow_copy</a> (<a class="el" href="structbam1__t.html">bam1_t</a> *original)</td></tr>
+<tr class="memdesc:a46f10b16d5788f247dc8dd3ded7e029a"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a shallow copy of an existing <a class="el" href="structbam1__t.html">bam1_t</a>: copies core fields but not the data buffer or fields related to the size of the data buffer  <a href="#a46f10b16d5788f247dc8dd3ded7e029a">More...</a><br /></td></tr>
 <tr class="separator:a46f10b16d5788f247dc8dd3ded7e029a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e1092478e0b19aa3887ff5ee6c82cb9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a7e1092478e0b19aa3887ff5ee6c82cb9">htslib_filter_name</a> (bcf_hdr_t *header, bcf1_t *body, int index)</td></tr>
+<tr class="memitem:a7e1092478e0b19aa3887ff5ee6c82cb9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a7e1092478e0b19aa3887ff5ee6c82cb9">htslib_filter_name</a> (<a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *header, <a class="el" href="structbcf1__t.html">bcf1_t</a> *body, int index)</td></tr>
 <tr class="memdesc:a7e1092478e0b19aa3887ff5ee6c82cb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">helper function to translate an index into a string in the filter list  <a href="#a7e1092478e0b19aa3887ff5ee6c82cb9">More...</a><br /></td></tr>
 <tr class="separator:a7e1092478e0b19aa3887ff5ee6c82cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45938b6242445c448f9c2d3d5c29f5a3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a45938b6242445c448f9c2d3d5c29f5a3">bcf_type_to_element_size</a> (const int32_t htslib_type)</td></tr>
@@ -240,7 +241,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a02221ecf3b71fe574724d34e70d35afd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a02221ecf3b71fe574724d34e70d35afd">int_encoded_type</a> (const int32_t min_val, const int32_t max_val)</td></tr>
 <tr class="memdesc:a02221ecf3b71fe574724d34e70d35afd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a min and max value, determines whether int8, int16, or int32 BCF encoding is required.  <a href="#a02221ecf3b71fe574724d34e70d35afd">More...</a><br /></td></tr>
 <tr class="separator:a02221ecf3b71fe574724d34e70d35afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a000da2b95d7f8bb889076c2af3272470"><td class="memItemLeft" align="right" valign="top">kstring_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a000da2b95d7f8bb889076c2af3272470">initialize_htslib_buffer</a> (const uint32_t initial_capacity)</td></tr>
+<tr class="memitem:a000da2b95d7f8bb889076c2af3272470"><td class="memItemLeft" align="right" valign="top"><a class="el" href="bgzf_8h.html#ac800c6fe2937b30307ab5a457e5bbf19">kstring_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a000da2b95d7f8bb889076c2af3272470">initialize_htslib_buffer</a> (const uint32_t initial_capacity)</td></tr>
 <tr class="memdesc:a000da2b95d7f8bb889076c2af3272470"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a newly-allocated kstring_t buffer suitable for passing to htslib.  <a href="#a000da2b95d7f8bb889076c2af3272470">More...</a><br /></td></tr>
 <tr class="separator:a000da2b95d7f8bb889076c2af3272470"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa093d879335fb425cea4802085e192c7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#aa093d879335fb425cea4802085e192c7">int_encoded_type</a> (const int32_t val)</td></tr>
@@ -305,10 +306,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a047abcf196c22d47e3e567df353b73df"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a047abcf196c22d47e3e567df353b73df">convert_data_to_string</a> (const uint8_t *data_ptr, const int index, const uint8_t num_bytes_per_value, const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">VariantFieldType</a> &amp;type)</td></tr>
 <tr class="memdesc:a047abcf196c22d47e3e567df353b73df"><td class="mdescLeft">&#160;</td><td class="mdescRight">converts the value in an index from the byte array into string  <a href="#a047abcf196c22d47e3e567df353b73df">More...</a><br /></td></tr>
 <tr class="separator:a047abcf196c22d47e3e567df353b73df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac118cf603c756fa858ce1c63deb11bb8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ac118cf603c756fa858ce1c63deb11bb8">size_for_type</a> (const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">VariantFieldType</a> &amp;type, const bcf_fmt_t *const format_ptr)</td></tr>
+<tr class="memitem:ac118cf603c756fa858ce1c63deb11bb8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ac118cf603c756fa858ce1c63deb11bb8">size_for_type</a> (const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">VariantFieldType</a> &amp;type, const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const format_ptr)</td></tr>
 <tr class="memdesc:ac118cf603c756fa858ce1c63deb11bb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of bytes for a given VariantFieldType  <a href="#ac118cf603c756fa858ce1c63deb11bb8">More...</a><br /></td></tr>
 <tr class="separator:ac118cf603c756fa858ce1c63deb11bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ccc5fa09f535b5f1a9dde2e1357737c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a6ccc5fa09f535b5f1a9dde2e1357737c">size_for_type</a> (const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">VariantFieldType</a> &amp;type, const bcf_info_t *const info_ptr)</td></tr>
+<tr class="memitem:a6ccc5fa09f535b5f1a9dde2e1357737c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a6ccc5fa09f535b5f1a9dde2e1357737c">size_for_type</a> (const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">VariantFieldType</a> &amp;type, const <a class="el" href="structbcf__info__t.html">bcf_info_t</a> *const info_ptr)</td></tr>
 <tr class="memdesc:a6ccc5fa09f535b5f1a9dde2e1357737c"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of bytes for a given VariantFieldType  <a href="#a6ccc5fa09f535b5f1a9dde2e1357737c">More...</a><br /></td></tr>
 <tr class="separator:a6ccc5fa09f535b5f1a9dde2e1357737c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a411927fb159d2fb6cfbd183655ea454b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a411927fb159d2fb6cfbd183655ea454b">is_string_type</a> (const int32_t &amp;type)</td></tr>
@@ -350,7 +351,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>an enumeration of the types in htslib for the format field values </p>
-<dl class="section note"><dt>Note</dt><dd>these must match the order in the htslib defines in htslib/vcf.h </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>these must match the order in the htslib defines in <a class="el" href="vcf_8h.html">htslib/vcf.h</a> </dd></dl>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a04f2f42b3960b33e4edc7478ce6039ecabc0b1e8b63f3f00318eee5aeabc14255"></a>NIL&#160;</td><td class="fielddoc">
 </td></tr>
@@ -379,7 +380,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">uint32_t gamgee::utils::allele_count </td>
           <td>(</td>
-          <td class="paramtype">const bcf_fmt_t *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const&#160;</td>
           <td class="paramname"><em>format_ptr</em></td><td>)</td>
           <td></td>
         </tr>
@@ -461,7 +462,7 @@ template&lt;class TYPE &gt; </div>
         <tr>
           <td class="memname">int32_t gamgee::utils::allele_key </td>
           <td>(</td>
-          <td class="paramtype">const bcf_fmt_t *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const&#160;</td>
           <td class="paramname"><em>format_ptr</em>, </td>
         </tr>
         <tr>
@@ -510,7 +511,7 @@ template&lt;class TYPE &gt; </div>
         <tr>
           <td class="memname">string gamgee::utils::allele_key_to_string </td>
           <td>(</td>
-          <td class="paramtype">const std::shared_ptr&lt; bcf1_t &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="structbcf1__t.html">bcf1_t</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>body</em>, </td>
         </tr>
         <tr>
@@ -549,13 +550,13 @@ template&lt;class TYPE &gt; </div>
         <tr>
           <td class="memname">vector&lt; int32_t &gt; gamgee::utils::allele_keys </td>
           <td>(</td>
-          <td class="paramtype">const std::shared_ptr&lt; bcf1_t &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="structbcf1__t.html">bcf1_t</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>body</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bcf_fmt_t *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const&#160;</td>
           <td class="paramname"><em>format_ptr</em>, </td>
         </tr>
         <tr>
@@ -593,13 +594,13 @@ template&lt;class TYPE &gt; </div>
         <tr>
           <td class="memname">vector&lt; int32_t &gt; gamgee::utils::allele_keys </td>
           <td>(</td>
-          <td class="paramtype">const std::shared_ptr&lt; bcf1_t &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="structbcf1__t.html">bcf1_t</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>body</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bcf_fmt_t *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const&#160;</td>
           <td class="paramname"><em>format_ptr</em>, </td>
         </tr>
         <tr>
@@ -671,7 +672,7 @@ template&lt;class TYPE &gt; </div>
         <tr>
           <td class="memname">bool gamgee::utils::allele_missing </td>
           <td>(</td>
-          <td class="paramtype">const bcf_fmt_t *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const&#160;</td>
           <td class="paramname"><em>format_ptr</em>, </td>
         </tr>
         <tr>
@@ -719,13 +720,13 @@ template&lt;class TYPE &gt; </div>
         <tr>
           <td class="memname">vector&lt; string &gt; gamgee::utils::allele_strings </td>
           <td>(</td>
-          <td class="paramtype">const std::shared_ptr&lt; bcf1_t &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="structbcf1__t.html">bcf1_t</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>body</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bcf_fmt_t *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const&#160;</td>
           <td class="paramname"><em>format_ptr</em>, </td>
         </tr>
         <tr>
@@ -763,13 +764,13 @@ template&lt;class TYPE &gt; </div>
         <tr>
           <td class="memname">vector&lt; string &gt; gamgee::utils::allele_strings </td>
           <td>(</td>
-          <td class="paramtype">const std::shared_ptr&lt; bcf1_t &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="structbcf1__t.html">bcf1_t</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>body</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bcf_fmt_t *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const&#160;</td>
           <td class="paramname"><em>format_ptr</em>, </td>
         </tr>
         <tr>
@@ -1421,13 +1422,13 @@ template&lt;class ITER &gt; </div>
         <tr>
           <td class="memname">std::string gamgee::utils::htslib_filter_name </td>
           <td>(</td>
-          <td class="paramtype">bcf_hdr_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *&#160;</td>
           <td class="paramname"><em>header</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bcf1_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structbcf1__t.html">bcf1_t</a> *&#160;</td>
           <td class="paramname"><em>body</em>, </td>
         </tr>
         <tr>
@@ -1461,7 +1462,7 @@ template&lt;class ITER &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">kstring_t gamgee::utils::initialize_htslib_buffer </td>
+          <td class="memname"><a class="el" href="bgzf_8h.html#ac800c6fe2937b30307ab5a457e5bbf19">kstring_t</a> gamgee::utils::initialize_htslib_buffer </td>
           <td>(</td>
           <td class="paramtype">const uint32_t&#160;</td>
           <td class="paramname"><em>initial_capacity</em></td><td>)</td>
@@ -1472,7 +1473,7 @@ template&lt;class ITER &gt; </div>
 
 <p>Returns a newly-allocated kstring_t buffer suitable for passing to htslib. </p>
 <p>The returned buffer is safe for htslib to call realloc() on, since it is initially allocated with malloc().</p>
-<dl class="section warning"><dt>Warning</dt><dd>Use this function ONLY when the memory will be handled to htslib for management and eventual release (eg., copying the buffer pointer into a bcf1_t) &ndash; it is the caller's responsibility to make sure deallocation is taken care of. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Use this function ONLY when the memory will be handled to htslib for management and eventual release (eg., copying the buffer pointer into a <a class="el" href="structbcf1__t.html">bcf1_t</a>) &ndash; it is the caller's responsibility to make sure deallocation is taken care of. </dd></dl>
 
 </div>
 </div>
@@ -1586,16 +1587,16 @@ template&lt;class ITER &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt; htsFile &gt; gamgee::utils::make_shared_hts_file </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="structhts_file.html">htsFile</a> &gt; gamgee::utils::make_shared_hts_file </td>
           <td>(</td>
-          <td class="paramtype">htsFile *&#160;</td>
+          <td class="paramtype"><a class="el" href="structhts_file.html">htsFile</a> *&#160;</td>
           <td class="paramname"><em>hts_file_ptr</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>wraps a pre-allocated htsFile in a shared_ptr with correct deleter </p>
+<p>wraps a pre-allocated <a class="el" href="structhts_file.html">htsFile</a> in a shared_ptr with correct deleter </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hts_file_ptr</td><td>an htslib raw file pointer </td></tr>
@@ -1610,9 +1611,9 @@ template&lt;class ITER &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt; hts_idx_t &gt; gamgee::utils::make_shared_hts_index </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="hts_8h.html#a685c2ecffa2a2bff4e6e1ac04c7493cd">hts_idx_t</a> &gt; gamgee::utils::make_shared_hts_index </td>
           <td>(</td>
-          <td class="paramtype">hts_idx_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="hts_8h.html#a685c2ecffa2a2bff4e6e1ac04c7493cd">hts_idx_t</a> *&#160;</td>
           <td class="paramname"><em>hts_index_ptr</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1634,16 +1635,16 @@ template&lt;class ITER &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt; hts_itr_t &gt; gamgee::utils::make_shared_hts_itr </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="structhts__itr__t.html">hts_itr_t</a> &gt; gamgee::utils::make_shared_hts_itr </td>
           <td>(</td>
-          <td class="paramtype">hts_itr_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structhts__itr__t.html">hts_itr_t</a> *&#160;</td>
           <td class="paramname"><em>hts_itr_ptr</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>wraps a pre-allocated hts_itr_t in a shared_ptr with correct deleter </p>
+<p>wraps a pre-allocated <a class="el" href="structhts__itr__t.html">hts_itr_t</a> in a shared_ptr with correct deleter </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hts_itr_ptr</td><td>an htslib raw file iterator pointer </td></tr>
@@ -1706,16 +1707,16 @@ template&lt;class ITER &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt; bam1_t &gt; gamgee::utils::make_shared_sam </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="structbam1__t.html">bam1_t</a> &gt; gamgee::utils::make_shared_sam </td>
           <td>(</td>
-          <td class="paramtype">bam1_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structbam1__t.html">bam1_t</a> *&#160;</td>
           <td class="paramname"><em>sam_ptr</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>wraps a pre-allocated bam1_t in a shared_ptr with correct deleter </p>
+<p>wraps a pre-allocated <a class="el" href="structbam1__t.html">bam1_t</a> in a shared_ptr with correct deleter </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sam_ptr</td><td>an htslib raw bam pointer </td></tr>
@@ -1730,16 +1731,16 @@ template&lt;class ITER &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt; bam_hdr_t &gt; gamgee::utils::make_shared_sam_header </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="structbam__hdr__t.html">bam_hdr_t</a> &gt; gamgee::utils::make_shared_sam_header </td>
           <td>(</td>
-          <td class="paramtype">bam_hdr_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structbam__hdr__t.html">bam_hdr_t</a> *&#160;</td>
           <td class="paramname"><em>sam_header_ptr</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>wraps a pre-allocated bam_hdr_t in a shared_ptr with correct deleter </p>
+<p>wraps a pre-allocated <a class="el" href="structbam__hdr__t.html">bam_hdr_t</a> in a shared_ptr with correct deleter </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sam_header_ptr</td><td>an htslib raw bam header pointer </td></tr>
@@ -1754,16 +1755,16 @@ template&lt;class ITER &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt; bcf_srs_t &gt; gamgee::utils::make_shared_synced_variant_reader </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="structbcf__srs__t.html">bcf_srs_t</a> &gt; gamgee::utils::make_shared_synced_variant_reader </td>
           <td>(</td>
-          <td class="paramtype">bcf_srs_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structbcf__srs__t.html">bcf_srs_t</a> *&#160;</td>
           <td class="paramname"><em>synced_reader_ptr</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>wraps a pre-allocated bcf_srs_t in a shared_ptr with correct deleter </p>
+<p>wraps a pre-allocated <a class="el" href="structbcf__srs__t.html">bcf_srs_t</a> in a shared_ptr with correct deleter </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">synced_reader_ptr</td><td>an htslib synced BCF reader pointer </td></tr>
@@ -1778,16 +1779,16 @@ template&lt;class ITER &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt; bcf1_t &gt; gamgee::utils::make_shared_variant </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="structbcf1__t.html">bcf1_t</a> &gt; gamgee::utils::make_shared_variant </td>
           <td>(</td>
-          <td class="paramtype">bcf1_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structbcf1__t.html">bcf1_t</a> *&#160;</td>
           <td class="paramname"><em>bcf_ptr</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>wraps a pre-allocated bcf1_t in a shared_ptr with correct deleter </p>
+<p>wraps a pre-allocated <a class="el" href="structbcf1__t.html">bcf1_t</a> in a shared_ptr with correct deleter </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">bcf_ptr</td><td>an htslib raw vcf pointer </td></tr>
@@ -1802,16 +1803,16 @@ template&lt;class ITER &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt; bcf_hdr_t &gt; gamgee::utils::make_shared_variant_header </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> &gt; gamgee::utils::make_shared_variant_header </td>
           <td>(</td>
-          <td class="paramtype">bcf_hdr_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *&#160;</td>
           <td class="paramname"><em>bcf_hdr_ptr</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>wraps a pre-allocated bcf_hdr_t in a shared_ptr with correct deleter </p>
+<p>wraps a pre-allocated <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> in a shared_ptr with correct deleter </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">bcf_hdr_ptr</td><td>an htslib raw variant header pointer </td></tr>
@@ -1826,16 +1827,16 @@ template&lt;class ITER &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt; htsFile, <a class="el" href="structgamgee_1_1utils_1_1_hts_file_deleter.html">HtsFileDeleter</a> &gt; gamgee::utils::make_unique_hts_file </td>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="structhts_file.html">htsFile</a>, <a class="el" href="structgamgee_1_1utils_1_1_hts_file_deleter.html">HtsFileDeleter</a> &gt; gamgee::utils::make_unique_hts_file </td>
           <td>(</td>
-          <td class="paramtype">htsFile *&#160;</td>
+          <td class="paramtype"><a class="el" href="structhts_file.html">htsFile</a> *&#160;</td>
           <td class="paramname"><em>hts_file_ptr</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>wraps a pre-allocated htsFile in a unique_ptr with correct deleter </p>
+<p>wraps a pre-allocated <a class="el" href="structhts_file.html">htsFile</a> in a unique_ptr with correct deleter </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hts_file_ptr</td><td>an htslib raw file pointer </td></tr>
@@ -1850,16 +1851,16 @@ template&lt;class ITER &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt; hts_itr_t, <a class="el" href="structgamgee_1_1utils_1_1_hts_iterator_deleter.html">HtsIteratorDeleter</a> &gt; gamgee::utils::make_unique_hts_itr </td>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="structhts__itr__t.html">hts_itr_t</a>, <a class="el" href="structgamgee_1_1utils_1_1_hts_iterator_deleter.html">HtsIteratorDeleter</a> &gt; gamgee::utils::make_unique_hts_itr </td>
           <td>(</td>
-          <td class="paramtype">hts_itr_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structhts__itr__t.html">hts_itr_t</a> *&#160;</td>
           <td class="paramname"><em>hts_itr_ptr</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>wraps a pre-allocated hts_itr_t in a unique_ptr with correct deleter </p>
+<p>wraps a pre-allocated <a class="el" href="structhts__itr__t.html">hts_itr_t</a> in a unique_ptr with correct deleter </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hts_itr_ptr</td><td>an htslib raw file iterator pointer </td></tr>
@@ -1899,16 +1900,16 @@ template&lt;class ITER &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bam1_t * gamgee::utils::sam_deep_copy </td>
+          <td class="memname"><a class="el" href="structbam1__t.html">bam1_t</a> * gamgee::utils::sam_deep_copy </td>
           <td>(</td>
-          <td class="paramtype">bam1_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structbam1__t.html">bam1_t</a> *&#160;</td>
           <td class="paramname"><em>original</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>creates a deep copy of an existing bam1_t </p>
+<p>creates a deep copy of an existing <a class="el" href="structbam1__t.html">bam1_t</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">original</td><td>an htslib raw bam pointer </td></tr>
@@ -1923,16 +1924,16 @@ template&lt;class ITER &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bam_hdr_t * gamgee::utils::sam_header_deep_copy </td>
+          <td class="memname"><a class="el" href="structbam__hdr__t.html">bam_hdr_t</a> * gamgee::utils::sam_header_deep_copy </td>
           <td>(</td>
-          <td class="paramtype">bam_hdr_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structbam__hdr__t.html">bam_hdr_t</a> *&#160;</td>
           <td class="paramname"><em>original</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>creates a deep copy of an existing bam_hdr_t </p>
+<p>creates a deep copy of an existing <a class="el" href="structbam__hdr__t.html">bam_hdr_t</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">original</td><td>an htslib raw bam header pointer </td></tr>
@@ -1947,16 +1948,16 @@ template&lt;class ITER &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bam1_t * gamgee::utils::sam_shallow_copy </td>
+          <td class="memname"><a class="el" href="structbam1__t.html">bam1_t</a> * gamgee::utils::sam_shallow_copy </td>
           <td>(</td>
-          <td class="paramtype">bam1_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structbam1__t.html">bam1_t</a> *&#160;</td>
           <td class="paramname"><em>original</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>creates a shallow copy of an existing bam1_t: copies core fields but not the data buffer or fields related to the size of the data buffer </p>
+<p>creates a shallow copy of an existing <a class="el" href="structbam1__t.html">bam1_t</a>: copies core fields but not the data buffer or fields related to the size of the data buffer </p>
 
 </div>
 </div>
@@ -1973,7 +1974,7 @@ template&lt;class ITER &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bcf_fmt_t *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const&#160;</td>
           <td class="paramname"><em>format_ptr</em>&#160;</td>
         </tr>
         <tr>
@@ -2001,7 +2002,7 @@ template&lt;class ITER &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bcf_info_t *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="structbcf__info__t.html">bcf_info_t</a> *const&#160;</td>
           <td class="paramname"><em>info_ptr</em>&#160;</td>
         </tr>
         <tr>
@@ -2021,16 +2022,16 @@ template&lt;class ITER &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bcf1_t * gamgee::utils::variant_deep_copy </td>
+          <td class="memname"><a class="el" href="structbcf1__t.html">bcf1_t</a> * gamgee::utils::variant_deep_copy </td>
           <td>(</td>
-          <td class="paramtype">bcf1_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structbcf1__t.html">bcf1_t</a> *&#160;</td>
           <td class="paramname"><em>original</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>creates a deep copy of an existing bcf1_t </p>
+<p>creates a deep copy of an existing <a class="el" href="structbcf1__t.html">bcf1_t</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">original</td><td>an htslib raw bcf pointer </td></tr>
@@ -2045,16 +2046,16 @@ template&lt;class ITER &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bcf_hdr_t * gamgee::utils::variant_header_deep_copy </td>
+          <td class="memname"><a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> * gamgee::utils::variant_header_deep_copy </td>
           <td>(</td>
-          <td class="paramtype">bcf_hdr_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *&#160;</td>
           <td class="paramname"><em>original</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>creates a deep copy of an existing bcf_hdr_t </p>
+<p>creates a deep copy of an existing <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">original</td><td>an htslib raw bcf header pointer </td></tr>
@@ -2106,7 +2107,7 @@ template&lt;typename... T&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 31 2014 18:58:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 3 2014 16:31:59 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

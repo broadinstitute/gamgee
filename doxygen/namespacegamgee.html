@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -71,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -384,10 +385,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a50fea678bec0e23c8331d5936dbd51f9"><td class="memTemplParams" colspan="2">template&lt;class VALUE &gt; </td></tr>
 <tr class="memitem:a50fea678bec0e23c8331d5936dbd51f9"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a50fea678bec0e23c8331d5936dbd51f9">missing</a> (const std::vector&lt; VALUE &gt; &amp;v)</td></tr>
 <tr class="separator:a50fea678bec0e23c8331d5936dbd51f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37644d067ba6f6fb7d010656ba781a7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a37644d067ba6f6fb7d010656ba781a7d">subset_variant_samples</a> (bcf_hdr_t *hdr_ptr, const std::vector&lt; std::string &gt; &amp;samples, const bool include)</td></tr>
+<tr class="memitem:a37644d067ba6f6fb7d010656ba781a7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a37644d067ba6f6fb7d010656ba781a7d">subset_variant_samples</a> (<a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *hdr_ptr, const std::vector&lt; std::string &gt; &amp;samples, const bool include)</td></tr>
 <tr class="memdesc:a37644d067ba6f6fb7d010656ba781a7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">allows the caller to include only selected samples in a <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> Reader. To create a sites only file, simply pass an empty vector of samples.  <a href="#a37644d067ba6f6fb7d010656ba781a7d">More...</a><br /></td></tr>
 <tr class="separator:a37644d067ba6f6fb7d010656ba781a7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09e22e26caa26c27d796baa0aad68138"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a09e22e26caa26c27d796baa0aad68138">merge_variant_headers</a> (const std::shared_ptr&lt; bcf_hdr_t &gt; &amp;dest_hdr_ptr, const std::shared_ptr&lt; bcf_hdr_t &gt; &amp;src_hdr_ptr)</td></tr>
+<tr class="memitem:a09e22e26caa26c27d796baa0aad68138"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a09e22e26caa26c27d796baa0aad68138">merge_variant_headers</a> (const std::shared_ptr&lt; <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> &gt; &amp;dest_hdr_ptr, const std::shared_ptr&lt; <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> &gt; &amp;src_hdr_ptr)</td></tr>
 <tr class="memdesc:a09e22e26caa26c27d796baa0aad68138"><td class="mdescLeft">&#160;</td><td class="mdescRight">merges a variant header into another  <a href="#a09e22e26caa26c27d796baa0aad68138">More...</a><br /></td></tr>
 <tr class="separator:a09e22e26caa26c27d796baa0aad68138"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -558,7 +559,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>comprehensive list of valid cigar operators </p>
-<dl class="section note"><dt>Note</dt><dd>order of the operators in this enum must match the order in BAM_CIGAR_STR from htslib/sam.h </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>order of the operators in this enum must match the order in BAM_CIGAR_STR from <a class="el" href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html">htslib/sam.h</a> </dd></dl>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a7487e27a3a8cc7205591dfb467de3139a69691c7bdcc3ce6d5d8a1361f22d04ac"></a>M&#160;</td><td class="fielddoc">
 </td></tr>
@@ -656,13 +657,13 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void gamgee::merge_variant_headers </td>
           <td>(</td>
-          <td class="paramtype">const std::shared_ptr&lt; bcf_hdr_t &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>dest_hdr_ptr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::shared_ptr&lt; bcf_hdr_t &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>src_hdr_ptr</em>&#160;</td>
         </tr>
         <tr>
@@ -676,8 +677,8 @@ Variables</h2></td></tr>
 <p>merges a variant header into another </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dest_hdr_ptr</td><td>a shared pointer to a bcf_hdr_t containing the header to be merged into </td></tr>
-    <tr><td class="paramname">src_hdr_ptr</td><td>a shared pointer to a bcf_hdr_t containing the header to be merged from </td></tr>
+    <tr><td class="paramname">dest_hdr_ptr</td><td>a shared pointer to a <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> containing the header to be merged into </td></tr>
+    <tr><td class="paramname">src_hdr_ptr</td><td>a shared pointer to a <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> containing the header to be merged from </td></tr>
   </table>
   </dd>
 </dl>
@@ -1059,7 +1060,7 @@ template&lt;class VALUE &gt; </div>
         <tr>
           <td class="memname">void gamgee::subset_variant_samples </td>
           <td>(</td>
-          <td class="paramtype">bcf_hdr_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *&#160;</td>
           <td class="paramname"><em>hdr_ptr</em>, </td>
         </tr>
         <tr>
@@ -1133,7 +1134,7 @@ template&lt;class VALUE &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 31 2014 18:58:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 3 2014 16:31:58 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

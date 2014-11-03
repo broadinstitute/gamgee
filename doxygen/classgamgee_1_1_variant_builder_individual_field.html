@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -73,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -148,7 +149,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae57f31dabfc286dbe02d27999bf91659"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_individual_field.html#ae57f31dabfc286dbe02d27999bf91659">estimated_encoded_size</a> () const </td></tr>
 <tr class="memdesc:ae57f31dabfc286dbe02d27999bf91659"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provide an estimate (typically an overestimate) of the number of bytes this field will require when encoded.  <a href="#ae57f31dabfc286dbe02d27999bf91659">More...</a><br /></td></tr>
 <tr class="separator:ae57f31dabfc286dbe02d27999bf91659"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af92132318ad98584f0b49132cd743e60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_individual_field.html#af92132318ad98584f0b49132cd743e60">encode_into</a> (kstring_t *destination) const </td></tr>
+<tr class="memitem:af92132318ad98584f0b49132cd743e60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_individual_field.html#af92132318ad98584f0b49132cd743e60">encode_into</a> (<a class="el" href="bgzf_8h.html#ac800c6fe2937b30307ab5a457e5bbf19">kstring_t</a> *destination) const </td></tr>
 <tr class="memdesc:af92132318ad98584f0b49132cd743e60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encode this field's data into the provided buffer. If field has no data or was removed, do nothing.  <a href="#af92132318ad98584f0b49132cd743e60">More...</a><br /></td></tr>
 <tr class="separator:af92132318ad98584f0b49132cd743e60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -340,7 +341,7 @@ template&lt;class ENCODED_TYPE , class BULK_CHANGE_TYPE &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classgamgee_1_1_variant_builder_individual_field.html">gamgee::VariantBuilderIndividualField</a>&lt; ENCODED_TYPE, BULK_CHANGE_TYPE &gt;::encode_into </td>
           <td>(</td>
-          <td class="paramtype">kstring_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="bgzf_8h.html#ac800c6fe2937b30307ab5a457e5bbf19">kstring_t</a> *&#160;</td>
           <td class="paramname"><em>destination</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -790,7 +791,7 @@ template&lt;class ENCODED_TYPE , class BULK_CHANGE_TYPE &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 31 2014 18:58:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 3 2014 16:31:59 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

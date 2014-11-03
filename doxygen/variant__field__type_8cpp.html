@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -71,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -94,7 +95,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="variant__field__type_8h_source.html">variant_field_type.h</a>&quot;</code><br />
-<code>#include &quot;htslib/vcf.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="vcf_8h_source.html">htslib/vcf.h</a>&quot;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;stdexcept&gt;</code><br />
 </div><table class="memberdecls">
@@ -117,17 +118,17 @@ Functions</h2></td></tr>
 <tr class="memitem:a047abcf196c22d47e3e567df353b73df"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a047abcf196c22d47e3e567df353b73df">gamgee::utils::convert_data_to_string</a> (const uint8_t *data_ptr, const int index, const uint8_t num_bytes_per_value, const VariantFieldType &amp;type)</td></tr>
 <tr class="memdesc:a047abcf196c22d47e3e567df353b73df"><td class="mdescLeft">&#160;</td><td class="mdescRight">converts the value in an index from the byte array into string  <a href="#a047abcf196c22d47e3e567df353b73df">More...</a><br /></td></tr>
 <tr class="separator:a047abcf196c22d47e3e567df353b73df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac118cf603c756fa858ce1c63deb11bb8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ac118cf603c756fa858ce1c63deb11bb8">gamgee::utils::size_for_type</a> (const VariantFieldType &amp;type, const bcf_fmt_t *const format_ptr)</td></tr>
+<tr class="memitem:ac118cf603c756fa858ce1c63deb11bb8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#ac118cf603c756fa858ce1c63deb11bb8">gamgee::utils::size_for_type</a> (const VariantFieldType &amp;type, const <a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *const format_ptr)</td></tr>
 <tr class="memdesc:ac118cf603c756fa858ce1c63deb11bb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of bytes for a given VariantFieldType  <a href="#ac118cf603c756fa858ce1c63deb11bb8">More...</a><br /></td></tr>
 <tr class="separator:ac118cf603c756fa858ce1c63deb11bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ccc5fa09f535b5f1a9dde2e1357737c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a6ccc5fa09f535b5f1a9dde2e1357737c">gamgee::utils::size_for_type</a> (const VariantFieldType &amp;type, const bcf_info_t *const info_ptr)</td></tr>
+<tr class="memitem:a6ccc5fa09f535b5f1a9dde2e1357737c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#a6ccc5fa09f535b5f1a9dde2e1357737c">gamgee::utils::size_for_type</a> (const VariantFieldType &amp;type, const <a class="el" href="structbcf__info__t.html">bcf_info_t</a> *const info_ptr)</td></tr>
 <tr class="memdesc:a6ccc5fa09f535b5f1a9dde2e1357737c"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of bytes for a given VariantFieldType  <a href="#a6ccc5fa09f535b5f1a9dde2e1357737c">More...</a><br /></td></tr>
 <tr class="separator:a6ccc5fa09f535b5f1a9dde2e1357737c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 31 2014 18:58:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 3 2014 16:31:58 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

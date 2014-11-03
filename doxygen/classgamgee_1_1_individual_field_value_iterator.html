@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -73,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -111,11 +112,11 @@ Inheritance diagram for gamgee::IndividualFieldValueIterator&lt; VALUE_TYPE &gt;
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abb9ebf963d147dc077ec531d3d0aff43"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#abb9ebf963d147dc077ec531d3d0aff43">IndividualFieldValueIterator</a> (const std::shared_ptr&lt; bcf1_t &gt; &amp;body, uint8_t *data_ptr, uint8_t *end_ptr, const uint8_t num_bytes, const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">utils::VariantFieldType</a> &amp;type)</td></tr>
-<tr class="memdesc:abb9ebf963d147dc077ec531d3d0aff43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with bcf1_t structure and start and end pointers of the array/vector.  <a href="#abb9ebf963d147dc077ec531d3d0aff43">More...</a><br /></td></tr>
+<tr class="memitem:abb9ebf963d147dc077ec531d3d0aff43"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#abb9ebf963d147dc077ec531d3d0aff43">IndividualFieldValueIterator</a> (const std::shared_ptr&lt; <a class="el" href="structbcf1__t.html">bcf1_t</a> &gt; &amp;body, uint8_t *data_ptr, uint8_t *end_ptr, const uint8_t num_bytes, const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">utils::VariantFieldType</a> &amp;type)</td></tr>
+<tr class="memdesc:abb9ebf963d147dc077ec531d3d0aff43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with <a class="el" href="structbcf1__t.html">bcf1_t</a> structure and start and end pointers of the array/vector.  <a href="#abb9ebf963d147dc077ec531d3d0aff43">More...</a><br /></td></tr>
 <tr class="separator:abb9ebf963d147dc077ec531d3d0aff43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ac02e9bb23d99543c25936cfd8f856b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#a1ac02e9bb23d99543c25936cfd8f856b">IndividualFieldValueIterator</a> (const std::shared_ptr&lt; bcf1_t &gt; &amp;body, uint8_t *data_ptr, const uint8_t num_bytes, const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">utils::VariantFieldType</a> &amp;type)</td></tr>
-<tr class="memdesc:a1ac02e9bb23d99543c25936cfd8f856b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with bcf1_t structure and start pointer of the array/vector.  <a href="#a1ac02e9bb23d99543c25936cfd8f856b">More...</a><br /></td></tr>
+<tr class="memitem:a1ac02e9bb23d99543c25936cfd8f856b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#a1ac02e9bb23d99543c25936cfd8f856b">IndividualFieldValueIterator</a> (const std::shared_ptr&lt; <a class="el" href="structbcf1__t.html">bcf1_t</a> &gt; &amp;body, uint8_t *data_ptr, const uint8_t num_bytes, const <a class="el" href="namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ec">utils::VariantFieldType</a> &amp;type)</td></tr>
+<tr class="memdesc:a1ac02e9bb23d99543c25936cfd8f856b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with <a class="el" href="structbcf1__t.html">bcf1_t</a> structure and start pointer of the array/vector.  <a href="#a1ac02e9bb23d99543c25936cfd8f856b">More...</a><br /></td></tr>
 <tr class="separator:a1ac02e9bb23d99543c25936cfd8f856b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0199fad8b65f9008d25ab1fda15ec67e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#a0199fad8b65f9008d25ab1fda15ec67e">IndividualFieldValueIterator</a> (const <a class="el" href="classgamgee_1_1_individual_field_value_iterator.html">IndividualFieldValueIterator</a> &amp;other)</td></tr>
 <tr class="memdesc:a0199fad8b65f9008d25ab1fda15ec67e"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy constructor is only meant for internal STL functions use. It makes a shallow copy of the underlying object which is sufficient for an iterator, but not exactly what a user would expect (user should expect copy constructors to make deep copies). But a deep copied iterator makes no sense.  <a href="#a0199fad8b65f9008d25ab1fda15ec67e">More...</a><br /></td></tr>
@@ -191,7 +192,7 @@ template&lt;class VALUE_TYPE &gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html">gamgee::IndividualFieldValueIterator</a>&lt; VALUE_TYPE &gt;::<a class="el" href="classgamgee_1_1_individual_field_value_iterator.html">IndividualFieldValueIterator</a> </td>
           <td>(</td>
-          <td class="paramtype">const std::shared_ptr&lt; bcf1_t &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="structbcf1__t.html">bcf1_t</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>body</em>, </td>
         </tr>
         <tr>
@@ -231,10 +232,10 @@ template&lt;class VALUE_TYPE &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Constructor with bcf1_t structure and start and end pointers of the array/vector. </p>
+<p>Constructor with <a class="el" href="structbcf1__t.html">bcf1_t</a> structure and start and end pointers of the array/vector. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">body</td><td>a pointer to the bcf1_t data structure to be held as a shared pointer </td></tr>
+    <tr><td class="paramname">body</td><td>a pointer to the <a class="el" href="structbcf1__t.html">bcf1_t</a> data structure to be held as a shared pointer </td></tr>
     <tr><td class="paramname">data_ptr</td><td>the byte array containing the value(s) for this sample </td></tr>
     <tr><td class="paramname">end_ptr</td><td>pointer to the end of the byte array </td></tr>
     <tr><td class="paramname">num_bytes</td><td>number of bytes in each value </td></tr>
@@ -258,7 +259,7 @@ template&lt;class VALUE_TYPE &gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html">gamgee::IndividualFieldValueIterator</a>&lt; VALUE_TYPE &gt;::<a class="el" href="classgamgee_1_1_individual_field_value_iterator.html">IndividualFieldValueIterator</a> </td>
           <td>(</td>
-          <td class="paramtype">const std::shared_ptr&lt; bcf1_t &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="structbcf1__t.html">bcf1_t</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>body</em>, </td>
         </tr>
         <tr>
@@ -292,10 +293,10 @@ template&lt;class VALUE_TYPE &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Constructor with bcf1_t structure and start pointer of the array/vector. </p>
+<p>Constructor with <a class="el" href="structbcf1__t.html">bcf1_t</a> structure and start pointer of the array/vector. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">body</td><td>a pointer to the bcf1_t data structure to be held as a shared pointer </td></tr>
+    <tr><td class="paramname">body</td><td>a pointer to the <a class="el" href="structbcf1__t.html">bcf1_t</a> data structure to be held as a shared pointer </td></tr>
     <tr><td class="paramname">data_ptr</td><td>the byte array containing the value(s) for this sample </td></tr>
     <tr><td class="paramname">num_bytes</td><td>number of bytes in each value </td></tr>
     <tr><td class="paramname">type</td><td>the encoding of the value </td></tr>
@@ -822,7 +823,7 @@ template&lt;class VALUE_TYPE &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 31 2014 18:58:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 3 2014 16:31:58 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

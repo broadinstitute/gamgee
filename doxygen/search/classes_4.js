@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['headercompatibilityexception',['HeaderCompatibilityException',['../classgamgee_1_1_header_compatibility_exception.html',1,'gamgee']]],
-  ['headerreadexception',['HeaderReadException',['../classgamgee_1_1_header_read_exception.html',1,'gamgee']]],
-  ['htsfiledeleter',['HtsFileDeleter',['../structgamgee_1_1utils_1_1_hts_file_deleter.html',1,'gamgee::utils']]],
-  ['htsindexdeleter',['HtsIndexDeleter',['../structgamgee_1_1utils_1_1_hts_index_deleter.html',1,'gamgee::utils']]],
-  ['htsiteratordeleter',['HtsIteratorDeleter',['../structgamgee_1_1utils_1_1_hts_iterator_deleter.html',1,'gamgee::utils']]],
-  ['htslibexception',['HtslibException',['../classgamgee_1_1_htslib_exception.html',1,'gamgee']]]
+  ['faidx1_5ft',['faidx1_t',['../structfaidx1__t.html',1,'']]],
+  ['fastq',['Fastq',['../classgamgee_1_1_fastq.html',1,'gamgee']]],
+  ['fastqiterator',['FastqIterator',['../classgamgee_1_1_fastq_iterator.html',1,'gamgee']]],
+  ['fastqreader',['FastqReader',['../classgamgee_1_1_fastq_reader.html',1,'gamgee']]],
+  ['fileopenexception',['FileOpenException',['../classgamgee_1_1_file_open_exception.html',1,'gamgee']]],
+  ['fmt_5faux_5ft',['fmt_aux_t',['../structfmt__aux__t.html',1,'']]]
 ];

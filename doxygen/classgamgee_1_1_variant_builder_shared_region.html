@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -73,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -152,7 +153,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af47e710f3c8a1a23d02498d53ce39421"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_shared_region.html#af47e710f3c8a1a23d02498d53ce39421">estimate_total_size</a> () const </td></tr>
 <tr class="memdesc:af47e710f3c8a1a23d02498d53ce39421"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produce a slight overestimate of the number of bytes required to hold all encoded data for this shared region.  <a href="#af47e710f3c8a1a23d02498d53ce39421">More...</a><br /></td></tr>
 <tr class="separator:af47e710f3c8a1a23d02498d53ce39421"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1573179c50a1be7376b7a6c1c77fdda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_shared_region.html#ad1573179c50a1be7376b7a6c1c77fdda">encode_into</a> (kstring_t *destination) const </td></tr>
+<tr class="memitem:ad1573179c50a1be7376b7a6c1c77fdda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_shared_region.html#ad1573179c50a1be7376b7a6c1c77fdda">encode_into</a> (<a class="el" href="bgzf_8h.html#ac800c6fe2937b30307ab5a457e5bbf19">kstring_t</a> *destination) const </td></tr>
 <tr class="memdesc:ad1573179c50a1be7376b7a6c1c77fdda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy all encoded data for all shared fields into the provided byte buffer in the proper order and format for final insertion into a <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> object.  <a href="#ad1573179c50a1be7376b7a6c1c77fdda">More...</a><br /></td></tr>
 <tr class="separator:ad1573179c50a1be7376b7a6c1c77fdda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c4204fc9ac8a630831aa4878d60ef2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_shared_region.html#a9c4204fc9ac8a630831aa4878d60ef2a">clear</a> ()</td></tr>
@@ -289,7 +290,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void gamgee::VariantBuilderSharedRegion::encode_into </td>
           <td>(</td>
-          <td class="paramtype">kstring_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="bgzf_8h.html#ac800c6fe2937b30307ab5a457e5bbf19">kstring_t</a> *&#160;</td>
           <td class="paramname"><em>destination</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -727,7 +728,7 @@ template&lt;class FIELD_ID_TYPE , class FIELD_VALUE_TYPE &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 31 2014 18:58:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 3 2014 16:31:59 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

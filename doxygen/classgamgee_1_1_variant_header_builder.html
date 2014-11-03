@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -73,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -132,7 +133,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5c8c3848c2cb4a7ccccf517f520cc23b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_header_builder.html">VariantHeaderBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header_builder.html#a5c8c3848c2cb4a7ccccf517f520cc23b">advanced_add_arbitrary_line</a> (const std::string &amp;line)</td></tr>
 <tr class="separator:a5c8c3848c2cb4a7ccccf517f520cc23b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af420a8dceb6bcb1944beae2dc6ef6e50"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_header_builder.html">VariantHeaderBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header_builder.html#af420a8dceb6bcb1944beae2dc6ef6e50">merge</a> (const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> &amp;other_header)</td></tr>
-<tr class="memdesc:af420a8dceb6bcb1944beae2dc6ef6e50"><td class="mdescLeft">&#160;</td><td class="mdescRight">merges a variant header into this builder, using bcf_hdr_combine() from htslib  <a href="#af420a8dceb6bcb1944beae2dc6ef6e50">More...</a><br /></td></tr>
+<tr class="memdesc:af420a8dceb6bcb1944beae2dc6ef6e50"><td class="mdescLeft">&#160;</td><td class="mdescRight">merges a variant header into this builder, using <a class="el" href="vcf_8h.html#a63cbe7c11aee0abef836e41d814f23a5">bcf_hdr_combine()</a> from htslib  <a href="#af420a8dceb6bcb1944beae2dc6ef6e50">More...</a><br /></td></tr>
 <tr class="separator:af420a8dceb6bcb1944beae2dc6ef6e50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad681c411de36e1d8b728e81c448aa1fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header_builder.html#ad681c411de36e1d8b728e81c448aa1fb">build</a> () const </td></tr>
 <tr class="memdesc:ad681c411de36e1d8b728e81c448aa1fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a new <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a> by copying the contents of this builder into a new object. Allows for reuse.  <a href="#ad681c411de36e1d8b728e81c448aa1fb">More...</a><br /></td></tr>
@@ -502,7 +503,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>merges a variant header into this builder, using bcf_hdr_combine() from htslib </p>
+<p>merges a variant header into this builder, using <a class="el" href="vcf_8h.html#a63cbe7c11aee0abef836e41d814f23a5">bcf_hdr_combine()</a> from htslib </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">header</td><td>the <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a> to merge into this builder </td></tr>
@@ -592,7 +593,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 31 2014 18:58:19 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 3 2014 16:31:59 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
