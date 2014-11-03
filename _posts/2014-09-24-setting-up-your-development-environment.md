@@ -29,13 +29,11 @@ After cloning the repository, you are ready to build (we no longer use git submo
 
 Gamgee uses the cmake build system in a very standard way. You can follow the usual cmake workflow to build your code:
 
-```
-mkdir build      # create a directory for your build files
-cd build     
-cmake ..         # generate the makefile and check that your system has all the dependencies
-make             # compile the static library
-make gamgee_test # if you want to build the test binary
-```
+	mkdir build      # create a directory for your build files
+	cd build     
+	cmake ..         # generate the makefile and check that your system has all the dependencies
+	make             # compile the static library
+	make gamgee_test # if you want to build the test binary
 
 
 ### Running Gamgee
