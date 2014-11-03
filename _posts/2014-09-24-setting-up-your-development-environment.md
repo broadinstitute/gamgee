@@ -20,8 +20,12 @@ If you are on a Mac, get [homebrew](http://brew.sh/) or [macports](http://www.ma
 
 Homebrew creates all boost libraries in /usr/local/libboost_*.dylib and for the multi-threaded libraries (which we use) it creates a -mt extension to all of them (e.g. libboost_thread-mt.dylib). This will give you build errors. One solution is to remove the -mt of the names of all the boost libraries. Another is to create symlinks without the -mt to the ones with -mt. In particular boost_log will have both -mt and non -mt versions, we use the -mt one, so you will have to remove the non-mt one and rename or symlink the -mt one with libboost_log.dylib. We are aware of this issue and will eventually make a pull-request to homebrew's boost recipe to fix this situation for everyone.
 
+	cd /usr/local/Cellar/boost/1.56.0	# version number may vary - current as of update time
+	rm libboost_log.dylib
+	ln -s libboost_log-mt.dylib libboost_log.dylib
+	    
 [This is hopefully not an issue anymore, can someone check so we can remove it from the blog?]
-
+[Sorry, it is still an issue - Joel, 3 Nov 2014, Boost 1.56.0]
 
 ### Building Gamgee
 
