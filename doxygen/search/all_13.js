@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['s',['S',['../structcram__feature.html#ad252a65adc0fa80016efadff2c02809c',1,'cram_feature::S()'],['../structcram__decode__job.html#a56390a1ffc9c2190e31e4cb052658a74',1,'cram_decode_job::s()'],['../structcram__record.html#af057c39da340804e58ec95f650ab5269',1,'cram_record::s()'],['../struct____kstring__t.html#ad9817ce52b0fd0ad524353a1cd27f487',1,'__kstring_t::s()'],['../struct____linkbuf__t.html#a3969f50f288cd66756f45511b15c353d',1,'__linkbuf_t::s()'],['../namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139a5dbc98dcc983a70728bd082d1a47546e',1,'gamgee::S()']]],
+  ['s',['s',['../structcram__decode__job.html#a56390a1ffc9c2190e31e4cb052658a74',1,'cram_decode_job::s()'],['../structcram__record.html#af057c39da340804e58ec95f650ab5269',1,'cram_record::s()'],['../struct____kstring__t.html#ad9817ce52b0fd0ad524353a1cd27f487',1,'__kstring_t::s()'],['../struct____linkbuf__t.html#a3969f50f288cd66756f45511b15c353d',1,'__linkbuf_t::s()'],['../structcram__feature.html#ad252a65adc0fa80016efadff2c02809c',1,'cram_feature::S()'],['../namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139a5dbc98dcc983a70728bd082d1a47546e',1,'gamgee::S()']]],
   ['s_5fisdir',['S_ISDIR',['../files_8c.html#a70b64ed67c0ab484b4ba09487da34e91',1,'files.c']]],
   ['s_5fisreg',['S_ISREG',['../files_8c.html#abf68371159fa46b5cc47d0f3ac9ab723',1,'files.c']]],
   ['sam',['Sam',['../classgamgee_1_1_sam.html',1,'gamgee']]],
