@@ -11,6 +11,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
 find_package(Boost 1.55 COMPONENTS unit_test_framework REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 
+# enable installing dependencies
+option(INSTALL_DEPENDENCIES
+       "Install project dependencies"
+       OFF)
+
 # Dependency: htslib (download and build)
 include("contrib/htslib.cmake")
 

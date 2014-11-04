@@ -95,3 +95,16 @@ set(SOURCE_FILES
     )
 
 add_library(gamgee STATIC ${SOURCE_FILES})
+add_dependencies(gamgee htslib)
+
+# set install paths for the library binaries
+install(TARGETS gamgee
+        ARCHIVE DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+        LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+        COMPONENT library)
+
+# set install paths for headers
+# note: this installs all headers; if there are any private headers, we may need to list them explicitly
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
+        FILES_MATCHING PATTERN "*.h")
