@@ -23,9 +23,7 @@ set(SOURCE_FILES
 
 add_executable(gamgee_test EXCLUDE_FROM_ALL ${SOURCE_FILES})
 
-## This is the right way to do this, but only supported in cmake 2.8.12
-# target_compile_definitions(gamgee_test PUBLIC -DBOOST_TEST_DYN_LINK)
-set_property(TARGET gamgee_test PROPERTY COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK)
+target_compile_definitions(gamgee_test PUBLIC -DBOOST_TEST_DYN_LINK)
 target_link_libraries(gamgee_test gamgee ${htslib_LIB} ${Boost_LIBRARIES} pthread z)
 add_dependencies(gamgee_test htslib)
 

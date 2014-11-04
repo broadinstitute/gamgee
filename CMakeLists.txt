@@ -1,11 +1,10 @@
-cmake_minimum_required(VERSION 2.8.7)
+cmake_minimum_required(VERSION 2.8.12)
 project(gamgee)
 
 include(ExternalProject)
 
-## This is the right way to do this, but only supported in cmake 2.8.12
-#add_compile_options("-std=c++1y")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
+# This is a C++14 library
+add_compile_options("-std=c++1y")
 
 # Dependency: Boost Unit Test Framework (find in the system)
 find_package(Boost 1.55 COMPONENTS unit_test_framework REQUIRED)
