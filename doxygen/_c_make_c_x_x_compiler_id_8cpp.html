@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>Gamgee: build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp File Reference</title>
+<title>Gamgee: build/CMakeFiles/3.1.0-rc1/CompilerIdCXX/CMakeCXXCompilerId.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,7 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_4fef79e7177ba769987a8da36c892c5f.html">build</a></li><li class="navelem"><a class="el" href="dir_63772b626f2709090f0bdca0f40827b4.html">CMakeFiles</a></li><li class="navelem"><a class="el" href="dir_c70bd4c67e0e7873f3b0a092ec5b2f53.html">CompilerIdCXX</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_371d2a27cd53b254fb0f90b2586bd391.html">build</a></li><li class="navelem"><a class="el" href="dir_e3cba01b91e848a347dcfec8c9b53ba4.html">CMakeFiles</a></li><li class="navelem"><a class="el" href="dir_a8b95b5315526653263b375b3661c5b1.html">3.1.0-rc1</a></li><li class="navelem"><a class="el" href="dir_18801804c9dbae2e9ae5cff6f891cdea.html">CompilerIdCXX</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -104,6 +104,10 @@ Macros</h2></td></tr>
 <tr class="separator:adbc5372f40838899018fadbc89bd588b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba35d0d200deaeb06aee95ca297acb28"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_make_c_x_x_compiler_id_8cpp.html#aba35d0d200deaeb06aee95ca297acb28">ARCHITECTURE_ID</a>&#160;&#160;&#160;&quot;&quot;</td></tr>
 <tr class="separator:aba35d0d200deaeb06aee95ca297acb28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1280362da42492bbc11aa78cbf776ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_make_c_x_x_compiler_id_8cpp.html#ad1280362da42492bbc11aa78cbf776ad">DEC</a>(n)</td></tr>
+<tr class="separator:ad1280362da42492bbc11aa78cbf776ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46d5d95daa1bef867bd0179594310ed5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_make_c_x_x_compiler_id_8cpp.html#a46d5d95daa1bef867bd0179594310ed5">HEX</a>(n)</td></tr>
+<tr class="separator:a46d5d95daa1bef867bd0179594310ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -142,6 +146,54 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+</div>
+</div>
+<a class="anchor" id="ad1280362da42492bbc11aa78cbf776ad"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEC</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">(<span class="charliteral">&#39;0&#39;</span> + (((n) / 10000000)%10)), \</div>
+<div class="line">  (<span class="charliteral">&#39;0&#39;</span> + (((n) / 1000000)%10)),  \</div>
+<div class="line">  (<span class="charliteral">&#39;0&#39;</span> + (((n) / 100000)%10)),   \</div>
+<div class="line">  (<span class="charliteral">&#39;0&#39;</span> + (((n) / 10000)%10)),    \</div>
+<div class="line">  (<span class="charliteral">&#39;0&#39;</span> + (((n) / 1000)%10)),     \</div>
+<div class="line">  (<span class="charliteral">&#39;0&#39;</span> + (((n) / 100)%10)),      \</div>
+<div class="line">  (<span class="charliteral">&#39;0&#39;</span> + (((n) / 10)%10)),       \</div>
+<div class="line">  (<span class="charliteral">&#39;0&#39;</span> +  ((n) % 10))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a46d5d95daa1bef867bd0179594310ed5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HEX</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">(<span class="charliteral">&#39;0&#39;</span> + ((n)&gt;&gt;28 &amp; 0xF)), \</div>
+<div class="line">  (<span class="charliteral">&#39;0&#39;</span> + ((n)&gt;&gt;24 &amp; 0xF)), \</div>
+<div class="line">  (<span class="charliteral">&#39;0&#39;</span> + ((n)&gt;&gt;20 &amp; 0xF)), \</div>
+<div class="line">  (<span class="charliteral">&#39;0&#39;</span> + ((n)&gt;&gt;16 &amp; 0xF)), \</div>
+<div class="line">  (<span class="charliteral">&#39;0&#39;</span> + ((n)&gt;&gt;12 &amp; 0xF)), \</div>
+<div class="line">  (<span class="charliteral">&#39;0&#39;</span> + ((n)&gt;&gt;8  &amp; 0xF)), \</div>
+<div class="line">  (<span class="charliteral">&#39;0&#39;</span> + ((n)&gt;&gt;4  &amp; 0xF)), \</div>
+<div class="line">  (<span class="charliteral">&#39;0&#39;</span> + ((n)     &amp; 0xF))</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="adbc5372f40838899018fadbc89bd588b"></a>
@@ -223,7 +275,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 4 2014 05:21:24 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 4 2014 15:48:02 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

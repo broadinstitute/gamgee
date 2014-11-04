@@ -65,7 +65,7 @@ var searchData=
   ['int32_5fencode',['int32_encode',['../cram__io_8c.html#affef6927703207550982a19eae7385a2',1,'cram_io.c']]],
   ['int32_5fget',['int32_get',['../cram__io_8c.html#afbd62fcbc8ab5dbc468802efca76bbc9',1,'cram_io.c']]],
   ['int32_5fput',['int32_put',['../cram__io_8c.html#a0a70b5ded18023f37280f05ee7655d01',1,'cram_io.c']]],
-  ['int8',['INT8',['../namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ecaee9d73311ff0658494edfff14c3ec1e3',1,'gamgee::utils::INT8()'],['../namespacegamgee_1_1missing__values.html#a1d3ec0320b3ea5149753c72f4b876e06',1,'gamgee::missing_values::int8()']]],
+  ['int8',['int8',['../namespacegamgee_1_1missing__values.html#a1d3ec0320b3ea5149753c72f4b876e06',1,'gamgee::missing_values::int8()'],['../namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ecaee9d73311ff0658494edfff14c3ec1e3',1,'gamgee::utils::INT8()']]],
   ['int_5fencoded_5fsize',['int_encoded_size',['../namespacegamgee_1_1utils.html#a8b52643810d7b04e80edd35f488035c3',1,'gamgee::utils']]],
   ['int_5fencoded_5ftype',['int_encoded_type',['../namespacegamgee_1_1utils.html#a02221ecf3b71fe574724d34e70d35afd',1,'gamgee::utils::int_encoded_type(const int32_t min_val, const int32_t max_val)'],['../namespacegamgee_1_1utils.html#aa093d879335fb425cea4802085e192c7',1,'gamgee::utils::int_encoded_type(const int32_t val)']]],
   ['integer_5findividual_5ffield',['integer_individual_field',['../classgamgee_1_1_variant.html#a332b5600fb5e748bd10ed634c8633a4d',1,'gamgee::Variant::integer_individual_field(const std::string &amp;tag) const '],['../classgamgee_1_1_variant.html#a388875766fdff60ff8cbd79e774cffb7',1,'gamgee::Variant::integer_individual_field(const int32_t index) const ']]],
