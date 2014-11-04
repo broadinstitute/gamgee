@@ -33,6 +33,8 @@ set(SOURCE_FILES
     read_bases.h
     read_group.cpp
     read_group.h
+    reference_block_splitting_variant_iterator.cpp
+    reference_block_splitting_variant_iterator.h
     reference_iterator.cpp
     reference_iterator.h
     reference_map.cpp

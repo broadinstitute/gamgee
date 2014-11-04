@@ -8,6 +8,7 @@ set(SOURCE_FILES
     main.cpp
     missing_test.cpp
     read_group_test.cpp
+    reference_block_splitting_variant_reader_test.cpp
     reference_test.cpp
     sam_builder_test.cpp
     sam_header_test.cpp
