@@ -1,5 +1,15 @@
+if (CMAKE_GENERATOR STREQUAL "Unix Makefiles")
+    # when using the makefile generator, use the special variable $(MAKE) to invoke make
+    # this enables the jobserver to work correctly
+    set(MAKE_COMMAND "$(MAKE)")
+else()
+    # invoke make explicitly
+    # in this case, we assume the parent build system is running in parallel already so no -j flag is added
+    find_program(MAKE_COMMAND NAMES make gmake)
+endif()
+
 if (INSTALL_DEPENDENCIES)
-    set(HTSLIB_INSTALL make install prefix=${CMAKE_INSTALL_PREFIX})
+    set(HTSLIB_INSTALL ${MAKE_COMMAND} install prefix=${CMAKE_INSTALL_PREFIX})
 else()
     set(HTSLIB_INSTALL "")
 endif()
@@ -12,7 +22,7 @@ ExternalProject_Add(htslib
     GIT_TAG broad
     BUILD_IN_SOURCE 1
     CONFIGURE_COMMAND ""
-    BUILD_COMMAND make lib-static -j 4
+    BUILD_COMMAND ${MAKE_COMMAND} lib-static
     INSTALL_COMMAND "${HTSLIB_INSTALL}"
     LOG_DOWNLOAD 0
     LOG_UPDATE 0
