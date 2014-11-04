@@ -15,6 +15,7 @@ before_install:
   - sudo apt-get -qq update;
 
 install:
+  - .travis_scripts/cmake.sh
   - .travis_scripts/boost.sh
   - if [ "$CXX" == "clang++" ]; then .travis_scripts/clang.sh; fi
   - if [ "$CXX" == "g++"     ]; then .travis_scripts/gcc.sh; fi
