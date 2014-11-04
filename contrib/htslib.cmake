@@ -1,3 +1,9 @@
+if (INSTALL_DEPENDENCIES)
+    set(HTSLIB_INSTALL make install prefix=${CMAKE_INSTALL_PREFIX})
+else()
+    set(HTSLIB_INSTALL "")
+endif()
+
 # build htslib
 set(htslib_PREFIX ${CMAKE_BINARY_DIR}/contrib/htslib)
 ExternalProject_Add(htslib
@@ -7,7 +13,7 @@ ExternalProject_Add(htslib
     BUILD_IN_SOURCE 1
     CONFIGURE_COMMAND ""
     BUILD_COMMAND make lib-static -j 4
-    INSTALL_COMMAND ""
+    INSTALL_COMMAND "${HTSLIB_INSTALL}"
     LOG_DOWNLOAD 0
     LOG_UPDATE 0
     LOG_CONFIGURE 0
