@@ -95,3 +95,5 @@ set(SOURCE_FILES
     )
 
 add_library(gamgee STATIC ${SOURCE_FILES})
+add_dependencies(gamgee htslib)
+
