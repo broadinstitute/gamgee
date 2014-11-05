@@ -14,10 +14,10 @@ namespace gamgee {
  * Accessory functions (private functions)                                    *
  ******************************************************************************/
 inline bool Variant::check_field(const int32_t type_field, const int32_t type_value, const int32_t index) const {
-  if (!check_field_exists(type_field, index))
+  if ( ! m_header.has_field(index, type_field) )
     return false;
-  if (!check_field_type(type_field, type_value, index))
-    throw std::runtime_error("individual field requested is not of the right type");
+  if ( m_header.field_type(index, type_field) != type_value )
+    throw std::runtime_error("field requested is not of the right type");
   return true;
 }
 
@@ -65,7 +65,7 @@ Variant::Variant(const std::shared_ptr<bcf_hdr_t>& header, const std::shared_ptr
  *       semantics
  */
 Variant::Variant(const Variant& other) :
-  m_header {other.m_header},
+  m_header {other.m_header.m_header},   // Avoid a deep copy here by constructing using other's internal shared header pointer
   m_body {utils::make_shared_variant(utils::variant_deep_copy(other.m_body.get()))}
 {}
 
@@ -79,7 +79,7 @@ Variant::Variant(const Variant& other) :
 Variant& Variant::operator=(const Variant& other) {
   if ( &other == this )  
     return *this;
-  m_header = other.m_header;    ///< shared_ptr assignment will take care of deallocating old record if necessary
+  m_header = VariantHeader{other.m_header.m_header};    // Avoid a deep copy here by constructing using other's internal shared header pointer
   m_body = utils::make_shared_variant(utils::variant_deep_copy(other.m_body.get()));  ///< shared_ptr assignment will take care of deallocating old record if necessary
   return *this;
 }
@@ -106,11 +106,11 @@ std::vector<std::string> Variant::alt() const {
 
 VariantFilters Variant::filters() const {
   bcf_unpack(m_body.get(), BCF_UN_FLT);
-  return VariantFilters{m_header, m_body};
+  return VariantFilters{m_header.m_header, m_body};
 }
 
 bool Variant::has_filter(const std::string& filter) const {
-  return bcf_has_filter(m_header.get(), m_body.get(), const_cast<char*>(filter.c_str())) > 0; // have to cast away the constness here for the C api to work. But the promise still remains as the C function is not modifying the string.
+  return bcf_has_filter(m_header.m_header.get(), m_body.get(), const_cast<char*>(filter.c_str())) > 0; // have to cast away the constness here for the C api to work. But the promise still remains as the C function is not modifying the string.
 }
 
 AlleleMask Variant::allele_mask() const {
@@ -129,15 +129,15 @@ AlleleMask Variant::allele_mask() const {
  * Individual field API                                                       *
  ******************************************************************************/
 IndividualField<IndividualFieldValue<int32_t>> Variant::integer_individual_field(const std::string& tag) const {
-  return integer_individual_field(get_field_index(tag)); 
+  return integer_individual_field(m_header.field_index(tag));
 }
 
 IndividualField<IndividualFieldValue<float>> Variant::float_individual_field(const std::string& tag) const {
-  return float_individual_field(get_field_index(tag));
+  return float_individual_field(m_header.field_index(tag));
 }
 
 IndividualField<IndividualFieldValue<string>> Variant::string_individual_field(const std::string& tag) const {
-  return string_individual_field(get_field_index(tag));
+  return string_individual_field(m_header.field_index(tag));
 }
 
 IndividualField<IndividualFieldValue<int32_t>> Variant::individual_field_as_integer(const std::string& tag) const {
@@ -195,15 +195,15 @@ bool Variant::boolean_shared_field(const int32_t index) const {
 }
 
 SharedField<int32_t> Variant::integer_shared_field(const std::string& tag) const {
-  return integer_shared_field(get_field_index(tag));
+  return integer_shared_field(m_header.field_index(tag));
 }
 
 SharedField<float> Variant::float_shared_field(const std::string& tag) const {
-  return float_shared_field(get_field_index(tag));
+  return float_shared_field(m_header.field_index(tag));
 }
 
 SharedField<string> Variant::string_shared_field(const std::string& tag) const {
-  return string_shared_field(get_field_index(tag));
+  return string_shared_field(m_header.field_index(tag));
 }
 
 SharedField<int32_t> Variant::shared_field_as_integer(const std::string& tag) const {
@@ -250,7 +250,7 @@ SharedField<string> Variant::shared_field_as_string(const int32_t index) const {
 
 IndividualField<Genotype> Variant::genotypes() const {
   // bcf_get_fmt() will unpack the record if necessary
-  const auto fmt = bcf_get_fmt(m_header.get(), m_body.get(), "GT");
+  const auto fmt = bcf_get_fmt(m_header.m_header.get(), m_body.get(), "GT");
   if (fmt == nullptr) ///< if the variant is missing or the GT tag is missing, return an empty IndividualField
     return IndividualField<Genotype>{};
   return IndividualField<Genotype>{m_body, fmt};

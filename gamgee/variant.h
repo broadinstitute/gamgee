@@ -34,7 +34,16 @@ class Variant {
   Variant(Variant&& other) = default;                                                                         ///< moves Variant and it's header accordingly. Shared pointers maintain state to all other associated objects correctly.
   Variant& operator=(Variant&& other) = default;                                                              ///< move assignment of a Variant and it's header. Shared pointers maintain state to all other associated objects correctly.
 
-  VariantHeader header() const { return VariantHeader{m_header}; }
+  /**
+   * @brief returns the header for this variant
+   *
+   * @note does not deep copy the header; returned VariantHeader object shares existing memory
+   */
+  VariantHeader header() const {
+    // Avoid a deep copy here by constructing using VariantHeader's internal shared header pointer
+    return VariantHeader{m_header.m_header};
+  }
+
   bool missing() const { return m_body == nullptr; }                 ///< returns true if this is a default-constructed Variant object with no data
 
   uint32_t chromosome()         const {return uint32_t(m_body->rid);}                                         ///< returns the integer representation of the chromosome. Notice that chromosomes are listed in index order with regards to the header (so a 0-based number). Similar to Picards getReferenceIndex()
@@ -162,14 +171,11 @@ class Variant {
   AlleleMask allele_mask() const;
 
  private:
-  std::shared_ptr<bcf_hdr_t> m_header;                                                                        ///< htslib variant header pointer
-  std::shared_ptr<bcf1_t> m_body;                                                                             ///< htslib variant body pointer
+  VariantHeader m_header;                                                                        ///< variant header
+  std::shared_ptr<bcf1_t> m_body;                                                                ///< htslib variant body pointer
 
-  uint32_t get_field_index(const std::string& tag) const { return bcf_hdr_id2int(m_header.get(), BCF_DT_ID, tag.c_str()); }
-  bool     check_field_exists(const int type_field, const int index) const { return index >= 0 && bcf_hdr_idinfo_exists(m_header.get(), type_field, index); }
-  bool     check_field_type(const int type_field, const uint32_t type_value, const int index) const { return bcf_hdr_id2type(m_header.get(), type_field, index) == type_value; }
-  bcf_fmt_t*  find_individual_field(const std::string& tag) const { return bcf_get_fmt(m_header.get(), m_body.get(), tag.c_str());  }
-  bcf_info_t* find_shared_field(const std::string& tag)     const { return bcf_get_info(m_header.get(), m_body.get(), tag.c_str()); }
+  bcf_fmt_t*  find_individual_field(const std::string& tag) const { return bcf_get_fmt(m_header.m_header.get(), m_body.get(), tag.c_str());  }
+  bcf_info_t* find_shared_field(const std::string& tag)     const { return bcf_get_info(m_header.m_header.get(), m_body.get(), tag.c_str()); }
   bcf_fmt_t*  find_individual_field(const uint32_t index) const { return bcf_get_fmt_idx(m_body.get(), index);                    }
   bcf_info_t* find_shared_field(const uint32_t index)     const { return bcf_get_info_idx(m_body.get(), index);                   }
   bool check_field(const int32_t type_field, const int32_t type_value, const int32_t index) const;
@@ -208,7 +214,7 @@ class Variant {
       //No need to free d.allele[0] because it points to shared string within bcf1_1.shared
       m_body->d.allele[0] = const_cast<char*>(ref);
       //Re-use same d.allele char** as update_alleles writes to different region of memory anyway
-      bcf_update_alleles(const_cast<const bcf_hdr_t*>(m_header.get()), m_body.get(), const_cast<const char**>(m_body->d.allele), m_body->n_allele);
+      bcf_update_alleles(const_cast<const bcf_hdr_t*>(m_header.m_header.get()), m_body.get(), const_cast<const char**>(m_body->d.allele), m_body->n_allele);
     }
   }
   inline void set_reference_allele(const char* ref)  { set_reference_allele(ref, static_cast<int32_t>(strlen(ref))); }

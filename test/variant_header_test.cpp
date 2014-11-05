@@ -73,6 +73,26 @@ void variant_header_builder_checks(const VariantHeader& vh) {
   BOOST_CHECK(! vh.has_individual_field(vh.field_index("LOW_QUAL")));
   BOOST_CHECK(! vh.has_individual_field(20));
 
+  // Also test API functions that take an explicit field category as a parameter (BCF_HL_INFO, etc.)
+  BOOST_CHECK(vh.has_field("MQ", BCF_HL_INFO));
+  BOOST_CHECK(vh.has_field(vh.field_index("MQ"), BCF_HL_INFO));
+  BOOST_CHECK(! vh.has_field("BLAH", BCF_HL_INFO));
+  BOOST_CHECK(! vh.has_field(vh.field_index("BLAH"), BCF_HL_INFO));
+  BOOST_CHECK(vh.has_field("GQ", BCF_HL_FMT));
+  BOOST_CHECK(vh.has_field(vh.field_index("GQ"), BCF_HL_FMT));
+  BOOST_CHECK(! vh.has_field("BLAH", BCF_HL_FMT));
+  BOOST_CHECK(! vh.has_field(vh.field_index("BLAH"), BCF_HL_FMT));
+
+  // Test type-querying functions (note: these assume that you've already checked field existence)
+  BOOST_CHECK_EQUAL(vh.shared_field_type("MQ"), BCF_HT_INT);
+  BOOST_CHECK_EQUAL(vh.shared_field_type(vh.field_index("MQ")), BCF_HT_INT);
+  BOOST_CHECK_EQUAL(vh.field_type("MQ", BCF_HL_INFO), BCF_HT_INT);
+  BOOST_CHECK_EQUAL(vh.field_type(vh.field_index("MQ"), BCF_HL_INFO), BCF_HT_INT);
+  BOOST_CHECK_EQUAL(vh.individual_field_type("PL"), BCF_HT_REAL);
+  BOOST_CHECK_EQUAL(vh.individual_field_type(vh.field_index("PL")), BCF_HT_REAL);
+  BOOST_CHECK_EQUAL(vh.field_type("PL", BCF_HL_FMT), BCF_HT_REAL);
+  BOOST_CHECK_EQUAL(vh.field_type(vh.field_index("PL"), BCF_HL_FMT), BCF_HT_REAL);
+
   BOOST_CHECK(vh.has_sample("S1"));
   BOOST_CHECK(vh.has_sample(vh.sample_index("S1")));
   BOOST_CHECK(vh.has_sample("S292"));
