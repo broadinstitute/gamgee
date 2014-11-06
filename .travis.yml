@@ -15,16 +15,14 @@ before_install:
   - sudo apt-get -qq update;
 
 install:
-  - .travis_scripts/cmake.sh
-  - .travis_scripts/boost.sh
+  - .travis_scripts/boost.sh 
   - if [ "$CXX" == "clang++" ]; then .travis_scripts/clang.sh; fi
   - if [ "$CXX" == "g++"     ]; then .travis_scripts/gcc.sh; fi
 
 script:
-  - mkdir build; pushd build;
-  - cmake -D CMAKE_CXX_FLAGS=--coverage .. && make debug && make -j 2 run_test
-  - popd;
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then b2 -a toolset=${CC} test variant=production; fi
+  - b2 -a toolset=${CC} test variant=debug cxxflags=--coverage linkflags=--coverage
 
 after_success:
   - .travis_scripts/update_website_dox.sh 
-  - .travis_scripts/coveralls.sh
+  - .travis_scripts/coveralls.sh 
