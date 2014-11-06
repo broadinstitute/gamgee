@@ -113,9 +113,9 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae7d93cdf8d4761aa8cafaa0199c01632"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structh_f_i_l_e.html">hFILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hfile_8h.html#ae7d93cdf8d4761aa8cafaa0199c01632">hopen</a> (const char *filename, const char *mode) <a class="el" href="hts__defs_8h.html#a07cc7d90cabb303e781f5bba8e1eff79">HTS_RESULT_USED</a></td></tr>
+<tr class="memitem:ae7d93cdf8d4761aa8cafaa0199c01632"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structh_f_i_l_e.html">hFILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hfile_8h.html#ae7d93cdf8d4761aa8cafaa0199c01632">hopen</a> (const char *filename, const char *<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>) <a class="el" href="hts__defs_8h.html#a07cc7d90cabb303e781f5bba8e1eff79">HTS_RESULT_USED</a></td></tr>
 <tr class="separator:ae7d93cdf8d4761aa8cafaa0199c01632"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66846c6ffe955869dbf776f0ab7cce33"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structh_f_i_l_e.html">hFILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hfile_8h.html#a66846c6ffe955869dbf776f0ab7cce33">hdopen</a> (int fd, const char *mode) <a class="el" href="hts__defs_8h.html#a07cc7d90cabb303e781f5bba8e1eff79">HTS_RESULT_USED</a></td></tr>
+<tr class="memitem:a66846c6ffe955869dbf776f0ab7cce33"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structh_f_i_l_e.html">hFILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hfile_8h.html#a66846c6ffe955869dbf776f0ab7cce33">hdopen</a> (int fd, const char *<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>) <a class="el" href="hts__defs_8h.html#a07cc7d90cabb303e781f5bba8e1eff79">HTS_RESULT_USED</a></td></tr>
 <tr class="separator:a66846c6ffe955869dbf776f0ab7cce33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02c2000f03bc983b78d076806f5e5e82"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hfile_8h.html#a02c2000f03bc983b78d076806f5e5e82">hclose</a> (<a class="el" href="structh_f_i_l_e.html">hFILE</a> *fp) <a class="el" href="hts__defs_8h.html#a07cc7d90cabb303e781f5bba8e1eff79">HTS_RESULT_USED</a></td></tr>
 <tr class="separator:a02c2000f03bc983b78d076806f5e5e82"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -284,7 +284,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of bytes peeked, which may be less than nbytes if EOF is encountered; or negative, if there was an I/O error.  The characters peeked at remain in the stream's internal buffer, and will be returned by later <a class="el" href="cram__io_8c.html#acb1f7e3ba3b35981587795fa7955675c">hread()</a> etc calls. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of bytes peeked, which may be less than nbytes if EOF is encountered; or negative, if there was an I/O error.  The characters peeked at remain in the stream's internal buffer, and will be returned by later hread() etc calls. </dd></dl>
 
 </div>
 </div>
@@ -324,7 +324,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

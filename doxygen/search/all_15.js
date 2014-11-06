@@ -4,6 +4,7 @@ var searchData=
   ['uaddr',['uaddr',['../structbgzidx1__t.html#abd17b03e98aa56ea1fc80af661ca59ee',1,'bgzidx1_t']]],
   ['ublock_5faddr',['ublock_addr',['../struct____bgzidx__t.html#a3f794581142d9eda54210643bf5bb4e6',1,'__bgzidx_t']]],
   ['ubyte_5ft',['ubyte_t',['../kstring_8c.html#ad40767aaeb0833664755ddfb1628be6c',1,'kstring.c']]],
+  ['uc',['uc',['../cram__structs_8h.html#af8ecdd9d7d0f3cdced7f9a83dc659959',1,'cram_structs.h']]],
   ['unclipped_5fstart',['unclipped_start',['../classgamgee_1_1_sam.html#afdf0b3651128a0f8787ec1f5c0236899',1,'gamgee::Sam']]],
   ['unclipped_5fstop',['unclipped_stop',['../classgamgee_1_1_sam.html#aa4801927f70100f120c882ddf7b0acf4',1,'gamgee::Sam']]],
   ['uncomp',['uncomp',['../structcram__block__compression__hdr.html#a3a05b92b31cd076acc1953d8b9e09dbf',1,'cram_block_compression_hdr']]],
@@ -11,6 +12,8 @@ var searchData=
   ['uncomp_5fsize',['uncomp_size',['../structcram__block.html#aa0764cf09bf2a5d5608901ace42215c8',1,'cram_block::uncomp_size()'],['../structcram__block__compression__hdr.html#a43db9d23c369f725c278ba113e0dcf76',1,'cram_block_compression_hdr::uncomp_size()']]],
   ['uncompressed_5faddress',['uncompressed_address',['../struct_b_g_z_f.html#ac0ee6d7c4c45b0af0b704034123ee746',1,'BGZF']]],
   ['uncompressed_5fblock',['uncompressed_block',['../struct_b_g_z_f.html#a234713874b27a87c8c2157f7cdd29158',1,'BGZF']]],
+  ['unknown_5fcategory',['unknown_category',['../hts_8h.html#aa3ac9362d661bd4d21631eb19d30fa82a5e7b834aa05b63b4b0a6d25c3fd029f9',1,'hts.h']]],
+  ['unknown_5fformat',['unknown_format',['../hts_8h.html#a5012a62947ab60eb4691d4dee8655df2a293d319bc48b658e6e4e198ffa798379',1,'hts.h']]],
   ['unmapped',['unmapped',['../classgamgee_1_1_sam.html#aa0f9db386415b7dcd886325682959ebf',1,'gamgee::Sam']]],
   ['unmapped_5fplaced',['unmapped_placed',['../structcram__block__compression__hdr.html#a8e44e082b4de132added3df5230324d9',1,'cram_block_compression_hdr']]],
   ['unmapped_5fqs_5fincluded',['unmapped_qs_included',['../structcram__block__compression__hdr.html#a1a5ad0c956b8f209d04116f12a0416d1',1,'cram_block_compression_hdr']]],
@@ -20,8 +23,10 @@ var searchData=
   ['unsorted',['unsorted',['../structcram__container.html#a4164aa1e3f05cea1eb2834b7f46c3e1e',1,'cram_container::unsorted()'],['../structcram__fd.html#a9e9d80c2c1f621137de814701bf43d6f',1,'cram_fd::unsorted()']]],
   ['update',['update',['../classgamgee_1_1_sam_builder_data_field.html#ac2f2a717e15c1cceaadc5099072c9a1a',1,'gamgee::SamBuilderDataField::update(const void *copy_source, const uint32_t bytes_to_copy, const uint32_t num_elements)'],['../classgamgee_1_1_sam_builder_data_field.html#aa8fb8168194afd5b3e614e4c2238a80d',1,'gamgee::SamBuilderDataField::update(std::unique_ptr&lt; uint8_t[]&gt; &amp;&amp;move_source, const uint32_t source_bytes, const uint32_t num_elements)']]],
   ['use_5fbz2',['use_bz2',['../structcram__fd.html#a3e6e79688b55abff9c9c046e6fbe6e33',1,'cram_fd']]],
-  ['use_5fmetrics',['USE_METRICS',['../cram__encode_8c.html#ad8d71b8fc08bd47d8baa83cd81b5644d',1,'cram_encode.c']]],
+  ['use_5flzma',['use_lzma',['../structcram__fd.html#adaa70b8ff5310ab146fcb72f6c0e6d19',1,'cram_fd']]],
+  ['use_5frans',['use_rans',['../structcram__fd.html#aa97687582ad5134fa85e292095485fc9',1,'cram_fd']]],
   ['used',['used',['../structpool__t.html#acb42ce920c606df39023314fb74fdc01',1,'pool_t::used()'],['../structstring__t.html#a1070a34b6020644646414a6348545def',1,'string_t::used()']]],
+  ['usr',['usr',['../struct__regidx__t.html#aa609765fc444920cf11b02a2889e74b4',1,'_regidx_t']]],
   ['utils_2ecpp',['utils.cpp',['../utils_8cpp.html',1,'']]],
   ['utils_2eh',['utils.h',['../utils_8h.html',1,'']]]
 ];

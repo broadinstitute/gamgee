@@ -8,5 +8,6 @@ var searchData=
   ['_5f_5flinkbuf_5ft',['__linkbuf_t',['../struct____linkbuf__t.html',1,'']]],
   ['_5fbcf_5fsr_5fregions_5ft',['_bcf_sr_regions_t',['../struct__bcf__sr__regions__t.html',1,'']]],
   ['_5fbcf_5fsweep_5ft',['_bcf_sweep_t',['../struct__bcf__sweep__t.html',1,'']]],
+  ['_5fregidx_5ft',['_regidx_t',['../struct__regidx__t.html',1,'']]],
   ['_5fregion_5ft',['_region_t',['../struct__region__t.html',1,'']]]
 ];

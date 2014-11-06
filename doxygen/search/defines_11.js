@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['tag_5fid',['TAG_ID',['../cram__encode_8c.html#a61c5c8ee201667342016b8a87d8d3a97',1,'cram_encode.c']]],
   ['tbx_5fbgzf_5fitr_5fnext',['tbx_bgzf_itr_next',['../tbx_8h.html#ae0ff2c18f7554b7eb78c533fde8daca0',1,'tbx.h']]],
   ['tbx_5fgeneric',['TBX_GENERIC',['../tbx_8h.html#a1a4aa256e10fa77c4cd2c3504a0c7822',1,'tbx.h']]],
   ['tbx_5fitr_5fdestroy',['tbx_itr_destroy',['../tbx_8h.html#a7b1e4a21d08429b3d751344a7a91c33b',1,'tbx.h']]],
@@ -11,6 +12,7 @@ var searchData=
   ['tbx_5fucsc',['TBX_UCSC',['../tbx_8h.html#a98f5935c40205d496aa0c50498c08163',1,'tbx.h']]],
   ['tbx_5fvcf',['TBX_VCF',['../tbx_8h.html#a0f31282ee10fe3b7e33e0e05038db1da',1,'tbx.h']]],
   ['tdiff',['TDIFF',['../thread__pool_8c.html#a240ed4d03fc7575437aae5514208d414',1,'thread_pool.c']]],
-  ['tn_5fexternal',['TN_external',['../cram__structs_8h.html#a72f3fa20036a156badf7087fccfbdd60',1,'cram_structs.h']]],
-  ['ts_5fexternal',['TS_external',['../cram__structs_8h.html#afdc4d90fdd0c6b4638e18be15d8a2691',1,'cram_structs.h']]]
+  ['tf_5fshift',['TF_SHIFT',['../r_a_n_s__static_8c.html#a6d96febfa98ae7c16e4d149ce38a3a8e',1,'rANS_static.c']]],
+  ['totfreq',['TOTFREQ',['../r_a_n_s__static_8c.html#ac9eaea2811f1fc815498cddcb10bc7e9',1,'rANS_static.c']]],
+  ['trial_5fspan',['TRIAL_SPAN',['../cram__io_8c.html#a80c8052986bc451bfce05baa413f3827',1,'cram_io.c']]]
 ];

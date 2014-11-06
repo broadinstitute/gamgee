@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['n',['N',['../namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139a8d9c307cb7f3c4a32822a51922d1ceaa',1,'gamgee::N()'],['../namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49a8d9c307cb7f3c4a32822a51922d1ceaa',1,'gamgee::N()']]],
-  ['nil',['NIL',['../namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ecabc0b1e8b63f3f00318eee5aeabc14255',1,'gamgee::utils']]]
+  ['m',['M',['../namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139a69691c7bdcc3ce6d5d8a1361f22d04ac',1,'gamgee']]],
+  ['mapped_5fslice',['MAPPED_SLICE',['../cram__structs_8h.html#af9934fb23b7763e058c4dfb074ce9a49acbab9e6ab1d4b600b6abd78d67741906',1,'cram_structs.h']]]
 ];

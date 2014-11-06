@@ -105,11 +105,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a9582a537dcc9c287f0aa5f7480923e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab82dc98df2f9d8e36b4d69853a79a6b8"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhts_file.html#ab82dc98df2f9d8e36b4d69853a79a6b8">is_cram</a>:1</td></tr>
 <tr class="separator:ab82dc98df2f9d8e36b4d69853a79a6b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22e50ce40b532aadbab84c37346cdd24"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhts_file.html#a22e50ce40b532aadbab84c37346cdd24">is_compressed</a>:2</td></tr>
-<tr class="separator:a22e50ce40b532aadbab84c37346cdd24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7009b09f83cf4bc3153a95df95e3c43"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhts_file.html#ae7009b09f83cf4bc3153a95df95e3c43">is_kstream</a>:1</td></tr>
-<tr class="separator:ae7009b09f83cf4bc3153a95df95e3c43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed3daae797c98f2d97d270af2523ba92"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhts_file.html#aed3daae797c98f2d97d270af2523ba92">dummy</a>:25</td></tr>
+<tr class="memitem:aed3daae797c98f2d97d270af2523ba92"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhts_file.html#aed3daae797c98f2d97d270af2523ba92">dummy</a>:28</td></tr>
 <tr class="separator:aed3daae797c98f2d97d270af2523ba92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad467438dcc582e722fcccf139a00ecc0"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhts_file.html#ad467438dcc582e722fcccf139a00ecc0">lineno</a></td></tr>
 <tr class="separator:ad467438dcc582e722fcccf139a00ecc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,17 +115,19 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a0ad24deddc3a44e73e46e2edf4f4577f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a377f56a0627c599095965b1b5148c57f"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhts_file.html#a377f56a0627c599095965b1b5148c57f">fn_aux</a></td></tr>
 <tr class="separator:a377f56a0627c599095965b1b5148c57f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38edec7ebf7d62054c6e0b634443aeb4"><td class="memItemLeft" >union {</td></tr>
-<tr class="memitem:a53b7d044c47dca1c5152d6f02604c50f"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="struct_b_g_z_f.html">BGZF</a> *&#160;&#160;&#160;<a class="el" href="structhts_file.html#a15255877d9be9d3dd9a55d008efc6f7c">bgzf</a></td></tr>
-<tr class="separator:a53b7d044c47dca1c5152d6f02604c50f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cff9dc28998613d770b7a55aeabb370"><td class="memItemLeft" >&#160;&#160;&#160;struct <a class="el" href="structcram__fd.html">cram_fd</a> *&#160;&#160;&#160;<a class="el" href="structhts_file.html#a688802c73a7ecb5ad9006dc887cead67">cram</a></td></tr>
-<tr class="separator:a2cff9dc28998613d770b7a55aeabb370"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6044031ace32e67e6d08cb2de23178c"><td class="memItemLeft" >&#160;&#160;&#160;struct <a class="el" href="structh_f_i_l_e.html">hFILE</a> *&#160;&#160;&#160;<a class="el" href="structhts_file.html#a7d3701cd0d99a53645fa9032e971b47e">hfile</a></td></tr>
-<tr class="separator:ae6044031ace32e67e6d08cb2de23178c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7056a3f5194677f5ed8a6053b4d400e2"><td class="memItemLeft" >&#160;&#160;&#160;void *&#160;&#160;&#160;<a class="el" href="structhts_file.html#afa4e03c78e80d6adb2541889388f9691">voidp</a></td></tr>
-<tr class="separator:a7056a3f5194677f5ed8a6053b4d400e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38edec7ebf7d62054c6e0b634443aeb4"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhts_file.html#a38edec7ebf7d62054c6e0b634443aeb4">fp</a></td></tr>
-<tr class="separator:a38edec7ebf7d62054c6e0b634443aeb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e71e6d29cba0a27b1f577a8a0c84fc2"><td class="memItemLeft" >union {</td></tr>
+<tr class="memitem:a7d143bd670ae3d1a76b32d1bb089dbab"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="struct_b_g_z_f.html">BGZF</a> *&#160;&#160;&#160;<a class="el" href="structhts_file.html#a15255877d9be9d3dd9a55d008efc6f7c">bgzf</a></td></tr>
+<tr class="separator:a7d143bd670ae3d1a76b32d1bb089dbab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedaab35a245b981a7c81a49829a75988"><td class="memItemLeft" >&#160;&#160;&#160;struct <a class="el" href="structcram__fd.html">cram_fd</a> *&#160;&#160;&#160;<a class="el" href="structhts_file.html#a688802c73a7ecb5ad9006dc887cead67">cram</a></td></tr>
+<tr class="separator:aedaab35a245b981a7c81a49829a75988"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4e3db40ac14ba620a3b0822475ac7f6"><td class="memItemLeft" >&#160;&#160;&#160;struct <a class="el" href="structh_f_i_l_e.html">hFILE</a> *&#160;&#160;&#160;<a class="el" href="structhts_file.html#a7d3701cd0d99a53645fa9032e971b47e">hfile</a></td></tr>
+<tr class="separator:ac4e3db40ac14ba620a3b0822475ac7f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbe709b184176856c73740c9c93c2263"><td class="memItemLeft" >&#160;&#160;&#160;void *&#160;&#160;&#160;<a class="el" href="structhts_file.html#afa4e03c78e80d6adb2541889388f9691">voidp</a></td></tr>
+<tr class="separator:afbe709b184176856c73740c9c93c2263"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e71e6d29cba0a27b1f577a8a0c84fc2"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhts_file.html#a5e71e6d29cba0a27b1f577a8a0c84fc2">fp</a></td></tr>
+<tr class="separator:a5e71e6d29cba0a27b1f577a8a0c84fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8265d2a5c16f0082e6c0be108a8e44d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhts_format.html">htsFormat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhts_file.html#ae8265d2a5c16f0082e6c0be108a8e44d">format</a></td></tr>
+<tr class="separator:ae8265d2a5c16f0082e6c0be108a8e44d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="a15255877d9be9d3dd9a55d008efc6f7c"></a>
@@ -192,7 +190,19 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a38edec7ebf7d62054c6e0b634443aeb4"></a>
+<a class="anchor" id="ae8265d2a5c16f0082e6c0be108a8e44d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structhts_format.html">htsFormat</a> htsFile::format</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5e71e6d29cba0a27b1f577a8a0c84fc2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -240,36 +250,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a22e50ce40b532aadbab84c37346cdd24"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t htsFile::is_compressed</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="ab82dc98df2f9d8e36b4d69853a79a6b8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">uint32_t htsFile::is_cram</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ae7009b09f83cf4bc3153a95df95e3c43"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t htsFile::is_kstream</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -330,7 +316,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

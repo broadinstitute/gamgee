@@ -1,15 +1,9 @@
 var searchData=
 [
   ['h',['H',['../md5_8c.html#ae42219072d798876e6b08e6b78614ff6',1,'md5.c']]],
-  ['hclose_5fabruptly',['hclose_abruptly',['../cram__io_8c.html#a9b022cbee726244c3c1706a0b0a5a451',1,'cram_io.c']]],
   ['header_5fonly',['HEADER_ONLY',['../tabix_8c.html#ab560a880171dfcdaff7551d46c7ce1b6',1,'tabix.c']]],
   ['hello',['HELLO',['../test_2sam_8c.html#abd79dd6638f48d98e6d4cb518deaa64d',1,'sam.c']]],
   ['hex',['HEX',['../_c_make_c_compiler_id_8c.html#a46d5d95daa1bef867bd0179594310ed5',1,'HEX():&#160;CMakeCCompilerId.c'],['../_c_make_c_x_x_compiler_id_8cpp.html#a46d5d95daa1bef867bd0179594310ed5',1,'HEX():&#160;CMakeCXXCompilerId.cpp']]],
-  ['hflush',['hflush',['../cram__io_8c.html#a0349b0bc949ea1fa53b09ca5f03c31e6',1,'cram_io.c']]],
-  ['hgetc',['hgetc',['../cram__io_8c.html#a76d4345bb275b66014dab168794db0fd',1,'cram_io.c']]],
-  ['hputc',['hputc',['../cram__io_8c.html#ad95d4e3b33acca3e7e2348c4e53b9017',1,'cram_io.c']]],
-  ['hread',['hread',['../cram__io_8c.html#acb1f7e3ba3b35981587795fa7955675c',1,'cram_io.c']]],
-  ['hseek',['hseek',['../cram__io_8c.html#aa9c715451d058654f4e5af44f6256b0b',1,'cram_io.c']]],
   ['hts_5fbgzf_5ftypedef',['HTS_BGZF_TYPEDEF',['../bgzf_8h.html#a0127de67aa5f2fcb764cfad6f7a5c004',1,'HTS_BGZF_TYPEDEF():&#160;bgzf.h'],['../hts_8h.html#a0127de67aa5f2fcb764cfad6f7a5c004',1,'HTS_BGZF_TYPEDEF():&#160;hts.h']]],
   ['hts_5fbin_5ffirst',['hts_bin_first',['../hts_8h.html#a05dc0288b316a5330873744b7177a298',1,'hts.h']]],
   ['hts_5fbin_5fparent',['hts_bin_parent',['../hts_8h.html#a802312ffcbbccc1b21e286adc6149541',1,'hts.h']]],
@@ -27,6 +21,5 @@ var searchData=
   ['hts_5fnoreturn',['HTS_NORETURN',['../hts__defs_8h.html#a423302450d3a9eb152342ee26a9efda4',1,'hts_defs.h']]],
   ['hts_5fresult_5fused',['HTS_RESULT_USED',['../hts__defs_8h.html#a07cc7d90cabb303e781f5bba8e1eff79',1,'hts_defs.h']]],
   ['hts_5funused',['HTS_UNUSED',['../hts__defs_8h.html#afbe514dc0e47887f3d9a359916b687eb',1,'hts_defs.h']]],
-  ['hts_5fversion',['HTS_VERSION',['../version_8h.html#a0ab3ac27619095f949b57683ef57b489',1,'version.h']]],
-  ['hwrite',['hwrite',['../cram__io_8c.html#ad52a7cfd0f8f3db9214baaf5e25e08f4',1,'cram_io.c']]]
+  ['hts_5fversion',['HTS_VERSION',['../version_8h.html#a0ab3ac27619095f949b57683ef57b489',1,'version.h']]]
 ];

@@ -4,6 +4,7 @@ var searchData=
   ['add_5ffilter',['add_filter',['../classgamgee_1_1_variant_header_builder.html#a125a989bc3c30575d0bf7263a6415282',1,'gamgee::VariantHeaderBuilder']]],
   ['add_5fheader',['add_header',['../classgamgee_1_1_sam_writer.html#ac66a75aef5a280ffad72d6e6a48e55a0',1,'gamgee::SamWriter::add_header()'],['../classgamgee_1_1_variant_writer.html#a3cda74c0dac195ac22c52dbf2a7dd3e2',1,'gamgee::VariantWriter::add_header()']]],
   ['add_5findividual_5ffield',['add_individual_field',['../classgamgee_1_1_variant_header_builder.html#a3e92ecf096a258502c5491a7525d9d52',1,'gamgee::VariantHeaderBuilder']]],
+  ['add_5foption',['add_option',['../test__view_8c.html#af55010672f3e242dd979e45eb80c3ad9',1,'test_view.c']]],
   ['add_5frecord',['add_record',['../classgamgee_1_1_sam_writer.html#a805dcb8e14a8f60dccfcefd32805d6ec',1,'gamgee::SamWriter::add_record()'],['../classgamgee_1_1_variant_writer.html#a85c172cede99a7fdd9edfd9c0a768ccf',1,'gamgee::VariantWriter::add_record()']]],
   ['add_5fsample',['add_sample',['../classgamgee_1_1_variant_header_builder.html#aa4ce33c80a92a94bfe71d8037c1bd0d1',1,'gamgee::VariantHeaderBuilder']]],
   ['add_5fshared_5ffield',['add_shared_field',['../classgamgee_1_1_variant_header_builder.html#afdb51e9c045f9def8a0cbc69f7dad33c',1,'gamgee::VariantHeaderBuilder']]],

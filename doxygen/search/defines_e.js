@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['padded_5fblock',['PADDED_BLOCK',['../cram__io_8c.html#ab1feb18cee1bac69743be4ee83e4cbcb',1,'cram_io.c']]],
   ['pair64_5flt',['pair64_lt',['../hts_8c.html#a2520b8f3d0cbeb5266f34e4a081cdb37',1,'hts.c']]],
-  ['paranoid_5fhclose',['paranoid_hclose',['../cram__io_8c.html#a791ea20f1e649dbafa88156b95b33010',1,'cram_io.c']]],
   ['path_5fmax',['PATH_MAX',['../open__trace__file_8c.html#ae688d728e1acdfe5988c7db45d6f0166',1,'open_trace_file.c']]],
   ['pi',['PI',['../test_2sam_8c.html#a598a3330b3c21701223ee0ca14316eca',1,'sam.c']]],
   ['platform_5fid',['PLATFORM_ID',['../_c_make_c_compiler_id_8c.html#adbc5372f40838899018fadbc89bd588b',1,'PLATFORM_ID():&#160;CMakeCCompilerId.c'],['../_c_make_c_x_x_compiler_id_8cpp.html#adbc5372f40838899018fadbc89bd588b',1,'PLATFORM_ID():&#160;CMakeCXXCompilerId.cpp']]],

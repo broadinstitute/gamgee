@@ -828,9 +828,9 @@ Typedefs</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">{ <a class="code" href="khash_8h.html#a462aab2091dad69a2f14718fbe9fffa0">khint_t</a> __i;    \</div>
-<div class="line">  for (__i = <a class="code" href="khash_8h.html#a90ec4b641126d2da72f9c61cd484d96a">kh_begin</a>(h); __i != <a class="code" href="khash_8h.html#abc06ff6d0491388be3d4cfac18b79526">kh_end</a>(h); ++__i) {    \</div>
-<div class="line">    if (!<a class="code" href="khash_8h.html#a0df285846d4d503796f8d951f1a05116">kh_exist</a>(h,__i)) continue;           \</div>
+<b>Value:</b><div class="fragment"><div class="line">{ <a class="code" href="khash_8h.html#a462aab2091dad69a2f14718fbe9fffa0">khint_t</a> __i;    <a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">	for</a> (__i = <a class="code" href="khash_8h.html#a90ec4b641126d2da72f9c61cd484d96a">kh_begin</a>(h); __i != <a class="code" href="khash_8h.html#abc06ff6d0491388be3d4cfac18b79526">kh_end</a>(h); ++__i) {   <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">		if</a> (!<a class="code" href="khash_8h.html#a0df285846d4d503796f8d951f1a05116">kh_exist</a>(h,__i)) continue;           \</div>
 <div class="line">    (kvar) = <a class="code" href="khash_8h.html#a44afe015e9ebbeb2fc0c7fcff4d26fc7">kh_key</a>(h,__i);               \</div>
 <div class="line">    (vvar) = <a class="code" href="khash_8h.html#a634c16227ce2e2a664f4efad7d9041bb">kh_val</a>(h,__i);               \</div>
 <div class="line">    code;                       \</div>
@@ -841,6 +841,8 @@ Typedefs</h2></td></tr>
 <div class="ttc" id="khash_8h_html_abc06ff6d0491388be3d4cfac18b79526"><div class="ttname"><a href="khash_8h.html#abc06ff6d0491388be3d4cfac18b79526">kh_end</a></div><div class="ttdeci">#define kh_end(h)</div><div class="ttdef"><b>Definition:</b> khash.h:525</div></div>
 <div class="ttc" id="khash_8h_html_a90ec4b641126d2da72f9c61cd484d96a"><div class="ttname"><a href="khash_8h.html#a90ec4b641126d2da72f9c61cd484d96a">kh_begin</a></div><div class="ttdeci">#define kh_begin(h)</div><div class="ttdef"><b>Definition:</b> khash.h:518</div></div>
 <div class="ttc" id="khash_8h_html_a44afe015e9ebbeb2fc0c7fcff4d26fc7"><div class="ttname"><a href="khash_8h.html#a44afe015e9ebbeb2fc0c7fcff4d26fc7">kh_key</a></div><div class="ttdeci">#define kh_key(h, x)</div><div class="ttdef"><b>Definition:</b> khash.h:497</div></div>
+<div class="ttc" id="cram__encode_8c_html_aa55ff40b43720e3fc91df0ef2bc4f574"><div class="ttname"><a href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a></div><div class="ttdeci">if(!(cr-&gt;flags &amp;BAM_FUNMAP))</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2565</div></div>
+<div class="ttc" id="cram__encode_8c_html_a388e40b11b6d85d95ae4be71d03fc5db"><div class="ttname"><a href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">for</a></div><div class="ttdeci">for(i=0;i&lt; cr-&gt;len;i++)</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2736</div></div>
 </div><!-- fragment --><p>Iterate over the entries in the hash table </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">h</td><td>Pointer to the hash table [<a class="el" href="khash_8h.html#a918655286199787582304265cd9d4463">khash_t(name)</a>*] </td></tr>
@@ -882,9 +884,9 @@ Typedefs</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">{ <a class="code" href="khash_8h.html#a462aab2091dad69a2f14718fbe9fffa0">khint_t</a> __i;    \</div>
-<div class="line">  for (__i = <a class="code" href="khash_8h.html#a90ec4b641126d2da72f9c61cd484d96a">kh_begin</a>(h); __i != <a class="code" href="khash_8h.html#abc06ff6d0491388be3d4cfac18b79526">kh_end</a>(h); ++__i) {    \</div>
-<div class="line">    if (!<a class="code" href="khash_8h.html#a0df285846d4d503796f8d951f1a05116">kh_exist</a>(h,__i)) continue;           \</div>
+<b>Value:</b><div class="fragment"><div class="line">{ <a class="code" href="khash_8h.html#a462aab2091dad69a2f14718fbe9fffa0">khint_t</a> __i;    <a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">	for</a> (__i = <a class="code" href="khash_8h.html#a90ec4b641126d2da72f9c61cd484d96a">kh_begin</a>(h); __i != <a class="code" href="khash_8h.html#abc06ff6d0491388be3d4cfac18b79526">kh_end</a>(h); ++__i) {   <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">		if</a> (!<a class="code" href="khash_8h.html#a0df285846d4d503796f8d951f1a05116">kh_exist</a>(h,__i)) continue;           \</div>
 <div class="line">    (vvar) = <a class="code" href="khash_8h.html#a634c16227ce2e2a664f4efad7d9041bb">kh_val</a>(h,__i);               \</div>
 <div class="line">    code;                       \</div>
 <div class="line">  } }</div>
@@ -893,6 +895,8 @@ Typedefs</h2></td></tr>
 <div class="ttc" id="khash_8h_html_a462aab2091dad69a2f14718fbe9fffa0"><div class="ttname"><a href="khash_8h.html#a462aab2091dad69a2f14718fbe9fffa0">khint_t</a></div><div class="ttdeci">khint32_t khint_t</div><div class="ttdef"><b>Definition:</b> khash.h:152</div></div>
 <div class="ttc" id="khash_8h_html_abc06ff6d0491388be3d4cfac18b79526"><div class="ttname"><a href="khash_8h.html#abc06ff6d0491388be3d4cfac18b79526">kh_end</a></div><div class="ttdeci">#define kh_end(h)</div><div class="ttdef"><b>Definition:</b> khash.h:525</div></div>
 <div class="ttc" id="khash_8h_html_a90ec4b641126d2da72f9c61cd484d96a"><div class="ttname"><a href="khash_8h.html#a90ec4b641126d2da72f9c61cd484d96a">kh_begin</a></div><div class="ttdeci">#define kh_begin(h)</div><div class="ttdef"><b>Definition:</b> khash.h:518</div></div>
+<div class="ttc" id="cram__encode_8c_html_aa55ff40b43720e3fc91df0ef2bc4f574"><div class="ttname"><a href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a></div><div class="ttdeci">if(!(cr-&gt;flags &amp;BAM_FUNMAP))</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2565</div></div>
+<div class="ttc" id="cram__encode_8c_html_a388e40b11b6d85d95ae4be71d03fc5db"><div class="ttname"><a href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">for</a></div><div class="ttdeci">for(i=0;i&lt; cr-&gt;len;i++)</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2736</div></div>
 </div><!-- fragment --><p>Iterate over the values in the hash table </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">h</td><td>Pointer to the hash table [<a class="el" href="khash_8h.html#a918655286199787582304265cd9d4463">khash_t(name)</a>*] </td></tr>
@@ -1818,7 +1822,7 @@ Typedefs</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -1,5 +1,8 @@
 var searchData=
 [
+  ['rans_5fbyte_2eh',['rANS_byte.h',['../r_a_n_s__byte_8h.html',1,'']]],
+  ['rans_5fstatic_2ec',['rANS_static.c',['../r_a_n_s__static_8c.html',1,'']]],
+  ['rans_5fstatic_2eh',['rANS_static.h',['../r_a_n_s__static_8h.html',1,'']]],
   ['read_5fbases_2ecpp',['read_bases.cpp',['../read__bases_8cpp.html',1,'']]],
   ['read_5fbases_2eh',['read_bases.h',['../read__bases_8h.html',1,'']]],
   ['read_5fgroup_2ecpp',['read_group.cpp',['../read__group_8cpp.html',1,'']]],
@@ -10,5 +13,7 @@ var searchData=
   ['reference_5fiterator_2ecpp',['reference_iterator.cpp',['../reference__iterator_8cpp.html',1,'']]],
   ['reference_5fiterator_2eh',['reference_iterator.h',['../reference__iterator_8h.html',1,'']]],
   ['reference_5fmap_2ecpp',['reference_map.cpp',['../reference__map_8cpp.html',1,'']]],
-  ['reference_5fmap_2eh',['reference_map.h',['../reference__map_8h.html',1,'']]]
+  ['reference_5fmap_2eh',['reference_map.h',['../reference__map_8h.html',1,'']]],
+  ['regidx_2ec',['regidx.c',['../regidx_8c.html',1,'']]],
+  ['regidx_2eh',['regidx.h',['../regidx_8h.html',1,'']]]
 ];

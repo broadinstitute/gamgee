@@ -9,5 +9,6 @@ var searchData=
   ['hts_2eh',['hts.h',['../hts_8h.html',1,'']]],
   ['hts_5fdefs_2eh',['hts_defs.h',['../hts__defs_8h.html',1,'']]],
   ['hts_5fmemory_2ecpp',['hts_memory.cpp',['../hts__memory_8cpp.html',1,'']]],
-  ['hts_5fmemory_2eh',['hts_memory.h',['../hts__memory_8h.html',1,'']]]
+  ['hts_5fmemory_2eh',['hts_memory.h',['../hts__memory_8h.html',1,'']]],
+  ['htsfile_2ec',['htsfile.c',['../htsfile_8c.html',1,'']]]
 ];

@@ -24,8 +24,14 @@ var searchData=
   ['gt_5findex',['gt_index',['../classgamgee_1_1_variant_builder_individual_region.html#a101a391894973e8e5b1f31da24261679',1,'gamgee::VariantBuilderIndividualRegion']]],
   ['gt_5funkn',['GT_UNKN',['../vcfutils_8h.html#a08d98dde5b5160dd6534aa81c4e0f7f7',1,'vcfutils.h']]],
   ['gz',['gz',['../structzfp.html#acdb1493dd4132ab559f0eb87a211936e',1,'zfp']]],
+  ['gz_5fdef_5fcnt',['gz_def_cnt',['../structcram__metrics.html#a3406d08f9fdc39ca20c5531459ba1c20',1,'cram_metrics']]],
+  ['gz_5fdef_5fextra',['gz_def_extra',['../structcram__metrics.html#affe355503f4feee9c2259f8ecaacf10e',1,'cram_metrics']]],
+  ['gz_5frle_5fcnt',['gz_rle_cnt',['../structcram__metrics.html#aaad9f5dc11ebe6c30a329b62e83dacb5',1,'cram_metrics']]],
+  ['gz_5frle_5fextra',['gz_rle_extra',['../structcram__metrics.html#acb575fc064a4308ebe27b3c0632217f4',1,'cram_metrics']]],
   ['gz_5fstream',['gz_stream',['../struct_b_g_z_f.html#a5e3173c1315e5ec2dfe71f91b0ca43e3',1,'BGZF']]],
-  ['gzip',['GZIP',['../cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5a388483cd14bd349b3e0f2a7511bbec0e',1,'cram_structs.h']]],
+  ['gzi',['gzi',['../hts_8h.html#a5012a62947ab60eb4691d4dee8655df2a46fb208812de4f8be97c1e784402dcb8',1,'hts.h']]],
+  ['gzip',['GZIP',['../cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5a388483cd14bd349b3e0f2a7511bbec0e',1,'GZIP():&#160;cram_structs.h'],['../hts_8h.html#a9edfabc6c6b7a8f52cdc2c637493b7e1aaa30d7c09192833863bce3ceb41b3937',1,'gzip():&#160;hts.h']]],
+  ['gzip_5frle',['GZIP_RLE',['../cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5aa441a6163db44810df31a3831f04ae06',1,'cram_structs.h']]],
   ['missing_5fvalues',['missing_values',['../namespacegamgee_1_1missing__values.html',1,'gamgee']]],
   ['utils',['utils',['../namespacegamgee_1_1utils.html',1,'gamgee']]]
 ];

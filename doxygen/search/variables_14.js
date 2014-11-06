@@ -14,5 +14,8 @@ var searchData=
   ['unpacked',['unpacked',['../structbcf1__t.html#a1d1f40c29da7e56ebd8e4bb76db13875',1,'bcf1_t']]],
   ['unsorted',['unsorted',['../structcram__container.html#a4164aa1e3f05cea1eb2834b7f46c3e1e',1,'cram_container::unsorted()'],['../structcram__fd.html#a9e9d80c2c1f621137de814701bf43d6f',1,'cram_fd::unsorted()']]],
   ['use_5fbz2',['use_bz2',['../structcram__fd.html#a3e6e79688b55abff9c9c046e6fbe6e33',1,'cram_fd']]],
-  ['used',['used',['../structpool__t.html#acb42ce920c606df39023314fb74fdc01',1,'pool_t::used()'],['../structstring__t.html#a1070a34b6020644646414a6348545def',1,'string_t::used()']]]
+  ['use_5flzma',['use_lzma',['../structcram__fd.html#adaa70b8ff5310ab146fcb72f6c0e6d19',1,'cram_fd']]],
+  ['use_5frans',['use_rans',['../structcram__fd.html#aa97687582ad5134fa85e292095485fc9',1,'cram_fd']]],
+  ['used',['used',['../structpool__t.html#acb42ce920c606df39023314fb74fdc01',1,'pool_t::used()'],['../structstring__t.html#a1070a34b6020644646414a6348545def',1,'string_t::used()']]],
+  ['usr',['usr',['../struct__regidx__t.html#aa609765fc444920cf11b02a2889e74b4',1,'_regidx_t']]]
 ];

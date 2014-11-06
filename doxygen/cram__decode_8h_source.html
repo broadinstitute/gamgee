@@ -134,7 +134,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<a class="code" href="structcram__record.html">cram_record</a> *<a class="code" href="cram__decode_8h.html#ae83134f2dbd3019d2609dadec24b9130">cram_get_seq</a>(<a class="code" href="structcram__fd.html">cram_fd</a> *fd);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">int</span> <a class="code" href="cram__decode_8h.html#aec86c84f392f3c6f9ea40cbe299066f4">cram_get_bam_seq</a>(<a class="code" href="structcram__fd.html">cram_fd</a> *fd, <a class="code" href="structbam1__t.html">bam_seq_t</a> **bam);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">int</span> <a class="code" href="cram__decode_8h.html#aec86c84f392f3c6f9ea40cbe299066f4">cram_get_bam_seq</a>(<a class="code" href="structcram__fd.html">cram_fd</a> *fd, <a class="code" href="structbam1__t.html">bam_seq_t</a> **<a class="code" href="hts_8h.html#a5012a62947ab60eb4691d4dee8655df2a71aec27d70901fa2e52812aef408e7b5">bam</a>);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">/* ----------------------------------------------------------------------</span></div>
@@ -158,22 +158,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="cram__decode_8h_html_a89f0307956b520dacabb3375d44cece9"><div class="ttname"><a href="cram__decode_8h.html#a89f0307956b520dacabb3375d44cece9">cram_decode_compression_header</a></div><div class="ttdeci">cram_block_compression_hdr * cram_decode_compression_header(cram_fd *fd, cram_block *b)</div><div class="ttdef"><b>Definition:</b> cram_decode.c:125</div></div>
 <div class="ttc" id="struct_s_a_m__hdr_html"><div class="ttname"><a href="struct_s_a_m__hdr.html">SAM_hdr</a></div><div class="ttdef"><b>Definition:</b> sam_header.h:183</div></div>
-<div class="ttc" id="structcram__slice_html"><div class="ttname"><a href="structcram__slice.html">cram_slice</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:490</div></div>
+<div class="ttc" id="structcram__slice_html"><div class="ttname"><a href="structcram__slice.html">cram_slice</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:518</div></div>
 <div class="ttc" id="structbam1__t_html"><div class="ttname"><a href="structbam1__t.html">bam1_t</a></div><div class="ttdef"><b>Definition:</b> sam.h:170</div></div>
-<div class="ttc" id="cram__decode_8h_html_ae76f8056051210ce4d8782ad05909ce8"><div class="ttname"><a href="cram__decode_8h.html#ae76f8056051210ce4d8782ad05909ce8">cram_decode_slice_header</a></div><div class="ttdeci">cram_block_slice_hdr * cram_decode_slice_header(cram_fd *fd, cram_block *b)</div><div class="ttdef"><b>Definition:</b> cram_decode.c:613</div></div>
-<div class="ttc" id="structcram__block__compression__hdr_html"><div class="ttname"><a href="structcram__block__compression__hdr.html">cram_block_compression_hdr</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:195</div></div>
-<div class="ttc" id="structcram__record_html"><div class="ttname"><a href="structcram__record.html">cram_record</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:373</div></div>
-<div class="ttc" id="structcram__block_html"><div class="ttname"><a href="structcram__block.html">cram_block</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:173</div></div>
-<div class="ttc" id="structcram__container_html"><div class="ttname"><a href="structcram__container.html">cram_container</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:295</div></div>
-<div class="ttc" id="cram__decode_8h_html_ae83134f2dbd3019d2609dadec24b9130"><div class="ttname"><a href="cram__decode_8h.html#ae83134f2dbd3019d2609dadec24b9130">cram_get_seq</a></div><div class="ttdeci">cram_record * cram_get_seq(cram_fd *fd)</div><div class="ttdef"><b>Definition:</b> cram_decode.c:2073</div></div>
-<div class="ttc" id="cram__decode_8h_html_a72bedd704a5bf0cd3ab6584f75ccc03a"><div class="ttname"><a href="cram__decode_8h.html#a72bedd704a5bf0cd3ab6584f75ccc03a">cram_decode_slice</a></div><div class="ttdeci">int cram_decode_slice(cram_fd *fd, cram_container *c, cram_slice *s, SAM_hdr *hdr)</div><div class="ttdef"><b>Definition:</b> cram_decode.c:1335</div></div>
-<div class="ttc" id="structcram__block__slice__hdr_html"><div class="ttname"><a href="structcram__block__slice__hdr.html">cram_block_slice_hdr</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:270</div></div>
-<div class="ttc" id="cram__decode_8h_html_aec86c84f392f3c6f9ea40cbe299066f4"><div class="ttname"><a href="cram__decode_8h.html#aec86c84f392f3c6f9ea40cbe299066f4">cram_get_bam_seq</a></div><div class="ttdeci">int cram_get_bam_seq(cram_fd *fd, bam_seq_t **bam)</div><div class="ttdef"><b>Definition:</b> cram_decode.c:2126</div></div>
-<div class="ttc" id="structcram__fd_html"><div class="ttname"><a href="structcram__fd.html">cram_fd</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:622</div></div>
+<div class="ttc" id="cram__decode_8h_html_ae76f8056051210ce4d8782ad05909ce8"><div class="ttname"><a href="cram__decode_8h.html#ae76f8056051210ce4d8782ad05909ce8">cram_decode_slice_header</a></div><div class="ttdeci">cram_block_slice_hdr * cram_decode_slice_header(cram_fd *fd, cram_block *b)</div><div class="ttdef"><b>Definition:</b> cram_decode.c:946</div></div>
+<div class="ttc" id="structcram__block__compression__hdr_html"><div class="ttname"><a href="structcram__block__compression__hdr.html">cram_block_compression_hdr</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:270</div></div>
+<div class="ttc" id="structcram__record_html"><div class="ttname"><a href="structcram__record.html">cram_record</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:395</div></div>
+<div class="ttc" id="structcram__block_html"><div class="ttname"><a href="structcram__block.html">cram_block</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:247</div></div>
+<div class="ttc" id="hts_8h_html_a5012a62947ab60eb4691d4dee8655df2a71aec27d70901fa2e52812aef408e7b5"><div class="ttname"><a href="hts_8h.html#a5012a62947ab60eb4691d4dee8655df2a71aec27d70901fa2e52812aef408e7b5">bam</a></div><div class="ttdef"><b>Definition:</b> hts.h:87</div></div>
+<div class="ttc" id="structcram__container_html"><div class="ttname"><a href="structcram__container.html">cram_container</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:342</div></div>
+<div class="ttc" id="cram__decode_8h_html_ae83134f2dbd3019d2609dadec24b9130"><div class="ttname"><a href="cram__decode_8h.html#ae83134f2dbd3019d2609dadec24b9130">cram_get_seq</a></div><div class="ttdeci">cram_record * cram_get_seq(cram_fd *fd)</div><div class="ttdef"><b>Definition:</b> cram_decode.c:2639</div></div>
+<div class="ttc" id="cram__decode_8h_html_a72bedd704a5bf0cd3ab6584f75ccc03a"><div class="ttname"><a href="cram__decode_8h.html#a72bedd704a5bf0cd3ab6584f75ccc03a">cram_decode_slice</a></div><div class="ttdeci">int cram_decode_slice(cram_fd *fd, cram_container *c, cram_slice *s, SAM_hdr *hdr)</div><div class="ttdef"><b>Definition:</b> cram_decode.c:1803</div></div>
+<div class="ttc" id="structcram__block__slice__hdr_html"><div class="ttname"><a href="structcram__block__slice__hdr.html">cram_block_slice_hdr</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:317</div></div>
+<div class="ttc" id="cram__decode_8h_html_aec86c84f392f3c6f9ea40cbe299066f4"><div class="ttname"><a href="cram__decode_8h.html#aec86c84f392f3c6f9ea40cbe299066f4">cram_get_bam_seq</a></div><div class="ttdeci">int cram_get_bam_seq(cram_fd *fd, bam_seq_t **bam)</div><div class="ttdef"><b>Definition:</b> cram_decode.c:2692</div></div>
+<div class="ttc" id="structcram__fd_html"><div class="ttname"><a href="structcram__fd.html">cram_fd</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:655</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:08 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:13 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

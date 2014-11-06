@@ -118,6 +118,12 @@ Functions</h2></td></tr>
 <tr class="separator:a15089866b234c6af62cc6a8cf286a096"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54c9171814ad84962ad123940e8ed82e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="faidx_8h.html#a54c9171814ad84962ad123940e8ed82e">faidx_has_seq</a> (const <a class="el" href="faidx_8h.html#a75e8dc3e246f844338fbca75e56ccfab">faidx_t</a> *fai, const char *seq)</td></tr>
 <tr class="separator:a54c9171814ad84962ad123940e8ed82e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4fc0bb8cf28731635e41657e7b1c070"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="faidx_8h.html#ae4fc0bb8cf28731635e41657e7b1c070">faidx_nseq</a> (const <a class="el" href="faidx_8h.html#a75e8dc3e246f844338fbca75e56ccfab">faidx_t</a> *fai)</td></tr>
+<tr class="separator:ae4fc0bb8cf28731635e41657e7b1c070"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0677e241a852946782900cfe56eb753f"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="faidx_8h.html#a0677e241a852946782900cfe56eb753f">faidx_iseq</a> (const <a class="el" href="faidx_8h.html#a75e8dc3e246f844338fbca75e56ccfab">faidx_t</a> *fai, int i)</td></tr>
+<tr class="separator:a0677e241a852946782900cfe56eb753f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3afdbdab7400876af31794c1e64d2032"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="faidx_8h.html#a3afdbdab7400876af31794c1e64d2032">faidx_seq_len</a> (const <a class="el" href="faidx_8h.html#a75e8dc3e246f844338fbca75e56ccfab">faidx_t</a> *fai, const char *seq)</td></tr>
+<tr class="separator:a3afdbdab7400876af31794c1e64d2032"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a class="anchor" id="a75e8dc3e246f844338fbca75e56ccfab"></a>
@@ -355,10 +361,81 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a0677e241a852946782900cfe56eb753f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* faidx_iseq </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="faidx_8h.html#a75e8dc3e246f844338fbca75e56ccfab">faidx_t</a> *&#160;</td>
+          <td class="paramname"><em>fai</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return name of i-th sequence </p>
+
+</div>
+</div>
+<a class="anchor" id="ae4fc0bb8cf28731635e41657e7b1c070"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int faidx_nseq </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="faidx_8h.html#a75e8dc3e246f844338fbca75e56ccfab">faidx_t</a> *&#160;</td>
+          <td class="paramname"><em>fai</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return number of sequences in fai index </p>
+
+</div>
+</div>
+<a class="anchor" id="a3afdbdab7400876af31794c1e64d2032"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int faidx_seq_len </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="faidx_8h.html#a75e8dc3e246f844338fbca75e56ccfab">faidx_t</a> *&#160;</td>
+          <td class="paramname"><em>fai</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>seq</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return sequence length, -1 if not present </p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

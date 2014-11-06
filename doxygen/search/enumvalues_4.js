@@ -16,5 +16,6 @@ var searchData=
   ['e_5fnull',['E_NULL',['../cram__structs_8h.html#a2c60912ab219d52f6bf975af078eb4faa2a6afdc758f2735134a4917131e8d441',1,'cram_structs.h']]],
   ['e_5fsubexp',['E_SUBEXP',['../cram__structs_8h.html#a2c60912ab219d52f6bf975af078eb4faafd21774998b9930bee197001b5f7b756',1,'cram_structs.h']]],
   ['eq',['EQ',['../namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139a2dcbad7477fd40561e8b8198f173bd47',1,'gamgee']]],
+  ['error',['ERROR',['../cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5a2fd6f336d08340583bd620a7f5694c90',1,'cram_structs.h']]],
   ['external',['EXTERNAL',['../cram__structs_8h.html#af9934fb23b7763e058c4dfb074ce9a49a63fbb9fe7b9a695d3a65541465cb99d5',1,'cram_structs.h']]]
 ];

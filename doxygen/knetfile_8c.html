@@ -109,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a4cf6ecb9953bd658131fc3e8291f79ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knetfile_8c.html#a4cf6ecb9953bd658131fc3e8291f79ab">__err_connect</a>(func)&#160;&#160;&#160;do { perror(func); freeaddrinfo(res); return -1; } while (0)</td></tr>
+<tr class="memitem:a4cf6ecb9953bd658131fc3e8291f79ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knetfile_8c.html#a4cf6ecb9953bd658131fc3e8291f79ab">__err_connect</a>(func)&#160;&#160;&#160;do { perror(func); freeaddrinfo(res); <a class="el" href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">return</a> -1; } while (0)</td></tr>
 <tr class="separator:a4cf6ecb9953bd658131fc3e8291f79ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -118,17 +118,17 @@ Functions</h2></td></tr>
 <tr class="separator:a2a3f35b8ac303aea955cf7d1059e20f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fae10a55084923ce6004334e5d28ac9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knetfile_8c.html#a7fae10a55084923ce6004334e5d28ac9">kftp_reconnect</a> (<a class="el" href="knetfile_8h.html#a4ea26a83ed41c8ba2b6ad30a2e2d580f">knetFile</a> *ftp)</td></tr>
 <tr class="separator:a7fae10a55084923ce6004334e5d28ac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0adfd8eb749467e1ac50551e675aa3f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="knetfile_8h.html#a4ea26a83ed41c8ba2b6ad30a2e2d580f">knetFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knetfile_8c.html#a0adfd8eb749467e1ac50551e675aa3f2">kftp_parse_url</a> (const char *fn, const char *mode)</td></tr>
+<tr class="memitem:a0adfd8eb749467e1ac50551e675aa3f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="knetfile_8h.html#a4ea26a83ed41c8ba2b6ad30a2e2d580f">knetFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knetfile_8c.html#a0adfd8eb749467e1ac50551e675aa3f2">kftp_parse_url</a> (const char *fn, const char *<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>)</td></tr>
 <tr class="separator:a0adfd8eb749467e1ac50551e675aa3f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a262d1a91b92b151481c6c7abd429a9d2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knetfile_8c.html#a262d1a91b92b151481c6c7abd429a9d2">kftp_connect_file</a> (<a class="el" href="knetfile_8h.html#a4ea26a83ed41c8ba2b6ad30a2e2d580f">knetFile</a> *fp)</td></tr>
 <tr class="separator:a262d1a91b92b151481c6c7abd429a9d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1799c068b7b3aac7d631888b673338ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="knetfile_8h.html#a4ea26a83ed41c8ba2b6ad30a2e2d580f">knetFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knetfile_8c.html#a1799c068b7b3aac7d631888b673338ac">khttp_parse_url</a> (const char *fn, const char *mode)</td></tr>
+<tr class="memitem:a1799c068b7b3aac7d631888b673338ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="knetfile_8h.html#a4ea26a83ed41c8ba2b6ad30a2e2d580f">knetFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knetfile_8c.html#a1799c068b7b3aac7d631888b673338ac">khttp_parse_url</a> (const char *fn, const char *<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>)</td></tr>
 <tr class="separator:a1799c068b7b3aac7d631888b673338ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af34015a0e72982f09bab9195fa53f43b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knetfile_8c.html#af34015a0e72982f09bab9195fa53f43b">khttp_connect_file</a> (<a class="el" href="knetfile_8h.html#a4ea26a83ed41c8ba2b6ad30a2e2d580f">knetFile</a> *fp)</td></tr>
 <tr class="separator:af34015a0e72982f09bab9195fa53f43b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a49285cca8a3f3f75c7f1f72124a857"><td class="memItemLeft" align="right" valign="top"><a class="el" href="knetfile_8h.html#a4ea26a83ed41c8ba2b6ad30a2e2d580f">knetFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knetfile_8c.html#a0a49285cca8a3f3f75c7f1f72124a857">knet_open</a> (const char *fn, const char *mode)</td></tr>
+<tr class="memitem:a0a49285cca8a3f3f75c7f1f72124a857"><td class="memItemLeft" align="right" valign="top"><a class="el" href="knetfile_8h.html#a4ea26a83ed41c8ba2b6ad30a2e2d580f">knetFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knetfile_8c.html#a0a49285cca8a3f3f75c7f1f72124a857">knet_open</a> (const char *fn, const char *<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>)</td></tr>
 <tr class="separator:a0a49285cca8a3f3f75c7f1f72124a857"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac771f660fda9fef4306cc2676f33318a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="knetfile_8h.html#a4ea26a83ed41c8ba2b6ad30a2e2d580f">knetFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knetfile_8c.html#ac771f660fda9fef4306cc2676f33318a">knet_dopen</a> (int fd, const char *mode)</td></tr>
+<tr class="memitem:ac771f660fda9fef4306cc2676f33318a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="knetfile_8h.html#a4ea26a83ed41c8ba2b6ad30a2e2d580f">knetFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knetfile_8c.html#ac771f660fda9fef4306cc2676f33318a">knet_dopen</a> (int fd, const char *<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>)</td></tr>
 <tr class="separator:ac771f660fda9fef4306cc2676f33318a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc65bb242291cbf45466c2da0760ef40"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knetfile_8c.html#adc65bb242291cbf45466c2da0760ef40">knet_read</a> (<a class="el" href="knetfile_8h.html#a4ea26a83ed41c8ba2b6ad30a2e2d580f">knetFile</a> *fp, void *buf, size_t len)</td></tr>
 <tr class="separator:adc65bb242291cbf45466c2da0760ef40"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,7 +147,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">func</td><td>)</td>
-          <td>&#160;&#160;&#160;do { perror(func); freeaddrinfo(res); return -1; } while (0)</td>
+          <td>&#160;&#160;&#160;do { perror(func); freeaddrinfo(res); <a class="el" href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">return</a> -1; } while (0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -406,7 +406,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -142,11 +142,11 @@ Functions</h2></td></tr>
 <tr class="separator:a151e0df30dc231542839926b3cce92cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a275ad10b52dd472a1cda3266763e2812"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bgzf_8c.html#a275ad10b52dd472a1cda3266763e2812">bgzf_index_add_block</a> (<a class="el" href="struct_b_g_z_f.html">BGZF</a> *fp)</td></tr>
 <tr class="separator:a275ad10b52dd472a1cda3266763e2812"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07e9e9d0608c680afd0305f6a17b84b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_b_g_z_f.html">BGZF</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bgzf_8c.html#a07e9e9d0608c680afd0305f6a17b84b2">bgzf_open</a> (const char *path, const char *mode)</td></tr>
+<tr class="memitem:a07e9e9d0608c680afd0305f6a17b84b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_b_g_z_f.html">BGZF</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bgzf_8c.html#a07e9e9d0608c680afd0305f6a17b84b2">bgzf_open</a> (const char *path, const char *<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>)</td></tr>
 <tr class="separator:a07e9e9d0608c680afd0305f6a17b84b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac35e7e1748e131a607ecce641b33f049"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_b_g_z_f.html">BGZF</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bgzf_8c.html#ac35e7e1748e131a607ecce641b33f049">bgzf_dopen</a> (int fd, const char *mode)</td></tr>
+<tr class="memitem:ac35e7e1748e131a607ecce641b33f049"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_b_g_z_f.html">BGZF</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bgzf_8c.html#ac35e7e1748e131a607ecce641b33f049">bgzf_dopen</a> (int fd, const char *<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>)</td></tr>
 <tr class="separator:ac35e7e1748e131a607ecce641b33f049"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07b66522fc80878980d887f415609932"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_b_g_z_f.html">BGZF</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bgzf_8c.html#a07b66522fc80878980d887f415609932">bgzf_hopen</a> (<a class="el" href="structh_f_i_l_e.html">hFILE</a> *hfp, const char *mode)</td></tr>
+<tr class="memitem:a07b66522fc80878980d887f415609932"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_b_g_z_f.html">BGZF</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bgzf_8c.html#a07b66522fc80878980d887f415609932">bgzf_hopen</a> (<a class="el" href="structh_f_i_l_e.html">hFILE</a> *hfp, const char *<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>)</td></tr>
 <tr class="separator:a07b66522fc80878980d887f415609932"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad25a63b1298308eb770d8e6dfafb33a1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bgzf_8c.html#ad25a63b1298308eb770d8e6dfafb33a1">bgzf_read_block</a> (<a class="el" href="struct_b_g_z_f.html">BGZF</a> *fp)</td></tr>
 <tr class="separator:ad25a63b1298308eb770d8e6dfafb33a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -303,7 +303,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fd</td><td>file descriptor </td></tr>
-    <tr><td class="paramname">mode</td><td>mode matching /[rwa][u0-9]+/: 'r' for reading, 'w' for writing, or 'a' for appending, while a digit specifies the zlib compression level. Note that there is a distinction between 'u' and '0': the first yields plain uncompressed output whereas the latter outputs uncompressed data wrapped in the zlib format. </td></tr>
+    <tr><td class="paramname">mode</td><td>mode matching /[rwag][u0-9]+/: 'r' for reading, 'w' for writing, 'a' for appending, 'g' for gzip rather than <a class="el" href="struct_b_g_z_f.html">BGZF</a> compression (with 'w' only), and digit specifies the zlib compression level. Note that there is a distinction between 'u' and '0': the first yields plain uncompressed output whereas the latter outputs uncompressed data wrapped in the zlib format. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1009,7 +1009,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['z',['z',['../struct____hts__idx__t.html#a061f3b2b3b27b38900a5f37185f904a9',1,'__hts_idx_t']]],
+  ['z',['z',['../struct____hts__idx__t.html#aac259370cb508d4c1fd17fd8de832937',1,'__hts_idx_t']]],
   ['z_5fcram_5fstrat',['Z_CRAM_STRAT',['../cram__encode_8c.html#a71464a351f141a23fd7aa424b62144f3',1,'cram_encode.c']]],
   ['zfclose',['zfclose',['../zfio_8c.html#a3b45c6fd6ad58f15ea13341815040a5c',1,'zfclose(zfp *zf):&#160;zfio.c'],['../zfio_8h.html#a3b45c6fd6ad58f15ea13341815040a5c',1,'zfclose(zfp *zf):&#160;zfio.c']]],
   ['zfeof',['zfeof',['../zfio_8c.html#ac6984e0b5fef192449bd167dad4d0394',1,'zfeof(zfp *zf):&#160;zfio.c'],['../zfio_8h.html#ac6984e0b5fef192449bd167dad4d0394',1,'zfeof(zfp *zf):&#160;zfio.c']]],

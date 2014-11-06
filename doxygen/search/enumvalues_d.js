@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['s',['S',['../namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139a5dbc98dcc983a70728bd082d1a47546e',1,'gamgee']]],
-  ['snp',['SNP',['../namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11da4fc6d34599195146117224f81f5097ff',1,'gamgee']]],
-  ['string',['STRING',['../namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039eca63b588d5559f64f89a416e656880b949',1,'gamgee::utils']]]
+  ['p',['P',['../namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139a44c29edb103a2872f519ad0c9a0fdaaa',1,'gamgee']]],
+  ['picard',['PICARD',['../classgamgee_1_1_interval.html#a39ae00ed7ba01463377ff3eda87885e8ad2ee79205c55f37d7b963ccd71d09867',1,'gamgee::Interval']]]
 ];

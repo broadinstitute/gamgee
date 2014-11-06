@@ -126,15 +126,15 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a008084e381a290c0a820c67a169e7023"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#a008084e381a290c0a820c67a169e7023">_read_token</a>(_p)&#160;&#160;&#160;(_p); for (; *(_p) &amp;&amp; *(_p) != '\t'; ++(_p)); if (*(_p) != '\t') goto err_ret; *(_p)++ = 0</td></tr>
+<tr class="memitem:a008084e381a290c0a820c67a169e7023"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#a008084e381a290c0a820c67a169e7023">_read_token</a>(_p)&#160;&#160;&#160;(_p); <a class="el" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">for</a> (; *(_p) &amp;&amp; *(_p) != '\t'; ++(_p)); <a class="el" href="cram__encode_8c.html#a10cf7b80001397ce45d94988fe8831a2">if</a> (*(_p) != '\t') goto err_ret; *(_p)++ = 0</td></tr>
 <tr class="separator:a008084e381a290c0a820c67a169e7023"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2da1e289e8af613489d2e358f5d3a1e5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#a2da1e289e8af613489d2e358f5d3a1e5">_read_token_aux</a>(_p)&#160;&#160;&#160;(_p); for (; *(_p) &amp;&amp; *(_p) != '\t'; ++(_p)); *(_p)++ = 0</td></tr>
+<tr class="memitem:a2da1e289e8af613489d2e358f5d3a1e5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#a2da1e289e8af613489d2e358f5d3a1e5">_read_token_aux</a>(_p)&#160;&#160;&#160;(_p); <a class="el" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">for</a> (; *(_p) &amp;&amp; *(_p) != '\t'; ++(_p)); *(_p)++ = 0</td></tr>
 <tr class="separator:a2da1e289e8af613489d2e358f5d3a1e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a606c69c70117c2f25625123684ec7f83"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#a606c69c70117c2f25625123684ec7f83">_get_mem</a>(type_t, _x, _s, _l)&#160;&#160;&#160;ks_resize((_s), (_s)-&gt;l + (_l)); *(_x) = (type_t*)((_s)-&gt;s + (_s)-&gt;l); (_s)-&gt;l += (_l)</td></tr>
 <tr class="separator:a606c69c70117c2f25625123684ec7f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d8c8da9c5fd63e594cf85474f40730b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#a8d8c8da9c5fd63e594cf85474f40730b">_parse_err</a>(cond, msg)&#160;&#160;&#160;do { if ((cond) &amp;&amp; <a class="el" href="hts_8h.html#a472d3d3111f163557287cc5663c0eeb2">hts_verbose</a> &gt;= 1) { fprintf(stderr, &quot;[E::%s] &quot; msg &quot;\n&quot;, __func__); goto err_ret; } } while (0)</td></tr>
+<tr class="memitem:a8d8c8da9c5fd63e594cf85474f40730b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#a8d8c8da9c5fd63e594cf85474f40730b">_parse_err</a>(cond, msg)&#160;&#160;&#160;do { <a class="el" href="cram__encode_8c.html#a10cf7b80001397ce45d94988fe8831a2">if</a> ((cond) &amp;&amp; <a class="el" href="hts_8h.html#a472d3d3111f163557287cc5663c0eeb2">hts_verbose</a> &gt;= 1) { fprintf(stderr, &quot;[E::%s] &quot; msg &quot;\n&quot;, __func__); goto err_ret; } } while (0)</td></tr>
 <tr class="separator:a8d8c8da9c5fd63e594cf85474f40730b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a042d009401fb04919519bb5d8c561440"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#a042d009401fb04919519bb5d8c561440">_parse_warn</a>(cond, msg)&#160;&#160;&#160;if ((cond) &amp;&amp; <a class="el" href="hts_8h.html#a472d3d3111f163557287cc5663c0eeb2">hts_verbose</a> &gt;= 2) fprintf(stderr, &quot;[W::%s] &quot; msg &quot;\n&quot;, __func__)</td></tr>
+<tr class="memitem:a042d009401fb04919519bb5d8c561440"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#a042d009401fb04919519bb5d8c561440">_parse_warn</a>(cond, msg)&#160;&#160;&#160;<a class="el" href="cram__encode_8c.html#a10cf7b80001397ce45d94988fe8831a2">if</a> ((cond) &amp;&amp; <a class="el" href="hts_8h.html#a472d3d3111f163557287cc5663c0eeb2">hts_verbose</a> &gt;= 2) fprintf(stderr, &quot;[W::%s] &quot; msg &quot;\n&quot;, __func__)</td></tr>
 <tr class="separator:a042d009401fb04919519bb5d8c561440"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4e9a3270c4e5f8667c58e4670bae4ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#aa4e9a3270c4e5f8667c58e4670bae4ca">STRNCMP</a>(a, b, n)&#160;&#160;&#160;(strncasecmp((a),(b),(n)) || strlen(a)!=(n))</td></tr>
 <tr class="separator:aa4e9a3270c4e5f8667c58e4670bae4ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -172,9 +172,9 @@ Functions</h2></td></tr>
 <tr class="separator:a396ccc25990cc9c00047a3fe5070215f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad783ca53dbcc3045b29cbbff047c7432"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbam1__t.html">bam1_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#ad783ca53dbcc3045b29cbbff047c7432">bam_dup1</a> (const <a class="el" href="structbam1__t.html">bam1_t</a> *bsrc)</td></tr>
 <tr class="separator:ad783ca53dbcc3045b29cbbff047c7432"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00663b6998e818b8a2b0e94f67193d56"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#a00663b6998e818b8a2b0e94f67193d56">bam_cigar2qlen</a> (int n_cigar, const uint32_t *cigar)</td></tr>
+<tr class="memitem:a00663b6998e818b8a2b0e94f67193d56"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#a00663b6998e818b8a2b0e94f67193d56">bam_cigar2qlen</a> (int n_cigar, const uint32_t *<a class="el" href="cram__encode_8c.html#aa762b5b3b33e5602db4f41b5ca44c335">cigar</a>)</td></tr>
 <tr class="separator:a00663b6998e818b8a2b0e94f67193d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96c61e51819cbee1018d35a6d418c1c8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#a96c61e51819cbee1018d35a6d418c1c8">bam_cigar2rlen</a> (int n_cigar, const uint32_t *cigar)</td></tr>
+<tr class="memitem:a96c61e51819cbee1018d35a6d418c1c8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#a96c61e51819cbee1018d35a6d418c1c8">bam_cigar2rlen</a> (int n_cigar, const uint32_t *<a class="el" href="cram__encode_8c.html#aa762b5b3b33e5602db4f41b5ca44c335">cigar</a>)</td></tr>
 <tr class="separator:a96c61e51819cbee1018d35a6d418c1c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80a5e31ed452de4aca92ae446ad624a9"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#a80a5e31ed452de4aca92ae446ad624a9">bam_endpos</a> (const <a class="el" href="structbam1__t.html">bam1_t</a> *b)</td></tr>
 <tr class="separator:a80a5e31ed452de4aca92ae446ad624a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -218,7 +218,7 @@ Functions</h2></td></tr>
 <tr class="separator:a3697b8cfffd4a7c77487278f5c1c25b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8f38c0d5602ec8f5653c62d4464915e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#ac8f38c0d5602ec8f5653c62d4464915e">bam_aux2Z</a> (const uint8_t *s)</td></tr>
 <tr class="separator:ac8f38c0d5602ec8f5653c62d4464915e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafb6db1374af65d180ad42302a06379a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#aafb6db1374af65d180ad42302a06379a">sam_open_mode</a> (char *mode, const char *fn, const char *format)</td></tr>
+<tr class="memitem:aafb6db1374af65d180ad42302a06379a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#aafb6db1374af65d180ad42302a06379a">sam_open_mode</a> (char *<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>, const char *fn, const char *format)</td></tr>
 <tr class="separator:aafb6db1374af65d180ad42302a06379a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3308750ff13fee2c3e86f2df413d6a78"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sam_8c.html#a3308750ff13fee2c3e86f2df413d6a78">bam_str2flag</a> (const char *<a class="el" href="test_2sam_8c.html#a8269f97b2652fc717949a982d7b4f02a">str</a>)</td></tr>
 <tr class="separator:a3308750ff13fee2c3e86f2df413d6a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -343,7 +343,7 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;do { if ((cond) &amp;&amp; <a class="el" href="hts_8h.html#a472d3d3111f163557287cc5663c0eeb2">hts_verbose</a> &gt;= 1) { fprintf(stderr, &quot;[E::%s] &quot; msg &quot;\n&quot;, __func__); goto err_ret; } } while (0)</td>
+          <td></td><td>&#160;&#160;&#160;do { <a class="el" href="cram__encode_8c.html#a10cf7b80001397ce45d94988fe8831a2">if</a> ((cond) &amp;&amp; <a class="el" href="hts_8h.html#a472d3d3111f163557287cc5663c0eeb2">hts_verbose</a> &gt;= 1) { fprintf(stderr, &quot;[E::%s] &quot; msg &quot;\n&quot;, __func__); goto err_ret; } } while (0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -369,7 +369,7 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;if ((cond) &amp;&amp; <a class="el" href="hts_8h.html#a472d3d3111f163557287cc5663c0eeb2">hts_verbose</a> &gt;= 2) fprintf(stderr, &quot;[W::%s] &quot; msg &quot;\n&quot;, __func__)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="cram__encode_8c.html#a10cf7b80001397ce45d94988fe8831a2">if</a> ((cond) &amp;&amp; <a class="el" href="hts_8h.html#a472d3d3111f163557287cc5663c0eeb2">hts_verbose</a> &gt;= 2) fprintf(stderr, &quot;[W::%s] &quot; msg &quot;\n&quot;, __func__)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -385,7 +385,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">_p</td><td>)</td>
-          <td>&#160;&#160;&#160;(_p); for (; *(_p) &amp;&amp; *(_p) != '\t'; ++(_p)); if (*(_p) != '\t') goto err_ret; *(_p)++ = 0</td>
+          <td>&#160;&#160;&#160;(_p); <a class="el" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">for</a> (; *(_p) &amp;&amp; *(_p) != '\t'; ++(_p)); <a class="el" href="cram__encode_8c.html#a10cf7b80001397ce45d94988fe8831a2">if</a> (*(_p) != '\t') goto err_ret; *(_p)++ = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -401,7 +401,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">_p</td><td>)</td>
-          <td>&#160;&#160;&#160;(_p); for (; *(_p) &amp;&amp; *(_p) != '\t'; ++(_p)); *(_p)++ = 0</td>
+          <td>&#160;&#160;&#160;(_p); <a class="el" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">for</a> (; *(_p) &amp;&amp; *(_p) != '\t'; ++(_p)); *(_p)++ = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1685,7 +1685,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

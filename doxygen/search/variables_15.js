@@ -1,11 +1,12 @@
 var searchData=
 [
   ['v',['v',['../structhts__pair64__t.html#acd13be07b4326fbb222ca26ce483c9b8',1,'hts_pair64_t']]],
-  ['v1',['v1',['../structbcf__info__t.html#a123f95a3cf46f2f6e6009411161c40ad',1,'bcf_info_t']]],
-  ['val',['val',['../structbcf__idpair__t.html#acf636df3ed86024d1e7a8ac08d8fdcbd',1,'bcf_idpair_t']]],
+  ['v1',['v1',['../structbcf__info__t.html#a6c6e3843841db4aea9bdd549e87d50f3',1,'bcf_info_t']]],
+  ['val',['val',['../structbcf__idpair__t.html#acf636df3ed86024d1e7a8ac08d8fdcbd',1,'bcf_idpair_t::val()'],['../structhts__opt.html#aaccd347d8b4488b5423903cc48ce07da',1,'hts_opt::val()']]],
   ['val2code',['val2code',['../structcram__huffman__encoder.html#a39d411b921037029f8037e7992819a4e',1,'cram_huffman_encoder']]],
-  ['val_5fdat',['val_dat',['../structcram__byte__array__len__encoder.html#acb23a70d3c5c3cc5086f3b5a86155c23',1,'cram_byte_array_len_encoder']]],
-  ['val_5flen',['val_len',['../structcram__byte__array__len__encoder.html#a3765545225b6dbb55731ea9a3de938b3',1,'cram_byte_array_len_encoder']]],
+  ['val_5fcodec',['val_codec',['../structcram__byte__array__len__encoder.html#a84ec3fb58e97567c8ee445d6fac05a34',1,'cram_byte_array_len_encoder']]],
+  ['val_5fdat',['val_dat',['../structcram__byte__array__len__encoder.html#a0025b6171e8f82d574f9e757748ba7f8',1,'cram_byte_array_len_encoder']]],
+  ['val_5fencoding',['val_encoding',['../structcram__byte__array__len__encoder.html#a5aebb674687763512b5447c519dd4d4c',1,'cram_byte_array_len_encoder']]],
   ['vals',['vals',['../structbcf__hrec__t.html#aacc98ffcf6cdf5a78838eec236530c62',1,'bcf_hrec_t']]],
   ['value',['value',['../structbcf__hrec__t.html#a005f37395ab5ee5932bbcfc4ae8e0e16',1,'bcf_hrec_t']]],
   ['value_5fcodec',['value_codec',['../structcram__byte__array__len__decoder.html#a684c3e7769fcf4b7f555f55ee86e9504',1,'cram_byte_array_len_decoder']]],

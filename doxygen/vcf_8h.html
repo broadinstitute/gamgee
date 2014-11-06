@@ -218,9 +218,9 @@ Macros</h2></td></tr>
 <tr class="separator:a275ece91d0d662d20142a04baa14e34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86f110e0bf48c611e98421c88cc45c39"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a86f110e0bf48c611e98421c88cc45c39">vcf_format1</a>(h, v, s)&#160;&#160;&#160;<a class="el" href="vcf_8c.html#ad985bd9e542a4f9f0e09d992216c0018">vcf_format</a>((h),(v),(s))</td></tr>
 <tr class="separator:a86f110e0bf48c611e98421c88cc45c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6d5fab61596eb300eb782b79a30fbe2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#af6d5fab61596eb300eb782b79a30fbe2">bcf_open</a>(fn, mode)&#160;&#160;&#160;<a class="el" href="hts_8h.html#a44888d2f309f950b5cf8377dc49eb75a">hts_open</a>((fn), (mode))</td></tr>
+<tr class="memitem:af6d5fab61596eb300eb782b79a30fbe2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#af6d5fab61596eb300eb782b79a30fbe2">bcf_open</a>(fn, <a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>)&#160;&#160;&#160;<a class="el" href="hts_8h.html#a44888d2f309f950b5cf8377dc49eb75a">hts_open</a>((fn), (<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>))</td></tr>
 <tr class="separator:af6d5fab61596eb300eb782b79a30fbe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a197b58b7caf4429587e0db2933288bd6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a197b58b7caf4429587e0db2933288bd6">vcf_open</a>(fn, mode)&#160;&#160;&#160;<a class="el" href="hts_8h.html#a44888d2f309f950b5cf8377dc49eb75a">hts_open</a>((fn), (mode))</td></tr>
+<tr class="memitem:a197b58b7caf4429587e0db2933288bd6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a197b58b7caf4429587e0db2933288bd6">vcf_open</a>(fn, <a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>)&#160;&#160;&#160;<a class="el" href="hts_8h.html#a44888d2f309f950b5cf8377dc49eb75a">hts_open</a>((fn), (<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>))</td></tr>
 <tr class="separator:a197b58b7caf4429587e0db2933288bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e25dd2ebb64914a3f5a2269895ae9fd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a3e25dd2ebb64914a3f5a2269895ae9fd">bcf_close</a>(fp)&#160;&#160;&#160;<a class="el" href="hts_8h.html#a24d29efd9c9a8f4767fbdff7d1a2fc60">hts_close</a>(fp)</td></tr>
 <tr class="separator:a3e25dd2ebb64914a3f5a2269895ae9fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -264,6 +264,8 @@ Macros</h2></td></tr>
 <tr class="separator:a2daf6ed2c0a34f365b42142e60bfdd60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7f8230ee0a2d86148dfd13989798cb7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#ae7f8230ee0a2d86148dfd13989798cb7">bcf_gt_missing</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:ae7f8230ee0a2d86148dfd13989798cb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a125d1bb17800f8b14d31784ca409e280"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a125d1bb17800f8b14d31784ca409e280">bcf_gt_is_missing</a>(val)&#160;&#160;&#160;((val)&gt;&gt;1 ? 0 : 1)</td></tr>
+<tr class="separator:a125d1bb17800f8b14d31784ca409e280"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07c771430b8c73094c0ef44dc3838970"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a07c771430b8c73094c0ef44dc3838970">bcf_gt_is_phased</a>(idx)&#160;&#160;&#160;((idx)&amp;1)</td></tr>
 <tr class="separator:a07c771430b8c73094c0ef44dc3838970"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3aa8cf1e1d3060a19f78a23059b3694"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#ab3aa8cf1e1d3060a19f78a23059b3694">bcf_gt_allele</a>(val)&#160;&#160;&#160;(((val)&gt;&gt;1)-1)</td></tr>
@@ -306,7 +308,7 @@ Macros</h2></td></tr>
 <tr class="separator:ae209cc8c7108990ceffef359ce3f5257"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c6d52f564c506e17a9d5dc0edbc5f1c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a2c6d52f564c506e17a9d5dc0edbc5f1c">bcf_itr_querys</a>(idx, hdr, s)&#160;&#160;&#160;<a class="el" href="hts_8h.html#aa8ad3dd9fd50bbd523a3ab0f1e623e6a">hts_itr_querys</a>((idx), (s), (<a class="el" href="hts_8h.html#a630658d315d892211a1504a9c8e4409a">hts_name2id_f</a>)(bcf_hdr_name2id), (hdr), <a class="el" href="hts_8h.html#a971451e9c568cc7918829ed4680e8ba5">hts_itr_query</a>, <a class="el" href="vcf_8c.html#a1ace27a3d43a39ea153d3a5cb6029153">bcf_readrec</a>)</td></tr>
 <tr class="separator:a2c6d52f564c506e17a9d5dc0edbc5f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abec8b7d699e090f0f099700c15a5c4b8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#abec8b7d699e090f0f099700c15a5c4b8">bcf_itr_next</a>(htsfp, itr, r)&#160;&#160;&#160;<a class="el" href="hts_8h.html#aafa847ad7824a506be642e97d8829691">hts_itr_next</a>((htsfp)-&gt;fp.bgzf, (itr), (r), 0)</td></tr>
+<tr class="memitem:abec8b7d699e090f0f099700c15a5c4b8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#abec8b7d699e090f0f099700c15a5c4b8">bcf_itr_next</a>(htsfp, itr, r)&#160;&#160;&#160;<a class="el" href="hts_8h.html#aafa847ad7824a506be642e97d8829691">hts_itr_next</a>((htsfp)-&gt;<a class="el" href="hts_8h.html#a9edfabc6c6b7a8f52cdc2c637493b7e1ac0c9395036557a070320693608932805">fp.bgzf</a>, (itr), (r), 0)</td></tr>
 <tr class="separator:abec8b7d699e090f0f099700c15a5c4b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a242e814bf0305911b972849c605ed951"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a242e814bf0305911b972849c605ed951">bcf_index_load</a>(fn)&#160;&#160;&#160;<a class="el" href="hts_8h.html#a18b1f5286ddbacb89c205e6b43f0f332">hts_idx_load</a>(fn, <a class="el" href="hts_8h.html#a02f5d0adf42aff98cbe7b7ec1f2d9652">HTS_FMT_CSI</a>)</td></tr>
 <tr class="separator:a242e814bf0305911b972849c605ed951"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -342,7 +344,7 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a085e0020cb0cade3a4719ae63a6f15fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a085e0020cb0cade3a4719ae63a6f15fd">bcf_hdr_init</a> (const char *mode)</td></tr>
+<tr class="memitem:a085e0020cb0cade3a4719ae63a6f15fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a085e0020cb0cade3a4719ae63a6f15fd">bcf_hdr_init</a> (const char *<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>)</td></tr>
 <tr class="separator:a085e0020cb0cade3a4719ae63a6f15fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a256f57586da8f14a57b54af51ac556e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a256f57586da8f14a57b54af51ac556e1">bcf_hdr_destroy</a> (<a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *h)</td></tr>
 <tr class="separator:a256f57586da8f14a57b54af51ac556e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -360,8 +362,8 @@ Functions</h2></td></tr>
 <tr class="separator:aad2f478b0ceca1434278510a8d99e20a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a639455a5c9e42af55753d41bc05d3963"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a639455a5c9e42af55753d41bc05d3963">bcf_subset_format</a> (const <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *hdr, <a class="el" href="structbcf1__t.html">bcf1_t</a> *rec)</td></tr>
 <tr class="separator:a639455a5c9e42af55753d41bc05d3963"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaec19626dbf426c72f894973c6f13b4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#aeaec19626dbf426c72f894973c6f13b4">bcf_hdr_write</a> (<a class="el" href="structhts_file.html">htsFile</a> *fp, const <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *h)</td></tr>
-<tr class="separator:aeaec19626dbf426c72f894973c6f13b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d494f346cc28ed7413846bdf0592b18"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a3d494f346cc28ed7413846bdf0592b18">bcf_hdr_write</a> (<a class="el" href="structhts_file.html">htsFile</a> *fp, <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *h)</td></tr>
+<tr class="separator:a3d494f346cc28ed7413846bdf0592b18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42cc320bd9515446886f0b344f338ce3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a42cc320bd9515446886f0b344f338ce3">vcf_parse</a> (<a class="el" href="bgzf_8h.html#ac800c6fe2937b30307ab5a457e5bbf19">kstring_t</a> *s, const <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *h, <a class="el" href="structbcf1__t.html">bcf1_t</a> *v)</td></tr>
 <tr class="separator:a42cc320bd9515446886f0b344f338ce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad985bd9e542a4f9f0e09d992216c0018"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#ad985bd9e542a4f9f0e09d992216c0018">vcf_format</a> (const <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *h, const <a class="el" href="structbcf1__t.html">bcf1_t</a> *v, <a class="el" href="bgzf_8h.html#ac800c6fe2937b30307ab5a457e5bbf19">kstring_t</a> *s)</td></tr>
@@ -372,6 +374,8 @@ Functions</h2></td></tr>
 <tr class="separator:a6dfa5de855eefb6a283033e272d5c324"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac558c056651c7f10a2b504d239484d37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbcf1__t.html">bcf1_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#ac558c056651c7f10a2b504d239484d37">bcf_dup</a> (<a class="el" href="structbcf1__t.html">bcf1_t</a> *src)</td></tr>
 <tr class="separator:ac558c056651c7f10a2b504d239484d37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abeeff0865e2ce82a808f1b47def9bc03"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbcf1__t.html">bcf1_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#abeeff0865e2ce82a808f1b47def9bc03">bcf_copy</a> (<a class="el" href="structbcf1__t.html">bcf1_t</a> *dst, <a class="el" href="structbcf1__t.html">bcf1_t</a> *src)</td></tr>
+<tr class="separator:abeeff0865e2ce82a808f1b47def9bc03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade560e70b9fcab522e516d491a0c3c5d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#ade560e70b9fcab522e516d491a0c3c5d">bcf_write</a> (<a class="el" href="structhts_file.html">htsFile</a> *fp, const <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *h, <a class="el" href="structbcf1__t.html">bcf1_t</a> *v)</td></tr>
 <tr class="separator:ade560e70b9fcab522e516d491a0c3c5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bdeb85189182cfb723213e5a9e558d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a8bdeb85189182cfb723213e5a9e558d9">vcf_hdr_read</a> (<a class="el" href="structhts_file.html">htsFile</a> *fp)</td></tr>
@@ -466,10 +470,10 @@ Functions</h2></td></tr>
 <tr class="separator:a56f0b2260b36c34b4f15af9c5e9e7ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2e9bbec9e4725825d69446222a291c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbcf__info__t.html">bcf_info_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#aa2e9bbec9e4725825d69446222a291c2">bcf_get_info</a> (const <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *hdr, <a class="el" href="structbcf1__t.html">bcf1_t</a> *line, const char *key)</td></tr>
 <tr class="separator:aa2e9bbec9e4725825d69446222a291c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03ae3a51c30f4a9733e148b0d06c4892"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a03ae3a51c30f4a9733e148b0d06c4892">bcf_get_fmt_idx</a> (<a class="el" href="structbcf1__t.html">bcf1_t</a> *line, const int idx)</td></tr>
-<tr class="separator:a03ae3a51c30f4a9733e148b0d06c4892"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96f01c3548c3c7ec28f89940e0ac6007"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbcf__info__t.html">bcf_info_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a96f01c3548c3c7ec28f89940e0ac6007">bcf_get_info_idx</a> (<a class="el" href="structbcf1__t.html">bcf1_t</a> *line, const int idx)</td></tr>
-<tr class="separator:a96f01c3548c3c7ec28f89940e0ac6007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12ba8927ec19d741b5278c3d569108d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a12ba8927ec19d741b5278c3d569108d1">bcf_get_fmt_id</a> (<a class="el" href="structbcf1__t.html">bcf1_t</a> *line, const int id)</td></tr>
+<tr class="separator:a12ba8927ec19d741b5278c3d569108d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab624a540e7fadf7d2575adf9f262dc7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbcf__info__t.html">bcf_info_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#ab624a540e7fadf7d2575adf9f262dc7d">bcf_get_info_id</a> (<a class="el" href="structbcf1__t.html">bcf1_t</a> *line, const int id)</td></tr>
+<tr class="separator:ab624a540e7fadf7d2575adf9f262dc7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3736232285bd9528d0f9cbb16fa03c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#ae3736232285bd9528d0f9cbb16fa03c3">bcf_get_info_values</a> (const <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *hdr, <a class="el" href="structbcf1__t.html">bcf1_t</a> *line, const char *tag, void **dst, int *ndst, int type)</td></tr>
 <tr class="separator:ae3736232285bd9528d0f9cbb16fa03c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1cf815b86907733019abc1a1311a018f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcf_8h.html#a1cf815b86907733019abc1a1311a018f">bcf_get_format_string</a> (const <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *hdr, <a class="el" href="structbcf1__t.html">bcf1_t</a> *line, const char *tag, char ***dst, int *ndst)</td></tr>
@@ -1170,6 +1174,22 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a125d1bb17800f8b14d31784ca409e280"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define bcf_gt_is_missing</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">val</td><td>)</td>
+          <td>&#160;&#160;&#160;((val)&gt;&gt;1 ? 0 : 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a07c771430b8c73094c0ef44dc3838970"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1777,7 +1797,7 @@ Variables</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="hts_8h.html#aafa847ad7824a506be642e97d8829691">hts_itr_next</a>((htsfp)-&gt;fp.bgzf, (itr), (r), 0)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="hts_8h.html#aafa847ad7824a506be642e97d8829691">hts_itr_next</a>((htsfp)-&gt;<a class="el" href="hts_8h.html#a9edfabc6c6b7a8f52cdc2c637493b7e1ac0c9395036557a070320693608932805">fp.bgzf</a>, (itr), (r), 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1868,12 +1888,12 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">mode&#160;</td>
+          <td class="paramname"><a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="hts_8h.html#a44888d2f309f950b5cf8377dc49eb75a">hts_open</a>((fn), (mode))</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="hts_8h.html#a44888d2f309f950b5cf8377dc49eb75a">hts_open</a>((fn), (<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2485,16 +2505,19 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">{ \</div>
 <div class="line">        type_t *ptr = (type_t*) (fmt-&gt;p + isample*fmt-&gt;size); \</div>
-<div class="line">        int i; \</div>
-<div class="line">        for (i=0; i&lt;fmt-&gt;n &amp;&amp; ptr[i]!=vector_end; i++) \</div>
-<div class="line">        { \</div>
-<div class="line">            if ( i ) kputc(&quot;/|&quot;[ptr[i]&amp;1], <a class="code" href="test_2sam_8c.html#a8269f97b2652fc717949a982d7b4f02a">str</a>); \</div>
-<div class="line">            if ( !(ptr[i]&gt;&gt;1) ) kputc(&#39;.&#39;, str); \</div>
-<div class="line">            else kputw((ptr[i]&gt;&gt;1) - 1, str); \</div>
+<div class="line">        int i; <a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">        for</a> (i=0; i&lt;fmt-&gt;n &amp;&amp; ptr[i]!=vector_end; i++) \</div>
+<div class="line">        { <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">            if</a> ( i ) kputc(&quot;/|&quot;[ptr[i]&amp;1], <a class="code" href="test_2sam_8c.html#a8269f97b2652fc717949a982d7b4f02a">str</a>); \</div>
+<div class="line">            <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a> ( !(ptr[i]&gt;&gt;1) ) kputc(&#39;.&#39;, str); \</div>
+<div class="line">            <a class="code" href="cram__encode_8c.html#a0544c3fe466e421738dae463968b70ba">else</a> kputw((ptr[i]&gt;&gt;1) - 1, str); \</div>
 <div class="line">        } \</div>
-<div class="line">        if (i == 0) kputc(&#39;.&#39;, str); \</div>
+<div class="line">        <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a> (i == 0) kputc(&#39;.&#39;, str); \</div>
 <div class="line">    }</div>
+<div class="ttc" id="cram__encode_8c_html_a0544c3fe466e421738dae463968b70ba"><div class="ttname"><a href="cram__encode_8c.html#a0544c3fe466e421738dae463968b70ba">else</a></div><div class="ttdeci">else</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2729</div></div>
 <div class="ttc" id="test_2sam_8c_html_a8269f97b2652fc717949a982d7b4f02a"><div class="ttname"><a href="test_2sam_8c.html#a8269f97b2652fc717949a982d7b4f02a">str</a></div><div class="ttdeci">#define str(x)</div><div class="ttdef"><b>Definition:</b> sam.c:66</div></div>
+<div class="ttc" id="cram__encode_8c_html_aa55ff40b43720e3fc91df0ef2bc4f574"><div class="ttname"><a href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a></div><div class="ttdeci">if(!(cr-&gt;flags &amp;BAM_FUNMAP))</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2565</div></div>
+<div class="ttc" id="cram__encode_8c_html_a388e40b11b6d85d95ae4be71d03fc5db"><div class="ttname"><a href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">for</a></div><div class="ttdeci">for(i=0;i&lt; cr-&gt;len;i++)</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2736</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2584,12 +2607,12 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">mode&#160;</td>
+          <td class="paramname"><a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="hts_8h.html#a44888d2f309f950b5cf8377dc49eb75a">hts_open</a>((fn), (mode))</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="hts_8h.html#a44888d2f309f950b5cf8377dc49eb75a">hts_open</a>((fn), (<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2791,6 +2814,32 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Make the <a class="el" href="structbcf1__t.html">bcf1_t</a> object ready for next read. Intended mostly for internal use, the user should rarely need to call this function directly. </p>
+
+</div>
+</div>
+<a class="anchor" id="abeeff0865e2ce82a808f1b47def9bc03"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structbcf1__t.html">bcf1_t</a>* bcf_copy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structbcf1__t.html">bcf1_t</a> *&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structbcf1__t.html">bcf1_t</a> *&#160;</td>
+          <td class="paramname"><em>src</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -3044,12 +3093,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a03ae3a51c30f4a9733e148b0d06c4892"></a>
+<a class="anchor" id="a12ba8927ec19d741b5278c3d569108d1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a>* bcf_get_fmt_idx </td>
+          <td class="memname"><a class="el" href="structbcf__fmt__t.html">bcf_fmt_t</a>* bcf_get_fmt_id </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structbcf1__t.html">bcf1_t</a> *&#160;</td>
           <td class="paramname"><em>line</em>, </td>
@@ -3058,7 +3107,7 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>idx</em>&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -3067,7 +3116,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>bcf_get_*_idx() - returns pointer to FORMAT/INFO field data given the header index instead of the string ID  VCF line obtained from vcf_parse1 : The header index for the tag, obtained from <a class="el" href="vcf_8h.html#afb364438753d0658b235de9f5c520b03">bcf_hdr_id2int()</a></p>
+<p>bcf_get_*_id() - returns pointer to FORMAT/INFO field data given the header index instead of the string ID  VCF line obtained from vcf_parse1 : The header index for the tag, obtained from <a class="el" href="vcf_8h.html#afb364438753d0658b235de9f5c520b03">bcf_hdr_id2int()</a></p>
 <p>Returns bcf_fmt_t* / bcf_info_t*. These functions do not check if the index is valid as their goal is to avoid the header lookup. </p>
 
 </div>
@@ -3198,12 +3247,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a96f01c3548c3c7ec28f89940e0ac6007"></a>
+<a class="anchor" id="ab624a540e7fadf7d2575adf9f262dc7d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structbcf__info__t.html">bcf_info_t</a>* bcf_get_info_idx </td>
+          <td class="memname"><a class="el" href="structbcf__info__t.html">bcf_info_t</a>* bcf_get_info_id </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structbcf1__t.html">bcf1_t</a> *&#160;</td>
           <td class="paramname"><em>line</em>, </td>
@@ -3212,7 +3261,7 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>idx</em>&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -3401,7 +3450,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p><a class="el" href="vcf_8h.html#af46fff6a9979897c155c120d318618d9">bcf_hdr_add_sample()</a> - add a new sample. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sample</td><td>Sample name to be added. After all samples have been added, NULL must be passed to update internal header structures. </td></tr>
+    <tr><td class="paramname">sample</td><td>sample name to be added </td></tr>
   </table>
   </dd>
 </dl>
@@ -3982,7 +4031,7 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aeaec19626dbf426c72f894973c6f13b4"></a>
+<a class="anchor" id="a3d494f346cc28ed7413846bdf0592b18"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -3995,7 +4044,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> *&#160;</td>
           <td class="paramname"><em>h</em>&#160;</td>
         </tr>
         <tr>
@@ -5037,7 +5086,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

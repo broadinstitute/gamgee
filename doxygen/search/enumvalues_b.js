@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['p',['P',['../namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139a44c29edb103a2872f519ad0c9a0fdaaa',1,'gamgee']]],
-  ['picard',['PICARD',['../classgamgee_1_1_interval.html#a39ae00ed7ba01463377ff3eda87885e8ad2ee79205c55f37d7b963ccd71d09867',1,'gamgee::Interval']]]
+  ['n',['N',['../namespacegamgee.html#a7487e27a3a8cc7205591dfb467de3139a8d9c307cb7f3c4a32822a51922d1ceaa',1,'gamgee::N()'],['../namespacegamgee.html#ab33f4f3d734f661e6917eb693df3aa49a8d9c307cb7f3c4a32822a51922d1ceaa',1,'gamgee::N()']]],
+  ['nil',['NIL',['../namespacegamgee_1_1utils.html#a04f2f42b3960b33e4edc7478ce6039ecabc0b1e8b63f3f00318eee5aeabc14255',1,'gamgee::utils']]],
+  ['no_5fcompression',['no_compression',['../hts_8h.html#a9edfabc6c6b7a8f52cdc2c637493b7e1a5476b27dc234664d54c8def64be51f5c',1,'hts.h']]],
+  ['not_5fbgzf',['not_bgzf',['../synced__bcf__reader_8h.html#a7d14d9f8227f2a6049e8a3f535b68164ab53abf067f3cdc754fdfd260ce9ad0cd',1,'synced_bcf_reader.h']]]
 ];

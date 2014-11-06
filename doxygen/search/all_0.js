@@ -41,6 +41,8 @@ var searchData=
   ['_5fread_5ftoken',['_read_token',['../sam_8c.html#a008084e381a290c0a820c67a169e7023',1,'sam.c']]],
   ['_5fread_5ftoken_5faux',['_read_token_aux',['../sam_8c.html#a2da1e289e8af613489d2e358f5d3a1e5',1,'sam.c']]],
   ['_5freader_5fnext_5fline',['_reader_next_line',['../synced__bcf__reader_8c.html#a72273cc78143812d85c1df252ef53ef3',1,'synced_bcf_reader.c']]],
+  ['_5fregidx_5fbuild_5findex',['_regidx_build_index',['../regidx_8c.html#a3c7482e97bf3e60013dfb6f4e8d5a09c',1,'regidx.c']]],
+  ['_5fregidx_5ft',['_regidx_t',['../struct__regidx__t.html',1,'']]],
   ['_5fregion_5ft',['_region_t',['../struct__region__t.html',1,'']]],
   ['_5fuse_5fknetfile',['_USE_KNETFILE',['../config_8h.html#a358eb92296feac4cce3b0bcea37eb2c7',1,'config.h']]],
   ['_5fvcf_5fparse_5fformat',['_vcf_parse_format',['../vcf_8c.html#a7ff8fb998247002a0f20b770a65fad38',1,'vcf.c']]]

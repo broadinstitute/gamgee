@@ -10,9 +10,11 @@ var searchData=
   ['hgacc_5ft',['hgacc_t',['../structhgacc__t.html',1,'']]],
   ['hts_5fcram_5fidx_5ft',['hts_cram_idx_t',['../structhts__cram__idx__t.html',1,'']]],
   ['hts_5fitr_5ft',['hts_itr_t',['../structhts__itr__t.html',1,'']]],
+  ['hts_5fopt',['hts_opt',['../structhts__opt.html',1,'']]],
   ['hts_5fpair64_5ft',['hts_pair64_t',['../structhts__pair64__t.html',1,'']]],
   ['htsfile',['htsFile',['../structhts_file.html',1,'']]],
   ['htsfiledeleter',['HtsFileDeleter',['../structgamgee_1_1utils_1_1_hts_file_deleter.html',1,'gamgee::utils']]],
+  ['htsformat',['htsFormat',['../structhts_format.html',1,'']]],
   ['htsindexdeleter',['HtsIndexDeleter',['../structgamgee_1_1utils_1_1_hts_index_deleter.html',1,'gamgee::utils']]],
   ['htsiteratordeleter',['HtsIteratorDeleter',['../structgamgee_1_1utils_1_1_hts_iterator_deleter.html',1,'gamgee::utils']]],
   ['htslibexception',['HtslibException',['../classgamgee_1_1_htslib_exception.html',1,'gamgee']]]

@@ -99,12 +99,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Attributes</h2></td></tr>
 <tr class="memitem:a68203bc20c33deff4dcb37ba8de02225"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="cram__structs_8h.html#a2c60912ab219d52f6bf975af078eb4fa">cram_encoding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcram__codec.html#a68203bc20c33deff4dcb37ba8de02225">codec</a></td></tr>
 <tr class="separator:a68203bc20c33deff4dcb37ba8de02225"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa046d192ff091b8fa7cf93f2c8abfc45"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcram__block.html">cram_block</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcram__codec.html#aa046d192ff091b8fa7cf93f2c8abfc45">out</a></td></tr>
+<tr class="separator:aa046d192ff091b8fa7cf93f2c8abfc45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73b3256d6fe75455a67c9323f51b8e7e"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcram__codec.html#a73b3256d6fe75455a67c9323f51b8e7e">free</a> )(struct <a class="el" href="structcram__codec.html">cram_codec</a> *<a class="el" href="structcram__codec.html#a68203bc20c33deff4dcb37ba8de02225">codec</a>)</td></tr>
 <tr class="separator:a73b3256d6fe75455a67c9323f51b8e7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab1e84bb14b713d31eefb45ecd9f4d9f"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcram__codec.html#aab1e84bb14b713d31eefb45ecd9f4d9f">decode</a> )(<a class="el" href="structcram__slice.html">cram_slice</a> *slice, struct <a class="el" href="structcram__codec.html">cram_codec</a> *<a class="el" href="structcram__codec.html#a68203bc20c33deff4dcb37ba8de02225">codec</a>, <a class="el" href="structcram__block.html">cram_block</a> *in, char *out, int *out_size)</td></tr>
+<tr class="memitem:aab1e84bb14b713d31eefb45ecd9f4d9f"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcram__codec.html#aab1e84bb14b713d31eefb45ecd9f4d9f">decode</a> )(<a class="el" href="structcram__slice.html">cram_slice</a> *slice, struct <a class="el" href="structcram__codec.html">cram_codec</a> *<a class="el" href="structcram__codec.html#a68203bc20c33deff4dcb37ba8de02225">codec</a>, <a class="el" href="structcram__block.html">cram_block</a> *in, char *<a class="el" href="structcram__codec.html#aa046d192ff091b8fa7cf93f2c8abfc45">out</a>, int *out_size)</td></tr>
 <tr class="separator:aab1e84bb14b713d31eefb45ecd9f4d9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f208b55a6779f8f0286191fe2c15612"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcram__codec.html#a2f208b55a6779f8f0286191fe2c15612">encode</a> )(<a class="el" href="structcram__slice.html">cram_slice</a> *slice, struct <a class="el" href="structcram__codec.html">cram_codec</a> *<a class="el" href="structcram__codec.html#a68203bc20c33deff4dcb37ba8de02225">codec</a>, <a class="el" href="structcram__block.html">cram_block</a> *out, char *in, int in_size)</td></tr>
-<tr class="separator:a2f208b55a6779f8f0286191fe2c15612"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38a1bc7e7cb43e5705f170c6305e04c2"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcram__codec.html#a38a1bc7e7cb43e5705f170c6305e04c2">encode</a> )(<a class="el" href="structcram__slice.html">cram_slice</a> *slice, struct <a class="el" href="structcram__codec.html">cram_codec</a> *<a class="el" href="structcram__codec.html#a68203bc20c33deff4dcb37ba8de02225">codec</a>, char *in, int in_size)</td></tr>
+<tr class="separator:a38a1bc7e7cb43e5705f170c6305e04c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b6feb84aca7f85efadf76b0a7c883b0"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcram__codec.html#a6b6feb84aca7f85efadf76b0a7c883b0">store</a> )(struct <a class="el" href="structcram__codec.html">cram_codec</a> *<a class="el" href="structcram__codec.html#a68203bc20c33deff4dcb37ba8de02225">codec</a>, <a class="el" href="structcram__block.html">cram_block</a> *b, char *prefix, int version)</td></tr>
 <tr class="separator:a6b6feb84aca7f85efadf76b0a7c883b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf6abf7bc76d925dad12ceb69f4ac733"><td class="memItemLeft" >union {</td></tr>
@@ -201,7 +203,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* cram_codec::decode)(<a class="el" href="structcram__slice.html">cram_slice</a> *slice, struct <a class="el" href="structcram__codec.html">cram_codec</a> *<a class="el" href="structcram__codec.html#a68203bc20c33deff4dcb37ba8de02225">codec</a>, <a class="el" href="structcram__block.html">cram_block</a> *in, char *out, int *out_size)</td>
+          <td class="memname">int(* cram_codec::decode)(<a class="el" href="structcram__slice.html">cram_slice</a> *slice, struct <a class="el" href="structcram__codec.html">cram_codec</a> *<a class="el" href="structcram__codec.html#a68203bc20c33deff4dcb37ba8de02225">codec</a>, <a class="el" href="structcram__block.html">cram_block</a> *in, char *<a class="el" href="structcram__codec.html#aa046d192ff091b8fa7cf93f2c8abfc45">out</a>, int *out_size)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -268,12 +270,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2f208b55a6779f8f0286191fe2c15612"></a>
+<a class="anchor" id="a38a1bc7e7cb43e5705f170c6305e04c2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* cram_codec::encode)(<a class="el" href="structcram__slice.html">cram_slice</a> *slice, struct <a class="el" href="structcram__codec.html">cram_codec</a> *<a class="el" href="structcram__codec.html#a68203bc20c33deff4dcb37ba8de02225">codec</a>, <a class="el" href="structcram__block.html">cram_block</a> *out, char *in, int in_size)</td>
+          <td class="memname">int(* cram_codec::encode)(<a class="el" href="structcram__slice.html">cram_slice</a> *slice, struct <a class="el" href="structcram__codec.html">cram_codec</a> *<a class="el" href="structcram__codec.html#a68203bc20c33deff4dcb37ba8de02225">codec</a>, char *in, int in_size)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -328,6 +330,18 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aa046d192ff091b8fa7cf93f2c8abfc45"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structcram__block.html">cram_block</a>* cram_codec::out</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a6b6feb84aca7f85efadf76b0a7c883b0"></a>
 <div class="memitem">
 <div class="memproto">
@@ -358,7 +372,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

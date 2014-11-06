@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sharedfieldindex',['SharedFieldIndex',['../namespacegamgee.html#a7e0cff57cb601cc78e8babf0042efef9',1,'gamgee']]]
+  ['intervaltype',['IntervalType',['../classgamgee_1_1_interval.html#a39ae00ed7ba01463377ff3eda87885e8',1,'gamgee::Interval']]]
 ];

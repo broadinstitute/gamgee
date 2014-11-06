@@ -129,7 +129,7 @@ Classes</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:aa50b8b7025fa92e89d0767602d062693"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__codecs_8h.html#aa50b8b7025fa92e89d0767602d062693">MAX_HUFF</a>&#160;&#160;&#160;128</td></tr>
 <tr class="separator:aa50b8b7025fa92e89d0767602d062693"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1342b12c281a1dcaf72a2f4c9eb092f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__codecs_8h.html#a1342b12c281a1dcaf72a2f4c9eb092f6">GET_BIT_MSB</a>(b, v)&#160;&#160;&#160;(void)(v&lt;&lt;=1, v|=(b-&gt;data[b-&gt;byte] &gt;&gt; b-&gt;bit)&amp;1, b-&gt;byte += (b-&gt;bit==0), b-&gt;bit+=(b-&gt;bit==0)*8-1)</td></tr>
+<tr class="memitem:a1342b12c281a1dcaf72a2f4c9eb092f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__codecs_8h.html#a1342b12c281a1dcaf72a2f4c9eb092f6">GET_BIT_MSB</a>(b, v)&#160;&#160;&#160;(void)(v&lt;&lt;=1, v|=(b-&gt;data[b-&gt;byte] &gt;&gt; b-&gt;bit)&amp;1, b-&gt;byte += (--b-&gt;bit&lt;0), b-&gt;bit&amp;=7)</td></tr>
 <tr class="separator:a1342b12c281a1dcaf72a2f4c9eb092f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -145,6 +145,8 @@ Functions</h2></td></tr>
 <tr class="separator:ae98522060df24c0a024137e6dc36ff1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41ce9512662d8ecba334580de5e53daa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcram__codec.html">cram_codec</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__codecs_8h.html#a41ce9512662d8ecba334580de5e53daa">cram_encoder_init</a> (enum <a class="el" href="cram__structs_8h.html#a2c60912ab219d52f6bf975af078eb4fa">cram_encoding</a> codec, <a class="el" href="structcram__stats.html">cram_stats</a> *st, enum <a class="el" href="cram__structs_8h.html#a0ef7e3936f6c847006846b629e2738ec">cram_external_type</a> option, void *dat, int version)</td></tr>
 <tr class="separator:a41ce9512662d8ecba334580de5e53daa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cba444dd85ffb35144f5cc86834fe4e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__codecs_8h.html#a5cba444dd85ffb35144f5cc86834fe4e">cram_codec_to_id</a> (<a class="el" href="structcram__codec.html">cram_codec</a> *c, int *id2)</td></tr>
+<tr class="separator:a5cba444dd85ffb35144f5cc86834fe4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="a1342b12c281a1dcaf72a2f4c9eb092f6"></a>
@@ -166,7 +168,7 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(void)(v&lt;&lt;=1, v|=(b-&gt;data[b-&gt;byte] &gt;&gt; b-&gt;bit)&amp;1, b-&gt;byte += (b-&gt;bit==0), b-&gt;bit+=(b-&gt;bit==0)*8-1)</td>
+          <td></td><td>&#160;&#160;&#160;(void)(v&lt;&lt;=1, v|=(b-&gt;data[b-&gt;byte] &gt;&gt; b-&gt;bit)&amp;1, b-&gt;byte += (--b-&gt;bit&lt;0), b-&gt;bit&amp;=7)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -199,6 +201,32 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a5cba444dd85ffb35144f5cc86834fe4e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cram_codec_to_id </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcram__codec.html">cram_codec</a> *&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>id2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="ae98522060df24c0a024137e6dc36ff1a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -306,7 +334,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

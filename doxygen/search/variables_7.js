@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['h',['h',['../structcram__decode__job.html#ab93afd992aa3c511e02b0cb9b8c70792',1,'cram_decode_job::h()'],['../structcram__feature.html#a0af1387e0f37fb7750a2e5debdfe62f1',1,'cram_feature::H()']]],
+  ['h',['h',['../structcram__decode__job.html#ab93afd992aa3c511e02b0cb9b8c70792',1,'cram_decode_job::h()'],['../structcram__feature.html#a5675585b8fa0c14070f80a9137c7955a',1,'cram_feature::H()']]],
   ['has_5ferrno',['has_errno',['../structh_f_i_l_e.html#a51ce77b8e46a0bf5b421cfcf900359d3',1,'hFILE']]],
   ['has_5fline',['has_line',['../structbcf__srs__t.html#ab98fa0de2719cfe26d7358ce444d7a23',1,'bcf_srs_t']]],
-  ['hc_5fcodec',['HC_codec',['../structcram__block__compression__hdr.html#ab48272e8c95de9b0ba1234605ff874f0',1,'cram_block_compression_hdr']]],
-  ['hc_5fstats',['HC_stats',['../structcram__container.html#af8dcbaba44026b35fecbc235cafdfea8',1,'cram_container']]],
   ['hdr',['hdr',['../structcram__slice.html#a923f4e3eab3fcb30dbc4332332d9c54e',1,'cram_slice::hdr()'],['../struct__bcf__sweep__t.html#aec54a83caf47f1ecd3fff1f7c39478c3',1,'_bcf_sweep_t::hdr()']]],
   ['hdr_5fblock',['hdr_block',['../structcram__slice.html#ac1e147d2ae1ba4dd7a1146a131234fc5',1,'cram_slice']]],
   ['head',['head',['../structt__pool.html#abdf1e4bc59b960e5031944b6929cd52e',1,'t_pool']]],

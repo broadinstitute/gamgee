@@ -183,36 +183,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment"> *  Add a new string to the dictionary, auto-incrementing the value.</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"> *  On success returns the newly inserted integer id, on error -1</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment"> *  is returned.</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> khash_str2int_inc(<span class="keywordtype">void</span> *_hash, <span class="keyword">const</span> <span class="keywordtype">char</span> *str)</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="khash_8h.html#a462aab2091dad69a2f14718fbe9fffa0">khint_t</a> k;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">int</span> ret;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="khash_8h.html#a918655286199787582304265cd9d4463">khash_t</a>(str2int) *hash = (<a class="code" href="khash_8h.html#a918655286199787582304265cd9d4463">khash_t</a>(str2int)*)_hash;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">if</span> ( !hash ) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    k = <a class="code" href="khash_8h.html#af649c196ad0efafded41c0da9e02acdc">kh_put</a>(str2int, hash, str, &amp;ret);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">if</span> (ret == 0) <span class="keywordflow">return</span> <a class="code" href="khash_8h.html#a634c16227ce2e2a664f4efad7d9041bb">kh_val</a>(hash, k);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="khash_8h.html#a634c16227ce2e2a664f4efad7d9041bb">kh_val</a>(hash, k) = <a class="code" href="khash_8h.html#aee5d96400e51a1b9f39504750a257f10">kh_size</a>(hash) - 1;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="khash_8h.html#a634c16227ce2e2a664f4efad7d9041bb">kh_val</a>(hash, k);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment"> *  Set a new key,value pair. On success returns the bin index, on</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment"> *  error -1 is returned.</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> khash_str2int_set(<span class="keywordtype">void</span> *_hash, <span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keywordtype">int</span> value)</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;{</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="khash_8h.html#a462aab2091dad69a2f14718fbe9fffa0">khint_t</a> k;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordtype">int</span> ret;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <a class="code" href="khash_8h.html#a918655286199787582304265cd9d4463">khash_t</a>(str2int) *hash = (<a class="code" href="khash_8h.html#a918655286199787582304265cd9d4463">khash_t</a>(str2int)*)_hash;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">if</span> ( !hash ) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    k = <a class="code" href="khash_8h.html#af649c196ad0efafded41c0da9e02acdc">kh_put</a>(str2int, hash, str, &amp;ret);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="khash_8h.html#a634c16227ce2e2a664f4efad7d9041bb">kh_val</a>(hash,k) = value;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">return</span> k;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment"> *  is returned. Note that the key must continue to exist throughout</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment"> *  the whole life of _hash.</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> khash_str2int_inc(<span class="keywordtype">void</span> *_hash, <span class="keyword">const</span> <span class="keywordtype">char</span> *str)</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;{</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="khash_8h.html#a462aab2091dad69a2f14718fbe9fffa0">khint_t</a> k;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">int</span> ret;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="khash_8h.html#a918655286199787582304265cd9d4463">khash_t</a>(str2int) *hash = (<a class="code" href="khash_8h.html#a918655286199787582304265cd9d4463">khash_t</a>(str2int)*)_hash;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">if</span> ( !hash ) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    k = <a class="code" href="khash_8h.html#af649c196ad0efafded41c0da9e02acdc">kh_put</a>(str2int, hash, str, &amp;ret);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">if</span> (ret == 0) <span class="keywordflow">return</span> <a class="code" href="khash_8h.html#a634c16227ce2e2a664f4efad7d9041bb">kh_val</a>(hash, k);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="khash_8h.html#a634c16227ce2e2a664f4efad7d9041bb">kh_val</a>(hash, k) = <a class="code" href="khash_8h.html#aee5d96400e51a1b9f39504750a257f10">kh_size</a>(hash) - 1;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="khash_8h.html#a634c16227ce2e2a664f4efad7d9041bb">kh_val</a>(hash, k);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment"> *  Set a new key,value pair. On success returns the bin index, on</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment"> *  error -1 is returned. Note that the key must contnue to exist</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment"> *  throughout the whole life of _hash.</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> khash_str2int_set(<span class="keywordtype">void</span> *_hash, <span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keywordtype">int</span> value)</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;{</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <a class="code" href="khash_8h.html#a462aab2091dad69a2f14718fbe9fffa0">khint_t</a> k;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">int</span> ret;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="khash_8h.html#a918655286199787582304265cd9d4463">khash_t</a>(str2int) *hash = (<a class="code" href="khash_8h.html#a918655286199787582304265cd9d4463">khash_t</a>(str2int)*)_hash;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">if</span> ( !hash ) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    k = <a class="code" href="khash_8h.html#af649c196ad0efafded41c0da9e02acdc">kh_put</a>(str2int, hash, str, &amp;ret);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <a class="code" href="khash_8h.html#a634c16227ce2e2a664f4efad7d9041bb">kh_val</a>(hash,k) = value;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">return</span> k;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment"> *  Return the number of keys in the hash table.</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> khash_str2int_size(<span class="keywordtype">void</span> *_hash)</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;{</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <a class="code" href="khash_8h.html#a918655286199787582304265cd9d4463">khash_t</a>(str2int) *hash = (<a class="code" href="khash_8h.html#a918655286199787582304265cd9d4463">khash_t</a>(str2int)*)_hash;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="khash_8h.html#aee5d96400e51a1b9f39504750a257f10">kh_size</a>(hash);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="khash_8h_html_a634c16227ce2e2a664f4efad7d9041bb"><div class="ttname"><a href="khash_8h.html#a634c16227ce2e2a664f4efad7d9041bb">kh_val</a></div><div class="ttdeci">#define kh_val(h, x)</div><div class="ttdef"><b>Definition:</b> khash.h:506</div></div>
 <div class="ttc" id="khash_8h_html"><div class="ttname"><a href="khash_8h.html">khash.h</a></div></div>
 <div class="ttc" id="khash_8h_html_a0df285846d4d503796f8d951f1a05116"><div class="ttname"><a href="khash_8h.html#a0df285846d4d503796f8d951f1a05116">kh_exist</a></div><div class="ttdeci">#define kh_exist(h, x)</div><div class="ttdef"><b>Definition:</b> khash.h:489</div></div>
@@ -230,7 +241,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:13 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

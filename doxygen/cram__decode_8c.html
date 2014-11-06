@@ -119,6 +119,8 @@ Functions</h2></td></tr>
 <tr class="separator:ab6f2c51f440afe0d25e66fe71600a89d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89f0307956b520dacabb3375d44cece9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcram__block__compression__hdr.html">cram_block_compression_hdr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__decode_8c.html#a89f0307956b520dacabb3375d44cece9">cram_decode_compression_header</a> (<a class="el" href="structcram__fd.html">cram_fd</a> *fd, <a class="el" href="structcram__block.html">cram_block</a> *b)</td></tr>
 <tr class="separator:a89f0307956b520dacabb3375d44cece9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe41553b06c29590d65f63160500569b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__decode_8c.html#afe41553b06c29590d65f63160500569b">cram_dependent_data_series</a> (<a class="el" href="structcram__fd.html">cram_fd</a> *fd, <a class="el" href="structcram__block__compression__hdr.html">cram_block_compression_hdr</a> *hdr, <a class="el" href="structcram__slice.html">cram_slice</a> *s)</td></tr>
+<tr class="separator:afe41553b06c29590d65f63160500569b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae76f8056051210ce4d8782ad05909ce8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcram__block__slice__hdr.html">cram_block_slice_hdr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__decode_8c.html#ae76f8056051210ce4d8782ad05909ce8">cram_decode_slice_header</a> (<a class="el" href="structcram__fd.html">cram_fd</a> *fd, <a class="el" href="structcram__block.html">cram_block</a> *b)</td></tr>
 <tr class="separator:ae76f8056051210ce4d8782ad05909ce8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d2d6aaeaa7fb8c400ba6d356755d24a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__decode_8c.html#a3d2d6aaeaa7fb8c400ba6d356755d24a">cram_decode_slice</a> (<a class="el" href="structcram__fd.html">cram_fd</a> *fd, <a class="el" href="structcram__container.html">cram_container</a> *c, <a class="el" href="structcram__slice.html">cram_slice</a> *s, <a class="el" href="struct_s_a_m__hdr.html">SAM_hdr</a> *bfd)</td></tr>
@@ -129,7 +131,7 @@ Functions</h2></td></tr>
 <tr class="separator:ad7d0ce8c20168c2ee4ad46177e5183d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae83134f2dbd3019d2609dadec24b9130"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcram__record.html">cram_record</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__decode_8c.html#ae83134f2dbd3019d2609dadec24b9130">cram_get_seq</a> (<a class="el" href="structcram__fd.html">cram_fd</a> *fd)</td></tr>
 <tr class="separator:ae83134f2dbd3019d2609dadec24b9130"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec86c84f392f3c6f9ea40cbe299066f4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__decode_8c.html#aec86c84f392f3c6f9ea40cbe299066f4">cram_get_bam_seq</a> (<a class="el" href="structcram__fd.html">cram_fd</a> *fd, <a class="el" href="cram__samtools_8h.html#a53b9f9947771d538d9e18245096796ca">bam_seq_t</a> **bam)</td></tr>
+<tr class="memitem:aec86c84f392f3c6f9ea40cbe299066f4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__decode_8c.html#aec86c84f392f3c6f9ea40cbe299066f4">cram_get_bam_seq</a> (<a class="el" href="structcram__fd.html">cram_fd</a> *fd, <a class="el" href="cram__samtools_8h.html#a53b9f9947771d538d9e18245096796ca">bam_seq_t</a> **<a class="el" href="hts_8h.html#a5012a62947ab60eb4691d4dee8655df2a71aec27d70901fa2e52812aef408e7b5">bam</a>)</td></tr>
 <tr class="separator:aec86c84f392f3c6f9ea40cbe299066f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -309,6 +311,38 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="afe41553b06c29590d65f63160500569b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cram_dependent_data_series </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcram__fd.html">cram_fd</a> *&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcram__block__compression__hdr.html">cram_block_compression_hdr</a> *&#160;</td>
+          <td class="paramname"><em>hdr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcram__slice.html">cram_slice</a> *&#160;</td>
+          <td class="paramname"><em>s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="aec86c84f392f3c6f9ea40cbe299066f4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -359,7 +393,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

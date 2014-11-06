@@ -139,7 +139,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">int</span> <a class="code" href="zfio_8h.html#a771bade11a2e0507ce0041da6fc49e7c">zfseeko</a>(<a class="code" href="structzfp.html">zfp</a> *zf, off_t offset, <span class="keywordtype">int</span> whence);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="zfio_8h.html#ae5ca07f4a8f759bf71f3598053587a4a">zfgets</a>(<span class="keywordtype">char</span> *line, <span class="keywordtype">int</span> size, <a class="code" href="structzfp.html">zfp</a> *zf);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">int</span> <a class="code" href="zfio_8h.html#a8286f829fe886ee0a4c3f8c42e79e971">zfputs</a>(<span class="keywordtype">char</span> *line, <a class="code" href="structzfp.html">zfp</a> *zf);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<a class="code" href="structzfp.html">zfp</a> *<a class="code" href="zfio_8h.html#a29e8d2017945394997e8734c72b4d17a">zfopen</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">const</span> <span class="keywordtype">char</span> *mode);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<a class="code" href="structzfp.html">zfp</a> *<a class="code" href="zfio_8h.html#a29e8d2017945394997e8734c72b4d17a">zfopen</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">int</span> <a class="code" href="zfio_8h.html#a3b45c6fd6ad58f15ea13341815040a5c">zfclose</a>(<a class="code" href="structzfp.html">zfp</a> *zf);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">int</span> <a class="code" href="zfio_8h.html#ad5f0f9148b5a7915c360d144da8e5187">zfpeek</a>(<a class="code" href="structzfp.html">zfp</a> *zf);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">int</span> <a class="code" href="zfio_8h.html#ac6984e0b5fef192449bd167dad4d0394">zfeof</a>(<a class="code" href="structzfp.html">zfp</a> *zf);</div>
@@ -149,6 +149,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="zfio_8h_html_a226ed2426246d07891d125729bdf67bc"><div class="ttname"><a href="zfio_8h.html#a226ed2426246d07891d125729bdf67bc">zftello</a></div><div class="ttdeci">off_t zftello(zfp *zf)</div><div class="ttdef"><b>Definition:</b> zfio.c:54</div></div>
 <div class="ttc" id="zfio_8h_html_ae5ca07f4a8f759bf71f3598053587a4a"><div class="ttname"><a href="zfio_8h.html#ae5ca07f4a8f759bf71f3598053587a4a">zfgets</a></div><div class="ttdeci">char * zfgets(char *line, int size, zfp *zf)</div><div class="ttdef"><b>Definition:</b> zfio.c:67</div></div>
 <div class="ttc" id="zfio_8h_html_ad5f0f9148b5a7915c360d144da8e5187"><div class="ttname"><a href="zfio_8h.html#ad5f0f9148b5a7915c360d144da8e5187">zfpeek</a></div><div class="ttdeci">int zfpeek(zfp *zf)</div><div class="ttdef"><b>Definition:</b> zfio.c:89</div></div>
+<div class="ttc" id="htsfile_8c_html_abc602f962597251d3e57cf3ea95ab19e"><div class="ttname"><a href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a></div><div class="ttdeci">enum @17 mode</div></div>
 <div class="ttc" id="zfio_8h_html_a771bade11a2e0507ce0041da6fc49e7c"><div class="ttname"><a href="zfio_8h.html#a771bade11a2e0507ce0041da6fc49e7c">zfseeko</a></div><div class="ttdeci">int zfseeko(zfp *zf, off_t offset, int whence)</div><div class="ttdef"><b>Definition:</b> zfio.c:58</div></div>
 <div class="ttc" id="structzfp_html"><div class="ttname"><a href="structzfp.html">zfp</a></div><div class="ttdef"><b>Definition:</b> zfio.h:40</div></div>
 <div class="ttc" id="zfio_8h_html_a29e8d2017945394997e8734c72b4d17a"><div class="ttname"><a href="zfio_8h.html#a29e8d2017945394997e8734c72b4d17a">zfopen</a></div><div class="ttdeci">zfp * zfopen(const char *path, const char *mode)</div><div class="ttdef"><b>Definition:</b> zfio.c:111</div></div>
@@ -159,7 +160,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:08 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:13 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -98,12 +98,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="thread__pool_8h_source.html">cram/thread_pool.h</a>&quot;</code><br />
-<code>#include &quot;cram/bam.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="string__alloc_8h_source.html">cram/string_alloc.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="khash_8h_source.html">htslib/khash.h</a>&quot;</code><br />
 </div>
 <p><a href="cram__structs_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionpmap__t.html">pmap_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcram__stats.html">cram_stats</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcram__file__def.html">cram_file_def</a></td></tr>
@@ -147,16 +150,12 @@ Macros</h2></td></tr>
 <tr class="separator:a7a15eecf3f5da1fb81d7cf19028c31e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1d697dd8863d256e62b8a66373ea22a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#af1d697dd8863d256e62b8a66373ea22a">CRAM_SUBST_MATRIX</a>&#160;&#160;&#160;&quot;CGTNAGTNACTNACGNACGT&quot;</td></tr>
 <tr class="separator:af1d697dd8863d256e62b8a66373ea22a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72f3fa20036a156badf7087fccfbdd60"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a72f3fa20036a156badf7087fccfbdd60">TN_external</a></td></tr>
-<tr class="separator:a72f3fa20036a156badf7087fccfbdd60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdc4d90fdd0c6b4638e18be15d8a2691"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#afdc4d90fdd0c6b4638e18be15d8a2691">TS_external</a></td></tr>
-<tr class="separator:afdc4d90fdd0c6b4638e18be15d8a2691"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24c9fd089645bd2f96e7576f743d43aa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a24c9fd089645bd2f96e7576f743d43aa">MAX_STAT_VAL</a>&#160;&#160;&#160;1024</td></tr>
 <tr class="separator:a24c9fd089645bd2f96e7576f743d43aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77396b9650e6fbbc186ecb8153948c85"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a77396b9650e6fbbc186ecb8153948c85">CRAM_1_VERS</a>&#160;&#160;&#160;100</td></tr>
-<tr class="separator:a77396b9650e6fbbc186ecb8153948c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43e4acef81d2547610be03d1100e2daf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a43e4acef81d2547610be03d1100e2daf">CRAM_2_VERS</a>&#160;&#160;&#160;200</td></tr>
-<tr class="separator:a43e4acef81d2547610be03d1100e2daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53edcb2dc161e0f2fa1e96e10fbeaae3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a53edcb2dc161e0f2fa1e96e10fbeaae3">CRAM_MAJOR_VERS</a>(v)&#160;&#160;&#160;((v) &gt;&gt; 8)</td></tr>
+<tr class="separator:a53edcb2dc161e0f2fa1e96e10fbeaae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dc67c52d662e3d1bd8fd5259bb3e729"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a2dc67c52d662e3d1bd8fd5259bb3e729">CRAM_MINOR_VERS</a>(v)&#160;&#160;&#160;((v) &amp; 0xff)</td></tr>
+<tr class="separator:a2dc67c52d662e3d1bd8fd5259bb3e729"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4000ef4e5246a3e9cc030c26ac1730d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a4000ef4e5246a3e9cc030c26ac1730d1">CRAM_MAP_HASH</a>&#160;&#160;&#160;32</td></tr>
 <tr class="separator:a4000ef4e5246a3e9cc030c26ac1730d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57169b5d763076ed50f8c910d25bac4b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a57169b5d763076ed50f8c910d25bac4b">CRAM_MAP</a>(a, b)&#160;&#160;&#160;(((a)*3+(b))&amp;(<a class="el" href="cram__structs_8h.html#a4000ef4e5246a3e9cc030c26ac1730d1">CRAM_MAP_HASH</a>-1))</td></tr>
@@ -165,7 +164,7 @@ Macros</h2></td></tr>
 <tr class="separator:a061dbaced0a448526fae1d1516571a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0e896de5d590b2d79911a0d128f05a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#af0e896de5d590b2d79911a0d128f05a9">cram_seq</a>(c)&#160;&#160;&#160;(&amp;(c)-&gt;s-&gt;seqs_blk-&gt;data[(c)-&gt;seq])</td></tr>
 <tr class="separator:af0e896de5d590b2d79911a0d128f05a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9eeb5702c876068ba263248c77d192f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a9eeb5702c876068ba263248c77d192f6">cram_qual</a>(c)&#160;&#160;&#160;(&amp;(c)-&gt;s-&gt;qual_blk-&gt;data[(c)-&gt;qual])</td></tr>
+<tr class="memitem:a9eeb5702c876068ba263248c77d192f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a9eeb5702c876068ba263248c77d192f6">cram_qual</a>(c)&#160;&#160;&#160;(&amp;(c)-&gt;s-&gt;qual_blk-&gt;data[(c)-&gt;<a class="el" href="cram__encode_8c.html#a2b531fb1eb56bdfb1a0e58eb33963df1">qual</a>])</td></tr>
 <tr class="separator:a9eeb5702c876068ba263248c77d192f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed2d86341111adc4b9307d0a15ba18fb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#aed2d86341111adc4b9307d0a15ba18fb">cram_aux</a>(c)&#160;&#160;&#160;(&amp;(c)-&gt;s-&gt;aux_blk-&gt;data[(c)-&gt;aux])</td></tr>
 <tr class="separator:aed2d86341111adc4b9307d0a15ba18fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,8 +176,12 @@ Macros</h2></td></tr>
 <tr class="separator:a1d2a06bd361c3ec58fc552f424ac9dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80294d70d0e9d667345988c61123c7d2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a80294d70d0e9d667345988c61123c7d2">cram_mstrand</a>(c)&#160;&#160;&#160;(((c)-&gt;flags &amp; <a class="el" href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html#abe0a6e0ad6edda7f986ef91e8f156e02">BAM_FMREVERSE</a>) != 0)</td></tr>
 <tr class="separator:a80294d70d0e9d667345988c61123c7d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9f6d0b9144fb9908a1cf9388fb7d457"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#ad9f6d0b9144fb9908a1cf9388fb7d457">cram_cigar</a>(c)&#160;&#160;&#160;(&amp;((cr)-&gt;s-&gt;cigar)[(c)-&gt;cigar])</td></tr>
+<tr class="memitem:ad9f6d0b9144fb9908a1cf9388fb7d457"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#ad9f6d0b9144fb9908a1cf9388fb7d457">cram_cigar</a>(c)&#160;&#160;&#160;(&amp;((cr)-&gt;s-&gt;<a class="el" href="cram__encode_8c.html#aa762b5b3b33e5602db4f41b5ca44c335">cigar</a>)[(c)-&gt;<a class="el" href="cram__encode_8c.html#aa762b5b3b33e5602db4f41b5ca44c335">cigar</a>])</td></tr>
 <tr class="separator:ad9f6d0b9144fb9908a1cf9388fb7d457"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf866ff801cd3506ac17608edd0a5565"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#aaf866ff801cd3506ac17608edd0a5565">CRAM_CIGAR</a></td></tr>
+<tr class="separator:aaf866ff801cd3506ac17608edd0a5565"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ddf7d38c114a3e6d5f737c62d2f98e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a6ddf7d38c114a3e6d5f737c62d2f98e8">CRAM_SEQ</a></td></tr>
+<tr class="separator:a6ddf7d38c114a3e6d5f737c62d2f98e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab262b48c6f3f6e05d4c3e5f3434e0c9e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#ab262b48c6f3f6e05d4c3e5f3434e0c9e">CRAM_FPAIRED</a>&#160;&#160;&#160;256</td></tr>
 <tr class="separator:ab262b48c6f3f6e05d4c3e5f3434e0c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaee2f656100413024a72d5cf239a80f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#aaee2f656100413024a72d5cf239a80f3">CRAM_FPROPER_PAIR</a>&#160;&#160;&#160;128</td></tr>
@@ -197,6 +200,24 @@ Macros</h2></td></tr>
 <tr class="separator:acf043cc39b763fdbfcd5e117732ac759"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0272d7577bb65b8b918173132f911f22"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a0272d7577bb65b8b918173132f911f22">CRAM_FDUP</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a0272d7577bb65b8b918173132f911f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf815ee3e9e2396bfc3d1fee8bc90bb5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#aaf815ee3e9e2396bfc3d1fee8bc90bb5">DS_aux_S</a>&#160;&#160;&#160;&quot;\001&quot;</td></tr>
+<tr class="separator:aaf815ee3e9e2396bfc3d1fee8bc90bb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2edc0573824442a1a8d86538e52fd461"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a2edc0573824442a1a8d86538e52fd461">DS_aux_OQ_S</a>&#160;&#160;&#160;&quot;\002&quot;</td></tr>
+<tr class="separator:a2edc0573824442a1a8d86538e52fd461"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42e0a56427854e88c7c8b8ec5dbcac3e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a42e0a56427854e88c7c8b8ec5dbcac3e">DS_aux_BQ_S</a>&#160;&#160;&#160;&quot;\003&quot;</td></tr>
+<tr class="separator:a42e0a56427854e88c7c8b8ec5dbcac3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a30e8a470772f352d9566a31afcea91"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a1a30e8a470772f352d9566a31afcea91">DS_aux_BD_S</a>&#160;&#160;&#160;&quot;\004&quot;</td></tr>
+<tr class="separator:a1a30e8a470772f352d9566a31afcea91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a540b727c229ef58acc6fc9edcc191dea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a540b727c229ef58acc6fc9edcc191dea">DS_aux_BI_S</a>&#160;&#160;&#160;&quot;\005&quot;</td></tr>
+<tr class="separator:a540b727c229ef58acc6fc9edcc191dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a963fdd13122a5bca56c3e1eb2169327c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a963fdd13122a5bca56c3e1eb2169327c">DS_aux_FZ_S</a>&#160;&#160;&#160;&quot;\006&quot;</td></tr>
+<tr class="separator:a963fdd13122a5bca56c3e1eb2169327c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57e609f24dbb508faa16acdbb19c9f9f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a57e609f24dbb508faa16acdbb19c9f9f">DS_aux_oq_S</a>&#160;&#160;&#160;&quot;\007&quot;</td></tr>
+<tr class="separator:a57e609f24dbb508faa16acdbb19c9f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3413a056d46bb230b33201eeb30d6615"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a3413a056d46bb230b33201eeb30d6615">DS_aux_os_S</a>&#160;&#160;&#160;&quot;\010&quot;</td></tr>
+<tr class="separator:a3413a056d46bb230b33201eeb30d6615"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53acda10470ce03522bad32269c1e679"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a53acda10470ce03522bad32269c1e679">DS_aux_oz_S</a>&#160;&#160;&#160;&quot;\011&quot;</td></tr>
+<tr class="separator:a53acda10470ce03522bad32269c1e679"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae65f980b8bd6a6a3a5503a1c77523a65"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#ae65f980b8bd6a6a3a5503a1c77523a65">CRAM_M_REVERSE</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:ae65f980b8bd6a6a3a5503a1c77523a65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace999c516e4b86b409cf2d39859647ba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#ace999c516e4b86b409cf2d39859647ba">CRAM_M_UNMAP</a>&#160;&#160;&#160;2</td></tr>
@@ -207,31 +228,11 @@ Macros</h2></td></tr>
 <tr class="separator:ac9bb3103e0140f6f37b32f3cbe3ca316"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa373b7aa76b6922ea856c0aae4e234d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#afa373b7aa76b6922ea856c0aae4e234d">CRAM_FLAG_MATE_DOWNSTREAM</a>&#160;&#160;&#160;(1&lt;&lt;2)</td></tr>
 <tr class="separator:afa373b7aa76b6922ea856c0aae4e234d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34b2f7842f7342dd746464b2dca1518d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a34b2f7842f7342dd746464b2dca1518d">CRAM_EXT_IN</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a34b2f7842f7342dd746464b2dca1518d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa514de09eb4c84462ebae99e90604e69"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#aa514de09eb4c84462ebae99e90604e69">CRAM_EXT_QUAL</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:aa514de09eb4c84462ebae99e90604e69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fa358f75055353f385120383b8b4e2c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a9fa358f75055353f385120383b8b4e2c">CRAM_EXT_NAME</a>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:a9fa358f75055353f385120383b8b4e2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a794cc7a1b35b91ed91a1133d8b46f51a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a794cc7a1b35b91ed91a1133d8b46f51a">CRAM_EXT_TS_NP</a>&#160;&#160;&#160;3</td></tr>
-<tr class="separator:a794cc7a1b35b91ed91a1133d8b46f51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ddf7026b255e8c2c796563580ba77d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a7ddf7026b255e8c2c796563580ba77d8">CRAM_EXT_TAG</a>&#160;&#160;&#160;4</td></tr>
-<tr class="separator:a7ddf7026b255e8c2c796563580ba77d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae61de3c70ebed340fdced918154e9d01"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#ae61de3c70ebed340fdced918154e9d01">CRAM_EXT_TAG_S</a>&#160;&#160;&#160;&quot;\004&quot;</td></tr>
-<tr class="separator:ae61de3c70ebed340fdced918154e9d01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5d06ea34c1db25c9ac9c3bae50896de"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#af5d06ea34c1db25c9ac9c3bae50896de">CRAM_EXT_BA</a>&#160;&#160;&#160;5</td></tr>
-<tr class="separator:af5d06ea34c1db25c9ac9c3bae50896de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a229809e7edc7b2fa72630b2b312e9b56"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a229809e7edc7b2fa72630b2b312e9b56">CRAM_EXT_TN</a>&#160;&#160;&#160;6</td></tr>
-<tr class="separator:a229809e7edc7b2fa72630b2b312e9b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a880ccb6fd23ce58be980bb55bec923b0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a880ccb6fd23ce58be980bb55bec923b0">CRAM_EXT_SC</a>&#160;&#160;&#160;7</td></tr>
-<tr class="separator:a880ccb6fd23ce58be980bb55bec923b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33046412ecd645cfb2900770fcaff18c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a33046412ecd645cfb2900770fcaff18c">CRAM_EXT_REF</a>&#160;&#160;&#160;8</td></tr>
-<tr class="separator:a33046412ecd645cfb2900770fcaff18c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ae89ef453a84c7efb414039d3c093a4e5"><td class="memItemLeft" align="right" valign="top">typedef FILE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#ae89ef453a84c7efb414039d3c093a4e5">cram_FILE</a></td></tr>
-<tr class="separator:ae89ef453a84c7efb414039d3c093a4e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8ecdd9d7d0f3cdced7f9a83dc659959"><td class="memItemLeft" align="right" valign="top">typedef unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#af8ecdd9d7d0f3cdced7f9a83dc659959">uc</a></td></tr>
+<tr class="separator:af8ecdd9d7d0f3cdced7f9a83dc659959"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc73e1b7e70eeabd92201f4905cfe16d"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structcram__map.html">cram_map</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#abc73e1b7e70eeabd92201f4905cfe16d">cram_map</a></td></tr>
 <tr class="separator:abc73e1b7e70eeabd92201f4905cfe16d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83fe72953994ec8e38284f7b0b1b78fc"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structcram__slice.html">cram_slice</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a83fe72953994ec8e38284f7b0b1b78fc">cram_slice</a></td></tr>
@@ -273,10 +274,82 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a0ef7e3936f6c847006846b629e2738ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaba757c9ea23fabb284dc002713c30a5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5">cram_block_method</a> { <a class="el" href="cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5a88101b6cb7e050019872d39148eaaba9">BM_ERROR</a> = -1, 
+<tr class="memitem:a330dbf1ad7f9329c1f25cf8997058627"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627">cram_DS_ID</a> { <br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627afd3286b6b43b9ddaa37aeaab993a8529">DS_CORE</a> = 0, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a6c1f1741a0cf66bb8adf596c82b7e646">DS_aux</a> = 1, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a4131808df3de3b107bb3465378018f9c">DS_aux_OQ</a> = 2, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a17baad64f4b0901bc6df26862d4f5088">DS_aux_BQ</a> = 3, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627ae98531d059411cedaadc91650882c177">DS_aux_BD</a> = 4, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a75eb3abab8b6248dcefb5c4398630f90">DS_aux_BI</a> = 5, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627ae5491b70af253df403da92af1892fcc1">DS_aux_FZ</a> = 6, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a08bf176f3b790acf7eae62a82d76da27">DS_aux_oq</a> = 7, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627acc41252901385940cb18bece44ffe717">DS_aux_os</a> = 8, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a9b1e49d782c658b35779dc57c9779768">DS_aux_oz</a> = 9, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a9d8f72f2e3ca6801c44af7388901aa80">DS_ref</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a8b41d64c4c06c2a243265cdc818396e0">DS_RN</a>, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627ac8608be7d11e9ad986f50e2cf62c4e04">DS_QS</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a8c22c410114aba81df431f6d21e0fd9f">DS_IN</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a018a6f563a5c33cbc6bf1b849214a16f">DS_SC</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a2c6392164ebd859628ea4d9cb0565557">DS_BF</a>, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a85cce48dc07a00739ceb736be49cc922">DS_CF</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627aeab764b936d2662d072e77d9b84d18b7">DS_AP</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627abff0a72cd7d8d50552afdfc0326ea49d">DS_RG</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a42ebdb7da6311f9e0b4ebe5c9b6eadbe">DS_MQ</a>, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a5c3596b519e8effef0212fffd8c6e38c">DS_NS</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627ac8fd8cabf9a8ec6462fe463e062948d2">DS_MF</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a1d6e5113337609455f47f0e07323011b">DS_TS</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a7321b9240fe9c08e712a72d821acb15e">DS_NP</a>, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627adbe9af721a60269631846960d2dbf396">DS_NF</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627aa2770cf9a020bf8c74db8b7b6bb845ea">DS_RL</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627ad9810a46ce4d814d61c6da83cd6e99b4">DS_FN</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627ae07c9fb5c42b7d4455770d7dde3cd186">DS_FC</a>, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627aa0d6e72de92f2e15ceb52bc3c7dd856b">DS_FP</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a545cfeed6e96b7236edd2919933f6be7">DS_DL</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627ad774d67f1010746b89d51db5adfad207">DS_BA</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a64884bc9233a62b6daae2a86ad6af492">DS_BS</a>, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a9e55308e172593294a65d7af773d27e1">DS_TL</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627ad90f5b28df27da5d9e4f612b6f912160">DS_RI</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a3ce64df016a4b971b601e0851723fefc">DS_RS</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627aa26e3ef347dd36d7e359b357f3d6db44">DS_PD</a>, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a15d5d3b4b5d7c2ccfddf761b0a95ccb0">DS_HC</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a81d25fa7a3c6e3c4c2670eacb83ea768">DS_BB</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627ae1010fd6a74110aae0f26bcd1065e5bb">DS_QQ</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a5aeb08db74f114a1338d8202e227d16b">DS_TN</a>, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a60baefa81d783017fabaf4ed96089bea">DS_RN_len</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a28a9e510ff4ccfeea773381ade46b615">DS_SC_len</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a55bca8eccbbccb02f673c6042001a7c9">DS_BB_len</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627aaa4c55f2871159f655b74214d7e87dcf">DS_QQ_len</a>, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a236422be9842bf37398df18b27cdcd12">DS_TC</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627af42355e5f3e431ce1751dffdeec103ee">DS_TM</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a4125c88ef13e985b43ca8b3445c11bcd">DS_TV</a>, 
+<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627ae8d4c96a028ede197bb69ec632006099">DS_END</a>
+<br />
+ }</td></tr>
+<tr class="separator:a330dbf1ad7f9329c1f25cf8997058627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaba757c9ea23fabb284dc002713c30a5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5">cram_block_method</a> { <br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5a2fd6f336d08340583bd620a7f5694c90">ERROR</a> = -1, 
 <a class="el" href="cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5abdeded99fe7d3f2773014a9a2cfb73d7">RAW</a> = 0, 
 <a class="el" href="cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5a388483cd14bd349b3e0f2a7511bbec0e">GZIP</a> = 1, 
-<a class="el" href="cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5af072cbd4765483ae305ca479f7764031">BZIP2</a> = 2
+<a class="el" href="cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5af072cbd4765483ae305ca479f7764031">BZIP2</a> = 2, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5ae9012876af64d659e85a8728eff020f8">LZMA</a> = 3, 
+<a class="el" href="cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5a0e07d0af1a1dac4deada657df56bab82">RANS</a> = 4, 
+<a class="el" href="cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5a3488690b68a0f57e02906d525ebe6058">RANS0</a> = 4, 
+<a class="el" href="cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5a59a084c2756d67f5dceb064f98e670f7">RANS1</a> = 10, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#aaba757c9ea23fabb284dc002713c30a5aa441a6163db44810df31a3831f04ae06">GZIP_RLE</a> = 11
+<br />
  }</td></tr>
 <tr class="separator:aaba757c9ea23fabb284dc002713c30a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9934fb23b7763e058c4dfb074ce9a49"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#af9934fb23b7763e058c4dfb074ce9a49">cram_content_type</a> { <br />
@@ -291,55 +364,51 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:af9934fb23b7763e058c4dfb074ce9a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d696a356430013cc14a2ba5cda07220"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220">cram_option</a> { <br />
-&#160;&#160;<a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a806e8698dd75a711ab2abe0ded521b75">CRAM_OPT_DECODE_MD</a>, 
-<a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a4226b3979ec3cbfe0d204293c5a9e466">CRAM_OPT_PREFIX</a>, 
-<a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a03db69db5f23fd8099c8e28552ab609d">CRAM_OPT_VERBOSITY</a>, 
-<a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a1508b9c7b0407e64ca4c30043fb87c77">CRAM_OPT_SEQS_PER_SLICE</a>, 
+<tr class="memitem:a0a92bcf4b030ebb519a7c29dbcaa89ac"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89ac">cram_fields</a> { <br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acad43da7f0775b17406ba9ec597c288bdd">CRAM_BF</a> = 0x00000001, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca0e9fcd00473d8d9fd7871dcf1f1508a0">CRAM_AP</a> = 0x00000002, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca445485eace851687d990f0a6b7487c84">CRAM_FP</a> = 0x00000004, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca7567be3ab4af14e9a515cb6492e0f9e4">CRAM_RL</a> = 0x00000008, 
 <br />
-&#160;&#160;<a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a794a06895570107d89a5419c29afca84">CRAM_OPT_SLICES_PER_CONTAINER</a>, 
-<a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a1ae2b82782377b17623d6b90cbab4168">CRAM_OPT_RANGE</a>, 
-<a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a440a111f5d295c477df9c04f840d7d7f">CRAM_OPT_VERSION</a>, 
-<a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a7a150d6e323c794cdacafaef55ce1a7e">CRAM_OPT_EMBED_REF</a>, 
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca4c6f1f267e6c0409e4bd5b408634f35c">CRAM_DL</a> = 0x00000010, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acaee11d8daaf7976a563a25e962ae324f5">CRAM_NF</a> = 0x00000020, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca7d29955bbc3a56dcfcf6db32c3ef1bde">CRAM_BA</a> = 0x00000040, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acababd6c4a23c9f9ccf4911d5b04085f1f">CRAM_QS</a> = 0x00000080, 
 <br />
-&#160;&#160;<a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a92657751927887736bfd83cebc6df43d">CRAM_OPT_IGNORE_MD5</a>, 
-<a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a231032367ca9a8d6bd15b5ec0bf22617">CRAM_OPT_REFERENCE</a>, 
-<a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a18c1ed671da86021cef143693ef2409d">CRAM_OPT_MULTI_SEQ_PER_SLICE</a>, 
-<a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a20b0754ed7366fe347d143fa9ace400c">CRAM_OPT_NO_REF</a>, 
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca20128f554a0e2525fd4a1019c6dedeff">CRAM_FC</a> = 0x00000100, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca41df9d4865d782d24f69e7b549d94fec">CRAM_FN</a> = 0x00000200, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acadfcb041eb0b1355f09f1cf999a3ebc6c">CRAM_BS</a> = 0x00000400, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acacd0c8fa6df284da497b384a8f8157a7b">CRAM_IN</a> = 0x00000800, 
 <br />
-&#160;&#160;<a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a1d9403ecb8bb3d443f34a61133439478">CRAM_OPT_USE_BZIP2</a>, 
-<a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a6e37cc55657a32097166047308a500af">CRAM_OPT_SHARED_REF</a>, 
-<a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a673b60fda6afddbc708460deef53e5d0">CRAM_OPT_NTHREADS</a>, 
-<a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220a7add3b78aa5a76014d8a86cdac38b243">CRAM_OPT_THREAD_POOL</a>
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acab533edfac3c7ac6bcea84e6de0890953">CRAM_RG</a> = 0x00001000, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca8247eaf12b4fedb3cd2ed8c64ca286f0">CRAM_MQ</a> = 0x00002000, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acaddc6962598ea6d92f60725cf6c11dc4b">CRAM_TL</a> = 0x00004000, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acaa2df93afdf85d7b7abd3820d12f15177">CRAM_RN</a> = 0x00008000, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acaadbd85fdb7a2cc5d8185ba12fc98a403">CRAM_NS</a> = 0x00010000, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca2da6dadfea55a26f62ff1d3781e632b2">CRAM_NP</a> = 0x00020000, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acab7b553638cc119b6e9ef076810217ca8">CRAM_TS</a> = 0x00040000, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca398801427e1e5470e594cb6fb9dc8cdf">CRAM_MF</a> = 0x00080000, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca0001d94b44e892cf616d40a374fd0b33">CRAM_CF</a> = 0x00100000, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acac619420f93c689c835243da7013c418c">CRAM_RI</a> = 0x00200000, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acaa8e16505b7f87e040737948bbe04855c">CRAM_RS</a> = 0x00400000, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca13fb014929bdc0f5e094f6fb46048871">CRAM_PD</a> = 0x00800000, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca7343e2d7aa0e53a79b2081b0604a88f6">CRAM_HC</a> = 0x01000000, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca83d4122ff1c2766e8caa26538108b44e">CRAM_SC</a> = 0x02000000, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acafb8e5ed0ef5a3dd8b04ab27f2f04abf8">CRAM_BB</a> = 0x04000000, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca48d33f197dc0d9e5274f1e6f8b35e766">CRAM_BB_len</a> = 0x08000000, 
+<br />
+&#160;&#160;<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca6681809a3d849da6d67716cf223d7be9">CRAM_QQ</a> = 0x10000000, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca244b231ecd83247a09f2b36642b4ed2b">CRAM_QQ_len</a> = 0x20000000, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca7d50c62a0ca23e784bd7def45c2fd717">CRAM_aux</a> = 0x40000000, 
+<a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acac1a3ca4d8757c90722c558b2970f5fb7">CRAM_ALL</a> = 0x7fffffff
 <br />
  }</td></tr>
-<tr class="separator:a1d696a356430013cc14a2ba5cda07220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a0a92bcf4b030ebb519a7c29dbcaa89ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="a77396b9650e6fbbc186ecb8153948c85"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CRAM_1_VERS&#160;&#160;&#160;100</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a43e4acef81d2547610be03d1100e2daf"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CRAM_2_VERS&#160;&#160;&#160;200</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="aed2d86341111adc4b9307d0a15ba18fb"></a>
 <div class="memitem">
 <div class="memproto">
@@ -365,131 +434,36 @@ Enumerations</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">c</td><td>)</td>
-          <td>&#160;&#160;&#160;(&amp;((cr)-&gt;s-&gt;cigar)[(c)-&gt;cigar])</td>
+          <td>&#160;&#160;&#160;(&amp;((cr)-&gt;s-&gt;<a class="el" href="cram__encode_8c.html#aa762b5b3b33e5602db4f41b5ca44c335">cigar</a>)[(c)-&gt;<a class="el" href="cram__encode_8c.html#aa762b5b3b33e5602db4f41b5ca44c335">cigar</a>])</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="af5d06ea34c1db25c9ac9c3bae50896de"></a>
+<a class="anchor" id="aaf866ff801cd3506ac17608edd0a5565"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CRAM_EXT_BA&#160;&#160;&#160;5</td>
+          <td class="memname">#define CRAM_CIGAR</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a34b2f7842f7342dd746464b2dca1518d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CRAM_EXT_IN&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a9fa358f75055353f385120383b8b4e2c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CRAM_EXT_NAME&#160;&#160;&#160;2</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aa514de09eb4c84462ebae99e90604e69"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CRAM_EXT_QUAL&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a33046412ecd645cfb2900770fcaff18c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CRAM_EXT_REF&#160;&#160;&#160;8</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a880ccb6fd23ce58be980bb55bec923b0"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CRAM_EXT_SC&#160;&#160;&#160;7</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a7ddf7026b255e8c2c796563580ba77d8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CRAM_EXT_TAG&#160;&#160;&#160;4</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ae61de3c70ebed340fdced918154e9d01"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CRAM_EXT_TAG_S&#160;&#160;&#160;&quot;\004&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a229809e7edc7b2fa72630b2b312e9b56"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CRAM_EXT_TN&#160;&#160;&#160;6</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a794cc7a1b35b91ed91a1133d8b46f51a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CRAM_EXT_TS_NP&#160;&#160;&#160;3</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
+<b>Value:</b><div class="fragment"><div class="line">(<a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca41df9d4865d782d24f69e7b549d94fec">CRAM_FN</a> | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca445485eace851687d990f0a6b7487c84">CRAM_FP</a> | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca20128f554a0e2525fd4a1019c6dedeff">CRAM_FC</a> | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca4c6f1f267e6c0409e4bd5b408634f35c">CRAM_DL</a> | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acacd0c8fa6df284da497b384a8f8157a7b">CRAM_IN</a> | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca83d4122ff1c2766e8caa26538108b44e">\</a></div>
+<div class="line"><a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca83d4122ff1c2766e8caa26538108b44e">		    CRAM_SC</a> | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca7343e2d7aa0e53a79b2081b0604a88f6">CRAM_HC</a> | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca13fb014929bdc0f5e094f6fb46048871">CRAM_PD</a> | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acaa8e16505b7f87e040737948bbe04855c">CRAM_RS</a> | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca7567be3ab4af14e9a515cb6492e0f9e4">CRAM_RL</a> | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acad43da7f0775b17406ba9ec597c288bdd">CRAM_BF</a>)</div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89aca445485eace851687d990f0a6b7487c84"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca445485eace851687d990f0a6b7487c84">CRAM_FP</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:736</div></div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89aca41df9d4865d782d24f69e7b549d94fec"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca41df9d4865d782d24f69e7b549d94fec">CRAM_FN</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:743</div></div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89acacd0c8fa6df284da497b384a8f8157a7b"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acacd0c8fa6df284da497b384a8f8157a7b">CRAM_IN</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:745</div></div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89aca13fb014929bdc0f5e094f6fb46048871"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca13fb014929bdc0f5e094f6fb46048871">CRAM_PD</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:757</div></div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89aca83d4122ff1c2766e8caa26538108b44e"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca83d4122ff1c2766e8caa26538108b44e">CRAM_SC</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:759</div></div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89acaa8e16505b7f87e040737948bbe04855c"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acaa8e16505b7f87e040737948bbe04855c">CRAM_RS</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:756</div></div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89acad43da7f0775b17406ba9ec597c288bdd"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acad43da7f0775b17406ba9ec597c288bdd">CRAM_BF</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:734</div></div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89aca20128f554a0e2525fd4a1019c6dedeff"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca20128f554a0e2525fd4a1019c6dedeff">CRAM_FC</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:742</div></div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89aca7343e2d7aa0e53a79b2081b0604a88f6"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca7343e2d7aa0e53a79b2081b0604a88f6">CRAM_HC</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:758</div></div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89aca4c6f1f267e6c0409e4bd5b408634f35c"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca4c6f1f267e6c0409e4bd5b408634f35c">CRAM_DL</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:738</div></div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89aca7567be3ab4af14e9a515cb6492e0f9e4"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca7567be3ab4af14e9a515cb6492e0f9e4">CRAM_RL</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:737</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a0272d7577bb65b8b918173132f911f22"></a>
@@ -660,6 +634,22 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a53edcb2dc161e0f2fa1e96e10fbeaae3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CRAM_MAJOR_VERS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">v</td><td>)</td>
+          <td>&#160;&#160;&#160;((v) &gt;&gt; 8)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a57169b5d763076ed50f8c910d25bac4b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -692,6 +682,22 @@ Enumerations</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define CRAM_MAP_HASH&#160;&#160;&#160;32</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2dc67c52d662e3d1bd8fd5259bb3e729"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CRAM_MINOR_VERS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">v</td><td>)</td>
+          <td>&#160;&#160;&#160;((v) &amp; 0xff)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -755,7 +761,7 @@ Enumerations</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">c</td><td>)</td>
-          <td>&#160;&#160;&#160;(&amp;(c)-&gt;s-&gt;qual_blk-&gt;data[(c)-&gt;qual])</td>
+          <td>&#160;&#160;&#160;(&amp;(c)-&gt;s-&gt;qual_blk-&gt;data[(c)-&gt;<a class="el" href="cram__encode_8c.html#a2b531fb1eb56bdfb1a0e58eb33963df1">qual</a>])</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -776,6 +782,28 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+</div>
+</div>
+<a class="anchor" id="a6ddf7d38c114a3e6d5f737c62d2f98e8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CRAM_SEQ</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">(<a class="code" href="cram__structs_8h.html#aaf866ff801cd3506ac17608edd0a5565">CRAM_CIGAR</a> | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca7d29955bbc3a56dcfcf6db32c3ef1bde">CRAM_BA</a> | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acababd6c4a23c9f9ccf4911d5b04085f1f">CRAM_QS</a> | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acadfcb041eb0b1355f09f1cf999a3ebc6c">CRAM_BS</a> | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca7567be3ab4af14e9a515cb6492e0f9e4">\</a></div>
+<div class="line"><a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca7567be3ab4af14e9a515cb6492e0f9e4">		  CRAM_RL</a>    | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca0e9fcd00473d8d9fd7871dcf1f1508a0">CRAM_AP</a> | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acafb8e5ed0ef5a3dd8b04ab27f2f04abf8">CRAM_BB</a> | <a class="code" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca6681809a3d849da6d67716cf223d7be9">CRAM_QQ</a>)</div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89aca6681809a3d849da6d67716cf223d7be9"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca6681809a3d849da6d67716cf223d7be9">CRAM_QQ</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:762</div></div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89acafb8e5ed0ef5a3dd8b04ab27f2f04abf8"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acafb8e5ed0ef5a3dd8b04ab27f2f04abf8">CRAM_BB</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:760</div></div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89aca0e9fcd00473d8d9fd7871dcf1f1508a0"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca0e9fcd00473d8d9fd7871dcf1f1508a0">CRAM_AP</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:735</div></div>
+<div class="ttc" id="cram__structs_8h_html_aaf866ff801cd3506ac17608edd0a5565"><div class="ttname"><a href="cram__structs_8h.html#aaf866ff801cd3506ac17608edd0a5565">CRAM_CIGAR</a></div><div class="ttdeci">#define CRAM_CIGAR</div><div class="ttdef"><b>Definition:</b> cram_structs.h:772</div></div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89aca7d29955bbc3a56dcfcf6db32c3ef1bde"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca7d29955bbc3a56dcfcf6db32c3ef1bde">CRAM_BA</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:740</div></div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89acadfcb041eb0b1355f09f1cf999a3ebc6c"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acadfcb041eb0b1355f09f1cf999a3ebc6c">CRAM_BS</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:744</div></div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89acababd6c4a23c9f9ccf4911d5b04085f1f"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89acababd6c4a23c9f9ccf4911d5b04085f1f">CRAM_QS</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:741</div></div>
+<div class="ttc" id="cram__structs_8h_html_a0a92bcf4b030ebb519a7c29dbcaa89aca7567be3ab4af14e9a515cb6492e0f9e4"><div class="ttname"><a href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89aca7567be3ab4af14e9a515cb6492e0f9e4">CRAM_RL</a></div><div class="ttdef"><b>Definition:</b> cram_structs.h:737</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a00000380dbac8fbdb18d65b5689b17f3"></a>
@@ -832,6 +860,114 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a1a30e8a470772f352d9566a31afcea91"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS_aux_BD_S&#160;&#160;&#160;&quot;\004&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a540b727c229ef58acc6fc9edcc191dea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS_aux_BI_S&#160;&#160;&#160;&quot;\005&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a42e0a56427854e88c7c8b8ec5dbcac3e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS_aux_BQ_S&#160;&#160;&#160;&quot;\003&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a963fdd13122a5bca56c3e1eb2169327c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS_aux_FZ_S&#160;&#160;&#160;&quot;\006&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2edc0573824442a1a8d86538e52fd461"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS_aux_OQ_S&#160;&#160;&#160;&quot;\002&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a57e609f24dbb508faa16acdbb19c9f9f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS_aux_oq_S&#160;&#160;&#160;&quot;\007&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3413a056d46bb230b33201eeb30d6615"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS_aux_os_S&#160;&#160;&#160;&quot;\010&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a53acda10470ce03522bad32269c1e679"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS_aux_oz_S&#160;&#160;&#160;&quot;\011&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aaf815ee3e9e2396bfc3d1fee8bc90bb5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS_aux_S&#160;&#160;&#160;&quot;\001&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a24c9fd089645bd2f96e7576f743d43aa"></a>
 <div class="memitem">
 <div class="memproto">
@@ -868,30 +1004,6 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a72f3fa20036a156badf7087fccfbdd60"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TN_external</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="afdc4d90fdd0c6b4638e18be15d8a2691"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TS_external</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a class="anchor" id="af682fe424937c33037a2d5329f267d3e"></a>
 <div class="memitem">
@@ -899,18 +1011,6 @@ Enumerations</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">typedef struct <a class="el" href="structcram__fd.html">cram_fd</a>  <a class="el" href="structcram__fd.html">cram_fd</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ae89ef453a84c7efb414039d3c093a4e5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef FILE <a class="el" href="cram__structs_8h.html#ae89ef453a84c7efb414039d3c093a4e5">cram_FILE</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -977,6 +1077,18 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="af8ecdd9d7d0f3cdced7f9a83dc659959"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned char <a class="el" href="cram__structs_8h.html#af8ecdd9d7d0f3cdced7f9a83dc659959">uc</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a class="anchor" id="aaba757c9ea23fabb284dc002713c30a5"></a>
 <div class="memitem">
@@ -988,13 +1100,23 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="aaba757c9ea23fabb284dc002713c30a5a88101b6cb7e050019872d39148eaaba9"></a>BM_ERROR&#160;</td><td class="fielddoc">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="aaba757c9ea23fabb284dc002713c30a5a2fd6f336d08340583bd620a7f5694c90"></a>ERROR&#160;</td><td class="fielddoc">
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="aaba757c9ea23fabb284dc002713c30a5abdeded99fe7d3f2773014a9a2cfb73d7"></a>RAW&#160;</td><td class="fielddoc">
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="aaba757c9ea23fabb284dc002713c30a5a388483cd14bd349b3e0f2a7511bbec0e"></a>GZIP&#160;</td><td class="fielddoc">
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="aaba757c9ea23fabb284dc002713c30a5af072cbd4765483ae305ca479f7764031"></a>BZIP2&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="aaba757c9ea23fabb284dc002713c30a5ae9012876af64d659e85a8728eff020f8"></a>LZMA&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="aaba757c9ea23fabb284dc002713c30a5a0e07d0af1a1dac4deada657df56bab82"></a>RANS&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="aaba757c9ea23fabb284dc002713c30a5a3488690b68a0f57e02906d525ebe6058"></a>RANS0&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="aaba757c9ea23fabb284dc002713c30a5a59a084c2756d67f5dceb064f98e670f7"></a>RANS1&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="aaba757c9ea23fabb284dc002713c30a5aa441a6163db44810df31a3831f04ae06"></a>GZIP_RLE&#160;</td><td class="fielddoc">
 </td></tr>
 </table>
 
@@ -1023,6 +1145,116 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a class="anchor" id="af9934fb23b7763e058c4dfb074ce9a49a63fbb9fe7b9a695d3a65541465cb99d5"></a>EXTERNAL&#160;</td><td class="fielddoc">
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="af9934fb23b7763e058c4dfb074ce9a49a6fb62912f795482b5e8a28aded6b02e9"></a>CORE&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+</div>
+</div>
+<a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627">cram_DS_ID</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627afd3286b6b43b9ddaa37aeaab993a8529"></a>DS_CORE&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a6c1f1741a0cf66bb8adf596c82b7e646"></a>DS_aux&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a4131808df3de3b107bb3465378018f9c"></a>DS_aux_OQ&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a17baad64f4b0901bc6df26862d4f5088"></a>DS_aux_BQ&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627ae98531d059411cedaadc91650882c177"></a>DS_aux_BD&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a75eb3abab8b6248dcefb5c4398630f90"></a>DS_aux_BI&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627ae5491b70af253df403da92af1892fcc1"></a>DS_aux_FZ&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a08bf176f3b790acf7eae62a82d76da27"></a>DS_aux_oq&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627acc41252901385940cb18bece44ffe717"></a>DS_aux_os&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a9b1e49d782c658b35779dc57c9779768"></a>DS_aux_oz&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a9d8f72f2e3ca6801c44af7388901aa80"></a>DS_ref&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a8b41d64c4c06c2a243265cdc818396e0"></a>DS_RN&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627ac8608be7d11e9ad986f50e2cf62c4e04"></a>DS_QS&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a8c22c410114aba81df431f6d21e0fd9f"></a>DS_IN&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a018a6f563a5c33cbc6bf1b849214a16f"></a>DS_SC&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a2c6392164ebd859628ea4d9cb0565557"></a>DS_BF&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a85cce48dc07a00739ceb736be49cc922"></a>DS_CF&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627aeab764b936d2662d072e77d9b84d18b7"></a>DS_AP&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627abff0a72cd7d8d50552afdfc0326ea49d"></a>DS_RG&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a42ebdb7da6311f9e0b4ebe5c9b6eadbe"></a>DS_MQ&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a5c3596b519e8effef0212fffd8c6e38c"></a>DS_NS&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627ac8fd8cabf9a8ec6462fe463e062948d2"></a>DS_MF&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a1d6e5113337609455f47f0e07323011b"></a>DS_TS&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a7321b9240fe9c08e712a72d821acb15e"></a>DS_NP&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627adbe9af721a60269631846960d2dbf396"></a>DS_NF&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627aa2770cf9a020bf8c74db8b7b6bb845ea"></a>DS_RL&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627ad9810a46ce4d814d61c6da83cd6e99b4"></a>DS_FN&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627ae07c9fb5c42b7d4455770d7dde3cd186"></a>DS_FC&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627aa0d6e72de92f2e15ceb52bc3c7dd856b"></a>DS_FP&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a545cfeed6e96b7236edd2919933f6be7"></a>DS_DL&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627ad774d67f1010746b89d51db5adfad207"></a>DS_BA&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a64884bc9233a62b6daae2a86ad6af492"></a>DS_BS&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a9e55308e172593294a65d7af773d27e1"></a>DS_TL&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627ad90f5b28df27da5d9e4f612b6f912160"></a>DS_RI&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a3ce64df016a4b971b601e0851723fefc"></a>DS_RS&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627aa26e3ef347dd36d7e359b357f3d6db44"></a>DS_PD&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a15d5d3b4b5d7c2ccfddf761b0a95ccb0"></a>DS_HC&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a81d25fa7a3c6e3c4c2670eacb83ea768"></a>DS_BB&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627ae1010fd6a74110aae0f26bcd1065e5bb"></a>DS_QQ&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a5aeb08db74f114a1338d8202e227d16b"></a>DS_TN&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a60baefa81d783017fabaf4ed96089bea"></a>DS_RN_len&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a28a9e510ff4ccfeea773381ade46b615"></a>DS_SC_len&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a55bca8eccbbccb02f673c6042001a7c9"></a>DS_BB_len&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627aaa4c55f2871159f655b74214d7e87dcf"></a>DS_QQ_len&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a236422be9842bf37398df18b27cdcd12"></a>DS_TC&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627af42355e5f3e431ce1751dffdeec103ee"></a>DS_TM&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627a4125c88ef13e985b43ca8b3445c11bcd"></a>DS_TV&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a330dbf1ad7f9329c1f25cf8997058627ae8d4c96a028ede197bb69ec632006099"></a>DS_END&#160;</td><td class="fielddoc">
 </td></tr>
 </table>
 
@@ -1086,47 +1318,79 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a1d696a356430013cc14a2ba5cda07220"></a>
+<a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89ac"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="cram__structs_8h.html#a1d696a356430013cc14a2ba5cda07220">cram_option</a></td>
+          <td class="memname">enum <a class="el" href="cram__structs_8h.html#a0a92bcf4b030ebb519a7c29dbcaa89ac">cram_fields</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a1d696a356430013cc14a2ba5cda07220a806e8698dd75a711ab2abe0ded521b75"></a>CRAM_OPT_DECODE_MD&#160;</td><td class="fielddoc">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89acad43da7f0775b17406ba9ec597c288bdd"></a>CRAM_BF&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1d696a356430013cc14a2ba5cda07220a4226b3979ec3cbfe0d204293c5a9e466"></a>CRAM_OPT_PREFIX&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca0e9fcd00473d8d9fd7871dcf1f1508a0"></a>CRAM_AP&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1d696a356430013cc14a2ba5cda07220a03db69db5f23fd8099c8e28552ab609d"></a>CRAM_OPT_VERBOSITY&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca445485eace851687d990f0a6b7487c84"></a>CRAM_FP&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1d696a356430013cc14a2ba5cda07220a1508b9c7b0407e64ca4c30043fb87c77"></a>CRAM_OPT_SEQS_PER_SLICE&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca7567be3ab4af14e9a515cb6492e0f9e4"></a>CRAM_RL&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1d696a356430013cc14a2ba5cda07220a794a06895570107d89a5419c29afca84"></a>CRAM_OPT_SLICES_PER_CONTAINER&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca4c6f1f267e6c0409e4bd5b408634f35c"></a>CRAM_DL&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1d696a356430013cc14a2ba5cda07220a1ae2b82782377b17623d6b90cbab4168"></a>CRAM_OPT_RANGE&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89acaee11d8daaf7976a563a25e962ae324f5"></a>CRAM_NF&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1d696a356430013cc14a2ba5cda07220a440a111f5d295c477df9c04f840d7d7f"></a>CRAM_OPT_VERSION&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca7d29955bbc3a56dcfcf6db32c3ef1bde"></a>CRAM_BA&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1d696a356430013cc14a2ba5cda07220a7a150d6e323c794cdacafaef55ce1a7e"></a>CRAM_OPT_EMBED_REF&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89acababd6c4a23c9f9ccf4911d5b04085f1f"></a>CRAM_QS&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1d696a356430013cc14a2ba5cda07220a92657751927887736bfd83cebc6df43d"></a>CRAM_OPT_IGNORE_MD5&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca20128f554a0e2525fd4a1019c6dedeff"></a>CRAM_FC&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1d696a356430013cc14a2ba5cda07220a231032367ca9a8d6bd15b5ec0bf22617"></a>CRAM_OPT_REFERENCE&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca41df9d4865d782d24f69e7b549d94fec"></a>CRAM_FN&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1d696a356430013cc14a2ba5cda07220a18c1ed671da86021cef143693ef2409d"></a>CRAM_OPT_MULTI_SEQ_PER_SLICE&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89acadfcb041eb0b1355f09f1cf999a3ebc6c"></a>CRAM_BS&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1d696a356430013cc14a2ba5cda07220a20b0754ed7366fe347d143fa9ace400c"></a>CRAM_OPT_NO_REF&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89acacd0c8fa6df284da497b384a8f8157a7b"></a>CRAM_IN&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1d696a356430013cc14a2ba5cda07220a1d9403ecb8bb3d443f34a61133439478"></a>CRAM_OPT_USE_BZIP2&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89acab533edfac3c7ac6bcea84e6de0890953"></a>CRAM_RG&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1d696a356430013cc14a2ba5cda07220a6e37cc55657a32097166047308a500af"></a>CRAM_OPT_SHARED_REF&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca8247eaf12b4fedb3cd2ed8c64ca286f0"></a>CRAM_MQ&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1d696a356430013cc14a2ba5cda07220a673b60fda6afddbc708460deef53e5d0"></a>CRAM_OPT_NTHREADS&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89acaddc6962598ea6d92f60725cf6c11dc4b"></a>CRAM_TL&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1d696a356430013cc14a2ba5cda07220a7add3b78aa5a76014d8a86cdac38b243"></a>CRAM_OPT_THREAD_POOL&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89acaa2df93afdf85d7b7abd3820d12f15177"></a>CRAM_RN&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89acaadbd85fdb7a2cc5d8185ba12fc98a403"></a>CRAM_NS&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca2da6dadfea55a26f62ff1d3781e632b2"></a>CRAM_NP&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89acab7b553638cc119b6e9ef076810217ca8"></a>CRAM_TS&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca398801427e1e5470e594cb6fb9dc8cdf"></a>CRAM_MF&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca0001d94b44e892cf616d40a374fd0b33"></a>CRAM_CF&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89acac619420f93c689c835243da7013c418c"></a>CRAM_RI&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89acaa8e16505b7f87e040737948bbe04855c"></a>CRAM_RS&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca13fb014929bdc0f5e094f6fb46048871"></a>CRAM_PD&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca7343e2d7aa0e53a79b2081b0604a88f6"></a>CRAM_HC&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca83d4122ff1c2766e8caa26538108b44e"></a>CRAM_SC&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89acafb8e5ed0ef5a3dd8b04ab27f2f04abf8"></a>CRAM_BB&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca48d33f197dc0d9e5274f1e6f8b35e766"></a>CRAM_BB_len&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca6681809a3d849da6d67716cf223d7be9"></a>CRAM_QQ&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca244b231ecd83247a09f2b36642b4ed2b"></a>CRAM_QQ_len&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89aca7d50c62a0ca23e784bd7def45c2fd717"></a>CRAM_aux&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0a92bcf4b030ebb519a7c29dbcaa89acac1a3ca4d8757c90722c558b2970f5fb7"></a>CRAM_ALL&#160;</td><td class="fielddoc">
 </td></tr>
 </table>
 
@@ -1135,7 +1399,7 @@ Enumerations</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

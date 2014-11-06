@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['xstr',['xstr',['../test_2sam_8c.html#a8c2ed23cf0e6a647cfcba8b4a6429980',1,'sam.c']]]
+  ['z_5fcram_5fstrat',['Z_CRAM_STRAT',['../cram__encode_8c.html#a71464a351f141a23fd7aa424b62144f3',1,'cram_encode.c']]]
 ];

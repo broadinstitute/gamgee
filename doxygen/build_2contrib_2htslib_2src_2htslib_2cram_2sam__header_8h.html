@@ -125,7 +125,7 @@ Macros</h2></td></tr>
 <tr class="separator:a23d1b98e21a06bc32c0f5bda9d90ac83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f22bc0da4ecfd40d1a04eb62ae87323"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_2contrib_2htslib_2src_2htslib_2cram_2sam__header_8h.html#a8f22bc0da4ecfd40d1a04eb62ae87323">KS_INIT</a>(ks)&#160;&#160;&#160;((ks)-&gt;l = 0, (ks)-&gt;m = 0, (ks)-&gt;s = NULL)</td></tr>
 <tr class="separator:a8f22bc0da4ecfd40d1a04eb62ae87323"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ce2e659f6cdba5917ff3089769c5565"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_2contrib_2htslib_2src_2htslib_2cram_2sam__header_8h.html#a1ce2e659f6cdba5917ff3089769c5565">KS_FREE</a>(ks)&#160;&#160;&#160;do { if ((ks)-&gt;s) free((ks)-&gt;s); } while(0)</td></tr>
+<tr class="memitem:a1ce2e659f6cdba5917ff3089769c5565"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_2contrib_2htslib_2src_2htslib_2cram_2sam__header_8h.html#a1ce2e659f6cdba5917ff3089769c5565">KS_FREE</a>(ks)&#160;&#160;&#160;do { <a class="el" href="cram__encode_8c.html#a10cf7b80001397ce45d94988fe8831a2">if</a> ((ks)-&gt;s) free((ks)-&gt;s); } while(0)</td></tr>
 <tr class="separator:a1ce2e659f6cdba5917ff3089769c5565"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -139,8 +139,8 @@ Typedefs</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:afcda63509c518ff867162f187365ca81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_s_a_m__hdr.html">SAM_hdr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_2contrib_2htslib_2src_2htslib_2cram_2sam__header_8h.html#afcda63509c518ff867162f187365ca81">sam_hdr_new</a> (void)</td></tr>
 <tr class="separator:afcda63509c518ff867162f187365ca81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af16f9bda7209f64cb97ba93888635c4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_s_a_m__hdr.html">SAM_hdr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_2contrib_2htslib_2src_2htslib_2cram_2sam__header_8h.html#af16f9bda7209f64cb97ba93888635c4a">sam_hdr_parse</a> (const char *hdr, int len)</td></tr>
-<tr class="separator:af16f9bda7209f64cb97ba93888635c4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab81c15f959e57d9d6402fdd75d67f5e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_s_a_m__hdr.html">SAM_hdr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_2contrib_2htslib_2src_2htslib_2cram_2sam__header_8h.html#ab81c15f959e57d9d6402fdd75d67f5e2">sam_hdr_parse_</a> (const char *hdr, int len)</td></tr>
+<tr class="separator:ab81c15f959e57d9d6402fdd75d67f5e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fdfcce433581d1c48c7e46428d7e985"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_s_a_m__hdr.html">SAM_hdr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_2contrib_2htslib_2src_2htslib_2cram_2sam__header_8h.html#a1fdfcce433581d1c48c7e46428d7e985">sam_hdr_dup</a> (<a class="el" href="struct_s_a_m__hdr.html">SAM_hdr</a> *hdr)</td></tr>
 <tr class="separator:a1fdfcce433581d1c48c7e46428d7e985"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60aaef1b82c88fa27107cdd40b1037b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_2contrib_2htslib_2src_2htslib_2cram_2sam__header_8h.html#a60aaef1b82c88fa27107cdd40b1037b3">sam_hdr_incr_ref</a> (<a class="el" href="struct_s_a_m__hdr.html">SAM_hdr</a> *hdr)</td></tr>
@@ -194,7 +194,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">ks</td><td>)</td>
-          <td>&#160;&#160;&#160;do { if ((ks)-&gt;s) free((ks)-&gt;s); } while(0)</td>
+          <td>&#160;&#160;&#160;do { <a class="el" href="cram__encode_8c.html#a10cf7b80001397ce45d94988fe8831a2">if</a> ((ks)-&gt;s) free((ks)-&gt;s); } while(0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -677,12 +677,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af16f9bda7209f64cb97ba93888635c4a"></a>
+<a class="anchor" id="ab81c15f959e57d9d6402fdd75d67f5e2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_s_a_m__hdr.html">SAM_hdr</a>* sam_hdr_parse </td>
+          <td class="memname"><a class="el" href="struct_s_a_m__hdr.html">SAM_hdr</a>* sam_hdr_parse_ </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>hdr</em>, </td>
@@ -851,7 +851,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

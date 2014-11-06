@@ -149,16 +149,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">/* These are called from the hopen() dispatcher, and should call hfile_init()</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">   to malloc a struct &quot;derived&quot; from hFILE and initialise it appropriately,</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">   including setting base.backend to their own backend vector.  */</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<a class="code" href="structh_f_i_l_e.html">hFILE</a> *<a class="code" href="hfile__internal_8h.html#aa8cedf95ae1e66bbb687fa3c8f4e34e6">hopen_net</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename, <span class="keyword">const</span> <span class="keywordtype">char</span> *mode);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<a class="code" href="structh_f_i_l_e.html">hFILE</a> *<a class="code" href="hfile__internal_8h.html#aa8cedf95ae1e66bbb687fa3c8f4e34e6">hopen_net</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename, <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/* May be called by hopen_*() functions to decode a fopen()-style mode into</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">   open(2)-style flags.  */</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">int</span> <a class="code" href="hfile__internal_8h.html#a967fadc621e6d41e97991a54cad6d354">hfile_oflags</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *mode);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">int</span> <a class="code" href="hfile__internal_8h.html#a967fadc621e6d41e97991a54cad6d354">hfile_oflags</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/* Must be called by hopen_*() functions to allocate the hFILE struct and set</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">   up its base.  Capacity is a suggested buffer size (e.g., via fstat(2))</span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">   or 0 for a default-sized buffer.  */</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<a class="code" href="structh_f_i_l_e.html">hFILE</a> *<a class="code" href="hfile__internal_8h.html#a9e7baa0a466582f324e517997f210936">hfile_init</a>(<span class="keywordtype">size_t</span> struct_size, <span class="keyword">const</span> <span class="keywordtype">char</span> *mode, <span class="keywordtype">size_t</span> capacity);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<a class="code" href="structh_f_i_l_e.html">hFILE</a> *<a class="code" href="hfile__internal_8h.html#a9e7baa0a466582f324e517997f210936">hfile_init</a>(<span class="keywordtype">size_t</span> struct_size, <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>, <span class="keywordtype">size_t</span> capacity);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/* May be called by hopen_*() functions to undo the effects of hfile_init()</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">   in the event opening the stream subsequently fails.  (This is safe to use</span></div>
@@ -170,6 +170,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="structh_f_i_l_e_html"><div class="ttname"><a href="structh_f_i_l_e.html">hFILE</a></div><div class="ttdef"><b>Definition:</b> hfile.h:42</div></div>
 <div class="ttc" id="structh_f_i_l_e__backend_html_a066929ba09d24da3f66d70552b8026da"><div class="ttname"><a href="structh_f_i_l_e__backend.html#a066929ba09d24da3f66d70552b8026da">hFILE_backend::write</a></div><div class="ttdeci">ssize_t(* write)(hFILE *fp, const void *buffer, size_t nbytes) HTS_RESULT_USED</div><div class="ttdef"><b>Definition:</b> hfile_internal.h:39</div></div>
 <div class="ttc" id="structh_f_i_l_e__backend_html_ade3ccc3c119730f1126e3001ac107806"><div class="ttname"><a href="structh_f_i_l_e__backend.html#ade3ccc3c119730f1126e3001ac107806">hFILE_backend::close</a></div><div class="ttdeci">int(* close)(hFILE *fp) HTS_RESULT_USED</div><div class="ttdef"><b>Definition:</b> hfile_internal.h:53</div></div>
+<div class="ttc" id="htsfile_8c_html_abc602f962597251d3e57cf3ea95ab19e"><div class="ttname"><a href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a></div><div class="ttdeci">enum @17 mode</div></div>
 <div class="ttc" id="structh_f_i_l_e__backend_html_a943982c8934bb89a9121a6afad1dc436"><div class="ttname"><a href="structh_f_i_l_e__backend.html#a943982c8934bb89a9121a6afad1dc436">hFILE_backend::seek</a></div><div class="ttdeci">off_t(* seek)(hFILE *fp, off_t offset, int whence) HTS_RESULT_USED</div><div class="ttdef"><b>Definition:</b> hfile_internal.h:44</div></div>
 <div class="ttc" id="hfile__internal_8h_html_a9e7baa0a466582f324e517997f210936"><div class="ttname"><a href="hfile__internal_8h.html#a9e7baa0a466582f324e517997f210936">hfile_init</a></div><div class="ttdeci">hFILE * hfile_init(size_t struct_size, const char *mode, size_t capacity)</div><div class="ttdef"><b>Definition:</b> hfile.c:64</div></div>
 <div class="ttc" id="hfile__internal_8h_html_a967fadc621e6d41e97991a54cad6d354"><div class="ttname"><a href="hfile__internal_8h.html#a967fadc621e6d41e97991a54cad6d354">hfile_oflags</a></div><div class="ttdeci">int hfile_oflags(const char *mode)</div><div class="ttdef"><b>Definition:</b> hfile.c:425</div></div>
@@ -182,7 +183,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:08 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:13 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

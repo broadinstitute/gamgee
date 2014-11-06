@@ -91,6 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">synced_bcf_reader.h File Reference</div>  </div>
@@ -139,12 +140,28 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ada91d2e8e57c0b3cd99e1dec8332a5d8"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__bcf__sr__regions__t.html">_bcf_sr_regions_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synced__bcf__reader_8h.html#ada91d2e8e57c0b3cd99e1dec8332a5d8">bcf_sr_regions_t</a></td></tr>
 <tr class="separator:ada91d2e8e57c0b3cd99e1dec8332a5d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a7d14d9f8227f2a6049e8a3f535b68164"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synced__bcf__reader_8h.html#a7d14d9f8227f2a6049e8a3f535b68164">bcf_sr_error</a> { <br />
+&#160;&#160;<a class="el" href="synced__bcf__reader_8h.html#a7d14d9f8227f2a6049e8a3f535b68164ac4bf4ef782f4ca12b1bb7e5d9bcdb131">open_failed</a>, 
+<a class="el" href="synced__bcf__reader_8h.html#a7d14d9f8227f2a6049e8a3f535b68164ab53abf067f3cdc754fdfd260ce9ad0cd">not_bgzf</a>, 
+<a class="el" href="synced__bcf__reader_8h.html#a7d14d9f8227f2a6049e8a3f535b68164ab716be0e83c08c2b8b6e966dd5898524">idx_load_failed</a>, 
+<a class="el" href="synced__bcf__reader_8h.html#a7d14d9f8227f2a6049e8a3f535b68164a104be488df929c3433f0b52b72cddfe9">file_type_error</a>, 
+<br />
+&#160;&#160;<a class="el" href="synced__bcf__reader_8h.html#a7d14d9f8227f2a6049e8a3f535b68164ab9962f3d29d9882b85c24aabfa4400af">api_usage_error</a>, 
+<a class="el" href="synced__bcf__reader_8h.html#a7d14d9f8227f2a6049e8a3f535b68164a60720ae9a0088407c0ff4b692b961f48">header_error</a>
+<br />
+ }</td></tr>
+<tr class="separator:a7d14d9f8227f2a6049e8a3f535b68164"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a8f78e7c8c17774ca176626aab3c5caa6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbcf__srs__t.html">bcf_srs_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synced__bcf__reader_8h.html#a8f78e7c8c17774ca176626aab3c5caa6">bcf_sr_init</a> (void)</td></tr>
 <tr class="separator:a8f78e7c8c17774ca176626aab3c5caa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecdcd04ab469d93a1cb7b931ad97cc5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synced__bcf__reader_8h.html#aecdcd04ab469d93a1cb7b931ad97cc5d">bcf_sr_destroy</a> (<a class="el" href="structbcf__srs__t.html">bcf_srs_t</a> *readers)</td></tr>
 <tr class="separator:aecdcd04ab469d93a1cb7b931ad97cc5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f8aaf5e92e9b241e87126d7a30b09b6"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synced__bcf__reader_8h.html#a6f8aaf5e92e9b241e87126d7a30b09b6">bcf_sr_strerror</a> (int errnum)</td></tr>
+<tr class="separator:a6f8aaf5e92e9b241e87126d7a30b09b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0ae3c1b34883116024305ef09537dfb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synced__bcf__reader_8h.html#ae0ae3c1b34883116024305ef09537dfb">bcf_sr_add_reader</a> (<a class="el" href="structbcf__srs__t.html">bcf_srs_t</a> *readers, const char *fname)</td></tr>
 <tr class="separator:ae0ae3c1b34883116024305ef09537dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4d8ed4ee7e0ea29eb70778714450e9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synced__bcf__reader_8h.html#ad4d8ed4ee7e0ea29eb70778714450e9c">bcf_sr_remove_reader</a> (<a class="el" href="structbcf__srs__t.html">bcf_srs_t</a> *files, int i)</td></tr>
@@ -360,6 +377,33 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="a7d14d9f8227f2a6049e8a3f535b68164"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="synced__bcf__reader_8h.html#a7d14d9f8227f2a6049e8a3f535b68164">bcf_sr_error</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a7d14d9f8227f2a6049e8a3f535b68164ac4bf4ef782f4ca12b1bb7e5d9bcdb131"></a>open_failed&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7d14d9f8227f2a6049e8a3f535b68164ab53abf067f3cdc754fdfd260ce9ad0cd"></a>not_bgzf&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7d14d9f8227f2a6049e8a3f535b68164ab716be0e83c08c2b8b6e966dd5898524"></a>idx_load_failed&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7d14d9f8227f2a6049e8a3f535b68164a104be488df929c3433f0b52b72cddfe9"></a>file_type_error&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7d14d9f8227f2a6049e8a3f535b68164ab9962f3d29d9882b85c24aabfa4400af"></a>api_usage_error&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7d14d9f8227f2a6049e8a3f535b68164a60720ae9a0088407c0ff4b692b961f48"></a>header_error&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
 
 </div>
 </div>
@@ -768,10 +812,26 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a6f8aaf5e92e9b241e87126d7a30b09b6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* bcf_sr_strerror </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>errnum</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -135,10 +135,20 @@ Macros</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a4357bb16485523a85982d31bbbb6697d"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hts_8c.html#a4357bb16485523a85982d31bbbb6697d">hts_version</a> ()</td></tr>
 <tr class="separator:a4357bb16485523a85982d31bbbb6697d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44888d2f309f950b5cf8377dc49eb75a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhts_file.html">htsFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hts_8c.html#a44888d2f309f950b5cf8377dc49eb75a">hts_open</a> (const char *fn, const char *mode)</td></tr>
+<tr class="memitem:af26981c3656299d0a9a4c61e31e0f8d9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hts_8c.html#af26981c3656299d0a9a4c61e31e0f8d9">hts_detect_format</a> (<a class="el" href="structh_f_i_l_e.html">hFILE</a> *hfile, <a class="el" href="structhts_format.html">htsFormat</a> *fmt)</td></tr>
+<tr class="separator:af26981c3656299d0a9a4c61e31e0f8d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4c57763a5a192ce734685693c22ea75"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hts_8c.html#af4c57763a5a192ce734685693c22ea75">hts_format_description</a> (const <a class="el" href="structhts_format.html">htsFormat</a> *format)</td></tr>
+<tr class="separator:af4c57763a5a192ce734685693c22ea75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44888d2f309f950b5cf8377dc49eb75a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhts_file.html">htsFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hts_8c.html#a44888d2f309f950b5cf8377dc49eb75a">hts_open</a> (const char *fn, const char *<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>)</td></tr>
 <tr class="separator:a44888d2f309f950b5cf8377dc49eb75a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad181d7a1a650e3072b96ce12d0df5f56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhts_file.html">htsFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hts_8c.html#ad181d7a1a650e3072b96ce12d0df5f56">hts_hopen</a> (struct <a class="el" href="structh_f_i_l_e.html">hFILE</a> *hfile, const char *fn, const char *<a class="el" href="htsfile_8c.html#abc602f962597251d3e57cf3ea95ab19e">mode</a>)</td></tr>
+<tr class="separator:ad181d7a1a650e3072b96ce12d0df5f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24d29efd9c9a8f4767fbdff7d1a2fc60"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hts_8c.html#a24d29efd9c9a8f4767fbdff7d1a2fc60">hts_close</a> (<a class="el" href="structhts_file.html">htsFile</a> *fp)</td></tr>
 <tr class="separator:a24d29efd9c9a8f4767fbdff7d1a2fc60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33f600d983f6e6b68606041f101c3d09"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structhts_format.html">htsFormat</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hts_8c.html#a33f600d983f6e6b68606041f101c3d09">hts_get_format</a> (<a class="el" href="structhts_file.html">htsFile</a> *fp)</td></tr>
+<tr class="separator:a33f600d983f6e6b68606041f101c3d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b5a8270d8e7113f329425af3b2a0313"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hts_8c.html#a9b5a8270d8e7113f329425af3b2a0313">hts_set_opt</a> (<a class="el" href="structhts_file.html">htsFile</a> *fp, enum <a class="el" href="hts_8h.html#a1d696a356430013cc14a2ba5cda07220">cram_option</a> opt,...)</td></tr>
+<tr class="separator:a9b5a8270d8e7113f329425af3b2a0313"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a4f643295c7f02a9736af59f1edcf4d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hts_8c.html#a7a4f643295c7f02a9736af59f1edcf4d">hts_set_threads</a> (<a class="el" href="structhts_file.html">htsFile</a> *fp, int n)</td></tr>
 <tr class="separator:a7a4f643295c7f02a9736af59f1edcf4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f052460eba315d7876c6899ad1981aa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hts_8c.html#a6f052460eba315d7876c6899ad1981aa">hts_set_fai_filename</a> (<a class="el" href="structhts_file.html">htsFile</a> *fp, const char *fn_aux)</td></tr>
@@ -155,8 +165,6 @@ Functions</h2></td></tr>
 <tr class="separator:a25a8d58f13277f5b1a0158fba620e38c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58e49f18fbdea0ec24b483961205efca"><td class="memItemLeft" align="right" valign="top">char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hts_8c.html#a58e49f18fbdea0ec24b483961205efca">hts_readlines</a> (const char *fn, int *_n)</td></tr>
 <tr class="separator:a58e49f18fbdea0ec24b483961205efca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb37448485f12ab35d84dd7f7f94e47c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hts_8c.html#abb37448485f12ab35d84dd7f7f94e47c">hts_file_type</a> (const char *fname)</td></tr>
-<tr class="separator:abb37448485f12ab35d84dd7f7f94e47c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44120146e878bbe7c11bd3eb706a35be"><td class="memItemLeft" align="right" valign="top">typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hts_8c.html#a44120146e878bbe7c11bd3eb706a35be">khash_t</a> (bin)</td></tr>
 <tr class="separator:a44120146e878bbe7c11bd3eb706a35be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac23220fab85d441a98e31cd80cc20bc5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hts_8h.html#a685c2ecffa2a2bff4e6e1ac04c7493cd">hts_idx_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hts_8c.html#ac23220fab85d441a98e31cd80cc20bc5">hts_idx_init</a> (int n, int fmt, uint64_t offset0, int min_shift, int n_lvls)</td></tr>
@@ -298,19 +306,54 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="abb37448485f12ab35d84dd7f7f94e47c"></a>
+<a class="anchor" id="af26981c3656299d0a9a4c61e31e0f8d9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int hts_file_type </td>
+          <td class="memname">int hts_detect_format </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>fname</em></td><td>)</td>
+          <td class="paramtype">struct <a class="el" href="structh_f_i_l_e.html">hFILE</a> *&#160;</td>
+          <td class="paramname"><em>fp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhts_format.html">htsFormat</a> *&#160;</td>
+          <td class="paramname"><em>fmt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Determine format by peeking at the start of a file </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fp</td><td>File opened for reading, positioned at the beginning </td></tr>
+    <tr><td class="paramname">fmt</td><td>Format structure that will be filled out on return </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 for success, or negative if an error occurred. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af4c57763a5a192ce734685693c22ea75"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* hts_format_description </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structhts_format.html">htsFormat</a> *&#160;</td>
+          <td class="paramname"><em>format</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get a human-readable description of the file format </p>
 
 </div>
 </div>
@@ -327,6 +370,29 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a33f600d983f6e6b68606041f101c3d09"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structhts_format.html">htsFormat</a>* hts_get_format </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhts_file.html">htsFile</a> *&#160;</td>
+          <td class="paramname"><em>fp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the file's format information </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fp</td><td>The file handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Read-only pointer to the file's <a class="el" href="structhts_format.html">htsFormat</a>. </dd></dl>
 
 </div>
 </div>
@@ -359,6 +425,45 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad181d7a1a650e3072b96ce12d0df5f56"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structhts_file.html">htsFile</a>* hts_hopen </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structh_f_i_l_e.html">hFILE</a> *&#160;</td>
+          <td class="paramname"><em>fp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Open an existing stream as a SAM/BAM/CRAM/VCF/BCF/etc file </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fn</td><td>The already-open file handle </td></tr>
+    <tr><td class="paramname">mode</td><td>Open mode, as per <a class="el" href="hts_8h.html#a44888d2f309f950b5cf8377dc49eb75a">hts_open()</a> </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1064,6 +1169,47 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a9b5a8270d8e7113f329425af3b2a0313"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hts_set_opt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhts_file.html">htsFile</a> *&#160;</td>
+          <td class="paramname"><em>fp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum <a class="el" href="hts_8h.html#a1d696a356430013cc14a2ba5cda07220">cram_option</a>&#160;</td>
+          <td class="paramname"><em>opt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets a specified CRAM option on the open file handle. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fp</td><td>The file handle open the open file. </td></tr>
+    <tr><td class="paramname">opt</td><td>The CRAM_OPT_* option. </td></tr>
+    <tr><td class="paramname">...</td><td>Optional arguments, dependent on the option used. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 for success, or negative if an error occurred. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a7a4f643295c7f02a9736af59f1edcf4d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1252,7 +1398,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

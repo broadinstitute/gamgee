@@ -100,12 +100,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Macros</h2></td></tr>
 <tr class="memitem:ae334364a487412419eb2fb9fefb0bda9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcfutils_8c.html#ae334364a487412419eb2fb9fefb0bda9">BRANCH_INT</a>(type_t)</td></tr>
 <tr class="separator:ae334364a487412419eb2fb9fefb0bda9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60fd6e13fc2dc267409ac8c521b60cb3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcfutils_8c.html#a60fd6e13fc2dc267409ac8c521b60cb3">BRANCH_INT</a>(type_t, missing, vector_end)</td></tr>
-<tr class="separator:a60fd6e13fc2dc267409ac8c521b60cb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60fd6e13fc2dc267409ac8c521b60cb3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcfutils_8c.html#a60fd6e13fc2dc267409ac8c521b60cb3">BRANCH_INT</a>(type_t, missing, vector_end)</td></tr>
-<tr class="separator:a60fd6e13fc2dc267409ac8c521b60cb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf9411ce952541f5e6d77eee4aa33db3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcfutils_8c.html#acf9411ce952541f5e6d77eee4aa33db3">BRANCH</a>(type_t, missing, vector_end)</td></tr>
-<tr class="separator:acf9411ce952541f5e6d77eee4aa33db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef5a9cf965fd39e03931f61f7e288a23"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcfutils_8c.html#aef5a9cf965fd39e03931f61f7e288a23">BRANCH_INT</a>(type_t, vector_end)</td></tr>
+<tr class="separator:aef5a9cf965fd39e03931f61f7e288a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef5a9cf965fd39e03931f61f7e288a23"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcfutils_8c.html#aef5a9cf965fd39e03931f61f7e288a23">BRANCH_INT</a>(type_t, vector_end)</td></tr>
+<tr class="separator:aef5a9cf965fd39e03931f61f7e288a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a413d9eb50286b415e5334e8280458b17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcfutils_8c.html#a413d9eb50286b415e5334e8280458b17">BRANCH</a>(type_t, vector_end)</td></tr>
+<tr class="separator:a413d9eb50286b415e5334e8280458b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a935c26081e8dddaf64e1bd806de43989"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcfutils_8c.html#a935c26081e8dddaf64e1bd806de43989">BRANCH</a>(type_t, is_vector_end)</td></tr>
 <tr class="separator:a935c26081e8dddaf64e1bd806de43989"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a935c26081e8dddaf64e1bd806de43989"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vcfutils_8c.html#a935c26081e8dddaf64e1bd806de43989">BRANCH</a>(type_t, is_vector_end)</td></tr>
@@ -127,7 +127,7 @@ Functions</h2></td></tr>
 <tr class="separator:a7fdca7bb92ece07991ee197b37427504"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="acf9411ce952541f5e6d77eee4aa33db3"></a>
+<a class="anchor" id="a413d9eb50286b415e5334e8280458b17"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -136,12 +136,6 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">type_t, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">missing, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -156,21 +150,24 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">{ \</div>
-<div class="line">        for (i=0; i&lt;line-&gt;n_sample; i++) \</div>
+<b>Value:</b><div class="fragment"><div class="line">{ <a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">        for</a> (i=0; i&lt;line-&gt;n_sample; i++) \</div>
 <div class="line">        { \</div>
 <div class="line">            type_t *p = (type_t*) (gt-&gt;p + i*gt-&gt;size); \</div>
-<div class="line">            int ial; \</div>
-<div class="line">            for (ial=0; ial&lt;gt-&gt;n; ial++) \</div>
-<div class="line">            { \</div>
-<div class="line">                if ( p[ial]==vector_end ) break; <span class="comment">/* smaller ploidy */</span> \</div>
-<div class="line">                if ( !(p[ial]&gt;&gt;1) || p[ial]==<a class="code" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a> ) continue; <span class="comment">/* missing allele */</span> \</div>
-<div class="line">                if ( (p[ial]&gt;&gt;1)-1 &gt;= line-&gt;n_allele ) return -1; \</div>
+<div class="line">            int ial; <a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">            for</a> (ial=0; ial&lt;gt-&gt;n; ial++) \</div>
+<div class="line">            { <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">                if</a> ( p[ial]==vector_end ) break; <span class="comment">/* smaller ploidy */</span> \</div>
+<div class="line">                <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a> ( <a class="code" href="vcf_8h.html#a125d1bb17800f8b14d31784ca409e280">bcf_gt_is_missing</a>(p[ial]) ) continue; <span class="comment">/* missing allele */</span> \</div>
+<div class="line">                <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a> ( (p[ial]&gt;&gt;1)-1 &gt;= line-&gt;n_allele ) <a class="code" href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">return</a> -1; \</div>
 <div class="line">                ac[(p[ial]&gt;&gt;1)-1]++; \</div>
 <div class="line">            } \</div>
 <div class="line">        } \</div>
 <div class="line">    }</div>
-<div class="ttc" id="namespacegamgee_html_a659c46d5b1420346543fb1afc4a575de"><div class="ttname"><a href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">gamgee::missing</a></div><div class="ttdeci">bool missing(const bool value)</div><div class="ttdoc">Returns true if bool is false (missing). </div><div class="ttdef"><b>Definition:</b> missing.h:22</div></div>
+<div class="ttc" id="cram__encode_8c_html_a9717e7bbecb906637e86cef6da3d83c2"><div class="ttname"><a href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">return</a></div><div class="ttdeci">return</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2876</div></div>
+<div class="ttc" id="vcf_8h_html_a125d1bb17800f8b14d31784ca409e280"><div class="ttname"><a href="vcf_8h.html#a125d1bb17800f8b14d31784ca409e280">bcf_gt_is_missing</a></div><div class="ttdeci">#define bcf_gt_is_missing(val)</div><div class="ttdef"><b>Definition:</b> vcf.h:569</div></div>
+<div class="ttc" id="cram__encode_8c_html_aa55ff40b43720e3fc91df0ef2bc4f574"><div class="ttname"><a href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a></div><div class="ttdeci">if(!(cr-&gt;flags &amp;BAM_FUNMAP))</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2565</div></div>
+<div class="ttc" id="cram__encode_8c_html_a388e40b11b6d85d95ae4be71d03fc5db"><div class="ttname"><a href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">for</a></div><div class="ttdeci">for(i=0;i&lt; cr-&gt;len;i++)</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2736</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -199,15 +196,17 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">{ \</div>
 <div class="line">                type_t *ptr = (type_t*) dat; \</div>
-<div class="line">                int size = <span class="keyword">sizeof</span>(type_t); \</div>
-<div class="line">                for (j=0; j&lt;ntop; j++) <span class="comment">/* j:ori, k:new */</span> \</div>
-<div class="line">                { \</div>
-<div class="line">                    if ( is_vector_end ) { memcpy(dat+k*size, dat+j*size, size); <span class="keywordflow">break</span>; } \</div>
-<div class="line">                    if ( rm_mask &amp; 1&lt;&lt;(j+inc) ) continue; \</div>
-<div class="line">                    if ( j!=k ) memcpy(dat+k*size, dat+j*size, size); \</div>
+<div class="line">                int size = <span class="keyword">sizeof</span>(type_t); <a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">                for</a> (j=0; j&lt;ntop; j++) <span class="comment">/* j:ori, k:new */</span> \</div>
+<div class="line">                { <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">                    if</a> ( is_vector_end ) { memcpy(dat+k*size, dat+j*size, size); <span class="keywordflow">break</span>; } <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">                    if</a> ( rm_mask &amp; 1&lt;&lt;(j+inc) ) continue; \</div>
+<div class="line">                    <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a> ( j!=k ) memcpy(dat+k*size, dat+j*size, size); \</div>
 <div class="line">                    k++; \</div>
 <div class="line">                } \</div>
 <div class="line">            }</div>
+<div class="ttc" id="cram__encode_8c_html_aa55ff40b43720e3fc91df0ef2bc4f574"><div class="ttname"><a href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a></div><div class="ttdeci">if(!(cr-&gt;flags &amp;BAM_FUNMAP))</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2565</div></div>
+<div class="ttc" id="cram__encode_8c_html_a388e40b11b6d85d95ae4be71d03fc5db"><div class="ttname"><a href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">for</a></div><div class="ttdeci">for(i=0;i&lt; cr-&gt;len;i++)</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2736</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -236,19 +235,21 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">{ \</div>
 <div class="line">                type_t *ptr = (type_t*) dat; \</div>
-<div class="line">                int size = <span class="keyword">sizeof</span>(type_t); \</div>
-<div class="line">                for (j=0; j&lt;nR_ori; j++) \</div>
-<div class="line">                { \</div>
-<div class="line">                    for (k=0; k&lt;=j; k++) \</div>
+<div class="line">                int size = <span class="keyword">sizeof</span>(type_t); <a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">                for</a> (j=0; j&lt;nR_ori; j++) \</div>
+<div class="line">                { <a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">                    for</a> (k=0; k&lt;=j; k++) \</div>
 <div class="line">                    { \</div>
-<div class="line">                        l_ori++; \</div>
-<div class="line">                        if ( is_vector_end ) { memcpy(dat+l_new*size, dat+l_ori*size, size); <span class="keywordflow">break</span>; } \</div>
-<div class="line">                        if ( rm_mask &amp; 1&lt;&lt;j || rm_mask &amp; 1&lt;&lt;k ) continue; \</div>
-<div class="line">                        if ( l_ori!=l_new ) memcpy(dat+l_new*size, dat+l_ori*size, size); \</div>
+<div class="line">                        l_ori++; <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">                        if</a> ( is_vector_end ) { memcpy(dat+l_new*size, dat+l_ori*size, size); <span class="keywordflow">break</span>; } <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">                        if</a> ( rm_mask &amp; 1&lt;&lt;j || rm_mask &amp; 1&lt;&lt;k ) continue; \</div>
+<div class="line">                        <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a> ( l_ori!=l_new ) memcpy(dat+l_new*size, dat+l_ori*size, size); \</div>
 <div class="line">                        l_new++; \</div>
 <div class="line">                    } \</div>
 <div class="line">                } \</div>
 <div class="line">            }</div>
+<div class="ttc" id="cram__encode_8c_html_aa55ff40b43720e3fc91df0ef2bc4f574"><div class="ttname"><a href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a></div><div class="ttdeci">if(!(cr-&gt;flags &amp;BAM_FUNMAP))</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2565</div></div>
+<div class="ttc" id="cram__encode_8c_html_a388e40b11b6d85d95ae4be71d03fc5db"><div class="ttname"><a href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">for</a></div><div class="ttdeci">for(i=0;i&lt; cr-&gt;len;i++)</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2736</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -275,22 +276,24 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">{ \</div>
-<div class="line">                for (j=0; j&lt;line-&gt;n_sample; j++) \</div>
+<b>Value:</b><div class="fragment"><div class="line">{ <a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">                for</a> (j=0; j&lt;line-&gt;n_sample; j++) \</div>
 <div class="line">                { \</div>
 <div class="line">                    type_t *ptr_src = ((type_t*)dat) + j*nori; \</div>
 <div class="line">                    type_t *ptr_dst = ((type_t*)dat) + j*nA_new; \</div>
 <div class="line">                    int size = <span class="keyword">sizeof</span>(type_t); \</div>
-<div class="line">                    int k_src, k_dst = 0; \</div>
-<div class="line">                    for (k_src=0; k_src&lt;ntop; k_src++) \</div>
-<div class="line">                    { \</div>
-<div class="line">                        if ( is_vector_end ) { memcpy(ptr_dst+k_dst, ptr_src+k_src, size); <span class="keywordflow">break</span>; } \</div>
-<div class="line">                        if ( rm_mask &amp; 1&lt;&lt;(k_src+inc) ) continue; \</div>
-<div class="line">                        if ( k_src!=k_dst ) memcpy(ptr_dst+k_dst, ptr_src+k_src, size); \</div>
+<div class="line">                    int k_src, k_dst = 0; <a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">                    for</a> (k_src=0; k_src&lt;ntop; k_src++) \</div>
+<div class="line">                    { <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">                        if</a> ( is_vector_end ) { memcpy(ptr_dst+k_dst, ptr_src+k_src, size); <span class="keywordflow">break</span>; } <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">                        if</a> ( rm_mask &amp; 1&lt;&lt;(k_src+inc) ) continue; \</div>
+<div class="line">                        <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a> ( k_src!=k_dst ) memcpy(ptr_dst+k_dst, ptr_src+k_src, size); \</div>
 <div class="line">                        k_dst++; \</div>
 <div class="line">                    } \</div>
 <div class="line">                } \</div>
 <div class="line">            }</div>
+<div class="ttc" id="cram__encode_8c_html_aa55ff40b43720e3fc91df0ef2bc4f574"><div class="ttname"><a href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a></div><div class="ttdeci">if(!(cr-&gt;flags &amp;BAM_FUNMAP))</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2565</div></div>
+<div class="ttc" id="cram__encode_8c_html_a388e40b11b6d85d95ae4be71d03fc5db"><div class="ttname"><a href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">for</a></div><div class="ttdeci">for(i=0;i&lt; cr-&gt;len;i++)</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2736</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -334,17 +337,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">{        \</div>
-<div class="line">                type_t *p = (type_t *) ac_ptr;  \</div>
-<div class="line">                for (i=0; i&lt;ac_len; i++)        \</div>
+<div class="line">                type_t *p = (type_t *) ac_ptr;  <a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">                for</a> (i=0; i&lt;ac_len; i++)        \</div>
 <div class="line">                {                               \</div>
 <div class="line">                    ac[i+1] = p[i];             \</div>
 <div class="line">                    nac += p[i];                \</div>
 <div class="line">                }                               \</div>
 <div class="line">            }</div>
+<div class="ttc" id="cram__encode_8c_html_a388e40b11b6d85d95ae4be71d03fc5db"><div class="ttname"><a href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">for</a></div><div class="ttdeci">for(i=0;i&lt; cr-&gt;len;i++)</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2736</div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="a60fd6e13fc2dc267409ac8c521b60cb3"></a>
+<a class="anchor" id="aef5a9cf965fd39e03931f61f7e288a23"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -353,12 +357,6 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">type_t, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">missing, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -373,24 +371,26 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">{ \</div>
-<div class="line">            for (i=0; i&lt;line-&gt;n_sample; i++) \</div>
+<b>Value:</b><div class="fragment"><div class="line">{ <a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">            for</a> (i=0; i&lt;line-&gt;n_sample; i++) \</div>
 <div class="line">            { \</div>
 <div class="line">                type_t *p = (type_t*) (fmt_gt-&gt;p + i*fmt_gt-&gt;size); \</div>
-<div class="line">                int ial; \</div>
-<div class="line">                for (ial=0; ial&lt;fmt_gt-&gt;n; ial++) \</div>
-<div class="line">                { \</div>
-<div class="line">                    if ( p[ial]==vector_end ) break; <span class="comment">/* smaller ploidy */</span> \</div>
-<div class="line">                    if ( !(p[ial]&gt;&gt;1) || p[ial]==<a class="code" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a> ) continue; <span class="comment">/* missing allele */</span> \</div>
+<div class="line">                int ial; <a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">                for</a> (ial=0; ial&lt;fmt_gt-&gt;n; ial++) \</div>
+<div class="line">                { <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">                    if</a> ( p[ial]==vector_end ) break; <span class="comment">/* smaller ploidy */</span> \</div>
+<div class="line">                    <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a> ( <a class="code" href="vcf_8h.html#a125d1bb17800f8b14d31784ca409e280">bcf_gt_is_missing</a>(p[ial]) ) continue; <span class="comment">/* missing allele */</span> \</div>
 <div class="line">                    ac[(p[ial]&gt;&gt;1)-1]++; \</div>
 <div class="line">                } \</div>
 <div class="line">            } \</div>
 <div class="line">        }</div>
-<div class="ttc" id="namespacegamgee_html_a659c46d5b1420346543fb1afc4a575de"><div class="ttname"><a href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">gamgee::missing</a></div><div class="ttdeci">bool missing(const bool value)</div><div class="ttdoc">Returns true if bool is false (missing). </div><div class="ttdef"><b>Definition:</b> missing.h:22</div></div>
+<div class="ttc" id="vcf_8h_html_a125d1bb17800f8b14d31784ca409e280"><div class="ttname"><a href="vcf_8h.html#a125d1bb17800f8b14d31784ca409e280">bcf_gt_is_missing</a></div><div class="ttdeci">#define bcf_gt_is_missing(val)</div><div class="ttdef"><b>Definition:</b> vcf.h:569</div></div>
+<div class="ttc" id="cram__encode_8c_html_aa55ff40b43720e3fc91df0ef2bc4f574"><div class="ttname"><a href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a></div><div class="ttdeci">if(!(cr-&gt;flags &amp;BAM_FUNMAP))</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2565</div></div>
+<div class="ttc" id="cram__encode_8c_html_a388e40b11b6d85d95ae4be71d03fc5db"><div class="ttname"><a href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">for</a></div><div class="ttdeci">for(i=0;i&lt; cr-&gt;len;i++)</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2736</div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="a60fd6e13fc2dc267409ac8c521b60cb3"></a>
+<a class="anchor" id="aef5a9cf965fd39e03931f61f7e288a23"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -399,12 +399,6 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">type_t, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">missing, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -420,34 +414,37 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">{ \</div>
-<div class="line">        type_t *p = (type_t*) (fmt_ptr-&gt;p + isample*fmt_ptr-&gt;size); \</div>
-<div class="line">        for (i=0; i&lt;fmt_ptr-&gt;n; i++) \</div>
-<div class="line">        { \</div>
-<div class="line">            if ( p[i] == vector_end ) break; <span class="comment">/* smaller ploidy */</span> \</div>
-<div class="line">            if ( !p[i] || p[i] == <a class="code" href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">missing</a> ) continue; <span class="comment">/* missing allele */</span> \</div>
+<div class="line">        type_t *p = (type_t*) (fmt_ptr-&gt;p + isample*fmt_ptr-&gt;size); <a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">        for</a> (i=0; i&lt;fmt_ptr-&gt;n; i++) \</div>
+<div class="line">        { <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">            if</a> ( p[i] == vector_end ) break; <span class="comment">/* smaller ploidy */</span> \</div>
+<div class="line">            <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a> ( <a class="code" href="vcf_8h.html#a125d1bb17800f8b14d31784ca409e280">bcf_gt_is_missing</a>(p[i]) ) continue; <span class="comment">/* missing allele */</span> \</div>
 <div class="line">            <span class="keywordtype">int</span> tmp = p[i]&gt;&gt;1; \</div>
-<div class="line">            if ( tmp&gt;1 ) \</div>
-<div class="line">            { \</div>
-<div class="line">                if ( !ial ) { ial = tmp; has_alt = 1; } \</div>
-<div class="line">                else <span class="keywordflow">if</span> ( tmp!=ial ) \</div>
-<div class="line">                { \</div>
-<div class="line">                    if ( tmp&lt;ial ) \</div>
+<div class="line">            <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a> ( tmp&gt;1 ) \</div>
+<div class="line">            { <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">                if</a> ( !ial ) { ial = tmp; has_alt = 1; } <a class="code" href="cram__encode_8c.html#a0544c3fe466e421738dae463968b70ba">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a0544c3fe466e421738dae463968b70ba">                else</a> <span class="keywordflow">if</span> ( tmp!=ial ) \</div>
+<div class="line">                { <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">                    if</a> ( tmp&lt;ial ) \</div>
 <div class="line">                    { \</div>
 <div class="line">                        jal = ial; \</div>
 <div class="line">                        ial = tmp; \</div>
-<div class="line">                    } \</div>
-<div class="line">                    else \</div>
+<div class="line">                    } <a class="code" href="cram__encode_8c.html#a0544c3fe466e421738dae463968b70ba">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a0544c3fe466e421738dae463968b70ba">                    else</a> \</div>
 <div class="line">                    { \</div>
 <div class="line">                        jal = tmp; \</div>
 <div class="line">                    } \</div>
 <div class="line">                    has_alt = 2; \</div>
 <div class="line">                } \</div>
-<div class="line">            } \</div>
-<div class="line">            else has_ref = 1; \</div>
+<div class="line">            } <a class="code" href="cram__encode_8c.html#a0544c3fe466e421738dae463968b70ba">\</a></div>
+<div class="line"><a class="code" href="cram__encode_8c.html#a0544c3fe466e421738dae463968b70ba">            else</a> has_ref = 1; \</div>
 <div class="line">            nals++; \</div>
 <div class="line">        } \</div>
 <div class="line">    }</div>
-<div class="ttc" id="namespacegamgee_html_a659c46d5b1420346543fb1afc4a575de"><div class="ttname"><a href="namespacegamgee.html#a659c46d5b1420346543fb1afc4a575de">gamgee::missing</a></div><div class="ttdeci">bool missing(const bool value)</div><div class="ttdoc">Returns true if bool is false (missing). </div><div class="ttdef"><b>Definition:</b> missing.h:22</div></div>
+<div class="ttc" id="cram__encode_8c_html_a0544c3fe466e421738dae463968b70ba"><div class="ttname"><a href="cram__encode_8c.html#a0544c3fe466e421738dae463968b70ba">else</a></div><div class="ttdeci">else</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2729</div></div>
+<div class="ttc" id="vcf_8h_html_a125d1bb17800f8b14d31784ca409e280"><div class="ttname"><a href="vcf_8h.html#a125d1bb17800f8b14d31784ca409e280">bcf_gt_is_missing</a></div><div class="ttdeci">#define bcf_gt_is_missing(val)</div><div class="ttdef"><b>Definition:</b> vcf.h:569</div></div>
+<div class="ttc" id="cram__encode_8c_html_aa55ff40b43720e3fc91df0ef2bc4f574"><div class="ttname"><a href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a></div><div class="ttdeci">if(!(cr-&gt;flags &amp;BAM_FUNMAP))</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2565</div></div>
+<div class="ttc" id="cram__encode_8c_html_a388e40b11b6d85d95ae4be71d03fc5db"><div class="ttname"><a href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">for</a></div><div class="ttdeci">for(i=0;i&lt; cr-&gt;len;i++)</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2736</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -595,7 +592,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 01:29:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 22:13:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
