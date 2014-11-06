@@ -47,50 +47,87 @@ class VariantHeader {
   uint32_t n_individual_fields() const;               ///< @brief returns the number of individual fields declared in this header
 
   // type checking functions: returns BCF_HT_FLAG, BCF_HT_INT, BCF_HT_REAL, BCF_HT_STR from htslib/vcf.h
-  uint8_t shared_field_type(const std::string& tag) const;      ///< returns the type of this shared (INFO) field
-  uint8_t shared_field_type(const int32_t index) const;         ///< returns the type of this shared (INFO) field
-  uint8_t individual_field_type(const std::string& tag) const;  ///< returns the type of this individual (FORMAT) field
-  uint8_t individual_field_type(const int32_t index) const;     ///< returns the type of this individual (FORMAT) field
+  uint8_t shared_field_type(const std::string& tag) const { return field_type(field_index(tag), BCF_HL_INFO); }     ///< @brief returns the type of this shared (INFO) field  @note must check whether the field exists before calling this function, as it doesn't check for you
+  uint8_t shared_field_type(const int32_t index) const { return field_type(index, BCF_HL_INFO); }                   ///< @brief returns the type of this shared (INFO) field  @note must check whether the field exists before calling this function, as it doesn't check for you
+  uint8_t individual_field_type(const std::string& tag) const { return field_type(field_index(tag), BCF_HL_FMT); }  ///< @brief returns the type of this individual (FORMAT) field  @note must check whether the field exists before calling this function, as it doesn't check for you
+  uint8_t individual_field_type(const int32_t index) const { return field_type(index, BCF_HL_FMT); }                ///< @brief returns the type of this individual (FORMAT) field  @note must check whether the field exists before calling this function, as it doesn't check for you
+
+  /**
+   * returns the type of the field with the specified name and category (one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT)
+   *
+   * @note must check whether the field exists before calling this function, as it doesn't check for you
+   */
+  uint8_t field_type(const std::string& tag, const int32_t field_category) const { return field_type(field_index(tag), field_category); }
+
+  /**
+   * returns the type of the field with the specified index and category (one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT)
+   *
+   * @note must check whether the field exists before calling this function, as it doesn't check for you
+   */
+  uint8_t field_type(const int32_t index, const int32_t field_category) const { return bcf_hdr_id2type(m_header.get(), field_category, index); }
 
   /**
    * @brief checks whether the given filter is present given the filter name
    */
-  bool has_filter(const std::string& filter_name) const { return field_exists(field_index(filter_name), BCF_HL_FLT); }
+  bool has_filter(const std::string& filter_name) const { return has_field(field_index(filter_name), BCF_HL_FLT); }
 
   /**
    * @brief checks whether the given filter is present given the filter index
    */
-  bool has_filter(const int32_t filter_index) const { return field_exists(filter_index, BCF_HL_FLT); }
+  bool has_filter(const int32_t filter_index) const { return has_field(filter_index, BCF_HL_FLT); }
 
   /**
    * @brief checks whether the given shared (INFO) field is present given the field name
    */
-  bool has_shared_field(const std::string& field_name) const { return field_exists(field_index(field_name), BCF_HL_INFO); }
+  bool has_shared_field(const std::string& field_name) const { return has_field(field_index(field_name), BCF_HL_INFO); }
 
   /**
    * @brief checks whether the given shared (INFO) field is present given the field index
    */
-  bool has_shared_field(const int32_t field_index) const { return field_exists(field_index, BCF_HL_INFO); }
+  bool has_shared_field(const int32_t field_index) const { return has_field(field_index, BCF_HL_INFO); }
 
   /**
    * @brief checks whether the given individual (FORMAT) field is present given the field name
    */
-  bool has_individual_field(const std::string& field_name) const { return field_exists(field_index(field_name), BCF_HL_FMT); }
+  bool has_individual_field(const std::string& field_name) const { return has_field(field_index(field_name), BCF_HL_FMT); }
 
   /**
    * @brief checks whether the given individual (FORMAT) field is present given the field index
    */
-  bool has_individual_field(const int32_t field_index) const { return field_exists(field_index, BCF_HL_FMT); }
+  bool has_individual_field(const int32_t field_index) const { return has_field(field_index, BCF_HL_FMT); }
+
+  /**
+   * @brief checks whether the given field is present given the field name and field category (which must be one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT)
+   */
+  bool has_field(const std::string& field_name, const int32_t field_category) const { return has_field(field_index(field_name), field_category); }
+
+  /**
+   * @brief checks whether the given field is present given the field index and field category (one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT)
+   */
+  bool has_field(const int32_t field_index, const int32_t field_category) const {
+    // Can't just use bcf_hdr_idinfo_exists() here since it assumes the index came from a hash lookup,
+    // which is not always the case
+    return field_index >= 0 &&
+           field_index < m_header->n[BCF_DT_ID] &&
+           m_header->id[BCF_DT_ID][field_index].val != nullptr &&
+           m_header->id[BCF_DT_ID][field_index].val->hrec[field_category] != nullptr;
+  }
 
   /**
    * @brief checks whether the given sample is present given the sample name
    */
-  bool has_sample(const std::string& sample_name) const { return sample_exists(sample_index(sample_name)); }
+  bool has_sample(const std::string& sample_name) const { return has_sample(sample_index(sample_name)); }
 
   /**
    * @brief checks whether the given sample is present given the sample index
    */
-  bool has_sample(const int32_t sample_index) const { return sample_exists(sample_index); }
+  bool has_sample(const int32_t sample_index) const {
+    // Can't assume that sample_index came from a hash lookup, so must validate the hard way
+    return sample_index >= 0 &&
+           sample_index < m_header->n[BCF_DT_SAMPLE] &&
+           m_header->id[BCF_DT_SAMPLE][sample_index].val != nullptr &&
+           m_header->id[BCF_DT_SAMPLE][sample_index].val->id != -1;
+  }
 
   /**
    * @brief looks up the index of a particular filter, shared or individual field tag, enabling subsequent O(1) random-access lookups for that field throughout the iteration. 
@@ -116,25 +153,7 @@ class VariantHeader {
  private:
   std::shared_ptr<bcf_hdr_t> m_header;
 
-
-  bool field_exists(const int32_t field_index, const int32_t field_type) const {
-    // Can't just use bcf_hdr_idinfo_exists() here since it assumes the index came from a hash lookup,
-    // which is not always the case
-    return field_index >= 0 &&
-           field_index < m_header->n[BCF_DT_ID] &&
-           m_header->id[BCF_DT_ID][field_index].val != nullptr &&
-           m_header->id[BCF_DT_ID][field_index].val->hrec[field_type] != nullptr;
-  }
-
-  bool sample_exists(const int32_t sample_index) const {
-    // Can't assume that sample_index came from a hash lookup, so must validate the hard way
-    return sample_index >= 0 &&
-           sample_index < m_header->n[BCF_DT_SAMPLE] &&
-           m_header->id[BCF_DT_SAMPLE][sample_index].val != nullptr &&
-           m_header->id[BCF_DT_SAMPLE][sample_index].val->id != -1;
-  }
-  
-
+  friend class Variant;
   friend class VariantWriter;
   friend class VariantHeaderBuilder;
   friend class VariantBuilder;       ///< builder needs access to the internals in order to build efficiently
