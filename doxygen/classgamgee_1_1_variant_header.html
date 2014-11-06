@@ -171,6 +171,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4d540e364a5cb454479af72e6365b20e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a4d540e364a5cb454479af72e6365b20e">individual_field_type</a> (const int32_t index) const </td></tr>
 <tr class="memdesc:a4d540e364a5cb454479af72e6365b20e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the type of this individual (FORMAT) field  <a href="#a4d540e364a5cb454479af72e6365b20e">More...</a><br /></td></tr>
 <tr class="separator:a4d540e364a5cb454479af72e6365b20e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4cfea3099357d3df38b8e299e9bc60f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#ad4cfea3099357d3df38b8e299e9bc60f">field_type</a> (const std::string &amp;tag, const int32_t field_category) const </td></tr>
+<tr class="separator:ad4cfea3099357d3df38b8e299e9bc60f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a451f09a5949db0dab2bb5eae99713e14"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a451f09a5949db0dab2bb5eae99713e14">field_type</a> (const int32_t index, const int32_t field_category) const </td></tr>
+<tr class="separator:a451f09a5949db0dab2bb5eae99713e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a115b748d92f8e3e3ffa5c647ff6886c0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a115b748d92f8e3e3ffa5c647ff6886c0">has_filter</a> (const std::string &amp;filter_name) const </td></tr>
 <tr class="memdesc:a115b748d92f8e3e3ffa5c647ff6886c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks whether the given filter is present given the filter name  <a href="#a115b748d92f8e3e3ffa5c647ff6886c0">More...</a><br /></td></tr>
 <tr class="separator:a115b748d92f8e3e3ffa5c647ff6886c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -189,6 +193,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0d971e7551fe2102bc8f12889d8a3525"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a0d971e7551fe2102bc8f12889d8a3525">has_individual_field</a> (const int32_t <a class="el" href="classgamgee_1_1_variant_header.html#afa8e8fe7f0b76390f78b95ac2fab602f">field_index</a>) const </td></tr>
 <tr class="memdesc:a0d971e7551fe2102bc8f12889d8a3525"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks whether the given individual (FORMAT) field is present given the field index  <a href="#a0d971e7551fe2102bc8f12889d8a3525">More...</a><br /></td></tr>
 <tr class="separator:a0d971e7551fe2102bc8f12889d8a3525"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9c06086de76775236c7f3da4956b324"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#aa9c06086de76775236c7f3da4956b324">has_field</a> (const std::string &amp;field_name, const int32_t field_category) const </td></tr>
+<tr class="memdesc:aa9c06086de76775236c7f3da4956b324"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks whether the given field is present given the field name and field category (which must be one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT)  <a href="#aa9c06086de76775236c7f3da4956b324">More...</a><br /></td></tr>
+<tr class="separator:aa9c06086de76775236c7f3da4956b324"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a549eb6c2203523831d4074c4653b95e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a549eb6c2203523831d4074c4653b95e3">has_field</a> (const int32_t <a class="el" href="classgamgee_1_1_variant_header.html#afa8e8fe7f0b76390f78b95ac2fab602f">field_index</a>, const int32_t field_category) const </td></tr>
+<tr class="memdesc:a549eb6c2203523831d4074c4653b95e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks whether the given field is present given the field index and field category (one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT)  <a href="#a549eb6c2203523831d4074c4653b95e3">More...</a><br /></td></tr>
+<tr class="separator:a549eb6c2203523831d4074c4653b95e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0023423b29aa098322a7ef0e01ac04b1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a0023423b29aa098322a7ef0e01ac04b1">has_sample</a> (const std::string &amp;sample_name) const </td></tr>
 <tr class="memdesc:a0023423b29aa098322a7ef0e01ac04b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks whether the given sample is present given the sample name  <a href="#a0023423b29aa098322a7ef0e01ac04b1">More...</a><br /></td></tr>
 <tr class="separator:a0023423b29aa098322a7ef0e01ac04b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,6 +214,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
+<tr class="memitem:aa3577d92d98656c9a368b297edd5f320"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#aa3577d92d98656c9a368b297edd5f320">Variant</a></td></tr>
+<tr class="separator:aa3577d92d98656c9a368b297edd5f320"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24da1ae869010cf623de7749910a86e2"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a24da1ae869010cf623de7749910a86e2">VariantWriter</a></td></tr>
 <tr class="separator:a24da1ae869010cf623de7749910a86e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af17dc6e3178d144772bce073ab1e773a"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#af17dc6e3178d144772bce073ab1e773a">VariantHeaderBuilder</a></td></tr>
@@ -389,6 +401,78 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 
 </div>
 </div>
+<a class="anchor" id="ad4cfea3099357d3df38b8e299e9bc60f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gamgee::VariantHeader::field_type </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>field_category</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>returns the type of the field with the specified name and category (one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT)</p>
+<dl class="section note"><dt>Note</dt><dd>must check whether the field exists before calling this function, as it doesn't check for you </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a451f09a5949db0dab2bb5eae99713e14"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gamgee::VariantHeader::field_type </td>
+          <td>(</td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>field_category</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>returns the type of the field with the specified index and category (one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT)</p>
+<dl class="section note"><dt>Note</dt><dd>must check whether the field exists before calling this function, as it doesn't check for you </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a9903aa559390cfda45ae2e645005b667"></a>
 <div class="memitem">
 <div class="memproto">
@@ -403,6 +487,78 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 </div><div class="memdoc">
 
 <p>builds a vector with the filters </p>
+
+</div>
+</div>
+<a class="anchor" id="aa9c06086de76775236c7f3da4956b324"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::VariantHeader::has_field </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>field_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>field_category</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>checks whether the given field is present given the field name and field category (which must be one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT) </p>
+
+</div>
+</div>
+<a class="anchor" id="a549eb6c2203523831d4074c4653b95e3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gamgee::VariantHeader::has_field </td>
+          <td>(</td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>field_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>field_category</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>checks whether the given field is present given the field index and field category (one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT) </p>
 
 </div>
 </div>
@@ -617,6 +773,9 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 <a class="anchor" id="a9bd34a56ccfc1311b92bb2012b2f6b64"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t gamgee::VariantHeader::individual_field_type </td>
@@ -626,15 +785,24 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>returns the type of this individual (FORMAT) field </p>
+<dl class="section note"><dt>Note</dt><dd>must check whether the field exists before calling this function, as it doesn't check for you </dd></dl>
 
 </div>
 </div>
 <a class="anchor" id="a4d540e364a5cb454479af72e6365b20e"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t gamgee::VariantHeader::individual_field_type </td>
@@ -644,9 +812,15 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>returns the type of this individual (FORMAT) field </p>
+<dl class="section note"><dt>Note</dt><dd>must check whether the field exists before calling this function, as it doesn't check for you </dd></dl>
 
 </div>
 </div>
@@ -902,6 +1076,9 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 <a class="anchor" id="a6ba704b46548ae45fedc3231de1b712e"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t gamgee::VariantHeader::shared_field_type </td>
@@ -911,15 +1088,24 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>returns the type of this shared (INFO) field </p>
+<dl class="section note"><dt>Note</dt><dd>must check whether the field exists before calling this function, as it doesn't check for you </dd></dl>
 
 </div>
 </div>
 <a class="anchor" id="a17011816345b38ce60a4ac6ce761a431"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t gamgee::VariantHeader::shared_field_type </td>
@@ -929,9 +1115,15 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>returns the type of this shared (INFO) field </p>
+<dl class="section note"><dt>Note</dt><dd>must check whether the field exists before calling this function, as it doesn't check for you </dd></dl>
 
 </div>
 </div>
@@ -953,6 +1145,26 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a class="anchor" id="aa3577d92d98656c9a368b297edd5f320"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classgamgee_1_1_variant.html">Variant</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a2a1a240fa3d72570ffc9a9d426b0336c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1062,7 +1274,7 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 4 2014 20:03:47 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 01:29:10 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
