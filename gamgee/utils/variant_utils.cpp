@@ -24,6 +24,8 @@ void subset_variant_samples(bcf_hdr_t* hdr_ptr, const std::vector<std::string>& 
     sample_list.erase(sample_list.size() - 1);
     bcf_hdr_set_samples(hdr_ptr, sample_list.c_str(), false);
   }
+
+  // NOTE: must NOT call bcf_hdr_sync() here, since htslib calls it for us in bcf_hdr_set_samples()
 }
 
 void merge_variant_headers(const std::shared_ptr<bcf_hdr_t>& dest_hdr_ptr, const std::shared_ptr<bcf_hdr_t>& src_hdr_ptr) {
@@ -39,6 +41,7 @@ void merge_variant_headers(const std::shared_ptr<bcf_hdr_t>& dest_hdr_ptr, const
 
   // vcf.h    "After all samples have been added, NULL must be passed to update internal header structures."
   bcf_hdr_add_sample(dest_hdr_ptr.get(), nullptr);
+  bcf_hdr_sync(dest_hdr_ptr.get());
 }
 
 }

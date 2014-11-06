@@ -58,6 +58,8 @@ class VariantHeaderBuilder {
    * @brief create a new VariantHeader by copying the contents of this builder into a new object.  Allows for reuse.
    */
   VariantHeader build() const {
+    // Need to sync the header before returning it so that changes will be reflected in the final product
+    bcf_hdr_sync(m_header.get());
     return VariantHeader{utils::make_shared_variant_header(utils::variant_header_deep_copy(m_header.get()))};
   }
 
@@ -65,7 +67,11 @@ class VariantHeaderBuilder {
    * @brief create a new VariantHeader by moving the contents of this builder into a new object.
    * More efficient but does not allow for reuse.
    */
-  VariantHeader one_time_build() const { return VariantHeader{move(m_header)}; }
+  VariantHeader one_time_build() const {
+    // Need to sync the header before returning it so that changes will be reflected in the final product
+    bcf_hdr_sync(m_header.get());
+    return VariantHeader{move(m_header)};
+  }
 
  private:
   std::shared_ptr<bcf_hdr_t> m_header;

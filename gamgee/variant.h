@@ -176,8 +176,8 @@ class Variant {
 
   bcf_fmt_t*  find_individual_field(const std::string& tag) const { return bcf_get_fmt(m_header.m_header.get(), m_body.get(), tag.c_str());  }
   bcf_info_t* find_shared_field(const std::string& tag)     const { return bcf_get_info(m_header.m_header.get(), m_body.get(), tag.c_str()); }
-  bcf_fmt_t*  find_individual_field(const uint32_t index) const { return bcf_get_fmt_idx(m_body.get(), index);                    }
-  bcf_info_t* find_shared_field(const uint32_t index)     const { return bcf_get_info_idx(m_body.get(), index);                   }
+  bcf_fmt_t*  find_individual_field(const uint32_t index) const { return bcf_get_fmt_id(m_body.get(), index); }
+  bcf_info_t* find_shared_field(const uint32_t index)     const { return bcf_get_info_id(m_body.get(), index); }
   bool check_field(const int32_t type_field, const int32_t type_value, const int32_t index) const;
   inline AlleleType allele_type_from_difference(const int diff) const;
 
