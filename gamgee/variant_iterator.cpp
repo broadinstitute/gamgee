@@ -6,12 +6,6 @@ using namespace std;
 
 namespace gamgee {
 
-VariantIterator::VariantIterator() :
-  m_variant_file_ptr {},
-  m_variant_header_ptr {},
-  m_variant_record_ptr {}
-{}
-
 VariantIterator::VariantIterator(const std::shared_ptr<htsFile>& variant_file_ptr, const std::shared_ptr<bcf_hdr_t>& variant_header_ptr) :
   m_variant_file_ptr {variant_file_ptr},
   m_variant_header_ptr {variant_header_ptr},
@@ -30,11 +24,11 @@ Variant& VariantIterator::operator++() {
   return m_variant_record;
 }
 
-bool VariantIterator::operator!=(const VariantIterator& rhs) {
+bool VariantIterator::operator!=(const VariantIterator& rhs) const {
   return m_variant_file_ptr != rhs.m_variant_file_ptr;
 }
 
-bool VariantIterator::empty() {
+bool VariantIterator::empty() const {
   return !m_variant_file_ptr;
 }
 
