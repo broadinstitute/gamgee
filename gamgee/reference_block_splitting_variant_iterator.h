@@ -79,7 +79,7 @@ class ReferenceBlockSplittingVariantIterator : public MultipleVariantIterator {
   inline void populate_split_variants();
 
   // holds the incoming reference-block variants before and during split operations
-  std::list<Variant> m_pending_variants;
+  std::vector<Variant> m_pending_variants;
 
   // caches next reference-block-split Variant vector
   std::vector<Variant> m_split_variants;

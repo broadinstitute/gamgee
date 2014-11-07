@@ -1,5 +1,7 @@
 #include "reference_block_splitting_variant_iterator.h"
 
+#include "htslib/vcf.h"
+
 namespace gamgee {
 
 ReferenceBlockSplittingVariantIterator::ReferenceBlockSplittingVariantIterator(const std::vector<std::shared_ptr<htsFile>> variant_files, const std::vector<std::shared_ptr<bcf_hdr_t>> variant_headers) :
@@ -7,7 +9,14 @@ ReferenceBlockSplittingVariantIterator::ReferenceBlockSplittingVariantIterator(c
   m_pending_variants {},
   m_split_variants {}
 {
-  m_split_variants.reserve(variant_files.size());
+  // will over-count for duplicate samples because we don't have access to the combined header
+  // but that is not a big deal
+  auto sample_count = 0u;
+  for (auto& hdr_ptr : variant_headers)
+    sample_count += bcf_hdr_nsamples(hdr_ptr.get());
+
+  m_pending_variants.reserve(sample_count);
+  m_split_variants.reserve(sample_count);
   fetch_next_split_vector();
 }
 
@@ -30,7 +39,7 @@ bool ReferenceBlockSplittingVariantIterator::operator!=(const ReferenceBlockSpli
 void ReferenceBlockSplittingVariantIterator::populate_pending () {
   for (const auto& variant : MultipleVariantIterator::operator*()) {
     m_pending_min_end = std::min(m_pending_min_end, variant.alignment_stop());
-    m_pending_variants.push_front(std::move(variant));
+    m_pending_variants.push_back(std::move(variant));
   }
 
   MultipleVariantIterator::operator++();
@@ -52,15 +61,17 @@ void ReferenceBlockSplittingVariantIterator::populate_split_variants () {
 	  && !gamgee::missing(next_pos_variant_vector[0].ref()))
     new_reference_allele =  next_pos_variant_vector[0].ref()[0];	//only the first character is needed
 
-  // advance iter by erase() or ++ depending on if
-  for (auto iter = m_pending_variants.begin(); iter != m_pending_variants.end(); ) {
-    auto& variant = *iter;
+  // the latter halves of split variants will return to pending
+  // so we need to keep track of indices of the current and next pending vectors
+  auto current_pending_index = 0u;
+  auto next_pending_index = 0u;
+
+  for (auto& variant : m_pending_variants) {
     auto var_end = variant.alignment_stop();
     // don't split reference blocks which end at the correct point
     // or variants with actual alt alleles
     if (var_end == m_pending_min_end || variant.alt().size() > 1) {
       m_split_variants.push_back(std::move(variant));
-      iter = m_pending_variants.erase(iter);
     }
     else {
       // this is a reference block that extends past the desired end, so split it
@@ -73,8 +84,14 @@ void ReferenceBlockSplittingVariantIterator::populate_split_variants () {
       variant.set_alignment_start(new_pending_start);
       variant.set_alignment_stop(var_end);      // stop is internally an offset to start, so we need to reset it after updating stop
       variant.set_reference_allele(new_reference_allele);
-      iter++;
+
+      // check if variant is already in the right location
+      if (next_pending_index != current_pending_index)
+        m_pending_variants[next_pending_index] = std::move(variant);
+
+      ++next_pending_index;
     }
+    ++current_pending_index;
   }
 
   if (new_pending_start != -1) {
@@ -82,6 +99,7 @@ void ReferenceBlockSplittingVariantIterator::populate_split_variants () {
     m_pending_min_end = new_pending_end;
   }
 
+  m_pending_variants.resize(next_pending_index);
 }
 
 void ReferenceBlockSplittingVariantIterator::fetch_next_split_vector() {
