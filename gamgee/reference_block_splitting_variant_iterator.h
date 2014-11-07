@@ -27,7 +27,7 @@ class ReferenceBlockSplittingVariantIterator : public MultipleVariantIterator {
    * @param variant_files   vector of vcf/bcf files opened via the bcf_open() macro from htslib
    * @param variant_headers vector of variant headers corresponding to these files
    */
-  ReferenceBlockSplittingVariantIterator(const std::vector<std::shared_ptr<htsFile>> variant_files, const std::vector<std::shared_ptr<bcf_hdr_t>> variant_headers);
+  ReferenceBlockSplittingVariantIterator(const std::vector<std::shared_ptr<htsFile>>& variant_files, const std::vector<std::shared_ptr<bcf_hdr_t>>& variant_headers);
 
   /**
    * @brief a ReferenceBlockSplittingVariantIterator move constructor guarantees all objects will have the same state.

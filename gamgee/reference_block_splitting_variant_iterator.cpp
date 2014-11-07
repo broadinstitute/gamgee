@@ -4,7 +4,7 @@
 
 namespace gamgee {
 
-ReferenceBlockSplittingVariantIterator::ReferenceBlockSplittingVariantIterator(const std::vector<std::shared_ptr<htsFile>> variant_files, const std::vector<std::shared_ptr<bcf_hdr_t>> variant_headers) :
+ReferenceBlockSplittingVariantIterator::ReferenceBlockSplittingVariantIterator(const std::vector<std::shared_ptr<htsFile>>& variant_files, const std::vector<std::shared_ptr<bcf_hdr_t>>& variant_headers) :
   MultipleVariantIterator {variant_files, variant_headers},
   m_pending_variants {},
   m_split_variants {}
@@ -58,8 +58,8 @@ void ReferenceBlockSplittingVariantIterator::populate_split_variants () {
   if (!next_pos_variant_vector.empty()
           && next_pos_variant_vector[0].chromosome() == m_pending_chrom
           && next_pos_variant_vector[0].alignment_start() == m_pending_min_end+1
-	  && !gamgee::missing(next_pos_variant_vector[0].ref()))
-    new_reference_allele =  next_pos_variant_vector[0].ref()[0];	//only the first character is needed
+          && !gamgee::missing(next_pos_variant_vector[0].ref()))
+    new_reference_allele = next_pos_variant_vector[0].ref()[0];	//only the first character is needed
 
   // the latter halves of split variants will return to pending
   // so we need to keep track of indices of the current and next pending vectors
@@ -74,7 +74,7 @@ void ReferenceBlockSplittingVariantIterator::populate_split_variants () {
       m_split_variants.push_back(std::move(variant));
     }
     else {
-      // this is a reference block that extends past the desired end, so split it
+      // this is a reference block that extends past the desired end, so copy and split it
       auto split_variant = variant;
       split_variant.set_alignment_stop(m_pending_min_end);
       m_split_variants.push_back(std::move(split_variant));
