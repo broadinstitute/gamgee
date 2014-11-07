@@ -38,9 +38,7 @@ void merge_variant_headers(const std::shared_ptr<bcf_hdr_t>& dest_hdr_ptr, const
     // don't check for error code because the only "error" is ignoring a duplicate sample, not an error for us
     bcf_hdr_add_sample(dest_hdr_ptr.get(), src_hdr_ptr->samples[sample_counter]);
   }
-
-  // vcf.h    "After all samples have been added, NULL must be passed to update internal header structures."
-  bcf_hdr_add_sample(dest_hdr_ptr.get(), nullptr);
+  
   bcf_hdr_sync(dest_hdr_ptr.get());
 }
 
