@@ -209,25 +209,21 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
    * @brief advances to the next sample
    * @note mainly designed for iterators
    * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way.
-   * @return the next value in it's native type
    */
-  VALUE_TYPE operator++() noexcept {
+  void operator++() noexcept {
     m_current_data_ptr += m_num_bytes;
     m_is_current_pointee_cached = false;
     m_current_data_ptr = utils::cache_and_advance_to_end_if_necessary(m_current_data_ptr, m_end_data_ptr, *this);
-    return convert_from_byte_array(m_current_data_ptr, 0);
   }
 
   /**
    * @brief advances to the previous sample
    * @note mainly designed for iterators
    * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way.
-   * @return the previous value in it's native type
    */
-  VALUE_TYPE operator--() {
+  void operator--() {
     m_current_data_ptr -= m_num_bytes;
     m_is_current_pointee_cached = false;
-    return convert_from_byte_array(m_current_data_ptr, 0);
   }
 
   /**
