@@ -10,6 +10,7 @@
 
 #include <memory>
 #include <utility>
+#include <stdexcept>
 
 namespace gamgee {
 
@@ -296,7 +297,14 @@ class Genotype{
    */
   static inline void encode_genotype(std::vector<int32_t>& alleles, bool phase_all_alleles) {
     for ( auto allele_index = 0u; allele_index < alleles.size(); ++allele_index ) {
-      alleles[allele_index] = (alleles[allele_index] + 1) << 1 | (phase_all_alleles && allele_index > 0u ? 1 : 0);
+      // Only legal value below -1 is the int32 vector end value
+      if ( alleles[allele_index] < -1 && alleles[allele_index] != bcf_int32_vector_end ) {
+        throw std::invalid_argument{"Genotype vector must consist only of allele indices, -1 for missing values, or vector end values"};
+      }
+      // Do not modify vector end values
+      else if ( alleles[allele_index] != bcf_int32_vector_end ) {
+        alleles[allele_index] = (alleles[allele_index] + 1) << 1 | (phase_all_alleles && allele_index > 0u ? 1 : 0);
+      }
     }
   }
 
