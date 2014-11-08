@@ -85,14 +85,14 @@ class MultipleVariantReader {
       if ( file_ptr == nullptr ) {
         throw FileOpenException{filename};
       }
-      m_variant_files.push_back(utils::make_shared_hts_file(file_ptr));
+      m_variant_files.push_back(std::move(utils::make_shared_hts_file(file_ptr)));
 
       auto* header_raw_ptr = bcf_hdr_read(file_ptr);
       if ( header_raw_ptr == nullptr ) {
         throw HeaderReadException{filename};
       }
       const auto& header_ptr = utils::make_shared_variant_header(header_raw_ptr);
-      m_variant_headers.push_back(header_ptr);
+      m_variant_headers.push_back(std::move(header_ptr));
 
       if (m_combined_header) {
         if (validate_headers)

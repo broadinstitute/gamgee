@@ -18,7 +18,7 @@ class VariantIterator {
   /**
    * @brief creates an empty iterator (used for the end() method) 
    */
-  VariantIterator();
+  VariantIterator() = default;
 
   /**
    * @brief initializes a new iterator based on an input stream (e.g. a vcf/bcf file, stdin, ...)
@@ -56,7 +56,7 @@ class VariantIterator {
    * @return whether or not the two iterators are the same (e.g. have the same input stream on the same
    * status)
    */
-  bool operator!=(const VariantIterator& rhs);
+  bool operator!=(const VariantIterator& rhs) const;
 
   /**
    * @brief dereference operator (needed by for-each loop)
@@ -78,7 +78,7 @@ class VariantIterator {
    *
    * @return true if the the iterator has no additional records
    */
-  bool empty();
+  bool empty() const;
 
  protected:
   std::shared_ptr<htsFile> m_variant_file_ptr;          ///< pointer to the vcf/bcf file
