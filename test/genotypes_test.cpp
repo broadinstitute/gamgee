@@ -6,6 +6,7 @@
 
 #include <boost/dynamic_bitset.hpp>
 #include <algorithm>
+#include <stdexcept>
 
 using namespace std;
 using namespace gamgee;
@@ -194,6 +195,12 @@ BOOST_AUTO_TEST_CASE( encode_genotype ) {
   Genotype::encode_genotype(alleles);
   BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
 
+  // vector end values should not get transformed by encoding
+  alleles = {bcf_int32_vector_end};
+  expected = {bcf_int32_vector_end};
+  Genotype::encode_genotype(alleles);
+  BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
+
   alleles = {0, 1};
   expected = {2, 4};
   Genotype::encode_genotype(alleles);
@@ -206,6 +213,12 @@ BOOST_AUTO_TEST_CASE( encode_genotype ) {
 
   alleles = {1, 2, 0};
   expected = {4, 6, 2};
+  Genotype::encode_genotype(alleles);
+  BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
+
+  // If there are multiple ploidies and/or missing genotypes we will have vector end values mixed in with the alleles
+  alleles = { 1, bcf_int32_vector_end, -1, bcf_int32_vector_end, 0, 1 };
+  expected = { 4, bcf_int32_vector_end, 0, bcf_int32_vector_end, 2, 4 };
   Genotype::encode_genotype(alleles);
   BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
 
@@ -240,4 +253,14 @@ BOOST_AUTO_TEST_CASE( encode_genotype ) {
   expected = {4, 7, 3};
   Genotype::encode_genotype(alleles, true);
   BOOST_CHECK(equal(alleles.begin(), alleles.end(), expected.begin()));
+
+  // Should detect invalid values: only allele indices >= 0, -1 for missing values, and vector end should be allowed
+  alleles = {-2};
+  BOOST_CHECK_THROW(Genotype::encode_genotype(alleles), std::invalid_argument);
+
+  alleles = {bcf_int32_missing};
+  BOOST_CHECK_THROW(Genotype::encode_genotype(alleles), std::invalid_argument);
+
+  alleles = {0, bcf_int32_vector_end + 1};
+  BOOST_CHECK_THROW(Genotype::encode_genotype(alleles), std::invalid_argument);
 }

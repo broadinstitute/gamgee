@@ -1112,10 +1112,17 @@ BOOST_AUTO_TEST_CASE( bulk_set_genotype_field ) {
     check_genotype_field(variant, expected);
 
     // Flat vector, varying ploidy with manual padding
-    flat_vector = {0, 1, 2, 1, 0, -1, 0, -1, -1}; Genotype::encode_genotype(flat_vector);
-    expected = {{0, 1, 2}, {1, 0, missing_values::int32}, {0, missing_values::int32, missing_values::int32}};
+    flat_vector = {0, 1, 2, 1, bcf_int32_vector_end, bcf_int32_vector_end, 0, 1, bcf_int32_vector_end}; Genotype::encode_genotype(flat_vector);
+    expected = {{0, 1, 2}, {1, bcf_int32_vector_end, bcf_int32_vector_end}, {0, 1, bcf_int32_vector_end}};
     variant = perform_move ? builder.set_genotypes(move(flat_vector)).build() :
                              builder.set_genotypes(flat_vector).build();
+    check_genotype_field(variant, expected);
+
+    // Flat vector, varying ploidy with manual padding and a missing sample
+    flat_vector = {0, 1, 2, -1, bcf_int32_vector_end, bcf_int32_vector_end, 0, 1, bcf_int32_vector_end}; Genotype::encode_genotype(flat_vector);
+    expected = {{0, 1, 2}, {bcf_int32_missing, bcf_int32_vector_end, bcf_int32_vector_end}, {0, 1, bcf_int32_vector_end}};
+    variant = perform_move ? builder.set_genotypes(move(flat_vector)).build() :
+              builder.set_genotypes(flat_vector).build();
     check_genotype_field(variant, expected);
 
     // Nested vector, one allele per sample
