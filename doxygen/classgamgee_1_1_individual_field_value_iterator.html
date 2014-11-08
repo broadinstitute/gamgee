@@ -159,12 +159,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1419c20a41bb3e9b117ef6317f94ff2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a515aad824cb9bb6af4398ad6dc99e866"><td class="memItemLeft" align="right" valign="top">VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#a515aad824cb9bb6af4398ad6dc99e866">read_and_cache_current_pointee</a> () noexcept</td></tr>
 <tr class="separator:a515aad824cb9bb6af4398ad6dc99e866"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98339af3358a083a7b9d43358377b360"><td class="memItemLeft" align="right" valign="top">VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#a98339af3358a083a7b9d43358377b360">operator++</a> () noexcept</td></tr>
-<tr class="memdesc:a98339af3358a083a7b9d43358377b360"><td class="mdescLeft">&#160;</td><td class="mdescRight">advances to the next sample  <a href="#a98339af3358a083a7b9d43358377b360">More...</a><br /></td></tr>
-<tr class="separator:a98339af3358a083a7b9d43358377b360"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee14f490d312e0abd424b0bb97c22be8"><td class="memItemLeft" align="right" valign="top">VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#aee14f490d312e0abd424b0bb97c22be8">operator--</a> ()</td></tr>
-<tr class="memdesc:aee14f490d312e0abd424b0bb97c22be8"><td class="mdescLeft">&#160;</td><td class="mdescRight">advances to the previous sample  <a href="#aee14f490d312e0abd424b0bb97c22be8">More...</a><br /></td></tr>
-<tr class="separator:aee14f490d312e0abd424b0bb97c22be8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad342172cd3c81663a1a95a52b830c071"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#ad342172cd3c81663a1a95a52b830c071">operator++</a> () noexcept</td></tr>
+<tr class="memdesc:ad342172cd3c81663a1a95a52b830c071"><td class="mdescLeft">&#160;</td><td class="mdescRight">advances to the next sample  <a href="#ad342172cd3c81663a1a95a52b830c071">More...</a><br /></td></tr>
+<tr class="separator:ad342172cd3c81663a1a95a52b830c071"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae05e2acd67bd7e2213bd974ca74c078a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#ae05e2acd67bd7e2213bd974ca74c078a">operator--</a> ()</td></tr>
+<tr class="memdesc:ae05e2acd67bd7e2213bd974ca74c078a"><td class="mdescLeft">&#160;</td><td class="mdescRight">advances to the previous sample  <a href="#ae05e2acd67bd7e2213bd974ca74c078a">More...</a><br /></td></tr>
+<tr class="separator:ae05e2acd67bd7e2213bd974ca74c078a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa87d00e11278d9c120ad7a6ad297a17"><td class="memItemLeft" align="right" valign="top">VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_value_iterator.html#afa87d00e11278d9c120ad7a6ad297a17">operator[]</a> (const uint32_t index) const </td></tr>
 <tr class="memdesc:afa87d00e11278d9c120ad7a6ad297a17"><td class="mdescLeft">&#160;</td><td class="mdescRight">random access to the value of a given index for reading or writing  <a href="#afa87d00e11278d9c120ad7a6ad297a17">More...</a><br /></td></tr>
 <tr class="separator:afa87d00e11278d9c120ad7a6ad297a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -422,7 +422,7 @@ template&lt;class VALUE_TYPE &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a98339af3358a083a7b9d43358377b360"></a>
+<a class="anchor" id="ad342172cd3c81663a1a95a52b830c071"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -432,7 +432,7 @@ template&lt;class VALUE_TYPE &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">VALUE_TYPE <a class="el" href="classgamgee_1_1_individual_field_value_iterator.html">gamgee::IndividualFieldValueIterator</a>&lt; VALUE_TYPE &gt;::operator++ </td>
+          <td class="memname">void <a class="el" href="classgamgee_1_1_individual_field_value_iterator.html">gamgee::IndividualFieldValueIterator</a>&lt; VALUE_TYPE &gt;::operator++ </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -448,7 +448,6 @@ template&lt;class VALUE_TYPE &gt; </div>
 <p>advances to the next sample </p>
 <dl class="section note"><dt>Note</dt><dd>mainly designed for iterators </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way. </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>the next value in it's native type </dd></dl>
 
 </div>
 </div>
@@ -487,7 +486,7 @@ template&lt;class VALUE_TYPE &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aee14f490d312e0abd424b0bb97c22be8"></a>
+<a class="anchor" id="ae05e2acd67bd7e2213bd974ca74c078a"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -497,7 +496,7 @@ template&lt;class VALUE_TYPE &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">VALUE_TYPE <a class="el" href="classgamgee_1_1_individual_field_value_iterator.html">gamgee::IndividualFieldValueIterator</a>&lt; VALUE_TYPE &gt;::operator-- </td>
+          <td class="memname">void <a class="el" href="classgamgee_1_1_individual_field_value_iterator.html">gamgee::IndividualFieldValueIterator</a>&lt; VALUE_TYPE &gt;::operator-- </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -513,7 +512,6 @@ template&lt;class VALUE_TYPE &gt; </div>
 <p>advances to the previous sample </p>
 <dl class="section note"><dt>Note</dt><dd>mainly designed for iterators </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way. </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>the previous value in it's native type </dd></dl>
 
 </div>
 </div>
@@ -823,7 +821,7 @@ template&lt;class VALUE_TYPE &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 01:10:31 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 8 2014 01:11:22 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
