@@ -116,9 +116,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aee561d59aa572afcca409d55650b6d3c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_reference_block_splitting_variant_iterator.html#aee561d59aa572afcca409d55650b6d3c">ReferenceBlockSplittingVariantIterator</a> ()=default</td></tr>
 <tr class="memdesc:aee561d59aa572afcca409d55650b6d3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates an empty iterator (used for the end() method)  <a href="#aee561d59aa572afcca409d55650b6d3c">More...</a><br /></td></tr>
 <tr class="separator:aee561d59aa572afcca409d55650b6d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a784a6bb326ecdeb2f8132ecf760eaad3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_reference_block_splitting_variant_iterator.html#a784a6bb326ecdeb2f8132ecf760eaad3">ReferenceBlockSplittingVariantIterator</a> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structhts_file.html">htsFile</a> &gt;&gt; variant_files, const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> &gt;&gt; variant_headers)</td></tr>
-<tr class="memdesc:a784a6bb326ecdeb2f8132ecf760eaad3"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes a new iterator based on a vector of input files (vcf or bcf)  <a href="#a784a6bb326ecdeb2f8132ecf760eaad3">More...</a><br /></td></tr>
-<tr class="separator:a784a6bb326ecdeb2f8132ecf760eaad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa43d67934410dc8a70842c90c572e4df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_reference_block_splitting_variant_iterator.html#aa43d67934410dc8a70842c90c572e4df">ReferenceBlockSplittingVariantIterator</a> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structhts_file.html">htsFile</a> &gt;&gt; &amp;variant_files, const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> &gt;&gt; &amp;variant_headers)</td></tr>
+<tr class="memdesc:aa43d67934410dc8a70842c90c572e4df"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes a new iterator based on a vector of input files (vcf or bcf)  <a href="#aa43d67934410dc8a70842c90c572e4df">More...</a><br /></td></tr>
+<tr class="separator:aa43d67934410dc8a70842c90c572e4df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a294c2f3368ff44720a1fc640bb277cb0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_reference_block_splitting_variant_iterator.html#a294c2f3368ff44720a1fc640bb277cb0">ReferenceBlockSplittingVariantIterator</a> (<a class="el" href="classgamgee_1_1_reference_block_splitting_variant_iterator.html">ReferenceBlockSplittingVariantIterator</a> &amp;&amp;)=default</td></tr>
 <tr class="memdesc:a294c2f3368ff44720a1fc640bb277cb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">a <a class="el" href="classgamgee_1_1_reference_block_splitting_variant_iterator.html" title="Utility class to handle reference blocks while iterating over multiple variant files. ">ReferenceBlockSplittingVariantIterator</a> move constructor guarantees all objects will have the same state.  <a href="#a294c2f3368ff44720a1fc640bb277cb0">More...</a><br /></td></tr>
 <tr class="separator:a294c2f3368ff44720a1fc640bb277cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -194,20 +194,20 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a784a6bb326ecdeb2f8132ecf760eaad3"></a>
+<a class="anchor" id="aa43d67934410dc8a70842c90c572e4df"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">gamgee::ReferenceBlockSplittingVariantIterator::ReferenceBlockSplittingVariantIterator </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structhts_file.html">htsFile</a> &gt;&gt;&#160;</td>
+          <td class="paramtype">const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structhts_file.html">htsFile</a> &gt;&gt; &amp;&#160;</td>
           <td class="paramname"><em>variant_files</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> &gt;&gt;&#160;</td>
+          <td class="paramtype">const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> &gt;&gt; &amp;&#160;</td>
           <td class="paramname"><em>variant_headers</em>&#160;</td>
         </tr>
         <tr>
@@ -399,7 +399,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 7 2014 19:10:56 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 8 2014 01:06:15 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

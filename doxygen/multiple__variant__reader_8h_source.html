@@ -135,14 +135,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="keywordflow">if</span> ( file_ptr == <span class="keyword">nullptr</span> ) {</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classgamgee_1_1_file_open_exception.html">FileOpenException</a>{filename};</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      m_variant_files.push_back(<a class="code" href="namespacegamgee_1_1utils.html#a50116d5da2ab23b2963b0e1f95eca489">utils::make_shared_hts_file</a>(file_ptr));</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      m_variant_files.push_back(std::move(<a class="code" href="namespacegamgee_1_1utils.html#a50116d5da2ab23b2963b0e1f95eca489">utils::make_shared_hts_file</a>(file_ptr)));</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      <span class="keyword">auto</span>* header_raw_ptr = <a class="code" href="vcf_8h.html#ac333a94a8c2c52c47ef5fbdee05a327b">bcf_hdr_read</a>(file_ptr);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      <span class="keywordflow">if</span> ( header_raw_ptr == <span class="keyword">nullptr</span> ) {</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classgamgee_1_1_header_read_exception.html">HeaderReadException</a>{filename};</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      }</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span>&amp; header_ptr = <a class="code" href="namespacegamgee_1_1utils.html#a2732369bc67b236fbe94bcaba720d170">utils::make_shared_variant_header</a>(header_raw_ptr);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      m_variant_headers.push_back(header_ptr);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      m_variant_headers.push_back(std::move(header_ptr));</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <span class="keywordflow">if</span> (m_combined_header) {</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">if</span> (validate_headers)</div>
@@ -216,7 +216,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 7 2014 19:10:55 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 8 2014 01:06:14 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
