@@ -41,7 +41,6 @@ var searchData=
   ['result_5fm',['result_m',['../structt__results__queue.html#ab5e2c676175cc5996508f132dc80f410',1,'t_results_queue']]],
   ['result_5ftail',['result_tail',['../structt__results__queue.html#a9b4b15c8aa0c9f130f7f4717ff3c2b7a',1,'t_results_queue']]],
   ['retr',['retr',['../structknet_file__s.html#a6abef9d8aa9fca1579bec16442faf0a6',1,'knetFile_s']]],
-  ['return',['return',['../cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2',1,'cram_encode.c']]],
   ['revised_5fmethod',['revised_method',['../structcram__metrics.html#a043a23285b2f455677e84db950e2ca54',1,'cram_metrics']]],
   ['rg',['rg',['../structcram__record.html#a2e602e5cf66053e47f500e0300e3b23a',1,'cram_record::rg()'],['../struct_s_a_m__hdr.html#a28e730fe67575c5fd7f5a79829ed7a69',1,'SAM_hdr::rg()']]],
   ['rid',['rid',['../structbcf1__t.html#a3800c43600f582366b6c3b0ffc17de2b',1,'bcf1_t']]],

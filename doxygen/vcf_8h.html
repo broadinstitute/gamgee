@@ -2505,19 +2505,16 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">{ \</div>
 <div class="line">        type_t *ptr = (type_t*) (fmt-&gt;p + isample*fmt-&gt;size); \</div>
-<div class="line">        int i; <a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">\</a></div>
-<div class="line"><a class="code" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">        for</a> (i=0; i&lt;fmt-&gt;n &amp;&amp; ptr[i]!=vector_end; i++) \</div>
-<div class="line">        { <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
-<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">            if</a> ( i ) kputc(&quot;/|&quot;[ptr[i]&amp;1], <a class="code" href="test_2sam_8c.html#a8269f97b2652fc717949a982d7b4f02a">str</a>); \</div>
-<div class="line">            <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a> ( !(ptr[i]&gt;&gt;1) ) kputc(&#39;.&#39;, str); \</div>
-<div class="line">            <a class="code" href="cram__encode_8c.html#a0544c3fe466e421738dae463968b70ba">else</a> kputw((ptr[i]&gt;&gt;1) - 1, str); \</div>
+<div class="line">        int i; \</div>
+<div class="line">        for (i=0; i&lt;fmt-&gt;n &amp;&amp; ptr[i]!=vector_end; i++) \</div>
+<div class="line">        { \</div>
+<div class="line">            if ( i ) kputc(&quot;/|&quot;[ptr[i]&amp;1], <a class="code" href="test_2sam_8c.html#a8269f97b2652fc717949a982d7b4f02a">str</a>); \</div>
+<div class="line">            if ( !(ptr[i]&gt;&gt;1) ) kputc(&#39;.&#39;, str); \</div>
+<div class="line">            else kputw((ptr[i]&gt;&gt;1) - 1, str); \</div>
 <div class="line">        } \</div>
-<div class="line">        <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a> (i == 0) kputc(&#39;.&#39;, str); \</div>
+<div class="line">        if (i == 0) kputc(&#39;.&#39;, str); \</div>
 <div class="line">    }</div>
-<div class="ttc" id="cram__encode_8c_html_a0544c3fe466e421738dae463968b70ba"><div class="ttname"><a href="cram__encode_8c.html#a0544c3fe466e421738dae463968b70ba">else</a></div><div class="ttdeci">else</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2729</div></div>
 <div class="ttc" id="test_2sam_8c_html_a8269f97b2652fc717949a982d7b4f02a"><div class="ttname"><a href="test_2sam_8c.html#a8269f97b2652fc717949a982d7b4f02a">str</a></div><div class="ttdeci">#define str(x)</div><div class="ttdef"><b>Definition:</b> sam.c:66</div></div>
-<div class="ttc" id="cram__encode_8c_html_aa55ff40b43720e3fc91df0ef2bc4f574"><div class="ttname"><a href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a></div><div class="ttdeci">if(!(cr-&gt;flags &amp;BAM_FUNMAP))</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2565</div></div>
-<div class="ttc" id="cram__encode_8c_html_a388e40b11b6d85d95ae4be71d03fc5db"><div class="ttname"><a href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">for</a></div><div class="ttdeci">for(i=0;i&lt; cr-&gt;len;i++)</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2736</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5086,7 +5083,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 01:11:21 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 10 2014 19:53:24 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

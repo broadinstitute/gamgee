@@ -129,7 +129,6 @@ var searchData=
   ['result_5fm',['result_m',['../structt__results__queue.html#ab5e2c676175cc5996508f132dc80f410',1,'t_results_queue']]],
   ['result_5ftail',['result_tail',['../structt__results__queue.html#a9b4b15c8aa0c9f130f7f4717ff3c2b7a',1,'t_results_queue']]],
   ['retr',['retr',['../structknet_file__s.html#a6abef9d8aa9fca1579bec16442faf0a6',1,'knetFile_s']]],
-  ['return',['return',['../cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2',1,'cram_encode.c']]],
   ['reverse',['reverse',['../classgamgee_1_1_sam.html#aefde0c304a55102fc1674d985808c993',1,'gamgee::Sam']]],
   ['reverse_5fcomplement',['reverse_complement',['../classgamgee_1_1_fastq.html#a6657a44eb3efa6419cb777f79b13912f',1,'gamgee::Fastq::reverse_complement()'],['../namespacegamgee_1_1utils.html#a740716d2b795a26787bf1000ae62ddb2',1,'gamgee::utils::reverse_complement()']]],
   ['revised_5fmethod',['revised_method',['../structcram__metrics.html#a043a23285b2f455677e84db950e2ca54',1,'cram_metrics']]],

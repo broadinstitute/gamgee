@@ -196,7 +196,7 @@ Functions</h2></td></tr>
 <tr class="separator:a0777ce892d892b2d0ad3ef5e063decbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12b6a577c1c724bdaaf5ed89a02b2635"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__io_8h.html#a12b6a577c1c724bdaaf5ed89a02b2635">BLOCK_RESIZE</a>(b, l)</td></tr>
 <tr class="separator:a12b6a577c1c724bdaaf5ed89a02b2635"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fc8d950cba51eba8d2e8d7b1ff99656"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__io_8h.html#a4fc8d950cba51eba8d2e8d7b1ff99656">BLOCK_GROW</a>(b, l)&#160;&#160;&#160;<a class="el" href="cram__io_8h.html#a12b6a577c1c724bdaaf5ed89a02b2635">BLOCK_RESIZE</a>((b), <a class="el" href="cram__encode_8c.html#ae790bb7b223c6ed1e62adf366b6d816c">BLOCK_SIZE</a>((b)) + (l))</td></tr>
+<tr class="memitem:a4fc8d950cba51eba8d2e8d7b1ff99656"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__io_8h.html#a4fc8d950cba51eba8d2e8d7b1ff99656">BLOCK_GROW</a>(b, l)&#160;&#160;&#160;<a class="el" href="cram__io_8h.html#a12b6a577c1c724bdaaf5ed89a02b2635">BLOCK_RESIZE</a>((b), <a class="el" href="cram__io_8h.html#a83bed579f4344d114397eab497c66ad6">BLOCK_SIZE</a>((b)) + (l))</td></tr>
 <tr class="separator:a4fc8d950cba51eba8d2e8d7b1ff99656"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30f5834b79a13b99cb2c2a2a6c812e2c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__io_8h.html#a30f5834b79a13b99cb2c2a2a6c812e2c">BLOCK_APPEND</a>(b, s, l)</td></tr>
 <tr class="separator:a30f5834b79a13b99cb2c2a2a6c812e2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,7 +204,7 @@ Functions</h2></td></tr>
 <tr class="separator:a4e8641dd5863dc481e2ae67afbf9dcbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab85f7941ec5b243666d5a9cafe100450"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__io_8h.html#ab85f7941ec5b243666d5a9cafe100450">BLOCK_APPEND_UINT</a>(b, i)</td></tr>
 <tr class="separator:ab85f7941ec5b243666d5a9cafe100450"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b7c01814a87cddb8080bbea1de6189f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__io_8h.html#a3b7c01814a87cddb8080bbea1de6189f">BLOCK_UPLEN</a>(b)&#160;&#160;&#160;(b)-&gt;comp_size = (b)-&gt;uncomp_size = <a class="el" href="cram__encode_8c.html#ae790bb7b223c6ed1e62adf366b6d816c">BLOCK_SIZE</a>((b))</td></tr>
+<tr class="memitem:a3b7c01814a87cddb8080bbea1de6189f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__io_8h.html#a3b7c01814a87cddb8080bbea1de6189f">BLOCK_UPLEN</a>(b)&#160;&#160;&#160;(b)-&gt;comp_size = (b)-&gt;uncomp_size = <a class="el" href="cram__io_8h.html#a83bed579f4344d114397eab497c66ad6">BLOCK_SIZE</a>((b))</td></tr>
 <tr class="separator:a3b7c01814a87cddb8080bbea1de6189f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a991dcfd8577ade942c778b3c4ab6c34e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcram__block.html">cram_block</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__io_8h.html#a991dcfd8577ade942c778b3c4ab6c34e">cram_new_block</a> (enum <a class="el" href="cram__structs_8h.html#af9934fb23b7763e058c4dfb074ce9a49">cram_content_type</a> content_type, int content_id)</td></tr>
 <tr class="separator:a991dcfd8577ade942c778b3c4ab6c34e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -387,7 +387,7 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="cram__io_8h.html#a12b6a577c1c724bdaaf5ed89a02b2635">BLOCK_RESIZE</a>((b), <a class="el" href="cram__encode_8c.html#ae790bb7b223c6ed1e62adf366b6d816c">BLOCK_SIZE</a>((b)) + (l))</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="cram__io_8h.html#a12b6a577c1c724bdaaf5ed89a02b2635">BLOCK_RESIZE</a>((b), <a class="el" href="cram__io_8h.html#a83bed579f4344d114397eab497c66ad6">BLOCK_SIZE</a>((b)) + (l))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -451,7 +451,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">b</td><td>)</td>
-          <td>&#160;&#160;&#160;(b)-&gt;comp_size = (b)-&gt;uncomp_size = <a class="el" href="cram__encode_8c.html#ae790bb7b223c6ed1e62adf366b6d816c">BLOCK_SIZE</a>((b))</td>
+          <td>&#160;&#160;&#160;(b)-&gt;comp_size = (b)-&gt;uncomp_size = <a class="el" href="cram__io_8h.html#a83bed579f4344d114397eab497c66ad6">BLOCK_SIZE</a>((b))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1669,7 +1669,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 01:11:21 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 10 2014 19:53:24 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -139,25 +139,23 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {            <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
-<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">		if</a> (_offsets) {           \</div>
-<div class="line">      s[i] = 0;         <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
-<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">			if</a> (n == max) {          \</div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {            \</div>
+<div class="line">    if (_offsets) {           \</div>
+<div class="line">      s[i] = 0;         \</div>
+<div class="line">      if (n == max) {         \</div>
 <div class="line">        int *tmp;       \</div>
-<div class="line">        max = max? max&lt;&lt;1 : 2;      <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
-<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">				if</a> ((tmp = (<span class="keywordtype">int</span>*)realloc(offsets, <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) * max))) {  \</div>
+<div class="line">        max = max? max&lt;&lt;1 : 2;      \</div>
+<div class="line">        if ((tmp = (<span class="keywordtype">int</span>*)realloc(offsets, <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) * max))) {  \</div>
 <div class="line">          offsets = tmp;      \</div>
 <div class="line">        } <span class="keywordflow">else</span>  {       \</div>
 <div class="line">          free(offsets);      \</div>
-<div class="line">          *_offsets = NULL;   <a class="code" href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">\</a></div>
-<div class="line"><a class="code" href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">					return</a> 0;      \</div>
+<div class="line">          *_offsets = NULL;   \</div>
+<div class="line">          return 0;     \</div>
 <div class="line">        }         \</div>
 <div class="line">      }           \</div>
 <div class="line">      offsets[n++] = last_start;      \</div>
 <div class="line">    } <span class="keywordflow">else</span> ++n;           \</div>
 <div class="line">  } <span class="keywordflow">while</span> (0)</div>
-<div class="ttc" id="cram__encode_8c_html_a9717e7bbecb906637e86cef6da3d83c2"><div class="ttname"><a href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">return</a></div><div class="ttdeci">return</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2876</div></div>
-<div class="ttc" id="cram__encode_8c_html_aa55ff40b43720e3fc91df0ef2bc4f574"><div class="ttname"><a href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a></div><div class="ttdeci">if(!(cr-&gt;flags &amp;BAM_FUNMAP))</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2565</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -426,7 +424,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 01:11:21 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 10 2014 19:53:24 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -256,8 +256,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="synced__bcf__reader_8h.html#a61f57f50adc2c19ab369aec6840f8b27">  183</a></span>&#160;<span class="preprocessor">#define bcf_sr_has_line(readers, i) (readers)-&gt;has_line[i]</span></div>
 <div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="synced__bcf__reader_8h.html#a4bb19c25de74ae43dfd83356d63c754c">  184</a></span>&#160;<span class="preprocessor">#define bcf_sr_get_line(_readers, i) ((_readers)-&gt;has_line[i] ? ((_readers)-&gt;readers[i].buffer[0]) : NULL)</span></div>
 <div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="synced__bcf__reader_8h.html#a259b10d60be8ad9b4666e00593a1a07f">  185</a></span>&#160;<span class="preprocessor">#define bcf_sr_region_done(_readers,i) (!(_readers)-&gt;has_line[i] &amp;&amp; !(_readers)-&gt;readers[i].nbuffer ? 1 : 0)</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
-<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="synced__bcf__reader_8h.html#a63dd091d9740d2ae775383404197d47e">  187</a></span>&#160;<span class="preprocessor">#define bcf_sr_get_header(_readers,i) ((_readers)-&gt;has_line[i] ? ((_readers)-&gt;readers[i].header) : NULL)</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="synced__bcf__reader_8h.html#a63dd091d9740d2ae775383404197d47e">  186</a></span>&#160;<span class="preprocessor">#define bcf_sr_get_header(_readers, i) (_readers)-&gt;readers[i].header</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="synced__bcf__reader_8h.html#ac008bc9d56605a55fa5bf23a85040de4">  187</a></span>&#160;<span class="preprocessor">#define bcf_sr_get_reader(_readers, i) &amp;((_readers)-&gt;readers[i])</span></div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="keywordtype">int</span> <a class="code" href="synced__bcf__reader_8h.html#a12126a2e97242eb4b471d58339fac157">bcf_sr_seek</a>(<a class="code" href="structbcf__srs__t.html">bcf_srs_t</a> *readers, <span class="keyword">const</span> <span class="keywordtype">char</span> *seq, <span class="keywordtype">int</span> pos);</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
@@ -421,7 +421,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 01:11:21 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 10 2014 19:53:24 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

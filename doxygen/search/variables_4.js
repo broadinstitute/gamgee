@@ -7,7 +7,6 @@ var searchData=
   ['e_5fexternal',['e_external',['../structcram__codec.html#a2bba819881674b5d96be5e24c617cc14',1,'cram_codec']]],
   ['e_5fhuffman',['e_huffman',['../structcram__codec.html#a022a8d2b80472225e9aa0eea13607a4f',1,'cram_codec']]],
   ['ec',['ec',['../structtbx__conf__t.html#a5acaf1c1ed62a8443e3ed98e624880bf',1,'tbx_conf_t']]],
-  ['else',['else',['../cram__encode_8c.html#a0544c3fe466e421738dae463968b70ba',1,'cram_encode.c']]],
   ['embed_5fref',['embed_ref',['../structcram__fd.html#adcb9507fe33e5e78c685f8d491345dec',1,'cram_fd']]],
   ['empty_5fc',['empty_c',['../structt__pool.html#ae99f5ad4fdd70dcb8999dc415325459f',1,'t_pool']]],
   ['empty_5fcontainer',['empty_container',['../structcram__fd.html#a3513f4417f61ad048fb73ba7ad1b5844',1,'cram_fd']]],

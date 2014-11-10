@@ -89,8 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">cram_encode.c File Reference</div>  </div>
 </div><!--header-->
@@ -124,39 +123,8 @@ Functions</h2></td></tr>
 <tr class="separator:aad832ff4a23ce2f9a79c31185a45ec2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a24c239f1e4f5e1eabd8e723ec3c4dc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__encode_8c.html#a4a24c239f1e4f5e1eabd8e723ec3c4dc">cram_encode_container</a> (<a class="el" href="structcram__fd.html">cram_fd</a> *fd, <a class="el" href="structcram__container.html">cram_container</a> *c)</td></tr>
 <tr class="separator:a4a24c239f1e4f5e1eabd8e723ec3c4dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae790bb7b223c6ed1e62adf366b6d816c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__encode_8c.html#ae790bb7b223c6ed1e62adf366b6d816c">BLOCK_SIZE</a> (s-&gt;seqs_blk)+</td></tr>
-<tr class="separator:ae790bb7b223c6ed1e62adf366b6d816c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa55ff40b43720e3fc91df0ef2bc4f574"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a> (!(cr-&gt;flags &amp;<a class="el" href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html#ab34be736403dab2f7a724f7a3cbf8362">BAM_FUNMAP</a>))</td></tr>
-<tr class="separator:aa55ff40b43720e3fc91df0ef2bc4f574"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a388e40b11b6d85d95ae4be71d03fc5db"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db">for</a> (i=0;i&lt; cr-&gt;len;i++)</td></tr>
-<tr class="separator:a388e40b11b6d85d95ae4be71d03fc5db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e1444e44836f6998e47a2c521441d64"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__encode_8c.html#a9e1444e44836f6998e47a2c521441d64">cram_stats_add</a> (c-&gt;stats[<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a42ebdb7da6311f9e0b4ebe5c9b6eadbe">DS_MQ</a>], cr-&gt;mqual)</td></tr>
-<tr class="separator:a9e1444e44836f6998e47a2c521441d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9312370a72753a57e877b157a436e3bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__encode_8c.html#a9312370a72753a57e877b157a436e3bf">cram_stats_add</a> (c-&gt;stats[<a class="el" href="cram__structs_8h.html#a330dbf1ad7f9329c1f25cf8997058627a5c3596b519e8effef0212fffd8c6e38c">DS_NS</a>], cr-&gt;<a class="el" href="cram__encode_8c.html#a96c09b7f5d98774729bcb58042196208">mate_ref_id</a>)</td></tr>
-<tr class="separator:a9312370a72753a57e877b157a436e3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10cf7b80001397ce45d94988fe8831a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__encode_8c.html#a10cf7b80001397ce45d94988fe8831a2">if</a> (!(<a class="el" href="cram__samtools_8h.html#a10d1cf1f920d92ebe81a40b35cc5c8fb">bam_flag</a>(b)&amp;<a class="el" href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html#ab34be736403dab2f7a724f7a3cbf8362">BAM_FUNMAP</a>))</td></tr>
-<tr class="separator:a10cf7b80001397ce45d94988fe8831a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af42922a9fe01b3987466618605682cc4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__encode_8c.html#af42922a9fe01b3987466618605682cc4">cram_put_bam_seq</a> (<a class="el" href="structcram__fd.html">cram_fd</a> *fd, <a class="el" href="cram__samtools_8h.html#a53b9f9947771d538d9e18245096796ca">bam_seq_t</a> *b)</td></tr>
 <tr class="separator:af42922a9fe01b3987466618605682cc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a2b531fb1eb56bdfb1a0e58eb33963df1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__encode_8c.html#a2b531fb1eb56bdfb1a0e58eb33963df1">qual</a> = cp = (char *)<a class="el" href="cram__samtools_8h.html#a693d7f3d239832497ed2bee249c0f7d1">bam_qual</a>(b)</td></tr>
-<tr class="separator:a2b531fb1eb56bdfb1a0e58eb33963df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0544c3fe466e421738dae463968b70ba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__encode_8c.html#a0544c3fe466e421738dae463968b70ba">else</a></td></tr>
-<tr class="separator:a0544c3fe466e421738dae463968b70ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa762b5b3b33e5602db4f41b5ca44c335"><td class="memItemLeft" align="right" valign="top">cr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__encode_8c.html#aa762b5b3b33e5602db4f41b5ca44c335">cigar</a> = 0</td></tr>
-<tr class="separator:aa762b5b3b33e5602db4f41b5ca44c335"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbbd1bce5f9e302852d5c43d25721bad"><td class="memItemLeft" align="right" valign="top">cr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__encode_8c.html#adbbd1bce5f9e302852d5c43d25721bad">ncigar</a> = 0</td></tr>
-<tr class="separator:adbbd1bce5f9e302852d5c43d25721bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a425f5d287964d063319f5ba6cebad481"><td class="memItemLeft" align="right" valign="top">cr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__encode_8c.html#a425f5d287964d063319f5ba6cebad481">nfeature</a> = 0</td></tr>
-<tr class="separator:a425f5d287964d063319f5ba6cebad481"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3779fd7d7a8908e7cbe7f84f4d296292"><td class="memItemLeft" align="right" valign="top">cr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__encode_8c.html#a3779fd7d7a8908e7cbe7f84f4d296292">aend</a> = cr-&gt;apos</td></tr>
-<tr class="separator:a3779fd7d7a8908e7cbe7f84f4d296292"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96c09b7f5d98774729bcb58042196208"><td class="memItemLeft" align="right" valign="top">cr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__encode_8c.html#a96c09b7f5d98774729bcb58042196208">mate_ref_id</a> = <a class="el" href="cram__samtools_8h.html#acfb73c928fe828508f534222318378de">bam_mate_ref</a>(b)</td></tr>
-<tr class="separator:a96c09b7f5d98774729bcb58042196208"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9717e7bbecb906637e86cef6da3d83c2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">return</a></td></tr>
-<tr class="separator:a9717e7bbecb906637e86cef6da3d83c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="a61c5c8ee201667342016b8a87d8d3a97"></a>
@@ -188,22 +156,6 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ae790bb7b223c6ed1e62adf366b6d816c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">BLOCK_SIZE </td>
-          <td>(</td>
-          <td class="paramtype">s-&gt;&#160;</td>
-          <td class="paramname"><em>seqs_blk</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="a8c0406b7c40a8843fd04c6569614a2b0"></a>
 <div class="memitem">
 <div class="memproto">
@@ -325,211 +277,10 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9e1444e44836f6998e47a2c521441d64"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">cram_stats_add </td>
-          <td>(</td>
-          <td class="paramtype">c-&gt;&#160;</td>
-          <td class="paramname"><em>stats</em>[DS_MQ], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">cr-&gt;&#160;</td>
-          <td class="paramname"><em>mqual</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a9312370a72753a57e877b157a436e3bf"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">cram_stats_add </td>
-          <td>(</td>
-          <td class="paramtype">c-&gt;&#160;</td>
-          <td class="paramname"><em>stats</em>[DS_NS], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">cr-&gt;&#160;</td>
-          <td class="paramname"><em>mate_ref_id</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a388e40b11b6d85d95ae4be71d03fc5db"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">for </td>
-          <td>(</td>
-          <td class="paramtype">i&#160;</td>
-          <td class="paramname"> = <code>0;&#160;i&#160;&lt;&#160;cr-&gt;len;&#160;i++</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aa55ff40b43720e3fc91df0ef2bc4f574"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">if </td>
-          <td>(</td>
-          <td class="paramtype">!&#160;</td>
-          <td class="paramname">cr-&gt;flags &amp;BAM_FUNMAP</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a10cf7b80001397ce45d94988fe8831a2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">if </td>
-          <td>(</td>
-          <td class="paramtype">!&#160;</td>
-          <td class="paramname">bam_flag(b)&amp;BAM_FUNMAP</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="a3779fd7d7a8908e7cbe7f84f4d296292"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">cr aend = cr-&gt;apos</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aa762b5b3b33e5602db4f41b5ca44c335"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">cr cigar = 0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a0544c3fe466e421738dae463968b70ba"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">else</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{</div>
-<div class="line">  </div>
-<div class="line">  cr-&gt;cram_flags |= <a class="code" href="cram__structs_8h.html#a5e191a54fac6e74e1767dabc26e2f13a">CRAM_FLAG_PRESERVE_QUAL_SCORES</a></div>
-<div class="ttc" id="cram__structs_8h_html_a5e191a54fac6e74e1767dabc26e2f13a"><div class="ttname"><a href="cram__structs_8h.html#a5e191a54fac6e74e1767dabc26e2f13a">CRAM_FLAG_PRESERVE_QUAL_SCORES</a></div><div class="ttdeci">#define CRAM_FLAG_PRESERVE_QUAL_SCORES</div><div class="ttdef"><b>Definition:</b> cram_structs.h:805</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a96c09b7f5d98774729bcb58042196208"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">cr mate_ref_id = <a class="el" href="cram__samtools_8h.html#acfb73c928fe828508f534222318378de">bam_mate_ref</a>(b)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="adbbd1bce5f9e302852d5c43d25721bad"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">cr ncigar = 0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a425f5d287964d063319f5ba6cebad481"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">cr nfeature = 0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a2b531fb1eb56bdfb1a0e58eb33963df1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">qual = cp = (char *)<a class="el" href="cram__samtools_8h.html#a693d7f3d239832497ed2bee249c0f7d1">bam_qual</a>(b)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a9717e7bbecb906637e86cef6da3d83c2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">return</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 01:11:21 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 10 2014 19:53:24 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

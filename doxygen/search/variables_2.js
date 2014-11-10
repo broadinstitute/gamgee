@@ -6,7 +6,7 @@ var searchData=
   ['caddr',['caddr',['../structbgzidx1__t.html#a1cd04446af6c60e9e43c1ca2495ece82',1,'bgzidx1_t']]],
   ['category',['category',['../structhts_format.html#a72af90332a81388c1b660dac9f19b1ca',1,'htsFormat']]],
   ['center',['center',['../classgamgee_1_1_read_group.html#a30d20f7eef3f7561ee793c86ac40efc2',1,'gamgee::ReadGroup']]],
-  ['cigar',['cigar',['../structcram__record.html#abaf5170430e54b579a7cf6953ff2fc24',1,'cram_record::cigar()'],['../structcram__slice.html#aebff4e0822c1938f2f6d7127397fdb26',1,'cram_slice::cigar()'],['../cram__encode_8c.html#aa762b5b3b33e5602db4f41b5ca44c335',1,'cigar():&#160;cram_encode.c']]],
+  ['cigar',['cigar',['../structcram__record.html#abaf5170430e54b579a7cf6953ff2fc24',1,'cram_record::cigar()'],['../structcram__slice.html#aebff4e0822c1938f2f6d7127397fdb26',1,'cram_slice::cigar()']]],
   ['cigar_5falloc',['cigar_alloc',['../structcram__slice.html#a538ebbf51e2dc4cad49472d75a6ceec2',1,'cram_slice']]],
   ['cigar_5fop_5fparse_5ftable',['cigar_op_parse_table',['../classgamgee_1_1_cigar.html#af3ba8453a1e389e4feb2387e8946c285',1,'gamgee::Cigar']]],
   ['cigar_5ftab',['cigar_tab',['../structbam__hdr__t.html#a2750ba8ed41367e75e3981f085ae2cf8',1,'bam_hdr_t']]],

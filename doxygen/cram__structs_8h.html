@@ -164,7 +164,7 @@ Macros</h2></td></tr>
 <tr class="separator:a061dbaced0a448526fae1d1516571a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0e896de5d590b2d79911a0d128f05a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#af0e896de5d590b2d79911a0d128f05a9">cram_seq</a>(c)&#160;&#160;&#160;(&amp;(c)-&gt;s-&gt;seqs_blk-&gt;data[(c)-&gt;seq])</td></tr>
 <tr class="separator:af0e896de5d590b2d79911a0d128f05a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9eeb5702c876068ba263248c77d192f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a9eeb5702c876068ba263248c77d192f6">cram_qual</a>(c)&#160;&#160;&#160;(&amp;(c)-&gt;s-&gt;qual_blk-&gt;data[(c)-&gt;<a class="el" href="cram__encode_8c.html#a2b531fb1eb56bdfb1a0e58eb33963df1">qual</a>])</td></tr>
+<tr class="memitem:a9eeb5702c876068ba263248c77d192f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a9eeb5702c876068ba263248c77d192f6">cram_qual</a>(c)&#160;&#160;&#160;(&amp;(c)-&gt;s-&gt;qual_blk-&gt;data[(c)-&gt;qual])</td></tr>
 <tr class="separator:a9eeb5702c876068ba263248c77d192f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed2d86341111adc4b9307d0a15ba18fb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#aed2d86341111adc4b9307d0a15ba18fb">cram_aux</a>(c)&#160;&#160;&#160;(&amp;(c)-&gt;s-&gt;aux_blk-&gt;data[(c)-&gt;aux])</td></tr>
 <tr class="separator:aed2d86341111adc4b9307d0a15ba18fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -176,7 +176,7 @@ Macros</h2></td></tr>
 <tr class="separator:a1d2a06bd361c3ec58fc552f424ac9dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80294d70d0e9d667345988c61123c7d2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#a80294d70d0e9d667345988c61123c7d2">cram_mstrand</a>(c)&#160;&#160;&#160;(((c)-&gt;flags &amp; <a class="el" href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html#abe0a6e0ad6edda7f986ef91e8f156e02">BAM_FMREVERSE</a>) != 0)</td></tr>
 <tr class="separator:a80294d70d0e9d667345988c61123c7d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9f6d0b9144fb9908a1cf9388fb7d457"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#ad9f6d0b9144fb9908a1cf9388fb7d457">cram_cigar</a>(c)&#160;&#160;&#160;(&amp;((cr)-&gt;s-&gt;<a class="el" href="cram__encode_8c.html#aa762b5b3b33e5602db4f41b5ca44c335">cigar</a>)[(c)-&gt;<a class="el" href="cram__encode_8c.html#aa762b5b3b33e5602db4f41b5ca44c335">cigar</a>])</td></tr>
+<tr class="memitem:ad9f6d0b9144fb9908a1cf9388fb7d457"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#ad9f6d0b9144fb9908a1cf9388fb7d457">cram_cigar</a>(c)&#160;&#160;&#160;(&amp;((cr)-&gt;s-&gt;cigar)[(c)-&gt;cigar])</td></tr>
 <tr class="separator:ad9f6d0b9144fb9908a1cf9388fb7d457"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf866ff801cd3506ac17608edd0a5565"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__structs_8h.html#aaf866ff801cd3506ac17608edd0a5565">CRAM_CIGAR</a></td></tr>
 <tr class="separator:aaf866ff801cd3506ac17608edd0a5565"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -434,7 +434,7 @@ Enumerations</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">c</td><td>)</td>
-          <td>&#160;&#160;&#160;(&amp;((cr)-&gt;s-&gt;<a class="el" href="cram__encode_8c.html#aa762b5b3b33e5602db4f41b5ca44c335">cigar</a>)[(c)-&gt;<a class="el" href="cram__encode_8c.html#aa762b5b3b33e5602db4f41b5ca44c335">cigar</a>])</td>
+          <td>&#160;&#160;&#160;(&amp;((cr)-&gt;s-&gt;cigar)[(c)-&gt;cigar])</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -761,7 +761,7 @@ Enumerations</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">c</td><td>)</td>
-          <td>&#160;&#160;&#160;(&amp;(c)-&gt;s-&gt;qual_blk-&gt;data[(c)-&gt;<a class="el" href="cram__encode_8c.html#a2b531fb1eb56bdfb1a0e58eb33963df1">qual</a>])</td>
+          <td>&#160;&#160;&#160;(&amp;(c)-&gt;s-&gt;qual_blk-&gt;data[(c)-&gt;qual])</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1399,7 +1399,7 @@ Enumerations</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 01:11:21 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 10 2014 19:53:24 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

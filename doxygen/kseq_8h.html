@@ -192,17 +192,15 @@ Typedefs</h2></td></tr>
 <div class="line">  { \</div>
 <div class="line">    kstream_t *ks = (kstream_t*)calloc(1, <span class="keyword">sizeof</span>(kstream_t)); \</div>
 <div class="line">    ks-&gt;f = f; ks-&gt;bufsize = __bufsize; \</div>
-<div class="line">    ks-&gt;buf = (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*)malloc(__bufsize); <a class="code" href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">\</a></div>
-<div class="line"><a class="code" href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">		return</a> ks; \</div>
+<div class="line">    ks-&gt;buf = (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*)malloc(__bufsize); \</div>
+<div class="line">    return ks; \</div>
 <div class="line">  } \</div>
 <div class="line">  SCOPE <span class="keywordtype">void</span> ks_destroy(kstream_t *ks) \</div>
-<div class="line">  { <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
-<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">		if</a> (!ks) <a class="code" href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">return</a>; \</div>
+<div class="line">  { \</div>
+<div class="line">    if (!ks) return; \</div>
 <div class="line">    free(ks-&gt;buf); \</div>
 <div class="line">    free(ks); \</div>
 <div class="line">  }</div>
-<div class="ttc" id="cram__encode_8c_html_a9717e7bbecb906637e86cef6da3d83c2"><div class="ttname"><a href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">return</a></div><div class="ttdeci">return</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2876</div></div>
-<div class="ttc" id="cram__encode_8c_html_aa55ff40b43720e3fc91df0ef2bc4f574"><div class="ttname"><a href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a></div><div class="ttdeci">if(!(cr-&gt;flags &amp;BAM_FUNMAP))</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2565</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -246,23 +244,21 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> ks_getc(kstream_t *ks) \</div>
-<div class="line">  { <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
-<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">		if</a> (ks-&gt;is_eof &amp;&amp; ks-&gt;begin &gt;= ks-&gt;end) <a class="code" href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">return</a> -1; \</div>
-<div class="line">    <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a> (ks-&gt;begin &gt;= ks-&gt;end) { \</div>
+<div class="line">  { \</div>
+<div class="line">    if (ks-&gt;is_eof &amp;&amp; ks-&gt;begin &gt;= ks-&gt;end) return -1; \</div>
+<div class="line">    if (ks-&gt;begin &gt;= ks-&gt;end) { \</div>
 <div class="line">      ks-&gt;begin = 0; \</div>
-<div class="line">      ks-&gt;end = __read(ks-&gt;f, ks-&gt;buf, ks-&gt;bufsize); <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
-<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">			if</a> (ks-&gt;end &lt; ks-&gt;bufsize) ks-&gt;is_eof = 1; \</div>
-<div class="line">      <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a> (ks-&gt;end == 0) <a class="code" href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">return</a> -1; \</div>
+<div class="line">      ks-&gt;end = __read(ks-&gt;f, ks-&gt;buf, ks-&gt;bufsize); \</div>
+<div class="line">      if (ks-&gt;end &lt; ks-&gt;bufsize) ks-&gt;is_eof = 1; \</div>
+<div class="line">      if (ks-&gt;end == 0) return -1; \</div>
 <div class="line">    } \</div>
 <div class="line">        ks-&gt;seek_pos++; \</div>
 <div class="line">    return (<span class="keywordtype">int</span>)ks-&gt;buf[ks-&gt;begin++]; \</div>
 <div class="line">  } \</div>
 <div class="line">  static inline <span class="keywordtype">int</span> ks_getuntil(kstream_t *ks, <span class="keywordtype">int</span> delimiter, <a class="code" href="struct____kstring__t.html">kstring_t</a> *<a class="code" href="test_2sam_8c.html#a8269f97b2652fc717949a982d7b4f02a">str</a>, <span class="keywordtype">int</span> *dret) \</div>
 <div class="line">  { <span class="keywordflow">return</span> ks_getuntil2(ks, delimiter, str, dret, 0); }</div>
-<div class="ttc" id="cram__encode_8c_html_a9717e7bbecb906637e86cef6da3d83c2"><div class="ttname"><a href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">return</a></div><div class="ttdeci">return</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2876</div></div>
 <div class="ttc" id="struct____kstring__t_html"><div class="ttname"><a href="struct____kstring__t.html">__kstring_t</a></div><div class="ttdef"><b>Definition:</b> bgzf.h:69</div></div>
 <div class="ttc" id="test_2sam_8c_html_a8269f97b2652fc717949a982d7b4f02a"><div class="ttname"><a href="test_2sam_8c.html#a8269f97b2652fc717949a982d7b4f02a">str</a></div><div class="ttdeci">#define str(x)</div><div class="ttdef"><b>Definition:</b> sam.c:66</div></div>
-<div class="ttc" id="cram__encode_8c_html_aa55ff40b43720e3fc91df0ef2bc4f574"><div class="ttname"><a href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a></div><div class="ttdeci">if(!(cr-&gt;flags &amp;BAM_FUNMAP))</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2565</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -315,19 +311,16 @@ Typedefs</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">SCOPE kseq_t *kseq_init(type_t fd)                  \</div>
 <div class="line">  {                                 \</div>
 <div class="line">    kseq_t *s = (kseq_t*)calloc(1, <span class="keyword">sizeof</span>(kseq_t));         \</div>
-<div class="line">    s-&gt;f = ks_init(fd);                       <a class="code" href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">\</a></div>
-<div class="line"><a class="code" href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">		return</a> s;                           \</div>
+<div class="line">    s-&gt;f = ks_init(fd);                       \</div>
+<div class="line">    return s;                           \</div>
 <div class="line">  }                                 \</div>
 <div class="line">  SCOPE <span class="keywordtype">void</span> kseq_destroy(kseq_t *ks)                 \</div>
-<div class="line">  {                                 <a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">\</a></div>
-<div class="line"><a class="code" href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">		if</a> (!ks) <a class="code" href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">return</a>;                        \</div>
-<div class="line">    free(ks-&gt;name.s); free(ks-&gt;comment.s); free(ks-&gt;seq.s); free(ks-&gt;<a class="code" href="cram__encode_8c.html#a2b531fb1eb56bdfb1a0e58eb33963df1">qual</a>.s); \</div>
+<div class="line">  {                                 \</div>
+<div class="line">    if (!ks) return;                        \</div>
+<div class="line">    free(ks-&gt;name.s); free(ks-&gt;comment.s); free(ks-&gt;seq.s); free(ks-&gt;qual.s); \</div>
 <div class="line">    ks_destroy(ks-&gt;f);                        \</div>
 <div class="line">    free(ks);                           \</div>
 <div class="line">  }</div>
-<div class="ttc" id="cram__encode_8c_html_a2b531fb1eb56bdfb1a0e58eb33963df1"><div class="ttname"><a href="cram__encode_8c.html#a2b531fb1eb56bdfb1a0e58eb33963df1">qual</a></div><div class="ttdeci">qual</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2562</div></div>
-<div class="ttc" id="cram__encode_8c_html_a9717e7bbecb906637e86cef6da3d83c2"><div class="ttname"><a href="cram__encode_8c.html#a9717e7bbecb906637e86cef6da3d83c2">return</a></div><div class="ttdeci">return</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2876</div></div>
-<div class="ttc" id="cram__encode_8c_html_aa55ff40b43720e3fc91df0ef2bc4f574"><div class="ttname"><a href="cram__encode_8c.html#aa55ff40b43720e3fc91df0ef2bc4f574">if</a></div><div class="ttdeci">if(!(cr-&gt;flags &amp;BAM_FUNMAP))</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2565</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -361,12 +354,11 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{              <a class="code" href="kseq_8h.html#ac800c6fe2937b30307ab5a457e5bbf19">\</a></div>
-<div class="line"><a class="code" href="kseq_8h.html#ac800c6fe2937b30307ab5a457e5bbf19">		kstring_t</a> name, comment, seq, <a class="code" href="cram__encode_8c.html#a2b531fb1eb56bdfb1a0e58eb33963df1">qual</a>;   \</div>
+<div class="line"><a class="code" href="kseq_8h.html#ac800c6fe2937b30307ab5a457e5bbf19">		kstring_t</a> name, comment, seq, qual;   \</div>
 <div class="line">    int last_char;              \</div>
 <div class="line">    kstream_t *f;             \</div>
 <div class="line">  } kseq_t;</div>
 <div class="ttc" id="kseq_8h_html_ac800c6fe2937b30307ab5a457e5bbf19"><div class="ttname"><a href="kseq_8h.html#ac800c6fe2937b30307ab5a457e5bbf19">kstring_t</a></div><div class="ttdeci">struct __kstring_t kstring_t</div></div>
-<div class="ttc" id="cram__encode_8c_html_a2b531fb1eb56bdfb1a0e58eb33963df1"><div class="ttname"><a href="cram__encode_8c.html#a2b531fb1eb56bdfb1a0e58eb33963df1">qual</a></div><div class="ttdeci">qual</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2562</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -712,7 +704,7 @@ Typedefs</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 01:11:21 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 10 2014 19:53:24 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -179,25 +179,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;          <span class="keywordtype">int</span> pos,</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;          <span class="keywordtype">int</span> end,        <span class="comment">// aligned start/end coords</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;          <span class="keywordtype">int</span> mapq,</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;          uint32_t <a class="code" href="cram__encode_8c.html#adbbd1bce5f9e302852d5c43d25721bad">ncigar</a>, <span class="keyword">const</span> uint32_t *<a class="code" href="cram__encode_8c.html#aa762b5b3b33e5602db4f41b5ca44c335">cigar</a>,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;          uint32_t ncigar, <span class="keyword">const</span> uint32_t *cigar,</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;          <span class="keywordtype">int</span> mrnm,       <span class="comment">// Mate Ref ID</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;          <span class="keywordtype">int</span> mpos,</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;          <span class="keywordtype">int</span> isize,</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;          <span class="keywordtype">int</span> len,</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;          <span class="keyword">const</span> <span class="keywordtype">char</span> *seq,</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;          <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="cram__encode_8c.html#a2b531fb1eb56bdfb1a0e58eb33963df1">qual</a>);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;          <span class="keyword">const</span> <span class="keywordtype">char</span> *qual);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _CRAM_SAMTOOLS_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="cram__encode_8c_html_aa762b5b3b33e5602db4f41b5ca44c335"><div class="ttname"><a href="cram__encode_8c.html#aa762b5b3b33e5602db4f41b5ca44c335">cigar</a></div><div class="ttdeci">cr cigar</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2732</div></div>
 <div class="ttc" id="cram__samtools_8h_html_a65eed211aaf30bb499154c2b4acb477fa2673a9ced301ff44f5f57a1aa8e9298f"><div class="ttname"><a href="cram__samtools_8h.html#a65eed211aaf30bb499154c2b4acb477fa2673a9ced301ff44f5f57a1aa8e9298f">BAM_CBASE_MATCH</a></div><div class="ttdef"><b>Definition:</b> cram_samtools.h:71</div></div>
 <div class="ttc" id="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h_html_af9907ee0da937397b3d7b871f51d9167"><div class="ttname"><a href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html#af9907ee0da937397b3d7b871f51d9167">BAM_CREF_SKIP</a></div><div class="ttdeci">#define BAM_CREF_SKIP</div><div class="ttdef"><b>Definition:</b> sam.h:63</div></div>
 <div class="ttc" id="cram__samtools_8h_html_a65eed211aaf30bb499154c2b4acb477fa07505a8f527bb0e520beb13b0e049036"><div class="ttname"><a href="cram__samtools_8h.html#a65eed211aaf30bb499154c2b4acb477fa07505a8f527bb0e520beb13b0e049036">BAM_CPAD_</a></div><div class="ttdef"><b>Definition:</b> cram_samtools.h:70</div></div>
 <div class="ttc" id="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h_html_a5c7530a68373cf442f137e1358be76af"><div class="ttname"><a href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html#a5c7530a68373cf442f137e1358be76af">BAM_CINS</a></div><div class="ttdeci">#define BAM_CINS</div><div class="ttdef"><b>Definition:</b> sam.h:61</div></div>
 <div class="ttc" id="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h_html_ac8f7669bb58578635eaf5f0b46c2e484"><div class="ttname"><a href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html#ac8f7669bb58578635eaf5f0b46c2e484">BAM_CDEL</a></div><div class="ttdeci">#define BAM_CDEL</div><div class="ttdef"><b>Definition:</b> sam.h:62</div></div>
-<div class="ttc" id="cram__encode_8c_html_adbbd1bce5f9e302852d5c43d25721bad"><div class="ttname"><a href="cram__encode_8c.html#adbbd1bce5f9e302852d5c43d25721bad">ncigar</a></div><div class="ttdeci">cr ncigar</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2733</div></div>
 <div class="ttc" id="cram__samtools_8h_html_a65eed211aaf30bb499154c2b4acb477f"><div class="ttname"><a href="cram__samtools_8h.html#a65eed211aaf30bb499154c2b4acb477f">cigar_op</a></div><div class="ttdeci">cigar_op</div><div class="ttdef"><b>Definition:</b> cram_samtools.h:63</div></div>
 <div class="ttc" id="struct_s_a_m__hdr_html"><div class="ttname"><a href="struct_s_a_m__hdr.html">SAM_hdr</a></div><div class="ttdef"><b>Definition:</b> sam_header.h:183</div></div>
-<div class="ttc" id="cram__encode_8c_html_a2b531fb1eb56bdfb1a0e58eb33963df1"><div class="ttname"><a href="cram__encode_8c.html#a2b531fb1eb56bdfb1a0e58eb33963df1">qual</a></div><div class="ttdeci">qual</div><div class="ttdef"><b>Definition:</b> cram_encode.c:2562</div></div>
 <div class="ttc" id="cram__samtools_8h_html_a65eed211aaf30bb499154c2b4acb477faa892b05e67322725fbdaafc6e07713dc"><div class="ttname"><a href="cram__samtools_8h.html#a65eed211aaf30bb499154c2b4acb477faa892b05e67322725fbdaafc6e07713dc">BAM_CDEL_</a></div><div class="ttdef"><b>Definition:</b> cram_samtools.h:66</div></div>
 <div class="ttc" id="structbam1__t_html"><div class="ttname"><a href="structbam1__t.html">bam1_t</a></div><div class="ttdef"><b>Definition:</b> sam.h:170</div></div>
 <div class="ttc" id="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h_html_abe55f8c8f755102152f0cd24a3ca549d"><div class="ttname"><a href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html#abe55f8c8f755102152f0cd24a3ca549d">BAM_CPAD</a></div><div class="ttdeci">#define BAM_CPAD</div><div class="ttdef"><b>Definition:</b> sam.h:66</div></div>
@@ -222,7 +219,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 01:11:21 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 10 2014 19:53:24 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

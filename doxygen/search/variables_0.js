@@ -1,7 +1,7 @@
 var searchData=
 [
   ['a',['a',['../struct_m_d5___c_t_x.html#abfbd731eb0b9d13a75ee4e49715e30b5',1,'MD5_CTX::a()'],['../structhts__itr__t.html#ac6ebe8e0ead910684e6ebb9534926435',1,'hts_itr_t::a()']]],
-  ['aend',['aend',['../structcram__record.html#a8923adc16b50a31fa6dfa95d483ae555',1,'cram_record::aend()'],['../cram__encode_8c.html#a3779fd7d7a8908e7cbe7f84f4d296292',1,'aend():&#160;cram_encode.c']]],
+  ['aend',['aend',['../structcram__record.html#a8923adc16b50a31fa6dfa95d483ae555',1,'cram_record']]],
   ['afeatures',['afeatures',['../structcram__slice.html#a91b1946888b116cc74689ce7001235fd',1,'cram_slice']]],
   ['all_5fintervals',['all_intervals',['../classgamgee_1_1_indexed_variant_iterator.html#a826b9244e40b5b8a9da0efe2e9ffd3b7',1,'gamgee::IndexedVariantIterator']]],
   ['allele',['allele',['../structbcf__dec__t.html#a6dd4b0a589e02d5148654f88c541a5ec',1,'bcf_dec_t']]],

@@ -81,7 +81,6 @@ var searchData=
   ['fn',['fn',['../structref__entry.html#a6547799512e6588b5559dcc6bcfcb8ca',1,'ref_entry::fn()'],['../structrefs__t.html#a84a0e822c1e618c4216733b18bc0e2c3',1,'refs_t::fn()'],['../structhts_file.html#a0ad24deddc3a44e73e46e2edf4f4577f',1,'htsFile::fn()']]],
   ['fn_5faux',['fn_aux',['../structhts_file.html#a377f56a0627c599095965b1b5148c57f',1,'htsFile']]],
   ['fname',['fname',['../struct__bcf__sr__regions__t.html#a7541a1c137e68c3287c24683e6f5f796',1,'_bcf_sr_regions_t::fname()'],['../structbcf__sr__t.html#a7579b7ef516b30e88eb9252f9ccb4d17',1,'bcf_sr_t::fname()']]],
-  ['for',['for',['../cram__encode_8c.html#a388e40b11b6d85d95ae4be71d03fc5db',1,'cram_encode.c']]],
   ['format',['format',['../structhts_format.html#a99695ceede28b0511eaf234b596d3db1',1,'htsFormat::format()'],['../structhts_file.html#ae8265d2a5c16f0082e6c0be108a8e44d',1,'htsFile::format()']]],
   ['format_5fmaximum',['format_maximum',['../hts_8h.html#a5012a62947ab60eb4691d4dee8655df2aeb9dd1aff0d5ccf22158b8e9a6a4c7f0',1,'hts.h']]],
   ['fout',['fout',['../test_2hfile_8c.html#ac6689266308cd7d6f4ab349c7247657a',1,'hfile.c']]],

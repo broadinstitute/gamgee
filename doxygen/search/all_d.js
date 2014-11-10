@@ -38,7 +38,7 @@ var searchData=
   ['mate_5fflags',['mate_flags',['../structcram__record.html#a19bc0814c56fd02bb223fda28b7bade5',1,'cram_record']]],
   ['mate_5fline',['mate_line',['../structcram__record.html#a9f5a19bad17aa8d9cc81d13d2dcd294d',1,'cram_record']]],
   ['mate_5fpos',['mate_pos',['../structcram__record.html#a065f906f83f6ffb5e0e48fd10c34da5c',1,'cram_record']]],
-  ['mate_5fref_5fid',['mate_ref_id',['../structcram__record.html#a6d7f9918068ec5d42894d6d78b79b3f0',1,'cram_record::mate_ref_id()'],['../cram__encode_8c.html#a96c09b7f5d98774729bcb58042196208',1,'mate_ref_id():&#160;cram_encode.c']]],
+  ['mate_5fref_5fid',['mate_ref_id',['../structcram__record.html#a6d7f9918068ec5d42894d6d78b79b3f0',1,'cram_record']]],
   ['mate_5freverse',['mate_reverse',['../classgamgee_1_1_sam.html#adf4f3e7564b5a8c60e7fb2b197076c82',1,'gamgee::Sam']]],
   ['mate_5funclipped_5fstart',['mate_unclipped_start',['../classgamgee_1_1_sam.html#a0153411640fb83c7f1b3b09d6d0e078f',1,'gamgee::Sam::mate_unclipped_start() const '],['../classgamgee_1_1_sam.html#a950c87dcff9a83be591042116cc21d30',1,'gamgee::Sam::mate_unclipped_start(const SamTag&lt; std::string &gt; &amp;mate_cigar_tag) const ']]],
   ['mate_5funclipped_5fstop',['mate_unclipped_stop',['../classgamgee_1_1_sam.html#a55b020b715aaaf7e301032d7bffd2a3e',1,'gamgee::Sam::mate_unclipped_stop() const '],['../classgamgee_1_1_sam.html#a499fef40222cf985150e959e41c68df1',1,'gamgee::Sam::mate_unclipped_stop(const SamTag&lt; std::string &gt; &amp;mate_cigar_tag) const ']]],

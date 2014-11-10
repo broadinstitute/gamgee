@@ -20,7 +20,7 @@ var searchData=
   ['mate_5fflags',['mate_flags',['../structcram__record.html#a19bc0814c56fd02bb223fda28b7bade5',1,'cram_record']]],
   ['mate_5fline',['mate_line',['../structcram__record.html#a9f5a19bad17aa8d9cc81d13d2dcd294d',1,'cram_record']]],
   ['mate_5fpos',['mate_pos',['../structcram__record.html#a065f906f83f6ffb5e0e48fd10c34da5c',1,'cram_record']]],
-  ['mate_5fref_5fid',['mate_ref_id',['../structcram__record.html#a6d7f9918068ec5d42894d6d78b79b3f0',1,'cram_record::mate_ref_id()'],['../cram__encode_8c.html#a96c09b7f5d98774729bcb58042196208',1,'mate_ref_id():&#160;cram_encode.c']]],
+  ['mate_5fref_5fid',['mate_ref_id',['../structcram__record.html#a6d7f9918068ec5d42894d6d78b79b3f0',1,'cram_record']]],
   ['max',['max',['../structmempool__t.html#a46b8c61f0a2ebc0c70be1883b2ab396b',1,'mempool_t']]],
   ['max_5fapos',['max_apos',['../structcram__container.html#a3b06ee22c564d71d927ff8ab528f7914',1,'cram_container::max_apos()'],['../structcram__slice.html#a44c78212fa8229caba0af33f4676faa6',1,'cram_slice::max_apos()']]],
   ['max_5fc_5frec',['max_c_rec',['../structcram__container.html#ab27199eb29c7868da9ce55353fd5a432',1,'cram_container']]],

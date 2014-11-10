@@ -125,7 +125,7 @@ Macros</h2></td></tr>
 <tr class="separator:a10d1cf1f920d92ebe81a40b35cc5c8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a810d07f810c68bd8a5abbcd0a7c2e86e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__samtools_8h.html#a810d07f810c68bd8a5abbcd0a7c2e86e">bam_bin</a>(b)&#160;&#160;&#160;(b)-&gt;core.bin</td></tr>
 <tr class="separator:a810d07f810c68bd8a5abbcd0a7c2e86e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec3156816185c17e0fe80ac30f06eb02"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__samtools_8h.html#aec3156816185c17e0fe80ac30f06eb02">bam_map_qual</a>(b)&#160;&#160;&#160;(b)-&gt;<a class="el" href="cram__encode_8c.html#a2b531fb1eb56bdfb1a0e58eb33963df1">core.qual</a></td></tr>
+<tr class="memitem:aec3156816185c17e0fe80ac30f06eb02"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__samtools_8h.html#aec3156816185c17e0fe80ac30f06eb02">bam_map_qual</a>(b)&#160;&#160;&#160;(b)-&gt;core.qual</td></tr>
 <tr class="separator:aec3156816185c17e0fe80ac30f06eb02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc096ed36d6ac54d7853dceacf3e521f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__samtools_8h.html#afc096ed36d6ac54d7853dceacf3e521f">bam_name_len</a>(b)&#160;&#160;&#160;(b)-&gt;core.l_qname</td></tr>
 <tr class="separator:afc096ed36d6ac54d7853dceacf3e521f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,7 +175,7 @@ Functions</h2></td></tr>
 <tr class="separator:a49d38169d7afb0ad54d9690bd28c14c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3cb4e8979462e6775198ccf329388f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_s_a_m__hdr.html">SAM_hdr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__samtools_8h.html#af3cb4e8979462e6775198ccf329388f1">bam_header_to_cram</a> (<a class="el" href="structbam__hdr__t.html">bam_hdr_t</a> *h)</td></tr>
 <tr class="separator:af3cb4e8979462e6775198ccf329388f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c0cd11a744cc6ac214e27c4359896f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__samtools_8h.html#a8c0cd11a744cc6ac214e27c4359896f0">bam_construct_seq</a> (<a class="el" href="cram__samtools_8h.html#a53b9f9947771d538d9e18245096796ca">bam_seq_t</a> **bp, size_t extra_len, const char *qname, size_t qname_len, int flag, int rname, int pos, int end, int mapq, uint32_t <a class="el" href="cram__encode_8c.html#adbbd1bce5f9e302852d5c43d25721bad">ncigar</a>, const uint32_t *<a class="el" href="cram__encode_8c.html#aa762b5b3b33e5602db4f41b5ca44c335">cigar</a>, int mrnm, int mpos, int isize, int len, const char *seq, const char *<a class="el" href="cram__encode_8c.html#a2b531fb1eb56bdfb1a0e58eb33963df1">qual</a>)</td></tr>
+<tr class="memitem:a8c0cd11a744cc6ac214e27c4359896f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cram__samtools_8h.html#a8c0cd11a744cc6ac214e27c4359896f0">bam_construct_seq</a> (<a class="el" href="cram__samtools_8h.html#a53b9f9947771d538d9e18245096796ca">bam_seq_t</a> **bp, size_t extra_len, const char *qname, size_t qname_len, int flag, int rname, int pos, int end, int mapq, uint32_t ncigar, const uint32_t *cigar, int mrnm, int mpos, int isize, int len, const char *seq, const char *qual)</td></tr>
 <tr class="separator:a8c0cd11a744cc6ac214e27c4359896f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -332,7 +332,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">b</td><td>)</td>
-          <td>&#160;&#160;&#160;(b)-&gt;<a class="el" href="cram__encode_8c.html#a2b531fb1eb56bdfb1a0e58eb33963df1">core.qual</a></td>
+          <td>&#160;&#160;&#160;(b)-&gt;core.qual</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -733,7 +733,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 01:11:21 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 10 2014 19:53:24 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

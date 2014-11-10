@@ -105,6 +105,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ace610039f04b4360626880dc9df306e1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ace610039f04b4360626880dc9df306e1">VariantBuilder</a> (const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> &amp;<a class="el" href="classgamgee_1_1_variant_builder.html#ad839d1da158385dc3fbd9a558d55b14b">header</a>)</td></tr>
+<tr class="memdesc:ace610039f04b4360626880dc9df306e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a> given a <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a>.  <a href="#ace610039f04b4360626880dc9df306e1">More...</a><br /></td></tr>
 <tr class="separator:ace610039f04b4360626880dc9df306e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ec544dd5021a2835cad4bf1fd7bab12"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a7ec544dd5021a2835cad4bf1fd7bab12">VariantBuilder</a> (<a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&amp;other)=default</td></tr>
 <tr class="separator:a7ec544dd5021a2835cad4bf1fd7bab12"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,179 +118,265 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac288116a5f57f8d578435da482b3ca7b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ac288116a5f57f8d578435da482b3ca7b">~VariantBuilder</a> ()=default</td></tr>
 <tr class="separator:ac288116a5f57f8d578435da482b3ca7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad839d1da158385dc3fbd9a558d55b14b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ad839d1da158385dc3fbd9a558d55b14b">header</a> () const </td></tr>
+<tr class="memdesc:ad839d1da158385dc3fbd9a558d55b14b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> header for this builder.  <a href="#ad839d1da158385dc3fbd9a558d55b14b">More...</a><br /></td></tr>
 <tr class="separator:ad839d1da158385dc3fbd9a558d55b14b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cb2d600ba1e3249b1533fe7be9ae8f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a7cb2d600ba1e3249b1533fe7be9ae8f1">set_enable_validation</a> (const bool enable_validation)</td></tr>
 <tr class="memdesc:a7cb2d600ba1e3249b1533fe7be9ae8f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable or enable all validation checks in this builder.  <a href="#a7cb2d600ba1e3249b1533fe7be9ae8f1">More...</a><br /></td></tr>
 <tr class="separator:a7cb2d600ba1e3249b1533fe7be9ae8f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4494b555f8f0a09793c5d9da22ffc4a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a4494b555f8f0a09793c5d9da22ffc4a8">set_chromosome</a> (const uint32_t chromosome)</td></tr>
+<tr class="memdesc:a4494b555f8f0a09793c5d9da22ffc4a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the chromosome by index.  <a href="#a4494b555f8f0a09793c5d9da22ffc4a8">More...</a><br /></td></tr>
 <tr class="separator:a4494b555f8f0a09793c5d9da22ffc4a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6062d271de74f46d6767b5847f6f359d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a6062d271de74f46d6767b5847f6f359d">set_chromosome</a> (const std::string &amp;chromosome)</td></tr>
+<tr class="memdesc:a6062d271de74f46d6767b5847f6f359d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the chromosome by name.  <a href="#a6062d271de74f46d6767b5847f6f359d">More...</a><br /></td></tr>
 <tr class="separator:a6062d271de74f46d6767b5847f6f359d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad76787fa7e4077b87d3c2ad414cd6371"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ad76787fa7e4077b87d3c2ad414cd6371">set_alignment_start</a> (const uint32_t alignment_start)</td></tr>
+<tr class="memdesc:ad76787fa7e4077b87d3c2ad414cd6371"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the alignment start position.  <a href="#ad76787fa7e4077b87d3c2ad414cd6371">More...</a><br /></td></tr>
 <tr class="separator:ad76787fa7e4077b87d3c2ad414cd6371"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af80e48e3d14ff5a9613660b54277bf4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#af80e48e3d14ff5a9613660b54277bf4d">set_alignment_stop</a> (const uint32_t alignment_stop)</td></tr>
+<tr class="memdesc:af80e48e3d14ff5a9613660b54277bf4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the alignment stop position.  <a href="#af80e48e3d14ff5a9613660b54277bf4d">More...</a><br /></td></tr>
 <tr class="separator:af80e48e3d14ff5a9613660b54277bf4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0a4a44483fe363a1e342f2c29681fae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#af0a4a44483fe363a1e342f2c29681fae">set_qual</a> (const float <a class="el" href="cram__encode_8c.html#a2b531fb1eb56bdfb1a0e58eb33963df1">qual</a>)</td></tr>
+<tr class="memitem:af0a4a44483fe363a1e342f2c29681fae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#af0a4a44483fe363a1e342f2c29681fae">set_qual</a> (const float qual)</td></tr>
+<tr class="memdesc:af0a4a44483fe363a1e342f2c29681fae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Phred-scaled site quality (probability that the site is not reference)  <a href="#af0a4a44483fe363a1e342f2c29681fae">More...</a><br /></td></tr>
 <tr class="separator:af0a4a44483fe363a1e342f2c29681fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc79ab96a09514ea1a46dcbbceef3fef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#acc79ab96a09514ea1a46dcbbceef3fef">set_id</a> (const std::string &amp;id)</td></tr>
+<tr class="memdesc:acc79ab96a09514ea1a46dcbbceef3fef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the variant ID field.  <a href="#acc79ab96a09514ea1a46dcbbceef3fef">More...</a><br /></td></tr>
 <tr class="separator:acc79ab96a09514ea1a46dcbbceef3fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab94db2cdc82ac4afc66b91ff1155fd49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ab94db2cdc82ac4afc66b91ff1155fd49">set_ref_allele</a> (const std::string &amp;ref_allele)</td></tr>
+<tr class="memdesc:ab94db2cdc82ac4afc66b91ff1155fd49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the reference allele.  <a href="#ab94db2cdc82ac4afc66b91ff1155fd49">More...</a><br /></td></tr>
 <tr class="separator:ab94db2cdc82ac4afc66b91ff1155fd49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b1a027a239bfbdb9a3a8bec4203f28c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a8b1a027a239bfbdb9a3a8bec4203f28c">set_alt_allele</a> (const std::string &amp;alt_allele)</td></tr>
+<tr class="memdesc:a8b1a027a239bfbdb9a3a8bec4203f28c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the alt allele.  <a href="#a8b1a027a239bfbdb9a3a8bec4203f28c">More...</a><br /></td></tr>
 <tr class="separator:a8b1a027a239bfbdb9a3a8bec4203f28c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab90c4dd560168c88114280fc86543bbe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ab90c4dd560168c88114280fc86543bbe">set_alt_alleles</a> (const std::vector&lt; std::string &gt; &amp;alt_alleles)</td></tr>
+<tr class="memdesc:ab90c4dd560168c88114280fc86543bbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the alt alleles.  <a href="#ab90c4dd560168c88114280fc86543bbe">More...</a><br /></td></tr>
 <tr class="separator:ab90c4dd560168c88114280fc86543bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40dcca8131342fb86e59a4bd0b9e405e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a40dcca8131342fb86e59a4bd0b9e405e">set_filters</a> (const <a class="el" href="classgamgee_1_1_variant_filters.html">VariantFilters</a> &amp;filters)</td></tr>
-<tr class="separator:a40dcca8131342fb86e59a4bd0b9e405e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7d74effdfa3d0a05e5b430fb46b5339"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#af7d74effdfa3d0a05e5b430fb46b5339">set_filters</a> (const std::vector&lt; std::string &gt; &amp;filters)</td></tr>
+<tr class="memdesc:af7d74effdfa3d0a05e5b430fb46b5339"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the filters using filter names.  <a href="#af7d74effdfa3d0a05e5b430fb46b5339">More...</a><br /></td></tr>
 <tr class="separator:af7d74effdfa3d0a05e5b430fb46b5339"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20952eb544025ff80c314c251962f3ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a20952eb544025ff80c314c251962f3ee">set_filters</a> (const std::vector&lt; int32_t &gt; &amp;filters)</td></tr>
+<tr class="memdesc:a20952eb544025ff80c314c251962f3ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the filters using filter indices.  <a href="#a20952eb544025ff80c314c251962f3ee">More...</a><br /></td></tr>
 <tr class="separator:a20952eb544025ff80c314c251962f3ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbfc654cff9b49d40c7b1b67df97cfad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#abbfc654cff9b49d40c7b1b67df97cfad">remove_alignment_stop</a> ()</td></tr>
+<tr class="memdesc:abbfc654cff9b49d40c7b1b67df97cfad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the alignment stop value (if set)  <a href="#abbfc654cff9b49d40c7b1b67df97cfad">More...</a><br /></td></tr>
 <tr class="separator:abbfc654cff9b49d40c7b1b67df97cfad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a531375e15d4108ee508a4e2d6ff35fc4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a531375e15d4108ee508a4e2d6ff35fc4">remove_qual</a> ()</td></tr>
+<tr class="memdesc:a531375e15d4108ee508a4e2d6ff35fc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the qual field (if set)  <a href="#a531375e15d4108ee508a4e2d6ff35fc4">More...</a><br /></td></tr>
 <tr class="separator:a531375e15d4108ee508a4e2d6ff35fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2bbb85da5628323df90e8822abbccf6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#aa2bbb85da5628323df90e8822abbccf6">remove_id</a> ()</td></tr>
+<tr class="memdesc:aa2bbb85da5628323df90e8822abbccf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the ID field (if set)  <a href="#aa2bbb85da5628323df90e8822abbccf6">More...</a><br /></td></tr>
 <tr class="separator:aa2bbb85da5628323df90e8822abbccf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e1adb976cb519752295ba81a4278d35"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a3e1adb976cb519752295ba81a4278d35">remove_alt_alleles</a> ()</td></tr>
+<tr class="memdesc:a3e1adb976cb519752295ba81a4278d35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear alt alleles (if set)  <a href="#a3e1adb976cb519752295ba81a4278d35">More...</a><br /></td></tr>
 <tr class="separator:a3e1adb976cb519752295ba81a4278d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d4a69132f5d179dcf2def5ecc51f458"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a7d4a69132f5d179dcf2def5ecc51f458">remove_filters</a> ()</td></tr>
+<tr class="memdesc:a7d4a69132f5d179dcf2def5ecc51f458"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear filters (if set)  <a href="#a7d4a69132f5d179dcf2def5ecc51f458">More...</a><br /></td></tr>
 <tr class="separator:a7d4a69132f5d179dcf2def5ecc51f458"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fa488e941d9ec047f1fa5c02b85ea2e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a7fa488e941d9ec047f1fa5c02b85ea2e">set_integer_shared_field</a> (const std::string &amp;tag, const int32_t value)</td></tr>
+<tr class="memdesc:a7fa488e941d9ec047f1fa5c02b85ea2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a single-valued integer shared field by field name.  <a href="#a7fa488e941d9ec047f1fa5c02b85ea2e">More...</a><br /></td></tr>
 <tr class="separator:a7fa488e941d9ec047f1fa5c02b85ea2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65bdff18c82917e7a0bde43d64cae615"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a65bdff18c82917e7a0bde43d64cae615">set_integer_shared_field</a> (const std::string &amp;tag, const std::vector&lt; int32_t &gt; &amp;values)</td></tr>
+<tr class="memdesc:a65bdff18c82917e7a0bde43d64cae615"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a multi-valued integer shared field by field name.  <a href="#a65bdff18c82917e7a0bde43d64cae615">More...</a><br /></td></tr>
 <tr class="separator:a65bdff18c82917e7a0bde43d64cae615"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf2b2554997083141821365b163525c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#adf2b2554997083141821365b163525c3">set_integer_shared_field</a> (const uint32_t index, const int32_t value)</td></tr>
+<tr class="memdesc:adf2b2554997083141821365b163525c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a single-valued integer shared field by field index.  <a href="#adf2b2554997083141821365b163525c3">More...</a><br /></td></tr>
 <tr class="separator:adf2b2554997083141821365b163525c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71808bcd6e8512abe46832be92f9ccdb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a71808bcd6e8512abe46832be92f9ccdb">set_integer_shared_field</a> (const uint32_t index, const std::vector&lt; int32_t &gt; &amp;values)</td></tr>
+<tr class="memdesc:a71808bcd6e8512abe46832be92f9ccdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a multi-valued integer shared field by field index.  <a href="#a71808bcd6e8512abe46832be92f9ccdb">More...</a><br /></td></tr>
 <tr class="separator:a71808bcd6e8512abe46832be92f9ccdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07abd11965be32f2da970bb3d44e424c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a07abd11965be32f2da970bb3d44e424c">set_float_shared_field</a> (const std::string &amp;tag, const float value)</td></tr>
+<tr class="memdesc:a07abd11965be32f2da970bb3d44e424c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a single-valued float shared field by field name.  <a href="#a07abd11965be32f2da970bb3d44e424c">More...</a><br /></td></tr>
 <tr class="separator:a07abd11965be32f2da970bb3d44e424c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc6b8f4c1d727c116d9bf5d70cbbfda2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#afc6b8f4c1d727c116d9bf5d70cbbfda2">set_float_shared_field</a> (const std::string &amp;tag, const std::vector&lt; float &gt; &amp;values)</td></tr>
+<tr class="memdesc:afc6b8f4c1d727c116d9bf5d70cbbfda2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a multi-valued float shared field by field name.  <a href="#afc6b8f4c1d727c116d9bf5d70cbbfda2">More...</a><br /></td></tr>
 <tr class="separator:afc6b8f4c1d727c116d9bf5d70cbbfda2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0e9e1be6fc88b1a2186326dc666a13c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#af0e9e1be6fc88b1a2186326dc666a13c">set_float_shared_field</a> (const uint32_t index, const float value)</td></tr>
+<tr class="memdesc:af0e9e1be6fc88b1a2186326dc666a13c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a single-valued float shared field by field index.  <a href="#af0e9e1be6fc88b1a2186326dc666a13c">More...</a><br /></td></tr>
 <tr class="separator:af0e9e1be6fc88b1a2186326dc666a13c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35c6bfe5ed8f5f9313a14f3c417d0da9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a35c6bfe5ed8f5f9313a14f3c417d0da9">set_float_shared_field</a> (const uint32_t index, const std::vector&lt; float &gt; &amp;values)</td></tr>
+<tr class="memdesc:a35c6bfe5ed8f5f9313a14f3c417d0da9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a multi-valued float shared field by field index.  <a href="#a35c6bfe5ed8f5f9313a14f3c417d0da9">More...</a><br /></td></tr>
 <tr class="separator:a35c6bfe5ed8f5f9313a14f3c417d0da9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafc0bf24055d52a3278de0a366cf3554"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#aafc0bf24055d52a3278de0a366cf3554">set_string_shared_field</a> (const std::string &amp;tag, const std::string &amp;value)</td></tr>
+<tr class="memdesc:aafc0bf24055d52a3278de0a366cf3554"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a string shared field by field name.  <a href="#aafc0bf24055d52a3278de0a366cf3554">More...</a><br /></td></tr>
 <tr class="separator:aafc0bf24055d52a3278de0a366cf3554"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00436fcaf17d72b1d61048195a50d8e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a00436fcaf17d72b1d61048195a50d8e7">set_string_shared_field</a> (const uint32_t index, const std::string &amp;value)</td></tr>
+<tr class="memdesc:a00436fcaf17d72b1d61048195a50d8e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a string shared field by field index.  <a href="#a00436fcaf17d72b1d61048195a50d8e7">More...</a><br /></td></tr>
 <tr class="separator:a00436fcaf17d72b1d61048195a50d8e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ebd884661b9d03fbf9305d4329b0100"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a3ebd884661b9d03fbf9305d4329b0100">set_boolean_shared_field</a> (const std::string &amp;tag)</td></tr>
+<tr class="memdesc:a3ebd884661b9d03fbf9305d4329b0100"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a boolean (flag) shared field by field name.  <a href="#a3ebd884661b9d03fbf9305d4329b0100">More...</a><br /></td></tr>
 <tr class="separator:a3ebd884661b9d03fbf9305d4329b0100"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a7061bbc187d2720e09111deda13080"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a0a7061bbc187d2720e09111deda13080">set_boolean_shared_field</a> (const uint32_t index)</td></tr>
+<tr class="memdesc:a0a7061bbc187d2720e09111deda13080"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a boolean (flag) shared field by field index.  <a href="#a0a7061bbc187d2720e09111deda13080">More...</a><br /></td></tr>
 <tr class="separator:a0a7061bbc187d2720e09111deda13080"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8b0b7e5832fe47a51d3a90dec1a639b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#af8b0b7e5832fe47a51d3a90dec1a639b">remove_shared_field</a> (const std::string &amp;tag)</td></tr>
+<tr class="memdesc:af8b0b7e5832fe47a51d3a90dec1a639b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a shared field by field name.  <a href="#af8b0b7e5832fe47a51d3a90dec1a639b">More...</a><br /></td></tr>
 <tr class="separator:af8b0b7e5832fe47a51d3a90dec1a639b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53c4f9b8a2fc516d920ef0a4b6d5552a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a53c4f9b8a2fc516d920ef0a4b6d5552a">remove_shared_field</a> (const uint32_t field_index)</td></tr>
+<tr class="memdesc:a53c4f9b8a2fc516d920ef0a4b6d5552a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a shared field by field index.  <a href="#a53c4f9b8a2fc516d920ef0a4b6d5552a">More...</a><br /></td></tr>
 <tr class="separator:a53c4f9b8a2fc516d920ef0a4b6d5552a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3999d10bdd6fba52c401edaf746bac2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#aa3999d10bdd6fba52c401edaf746bac2">remove_shared_fields</a> (const std::vector&lt; std::string &gt; &amp;tags)</td></tr>
+<tr class="memdesc:aa3999d10bdd6fba52c401edaf746bac2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove multiple shared fields by field name.  <a href="#aa3999d10bdd6fba52c401edaf746bac2">More...</a><br /></td></tr>
 <tr class="separator:aa3999d10bdd6fba52c401edaf746bac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2c2838f81febe53c64abb00138cd786"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ae2c2838f81febe53c64abb00138cd786">remove_shared_fields</a> (const std::vector&lt; uint32_t &gt; &amp;field_indices)</td></tr>
+<tr class="memdesc:ae2c2838f81febe53c64abb00138cd786"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove multiple shared fields by field index.  <a href="#ae2c2838f81febe53c64abb00138cd786">More...</a><br /></td></tr>
 <tr class="separator:ae2c2838f81febe53c64abb00138cd786"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24a3d88724ad637491b14d89e320dd4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a24a3d88724ad637491b14d89e320dd4e">set_genotypes</a> (const std::vector&lt; int32_t &gt; &amp;genotypes_for_all_samples)</td></tr>
+<tr class="memdesc:a24a3d88724ad637491b14d89e320dd4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for all samples at once by flattened vector, copying the provided values.  <a href="#a24a3d88724ad637491b14d89e320dd4e">More...</a><br /></td></tr>
 <tr class="separator:a24a3d88724ad637491b14d89e320dd4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a331068fbe414e22a23f55fe840e0f1c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a331068fbe414e22a23f55fe840e0f1c6">set_genotypes</a> (std::vector&lt; int32_t &gt; &amp;&amp;genotypes_for_all_samples)</td></tr>
+<tr class="memdesc:a331068fbe414e22a23f55fe840e0f1c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for all samples at once by flattened vector, moving the provided values.  <a href="#a331068fbe414e22a23f55fe840e0f1c6">More...</a><br /></td></tr>
 <tr class="separator:a331068fbe414e22a23f55fe840e0f1c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb2c97a4caccae8487520df149a7ef52"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#afb2c97a4caccae8487520df149a7ef52">set_genotypes</a> (const std::vector&lt; std::vector&lt; int32_t &gt;&gt; &amp;genotypes_for_all_samples)</td></tr>
+<tr class="memdesc:afb2c97a4caccae8487520df149a7ef52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for all samples at once by nested vector, copying the provided values.  <a href="#afb2c97a4caccae8487520df149a7ef52">More...</a><br /></td></tr>
 <tr class="separator:afb2c97a4caccae8487520df149a7ef52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa4697cf3394eafe427fed6d17a7a174"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#afa4697cf3394eafe427fed6d17a7a174">set_genotypes</a> (std::vector&lt; std::vector&lt; int32_t &gt;&gt; &amp;&amp;genotypes_for_all_samples)</td></tr>
+<tr class="memdesc:afa4697cf3394eafe427fed6d17a7a174"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for all samples at once by nested vector, moving the provided values.  <a href="#afa4697cf3394eafe427fed6d17a7a174">More...</a><br /></td></tr>
 <tr class="separator:afa4697cf3394eafe427fed6d17a7a174"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63284564506fbd79d6393ecd8c86b0d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a63284564506fbd79d6393ecd8c86b0d5">set_integer_individual_field</a> (const std::string &amp;tag, const std::vector&lt; int32_t &gt; &amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:a63284564506fbd79d6393ecd8c86b0d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set an integer individual field for all samples at once by name using a flattened vector, copying the provided values.  <a href="#a63284564506fbd79d6393ecd8c86b0d5">More...</a><br /></td></tr>
 <tr class="separator:a63284564506fbd79d6393ecd8c86b0d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeb7e0c19a44f18d1ecf26ad843761ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#aeeb7e0c19a44f18d1ecf26ad843761ac">set_integer_individual_field</a> (const std::string &amp;tag, std::vector&lt; int32_t &gt; &amp;&amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:aeeb7e0c19a44f18d1ecf26ad843761ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set an integer individual field for all samples at once by name using a flattened vector, moving the provided values.  <a href="#aeeb7e0c19a44f18d1ecf26ad843761ac">More...</a><br /></td></tr>
 <tr class="separator:aeeb7e0c19a44f18d1ecf26ad843761ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbdb45675372b4918a6895b692c35484"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#afbdb45675372b4918a6895b692c35484">set_integer_individual_field</a> (const std::string &amp;tag, const std::vector&lt; std::vector&lt; int32_t &gt;&gt; &amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:afbdb45675372b4918a6895b692c35484"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set an integer individual field for all samples at once by name using a nested vector, copying the provided values.  <a href="#afbdb45675372b4918a6895b692c35484">More...</a><br /></td></tr>
 <tr class="separator:afbdb45675372b4918a6895b692c35484"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d5f04cb707449afba36a2224aa8f0d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a3d5f04cb707449afba36a2224aa8f0d0">set_integer_individual_field</a> (const std::string &amp;tag, std::vector&lt; std::vector&lt; int32_t &gt;&gt; &amp;&amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:a3d5f04cb707449afba36a2224aa8f0d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set an integer individual field for all samples at once by name using a nested vector, moving the provided values.  <a href="#a3d5f04cb707449afba36a2224aa8f0d0">More...</a><br /></td></tr>
 <tr class="separator:a3d5f04cb707449afba36a2224aa8f0d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91dac0b916ea0a2a73acb15d0af6d7be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a91dac0b916ea0a2a73acb15d0af6d7be">set_integer_individual_field</a> (const uint32_t field_index, const std::vector&lt; int32_t &gt; &amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:a91dac0b916ea0a2a73acb15d0af6d7be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set an integer individual field for all samples at once by index using a flattened vector, copying the provided values.  <a href="#a91dac0b916ea0a2a73acb15d0af6d7be">More...</a><br /></td></tr>
 <tr class="separator:a91dac0b916ea0a2a73acb15d0af6d7be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a746baac03e8dfe13261767deff5ca696"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a746baac03e8dfe13261767deff5ca696">set_integer_individual_field</a> (const uint32_t field_index, std::vector&lt; int32_t &gt; &amp;&amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:a746baac03e8dfe13261767deff5ca696"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set an integer individual field for all samples at once by index using a flattened vector, moving the provided values.  <a href="#a746baac03e8dfe13261767deff5ca696">More...</a><br /></td></tr>
 <tr class="separator:a746baac03e8dfe13261767deff5ca696"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b5df29223c21d13cfcc397a9a4c91e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a3b5df29223c21d13cfcc397a9a4c91e0">set_integer_individual_field</a> (const uint32_t field_index, const std::vector&lt; std::vector&lt; int32_t &gt;&gt; &amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:a3b5df29223c21d13cfcc397a9a4c91e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set an integer individual field for all samples at once by index using a nested vector, copying the provided values.  <a href="#a3b5df29223c21d13cfcc397a9a4c91e0">More...</a><br /></td></tr>
 <tr class="separator:a3b5df29223c21d13cfcc397a9a4c91e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae961d5aa85bed381ae45794c45c2cdc1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ae961d5aa85bed381ae45794c45c2cdc1">set_integer_individual_field</a> (const uint32_t field_index, std::vector&lt; std::vector&lt; int32_t &gt;&gt; &amp;&amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:ae961d5aa85bed381ae45794c45c2cdc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set an integer individual field for all samples at once by index using a nested vector, moving the provided values.  <a href="#ae961d5aa85bed381ae45794c45c2cdc1">More...</a><br /></td></tr>
 <tr class="separator:ae961d5aa85bed381ae45794c45c2cdc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8148844ec481f191546c14deafa0aa31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a8148844ec481f191546c14deafa0aa31">set_float_individual_field</a> (const std::string &amp;tag, const std::vector&lt; float &gt; &amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:a8148844ec481f191546c14deafa0aa31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a float individual field for all samples at once by name using a flattened vector, copying the provided values.  <a href="#a8148844ec481f191546c14deafa0aa31">More...</a><br /></td></tr>
 <tr class="separator:a8148844ec481f191546c14deafa0aa31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6803aa8f0abc309efdf68bbfeeb48c9d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a6803aa8f0abc309efdf68bbfeeb48c9d">set_float_individual_field</a> (const std::string &amp;tag, std::vector&lt; float &gt; &amp;&amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:a6803aa8f0abc309efdf68bbfeeb48c9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a float individual field for all samples at once by name using a flattened vector, moving the provided values.  <a href="#a6803aa8f0abc309efdf68bbfeeb48c9d">More...</a><br /></td></tr>
 <tr class="separator:a6803aa8f0abc309efdf68bbfeeb48c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3495cfd6e141aa92919277bee5a3889"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ad3495cfd6e141aa92919277bee5a3889">set_float_individual_field</a> (const std::string &amp;tag, const std::vector&lt; std::vector&lt; float &gt;&gt; &amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:ad3495cfd6e141aa92919277bee5a3889"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a float individual field for all samples at once by name using a nested vector, copying the provided values.  <a href="#ad3495cfd6e141aa92919277bee5a3889">More...</a><br /></td></tr>
 <tr class="separator:ad3495cfd6e141aa92919277bee5a3889"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e14a944b1b174bbdac63890b0f820ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a3e14a944b1b174bbdac63890b0f820ce">set_float_individual_field</a> (const std::string &amp;tag, std::vector&lt; std::vector&lt; float &gt;&gt; &amp;&amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:a3e14a944b1b174bbdac63890b0f820ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a float individual field for all samples at once by name using a nested vector, moving the provided values.  <a href="#a3e14a944b1b174bbdac63890b0f820ce">More...</a><br /></td></tr>
 <tr class="separator:a3e14a944b1b174bbdac63890b0f820ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec46a9c89ae77dc3920f7e3288ee9489"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#aec46a9c89ae77dc3920f7e3288ee9489">set_float_individual_field</a> (const uint32_t field_index, const std::vector&lt; float &gt; &amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:aec46a9c89ae77dc3920f7e3288ee9489"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a float individual field for all samples at once by index using a flattened vector, copying the provided values.  <a href="#aec46a9c89ae77dc3920f7e3288ee9489">More...</a><br /></td></tr>
 <tr class="separator:aec46a9c89ae77dc3920f7e3288ee9489"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8a4d1885714762a7c6f26648e5a0208"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ae8a4d1885714762a7c6f26648e5a0208">set_float_individual_field</a> (const uint32_t field_index, std::vector&lt; float &gt; &amp;&amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:ae8a4d1885714762a7c6f26648e5a0208"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a float individual field for all samples at once by index using a flattened vector, moving the provided values.  <a href="#ae8a4d1885714762a7c6f26648e5a0208">More...</a><br /></td></tr>
 <tr class="separator:ae8a4d1885714762a7c6f26648e5a0208"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a2e781f73831057f13a3e3a6433cf82"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a7a2e781f73831057f13a3e3a6433cf82">set_float_individual_field</a> (const uint32_t field_index, const std::vector&lt; std::vector&lt; float &gt;&gt; &amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:a7a2e781f73831057f13a3e3a6433cf82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a float individual field for all samples at once by index using a nested vector, copying the provided values.  <a href="#a7a2e781f73831057f13a3e3a6433cf82">More...</a><br /></td></tr>
 <tr class="separator:a7a2e781f73831057f13a3e3a6433cf82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb7e4ac0f78573ab68d16dd00bffb144"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#adb7e4ac0f78573ab68d16dd00bffb144">set_float_individual_field</a> (const uint32_t field_index, std::vector&lt; std::vector&lt; float &gt;&gt; &amp;&amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:adb7e4ac0f78573ab68d16dd00bffb144"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a float individual field for all samples at once by index using a nested vector, moving the provided values.  <a href="#adb7e4ac0f78573ab68d16dd00bffb144">More...</a><br /></td></tr>
 <tr class="separator:adb7e4ac0f78573ab68d16dd00bffb144"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a395ac9f569128804788c00d8402ab065"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a395ac9f569128804788c00d8402ab065">set_string_individual_field</a> (const std::string &amp;tag, const std::vector&lt; std::string &gt; &amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:a395ac9f569128804788c00d8402ab065"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a string individual field for all samples at once by name, copying the provided values.  <a href="#a395ac9f569128804788c00d8402ab065">More...</a><br /></td></tr>
 <tr class="separator:a395ac9f569128804788c00d8402ab065"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94814cb21e8f545b674fc53e0c92d834"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a94814cb21e8f545b674fc53e0c92d834">set_string_individual_field</a> (const std::string &amp;tag, std::vector&lt; std::string &gt; &amp;&amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:a94814cb21e8f545b674fc53e0c92d834"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a string individual field for all samples at once by name, moving the provided values.  <a href="#a94814cb21e8f545b674fc53e0c92d834">More...</a><br /></td></tr>
 <tr class="separator:a94814cb21e8f545b674fc53e0c92d834"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a524e519089e1a40ae9a69e52a00b338d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a524e519089e1a40ae9a69e52a00b338d">set_string_individual_field</a> (const uint32_t field_index, const std::vector&lt; std::string &gt; &amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:a524e519089e1a40ae9a69e52a00b338d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a string individual field for all samples at once by index, copying the provided values.  <a href="#a524e519089e1a40ae9a69e52a00b338d">More...</a><br /></td></tr>
 <tr class="separator:a524e519089e1a40ae9a69e52a00b338d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab4c859786c762e8c8a91e61bbaf8cfa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#aab4c859786c762e8c8a91e61bbaf8cfa">set_string_individual_field</a> (const uint32_t field_index, std::vector&lt; std::string &gt; &amp;&amp;values_for_all_samples)</td></tr>
+<tr class="memdesc:aab4c859786c762e8c8a91e61bbaf8cfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a string individual field for all samples at once by index, moving the provided values.  <a href="#aab4c859786c762e8c8a91e61bbaf8cfa">More...</a><br /></td></tr>
 <tr class="separator:aab4c859786c762e8c8a91e61bbaf8cfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8fe52db4cc7f67fabd8a91610de9eaa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ab8fe52db4cc7f67fabd8a91610de9eaa">set_genotype</a> (const std::string &amp;sample, const std::vector&lt; int32_t &gt; &amp;genotype)</td></tr>
+<tr class="memdesc:ab8fe52db4cc7f67fabd8a91610de9eaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for a single sample by sample name.  <a href="#ab8fe52db4cc7f67fabd8a91610de9eaa">More...</a><br /></td></tr>
 <tr class="separator:ab8fe52db4cc7f67fabd8a91610de9eaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7998a9347ae72b97a607c6773a23f08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ac7998a9347ae72b97a607c6773a23f08">set_genotype</a> (const uint32_t sample_index, const std::vector&lt; int32_t &gt; &amp;genotype)</td></tr>
+<tr class="memdesc:ac7998a9347ae72b97a607c6773a23f08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for a single sample by sample index.  <a href="#ac7998a9347ae72b97a607c6773a23f08">More...</a><br /></td></tr>
 <tr class="separator:ac7998a9347ae72b97a607c6773a23f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6910634a94d22b99b9f5180f128af6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#af6910634a94d22b99b9f5180f128af6b">set_integer_individual_field</a> (const std::string &amp;tag, const std::string &amp;sample, const int32_t value)</td></tr>
+<tr class="memdesc:af6910634a94d22b99b9f5180f128af6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a single-valued integer individual field for a single sample by field and sample name.  <a href="#af6910634a94d22b99b9f5180f128af6b">More...</a><br /></td></tr>
 <tr class="separator:af6910634a94d22b99b9f5180f128af6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33e4dfd32226cc8f1a378f421ccdf4f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a33e4dfd32226cc8f1a378f421ccdf4f9">set_integer_individual_field</a> (const std::string &amp;tag, const std::string &amp;sample, const std::vector&lt; int32_t &gt; &amp;values)</td></tr>
+<tr class="memdesc:a33e4dfd32226cc8f1a378f421ccdf4f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a multi-valued integer individual field for a single sample by field and sample name.  <a href="#a33e4dfd32226cc8f1a378f421ccdf4f9">More...</a><br /></td></tr>
 <tr class="separator:a33e4dfd32226cc8f1a378f421ccdf4f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb6dbd3f1cc5ef9669ca1c691d0e2b4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#abb6dbd3f1cc5ef9669ca1c691d0e2b4f">set_integer_individual_field</a> (const uint32_t field_index, const uint32_t sample_index, const int32_t value)</td></tr>
+<tr class="memdesc:abb6dbd3f1cc5ef9669ca1c691d0e2b4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a single-valued integer individual field for a single sample by field and sample index.  <a href="#abb6dbd3f1cc5ef9669ca1c691d0e2b4f">More...</a><br /></td></tr>
 <tr class="separator:abb6dbd3f1cc5ef9669ca1c691d0e2b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a721fca52e1a7228cbf390354e088e72c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a721fca52e1a7228cbf390354e088e72c">set_integer_individual_field</a> (const uint32_t field_index, const uint32_t sample_index, const std::vector&lt; int32_t &gt; &amp;values)</td></tr>
+<tr class="memdesc:a721fca52e1a7228cbf390354e088e72c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a multi-valued integer individual field for a single sample by field and sample index.  <a href="#a721fca52e1a7228cbf390354e088e72c">More...</a><br /></td></tr>
 <tr class="separator:a721fca52e1a7228cbf390354e088e72c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0ce5bf2a9fab384beb546f8e4fdb532"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#aa0ce5bf2a9fab384beb546f8e4fdb532">set_float_individual_field</a> (const std::string &amp;tag, const std::string &amp;sample, const float value)</td></tr>
+<tr class="memdesc:aa0ce5bf2a9fab384beb546f8e4fdb532"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a single-valued float individual field for a single sample by field and sample name.  <a href="#aa0ce5bf2a9fab384beb546f8e4fdb532">More...</a><br /></td></tr>
 <tr class="separator:aa0ce5bf2a9fab384beb546f8e4fdb532"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbfd4576c6477c3088d1b53e603d5d26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#afbfd4576c6477c3088d1b53e603d5d26">set_float_individual_field</a> (const std::string &amp;tag, const std::string &amp;sample, const std::vector&lt; float &gt; &amp;values)</td></tr>
+<tr class="memdesc:afbfd4576c6477c3088d1b53e603d5d26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a multi-valued float individual field for a single sample by field and sample name.  <a href="#afbfd4576c6477c3088d1b53e603d5d26">More...</a><br /></td></tr>
 <tr class="separator:afbfd4576c6477c3088d1b53e603d5d26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1557ea3f4a29ce96495c6cd8795abb52"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a1557ea3f4a29ce96495c6cd8795abb52">set_float_individual_field</a> (const uint32_t field_index, const uint32_t sample_index, const float value)</td></tr>
+<tr class="memdesc:a1557ea3f4a29ce96495c6cd8795abb52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a single-valued float individual field for a single sample by field and sample index.  <a href="#a1557ea3f4a29ce96495c6cd8795abb52">More...</a><br /></td></tr>
 <tr class="separator:a1557ea3f4a29ce96495c6cd8795abb52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33fb12a456b9adfeb5fabe2934bae940"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a33fb12a456b9adfeb5fabe2934bae940">set_float_individual_field</a> (const uint32_t field_index, const uint32_t sample_index, const std::vector&lt; float &gt; &amp;values)</td></tr>
+<tr class="memdesc:a33fb12a456b9adfeb5fabe2934bae940"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a multi-valued float individual field for a single sample by field and sample index.  <a href="#a33fb12a456b9adfeb5fabe2934bae940">More...</a><br /></td></tr>
 <tr class="separator:a33fb12a456b9adfeb5fabe2934bae940"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e07de72742b9cc9e7b0743886ad7dea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a7e07de72742b9cc9e7b0743886ad7dea">set_string_individual_field</a> (const std::string &amp;tag, const std::string &amp;sample, const std::string &amp;value)</td></tr>
+<tr class="memdesc:a7e07de72742b9cc9e7b0743886ad7dea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a string individual field for a single sample by field and sample name.  <a href="#a7e07de72742b9cc9e7b0743886ad7dea">More...</a><br /></td></tr>
 <tr class="separator:a7e07de72742b9cc9e7b0743886ad7dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93e57465db044273b3dc1ed9d843497b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a93e57465db044273b3dc1ed9d843497b">set_string_individual_field</a> (const uint32_t field_index, const uint32_t sample_index, const std::string &amp;value)</td></tr>
+<tr class="memdesc:a93e57465db044273b3dc1ed9d843497b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a string individual field for a single sample by field and sample index.  <a href="#a93e57465db044273b3dc1ed9d843497b">More...</a><br /></td></tr>
 <tr class="separator:a93e57465db044273b3dc1ed9d843497b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e868c51ef47d83910811eb5d9906549"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a0e868c51ef47d83910811eb5d9906549">remove_individual_field</a> (const std::string &amp;tag)</td></tr>
+<tr class="memdesc:a0e868c51ef47d83910811eb5d9906549"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an individual field by field name.  <a href="#a0e868c51ef47d83910811eb5d9906549">More...</a><br /></td></tr>
 <tr class="separator:a0e868c51ef47d83910811eb5d9906549"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72303ecbab803da346641df7462f7ee0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a72303ecbab803da346641df7462f7ee0">remove_individual_field</a> (const uint32_t field_index)</td></tr>
+<tr class="memdesc:a72303ecbab803da346641df7462f7ee0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an individual field by field index.  <a href="#a72303ecbab803da346641df7462f7ee0">More...</a><br /></td></tr>
 <tr class="separator:a72303ecbab803da346641df7462f7ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace7220abe7a8471b366f59be247c919b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ace7220abe7a8471b366f59be247c919b">remove_individual_fields</a> (const std::vector&lt; std::string &gt; &amp;tags)</td></tr>
+<tr class="memdesc:ace7220abe7a8471b366f59be247c919b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove multiple individual fields by field name.  <a href="#ace7220abe7a8471b366f59be247c919b">More...</a><br /></td></tr>
 <tr class="separator:ace7220abe7a8471b366f59be247c919b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc19a0d513d8ef0a83931fb02214bc0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#adc19a0d513d8ef0a83931fb02214bc0b">remove_individual_fields</a> (const std::vector&lt; uint32_t &gt; &amp;field_indices)</td></tr>
+<tr class="memdesc:adc19a0d513d8ef0a83931fb02214bc0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove multiple individual fields by field index.  <a href="#adc19a0d513d8ef0a83931fb02214bc0b">More...</a><br /></td></tr>
 <tr class="separator:adc19a0d513d8ef0a83931fb02214bc0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9af2780b3ef03762f437b435cf277a65"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant.html">Variant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a9af2780b3ef03762f437b435cf277a65">build</a> () const </td></tr>
+<tr class="memdesc:a9af2780b3ef03762f437b435cf277a65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record using the current state of the builder.  <a href="#a9af2780b3ef03762f437b435cf277a65">More...</a><br /></td></tr>
 <tr class="separator:a9af2780b3ef03762f437b435cf277a65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae53a85c2274e8af69098176451aa4ac5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ae53a85c2274e8af69098176451aa4ac5">clear</a> ()</td></tr>
+<tr class="memdesc:ae53a85c2274e8af69098176451aa4ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all field values in this builder to prepare it for the next build operation.  <a href="#ae53a85c2274e8af69098176451aa4ac5">More...</a><br /></td></tr>
 <tr class="separator:ae53a85c2274e8af69098176451aa4ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a>: construct <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> records from scratch (and, coming soon, from existing <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> records) </p>
-<p>To use, first create a <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a> appropriate for the final record you intend to create (with all shared/individual fields, samples, and contigs pre-declared), then use that header to instantiate a builder:</p>
+<p>To use, first create a <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a> appropriate for the final record(s) you intend to create (with all shared/individual fields, samples, and contigs pre-declared), then use that header to instantiate a builder:</p>
 <p>auto builder = <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a>{header};</p>
-<p>You should create ONE builder per file you intend to output, and re-use it across records, calling <a class="el" href="classgamgee_1_1_variant_builder.html#ae53a85c2274e8af69098176451aa4ac5">clear()</a> in between each record. Do NOT create a new builder for each record &ndash; creating/destroying builders is an expensive process involving many memory allocations and deallocations of internal data structures as well as costly header lookups. Ie., the correct way to use a builder is:</p>
+<p>You should create ONE builder per file you intend to output, and re-use it across records, calling <a class="el" href="classgamgee_1_1_variant_builder.html#ae53a85c2274e8af69098176451aa4ac5" title="Clear all field values in this builder to prepare it for the next build operation. ">clear()</a> in between each record. Do NOT create a new builder for each record &ndash; creating/destroying builders is an expensive process involving many memory allocations and deallocations of internal data structures as well as costly header lookups. Ie., the correct way to use a builder is:</p>
 <p>auto builder = <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a>{header}; for ( each record you want to create ) { // use existing builder to build new record builder.clear(); }</p>
 <p>Once you have a builder you can call setter functions in a chained fashion as follows:</p>
-<p>auto variant = builder.set_chromosome(0).set_alignment_start(5).set_ref_allele("A") .set_alt_alleles({"C", "T"}).set_genotypes(std::move(my_genotypes)) .<a class="el" href="classgamgee_1_1_variant_builder.html#a9af2780b3ef03762f437b435cf277a65">build()</a>;</p>
-<p>See the comments further down in this header for instructions and tips on using the various kinds of setters.</p>
+<p>auto variant = builder.set_chromosome(0).set_alignment_start(5).set_ref_allele("A") .set_alt_alleles({"C", "T"}).set_genotypes(std::move(my_genotypes)) .<a class="el" href="classgamgee_1_1_variant_builder.html#a9af2780b3ef03762f437b435cf277a65" title="Create a new Variant record using the current state of the builder. ">build()</a>;</p>
+<p>See the comments further down for instructions and tips on using the various kinds of setters.</p>
 <p>You must at a minimum set the required chromosome, alignment start, and ref allele fields (unless you have disabled validation, but then you will just get an invalid <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record).</p>
 <p>The <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a> API is designed to allow you to be efficient when you want to be (eg., moving existing data into the builder, setting individual fields in bulk rather than by sample, etc.), and lazy when you don't care about efficiency. In general, the more efficient API functions require a bit more work to use than the less efficient ones. See the discussions below of the efficiency of the various options available to you for setting fields.</p>
-<p>Some general guidelines:</p>
+<h2>Some general guidelines: </h2>
+<p>-Setting by field/sample index is more efficient than setting by field/sample name, provided that you look up the index for each field/sample ONCE in the header and cache it at traversal start instead of looking it up for every record.</p>
+<p>-For setting single-valued fields it's more efficient to use the functions that take a scalar value (int, float, etc.) instead of a vector.</p>
 <p>-For removing fields you generally have the option of either calling the appropriate remove_* API function, OR passing in a missing/empty value to the appropriate set_* function. Both options are equivalent and will result in the field being removed.</p>
-<p>-For individual fields, it is an error to request both bulk and per-sample changes to the same field (without calling <a class="el" href="classgamgee_1_1_variant_builder.html#ae53a85c2274e8af69098176451aa4ac5">clear()</a> in between). This is because it would be too costly to reconcile the two kinds of changes.</p>
-<p>-Setting by field/sample index is more efficient than setting by field/sample names, provided you look up the indices ONCE and cache them.</p>
-<p>-Setting by move/r-value is more efficient than setting by l-value, as the functions that take an l-value reference assume that you want to keep your data and therefore make a copy of it.</p>
-<p>-Setting individual fields in bulk is more efficient than setting by sample, and within the bulk setters the functions that take a single-dimensional vector are more efficient (but harder to use) than the functions that take a two-dimensional vector.</p>
-<p>-Disabling validation is possible, and will certainly improve performance, however if you attempt to perform an action that would have been prevented by validation checks (such as setting a non-existent field) you WILL get undefined behavior in your program. You should ONLY disable validation if you're extremely confident that your program will not take any invalid/incorrect actions, and that the data you pass to the builder will always be valid. </p>
+<p>-Disabling validation is possible, and will certainly improve performance, however if you attempt to perform an action that would have been prevented by validation checks (such as setting a non-existent field) you WILL get undefined behavior in your program. You should ONLY disable validation if you're extremely confident that your program will not take any invalid/incorrect actions, and that the data you pass to the builder will always be valid.</p>
+<h2>Notes on setting individual fields: </h2>
+<p>-Setting individual fields by move/r-value is more efficient than setting by l-value, as the functions that take an l-value reference assume that you want to keep your data and therefore make a copy of it. Note that you will usually have to invoke std::move() explicitly to avoid a copy &ndash; eg., </p><pre class="fragment">builder.set_integer_individual_field(field_index, std::move(my_vector));
+</pre><p>-Setting individual fields in bulk (ie., all samples at once) is more efficient than setting one sample at a time.</p>
+<p>-It is an error to request both bulk and per-sample changes to the same field (without calling <a class="el" href="classgamgee_1_1_variant_builder.html#ae53a85c2274e8af69098176451aa4ac5" title="Clear all field values in this builder to prepare it for the next build operation. ">clear()</a> in between). This is because it would be too costly to reconcile the two kinds of changes.</p>
+<p>-The bulk-setting functions that take a flattened (one-dimensional) vector are much more efficient than the functions that take a two-dimensional vector, but the flattened approach requires the user to pad sample values with missing/end of vector values manually, whereas with the two-dimensional approach the user does not need to worry about padding sample values.</p>
+<p>For example, with 4 samples and an integer individual field with a varied number of values per sample, you could pass in the following two-dimensional vector:</p>
+<p>{ {1, 2}, {3}, {}, {5, 6, 7} }</p>
+<p>with each inner vector representing the values for one sample.</p>
+<p>However, to use the flattened vector API functions you'd have to pass in this equivalent single-dimensional vector:</p>
+<p>{ 1, 2, int32_vector_end, 3, int32_vector_end, int32_vector_end, int32_missing_value, int32_vector_end, int32_vector_end, 5, 6, 7 }</p>
+<p>Note how the values for each sample are manually padded with vector end values to the maximum length across all samples, and that samples with no values for the field are represented by one missing value followed by the required amount of vector end padding.</p>
+<p>The advantage of the flattened approach is much greater efficiency in terms of data locality and memory allocations.</p>
+<p>For fields in which all samples have the same number of values, and there are no missing values, the flattened approach has no real disadvantages and should be preferred over the two-dimensional approach.</p>
+<p>-The <a class="el" href="classgamgee_1_1_genotype.html" title="Encodes a genotype. ">Genotype</a> setter functions require you to encode your genotype data with one of the <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a> functions before passing it in.</p>
+<p>For example, if you want to encode the genotype 0/1, create a vector with {0, 1}, pass it to <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a>, then pass it to the appropriate <a class="el" href="classgamgee_1_1_variant_builder.html#a24a3d88724ad637491b14d89e320dd4e" title="Set the genotypes (GT) field for all samples at once by flattened vector, copying the provided values...">set_genotypes()</a> function. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ace610039f04b4360626880dc9df306e1"></a>
 <div class="memitem">
@@ -312,6 +399,17 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a> given a <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">header</td><td><a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a> to use for constructing and validating new <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> records</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>header will become the header for all <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> records created, and so must be appropriate for the final <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> records you intend to create (with all shared/individual fields, samples, and contigs pre-declared)</dd>
+<dd>
+It's much more efficient to create a single <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a> and re-use it across records (calling <a class="el" href="classgamgee_1_1_variant_builder.html#ae53a85c2274e8af69098176451aa4ac5" title="Clear all field values in this builder to prepare it for the next build operation. ">clear()</a> as needed) instead of creating a new <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a> for each record. <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a> construction involves many memory allocations and is not cheap! </dd></dl>
 
 </div>
 </div>
@@ -400,6 +498,12 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Create a new <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> record using the current state of the builder. </p>
+<dl class="section return"><dt>Returns</dt><dd>a new <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> object reflecting the field values currently set in this builder</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Can be called multiple times </dd>
+<dd>
+It is an error to attempt to build a <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> without having set at least the minimum required fields (chromosome, alignment start, and reference allele) </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="ae53a85c2274e8af69098176451aa4ac5"></a>
@@ -414,6 +518,9 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Clear all field values in this builder to prepare it for the next build operation. </p>
+<dl class="section note"><dt>Note</dt><dd>It's much more efficient to create one <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a> and <a class="el" href="classgamgee_1_1_variant_builder.html#ae53a85c2274e8af69098176451aa4ac5" title="Clear all field values in this builder to prepare it for the next build operation. ">clear()</a> it between records instead of creating a new <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a> for each record </dd></dl>
 
 </div>
 </div>
@@ -437,6 +544,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Return the <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> header for this builder. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> header this builder was constructed with (and which becomes the header for any <a class="el" href="classgamgee_1_1_variant.html" title="Utility class to manipulate a Variant record. ">Variant</a> records built) </dd></dl>
 
 </div>
 </div>
@@ -501,6 +611,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Clear the alignment stop value (if set) </p>
+
 </div>
 </div>
 <a class="anchor" id="a3e1adb976cb519752295ba81a4278d35"></a>
@@ -515,6 +627,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Clear alt alleles (if set) </p>
 
 </div>
 </div>
@@ -531,6 +645,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Clear filters (if set) </p>
+
 </div>
 </div>
 <a class="anchor" id="aa2bbb85da5628323df90e8822abbccf6"></a>
@@ -545,6 +661,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Clear the ID field (if set) </p>
 
 </div>
 </div>
@@ -562,6 +680,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Remove an individual field by field name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the individual field to remove</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than removing using the field index </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a72303ecbab803da346641df7462f7ee0"></a>
@@ -577,6 +704,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Remove an individual field by field index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the individual field to remove (from a header lookup) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -594,6 +729,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Remove multiple individual fields by field name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tags</td><td>names of the individual fields to remove</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than removing using the field indices </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="adc19a0d513d8ef0a83931fb02214bc0b"></a>
@@ -610,6 +754,14 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Remove multiple individual fields by field index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_indices</td><td>indices of the individual fields to remove (from header lookups) </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="a531375e15d4108ee508a4e2d6ff35fc4"></a>
@@ -624,6 +776,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Clear the qual field (if set) </p>
 
 </div>
 </div>
@@ -641,6 +795,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Remove a shared field by field name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the shared field to remove</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than removing using the field index </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a53c4f9b8a2fc516d920ef0a4b6d5552a"></a>
@@ -656,6 +819,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Remove a shared field by field index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the shared field to remove (from a header lookup) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -673,6 +844,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Remove multiple shared fields by field name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tags</td><td>names of the shared fields to remove</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than removing using the field indices </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="ae2c2838f81febe53c64abb00138cd786"></a>
@@ -688,6 +868,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Remove multiple shared fields by field index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_indices</td><td>indices of the shared fields to remove (from header lookups) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -705,6 +893,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set the alignment start position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">alignment_start</td><td>1-based alignment start position (as you would see in a VCF file)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>the internal encoding is 0-based to mimic that of the BCF files </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="af80e48e3d14ff5a9613660b54277bf4d"></a>
@@ -720,6 +917,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set the alignment stop position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">alignment_stop</td><td>1-based alignment stop position (as you would see in a VCF INFO END tag)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>the internal encoding is 0-based to mimic that of the BCF files </dd></dl>
 
 </div>
 </div>
@@ -737,6 +943,17 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set the alt allele. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">alt_allele</td><td>alt allele as a string</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Alt allele passed in replaces any previous value(s) for the alt field </dd>
+<dd>
+It's more efficient to use this function when there's only a single alt allele instead of the vector-based setter </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="ab90c4dd560168c88114280fc86543bbe"></a>
@@ -752,6 +969,17 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set the alt alleles. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">alt_alleles</td><td>one string per alt allele</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Alt alleles passed in replace any previous value(s) for the alt field </dd>
+<dd>
+It's more efficient to use the setter that takes a single string when there's only one alt allele </dd></dl>
 
 </div>
 </div>
@@ -769,6 +997,17 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a boolean (flag) shared field by field name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the shared field to set</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Field is set to true/present. To set a boolean field to false call one of the <a class="el" href="classgamgee_1_1_variant_builder.html#af8b0b7e5832fe47a51d3a90dec1a639b" title="Remove a shared field by field name. ">remove_shared_field()</a> functions.</dd>
+<dd>
+Less efficient than setting using the field index </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a0a7061bbc187d2720e09111deda13080"></a>
@@ -784,6 +1023,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set a boolean (flag) shared field by field index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>index of the shared field to set (from a header lookup)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Field is set to true/present. To set a boolean field to false call one of the <a class="el" href="classgamgee_1_1_variant_builder.html#af8b0b7e5832fe47a51d3a90dec1a639b" title="Remove a shared field by field name. ">remove_shared_field()</a> functions. </dd></dl>
 
 </div>
 </div>
@@ -801,6 +1049,14 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set the chromosome by index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chromosome</td><td>chromosome index (from a header lookup) </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="a6062d271de74f46d6767b5847f6f359d"></a>
@@ -816,6 +1072,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set the chromosome by name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chromosome</td><td>chromosome name </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -839,22 +1103,6 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a40dcca8131342fb86e59a4bd0b9e405e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a>&amp; gamgee::VariantBuilder::set_filters </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classgamgee_1_1_variant_filters.html">VariantFilters</a> &amp;&#160;</td>
-          <td class="paramname"><em>filters</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="af7d74effdfa3d0a05e5b430fb46b5339"></a>
 <div class="memitem">
 <div class="memproto">
@@ -868,6 +1116,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set the filters using filter names. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filters</td><td>vector of filter names</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>It's more efficient to set using filter indices </dd></dl>
 
 </div>
 </div>
@@ -884,6 +1141,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set the filters using filter indices. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filters</td><td>vector of filter indices (from header lookups) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -911,6 +1176,22 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a float individual field for all samples at once by name using a flattened vector, copying the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the individual field to set </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index, with appropriate padding (see note below)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>With a flattened vector, if not all samples have the same number of values you will need to manually add missing/vector end values to pad to the maximum field width.</dd></dl>
+<p>For example, if you had Sample1={1.5, 2.5}, Sample2={3.5}, Sample3={}, Sample4={5.5, 6.5, 7.5}, you would need to pass in the following flattened vector:</p>
+<p>{ 1.5, 2.5, float_vector_end, 3.5, float_vector_end, float_vector_end, float_missing_value, float_vector_end, float_vector_end, 5.5, 6.5, 7.5 }</p>
+<p>If this is too inconvenient, use a function that takes a nested vector.</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than moving the values into the builder </dd>
+<dd>
+Less efficient than setting using the field index </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a6803aa8f0abc309efdf68bbfeeb48c9d"></a>
@@ -936,6 +1217,20 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set a float individual field for all samples at once by name using a flattened vector, moving the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the individual field to set </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index, with appropriate padding (see note below)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>With a flattened vector, if not all samples have the same number of values you will need to manually add missing/vector end values to pad to the maximum field width.</dd></dl>
+<p>For example, if you had Sample1={1.5, 2.5}, Sample2={3.5}, Sample3={}, Sample4={5.5, 6.5, 7.5}, you would need to pass in the following flattened vector:</p>
+<p>{ 1.5, 2.5, float_vector_end, 3.5, float_vector_end, float_vector_end, float_missing_value, float_vector_end, float_vector_end, 5.5, 6.5, 7.5 }</p>
+<p>If this is too inconvenient, use a function that takes a nested vector.</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than setting using the field index </dd></dl>
 
 </div>
 </div>
@@ -963,6 +1258,22 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a float individual field for all samples at once by name using a nested vector, copying the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the individual field to set </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index, with one inner vector per sample (no special padding necessary)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>With a nested vector, each inner vector represents the values for the sample with the corresponding index. There is no need to manually pad with missing/vector end values. For example:</dd></dl>
+<p>{ {1.5, 2.5}, {3.5}, {}, {5.5, 6.5, 7.5} }</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than using a flattened vector </dd>
+<dd>
+Less efficient than moving the values into the builder </dd>
+<dd>
+Less efficient than setting using the field index </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a3e14a944b1b174bbdac63890b0f820ce"></a>
@@ -988,6 +1299,20 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set a float individual field for all samples at once by name using a nested vector, moving the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the individual field to set </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index, with one inner vector per sample (no special padding necessary)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>With a nested vector, each inner vector represents the values for the sample with the corresponding index. There is no need to manually pad with missing/vector end values. For example:</dd></dl>
+<p>{ {1.5, 2.5}, {3.5}, {}, {5.5, 6.5, 7.5} }</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than using a flattened vector </dd>
+<dd>
+Less efficient than setting using the field index </dd></dl>
 
 </div>
 </div>
@@ -1015,6 +1340,20 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a float individual field for all samples at once by index using a flattened vector, copying the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the individual field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index, with appropriate padding (see note below)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>With a flattened vector, if not all samples have the same number of values you will need to manually add missing/vector end values to pad to the maximum field width.</dd></dl>
+<p>For example, if you had Sample1={1.5, 2.5}, Sample2={3.5}, Sample3={}, Sample4={5.5, 6.5, 7.5}, you would need to pass in the following flattened vector:</p>
+<p>{ 1.5, 2.5, float_vector_end, 3.5, float_vector_end, float_vector_end, float_missing_value, float_vector_end, float_vector_end, 5.5, 6.5, 7.5 }</p>
+<p>If this is too inconvenient, use a function that takes a nested vector.</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than moving the values into the builder </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="ae8a4d1885714762a7c6f26648e5a0208"></a>
@@ -1040,6 +1379,19 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set a float individual field for all samples at once by index using a flattened vector, moving the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the individual field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index, with appropriate padding (see note below)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>With a flattened vector, if not all samples have the same number of values you will need to manually add missing/vector end values to pad to the maximum field width.</dd></dl>
+<p>For example, if you had Sample1={1.5, 2.5}, Sample2={3.5}, Sample3={}, Sample4={5.5, 6.5, 7.5}, you would need to pass in the following flattened vector:</p>
+<p>{ 1.5, 2.5, float_vector_end, 3.5, float_vector_end, float_vector_end, float_missing_value, float_vector_end, float_vector_end, 5.5, 6.5, 7.5 }</p>
+<p>If this is too inconvenient, use a function that takes a nested vector. </p>
 
 </div>
 </div>
@@ -1067,6 +1419,20 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a float individual field for all samples at once by index using a nested vector, copying the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the individual field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index, with one inner vector per sample (no special padding necessary)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>With a nested vector, each inner vector represents the values for the sample with the corresponding index. There is no need to manually pad with missing/vector end values. For example:</dd></dl>
+<p>{ {1.5, 2.5}, {3.5}, {}, {5.5, 6.5, 7.5} }</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than using a flattened vector </dd>
+<dd>
+Less efficient than moving the values into the builder </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="adb7e4ac0f78573ab68d16dd00bffb144"></a>
@@ -1092,6 +1458,18 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set a float individual field for all samples at once by index using a nested vector, moving the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the individual field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index, with one inner vector per sample (no special padding necessary)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>With a nested vector, each inner vector represents the values for the sample with the corresponding index. There is no need to manually pad with missing/vector end values. For example:</dd></dl>
+<p>{ {1.5, 2.5}, {3.5}, {}, {5.5, 6.5, 7.5} }</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than using a flattened vector </dd></dl>
 
 </div>
 </div>
@@ -1125,6 +1503,19 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a single-valued float individual field for a single sample by field and sample name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the individual field to set </td></tr>
+    <tr><td class="paramname">sample</td><td>name of the sample whose value to set </td></tr>
+    <tr><td class="paramname">value</td><td>field value for the specified sample</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>It's more efficient to use this setter instead of a vector-based setter when a sample has just a single value for a field </dd>
+<dd>
+Less efficient than setting using the field/sample indices </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="afbfd4576c6477c3088d1b53e603d5d26"></a>
@@ -1156,6 +1547,17 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set a multi-valued float individual field for a single sample by field and sample name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the individual field to set </td></tr>
+    <tr><td class="paramname">sample</td><td>name of the sample whose value to set </td></tr>
+    <tr><td class="paramname">values</td><td>field values for the specified sample</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than setting using the field/sample indices </dd></dl>
 
 </div>
 </div>
@@ -1189,6 +1591,17 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a single-valued float individual field for a single sample by field and sample index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the individual field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">sample_index</td><td>index of the sample whose value to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">value</td><td>field value for the specified sample</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>It's more efficient to use this setter instead of a vector-based setter when a sample has just a single value for a field </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a33fb12a456b9adfeb5fabe2934bae940"></a>
@@ -1221,6 +1634,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a multi-valued float individual field for a single sample by field and sample index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the individual field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">sample_index</td><td>index of the sample whose value to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">values</td><td>field values for the specified sample </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="a07abd11965be32f2da970bb3d44e424c"></a>
@@ -1246,6 +1669,18 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set a single-valued float shared field by field name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the shared field to set </td></tr>
+    <tr><td class="paramname">value</td><td>new value for the field</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>It's more efficient to use this setter instead of a vector-based setter when a field has just a single value</dd>
+<dd>
+Less efficient than setting using the field index </dd></dl>
 
 </div>
 </div>
@@ -1273,6 +1708,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a multi-valued float shared field by field name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the shared field to set </td></tr>
+    <tr><td class="paramname">values</td><td>new values for the field</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than setting using the field index </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="af0e9e1be6fc88b1a2186326dc666a13c"></a>
@@ -1298,6 +1743,16 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set a single-valued float shared field by field index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>index of the shared field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">value</td><td>new value for the field</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>It's more efficient to use this setter instead of a vector-based setter when a field has just a single value </dd></dl>
 
 </div>
 </div>
@@ -1325,6 +1780,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a multi-valued float shared field by field index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>index of the shared field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">values</td><td>new values for the field </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="ab8fe52db4cc7f67fabd8a91610de9eaa"></a>
@@ -1350,6 +1814,19 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set the genotypes (GT) field for a single sample by sample name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sample</td><td>name of the sample whose genotype to set </td></tr>
+    <tr><td class="paramname">genotype</td><td>encoded genotype for the specified sample (see notes below)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Examples: For genotype 0/1, create vector {0, 1}, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a> For genotype 1/., create vector {1, -1}, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a> For genotype ./., create vector {-1, -1}, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a></p>
+<dl class="section note"><dt>Note</dt><dd>must pass vector to appropriate <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a> function before passing it to this function</dd>
+<dd>
+Less efficient than setting using the sample index </dd></dl>
 
 </div>
 </div>
@@ -1377,6 +1854,17 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set the genotypes (GT) field for a single sample by sample index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sample_index</td><td>index of the sample whose genotype to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">genotype</td><td>encoded genotype for the specified sample (see notes below)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Examples: For genotype 0/1, create vector {0, 1}, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a> For genotype 1/., create vector {1, -1}, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a> For genotype ./., create vector {-1, -1}, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a></p>
+<dl class="section note"><dt>Note</dt><dd>must pass vector to appropriate <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a> function before passing it to this function </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a24a3d88724ad637491b14d89e320dd4e"></a>
@@ -1392,6 +1880,21 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set the genotypes (GT) field for all samples at once by flattened vector, copying the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">genotypes_for_all_samples</td><td>encoded genotypes for all samples in order of sample index, with appropriate padding (see notes below)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>must pass vector to appropriate <a class="el" href="classgamgee_1_1_genotype.html#ac62b7ad602284c04a4f6e159471fb325" title="Converts multiple vectors of allele indices representing genotypes into BCF_encoded format suitable f...">Genotype::encode_genotypes()</a> function before passing it to this function</dd>
+<dd>
+With a flattened vector, if not all samples have the same ploidy, or if some samples are missing genotypes, you will need to manually add missing/vector end values to pad to the maximum ploidy. Use -1 for missing (corresponds to '.' in vcfs) and bcf_int32_vector_end for vector end.</dd></dl>
+<p>For example, if you had Sample1=0/1 Sample2=./. Sample3=. Sample4=0/1/2 you would need to create the following flattened vector, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#ac62b7ad602284c04a4f6e159471fb325" title="Converts multiple vectors of allele indices representing genotypes into BCF_encoded format suitable f...">Genotype::encode_genotypes()</a>:</p>
+<p>{ 0, 1, int32_vector_end, -1, -1, int32_vector_end, -1, int32_vector_end, int32_vector_end, 0, 1, 2 }</p>
+<p>If this is too inconvenient, use a function that takes a nested vector.</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than moving the values into the builder </dd></dl>
 
 </div>
 </div>
@@ -1409,6 +1912,20 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set the genotypes (GT) field for all samples at once by flattened vector, moving the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">genotypes_for_all_samples</td><td>encoded genotypes for all samples in order of sample index, with appropriate padding (see notes below)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>must pass vector to appropriate <a class="el" href="classgamgee_1_1_genotype.html#ac62b7ad602284c04a4f6e159471fb325" title="Converts multiple vectors of allele indices representing genotypes into BCF_encoded format suitable f...">Genotype::encode_genotypes()</a> function before passing it to this function</dd>
+<dd>
+With a flattened vector, if not all samples have the same ploidy, or if some samples are missing genotypes, you will need to manually add missing/vector end values to pad to the maximum ploidy. Use -1 for missing (corresponds to '.' in vcfs) and bcf_int32_vector_end for vector end.</dd></dl>
+<p>For example, if you had Sample1=0/1 Sample2=./. Sample3=. Sample4=0/1/2 you would need to create the following flattened vector, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#ac62b7ad602284c04a4f6e159471fb325" title="Converts multiple vectors of allele indices representing genotypes into BCF_encoded format suitable f...">Genotype::encode_genotypes()</a>:</p>
+<p>{ 0, 1, int32_vector_end, -1, -1, int32_vector_end, -1, int32_vector_end, int32_vector_end, 0, 1, 2 }</p>
+<p>If this is too inconvenient, use a function that takes a nested vector. </p>
+
 </div>
 </div>
 <a class="anchor" id="afb2c97a4caccae8487520df149a7ef52"></a>
@@ -1424,6 +1941,22 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set the genotypes (GT) field for all samples at once by nested vector, copying the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">genotypes_for_all_samples</td><td>encoded genotypes for all samples in order of sample index, with one inner vector per sample (no padding necessary)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>must pass vector to appropriate <a class="el" href="classgamgee_1_1_genotype.html#ac62b7ad602284c04a4f6e159471fb325" title="Converts multiple vectors of allele indices representing genotypes into BCF_encoded format suitable f...">Genotype::encode_genotypes()</a> function before passing it to this function</dd>
+<dd>
+With a nested vector, each inner vector represents the genotypes for the sample with the corresponding index. There is no need to manually pad to the maximum ploidy, but you do need to add a missing value (-1) for each missing/no-call allele.</dd></dl>
+<p>For example, if you had Sample1=0/1 Sample2=./. Sample3=. Sample4=0/1/2 you would need to create the following nested vector, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#ac62b7ad602284c04a4f6e159471fb325" title="Converts multiple vectors of allele indices representing genotypes into BCF_encoded format suitable f...">Genotype::encode_genotypes()</a>:</p>
+<p>{ {0, 1}, {-1, -1}, {}, {0, 1, 2} }</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than using a flattened vector </dd>
+<dd>
+Less efficient than moving the values into the builder </dd></dl>
 
 </div>
 </div>
@@ -1441,6 +1974,20 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set the genotypes (GT) field for all samples at once by nested vector, moving the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">genotypes_for_all_samples</td><td>encoded genotypes for all samples in order of sample index, with one inner vector per sample (no padding necessary)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>must pass vector to appropriate <a class="el" href="classgamgee_1_1_genotype.html#ac62b7ad602284c04a4f6e159471fb325" title="Converts multiple vectors of allele indices representing genotypes into BCF_encoded format suitable f...">Genotype::encode_genotypes()</a> function before passing it to this function</dd>
+<dd>
+With a nested vector, each inner vector represents the genotypes for the sample with the corresponding index. There is no need to manually pad to the maximum ploidy, but you do need to add a missing value (-1) for each missing/no-call allele.</dd></dl>
+<p>For example, if you had Sample1=0/1 Sample2=./. Sample3=. Sample4=0/1/2 you would need to create the following nested vector, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#ac62b7ad602284c04a4f6e159471fb325" title="Converts multiple vectors of allele indices representing genotypes into BCF_encoded format suitable f...">Genotype::encode_genotypes()</a>:</p>
+<p>{ {0, 1}, {-1, -1}, {}, {0, 1, 2} }</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than using a flattened vector </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="acc79ab96a09514ea1a46dcbbceef3fef"></a>
@@ -1456,6 +2003,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set the variant ID field. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>variant ID (typically DBSNP ID) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1483,6 +2038,22 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set an integer individual field for all samples at once by name using a flattened vector, copying the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the individual field to set </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index, with appropriate padding (see note below)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>With a flattened vector, if not all samples have the same number of values you will need to manually add missing/vector end values to pad to the maximum field width.</dd></dl>
+<p>For example, if you had Sample1={1, 2}, Sample2={3}, Sample3={}, Sample4={5, 6, 7}, you would need to pass in the following flattened vector:</p>
+<p>{ 1, 2, int32_vector_end, 3, int32_vector_end, int32_vector_end, int32_missing_value, int32_vector_end, int32_vector_end, 5, 6, 7 }</p>
+<p>If this is too inconvenient, use a function that takes a nested vector.</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than moving the values into the builder </dd>
+<dd>
+Less efficient than setting using the field index </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="aeeb7e0c19a44f18d1ecf26ad843761ac"></a>
@@ -1508,6 +2079,20 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set an integer individual field for all samples at once by name using a flattened vector, moving the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the individual field to set </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index, with appropriate padding (see note below)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>With a flattened vector, if not all samples have the same number of values you will need to manually add missing/vector end values to pad to the maximum field width.</dd></dl>
+<p>For example, if you had Sample1={1, 2}, Sample2={3}, Sample3={}, Sample4={5, 6, 7}, you would need to pass in the following flattened vector:</p>
+<p>{ 1, 2, int32_vector_end, 3, int32_vector_end, int32_vector_end, int32_missing_value, int32_vector_end, int32_vector_end, 5, 6, 7 }</p>
+<p>If this is too inconvenient, use a function that takes a nested vector.</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than setting using the field index </dd></dl>
 
 </div>
 </div>
@@ -1535,6 +2120,22 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set an integer individual field for all samples at once by name using a nested vector, copying the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the individual field to set </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index, with one inner vector per sample (no special padding necessary)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>With a nested vector, each inner vector represents the values for the sample with the corresponding index. There is no need to manually pad with missing/vector end values. For example:</dd></dl>
+<p>{ {1, 2}, {3}, {}, {5, 6, 7} }</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than using a flattened vector </dd>
+<dd>
+Less efficient than moving the values into the builder </dd>
+<dd>
+Less efficient than setting using the field index </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a3d5f04cb707449afba36a2224aa8f0d0"></a>
@@ -1560,6 +2161,20 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set an integer individual field for all samples at once by name using a nested vector, moving the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the individual field to set </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index, with one inner vector per sample (no special padding necessary)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>With a nested vector, each inner vector represents the values for the sample with the corresponding index. There is no need to manually pad with missing/vector end values. For example:</dd></dl>
+<p>{ {1, 2}, {3}, {}, {5, 6, 7} }</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than using a flattened vector </dd>
+<dd>
+Less efficient than setting using the field index </dd></dl>
 
 </div>
 </div>
@@ -1587,6 +2202,20 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set an integer individual field for all samples at once by index using a flattened vector, copying the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the individual field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index, with appropriate padding (see note below)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>With a flattened vector, if not all samples have the same number of values you will need to manually add missing/vector end values to pad to the maximum field width.</dd></dl>
+<p>For example, if you had Sample1={1, 2}, Sample2={3}, Sample3={}, Sample4={5, 6, 7}, you would need to pass in the following flattened vector:</p>
+<p>{ 1, 2, int32_vector_end, 3, int32_vector_end, int32_vector_end, int32_missing_value, int32_vector_end, int32_vector_end, 5, 6, 7 }</p>
+<p>If this is too inconvenient, use a function that takes a nested vector.</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than moving the values into the builder </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a746baac03e8dfe13261767deff5ca696"></a>
@@ -1612,6 +2241,19 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set an integer individual field for all samples at once by index using a flattened vector, moving the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the individual field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index, with appropriate padding (see note below)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>With a flattened vector, if not all samples have the same number of values you will need to manually add missing/vector end values to pad to the maximum field width.</dd></dl>
+<p>For example, if you had Sample1={1, 2}, Sample2={3}, Sample3={}, Sample4={5, 6, 7}, you would need to pass in the following flattened vector:</p>
+<p>{ 1, 2, int32_vector_end, 3, int32_vector_end, int32_vector_end, int32_missing_value, int32_vector_end, int32_vector_end, 5, 6, 7 }</p>
+<p>If this is too inconvenient, use a function that takes a nested vector. </p>
 
 </div>
 </div>
@@ -1639,6 +2281,20 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set an integer individual field for all samples at once by index using a nested vector, copying the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the individual field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index, with one inner vector per sample (no special padding necessary)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>With a nested vector, each inner vector represents the values for the sample with the corresponding index. There is no need to manually pad with missing/vector end values. For example:</dd></dl>
+<p>{ {1, 2}, {3}, {}, {5, 6, 7} }</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than using a flattened vector </dd>
+<dd>
+Less efficient than moving the values into the builder </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="ae961d5aa85bed381ae45794c45c2cdc1"></a>
@@ -1664,6 +2320,18 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set an integer individual field for all samples at once by index using a nested vector, moving the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the individual field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index, with one inner vector per sample (no special padding necessary)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>With a nested vector, each inner vector represents the values for the sample with the corresponding index. There is no need to manually pad with missing/vector end values. For example:</dd></dl>
+<p>{ {1, 2}, {3}, {}, {5, 6, 7} }</p>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than using a flattened vector </dd></dl>
 
 </div>
 </div>
@@ -1697,6 +2365,19 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a single-valued integer individual field for a single sample by field and sample name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the individual field to set </td></tr>
+    <tr><td class="paramname">sample</td><td>name of the sample whose value to set </td></tr>
+    <tr><td class="paramname">value</td><td>field value for the specified sample</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>It's more efficient to use this setter instead of a vector-based setter when a sample has just a single value for a field </dd>
+<dd>
+Less efficient than setting using the field/sample indices </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a33e4dfd32226cc8f1a378f421ccdf4f9"></a>
@@ -1728,6 +2409,17 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set a multi-valued integer individual field for a single sample by field and sample name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the individual field to set </td></tr>
+    <tr><td class="paramname">sample</td><td>name of the sample whose value to set </td></tr>
+    <tr><td class="paramname">values</td><td>field values for the specified sample</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than setting using the field/sample indices </dd></dl>
 
 </div>
 </div>
@@ -1761,6 +2453,17 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a single-valued integer individual field for a single sample by field and sample index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the individual field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">sample_index</td><td>index of the sample whose value to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">value</td><td>field value for the specified sample</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>It's more efficient to use this setter instead of a vector-based setter when a sample has just a single value for a field </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a721fca52e1a7228cbf390354e088e72c"></a>
@@ -1793,6 +2496,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a multi-valued integer individual field for a single sample by field and sample index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the individual field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">sample_index</td><td>index of the sample whose value to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">values</td><td>field values for the specified sample </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="a7fa488e941d9ec047f1fa5c02b85ea2e"></a>
@@ -1818,6 +2531,18 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set a single-valued integer shared field by field name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the shared field to set </td></tr>
+    <tr><td class="paramname">value</td><td>new value for the field</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>It's more efficient to use this setter instead of a vector-based setter when a field has just a single value</dd>
+<dd>
+Less efficient than setting using the field index </dd></dl>
 
 </div>
 </div>
@@ -1845,6 +2570,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a multi-valued integer shared field by field name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the shared field to set </td></tr>
+    <tr><td class="paramname">values</td><td>new values for the field</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than setting using the field index </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="adf2b2554997083141821365b163525c3"></a>
@@ -1870,6 +2605,16 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set a single-valued integer shared field by field index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>index of the shared field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">value</td><td>new value for the field</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>It's more efficient to use this setter instead of a vector-based setter when a field has just a single value </dd></dl>
 
 </div>
 </div>
@@ -1897,6 +2642,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a multi-valued integer shared field by field index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>index of the shared field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">values</td><td>new values for the field </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="af0a4a44483fe363a1e342f2c29681fae"></a>
@@ -1913,6 +2667,14 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set the Phred-scaled site quality (probability that the site is not reference) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">qual</td><td>Phred-scaled site quality (probability that the site is not reference) </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="ab94db2cdc82ac4afc66b91ff1155fd49"></a>
@@ -1928,6 +2690,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set the reference allele. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ref_allele</td><td>reference allele as a string </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1955,6 +2725,18 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a string individual field for all samples at once by name, copying the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the individual field to set </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than moving the values into the builder </dd>
+<dd>
+Less efficient than setting using the field index </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a94814cb21e8f545b674fc53e0c92d834"></a>
@@ -1980,6 +2762,16 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set a string individual field for all samples at once by name, moving the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the individual field to set </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than setting using the field index </dd></dl>
 
 </div>
 </div>
@@ -2007,6 +2799,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a string individual field for all samples at once by index, copying the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the individual field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than moving the values into the builder </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="aab4c859786c762e8c8a91e61bbaf8cfa"></a>
@@ -2032,6 +2834,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set a string individual field for all samples at once by index, moving the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the individual field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">values_for_all_samples</td><td>field values for all samples in order of sample index </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -2065,6 +2876,17 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a string individual field for a single sample by field and sample name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the individual field to set </td></tr>
+    <tr><td class="paramname">sample</td><td>name of the sample whose value to set </td></tr>
+    <tr><td class="paramname">value</td><td>field value for the specified sample</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than setting using the field/sample indices </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a93e57465db044273b3dc1ed9d843497b"></a>
@@ -2097,6 +2919,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a string individual field for a single sample by field and sample index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field_index</td><td>index of the individual field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">sample_index</td><td>index of the sample whose value to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">value</td><td>field value for the specified sample </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="aafc0bf24055d52a3278de0a366cf3554"></a>
@@ -2122,6 +2954,16 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set a string shared field by field name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>name of the shared field to set </td></tr>
+    <tr><td class="paramname">value</td><td>new value for the field</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Less efficient than setting using the field index </dd></dl>
 
 </div>
 </div>
@@ -2149,6 +2991,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a string shared field by field index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>index of the shared field to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">value</td><td>new value for the field </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -2158,7 +3009,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 01:11:22 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 10 2014 19:53:25 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

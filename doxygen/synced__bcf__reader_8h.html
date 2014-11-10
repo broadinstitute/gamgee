@@ -132,8 +132,10 @@ Macros</h2></td></tr>
 <tr class="separator:a4bb19c25de74ae43dfd83356d63c754c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a259b10d60be8ad9b4666e00593a1a07f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synced__bcf__reader_8h.html#a259b10d60be8ad9b4666e00593a1a07f">bcf_sr_region_done</a>(_readers, i)&#160;&#160;&#160;(!(_readers)-&gt;has_line[i] &amp;&amp; !(_readers)-&gt;readers[i].nbuffer ? 1 : 0)</td></tr>
 <tr class="separator:a259b10d60be8ad9b4666e00593a1a07f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63dd091d9740d2ae775383404197d47e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synced__bcf__reader_8h.html#a63dd091d9740d2ae775383404197d47e">bcf_sr_get_header</a>(_readers, i)&#160;&#160;&#160;((_readers)-&gt;has_line[i] ? ((_readers)-&gt;readers[i].header) : NULL)</td></tr>
+<tr class="memitem:a63dd091d9740d2ae775383404197d47e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synced__bcf__reader_8h.html#a63dd091d9740d2ae775383404197d47e">bcf_sr_get_header</a>(_readers, i)&#160;&#160;&#160;(_readers)-&gt;readers[i].header</td></tr>
 <tr class="separator:a63dd091d9740d2ae775383404197d47e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac008bc9d56605a55fa5bf23a85040de4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synced__bcf__reader_8h.html#ac008bc9d56605a55fa5bf23a85040de4">bcf_sr_get_reader</a>(_readers, i)&#160;&#160;&#160;&amp;((_readers)-&gt;readers[i])</td></tr>
+<tr class="separator:ac008bc9d56605a55fa5bf23a85040de4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -209,7 +211,7 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;((_readers)-&gt;has_line[i] ? ((_readers)-&gt;readers[i].header) : NULL)</td>
+          <td></td><td>&#160;&#160;&#160;(_readers)-&gt;readers[i].header</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -236,6 +238,32 @@ Functions</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td>&#160;&#160;&#160;((_readers)-&gt;has_line[i] ? ((_readers)-&gt;readers[i].buffer[0]) : NULL)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac008bc9d56605a55fa5bf23a85040de4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define bcf_sr_get_reader</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_readers, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">i&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;&amp;((_readers)-&gt;readers[i])</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -831,7 +859,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 01:11:21 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 10 2014 19:53:24 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

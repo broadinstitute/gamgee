@@ -17,7 +17,6 @@ var searchData=
   ['e_5fnull',['E_NULL',['../cram__structs_8h.html#a2c60912ab219d52f6bf975af078eb4faa2a6afdc758f2735134a4917131e8d441',1,'cram_structs.h']]],
   ['e_5fsubexp',['E_SUBEXP',['../cram__structs_8h.html#a2c60912ab219d52f6bf975af078eb4faafd21774998b9930bee197001b5f7b756',1,'cram_structs.h']]],
   ['ec',['ec',['../structtbx__conf__t.html#a5acaf1c1ed62a8443e3ed98e624880bf',1,'tbx_conf_t']]],
-  ['else',['else',['../cram__encode_8c.html#a0544c3fe466e421738dae463968b70ba',1,'cram_encode.c']]],
   ['embed_5fref',['embed_ref',['../structcram__fd.html#adcb9507fe33e5e78c685f8d491345dec',1,'cram_fd']]],
   ['empty',['empty',['../classgamgee_1_1_individual_field.html#a7791b6e86799d033e27d245e65749278',1,'gamgee::IndividualField::empty()'],['../classgamgee_1_1_sam.html#a788d9ba6ce6f28d1ddb029b601a3ffef',1,'gamgee::Sam::empty()'],['../classgamgee_1_1_sam_builder_data_field.html#acb3e0a047b4ad73f0929573853c4f2eb',1,'gamgee::SamBuilderDataField::empty()'],['../classgamgee_1_1_shared_field.html#aae89d8ca31ae7b2a68e0b586f86d7808',1,'gamgee::SharedField::empty()'],['../classgamgee_1_1_variant_iterator.html#a3b54449a66f97f8a71bb46b563ae93cf',1,'gamgee::VariantIterator::empty()']]],
   ['empty_5fc',['empty_c',['../structt__pool.html#ae99f5ad4fdd70dcb8999dc415325459f',1,'t_pool']]],
