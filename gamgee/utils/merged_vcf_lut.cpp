@@ -80,27 +80,6 @@ namespace gamgee
   //explicit initialization to avoid link errors
   template class MergedVCFLUTBase<true,true>;
 
-
-  //MergedVCFAllelesIdxLUT functions
-  template<bool inputs_2_merged_LUT_is_input_ordered, bool merged_2_inputs_LUT_is_input_ordered>
-  MergedVCFAllelesIdxLUT<inputs_2_merged_LUT_is_input_ordered, merged_2_inputs_LUT_is_input_ordered>::MergedVCFAllelesIdxLUT(unsigned numInputGVCFs)
-  //why 10, no particular reason, the assumption being that it is unlikely that there are more than 10 alleles (including ref) at a given location
-  : MergedVCFLUTBase<inputs_2_merged_LUT_is_input_ordered, merged_2_inputs_LUT_is_input_ordered>(numInputGVCFs, 10u)
-  {
-    m_max_num_alleles = 10u;
-  }
-
-  template<bool inputs_2_merged_LUT_is_input_ordered, bool merged_2_inputs_LUT_is_input_ordered>
-  void MergedVCFAllelesIdxLUT<inputs_2_merged_LUT_is_input_ordered, merged_2_inputs_LUT_is_input_ordered>::resize_luts_if_needed(unsigned numMergedAlleles)
-  {
-    if(numMergedAlleles > m_max_num_alleles)
-    {
-      MergedVCFLUTBase<inputs_2_merged_LUT_is_input_ordered, merged_2_inputs_LUT_is_input_ordered>::resize_luts_if_needed(
-	  MergedVCFLUTBase<inputs_2_merged_LUT_is_input_ordered, merged_2_inputs_LUT_is_input_ordered>::m_num_input_vcfs, numMergedAlleles); 
-      m_max_num_alleles = numMergedAlleles;
-    }
-  }
-
   //explicit initialization to avoid link errors
   template class MergedVCFAllelesIdxLUT<true,true>;
 
