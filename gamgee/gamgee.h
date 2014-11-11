@@ -58,5 +58,7 @@
 #include "variant_reader.h"
 #include "variant_writer.h"
 #include "zip.h"
+#include "utils/merged_vcf_lut.h"
+#include "variant_header_merger.h"
 
 #endif  /* gamgee__gamgee__guard */

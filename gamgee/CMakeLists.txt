@@ -29,6 +29,8 @@ set(SOURCE_FILES
     multiple_variant_iterator.cpp
     multiple_variant_iterator.h
     multiple_variant_reader.h
+    variant_header_merger.h
+    variant_header_merger.cpp
     read_bases.cpp
     read_bases.h
     read_group.cpp
@@ -73,6 +75,8 @@ set(SOURCE_FILES
     utils/variant_field_type.h
     utils/variant_utils.cpp
     utils/variant_utils.h
+    utils/merged_vcf_lut.h
+    utils/merged_vcf_lut.cpp
     variant_builder.cpp
     variant_builder.h
     variant_builder_individual_field.h

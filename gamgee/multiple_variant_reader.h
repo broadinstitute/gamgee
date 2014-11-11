@@ -7,6 +7,7 @@
 #include "utils/hts_memory.h"
 #include "utils/variant_utils.h"
 #include "exceptions.h"
+#include "variant_header_merger.h"
 
 namespace gamgee {
 
@@ -45,8 +46,7 @@ class MultipleVariantReader {
    */
   explicit MultipleVariantReader(const std::vector<std::string>& filenames, const bool validate_headers = true) :
     m_variant_files { },
-    m_variant_headers { },
-    m_combined_header { }
+    m_variant_headers { }
   {
     init_reader(filenames, validate_headers);
   }
@@ -62,11 +62,10 @@ class MultipleVariantReader {
   MultipleVariantReader(const std::vector<std::string>& filenames, const bool validate_headers,
                         const std::vector<std::string>& samples, const bool include = true) :
     m_variant_files { },
-    m_variant_headers { },
-    m_combined_header { }
+    m_variant_headers { }
   {
     init_reader(filenames, validate_headers);
-    subset_variant_samples(m_combined_header.get(), samples, include);
+    subset_variant_samples(m_variant_header_merger.get_raw_merged_header().get(), samples, include);
   }
 
   /**
@@ -92,17 +91,11 @@ class MultipleVariantReader {
         throw HeaderReadException{filename};
       }
       const auto& header_ptr = utils::make_shared_variant_header(header_raw_ptr);
-      m_variant_headers.push_back(std::move(header_ptr));
-
-      if (m_combined_header) {
-        if (validate_headers)
-          validate_header(header_ptr);
-
-        merge_variant_headers(m_combined_header, header_ptr);
-      }
-      else
-        m_combined_header = utils::make_shared_variant_header(utils::variant_header_deep_copy(header_ptr.get()));
-
+      m_variant_headers.push_back(header_ptr);
+ 
+      if (validate_headers && m_variant_header_merger.get_raw_merged_header().get() != nullptr)
+	validate_header(header_ptr);  
+      m_variant_header_merger.add_header(header_ptr); 
     }
   }
 
@@ -141,13 +134,21 @@ class MultipleVariantReader {
    * @brief returns a combined header for the files being read
    * @return a VariantHeader object constructed by combining the headers of the incmoing files
    */
-  const inline VariantHeader combined_header() const { return VariantHeader {m_combined_header}; }
+  const inline VariantHeader combined_header() const { return VariantHeader {m_variant_header_merger.get_raw_merged_header()}; }
 
+  /**
+   * @brief return VariantHeaderMerger object
+   * @return VariantHeaderMerger object for the headers of the vcf files being considered
+   */
+  inline InputOrderedVariantHeaderMerger& get_variant_header_merger() { return m_variant_header_merger; }
+
+  /**
+   * @brief return vector of input VCF headers
+   * @return vector of input VCF headers
+   */
+  const std::vector<std::shared_ptr<bcf_hdr_t>>& get_input_vcf_headers() const { return m_variant_headers; }
+  
  private:
-  std::vector<std::shared_ptr<htsFile>> m_variant_files;        ///< vector of the internal file structures of the variant files
-  std::vector<std::shared_ptr<bcf_hdr_t>> m_variant_headers;    ///< vector of the internal header structures of the variant files
-  std::shared_ptr<bcf_hdr_t> m_combined_header;                 ///< the combined header created from the variant headers
-
   ///< confirms that the chromosomes in the headers of all of the input files are identical
   // TODO? only handles chromosome names, not lengths
   void validate_header(const std::shared_ptr<bcf_hdr_t>& other_header_ptr) {
@@ -155,6 +156,11 @@ class MultipleVariantReader {
     if (combined_header().chromosomes() != other_header.chromosomes())
       throw HeaderCompatibilityException{"chromosomes in header files are inconsistent"};
   }
+
+  std::vector<std::shared_ptr<htsFile>> m_variant_files;        ///< vector of the internal file structures of the variant files
+  std::vector<std::shared_ptr<bcf_hdr_t>> m_variant_headers;    ///< vector of the internal header structures of the variant files
+  InputOrderedVariantHeaderMerger m_variant_header_merger;			///< merge headers and create LUTs for fields, samples,
+
 };
 
 }  // end namespace gamgee
