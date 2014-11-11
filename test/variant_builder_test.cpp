@@ -21,29 +21,29 @@ BOOST_AUTO_TEST_CASE( set_required_fields_only ) {
 
   // chromosome by string, one-base ref allele
   auto variant = builder.set_chromosome("20").set_alignment_start(5).set_ref_allele("A").build();
-  BOOST_CHECK_EQUAL(variant.chromosome(), 1);
-  BOOST_CHECK_EQUAL(variant.alignment_start(), 5);
+  BOOST_CHECK_EQUAL(variant.chromosome(), 1u);
+  BOOST_CHECK_EQUAL(variant.alignment_start(), 5u);
   BOOST_CHECK_EQUAL(variant.ref(), "A");
-  BOOST_CHECK_EQUAL(variant.alignment_stop(), 5);  // making sure rlen was set to length of ref allele here (1)
+  BOOST_CHECK_EQUAL(variant.alignment_stop(), 5u);  // making sure rlen was set to length of ref allele here (1)
 
   BOOST_CHECK(missing(variant.qual()));
   BOOST_CHECK(missing(variant.id()));
   BOOST_CHECK(missing(variant.alt()));
-  BOOST_CHECK_EQUAL(variant.filters().size(), 0);
+  BOOST_CHECK_EQUAL(variant.filters().size(), 0u);
   BOOST_CHECK(missing(variant.genotypes()));
 
   // chromosome by index, multi-base ref allele
   builder.clear();
   variant = builder.set_ref_allele("CA").set_chromosome(2).set_alignment_start(3).build();
   BOOST_CHECK_EQUAL(variant.ref(), "CA");
-  BOOST_CHECK_EQUAL(variant.chromosome(), 2);
-  BOOST_CHECK_EQUAL(variant.alignment_start(), 3);
-  BOOST_CHECK_EQUAL(variant.alignment_stop(), 4);  // making sure rlen was set to length of ref allele here (2)
+  BOOST_CHECK_EQUAL(variant.chromosome(), 2u);
+  BOOST_CHECK_EQUAL(variant.alignment_start(), 3u);
+  BOOST_CHECK_EQUAL(variant.alignment_stop(), 4u);  // making sure rlen was set to length of ref allele here (2)
 
   BOOST_CHECK(missing(variant.qual()));
   BOOST_CHECK(missing(variant.id()));
   BOOST_CHECK(missing(variant.alt()));
-  BOOST_CHECK_EQUAL(variant.filters().size(), 0);
+  BOOST_CHECK_EQUAL(variant.filters().size(), 0u);
   BOOST_CHECK(missing(variant.genotypes()));
 
   // long ref allele
@@ -85,19 +85,19 @@ BOOST_AUTO_TEST_CASE( set_alignment_stop ) {
   builder.set_chromosome(0).set_alignment_start(5).set_ref_allele("ACG");
 
   // when not explicitly set, alignment stop should be based on ref allele length
-  BOOST_CHECK_EQUAL(builder.build().alignment_stop(), 7);
+  BOOST_CHECK_EQUAL(builder.build().alignment_stop(), 7u);
 
   // alignment stop == alignment start
   auto variant = builder.set_alignment_stop(5).build();
-  BOOST_CHECK_EQUAL(variant.alignment_stop(), 5);
+  BOOST_CHECK_EQUAL(variant.alignment_stop(), 5u);
 
   // alignment stop == alignment start + 1
   variant = builder.set_alignment_stop(6).build();
-  BOOST_CHECK_EQUAL(variant.alignment_stop(), 6);
+  BOOST_CHECK_EQUAL(variant.alignment_stop(), 6u);
 
   // alignment stop > alignment start by more than 1
   variant = builder.set_alignment_stop(10).build();
-  BOOST_CHECK_EQUAL(variant.alignment_stop(), 10);
+  BOOST_CHECK_EQUAL(variant.alignment_stop(), 10u);
 
   // alignment stop < alignment start is an error
   BOOST_CHECK_THROW(builder.set_alignment_stop(4).build(), logic_error);
@@ -138,9 +138,9 @@ BOOST_AUTO_TEST_CASE( remove_core_fields ) {
 
   // Clearing alignment stop via remove_alignment_stop() after setting it
   builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("AC").set_alignment_stop(10);
-  BOOST_CHECK_EQUAL(builder.build().alignment_stop(), 10);
+  BOOST_CHECK_EQUAL(builder.build().alignment_stop(), 10u);
   builder.remove_alignment_stop();
-  BOOST_CHECK_EQUAL(builder.build().alignment_stop(), 6);  // once cleared, should be based on ref allele length
+  BOOST_CHECK_EQUAL(builder.build().alignment_stop(), 6u);  // once cleared, should be based on ref allele length
 
   // Clearing qual via remove_qual() after setting it to non-missing
   builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A").set_qual(1.5);
@@ -202,26 +202,26 @@ BOOST_AUTO_TEST_CASE( set_alt_alleles ) {
   // One alt allele, using the string setter
   auto variant = builder.set_alt_allele("C").build();
   auto alts = variant.alt();
-  BOOST_CHECK_EQUAL(alts.size(), 1);
+  BOOST_CHECK_EQUAL(alts.size(), 1u);
   BOOST_CHECK_EQUAL(alts[0], "C");
 
   // One alt allele, using the vector setter
   variant = builder.set_alt_alleles({"C"}).build();
   alts = variant.alt();
-  BOOST_CHECK_EQUAL(alts.size(), 1);
+  BOOST_CHECK_EQUAL(alts.size(), 1u);
   BOOST_CHECK_EQUAL(alts[0], "C");
 
   // Two alt alleles
   variant = builder.set_alt_alleles({"C", "ATG"}).build();
   alts = variant.alt();
-  BOOST_CHECK_EQUAL(alts.size(), 2);
+  BOOST_CHECK_EQUAL(alts.size(), 2u);
   BOOST_CHECK_EQUAL(alts[0], "C");
   BOOST_CHECK_EQUAL(alts[1], "ATG");
 
   // Three alt alleles
   variant = builder.set_alt_alleles({"C", "ATG", "T"}).build();
   alts = variant.alt();
-  BOOST_CHECK_EQUAL(alts.size(), 3);
+  BOOST_CHECK_EQUAL(alts.size(), 3u);
   BOOST_CHECK_EQUAL(alts[0], "C");
   BOOST_CHECK_EQUAL(alts[1], "ATG");
   BOOST_CHECK_EQUAL(alts[2], "T");
@@ -229,7 +229,7 @@ BOOST_AUTO_TEST_CASE( set_alt_alleles ) {
   // Long alt alleles
   variant = builder.set_alt_alleles({"CTGACTGACTGACTGACTGACTGACTGACTGATCGATCGATCGATCGCTAGCTAGCTCGATC", "TGCATGCTAGCTGATCGATCGGGGGATTCGAGGGCTTTAGGGCTA"}).build();
   alts = variant.alt();
-  BOOST_CHECK_EQUAL(alts.size(), 2);
+  BOOST_CHECK_EQUAL(alts.size(), 2u);
   BOOST_CHECK_EQUAL(alts[0], "CTGACTGACTGACTGACTGACTGACTGACTGATCGATCGATCGATCGCTAGCTAGCTCGATC");
   BOOST_CHECK_EQUAL(alts[1], "TGCATGCTAGCTGATCGATCGGGGGATTCGAGGGCTTTAGGGCTA");
 
@@ -263,23 +263,23 @@ BOOST_AUTO_TEST_CASE( set_filters ) {
 
   // Set one filter by name
   auto filters = builder.set_filters(vector<string>{"PASS"}).build().filters();
-  BOOST_CHECK_EQUAL(filters.size(), 1);
+  BOOST_CHECK_EQUAL(filters.size(), 1u);
   BOOST_CHECK_EQUAL(filters[0], "PASS");
 
   // Set one filter by index
   filters = builder.set_filters(vector<int32_t>{0}).build().filters();
-  BOOST_CHECK_EQUAL(filters.size(), 1);
+  BOOST_CHECK_EQUAL(filters.size(), 1u);
   BOOST_CHECK_EQUAL(filters[0], "PASS");
 
   // Set multiple filters by name
   filters = builder.set_filters(vector<string>{"LOW_QUAL", "MISSED"}).build().filters();
-  BOOST_CHECK_EQUAL(filters.size(), 2);
+  BOOST_CHECK_EQUAL(filters.size(), 2u);
   BOOST_CHECK_EQUAL(filters[0], "LOW_QUAL");
   BOOST_CHECK_EQUAL(filters[1], "MISSED");
 
   // Set multiple filters by index
   filters = builder.set_filters(vector<int32_t>{header.field_index("LOW_QUAL"), header.field_index("MISSED")}).build().filters();
-  BOOST_CHECK_EQUAL(filters.size(), 2);
+  BOOST_CHECK_EQUAL(filters.size(), 2u);
   BOOST_CHECK_EQUAL(filters[0], "LOW_QUAL");
   BOOST_CHECK_EQUAL(filters[1], "MISSED");
 
@@ -493,28 +493,28 @@ BOOST_AUTO_TEST_CASE( set_string_shared_fields ) {
   // Normal string value by field name
   auto variant = builder.set_string_shared_field("DESC", "helloworld").build();
   auto field = variant.string_shared_field("DESC");
-  BOOST_CHECK_EQUAL(field.size(), 1);
+  BOOST_CHECK_EQUAL(field.size(), 1u);
   BOOST_CHECK_EQUAL(field[0], "helloworld");
 
   // Normal string value by field index
   variant = builder.set_string_shared_field(header.field_index("DESC"), "helloworld").build();
   field = variant.string_shared_field("DESC");
-  BOOST_CHECK_EQUAL(field.size(), 1);
+  BOOST_CHECK_EQUAL(field.size(), 1u);
   BOOST_CHECK_EQUAL(field[0], "helloworld");
 
   // Long string value
   variant = builder.set_string_shared_field("DESC", "very long string that definitely absolutely positively will require tons and tons of memory").build();
   field = variant.string_shared_field("DESC");
-  BOOST_CHECK_EQUAL(field.size(), 1);
+  BOOST_CHECK_EQUAL(field.size(), 1u);
   BOOST_CHECK_EQUAL(field[0], "very long string that definitely absolutely positively will require tons and tons of memory");
 
   // Multiple string fields
   variant = builder.set_string_shared_field("DESC", "helloworld").set_string_shared_field("ZS", "bjarne").build();
   auto desc_field = variant.string_shared_field("DESC");
   auto zs_field = variant.string_shared_field("ZS");
-  BOOST_CHECK_EQUAL(desc_field.size(), 1);
+  BOOST_CHECK_EQUAL(desc_field.size(), 1u);
   BOOST_CHECK_EQUAL(desc_field[0], "helloworld");
-  BOOST_CHECK_EQUAL(zs_field.size(), 1);
+  BOOST_CHECK_EQUAL(zs_field.size(), 1u);
   BOOST_CHECK_EQUAL(zs_field[0], "bjarne");
 
   // Set string field to a missing value without having previously set it
@@ -1167,7 +1167,7 @@ BOOST_AUTO_TEST_CASE( bulk_set_individual_fields_wrong_number_of_values ) {
   auto builder = VariantBuilder{header};
   builder.set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
 
-  BOOST_CHECK_EQUAL(header.n_samples(), 3);  // Make sure samples haven't been added to the test file,
+  BOOST_CHECK_EQUAL(header.n_samples(), 3u);  // Make sure samples haven't been added to the test file,
                                              // as the tests below will be invalidated if they have
 
   // int field: less than num_samples values in flat vector
