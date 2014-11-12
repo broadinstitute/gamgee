@@ -169,7 +169,7 @@ class IndividualFieldIterator : public std::iterator<std::random_access_iterator
    * @brief Postfix increment. Advances to the next sample
    * @note mainly designed for iterators
    * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result with end(). This is the STL way.
-   * @return the value of the start of the same sample.
+   * @return copy of the current position of the iterator (before the increment)
    */
   IndividualFieldIterator operator++(int) noexcept {
     auto const tmp = IndividualFieldIterator(*this);
@@ -189,12 +189,12 @@ class IndividualFieldIterator : public std::iterator<std::random_access_iterator
   }
 
   /**
-   * @brief Postfix increment.  Reverses to the previous sample.
+   * @brief Postfix decrement.  Reverses to the previous sample.
    * @note mainly designed for iterators
    * @warning does not check for bounds exception, you should verify whether or not you've reached the beginning by comparing the result with begin(). This is the STL way.
-   * @return the value of the start of the same sample.
+   * @return copy of the current position of the iterator (before the decrement)
    */
-  IndividualFieldIterator& operator--(int) noexcept {
+  IndividualFieldIterator operator--(int) noexcept {
     auto const tmp = IndividualFieldIterator(*this);
     operator--();
     return tmp;

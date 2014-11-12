@@ -119,20 +119,20 @@ class SharedFieldIterator : public std::iterator<std::random_access_iterator_tag
    * @brief advances to the next value
    * @note mainly designed for iterators
    * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way.
-   * @return the next value in it's native type
+   * @return updated iterator
    */
-  VALUE_TYPE operator++() noexcept {
+  SharedFieldIterator& operator++() noexcept {
     m_current_data_ptr += m_bytes_per_value;
     m_is_current_pointee_cached = false;
     m_current_data_ptr = utils::cache_and_advance_to_end_if_necessary(m_current_data_ptr, m_end_data_ptr, *this);
-    return convert_from_byte_array(m_current_data_ptr, 0);
+    return *this;
   }
 
   /**
    * @brief Postfix increment. Advances to the next sample
    * @note mainly designed for iterators
    * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result with end(). This is the STL way.
-   * @return the next value in it's native type
+   * @return copy of current iterator before the increment
    */
   SharedFieldIterator operator++(int) noexcept {
     const auto tmp = SharedFieldIterator(*this);
@@ -145,14 +145,25 @@ class SharedFieldIterator : public std::iterator<std::random_access_iterator_tag
    * @brief advances to the previous value
    * @note mainly designed for iterators
    * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way.
-   * @return the previous value in it's native type
+   * @return updated iterator
    */
-  VALUE_TYPE operator--() {
+  SharedFieldIterator& operator--() {
     m_current_data_ptr -= m_bytes_per_value;
     m_is_current_pointee_cached = false;
-    return convert_from_byte_array(m_current_data_ptr, 0);
+    return *this;
   }
 
+  /**
+   * @brief Postfix decrement. Move back to the previous sample
+   * @note mainly designed for iterators
+   * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result with end(). This is the STL way.
+   * @return copy of current iterator before the decrement
+   */
+  SharedFieldIterator operator--(int) noexcept {
+    const auto tmp = SharedFieldIterator(*this);
+    operator--();
+    return tmp;
+  }
   /**
    * @brief difference between two iterators as an integer.
    * @param first is the iterator the position of which is to be subtracted from the position of the current iterator.

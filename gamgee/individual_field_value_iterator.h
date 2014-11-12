@@ -209,23 +209,49 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
    * @brief advances to the next sample
    * @note mainly designed for iterators
    * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way.
+   * @return modified iterator
    */
-  void operator++() noexcept {
+  IndividualFieldValueIterator& operator++() noexcept {
     m_current_data_ptr += m_num_bytes;
     m_is_current_pointee_cached = false;
     m_current_data_ptr = utils::cache_and_advance_to_end_if_necessary(m_current_data_ptr, m_end_data_ptr, *this);
+    return *this;
   }
 
+  /**
+   * @brief postfix operator to advance iterator to the next position
+   * @note mainly designed for iterators
+   * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way.
+   * @return copy of iterator at current position (before the increment)
+   */
+  IndividualFieldValueIterator operator++(int) noexcept {
+    auto const tmp = IndividualFieldValueIterator(*this);
+    operator++();
+    return tmp;
+  }
   /**
    * @brief advances to the previous sample
    * @note mainly designed for iterators
    * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way.
+   * @return modified iterator
    */
-  void operator--() {
+  IndividualFieldValueIterator& operator--() {
     m_current_data_ptr -= m_num_bytes;
     m_is_current_pointee_cached = false;
+    return *this;
   }
 
+  /**
+   * @brief postfix operator to retreat iterator to the previous position
+   * @note mainly designed for iterators
+   * @warning does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result of operator* with end(). This is the STL way.
+   * @return copy of iterator at current position (before the decrement)
+   */
+  IndividualFieldValueIterator operator--(int) noexcept {
+    auto const tmp = IndividualFieldValueIterator(*this);
+    operator--();
+    return tmp;
+  }
   /**
    * @brief random access to the value of a given index for reading or writing
    * @param index must be between 0 and the number of indices for this record but no boundary check is done in this implementation
