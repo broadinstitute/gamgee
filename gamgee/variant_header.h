@@ -150,6 +150,20 @@ class VariantHeader {
     return index >= 0 ? index : missing_values::int32;
   }
 
+  std::string get_field_name(const int32_t field_idx) const {
+    if(field_idx >= 0 && field_idx < m_header->n[BCF_DT_ID])
+      return bcf_hdr_int2id(m_header.get(), BCF_DT_ID, field_idx);
+    else
+      return "";
+  }
+
+  std::string get_sample_name(const int32_t sample_idx) const {
+    if(sample_idx >= 0 && sample_idx < m_header->n[BCF_DT_SAMPLE])
+      return bcf_hdr_int2id(m_header.get(), BCF_DT_SAMPLE, sample_idx);
+    else
+      return "";
+  }
+
  private:
   std::shared_ptr<bcf_hdr_t> m_header;
 

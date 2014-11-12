@@ -34,6 +34,51 @@ BOOST_AUTO_TEST_CASE( split_reference_blocks )
   BOOST_CHECK_EQUAL(position_counter, truth_contigs.size());
 }
 
+BOOST_AUTO_TEST_CASE( variant_header_merger_test )
+{
+  auto multi_reader = MultipleVariantReader<ReferenceBlockSplittingVariantIterator>{test_files, false};
+  VariantHeaderMerger& merger = multi_reader.get_variant_header_merger();
+  auto variant_vec = *(multi_reader.begin());
+  vector<VariantHeader> header_vec;
+  for(auto& var : variant_vec)
+    header_vec.push_back(var.header());
+  const VariantHeader& combined_header = multi_reader.combined_header();
+  auto input_vcf_idx = 0u;
+  for(auto& header : header_vec)
+  {
+    for(auto i=0u;i<1000;++i)	//large number
+    {
+      for(auto field_type : {BCF_HL_FLT, BCF_HL_INFO, BCF_HL_FMT})
+	if(header.has_field(i, field_type))
+	{
+	  BOOST_CHECK(header.get_field_name(i) != "");
+	  auto merged_field_idx = merger.get_merged_header_idx_for_input(input_vcf_idx, i);
+	  BOOST_CHECK(!VariantHeaderMerger::is_missing(merged_field_idx));
+	  BOOST_CHECK(combined_header.has_field(merged_field_idx, field_type));
+	  auto field_idx = merger.get_input_header_idx_for_merged(input_vcf_idx, merged_field_idx);
+	  BOOST_CHECK(!VariantHeaderMerger::is_missing(field_idx));
+	  BOOST_CHECK(static_cast<unsigned>(field_idx) == i);
+	  BOOST_CHECK_EQUAL(header.get_field_name(i), combined_header.get_field_name(merged_field_idx));
+	}
+    }
+    for(auto i=0u;i<header.n_samples();++i)
+    {
+      if(header.has_sample(i))
+      {
+	BOOST_CHECK(header.get_sample_name(i) != "");
+	auto merged_sample_idx = merger.get_merged_sample_idx_for_input(input_vcf_idx, i);
+	BOOST_CHECK(!VariantHeaderMerger::is_missing(merged_sample_idx));
+	BOOST_CHECK(combined_header.has_sample(merged_sample_idx));
+	auto sample_idx = merger.get_input_sample_idx_for_merged(input_vcf_idx, merged_sample_idx);
+	BOOST_CHECK(!VariantHeaderMerger::is_missing(sample_idx));
+	BOOST_CHECK_EQUAL(static_cast<unsigned>(sample_idx), i);
+	BOOST_CHECK_EQUAL(header.get_sample_name(i), combined_header.get_sample_name(merged_sample_idx));
+      }
+    }
+    ++input_vcf_idx;
+  }
+}
+
 BOOST_AUTO_TEST_CASE( reference_block_iterator_move_test ) {
   auto reader0 = MultipleVariantReader<ReferenceBlockSplittingVariantIterator>{test_files, false};
   auto iter0 = reader0.begin();
