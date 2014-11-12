@@ -7,6 +7,7 @@
 #include "utils/utils.h"
 #include "utils/variant_field_type.h"
 #include "utils/genotype_utils.h"
+#include "variant_builder_multi_sample_vector.h"
 
 #include <memory>
 #include <utility>
@@ -277,7 +278,7 @@ class Genotype{
 
   /**
    * @brief Converts a vector of allele indices representing a genotype into BCF-encoded
-   *        format suitable for passing to VariantBuilder::set_genotypes(). No phasing
+   *        format suitable for passing to VariantBuilder::set_genotype(). No phasing
    *        is added.
    *
    *        Example: if you want to encode the genotype 0/1, create a vector with {0, 1}
@@ -289,7 +290,7 @@ class Genotype{
 
   /**
    * @brief Converts a vector of allele indices representing a genotype into BCF-encoded
-   *        format suitable for passing to VariantBuilder::set_genotypes(), and also
+   *        format suitable for passing to VariantBuilder::set_genotype(), and also
    *        allows you to phase all alleles
    *
    *        Example: if you want to encode the genotype 0|1, create a vector with {0, 1}
@@ -310,7 +311,7 @@ class Genotype{
 
   /**
    * @brief Converts multiple vectors of allele indices representing genotypes into
-   *        BCF_encoded format suitable for passing to VariantBuilder::set_genotypes().
+   *        BCF-encoded format suitable for passing to VariantBuilder::set_genotypes().
    *        No phasing is added.
    *
    *        Example: if you want to encode the genotypes 0/1 and 1/1, create a vector
@@ -320,6 +321,16 @@ class Genotype{
     for ( auto& genotype : multiple_genotypes ) {
       encode_genotype(genotype, false);
     }
+  }
+
+  /**
+   * @brief Converts multiple genotypes stored in a VariantBuilderMultiSampleVector into
+   *        BCF-encoded format suitable for passing to VariantBuilder::set_genotypes().
+   *        No phasing is added.
+   */
+  static inline void encode_genotypes(VariantBuilderMultiSampleVector<int32_t>& multiple_genotypes) {
+    auto& genotypes_vector = const_cast<std::vector<int32_t>&>(multiple_genotypes.get_vector());
+    encode_genotype(genotypes_vector, false);
   }
 
  private:

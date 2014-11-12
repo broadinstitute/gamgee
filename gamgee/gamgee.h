@@ -48,6 +48,7 @@
 #include "variant_builder.h"
 #include "variant_builder_individual_field.h"
 #include "variant_builder_individual_region.h"
+#include "variant_builder_multi_sample_vector.h"
 #include "variant_builder_shared_region.h"
 #include "variant_filters.h"
 #include "variant_filters_iterator.h"

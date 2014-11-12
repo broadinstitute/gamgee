@@ -78,6 +78,7 @@ set(SOURCE_FILES
     variant_builder_individual_field.h
     variant_builder_individual_region.cpp
     variant_builder_individual_region.h
+    variant_builder_multi_sample_vector.h
     variant_builder_shared_region.cpp
     variant_builder_shared_region.h
     variant.cpp

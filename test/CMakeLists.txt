@@ -17,6 +17,7 @@ set(SOURCE_FILES
     select_if_test.cpp
     short_value_optimized_storage_test.cpp
     utils_test.cpp
+    variant_builder_multi_sample_vector_test.cpp
     variant_builder_test.cpp
     variant_header_test.cpp
     variant_reader_test.cpp
