@@ -437,6 +437,48 @@ void check_operator_index_for_iterators(const Variant& record)
   }
 }
 
+void check_field_iterator_inc_dec(const Variant& record)
+{
+  const auto pl_int  = record.individual_field_as_integer("PL");
+  for(auto pl : pl_int)
+  {
+    for(auto pl_iter = pl.begin();pl_iter != pl.end();)
+    {
+      auto curr_elem = *pl_iter;
+      BOOST_CHECK_EQUAL(*(pl_iter++), curr_elem);
+    }
+    auto pl_next_iter=pl.begin();
+    ++pl_next_iter;
+    for(auto pl_iter = pl.begin();pl_next_iter != pl.end();++pl_next_iter)
+    {
+      auto pl_tmp_iter = pl_next_iter;
+      BOOST_CHECK_EQUAL(*(pl_tmp_iter--), *pl_next_iter);
+      BOOST_CHECK_EQUAL(*pl_tmp_iter, *pl_iter);
+      ++pl_tmp_iter;
+      BOOST_CHECK_EQUAL(*(--pl_tmp_iter), *pl_iter);
+      BOOST_CHECK_EQUAL(*(++pl_iter), *pl_next_iter);
+    }
+  }
+
+  const auto vlint  = record.shared_field_as_integer("VLINT");
+  for(auto vlint_iter = vlint.begin();vlint_iter != vlint.end();)
+  {
+    auto curr_elem = *vlint_iter;
+    BOOST_CHECK_EQUAL(*(vlint_iter++), curr_elem);
+  }
+  auto vlint_next_iter=vlint.begin();
+  ++vlint_next_iter;
+  for(auto vlint_iter = vlint.begin();vlint_next_iter != vlint.end();++vlint_next_iter)
+  {
+    auto vlint_tmp_iter = vlint_next_iter;
+    BOOST_CHECK_EQUAL(*(vlint_tmp_iter--), *vlint_next_iter);
+    BOOST_CHECK_EQUAL(*vlint_tmp_iter, *vlint_iter);
+    ++vlint_tmp_iter;
+    BOOST_CHECK_EQUAL(*(--vlint_tmp_iter), *vlint_iter);
+    BOOST_CHECK_EQUAL(*(++vlint_iter), *vlint_next_iter);
+  }
+}
+
 void check_out_of_bound_exceptions(const Variant& record) {
   const auto vlint_shared = record.integer_shared_field("VLINT");
   const auto af_float_shared  = record.shared_field_as_float("AF");
@@ -607,6 +649,7 @@ void check_individual_field_api(const Variant& record, const uint32_t truth_inde
   check_variable_length_field_api(record, truth_index);
   check_operator_index_for_iterators(record);
   check_out_of_bound_exceptions(record);
+  check_field_iterator_inc_dec(record);
 }
 
 void check_shared_field_api(const Variant& record, const uint32_t truth_index) {
