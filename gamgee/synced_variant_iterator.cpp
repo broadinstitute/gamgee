@@ -51,18 +51,24 @@ void SyncedVariantIterator::init_headers_vector() {
  * @brief pre-fetches the next variant record
  */
 void SyncedVariantIterator::fetch_next_record() {
-  m_variant_vector.clear();
-  if (!bcf_sr_next_line(m_synced_readers.get()))
+  if (!bcf_sr_next_line(m_synced_readers.get())) {
+    m_variant_vector.clear();
     return;
-
+  }
+  else {
+    m_variant_vector.clear();
+    m_variant_vector.resize(m_synced_readers->nreaders);
+  }
+    
   // can't initialize until a line has been read
   if (m_headers_vector.empty())
     init_headers_vector();
 
   for (int idx = 0; idx < m_synced_readers->nreaders; idx++) {
     if (bcf_sr_has_line(m_synced_readers.get(), idx)) {
+      // can't cache variant bodies because they may change location in the synced reader
       auto* body_ptr = utils::variant_deep_copy(bcf_sr_get_line(m_synced_readers.get(), idx));
-      m_variant_vector.emplace_back(m_headers_vector[idx], utils::make_shared_variant(body_ptr));
+      m_variant_vector[idx] = Variant{m_headers_vector[idx], utils::make_shared_variant(body_ptr)};
     }
   }
 }

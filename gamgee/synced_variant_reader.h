@@ -15,22 +15,28 @@ using namespace std;
 namespace gamgee {
 
 /**
- * @brief Utility class to read multiple VCF/BCF files with an appropriate iterator in a for-each loop.
+ * @brief Utility class to read multiple VCF.GZ/BCF files with an appropriate iterator in a for-each loop.
  *
- * This class is designed to parse the files in for-each loops with the following signature:
+ * @note This reader requires all input files to be indexed
  *
+ * @note Output vectors have the same size and the same order as the input filename vector, but not all files will have
+ * a variant at every location, so it's necessary to check using missing()
+ *
+ * This class is designed to parse the files in for-each loops with the following signatures:
+ *
+ * over whole files:
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * for (auto& record : SyncedVariantReader<SyncedVariantIterator>{filenames})
- *   do_something_with_record(record);
+ * for (auto& record : SyncedVariantReader<SyncedVariantIterator>{filenames, ""})
+ *   if (!missing(record))
+ *     do_something_with_record(record);
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
- * You can also use it with stdin or any other stream by using the default constructor
- * or passing in an empty string for a filename, like so:
- * 
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * for (auto& record : SyncedVariantReader<SyncedVariantIterator>{filename1, stream2})
- *   do_something_with_record(record);
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * over intervals:
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * for (auto& record : SyncedVariantReader<SyncedVariantIterator>{filenames, interval_string})
+ *   if (!missing(record))
+ *     do_something_with_record(record);
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 template<class ITERATOR>
 class SyncedVariantReader {
