@@ -163,9 +163,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a840dce3edf00bde22838b4ec3d230970"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_individual_field_iterator.html">IndividualFieldIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_iterator.html#a840dce3edf00bde22838b4ec3d230970">operator--</a> () noexcept</td></tr>
 <tr class="memdesc:a840dce3edf00bde22838b4ec3d230970"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prefix increment. Reverses to the previous sample.  <a href="#a840dce3edf00bde22838b4ec3d230970">More...</a><br /></td></tr>
 <tr class="separator:a840dce3edf00bde22838b4ec3d230970"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6b67a792a7c52d342c70b73bfc469f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_individual_field_iterator.html">IndividualFieldIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_iterator.html#ab6b67a792a7c52d342c70b73bfc469f5">operator--</a> (int) noexcept</td></tr>
-<tr class="memdesc:ab6b67a792a7c52d342c70b73bfc469f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Postfix increment. Reverses to the previous sample.  <a href="#ab6b67a792a7c52d342c70b73bfc469f5">More...</a><br /></td></tr>
-<tr class="separator:ab6b67a792a7c52d342c70b73bfc469f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50f4864a8888d907b2f9114eef44a5c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_individual_field_iterator.html">IndividualFieldIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_iterator.html#a50f4864a8888d907b2f9114eef44a5c3">operator--</a> (int) noexcept</td></tr>
+<tr class="memdesc:a50f4864a8888d907b2f9114eef44a5c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Postfix decrement. Reverses to the previous sample.  <a href="#a50f4864a8888d907b2f9114eef44a5c3">More...</a><br /></td></tr>
+<tr class="separator:a50f4864a8888d907b2f9114eef44a5c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4ed9633a3eababfab39fddb0c9f5e31"><td class="memItemLeft" align="right" valign="top">TYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_individual_field_iterator.html#ab4ed9633a3eababfab39fddb0c9f5e31">operator[]</a> (const uint32_t sample) const </td></tr>
 <tr class="memdesc:ab4ed9633a3eababfab39fddb0c9f5e31"><td class="mdescLeft">&#160;</td><td class="mdescRight">random access to the value of a given sample for reading or writing  <a href="#ab4ed9633a3eababfab39fddb0c9f5e31">More...</a><br /></td></tr>
 <tr class="separator:ab4ed9633a3eababfab39fddb0c9f5e31"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -413,7 +413,7 @@ template&lt;class TYPE&gt; </div>
 <p>Postfix increment. Advances to the next sample. </p>
 <dl class="section note"><dt>Note</dt><dd>mainly designed for iterators </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>does not check for bounds exception, you should verify whether or not you've reached the end by comparing the result with end(). This is the STL way. </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>the value of the start of the same sample. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>copy of the current position of the iterator (before the increment) </dd></dl>
 
 </div>
 </div>
@@ -518,7 +518,7 @@ template&lt;class TYPE&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ab6b67a792a7c52d342c70b73bfc469f5"></a>
+<a class="anchor" id="a50f4864a8888d907b2f9114eef44a5c3"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -528,7 +528,7 @@ template&lt;class TYPE&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classgamgee_1_1_individual_field_iterator.html">IndividualFieldIterator</a>&amp; <a class="el" href="classgamgee_1_1_individual_field_iterator.html">gamgee::IndividualFieldIterator</a>&lt; TYPE &gt;::operator-- </td>
+          <td class="memname"><a class="el" href="classgamgee_1_1_individual_field_iterator.html">IndividualFieldIterator</a> <a class="el" href="classgamgee_1_1_individual_field_iterator.html">gamgee::IndividualFieldIterator</a>&lt; TYPE &gt;::operator-- </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -542,10 +542,10 @@ template&lt;class TYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Postfix increment. Reverses to the previous sample. </p>
+<p>Postfix decrement. Reverses to the previous sample. </p>
 <dl class="section note"><dt>Note</dt><dd>mainly designed for iterators </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>does not check for bounds exception, you should verify whether or not you've reached the beginning by comparing the result with begin(). This is the STL way. </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>the value of the start of the same sample. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>copy of the current position of the iterator (before the decrement) </dd></dl>
 
 </div>
 </div>
@@ -835,7 +835,7 @@ template&lt;class TYPE&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 10 2014 19:53:25 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 13 2014 16:08:12 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
