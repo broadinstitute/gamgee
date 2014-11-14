@@ -785,6 +785,45 @@ BOOST_AUTO_TEST_CASE( test_shared_field_memory_pool_compaction ) {
  * Helper functions for individual field tests
  *********************************************/
 
+VariantBuilderMultiSampleVector<int32_t> initialize_flat_multi_sample_integer_vector(const VariantBuilder& builder, const vector<vector<int32_t>>& sample_values) {
+  auto max_values_per_sample = 0u;
+  for ( auto& sample_vec : sample_values ) {
+    if ( sample_vec.size() > max_values_per_sample ) max_values_per_sample = sample_vec.size();
+  }
+
+  auto flat_vector = builder.get_integer_multi_sample_vector(sample_values.size(), max_values_per_sample);
+  for ( auto sample_index = 0u; sample_index < sample_values.size(); ++sample_index ) {
+    flat_vector.set_sample_values(sample_index, sample_values[sample_index]);
+  }
+  return flat_vector;
+}
+
+VariantBuilderMultiSampleVector<float> initialize_flat_multi_sample_float_vector(const VariantBuilder& builder, const vector<vector<float>>& sample_values) {
+  auto max_values_per_sample = 0u;
+  for ( auto& sample_vec : sample_values ) {
+    if ( sample_vec.size() > max_values_per_sample ) max_values_per_sample = sample_vec.size();
+  }
+
+  auto flat_vector = builder.get_float_multi_sample_vector(sample_values.size(), max_values_per_sample);
+  for ( auto sample_index = 0u; sample_index < sample_values.size(); ++sample_index ) {
+    flat_vector.set_sample_values(sample_index, sample_values[sample_index]);
+  }
+  return flat_vector;
+}
+
+VariantBuilderMultiSampleVector<int32_t> initialize_flat_multi_sample_genotypes_vector(const VariantBuilder& builder, const vector<vector<int32_t>>& sample_genotypes) {
+  auto max_values_per_sample = 0u;
+  for ( auto& sample_vec : sample_genotypes ) {
+    if ( sample_vec.size() > max_values_per_sample ) max_values_per_sample = sample_vec.size();
+  }
+
+  auto flat_vector = builder.get_genotype_multi_sample_vector(sample_genotypes.size(), max_values_per_sample);
+  for ( auto sample_index = 0u; sample_index < sample_genotypes.size(); ++sample_index ) {
+    flat_vector.set_sample_values(sample_index, sample_genotypes[sample_index]);
+  }
+  return flat_vector;
+}
+
 void check_integer_individual_field(const Variant& variant, const string& field, const vector<vector<int32_t>>& expected) {
   auto sample_index = 0u;
   for ( const auto& sample_values : variant.integer_individual_field(field) ) {
@@ -929,20 +968,26 @@ BOOST_AUTO_TEST_CASE( bulk_set_integer_individual_fields ) {
     // Run each test below using both field indices and field names
     for ( bool use_field_index : { true, false } ) {
 
-      auto flat_vector = vector<int32_t>{};
       auto nested_vector = vector<vector<int32_t>>{};
       auto expected = vector<vector<int32_t>>{};
 
       // Flat vector with one value per sample
-      flat_vector = {1, 2, 3};
       expected = {{1}, {2}, {3}};
+      auto flat_vector = initialize_flat_multi_sample_integer_vector(builder, expected);
       auto variant = use_field_index ? (perform_move ? builder.set_integer_individual_field(header.field_index("ZIFMT"), move(flat_vector)).build() : builder.set_integer_individual_field(header.field_index("ZIFMT"), flat_vector).build()) :
                                        (perform_move ? builder.set_integer_individual_field("ZIFMT", move(flat_vector)).build() : builder.set_integer_individual_field("ZIFMT", flat_vector).build());
       check_integer_individual_field(variant, "ZIFMT", expected);
 
       // Flat vector with multiple values per sample
-      flat_vector = {1, 2, 3, 4, 5, 6, 7, 8, 9};
       expected = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+      flat_vector = initialize_flat_multi_sample_integer_vector(builder, expected);
+      variant = use_field_index ? (perform_move ? builder.set_integer_individual_field(header.field_index("ZIFMT"), move(flat_vector)).build() : builder.set_integer_individual_field(header.field_index("ZIFMT"), flat_vector).build()) :
+                                  (perform_move ? builder.set_integer_individual_field("ZIFMT", move(flat_vector)).build() : builder.set_integer_individual_field("ZIFMT", flat_vector).build());
+      check_integer_individual_field(variant, "ZIFMT", expected);
+
+      // Flat vector with variable number of values per sample, and a missing sample
+      expected = {{1, 2, 3}, {1, bcf_int32_vector_end, bcf_int32_vector_end}, {bcf_int32_missing, bcf_int32_vector_end, bcf_int32_vector_end}};
+      flat_vector = initialize_flat_multi_sample_integer_vector(builder, vector<vector<int32_t>>{{1, 2, 3}, {1}, {}});
       variant = use_field_index ? (perform_move ? builder.set_integer_individual_field(header.field_index("ZIFMT"), move(flat_vector)).build() : builder.set_integer_individual_field(header.field_index("ZIFMT"), flat_vector).build()) :
                                   (perform_move ? builder.set_integer_individual_field("ZIFMT", move(flat_vector)).build() : builder.set_integer_individual_field("ZIFMT", flat_vector).build());
       check_integer_individual_field(variant, "ZIFMT", expected);
@@ -998,20 +1043,26 @@ BOOST_AUTO_TEST_CASE( bulk_set_float_individual_fields ) {
     // Run each test below using both field indices and field names
     for ( bool use_field_index : { true, false } ) {
 
-      auto flat_vector = vector<float>{};
       auto nested_vector = vector<vector<float>>{};
       auto expected = vector<vector<float>>{};
 
       // Flat vector with one value per sample
-      flat_vector = {1.0, 2.0, 3.0};
       expected = {{1.0}, {2.0}, {3.0}};
+      auto flat_vector = initialize_flat_multi_sample_float_vector(builder, expected);
       auto variant = use_field_index ? (perform_move ? builder.set_float_individual_field(header.field_index("ZFFMT"), move(flat_vector)).build() : builder.set_float_individual_field(header.field_index("ZFFMT"), flat_vector).build()) :
                                        (perform_move ? builder.set_float_individual_field("ZFFMT", move(flat_vector)).build() : builder.set_float_individual_field("ZFFMT", flat_vector).build());
       check_float_individual_field(variant, "ZFFMT", expected);
 
       // Flat vector with multiple values per sample
-      flat_vector = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0};
       expected = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+      flat_vector = initialize_flat_multi_sample_float_vector(builder, expected);
+      variant = use_field_index ? (perform_move ? builder.set_float_individual_field(header.field_index("ZFFMT"), move(flat_vector)).build() : builder.set_float_individual_field(header.field_index("ZFFMT"), flat_vector).build()) :
+                                  (perform_move ? builder.set_float_individual_field("ZFFMT", move(flat_vector)).build() : builder.set_float_individual_field("ZFFMT", flat_vector).build());
+      check_float_individual_field(variant, "ZFFMT", expected);
+
+      // Flat vector with variable number of values per sample, and a missing sample
+      expected = {{1.0, 2.0, 3.0}, {4.0, float_vector_end, float_vector_end}, {float_missing, float_vector_end, float_vector_end}};
+      flat_vector = initialize_flat_multi_sample_float_vector(builder, vector<vector<float>>{{1.0, 2.0, 3.0}, {4.0}, {}});
       variant = use_field_index ? (perform_move ? builder.set_float_individual_field(header.field_index("ZFFMT"), move(flat_vector)).build() : builder.set_float_individual_field(header.field_index("ZFFMT"), flat_vector).build()) :
                                   (perform_move ? builder.set_float_individual_field("ZFFMT", move(flat_vector)).build() : builder.set_float_individual_field("ZFFMT", flat_vector).build());
       check_float_individual_field(variant, "ZFFMT", expected);
@@ -1086,43 +1137,42 @@ BOOST_AUTO_TEST_CASE( bulk_set_genotype_field ) {
   // Run each test below with both lvalues and rvalues
   for ( bool perform_move : { true, false } ) {
 
-    auto flat_vector = vector<int32_t>{};
     auto nested_vector = vector<vector<int32_t>>{};
     auto expected = vector<vector<int32_t>>{};
 
     // Flat vector, one allele per sample
-    flat_vector = {0, 1, 0}; Genotype::encode_genotype(flat_vector);
     expected = {{0}, {1}, {0}};
+    auto flat_vector = initialize_flat_multi_sample_genotypes_vector(builder, expected); Genotype::encode_genotypes(flat_vector);
     auto variant = perform_move ? builder.set_genotypes(move(flat_vector)).build() :
                                   builder.set_genotypes(flat_vector).build();
     check_genotype_field(variant, expected);
 
     // Flat vector, two alleles per sample
-    flat_vector = {0, 1, 1, 0, 0, 2}; Genotype::encode_genotype(flat_vector);
     expected = {{0, 1}, {1, 0}, {0, 2}};
+    flat_vector = initialize_flat_multi_sample_genotypes_vector(builder, expected); Genotype::encode_genotypes(flat_vector);
     variant = perform_move ? builder.set_genotypes(move(flat_vector)).build() :
                              builder.set_genotypes(flat_vector).build();
     check_genotype_field(variant, expected);
 
     // Flat vector, three alleles per sample
-    flat_vector = {0, 1, 2, 1, 0, 2, 0, 0, 2}; Genotype::encode_genotype(flat_vector);
     expected = {{0, 1, 2}, {1, 0, 2}, {0, 0, 2}};
+    flat_vector = initialize_flat_multi_sample_genotypes_vector(builder, expected); Genotype::encode_genotypes(flat_vector);
     variant = perform_move ? builder.set_genotypes(move(flat_vector)).build() :
                              builder.set_genotypes(flat_vector).build();
     check_genotype_field(variant, expected);
 
-    // Flat vector, varying ploidy with manual padding
-    flat_vector = {0, 1, 2, 1, bcf_int32_vector_end, bcf_int32_vector_end, 0, 1, bcf_int32_vector_end}; Genotype::encode_genotype(flat_vector);
+    // Flat vector, varying ploidy
     expected = {{0, 1, 2}, {1, bcf_int32_vector_end, bcf_int32_vector_end}, {0, 1, bcf_int32_vector_end}};
+    flat_vector = initialize_flat_multi_sample_genotypes_vector(builder, vector<vector<int32_t>>{{0, 1, 2}, {1}, {0, 1}}); Genotype::encode_genotypes(flat_vector);
     variant = perform_move ? builder.set_genotypes(move(flat_vector)).build() :
                              builder.set_genotypes(flat_vector).build();
     check_genotype_field(variant, expected);
 
-    // Flat vector, varying ploidy with manual padding and a missing sample
-    flat_vector = {0, 1, 2, -1, bcf_int32_vector_end, bcf_int32_vector_end, 0, 1, bcf_int32_vector_end}; Genotype::encode_genotype(flat_vector);
+    // Flat vector, varying ploidy with missing sample
     expected = {{0, 1, 2}, {bcf_int32_missing, bcf_int32_vector_end, bcf_int32_vector_end}, {0, 1, bcf_int32_vector_end}};
+    flat_vector = initialize_flat_multi_sample_genotypes_vector(builder, vector<vector<int32_t>>{{0, 1, 2}, {}, {0, 1}}); Genotype::encode_genotypes(flat_vector);
     variant = perform_move ? builder.set_genotypes(move(flat_vector)).build() :
-              builder.set_genotypes(flat_vector).build();
+                             builder.set_genotypes(flat_vector).build();
     check_genotype_field(variant, expected);
 
     // Nested vector, one allele per sample
@@ -1171,24 +1221,36 @@ BOOST_AUTO_TEST_CASE( bulk_set_individual_fields_wrong_number_of_values ) {
                                              // as the tests below will be invalidated if they have
 
   // int field: less than num_samples values in flat vector
-  BOOST_CHECK_THROW(builder.set_integer_individual_field("ZIFMT", {1, 2}), invalid_argument);
+  auto two_sample_flat_int_vector = initialize_flat_multi_sample_integer_vector(builder, vector<vector<int32_t>>{{1}, {2}});
+  BOOST_CHECK_THROW(builder.set_integer_individual_field("ZIFMT", two_sample_flat_int_vector), invalid_argument);
+
   // int field: number of values not divisible by num_samples in flat vector
-  BOOST_CHECK_THROW(builder.set_integer_individual_field("ZIFMT", {1, 2, 3, 4}), invalid_argument);
-  BOOST_CHECK_THROW(builder.set_integer_individual_field("ZIFMT", {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}), invalid_argument);
+  auto four_value_flat_int_vector = initialize_flat_multi_sample_integer_vector(builder, vector<vector<int32_t>>{{1}, {2}, {3}, {4}});
+  BOOST_CHECK_THROW(builder.set_integer_individual_field("ZIFMT", four_value_flat_int_vector), invalid_argument);
+  auto ten_value_flat_int_vector = initialize_flat_multi_sample_integer_vector(builder, vector<vector<int32_t>>{{1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}});
+  BOOST_CHECK_THROW(builder.set_integer_individual_field("ZIFMT", ten_value_flat_int_vector), invalid_argument);
+
   // int field: length of first dimension not equal to num_samples in nested vector
   BOOST_CHECK_THROW(builder.set_integer_individual_field("ZIFMT", { {1, 2, 3}, {4, 5} }), invalid_argument);
   BOOST_CHECK_THROW(builder.set_integer_individual_field("ZIFMT", { {1, 2, 3}, {4, 5}, {6}, {7} }), invalid_argument);
+
   // int field: length of first dimension not equal to num_samples in nested vector, but divisible by num_samples
   BOOST_CHECK_THROW(builder.set_integer_individual_field("ZIFMT", { {1, 2, 3}, {4, 5}, {6}, {7}, {8}, {9} }), invalid_argument);
 
   // float field: less than num_samples values in flat vector
-  BOOST_CHECK_THROW(builder.set_float_individual_field("ZFFMT", vector<float>{1.0, 2.0}), invalid_argument);
+  auto two_sample_flat_float_vector = initialize_flat_multi_sample_float_vector(builder, vector<vector<float>>{{1.0}, {2.0}});
+  BOOST_CHECK_THROW(builder.set_float_individual_field("ZFFMT", two_sample_flat_float_vector), invalid_argument);
+
   // float field: number of values not divisible by num_samples in flat vector
-  BOOST_CHECK_THROW(builder.set_float_individual_field("ZFFMT", vector<float>{1.0, 2.0, 3.0, 4.0}), invalid_argument);
-  BOOST_CHECK_THROW(builder.set_float_individual_field("ZFFMT", vector<float>{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0}), invalid_argument);
+  auto four_value_flat_float_vector = initialize_flat_multi_sample_float_vector(builder, vector<vector<float>>{{1.0}, {2.0}, {3.0}, {4.0}});
+  BOOST_CHECK_THROW(builder.set_float_individual_field("ZFFMT", four_value_flat_float_vector), invalid_argument);
+  auto ten_value_flat_float_vector = initialize_flat_multi_sample_float_vector(builder, vector<vector<float>>{{1.0}, {2.0}, {3.0}, {4.0}, {5.0}, {6.0}, {7.0}, {8.0}, {9.0}, {10.0}});
+  BOOST_CHECK_THROW(builder.set_float_individual_field("ZFFMT", ten_value_flat_float_vector), invalid_argument);
+
   // float field: length of first dimension not equal to num_samples in nested vector
   BOOST_CHECK_THROW(builder.set_float_individual_field("ZFFMT", vector<vector<float>>{ {1.0, 2.0, 3.0}, {4.0, 5.0} }), invalid_argument);
   BOOST_CHECK_THROW(builder.set_float_individual_field("ZFFMT", vector<vector<float>>{ {1.0, 2.0, 3.0}, {4.0, 5.0}, {6.0}, {7.0} }), invalid_argument);
+
   // float field: length of first dimension not equal to num_samples in nested vector, but divisible by num_samples
   BOOST_CHECK_THROW(builder.set_float_individual_field("ZFFMT", vector<vector<float>>{ {1.0, 2.0, 3.0}, {4.0, 5.0}, {6.0}, {7.0}, {8.0}, {9.0} }), invalid_argument);
 
@@ -1206,12 +1268,12 @@ BOOST_AUTO_TEST_CASE( bulk_set_individual_field_type_mismatch ) {
   builder.set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
 
   // Accessing float field as an integer field
-  BOOST_CHECK_THROW(builder.set_integer_individual_field("ZFFMT", {1, 2, 3}), invalid_argument);
-  BOOST_CHECK_THROW(builder.set_integer_individual_field(header.field_index("ZFFMT"), {1, 2, 3}), invalid_argument);
+  BOOST_CHECK_THROW(builder.set_integer_individual_field("ZFFMT", vector<vector<int32_t>>{{1}, {2}, {3}}), invalid_argument);
+  BOOST_CHECK_THROW(builder.set_integer_individual_field(header.field_index("ZFFMT"), vector<vector<int32_t>>{{1}, {2}, {3}}), invalid_argument);
 
   // Accessing integer field as a float field
-  BOOST_CHECK_THROW(builder.set_float_individual_field("ZIFMT", {1.5f, 2.5f, 3.5f}), invalid_argument);
-  BOOST_CHECK_THROW(builder.set_float_individual_field(header.field_index("ZIFMT"), {1.5f, 2.5f, 3.5f}), invalid_argument);
+  BOOST_CHECK_THROW(builder.set_float_individual_field("ZIFMT", vector<vector<float>>{{1.5f}, {2.5f}, {3.5f}}), invalid_argument);
+  BOOST_CHECK_THROW(builder.set_float_individual_field(header.field_index("ZIFMT"), vector<vector<float>>{{1.5f}, {2.5f}, {3.5f}}), invalid_argument);
 
   // Accessing integer field as a string field
   BOOST_CHECK_THROW(builder.set_string_individual_field("ZIFMT", {"a", "b", "c"}), invalid_argument);
@@ -1223,11 +1285,11 @@ BOOST_AUTO_TEST_CASE( bulk_set_individual_field_bad_field_id ) {
   auto builder = VariantBuilder{header};
   builder.set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
 
-  BOOST_CHECK_THROW(builder.set_integer_individual_field("FOOBAR", {1, 2, 3}), invalid_argument);   // bad field name
-  BOOST_CHECK_THROW(builder.set_integer_individual_field(500, {1, 2, 3}), invalid_argument);        // bad field index
+  BOOST_CHECK_THROW(builder.set_integer_individual_field("FOOBAR", vector<vector<int32_t>>{{1}, {2}, {3}}), invalid_argument);   // bad field name
+  BOOST_CHECK_THROW(builder.set_integer_individual_field(500, vector<vector<int32_t>>{{1}, {2}, {3}}), invalid_argument);        // bad field index
 
-  BOOST_CHECK_THROW(builder.set_float_individual_field("FOOBAR", {1.5f, 2.5f, 3.5f}), invalid_argument);  // bad field name
-  BOOST_CHECK_THROW(builder.set_float_individual_field(500, {1.5f, 2.5f, 3.5f}), invalid_argument);       // bad field index
+  BOOST_CHECK_THROW(builder.set_float_individual_field("FOOBAR", vector<vector<float>>{{1.5f}, {2.5f}, {3.5f}}), invalid_argument);  // bad field name
+  BOOST_CHECK_THROW(builder.set_float_individual_field(500, vector<vector<float>>{{1.5f}, {2.5f}, {3.5f}}), invalid_argument);       // bad field index
 
   BOOST_CHECK_THROW(builder.set_string_individual_field("FOOBAR", {"a", "b", "c"}), invalid_argument);   // bad field name
   BOOST_CHECK_THROW(builder.set_string_individual_field(500, {"a", "b", "c"}), invalid_argument);        // bad field index
@@ -1239,10 +1301,10 @@ BOOST_AUTO_TEST_CASE( bulk_set_individual_field_all_empty_values ) {
   builder.set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
 
   // Single-dimensional empty vectors
-  auto variant = builder.set_integer_individual_field("ZIFMT", vector<int32_t>{}).build();
+  auto variant = builder.set_integer_individual_field("ZIFMT", builder.get_integer_multi_sample_vector(0, 0)).build();
   BOOST_CHECK(missing(variant.integer_individual_field("ZIFMT")));
 
-  variant = builder.set_float_individual_field("ZFFMT", vector<float>{}).build();
+  variant = builder.set_float_individual_field("ZFFMT", builder.get_float_multi_sample_vector(0, 0)).build();
   BOOST_CHECK(missing(variant.float_individual_field("ZFFMT")));
 
   variant = builder.set_string_individual_field("ZSFMT", vector<string>{}).build();
@@ -1273,25 +1335,25 @@ BOOST_AUTO_TEST_CASE( remove_integer_individual_fields ) {
 
   // Remove integer individual field via remove_individual_field()
   builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
-  builder.set_integer_individual_field("ZIFMT", {1, 2, 3});
+  builder.set_integer_individual_field("ZIFMT", vector<vector<int32_t>>{{1}, {2}, {3}});
   builder.remove_individual_field("ZIFMT");
   BOOST_CHECK(missing(builder.build().integer_individual_field("ZIFMT")));
   builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
-  builder.set_integer_individual_field("ZIFMT", {1, 2, 3});
+  builder.set_integer_individual_field("ZIFMT", vector<vector<int32_t>>{{1}, {2}, {3}});
   builder.remove_individual_field(header.field_index("ZIFMT"));
   BOOST_CHECK(missing(builder.build().integer_individual_field("ZIFMT")));
 
   // Remove multiple integer individual fields via remove_individual_fields()
   builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
-  builder.set_integer_individual_field("ZIFMT", {1, 2, 3});
-  builder.set_integer_individual_field("GQ", {4, 5, 6});
+  builder.set_integer_individual_field("ZIFMT", vector<vector<int32_t>>{{1}, {2}, {3}});
+  builder.set_integer_individual_field("GQ", vector<vector<int32_t>>{{4}, {5}, {6}});
   builder.remove_individual_fields(vector<string>{"ZIFMT", "GQ"});
   auto variant = builder.build();
   BOOST_CHECK(missing(variant.integer_individual_field("ZIFMT")));
   BOOST_CHECK(missing(variant.integer_individual_field("GQ")));
   builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
-  builder.set_integer_individual_field("ZIFMT", {1, 2, 3});
-  builder.set_integer_individual_field("GQ", {4, 5, 6});
+  builder.set_integer_individual_field("ZIFMT", vector<vector<int32_t>>{{1}, {2}, {3}});
+  builder.set_integer_individual_field("GQ", vector<vector<int32_t>>{{4}, {5}, {6}});
   builder.remove_individual_fields(vector<uint32_t>{uint32_t(header.field_index("ZIFMT")), uint32_t(header.field_index("GQ"))});
   variant = builder.build();
   BOOST_CHECK(missing(variant.integer_individual_field("ZIFMT")));
@@ -1299,15 +1361,15 @@ BOOST_AUTO_TEST_CASE( remove_integer_individual_fields ) {
 
   // Remove integer individual field by setting it to a missing value
   builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
-  builder.set_integer_individual_field("ZIFMT", {1, 2, 3});
-  builder.set_integer_individual_field("ZIFMT", vector<int32_t>{});
+  builder.set_integer_individual_field("ZIFMT", vector<vector<int32_t>>{{1}, {2}, {3}});
+  builder.set_integer_individual_field("ZIFMT", builder.get_integer_multi_sample_vector(0, 0));
   BOOST_CHECK(missing(builder.build().integer_individual_field("ZIFMT")));
   builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
-  builder.set_integer_individual_field("ZIFMT", {1, 2, 3});
+  builder.set_integer_individual_field("ZIFMT", vector<vector<int32_t>>{{1}, {2}, {3}});
   builder.set_integer_individual_field("ZIFMT", vector<vector<int32_t>>{});
   BOOST_CHECK(missing(builder.build().integer_individual_field("ZIFMT")));
   builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
-  builder.set_integer_individual_field("ZIFMT", {1, 2, 3});
+  builder.set_integer_individual_field("ZIFMT", vector<vector<int32_t>>{{1}, {2}, {3}});
   builder.set_integer_individual_field("ZIFMT", vector<vector<int32_t>>{ {}, {}, {} });
   BOOST_CHECK(missing(builder.build().integer_individual_field("ZIFMT")));
 }
@@ -1318,14 +1380,14 @@ BOOST_AUTO_TEST_CASE( remove_float_individual_fields ) {
 
   // Remove float individual field via remove_individual_field()
   builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
-  builder.set_float_individual_field("ZFFMT", vector<float>{1.0, 2.0, 3.0});
+  builder.set_float_individual_field("ZFFMT", vector<vector<float>>{{1.0}, {2.0}, {3.0}});
   builder.remove_individual_field("ZFFMT");
   BOOST_CHECK(missing(builder.build().float_individual_field("ZFFMT")));
 
   // Remove multiple float individual fields via remove_individual_fields()
   builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
-  builder.set_float_individual_field("ZFFMT", vector<float>{1.0, 2.0, 3.0});
-  builder.set_float_individual_field("AF", vector<float>{1.0, 2.0, 3.0, 4.0, 5.0, 6.0});
+  builder.set_float_individual_field("ZFFMT", vector<vector<float>>{{1.0}, {2.0}, {3.0}});
+  builder.set_float_individual_field("AF", vector<vector<float>>{{1.0, 2.0}, {3.0, 4.0}, {5.0, 6.0}});
   builder.remove_individual_fields(vector<string>{"ZFFMT", "AF"});
   auto variant = builder.build();
   BOOST_CHECK(missing(variant.float_individual_field("ZFFMT")));
@@ -1333,15 +1395,15 @@ BOOST_AUTO_TEST_CASE( remove_float_individual_fields ) {
 
   // Remove float individual field by setting it to a missing value
   builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
-  builder.set_float_individual_field("ZFFMT", vector<float>{1.0, 2.0, 3.0});
-  builder.set_float_individual_field("ZFFMT", vector<float>{});
+  builder.set_float_individual_field("ZFFMT", vector<vector<float>>{{1.0}, {2.0}, {3.0}});
+  builder.set_float_individual_field("ZFFMT", builder.get_float_multi_sample_vector(0, 0));
   BOOST_CHECK(missing(builder.build().float_individual_field("ZFFMT")));
   builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
-  builder.set_float_individual_field("ZFFMT", vector<float>{1.0, 2.0, 3.0});
+  builder.set_float_individual_field("ZFFMT", vector<vector<float>>{{1.0}, {2.0}, {3.0}});
   builder.set_float_individual_field("ZFFMT", vector<vector<float>>{});
   BOOST_CHECK(missing(builder.build().float_individual_field("ZFFMT")));
   builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
-  builder.set_float_individual_field("ZFFMT", vector<float>{1.0, 2.0, 3.0});
+  builder.set_float_individual_field("ZFFMT", vector<vector<float>>{{1.0}, {2.0}, {3.0}});
   builder.set_float_individual_field("ZFFMT", vector<vector<float>>{ {}, {}, {} });
   BOOST_CHECK(missing(builder.build().float_individual_field("ZFFMT")));
 }
@@ -1379,7 +1441,7 @@ BOOST_AUTO_TEST_CASE( remove_string_individual_fields ) {
 BOOST_AUTO_TEST_CASE( remove_subset_of_individual_fields ) {
   auto header = SingleVariantReader{"testdata/test_variants_for_variantbuilder.vcf"}.header();
   auto builder = VariantBuilder{header};
-  auto encoded_gts = vector<int32_t>{0, 1, 1, 0, 0, 2}; Genotype::encode_genotype(encoded_gts);
+  auto encoded_gts = vector<vector<int32_t>>{{0, 1}, {1, 0}, {0, 2}}; Genotype::encode_genotypes(encoded_gts);
   auto gt_values = vector<vector<int32_t>>{{0, 1}, {1, 0}, {0, 2}};
   auto zifmt_values = vector<vector<int32_t>>{{1}, {2}, {3}};
   auto zffmt_values = vector<vector<float>>{{1.0}, {2.0}, {3.0}};
@@ -1387,7 +1449,7 @@ BOOST_AUTO_TEST_CASE( remove_subset_of_individual_fields ) {
   builder.set_chromosome(0).set_alignment_start(5).set_ref_allele("A").set_alt_alleles({"T", "C"});
   builder.set_genotypes(encoded_gts);
   builder.set_integer_individual_field("ZIFMT", zifmt_values);
-  builder.set_integer_individual_field("GQ", {4, 5, 6});
+  builder.set_integer_individual_field("GQ", vector<vector<int32_t>>{{4}, {5}, {6}});
   builder.set_float_individual_field("ZFFMT", zffmt_values);
   builder.set_string_individual_field("ZSFMT", vector<string>{"A", "B", "C"});
 
@@ -1411,7 +1473,7 @@ BOOST_AUTO_TEST_CASE( set_individual_field_after_removal ) {
   builder.set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
 
   // Need to make sure that the "removed" flag gets cleared when we re-set a field after removal
-  builder.set_integer_individual_field("ZIFMT", {1, 2, 3});
+  builder.set_integer_individual_field("ZIFMT", vector<vector<int32_t>>{{1}, {2}, {3}});
   builder.remove_individual_field("ZIFMT");
   builder.set_integer_individual_field("ZIFMT", zifmt_final_values);
 
@@ -1666,7 +1728,7 @@ BOOST_AUTO_TEST_CASE( set_individual_field_by_sample_type_mismatch ) {
 BOOST_AUTO_TEST_CASE( set_individual_fields_both_in_bulk_and_by_sample ) {
   auto header = SingleVariantReader{"testdata/test_variants_for_variantbuilder.vcf"}.header();
   auto builder = VariantBuilder{header};
-  auto bulk_changes = vector<int32_t>{1, 2, 3};
+  auto bulk_changes = vector<vector<int32_t>>{{1}, {2}, {3}};
   builder.set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
 
   builder.set_integer_individual_field("ZIFMT", bulk_changes);

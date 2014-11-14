@@ -4,6 +4,7 @@
 #include "variant.h"
 #include "variant_builder_shared_region.h"
 #include "variant_builder_individual_region.h"
+#include "variant_builder_multi_sample_vector.h"
 
 #include <vector>
 #include <string>
@@ -112,11 +113,11 @@ class VariantBuilderCoreField {
  *  (without calling clear() in between). This is because it would be too costly
  *  to reconcile the two kinds of changes.
  *
- * -The bulk-setting functions that take a flattened (one-dimensional) vector
- *  are much more efficient than the functions that take a two-dimensional vector,
- *  but the flattened approach requires the user to pad sample values with
- *  missing/end of vector values manually, whereas with the two-dimensional
- *  approach the user does not need to worry about padding sample values.
+ * -The bulk-setting functions that take a VariantBuilderMultiSampleVector (which internally
+ *  is a pre-padded one-dimensional vector of values) are much more efficient than the
+ *  functions that take a two-dimensional vector, but the VariantBuilderMultiSampleVector
+ *  approach requires a bit more work to use, and also requires that you know the maximum
+ *  number of values per sample for the field in advance.
  *
  *  For example, with 4 samples and an integer individual field with a
  *  varied number of values per sample, you could pass in the following
@@ -124,34 +125,44 @@ class VariantBuilderCoreField {
  *
  *  { {1, 2}, {3}, {}, {5, 6, 7} }
  *
- *  with each inner vector representing the values for one sample.
+ *  with each inner vector representing the values for one sample. However,
+ *  this nested vector is a fairly inefficient data structure with poor
+ *  data locality/cache performance.
  *
- *  However, to use the flattened vector API functions you'd have to pass in
- *  this equivalent single-dimensional vector:
+ *  If high performance is desired, you can use a VariantBuilderMultiSampleVector
+ *  instead of a two-dimensional vector:
  *
- *  { 1, 2, int32_vector_end,
- *    3, int32_vector_end, int32_vector_end,
- *    int32_missing_value, int32_vector_end, int32_vector_end,
- *    5, 6, 7 }
+ *  First determine the number of samples and the maximum number of values per
+ *  sample for the field. Then get a pre-initialized VariantBuilderMultiSampleVector
+ *  from the builder:
  *
- *  Note how the values for each sample are manually padded with vector end
- *  values to the maximum length across all samples, and that samples with
- *  no values for the field are represented by one missing value followed by
- *  the required amount of vector end padding.
+ *  auto multi_sample_vector = builder.get_integer_multi_sample_vector(num_samples, max_values_per_sample);
  *
- *  The advantage of the flattened approach is much greater efficiency
+ *  This vector will have missing values for all samples, with appropriate padding to the maximum field width.
+ *
+ *  Then, fill in the values for each non-missing sample by invoking the set_sample_value() and/or
+ *  set_sample_values() functions on your multi-sample vector (NOTE: set_sample_value() is MUCH more efficient
+ *  than set_sample_values() since it doesn't require a vector construction/destruction for each call).
+ *  You don't have to worry about samples with no values, since all samples start out with missing values.
+ *
+ *  Finally, pass your multi-sample vector into a setter function (favoring the functions
+ *  that take field indices and use move semantics for high performance):
+ *
+ *  builder.set_integer_individual_field(field_index, std::move(multi_sample_vector));
+ *
+ *  The advantage of the VariantBuilderMultiSampleVector approach is much greater efficiency
  *  in terms of data locality and memory allocations.
- *
- *  For fields in which all samples have the same number of values, and there
- *  are no missing values, the flattened approach has no real disadvantages and
- *  should be preferred over the two-dimensional approach.
  *
  * -The Genotype setter functions require you to encode your genotype data
  *  with one of the Genotype::encode_genotype() functions before passing it in.
  *
  *  For example, if you want to encode the genotype 0/1, create a vector with
  *  {0, 1}, pass it to Genotype::encode_genotype(), then pass it to the appropriate
- *  set_genotypes() function.
+ *  set_genotype() function.
+ *
+ *  Multi-sample collections of genotypes (either a VariantBuilderMultiSampleVector or
+ *  a vector<vector>) must also be encoded before passing them to the builder. Use
+ *  Genotype::encode_genotypes() to encode them (note the plural).
  *
  */
 class VariantBuilder {
@@ -508,52 +519,64 @@ class VariantBuilder {
    ******************************************************************************/
 
   /**
-   * @brief Set the genotypes (GT) field for all samples at once by flattened vector, copying the provided values
+   * @brief Set the genotypes (GT) field for all samples at once using an efficient flattened (one-dimensional) vector, COPYING the provided values
    *
-   * @param genotypes_for_all_samples encoded genotypes for all samples in order of sample index, with appropriate padding (see notes below)
+   * @param genotypes_for_all_samples encoded genotypes for all samples as a VariantBuilderMultiSampleVector (see note below)
    *
    * @note must pass vector to appropriate Genotype::encode_genotypes() function before passing it to this function
    *
-   * @note With a flattened vector, if not all samples have the same ploidy, or if some samples are missing genotypes,
-   *       you will need to manually add missing/vector end values to pad to the maximum ploidy. Use -1 for missing
-   *       (corresponds to '.' in vcfs) and bcf_int32_vector_end for vector end.
+   * @note To create a multi-sample flattened vector for use with this function, first determine the number of samples
+   *       and the maximum ploidy across all samples, then get a pre-initialized vector from the builder:
    *
-   *       For example, if you had Sample1=0/1 Sample2=./. Sample3=. Sample4=0/1/2
-   *       you would need to create the following flattened vector, then pass it to Genotype::encode_genotypes():
+   *       auto multi_sample_vector = builder.get_genotype_multi_sample_vector(num_samples, max_ploidy);
    *
-   *       { 0, 1, int32_vector_end,
-   *         -1, -1, int32_vector_end,
-   *         -1, int32_vector_end, int32_vector_end,
-   *         0, 1, 2 }
+   *       This vector will have missing values for all samples, with appropriate padding to the maximum ploidy.
    *
-   *       If this is too inconvenient, use a function that takes a nested vector.
+   *       Then, fill in the values for each non-missing sample by invoking the set_sample_value() and/or
+   *       set_sample_values() functions on your multi-sample vector (set_sample_value() is more efficient
+   *       than set_sample_values() since it doesn't require a vector construction/destruction for each call).
+   *       You don't have to worry about samples with no values, since all samples start out with missing values,
+   *       however you should represent each no-call allele with -1.
+   *
+   *       Finally, pass your multi-sample vector into this function:
+   *
+   *       builder.set_genotypes(multi_sample_vector);
+   *
+   *       If this process is too inconvenient, or you can't know the maximum ploidy in advance,
+   *       use a less-efficient function that takes a nested vector.
    *
    * @note Less efficient than moving the values into the builder
    */
-  VariantBuilder& set_genotypes(const std::vector<int32_t>& genotypes_for_all_samples);
+  VariantBuilder& set_genotypes(const VariantBuilderMultiSampleVector<int32_t>& genotypes_for_all_samples);
 
   /**
-   * @brief Set the genotypes (GT) field for all samples at once by flattened vector, moving the provided values
+   * @brief Set the genotypes (GT) field for all samples at once using an efficient flattened (one-dimensional) vector, MOVING the provided values
    *
-   * @param genotypes_for_all_samples encoded genotypes for all samples in order of sample index, with appropriate padding (see notes below)
+   * @param genotypes_for_all_samples encoded genotypes for all samples as a VariantBuilderMultiSampleVector (see note below)
    *
    * @note must pass vector to appropriate Genotype::encode_genotypes() function before passing it to this function
    *
-   * @note With a flattened vector, if not all samples have the same ploidy, or if some samples are missing genotypes,
-   *       you will need to manually add missing/vector end values to pad to the maximum ploidy. Use -1 for missing
-   *       (corresponds to '.' in vcfs) and bcf_int32_vector_end for vector end.
+   * @note To create a multi-sample flattened vector for use with this function, first determine the number of samples
+   *       and the maximum ploidy across all samples, then get a pre-initialized vector from the builder:
    *
-   *       For example, if you had Sample1=0/1 Sample2=./. Sample3=. Sample4=0/1/2
-   *       you would need to create the following flattened vector, then pass it to Genotype::encode_genotypes():
+   *       auto multi_sample_vector = builder.get_genotype_multi_sample_vector(num_samples, max_ploidy);
    *
-   *       { 0, 1, int32_vector_end,
-   *         -1, -1, int32_vector_end,
-   *         -1, int32_vector_end, int32_vector_end,
-   *         0, 1, 2 }
+   *       This vector will have missing values for all samples, with appropriate padding to the maximum ploidy.
    *
-   *       If this is too inconvenient, use a function that takes a nested vector.
+   *       Then, fill in the values for each non-missing sample by invoking the set_sample_value() and/or
+   *       set_sample_values() functions on your multi-sample vector (set_sample_value() is more efficient
+   *       than set_sample_values() since it doesn't require a vector construction/destruction for each call).
+   *       You don't have to worry about samples with no values, since all samples start out with missing values,
+   *       however you should represent each no-call allele with -1.
+   *
+   *       Finally, MOVE your multi-sample vector into this function:
+   *
+   *       builder.set_genotypes(std::move(multi_sample_vector));
+   *
+   *       If this process is too inconvenient, or you can't know the maximum ploidy in advance,
+   *       use a less-efficient function that takes a nested vector.
    */
-  VariantBuilder& set_genotypes(std::vector<int32_t>&& genotypes_for_all_samples);
+  VariantBuilder& set_genotypes(VariantBuilderMultiSampleVector<int32_t>&& genotypes_for_all_samples);
 
   /**
    * @brief Set the genotypes (GT) field for all samples at once by nested vector, copying the provided values
@@ -597,51 +620,63 @@ class VariantBuilder {
   VariantBuilder& set_genotypes(std::vector<std::vector<int32_t>>&& genotypes_for_all_samples);
 
   /**
-   * @brief Set an integer individual field for all samples at once by name using a flattened vector, copying the provided values
+   * @brief Set an integer individual field for all samples at once by name using an efficient flattened (one-dimensional) vector, COPYING the provided values
    *
    * @param tag name of the individual field to set
-   * @param values_for_all_samples field values for all samples in order of sample index, with appropriate padding (see note below)
+   * @param values_for_all_samples field values for all samples as a VariantBuilderMultiSampleVector (see note below)
    *
-   * @note With a flattened vector, if not all samples have the same number of values you will need to manually
-   *       add missing/vector end values to pad to the maximum field width.
+   * @note To create a multi-sample flattened vector for use with this function, first determine the number of samples
+   *       and the maximum number of values per sample for this field, then get a pre-initialized vector from the builder:
    *
-   *       For example, if you had Sample1={1, 2}, Sample2={3}, Sample3={}, Sample4={5, 6, 7},
-   *       you would need to pass in the following flattened vector:
+   *       auto multi_sample_vector = builder.get_integer_multi_sample_vector(num_samples, max_values_per_sample);
    *
-   *       { 1, 2, int32_vector_end,
-   *         3, int32_vector_end, int32_vector_end,
-   *         int32_missing_value, int32_vector_end, int32_vector_end,
-   *         5, 6, 7 }
+   *       This vector will have missing values for all samples, with appropriate padding to the maximum field width.
    *
-   *       If this is too inconvenient, use a function that takes a nested vector.
+   *       Then, fill in the values for each non-missing sample by invoking the set_sample_value() and/or
+   *       set_sample_values() functions on your multi-sample vector (set_sample_value() is more efficient
+   *       than set_sample_values() since it doesn't require a vector construction/destruction for each call).
+   *       You don't have to worry about samples with no values, since all samples start out with missing values.
+   *
+   *       Finally, pass your multi-sample vector into this function:
+   *
+   *       builder.set_integer_individual_field(field_name, multi_sample_vector);
+   *
+   *       If this process is too inconvenient, or you can't know the maximum number of values per sample in advance,
+   *       use a less-efficient function that takes a nested vector.
    *
    * @note Less efficient than moving the values into the builder
    * @note Less efficient than setting using the field index
    */
-  VariantBuilder& set_integer_individual_field(const std::string& tag, const std::vector<int32_t>& values_for_all_samples);
+  VariantBuilder& set_integer_individual_field(const std::string& tag, const VariantBuilderMultiSampleVector<int32_t>& values_for_all_samples);
 
   /**
-   * @brief Set an integer individual field for all samples at once by name using a flattened vector, moving the provided values
+   * @brief Set an integer individual field for all samples at once by name using an efficient flattened (one-dimensional) vector, MOVING the provided values
    *
    * @param tag name of the individual field to set
-   * @param values_for_all_samples field values for all samples in order of sample index, with appropriate padding (see note below)
+   * @param values_for_all_samples field values for all samples as a VariantBuilderMultiSampleVector (see note below)
    *
-   * @note With a flattened vector, if not all samples have the same number of values you will need to manually
-   *       add missing/vector end values to pad to the maximum field width.
+   * @note To create a multi-sample flattened vector for use with this function, first determine the number of samples
+   *       and the maximum number of values per sample for this field, then get a pre-initialized vector from the builder:
    *
-   *       For example, if you had Sample1={1, 2}, Sample2={3}, Sample3={}, Sample4={5, 6, 7},
-   *       you would need to pass in the following flattened vector:
+   *       auto multi_sample_vector = builder.get_integer_multi_sample_vector(num_samples, max_values_per_sample);
    *
-   *       { 1, 2, int32_vector_end,
-   *         3, int32_vector_end, int32_vector_end,
-   *         int32_missing_value, int32_vector_end, int32_vector_end,
-   *         5, 6, 7 }
+   *       This vector will have missing values for all samples, with appropriate padding to the maximum field width.
    *
-   *       If this is too inconvenient, use a function that takes a nested vector.
+   *       Then, fill in the values for each non-missing sample by invoking the set_sample_value() and/or
+   *       set_sample_values() functions on your multi-sample vector (set_sample_value() is more efficient
+   *       than set_sample_values() since it doesn't require a vector construction/destruction for each call).
+   *       You don't have to worry about samples with no values, since all samples start out with missing values.
+   *
+   *       Finally, MOVE your multi-sample vector into this function:
+   *
+   *       builder.set_integer_individual_field(field_name, std::move(multi_sample_vector));
+   *
+   *       If this process is too inconvenient, or you can't know the maximum number of values per sample in advance,
+   *       use a less-efficient function that takes a nested vector.
    *
    * @note Less efficient than setting using the field index
    */
-  VariantBuilder& set_integer_individual_field(const std::string& tag, std::vector<int32_t>&& values_for_all_samples);
+  VariantBuilder& set_integer_individual_field(const std::string& tag, VariantBuilderMultiSampleVector<int32_t>&& values_for_all_samples);
 
   /**
    * @brief Set an integer individual field for all samples at once by name using a nested vector, copying the provided values
@@ -677,48 +712,60 @@ class VariantBuilder {
   VariantBuilder& set_integer_individual_field(const std::string& tag, std::vector<std::vector<int32_t>>&& values_for_all_samples);
 
   /**
-   * @brief Set an integer individual field for all samples at once by index using a flattened vector, copying the provided values
+   * @brief Set an integer individual field for all samples at once by index using an efficient flattened (one-dimensional) vector, COPYING the provided values
    *
    * @param field_index index of the individual field to set (from a header lookup)
-   * @param values_for_all_samples field values for all samples in order of sample index, with appropriate padding (see note below)
+   * @param values_for_all_samples field values for all samples as a VariantBuilderMultiSampleVector (see note below)
    *
-   * @note With a flattened vector, if not all samples have the same number of values you will need to manually
-   *       add missing/vector end values to pad to the maximum field width.
+   * @note To create a multi-sample flattened vector for use with this function, first determine the number of samples
+   *       and the maximum number of values per sample for this field, then get a pre-initialized vector from the builder:
    *
-   *       For example, if you had Sample1={1, 2}, Sample2={3}, Sample3={}, Sample4={5, 6, 7},
-   *       you would need to pass in the following flattened vector:
+   *       auto multi_sample_vector = builder.get_integer_multi_sample_vector(num_samples, max_values_per_sample);
    *
-   *       { 1, 2, int32_vector_end,
-   *         3, int32_vector_end, int32_vector_end,
-   *         int32_missing_value, int32_vector_end, int32_vector_end,
-   *         5, 6, 7 }
+   *       This vector will have missing values for all samples, with appropriate padding to the maximum field width.
    *
-   *       If this is too inconvenient, use a function that takes a nested vector.
+   *       Then, fill in the values for each non-missing sample by invoking the set_sample_value() and/or
+   *       set_sample_values() functions on your multi-sample vector (set_sample_value() is more efficient
+   *       than set_sample_values() since it doesn't require a vector construction/destruction for each call).
+   *       You don't have to worry about samples with no values, since all samples start out with missing values.
+   *
+   *       Finally, pass your multi-sample vector into this function:
+   *
+   *       builder.set_integer_individual_field(field_index, multi_sample_vector);
+   *
+   *       If this process is too inconvenient, or you can't know the maximum number of values per sample in advance,
+   *       use a less-efficient function that takes a nested vector.
    *
    * @note Less efficient than moving the values into the builder
    */
-  VariantBuilder& set_integer_individual_field(const uint32_t field_index, const std::vector<int32_t>& values_for_all_samples);
+  VariantBuilder& set_integer_individual_field(const uint32_t field_index, const VariantBuilderMultiSampleVector<int32_t>& values_for_all_samples);
 
   /**
-   * @brief Set an integer individual field for all samples at once by index using a flattened vector, moving the provided values
+   * @brief Set an integer individual field for all samples at once by index using an efficient flattened (one-dimensional) vector, MOVING the provided values
    *
    * @param field_index index of the individual field to set (from a header lookup)
-   * @param values_for_all_samples field values for all samples in order of sample index, with appropriate padding (see note below)
+   * @param values_for_all_samples field values for all samples as a VariantBuilderMultiSampleVector (see note below)
    *
-   * @note With a flattened vector, if not all samples have the same number of values you will need to manually
-   *       add missing/vector end values to pad to the maximum field width.
+   * @note To create a multi-sample flattened vector for use with this function, first determine the number of samples
+   *       and the maximum number of values per sample for this field, then get a pre-initialized vector from the builder:
    *
-   *       For example, if you had Sample1={1, 2}, Sample2={3}, Sample3={}, Sample4={5, 6, 7},
-   *       you would need to pass in the following flattened vector:
+   *       auto multi_sample_vector = builder.get_integer_multi_sample_vector(num_samples, max_values_per_sample);
    *
-   *       { 1, 2, int32_vector_end,
-   *         3, int32_vector_end, int32_vector_end,
-   *         int32_missing_value, int32_vector_end, int32_vector_end,
-   *         5, 6, 7 }
+   *       This vector will have missing values for all samples, with appropriate padding to the maximum field width.
    *
-   *       If this is too inconvenient, use a function that takes a nested vector.
+   *       Then, fill in the values for each non-missing sample by invoking the set_sample_value() and/or
+   *       set_sample_values() functions on your multi-sample vector (set_sample_value() is more efficient
+   *       than set_sample_values() since it doesn't require a vector construction/destruction for each call).
+   *       You don't have to worry about samples with no values, since all samples start out with missing values.
+   *
+   *       Finally, MOVE your multi-sample vector into this function:
+   *
+   *       builder.set_integer_individual_field(field_index, std::move(multi_sample_vector));
+   *
+   *       If this process is too inconvenient, or you can't know the maximum number of values per sample in advance,
+   *       use a less-efficient function that takes a nested vector.
    */
-  VariantBuilder& set_integer_individual_field(const uint32_t field_index, std::vector<int32_t>&& values_for_all_samples);
+  VariantBuilder& set_integer_individual_field(const uint32_t field_index, VariantBuilderMultiSampleVector<int32_t>&& values_for_all_samples);
 
   /**
    * @brief Set an integer individual field for all samples at once by index using a nested vector, copying the provided values
@@ -752,51 +799,63 @@ class VariantBuilder {
   VariantBuilder& set_integer_individual_field(const uint32_t field_index, std::vector<std::vector<int32_t>>&& values_for_all_samples);
 
   /**
-   * @brief Set a float individual field for all samples at once by name using a flattened vector, copying the provided values
+   * @brief Set a float individual field for all samples at once by name using an efficient flattened (one-dimensional) vector, COPYING the provided values
    *
    * @param tag name of the individual field to set
-   * @param values_for_all_samples field values for all samples in order of sample index, with appropriate padding (see note below)
+   * @param values_for_all_samples field values for all samples as a VariantBuilderMultiSampleVector (see note below)
    *
-   * @note With a flattened vector, if not all samples have the same number of values you will need to manually
-   *       add missing/vector end values to pad to the maximum field width.
+   * @note To create a multi-sample flattened vector for use with this function, first determine the number of samples
+   *       and the maximum number of values per sample for this field, then get a pre-initialized vector from the builder:
    *
-   *       For example, if you had Sample1={1.5, 2.5}, Sample2={3.5}, Sample3={}, Sample4={5.5, 6.5, 7.5},
-   *       you would need to pass in the following flattened vector:
+   *       auto multi_sample_vector = builder.get_float_multi_sample_vector(num_samples, max_values_per_sample);
    *
-   *       { 1.5, 2.5, float_vector_end,
-   *         3.5, float_vector_end, float_vector_end,
-   *         float_missing_value, float_vector_end, float_vector_end,
-   *         5.5, 6.5, 7.5 }
+   *       This vector will have missing values for all samples, with appropriate padding to the maximum field width.
    *
-   *       If this is too inconvenient, use a function that takes a nested vector.
+   *       Then, fill in the values for each non-missing sample by invoking the set_sample_value() and/or
+   *       set_sample_values() functions on your multi-sample vector (set_sample_value() is more efficient
+   *       than set_sample_values() since it doesn't require a vector construction/destruction for each call).
+   *       You don't have to worry about samples with no values, since all samples start out with missing values.
+   *
+   *       Finally, pass your multi-sample vector into this function:
+   *
+   *       builder.set_float_individual_field(field_name, multi_sample_vector);
+   *
+   *       If this process is too inconvenient, or you can't know the maximum number of values per sample in advance,
+   *       use a less-efficient function that takes a nested vector.
    *
    * @note Less efficient than moving the values into the builder
    * @note Less efficient than setting using the field index
    */
-  VariantBuilder& set_float_individual_field(const std::string& tag, const std::vector<float>& values_for_all_samples);
+  VariantBuilder& set_float_individual_field(const std::string& tag, const VariantBuilderMultiSampleVector<float>& values_for_all_samples);
 
   /**
-   * @brief Set a float individual field for all samples at once by name using a flattened vector, moving the provided values
+   * @brief Set a float individual field for all samples at once by name using an efficient flattened (one-dimensional) vector, MOVING the provided values
    *
    * @param tag name of the individual field to set
-   * @param values_for_all_samples field values for all samples in order of sample index, with appropriate padding (see note below)
+   * @param values_for_all_samples field values for all samples as a VariantBuilderMultiSampleVector (see note below)
    *
-   * @note With a flattened vector, if not all samples have the same number of values you will need to manually
-   *       add missing/vector end values to pad to the maximum field width.
+   * @note To create a multi-sample flattened vector for use with this function, first determine the number of samples
+   *       and the maximum number of values per sample for this field, then get a pre-initialized vector from the builder:
    *
-   *       For example, if you had Sample1={1.5, 2.5}, Sample2={3.5}, Sample3={}, Sample4={5.5, 6.5, 7.5},
-   *       you would need to pass in the following flattened vector:
+   *       auto multi_sample_vector = builder.get_float_multi_sample_vector(num_samples, max_values_per_sample);
    *
-   *       { 1.5, 2.5, float_vector_end,
-   *         3.5, float_vector_end, float_vector_end,
-   *         float_missing_value, float_vector_end, float_vector_end,
-   *         5.5, 6.5, 7.5 }
+   *       This vector will have missing values for all samples, with appropriate padding to the maximum field width.
    *
-   *       If this is too inconvenient, use a function that takes a nested vector.
+   *       Then, fill in the values for each non-missing sample by invoking the set_sample_value() and/or
+   *       set_sample_values() functions on your multi-sample vector (set_sample_value() is more efficient
+   *       than set_sample_values() since it doesn't require a vector construction/destruction for each call).
+   *       You don't have to worry about samples with no values, since all samples start out with missing values.
+   *
+   *       Finally, MOVE your multi-sample vector into this function:
+   *
+   *       builder.set_float_individual_field(field_name, std::move(multi_sample_vector));
+   *
+   *       If this process is too inconvenient, or you can't know the maximum number of values per sample in advance,
+   *       use a less-efficient function that takes a nested vector.
    *
    * @note Less efficient than setting using the field index
    */
-  VariantBuilder& set_float_individual_field(const std::string& tag, std::vector<float>&& values_for_all_samples);
+  VariantBuilder& set_float_individual_field(const std::string& tag, VariantBuilderMultiSampleVector<float>&& values_for_all_samples);
 
   /**
    * @brief Set a float individual field for all samples at once by name using a nested vector, copying the provided values
@@ -832,48 +891,60 @@ class VariantBuilder {
   VariantBuilder& set_float_individual_field(const std::string& tag, std::vector<std::vector<float>>&& values_for_all_samples);
 
   /**
-   * @brief Set a float individual field for all samples at once by index using a flattened vector, copying the provided values
+   * @brief Set a float individual field for all samples at once by index using an efficient flattened (one-dimensional) vector, COPYING the provided values
    *
    * @param field_index index of the individual field to set (from a header lookup)
-   * @param values_for_all_samples field values for all samples in order of sample index, with appropriate padding (see note below)
+   * @param values_for_all_samples field values for all samples as a VariantBuilderMultiSampleVector (see note below)
    *
-   * @note With a flattened vector, if not all samples have the same number of values you will need to manually
-   *       add missing/vector end values to pad to the maximum field width.
+   * @note To create a multi-sample flattened vector for use with this function, first determine the number of samples
+   *       and the maximum number of values per sample for this field, then get a pre-initialized vector from the builder:
    *
-   *       For example, if you had Sample1={1.5, 2.5}, Sample2={3.5}, Sample3={}, Sample4={5.5, 6.5, 7.5},
-   *       you would need to pass in the following flattened vector:
+   *       auto multi_sample_vector = builder.get_float_multi_sample_vector(num_samples, max_values_per_sample);
    *
-   *       { 1.5, 2.5, float_vector_end,
-   *         3.5, float_vector_end, float_vector_end,
-   *         float_missing_value, float_vector_end, float_vector_end,
-   *         5.5, 6.5, 7.5 }
+   *       This vector will have missing values for all samples, with appropriate padding to the maximum field width.
    *
-   *       If this is too inconvenient, use a function that takes a nested vector.
+   *       Then, fill in the values for each non-missing sample by invoking the set_sample_value() and/or
+   *       set_sample_values() functions on your multi-sample vector (set_sample_value() is more efficient
+   *       than set_sample_values() since it doesn't require a vector construction/destruction for each call).
+   *       You don't have to worry about samples with no values, since all samples start out with missing values.
+   *
+   *       Finally, pass your multi-sample vector into this function:
+   *
+   *       builder.set_float_individual_field(field_index, multi_sample_vector);
+   *
+   *       If this process is too inconvenient, or you can't know the maximum number of values per sample in advance,
+   *       use a less-efficient function that takes a nested vector.
    *
    * @note Less efficient than moving the values into the builder
    */
-  VariantBuilder& set_float_individual_field(const uint32_t field_index, const std::vector<float>& values_for_all_samples);
+  VariantBuilder& set_float_individual_field(const uint32_t field_index, const VariantBuilderMultiSampleVector<float>& values_for_all_samples);
 
   /**
-   * @brief Set a float individual field for all samples at once by index using a flattened vector, moving the provided values
+   * @brief Set a float individual field for all samples at once by index using an efficient flattened (one-dimensional) vector, MOVING the provided values
    *
    * @param field_index index of the individual field to set (from a header lookup)
-   * @param values_for_all_samples field values for all samples in order of sample index, with appropriate padding (see note below)
+   * @param values_for_all_samples field values for all samples as a VariantBuilderMultiSampleVector (see note below)
    *
-   * @note With a flattened vector, if not all samples have the same number of values you will need to manually
-   *       add missing/vector end values to pad to the maximum field width.
+   * @note To create a multi-sample flattened vector for use with this function, first determine the number of samples
+   *       and the maximum number of values per sample for this field, then get a pre-initialized vector from the builder:
    *
-   *       For example, if you had Sample1={1.5, 2.5}, Sample2={3.5}, Sample3={}, Sample4={5.5, 6.5, 7.5},
-   *       you would need to pass in the following flattened vector:
+   *       auto multi_sample_vector = builder.get_float_multi_sample_vector(num_samples, max_values_per_sample);
    *
-   *       { 1.5, 2.5, float_vector_end,
-   *         3.5, float_vector_end, float_vector_end,
-   *         float_missing_value, float_vector_end, float_vector_end,
-   *         5.5, 6.5, 7.5 }
+   *       This vector will have missing values for all samples, with appropriate padding to the maximum field width.
    *
-   *       If this is too inconvenient, use a function that takes a nested vector.
+   *       Then, fill in the values for each non-missing sample by invoking the set_sample_value() and/or
+   *       set_sample_values() functions on your multi-sample vector (set_sample_value() is more efficient
+   *       than set_sample_values() since it doesn't require a vector construction/destruction for each call).
+   *       You don't have to worry about samples with no values, since all samples start out with missing values.
+   *
+   *       Finally, MOVE your multi-sample vector into this function:
+   *
+   *       builder.set_float_individual_field(field_index, std::move(multi_sample_vector));
+   *
+   *       If this process is too inconvenient, or you can't know the maximum number of values per sample in advance,
+   *       use a less-efficient function that takes a nested vector.
    */
-  VariantBuilder& set_float_individual_field(const uint32_t field_index, std::vector<float>&& values_for_all_samples);
+  VariantBuilder& set_float_individual_field(const uint32_t field_index, VariantBuilderMultiSampleVector<float>&& values_for_all_samples);
 
   /**
    * @brief Set a float individual field for all samples at once by index using a nested vector, copying the provided values
@@ -1130,6 +1201,51 @@ class VariantBuilder {
    * @param field_indices indices of the individual fields to remove (from header lookups)
    */
   VariantBuilder& remove_individual_fields(const std::vector<uint32_t>& field_indices);
+
+  /******************************************************************************
+   *
+   * Data preparation functions for working with individual fields
+   *
+   ******************************************************************************/
+
+  /**
+   * @brief Get a pre-initialized/padded VariantBuilderMultiSampleVector for use with the more-efficient GT field bulk setters
+   *
+   * @param num_samples number of samples whose genotypes will be stored in the vector
+   * @param max_values_per_sample maximum ploidy (field width)
+   *
+   * @return a pre-initialized/pre-padded VariantBuilderMultiSampleVector<int32_t> with all samples set to a missing value,
+   *         ready for genotypes to be set for non-missing samples
+   *
+   * @note For usage, see comments to the GT field setters that take a VariantBuilderMultiSampleVector
+   */
+  VariantBuilderMultiSampleVector<int32_t> get_genotype_multi_sample_vector(const uint32_t num_samples, const uint32_t max_values_per_sample) const;
+
+  /**
+   * @brief Get a pre-initialized/padded VariantBuilderMultiSampleVector for use with the more-efficient integer individual field bulk setters
+   *
+   * @param num_samples number of samples whose values will be stored in the vector
+   * @param max_values_per_sample maximum number of values per sample (field width)
+   *
+   * @return a pre-initialized/pre-padded VariantBuilderMultiSampleVector<int32_t> with all samples set to a missing value,
+   *         ready for sample values to be set for non-missing samples
+   *
+   * @note For usage, see comments to the integer individual field setters that take a VariantBuilderMultiSampleVector
+   */
+  VariantBuilderMultiSampleVector<int32_t> get_integer_multi_sample_vector(const uint32_t num_samples, const uint32_t max_values_per_sample) const;
+
+  /**
+   * @brief Get a pre-initialized/padded VariantBuilderMultiSampleVector for use with the more-efficient float individual field bulk setters
+   *
+   * @param num_samples number of samples whose values will be stored in the vector
+   * @param max_values_per_sample maximum number of values per sample (field width)
+   *
+   * @return a pre-initialized/pre-padded VariantBuilderMultiSampleVector<float> with all samples set to a missing value,
+   *         ready for sample values to be set for non-missing samples
+   *
+   * @note For usage, see comments to the float individual field setters that take a VariantBuilderMultiSampleVector
+   */
+  VariantBuilderMultiSampleVector<float> get_float_multi_sample_vector(const uint32_t num_samples, const uint32_t max_values_per_sample) const;
 
 
   /******************************************************************************

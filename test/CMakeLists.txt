@@ -21,6 +21,7 @@ set(SOURCE_FILES
     synced_variant_reader_test.cpp
     test_utils.h
     utils_test.cpp
+    variant_builder_multi_sample_vector_test.cpp
     variant_builder_test.cpp
     variant_header_test.cpp
     variant_reader_test.cpp

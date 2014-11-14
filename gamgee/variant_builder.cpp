@@ -218,13 +218,15 @@ VariantBuilder& VariantBuilder::remove_shared_fields(const std::vector<uint32_t>
  *
  ******************************************************************************/
 
-VariantBuilder& VariantBuilder::set_genotypes(const std::vector<int32_t>& genotypes_for_all_samples) {
-  m_individual_region.bulk_set_integer_field(m_individual_region.gt_index(), genotypes_for_all_samples);
+VariantBuilder& VariantBuilder::set_genotypes(const VariantBuilderMultiSampleVector<int32_t>& genotypes_for_all_samples) {
+  // Ensure that we have an lvalue reference to the genotypes vector so that we make a copy further down the line
+  const auto& genotypes_vector = genotypes_for_all_samples.get_vector();
+  m_individual_region.bulk_set_integer_field(m_individual_region.gt_index(), genotypes_vector);
   return *this;
 }
 
-VariantBuilder& VariantBuilder::set_genotypes(std::vector<int32_t>&& genotypes_for_all_samples) {
-  m_individual_region.bulk_set_integer_field(m_individual_region.gt_index(), move(genotypes_for_all_samples));
+VariantBuilder& VariantBuilder::set_genotypes(VariantBuilderMultiSampleVector<int32_t>&& genotypes_for_all_samples) {
+  m_individual_region.bulk_set_integer_field(m_individual_region.gt_index(), move(genotypes_for_all_samples.get_vector()));
   return *this;
 }
 
@@ -238,13 +240,15 @@ VariantBuilder& VariantBuilder::set_genotypes(std::vector<std::vector<int32_t>>&
   return *this;
 }
 
-VariantBuilder& VariantBuilder::set_integer_individual_field(const std::string& tag, const std::vector<int32_t>& values_for_all_samples) {
-  m_individual_region.bulk_set_integer_field(tag, values_for_all_samples);
+VariantBuilder& VariantBuilder::set_integer_individual_field(const std::string& tag, const VariantBuilderMultiSampleVector<int32_t>& values_for_all_samples) {
+  // Ensure that we have an lvalue reference to the values vector so that we make a copy further down the line
+  const auto& values_vector = values_for_all_samples.get_vector();
+  m_individual_region.bulk_set_integer_field(tag, values_vector);
   return *this;
 }
 
-VariantBuilder& VariantBuilder::set_integer_individual_field(const std::string& tag, std::vector<int32_t>&& values_for_all_samples) {
-  m_individual_region.bulk_set_integer_field(tag, move(values_for_all_samples));
+VariantBuilder& VariantBuilder::set_integer_individual_field(const std::string& tag, VariantBuilderMultiSampleVector<int32_t>&& values_for_all_samples) {
+  m_individual_region.bulk_set_integer_field(tag, move(values_for_all_samples.get_vector()));
   return *this;
 }
 
@@ -258,13 +262,15 @@ VariantBuilder& VariantBuilder::set_integer_individual_field(const std::string& 
   return *this;
 }
 
-VariantBuilder& VariantBuilder::set_integer_individual_field(const uint32_t field_index, const std::vector<int32_t>& values_for_all_samples) {
-  m_individual_region.bulk_set_integer_field(field_index, values_for_all_samples);
+VariantBuilder& VariantBuilder::set_integer_individual_field(const uint32_t field_index, const VariantBuilderMultiSampleVector<int32_t>& values_for_all_samples) {
+  // Ensure that we have an lvalue reference to the values vector so that we make a copy further down the line
+  const auto& values_vector = values_for_all_samples.get_vector();
+  m_individual_region.bulk_set_integer_field(field_index, values_vector);
   return *this;
 }
 
-VariantBuilder& VariantBuilder::set_integer_individual_field(const uint32_t field_index, std::vector<int32_t>&& values_for_all_samples) {
-  m_individual_region.bulk_set_integer_field(field_index, move(values_for_all_samples));
+VariantBuilder& VariantBuilder::set_integer_individual_field(const uint32_t field_index, VariantBuilderMultiSampleVector<int32_t>&& values_for_all_samples) {
+  m_individual_region.bulk_set_integer_field(field_index, move(values_for_all_samples.get_vector()));
   return *this;
 }
 
@@ -278,13 +284,15 @@ VariantBuilder& VariantBuilder::set_integer_individual_field(const uint32_t fiel
   return *this;
 }
 
-VariantBuilder& VariantBuilder::set_float_individual_field(const std::string& tag, const std::vector<float>& values_for_all_samples) {
-  m_individual_region.bulk_set_float_field(tag, values_for_all_samples);
+VariantBuilder& VariantBuilder::set_float_individual_field(const std::string& tag, const VariantBuilderMultiSampleVector<float>& values_for_all_samples) {
+  // Ensure that we have an lvalue reference to the values vector so that we make a copy further down the line
+  const auto& values_vector = values_for_all_samples.get_vector();
+  m_individual_region.bulk_set_float_field(tag, values_vector);
   return *this;
 }
 
-VariantBuilder& VariantBuilder::set_float_individual_field(const std::string& tag, std::vector<float>&& values_for_all_samples) {
-  m_individual_region.bulk_set_float_field(tag, move(values_for_all_samples));
+VariantBuilder& VariantBuilder::set_float_individual_field(const std::string& tag, VariantBuilderMultiSampleVector<float>&& values_for_all_samples) {
+  m_individual_region.bulk_set_float_field(tag, move(values_for_all_samples.get_vector()));
   return *this;
 }
 
@@ -298,13 +306,15 @@ VariantBuilder& VariantBuilder::set_float_individual_field(const std::string& ta
   return *this;
 }
 
-VariantBuilder& VariantBuilder::set_float_individual_field(const uint32_t field_index, const std::vector<float>& values_for_all_samples) {
-  m_individual_region.bulk_set_float_field(field_index, values_for_all_samples);
+VariantBuilder& VariantBuilder::set_float_individual_field(const uint32_t field_index, const VariantBuilderMultiSampleVector<float>& values_for_all_samples) {
+  // Ensure that we have an lvalue reference to the values vector so that we make a copy further down the line
+  const auto& values_vector = values_for_all_samples.get_vector();
+  m_individual_region.bulk_set_float_field(field_index, values_vector);
   return *this;
 }
 
-VariantBuilder& VariantBuilder::set_float_individual_field(const uint32_t field_index, std::vector<float>&& values_for_all_samples) {
-  m_individual_region.bulk_set_float_field(field_index, move(values_for_all_samples));
+VariantBuilder& VariantBuilder::set_float_individual_field(const uint32_t field_index, VariantBuilderMultiSampleVector<float>&& values_for_all_samples) {
+  m_individual_region.bulk_set_float_field(field_index, move(values_for_all_samples.get_vector()));
   return *this;
 }
 
@@ -429,6 +439,28 @@ VariantBuilder& VariantBuilder::remove_individual_fields(const std::vector<uint3
   for_each(field_indices.begin(), field_indices.end(), [this](const uint32_t field_index){ m_individual_region.remove_individual_field(field_index); });
   return *this;
 }
+
+
+/******************************************************************************
+*
+* Data preparation functions for working with individual fields
+*
+******************************************************************************/
+
+VariantBuilderMultiSampleVector<int32_t> VariantBuilder::get_genotype_multi_sample_vector(const uint32_t num_samples, const uint32_t max_values_per_sample) const {
+  return VariantBuilderMultiSampleVector<int32_t>{num_samples, max_values_per_sample, -1, bcf_int32_vector_end};
+}
+
+VariantBuilderMultiSampleVector<int32_t> VariantBuilder::get_integer_multi_sample_vector(const uint32_t num_samples, const uint32_t max_values_per_sample) const {
+  return VariantBuilderMultiSampleVector<int32_t>{num_samples, max_values_per_sample, bcf_int32_missing, bcf_int32_vector_end};
+}
+
+VariantBuilderMultiSampleVector<float> VariantBuilder::get_float_multi_sample_vector(const uint32_t num_samples, const uint32_t max_values_per_sample) const {
+  auto float_missing = 0.0f; bcf_float_set_missing(float_missing);
+  auto float_vector_end = 0.0f; bcf_float_set_vector_end(float_vector_end);
+  return VariantBuilderMultiSampleVector<float>{num_samples, max_values_per_sample, float_missing, float_vector_end};
+}
+
 
 /******************************************************************************
  *
