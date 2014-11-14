@@ -21,18 +21,18 @@ using namespace gamgee;
     cp testdata/var_idx/test_variants.bcf testdata/test_variants.bcf
  */
 
-const auto indexed_variant_vcf_inputs = vector<string>{"testdata/var_idx/test_variants_csi.vcf.gz", "testdata/var_idx/test_variants_tabix.vcf.gz"};
-const auto indexed_variant_bcf_inputs = vector<string>{"testdata/var_idx/test_variants.bcf"};
+const auto synced_variant_vcf_inputs = vector<string>{"testdata/var_idx/test_variants_csi.vcf.gz", "testdata/var_idx/test_variants_tabix.vcf.gz"};
+const auto synced_variant_bcf_inputs = vector<string>{"testdata/var_idx/test_variants.bcf"};
 
-const auto indexed_variant_chrom_full_joined = "1,20,22";
-const auto indexed_variant_bp_full_joined = "1:10000000-10000000,20:10001000-10001000,20:10002000-10002000,20:10003000-10003000,22:10004000-10004000";
-const auto indexed_variant_chrom_partial_joined = "1";
-const auto indexed_variant_bp_partial_joined = "20:10001000-10001000";
+const auto synced_variant_chrom_full = "1,20,22";
+const auto synced_variant_bp_full = "1:10000000-10000000,20:10001000-10001000,20:10002000-10002000,20:10003000-10003000,22:10004000-10004000";
+const auto synced_variant_chrom_partial = "1";
+const auto synced_variant_bp_partial = "20:10001000-10001000";
 
 // one (different) record each
 BOOST_AUTO_TEST_CASE( synced_variant_reader_partial_test ) {
-  const auto intervals1 = indexed_variant_chrom_partial_joined;
-  for (const auto input_files : {indexed_variant_vcf_inputs, indexed_variant_bcf_inputs}) {
+  const auto intervals1 = synced_variant_chrom_partial;
+  for (const auto input_files : {synced_variant_vcf_inputs, synced_variant_bcf_inputs}) {
     auto truth_index = 0u;
     const auto reader1 = SyncedVariantReader<SyncedVariantIterator>{input_files, intervals1};
     for (const auto& vec : reader1) {
@@ -50,8 +50,8 @@ BOOST_AUTO_TEST_CASE( synced_variant_reader_partial_test ) {
     BOOST_CHECK_EQUAL(truth_index, 1u);
   }
 
-  const auto intervals2 = indexed_variant_bp_partial_joined;
-  for (const auto input_files : {indexed_variant_vcf_inputs, indexed_variant_bcf_inputs}) {
+  const auto intervals2 = synced_variant_bp_partial;
+  for (const auto input_files : {synced_variant_vcf_inputs, synced_variant_bcf_inputs}) {
     auto truth_index = 0u;
     const auto reader2 = SyncedVariantReader<SyncedVariantIterator>{input_files, intervals2};
     for (const auto& vec : reader2) {
@@ -69,11 +69,45 @@ BOOST_AUTO_TEST_CASE( synced_variant_reader_partial_test ) {
     BOOST_CHECK_EQUAL(truth_index, 1u);
   }
 }
+/*
+1	10000000	db2342	T	C	80	PASS	AF=0.5;AN=6	GT:GQ:PL:AF	0/1:25:10,0,100:3.1,2.2	0/0:12:0,10,1000:3.1,2.2
+20	10001000	rs837472	GG	AA	8.4	PASS	AF=0.5;AN=6	GT:GQ:PL:AF	0/1:35:10,0,100:3.1,2.2	0/0:35:0,10,100:3.1,2.2
+22	4000	.	GAT	G,GATAT	.	PASS	AF=0.5,0;AN=6	GT:GQ:PL:AF	1/2:35:10,0,100,2,4,8:3.1,2.2	0/0:35:0,10,100,2,4,8:3.1,2.2
+22	5000	.	GAT	G,GATAT	.	PASS	AF=0.5,.;AN=6	GT:GQ:PL:AF	0/1:35:10,0,100,.,4,.:3.1,.	0/0:.:0,10,100,2,4,8:3.1,2.2
+
+22	10004000	.	GAT	G,GATAT	.	MISSED	AN=6	GT:GQ:PL:AS	0/0:35:0,10,100,2,4,8:ABA	1/1:35:10,100,0,2,4,8:ABA
+22	10005000	.	GAT	G,GATAT	.	MISSED	AN=6	GT:GQ:PL:AS	0/0:.:0,10,100,2,4,8:ABA	1/1:35:10,100,0,2,4,8:.
+*/
+const auto synced_variant_sparse_inputs = vector<string>{"testdata/synced_sparse_1.vcf.gz", "testdata/synced_sparse_2.vcf.gz"};
+
+const auto synced_variant_sparse_truth_present = vector<vector<bool>>{ {true, true}, {true, true}, {true, false}, {true, false}, {false, true}, {false, true} };
+const auto synced_variant_sparse_truth_chrom = vector<string>{ "1", "20", "22", "22", "22", "22", "22" };
+const auto synced_variant_sparse_truth_start = vector<uint>{ 10000000, 10001000, 4000, 5000, 10004000, 10005000 };
+
+BOOST_AUTO_TEST_CASE( synced_variant_reader_sparse_test ) {
+  auto pos_truth_index = 0u;
+  const auto reader1 = SyncedVariantReader<SyncedVariantIterator>{synced_variant_sparse_inputs, synced_variant_chrom_full};
+  for (const auto& vec : reader1) {
+    // The vector will always be of the same size as the number of inputs
+    BOOST_CHECK_EQUAL(vec.size(), synced_variant_sparse_inputs.size());
+    auto record_index = 0u;
+    for (const auto& record : vec) {
+      BOOST_CHECK_EQUAL(!missing(record), synced_variant_sparse_truth_present[pos_truth_index][record_index]);
+      if (synced_variant_sparse_truth_present[pos_truth_index][record_index]) {
+        BOOST_CHECK_EQUAL(record.chromosome_name(), synced_variant_sparse_truth_chrom[pos_truth_index]);
+        BOOST_CHECK_EQUAL(record.alignment_start(), synced_variant_sparse_truth_start[pos_truth_index]);
+      }
+      ++record_index;
+    }
+    ++pos_truth_index;
+  }
+  BOOST_CHECK_EQUAL(pos_truth_index, 6u);
+}
 
 BOOST_AUTO_TEST_CASE( synced_variant_reader_move_test ) {
-  for (const auto input_files : {indexed_variant_vcf_inputs, indexed_variant_bcf_inputs}) {
-    auto reader0 = SyncedVariantReader<SyncedVariantIterator>{input_files, indexed_variant_chrom_full_joined};
-    auto reader1 = SyncedVariantReader<SyncedVariantIterator>{input_files, indexed_variant_chrom_full_joined};
+  for (const auto input_files : {synced_variant_vcf_inputs, synced_variant_bcf_inputs}) {
+    auto reader0 = SyncedVariantReader<SyncedVariantIterator>{input_files, synced_variant_chrom_full};
+    auto reader1 = SyncedVariantReader<SyncedVariantIterator>{input_files, synced_variant_chrom_full};
     auto moved = check_move_constructor(reader1);
 
     auto record0 = reader0.begin().operator*();
@@ -84,10 +118,10 @@ BOOST_AUTO_TEST_CASE( synced_variant_reader_move_test ) {
 }
 
 BOOST_AUTO_TEST_CASE( synced_variant_iterator_move_test ) {
-  for (const auto input_files : {indexed_variant_vcf_inputs, indexed_variant_bcf_inputs}) {
-    auto reader0 = SyncedVariantReader<SyncedVariantIterator>{input_files, indexed_variant_chrom_full_joined};
+  for (const auto input_files : {synced_variant_vcf_inputs, synced_variant_bcf_inputs}) {
+    auto reader0 = SyncedVariantReader<SyncedVariantIterator>{input_files, synced_variant_chrom_full};
     auto iter0 = reader0.begin();
-    auto reader1 = SyncedVariantReader<SyncedVariantIterator>{input_files, indexed_variant_chrom_full_joined};
+    auto reader1 = SyncedVariantReader<SyncedVariantIterator>{input_files, synced_variant_chrom_full};
     auto iter1 = reader1.begin();
     auto moved = check_move_constructor(iter1);
 
