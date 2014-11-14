@@ -219,23 +219,37 @@ VariantBuilder& VariantBuilder::remove_shared_fields(const std::vector<uint32_t>
  ******************************************************************************/
 
 VariantBuilder& VariantBuilder::set_genotypes(const VariantBuilderMultiSampleVector<int32_t>& genotypes_for_all_samples) {
-  // Ensure that we have an lvalue reference to the genotypes vector so that we make a copy further down the line
-  const auto& genotypes_vector = genotypes_for_all_samples.get_vector();
-  m_individual_region.bulk_set_integer_field(m_individual_region.gt_index(), genotypes_vector);
+  // Since the user has chosen to pass by lvalue, make a copy before encoding the genotypes
+  auto encoded_genotypes = genotypes_for_all_samples;
+  Genotype::encode_genotypes(encoded_genotypes);
+
+  // We've made a copy, so we can move the copy into the storage layer
+  m_individual_region.bulk_set_integer_field(m_individual_region.gt_index(), move(encoded_genotypes.get_vector()));
   return *this;
 }
 
 VariantBuilder& VariantBuilder::set_genotypes(VariantBuilderMultiSampleVector<int32_t>&& genotypes_for_all_samples) {
+  // Encode user's vector directly, since it's been moved in to us
+  Genotype::encode_genotypes(genotypes_for_all_samples);
+
   m_individual_region.bulk_set_integer_field(m_individual_region.gt_index(), move(genotypes_for_all_samples.get_vector()));
   return *this;
 }
 
 VariantBuilder& VariantBuilder::set_genotypes(const std::vector<std::vector<int32_t>>& genotypes_for_all_samples) {
-  m_individual_region.bulk_set_integer_field(m_individual_region.gt_index(), genotypes_for_all_samples);
+  // Since the user has chosen to pass by lvalue, make a copy before encoding the genotypes
+  auto encoded_genotypes = genotypes_for_all_samples;
+  Genotype::encode_genotypes(encoded_genotypes);
+
+  // We've made a copy, so we can move the copy into the storage layer
+  m_individual_region.bulk_set_integer_field(m_individual_region.gt_index(), move(encoded_genotypes));
   return *this;
 }
 
 VariantBuilder& VariantBuilder::set_genotypes(std::vector<std::vector<int32_t>>&& genotypes_for_all_samples) {
+  // Encode user's vector directly, since it's been moved in to us
+  Genotype::encode_genotypes(genotypes_for_all_samples);
+
   m_individual_region.bulk_set_integer_field(m_individual_region.gt_index(), move(genotypes_for_all_samples));
   return *this;
 }
@@ -355,11 +369,35 @@ VariantBuilder& VariantBuilder::set_string_individual_field(const uint32_t field
  ******************************************************************************/
 
 VariantBuilder& VariantBuilder::set_genotype(const std::string& sample, const std::vector<int32_t>& genotype) {
+  // Since the user has passed by lvalue, make a copy before encoding
+  auto encoded_genotype = genotype;
+  Genotype::encode_genotype(encoded_genotype);
+
+  m_individual_region.set_integer_field_by_sample(m_individual_region.gt_index(), sample, encoded_genotype.empty() ? nullptr : &(encoded_genotype[0]), encoded_genotype.size());
+  return *this;
+}
+
+VariantBuilder& VariantBuilder::set_genotype(const std::string& sample, std::vector<int32_t>&& genotype) {
+  // Encode user's vector directly, since it's been moved in to us
+  Genotype::encode_genotype(genotype);
+
   m_individual_region.set_integer_field_by_sample(m_individual_region.gt_index(), sample, genotype.empty() ? nullptr : &(genotype[0]), genotype.size());
   return *this;
 }
 
 VariantBuilder& VariantBuilder::set_genotype(const uint32_t sample_index, const std::vector<int32_t>& genotype) {
+  // Since the user has passed by lvalue, make a copy before encoding
+  auto encoded_genotype = genotype;
+  Genotype::encode_genotype(encoded_genotype);
+
+  m_individual_region.set_integer_field_by_sample(m_individual_region.gt_index(), sample_index, encoded_genotype.empty() ? nullptr : &(encoded_genotype[0]), encoded_genotype.size());
+  return *this;
+}
+
+VariantBuilder& VariantBuilder::set_genotype(const uint32_t sample_index, std::vector<int32_t>&& genotype) {
+  // Encode user's vector directly, since it's been moved in to us
+  Genotype::encode_genotype(genotype);
+
   m_individual_region.set_integer_field_by_sample(m_individual_region.gt_index(), sample_index, genotype.empty() ? nullptr : &(genotype[0]), genotype.size());
   return *this;
 }

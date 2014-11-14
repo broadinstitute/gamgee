@@ -939,13 +939,13 @@ void init_string_individual_field_by_sample(VariantBuilder& builder, const strin
 }
 
 void init_genotype_field_by_sample(VariantBuilder& builder, const vector<string>& samples,
-                                   const vector<vector<int32_t>>& values, bool use_indices) {
+                                   const vector<vector<int32_t>>& values, bool use_indices, bool perform_move) {
   auto sample_idx = 0;
   for ( const auto& sample : samples ) {
     // Don't set values for samples with no data
     if ( ! values[sample_idx].empty() ) {
-      use_indices ? builder.set_genotype(sample_idx, values[sample_idx]) :
-                    builder.set_genotype(sample, values[sample_idx]);
+      use_indices ? (perform_move ? builder.set_genotype(sample_idx, move(values[sample_idx])) : builder.set_genotype(sample_idx, values[sample_idx])) :
+                    (perform_move ? builder.set_genotype(sample, move(values[sample_idx])) : builder.set_genotype(sample, values[sample_idx]));
     }
     ++sample_idx;
   }
@@ -1142,69 +1142,69 @@ BOOST_AUTO_TEST_CASE( bulk_set_genotype_field ) {
 
     // Flat vector, one allele per sample
     expected = {{0}, {1}, {0}};
-    auto flat_vector = initialize_flat_multi_sample_genotypes_vector(builder, expected); Genotype::encode_genotypes(flat_vector);
+    auto flat_vector = initialize_flat_multi_sample_genotypes_vector(builder, expected);
     auto variant = perform_move ? builder.set_genotypes(move(flat_vector)).build() :
                                   builder.set_genotypes(flat_vector).build();
     check_genotype_field(variant, expected);
 
     // Flat vector, two alleles per sample
     expected = {{0, 1}, {1, 0}, {0, 2}};
-    flat_vector = initialize_flat_multi_sample_genotypes_vector(builder, expected); Genotype::encode_genotypes(flat_vector);
+    flat_vector = initialize_flat_multi_sample_genotypes_vector(builder, expected);
     variant = perform_move ? builder.set_genotypes(move(flat_vector)).build() :
                              builder.set_genotypes(flat_vector).build();
     check_genotype_field(variant, expected);
 
     // Flat vector, three alleles per sample
     expected = {{0, 1, 2}, {1, 0, 2}, {0, 0, 2}};
-    flat_vector = initialize_flat_multi_sample_genotypes_vector(builder, expected); Genotype::encode_genotypes(flat_vector);
+    flat_vector = initialize_flat_multi_sample_genotypes_vector(builder, expected);
     variant = perform_move ? builder.set_genotypes(move(flat_vector)).build() :
                              builder.set_genotypes(flat_vector).build();
     check_genotype_field(variant, expected);
 
     // Flat vector, varying ploidy
     expected = {{0, 1, 2}, {1, bcf_int32_vector_end, bcf_int32_vector_end}, {0, 1, bcf_int32_vector_end}};
-    flat_vector = initialize_flat_multi_sample_genotypes_vector(builder, vector<vector<int32_t>>{{0, 1, 2}, {1}, {0, 1}}); Genotype::encode_genotypes(flat_vector);
+    flat_vector = initialize_flat_multi_sample_genotypes_vector(builder, vector<vector<int32_t>>{{0, 1, 2}, {1}, {0, 1}});
     variant = perform_move ? builder.set_genotypes(move(flat_vector)).build() :
                              builder.set_genotypes(flat_vector).build();
     check_genotype_field(variant, expected);
 
     // Flat vector, varying ploidy with missing sample
     expected = {{0, 1, 2}, {bcf_int32_missing, bcf_int32_vector_end, bcf_int32_vector_end}, {0, 1, bcf_int32_vector_end}};
-    flat_vector = initialize_flat_multi_sample_genotypes_vector(builder, vector<vector<int32_t>>{{0, 1, 2}, {}, {0, 1}}); Genotype::encode_genotypes(flat_vector);
+    flat_vector = initialize_flat_multi_sample_genotypes_vector(builder, vector<vector<int32_t>>{{0, 1, 2}, {}, {0, 1}});
     variant = perform_move ? builder.set_genotypes(move(flat_vector)).build() :
                              builder.set_genotypes(flat_vector).build();
     check_genotype_field(variant, expected);
 
     // Nested vector, one allele per sample
-    nested_vector = {{0}, {1}, {0}}; Genotype::encode_genotypes(nested_vector);
-    expected = {{0}, {1}, {0}};
+    nested_vector = {{0}, {1}, {0}};
+    expected = nested_vector;
     variant = perform_move ? builder.set_genotypes(move(nested_vector)).build() :
                              builder.set_genotypes(nested_vector).build();
     check_genotype_field(variant, expected);
 
     // Nested vector, two alleles per sample
-    nested_vector = {{0, 1}, {1, 0}, {0, 2}}; Genotype::encode_genotypes(nested_vector);
-    expected = {{0, 1}, {1, 0}, {0, 2}};
+    nested_vector = {{0, 1}, {1, 0}, {0, 2}};
+    expected = nested_vector;
     variant = perform_move ? builder.set_genotypes(move(nested_vector)).build() :
                              builder.set_genotypes(nested_vector).build();
     check_genotype_field(variant, expected);
 
     // Nested vector, three alleles per sample
-    nested_vector = {{0, 1, 2}, {1, 0, 2}, {0, 0, 2}}; Genotype::encode_genotypes(nested_vector);
-    expected = {{0, 1, 2}, {1, 0, 2}, {0, 0, 2}};
+    nested_vector = {{0, 1, 2}, {1, 0, 2}, {0, 0, 2}};
+    expected = nested_vector;
     variant = perform_move ? builder.set_genotypes(move(nested_vector)).build() :
                              builder.set_genotypes(nested_vector).build();
     check_genotype_field(variant, expected);
 
     // Nested vector, varying ploidy
-    nested_vector = {{0, 1, 2}, {1, 0}, {0}}; Genotype::encode_genotypes(nested_vector);
+    nested_vector = {{0, 1, 2}, {1, 0}, {0}};
     expected = {{0, 1, 2}, {1, 0, bcf_int32_vector_end}, {0, bcf_int32_vector_end, bcf_int32_vector_end}};
     variant = perform_move ? builder.set_genotypes(move(nested_vector)).build() :
                              builder.set_genotypes(nested_vector).build();
     check_genotype_field(variant, expected);
 
     // Nested vector, varying ploidy with missing sample
-    nested_vector = {{0, 1, 2}, {1, 0}, {}}; Genotype::encode_genotypes(nested_vector);
+    nested_vector = {{0, 1, 2}, {1, 0}, {}};
     expected = {{0, 1, 2}, {1, 0, bcf_int32_vector_end}, {bcf_int32_missing, bcf_int32_vector_end, bcf_int32_vector_end}};
     variant = perform_move ? builder.set_genotypes(move(nested_vector)).build() :
                              builder.set_genotypes(nested_vector).build();
@@ -1441,13 +1441,12 @@ BOOST_AUTO_TEST_CASE( remove_string_individual_fields ) {
 BOOST_AUTO_TEST_CASE( remove_subset_of_individual_fields ) {
   auto header = SingleVariantReader{"testdata/test_variants_for_variantbuilder.vcf"}.header();
   auto builder = VariantBuilder{header};
-  auto encoded_gts = vector<vector<int32_t>>{{0, 1}, {1, 0}, {0, 2}}; Genotype::encode_genotypes(encoded_gts);
   auto gt_values = vector<vector<int32_t>>{{0, 1}, {1, 0}, {0, 2}};
   auto zifmt_values = vector<vector<int32_t>>{{1}, {2}, {3}};
   auto zffmt_values = vector<vector<float>>{{1.0}, {2.0}, {3.0}};
 
   builder.set_chromosome(0).set_alignment_start(5).set_ref_allele("A").set_alt_alleles({"T", "C"});
-  builder.set_genotypes(encoded_gts);
+  builder.set_genotypes(gt_values);
   builder.set_integer_individual_field("ZIFMT", zifmt_values);
   builder.set_integer_individual_field("GQ", vector<vector<int32_t>>{{4}, {5}, {6}});
   builder.set_float_individual_field("ZFFMT", zffmt_values);
@@ -1616,48 +1615,50 @@ BOOST_AUTO_TEST_CASE( set_genotype_field_by_sample ) {
   auto genotype_values = vector<vector<int32_t>>{};
   auto expected = vector<vector<int32_t>>{};
 
-  // Run each test below using both field/sample indices and field/sample names
+  // Run each test below using both field/sample indices and field/sample names, and passing by both lvalue and rvalue
   for ( bool use_indices : { true, false } ) {
+    for ( bool perform_move : { true, false } ) {
 
-    // One allele per sample
-    builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A").set_alt_alleles({"C", "T"});
-    genotype_values = { {1}, {2}, {0} }; Genotype::encode_genotypes(genotype_values);
-    expected = { {1}, {2}, {0} };
-    init_genotype_field_by_sample(builder, sample_names, genotype_values, use_indices);
-    auto variant = builder.build();
-    check_genotype_field(variant, expected);
+      // One allele per sample
+      builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A").set_alt_alleles({"C", "T"});
+      genotype_values = {{1}, {2}, {0}};
+      expected = genotype_values;
+      init_genotype_field_by_sample(builder, sample_names, genotype_values, use_indices, perform_move);
+      auto variant = builder.build();
+      check_genotype_field(variant, expected);
 
-    // Two alleles per sample
-    builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A").set_alt_alleles({"C", "T"});
-    genotype_values = { {1, 2}, {0, 1}, {1, 1} }; Genotype::encode_genotypes(genotype_values);
-    expected = { {1, 2}, {0, 1}, {1, 1} };
-    init_genotype_field_by_sample(builder, sample_names, genotype_values, use_indices);
-    variant = builder.build();
-    check_genotype_field(variant, expected);
+      // Two alleles per sample
+      builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A").set_alt_alleles({"C", "T"});
+      genotype_values = {{1, 2}, {0, 1}, {1, 1}};
+      expected = genotype_values;
+      init_genotype_field_by_sample(builder, sample_names, genotype_values, use_indices, perform_move);
+      variant = builder.build();
+      check_genotype_field(variant, expected);
 
-    // Three alleles per sample
-    builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A").set_alt_alleles({"C", "T"});
-    genotype_values = { {1, 0, 0}, {2, 1, 0}, {0, 2, 0} }; Genotype::encode_genotypes(genotype_values);
-    expected = { {1, 0, 0}, {2, 1, 0}, {0, 2, 0} };
-    init_genotype_field_by_sample(builder, sample_names, genotype_values, use_indices);
-    variant = builder.build();
-    check_genotype_field(variant, expected);
+      // Three alleles per sample
+      builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A").set_alt_alleles({"C", "T"});
+      genotype_values = {{1, 0, 0}, {2, 1, 0}, {0, 2, 0}};
+      expected = genotype_values;
+      init_genotype_field_by_sample(builder, sample_names, genotype_values, use_indices, perform_move);
+      variant = builder.build();
+      check_genotype_field(variant, expected);
 
-    // Varying ploidy, no missing samples
-    builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A").set_alt_alleles({"C", "T"});
-    genotype_values = { {0, 1, 2}, {1, 0}, {0} }; Genotype::encode_genotypes(genotype_values);
-    expected = { {0, 1, 2}, {1, 0, bcf_int32_vector_end}, {0, bcf_int32_vector_end, bcf_int32_vector_end} };
-    init_genotype_field_by_sample(builder, sample_names, genotype_values, use_indices);
-    variant = builder.build();
-    check_genotype_field(variant, expected);
+      // Varying ploidy, no missing samples
+      builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A").set_alt_alleles({"C", "T"});
+      genotype_values = {{0, 1, 2}, {1, 0}, {0}};
+      expected = {{0, 1, 2}, {1, 0, bcf_int32_vector_end}, {0, bcf_int32_vector_end, bcf_int32_vector_end}};
+      init_genotype_field_by_sample(builder, sample_names, genotype_values, use_indices, perform_move);
+      variant = builder.build();
+      check_genotype_field(variant, expected);
 
-    // Varying ploidy, with missing sample
-    builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A").set_alt_alleles({"C", "T"});
-    genotype_values = { {0, 1, 2}, {1, 0}, {} }; Genotype::encode_genotypes(genotype_values);
-    expected = { {0, 1, 2}, {1, 0, bcf_int32_vector_end}, {bcf_int32_missing, bcf_int32_vector_end, bcf_int32_vector_end} };
-    init_genotype_field_by_sample(builder, sample_names, genotype_values, use_indices);
-    variant = builder.build();
-    check_genotype_field(variant, expected);
+      // Varying ploidy, with missing sample
+      builder.clear().set_chromosome(0).set_alignment_start(5).set_ref_allele("A").set_alt_alleles({"C", "T"});
+      genotype_values = {{0, 1, 2}, {1, 0}, {}};
+      expected = {{0, 1, 2}, {1, 0, bcf_int32_vector_end}, {bcf_int32_missing, bcf_int32_vector_end, bcf_int32_vector_end}};
+      init_genotype_field_by_sample(builder, sample_names, genotype_values, use_indices, perform_move);
+      variant = builder.build();
+      check_genotype_field(variant, expected);
+    }
   }
 }
 

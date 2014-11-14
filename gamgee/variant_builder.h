@@ -5,6 +5,7 @@
 #include "variant_builder_shared_region.h"
 #include "variant_builder_individual_region.h"
 #include "variant_builder_multi_sample_vector.h"
+#include "genotype.h"
 
 #include <vector>
 #include <string>
@@ -153,17 +154,12 @@ class VariantBuilderCoreField {
  *  The advantage of the VariantBuilderMultiSampleVector approach is much greater efficiency
  *  in terms of data locality and memory allocations.
  *
- * -The Genotype setter functions require you to encode your genotype data
- *  with one of the Genotype::encode_genotype() functions before passing it in.
- *
- *  For example, if you want to encode the genotype 0/1, create a vector with
- *  {0, 1}, pass it to Genotype::encode_genotype(), then pass it to the appropriate
- *  set_genotype() function.
- *
- *  Multi-sample collections of genotypes (either a VariantBuilderMultiSampleVector or
- *  a vector<vector>) must also be encoded before passing them to the builder. Use
- *  Genotype::encode_genotypes() to encode them (note the plural).
- *
+ * -The genotype setter functions DO NOT require you to encode your genotype data
+ *  with one of the Genotype::encode_genotype() functions before passing it in --
+ *  they will call the appropriate encode function for you. Pass your genotypes by
+ *  rvalue (ie., use std::move()) if you want to avoid an extra copy during genotype
+ *  encoding and don't need to re-use your genotype data. See the comments to the
+ *  Genotype setter functions for examples of how to construct and pass in genotypes.
  */
 class VariantBuilder {
  public:
@@ -521,9 +517,7 @@ class VariantBuilder {
   /**
    * @brief Set the genotypes (GT) field for all samples at once using an efficient flattened (one-dimensional) vector, COPYING the provided values
    *
-   * @param genotypes_for_all_samples encoded genotypes for all samples as a VariantBuilderMultiSampleVector (see note below)
-   *
-   * @note must pass vector to appropriate Genotype::encode_genotypes() function before passing it to this function
+   * @param genotypes_for_all_samples genotypes for all samples as a VariantBuilderMultiSampleVector (see note below)
    *
    * @note To create a multi-sample flattened vector for use with this function, first determine the number of samples
    *       and the maximum ploidy across all samples, then get a pre-initialized vector from the builder:
@@ -537,6 +531,11 @@ class VariantBuilder {
    *       than set_sample_values() since it doesn't require a vector construction/destruction for each call).
    *       You don't have to worry about samples with no values, since all samples start out with missing values,
    *       however you should represent each no-call allele with -1.
+   *
+   *       For example, to set sample 0's genotype to 0/1, you could call multi_sample_vector.set_sample_values(0, {0, 1}),
+   *       or to set it to 1/., you could call multi_sample_vector.set_sample_values(0, {1, -1}). As noted above,
+   *       setting one allele at a time via set_sample_value() will be more efficient than set_sample_values() since
+   *       it doesn't require a vector allocation.
    *
    *       Finally, pass your multi-sample vector into this function:
    *
@@ -545,6 +544,7 @@ class VariantBuilder {
    *       If this process is too inconvenient, or you can't know the maximum ploidy in advance,
    *       use a less-efficient function that takes a nested vector.
    *
+   * @note Does not support genotypes with phased alleles
    * @note Less efficient than moving the values into the builder
    */
   VariantBuilder& set_genotypes(const VariantBuilderMultiSampleVector<int32_t>& genotypes_for_all_samples);
@@ -552,9 +552,7 @@ class VariantBuilder {
   /**
    * @brief Set the genotypes (GT) field for all samples at once using an efficient flattened (one-dimensional) vector, MOVING the provided values
    *
-   * @param genotypes_for_all_samples encoded genotypes for all samples as a VariantBuilderMultiSampleVector (see note below)
-   *
-   * @note must pass vector to appropriate Genotype::encode_genotypes() function before passing it to this function
+   * @param genotypes_for_all_samples genotypes for all samples as a VariantBuilderMultiSampleVector (see note below)
    *
    * @note To create a multi-sample flattened vector for use with this function, first determine the number of samples
    *       and the maximum ploidy across all samples, then get a pre-initialized vector from the builder:
@@ -569,52 +567,57 @@ class VariantBuilder {
    *       You don't have to worry about samples with no values, since all samples start out with missing values,
    *       however you should represent each no-call allele with -1.
    *
+   *       For example, to set sample 0's genotype to 0/1, you could call multi_sample_vector.set_sample_values(0, {0, 1}),
+   *       or to set it to 1/., you could call multi_sample_vector.set_sample_values(0, {1, -1}). As noted above,
+   *       setting one allele at a time via set_sample_value() will be more efficient than set_sample_values() since
+   *       it doesn't require a vector allocation.
+   *
    *       Finally, MOVE your multi-sample vector into this function:
    *
    *       builder.set_genotypes(std::move(multi_sample_vector));
    *
    *       If this process is too inconvenient, or you can't know the maximum ploidy in advance,
    *       use a less-efficient function that takes a nested vector.
+   *
+   * @note Does not support genotypes with phased alleles
    */
   VariantBuilder& set_genotypes(VariantBuilderMultiSampleVector<int32_t>&& genotypes_for_all_samples);
 
   /**
-   * @brief Set the genotypes (GT) field for all samples at once by nested vector, copying the provided values
+   * @brief Set the genotypes (GT) field for all samples at once by nested vector, COPYING the provided values
    *
-   * @param genotypes_for_all_samples encoded genotypes for all samples in order of sample index, with one inner vector per sample (no padding necessary)
-   *
-   * @note must pass vector to appropriate Genotype::encode_genotypes() function before passing it to this function
+   * @param genotypes_for_all_samples genotypes for all samples in order of sample index, with one inner vector per sample (no padding necessary)
    *
    * @note With a nested vector, each inner vector represents the genotypes for the sample with the corresponding index.
    *       There is no need to manually pad to the maximum ploidy, but you do need to add a missing value (-1) for
    *       each missing/no-call allele.
    *
    *       For example, if you had Sample1=0/1 Sample2=./. Sample3=. Sample4=0/1/2
-   *       you would need to create the following nested vector, then pass it to Genotype::encode_genotypes():
+   *       you would need to create the following nested vector:
    *
    *       { {0, 1}, {-1, -1}, {}, {0, 1, 2} }
    *
+   * @note Does not support genotypes with phased alleles
    * @note Less efficient than using a flattened vector
    * @note Less efficient than moving the values into the builder
    */
   VariantBuilder& set_genotypes(const std::vector<std::vector<int32_t>>& genotypes_for_all_samples);
 
   /**
-   * @brief Set the genotypes (GT) field for all samples at once by nested vector, moving the provided values
+   * @brief Set the genotypes (GT) field for all samples at once by nested vector, MOVING the provided values
    *
-   * @param genotypes_for_all_samples encoded genotypes for all samples in order of sample index, with one inner vector per sample (no padding necessary)
-   *
-   * @note must pass vector to appropriate Genotype::encode_genotypes() function before passing it to this function
+   * @param genotypes_for_all_samples genotypes for all samples in order of sample index, with one inner vector per sample (no padding necessary)
    *
    * @note With a nested vector, each inner vector represents the genotypes for the sample with the corresponding index.
    *       There is no need to manually pad to the maximum ploidy, but you do need to add a missing value (-1) for
    *       each missing/no-call allele.
    *
    *       For example, if you had Sample1=0/1 Sample2=./. Sample3=. Sample4=0/1/2
-   *       you would need to create the following nested vector, then pass it to Genotype::encode_genotypes():
+   *       you would need to create the following nested vector:
    *
    *       { {0, 1}, {-1, -1}, {}, {0, 1, 2} }
    *
+   * @note Does not support genotypes with phased alleles
    * @note Less efficient than using a flattened vector
    */
   VariantBuilder& set_genotypes(std::vector<std::vector<int32_t>>&& genotypes_for_all_samples);
@@ -1024,36 +1027,66 @@ class VariantBuilder {
    ******************************************************************************/
 
   /**
-   * @brief Set the genotypes (GT) field for a single sample by sample name
+   * @brief Set the genotypes (GT) field for a single sample by sample name, copying the genotype before encoding
    *
    * @param sample name of the sample whose genotype to set
-   * @param genotype encoded genotype for the specified sample (see notes below)
+   * @param genotype genotype for the specified sample (see notes below)
    *
-   * Examples: For genotype 0/1, create vector {0, 1}, then pass it to Genotype::encode_genotype()
-   *           For genotype 1/., create vector {1, -1}, then pass it to Genotype::encode_genotype()
-   *           For genotype ./., create vector {-1, -1}, then pass it to Genotype::encode_genotype()
+   * Examples: For genotype 0/1, create vector {0, 1}
+   *           For genotype 1/., create vector {1, -1}
+   *           For genotype ./., create vector {-1, -1}
    *
-   * @note must pass vector to appropriate Genotype::encode_genotype() function before passing it to this function
-   *
+   * @note Does not support genotypes with phased alleles
+   * @note Less efficient than moving the genotype into the builder
    * @note Less efficient than setting using the sample index
    */
   VariantBuilder& set_genotype(const std::string& sample, const std::vector<int32_t>& genotype);
 
   /**
-   * @brief Set the genotypes (GT) field for a single sample by sample index
+  * @brief Set the genotypes (GT) field for a single sample by sample name, moving the genotype into the builder and encoding in-place
+  *
+  * @param sample name of the sample whose genotype to set
+  * @param genotype genotype for the specified sample (see notes below)
+  *
+  * Examples: For genotype 0/1, create vector {0, 1}
+  *           For genotype 1/., create vector {1, -1}
+  *           For genotype ./., create vector {-1, -1}
+  *
+  * @note Does not support genotypes with phased alleles
+  * @note Less efficient than setting using the sample index
+  */
+  VariantBuilder& set_genotype(const std::string& sample, std::vector<int32_t>&& genotype);
+
+  /**
+   * @brief Set the genotypes (GT) field for a single sample by sample index, copying the genotype before encoding
    *
    * @param sample_index index of the sample whose genotype to set (from a header lookup)
-   * @param genotype encoded genotype for the specified sample (see notes below)
+   * @param genotype genotype for the specified sample (see notes below)
    *
-   * Examples: For genotype 0/1, create vector {0, 1}, then pass it to Genotype::encode_genotype()
-   *           For genotype 1/., create vector {1, -1}, then pass it to Genotype::encode_genotype()
-   *           For genotype ./., create vector {-1, -1}, then pass it to Genotype::encode_genotype()
+   * Examples: For genotype 0/1, create vector {0, 1}
+   *           For genotype 1/., create vector {1, -1}
+   *           For genotype ./., create vector {-1, -1}
    *
-   * @note must pass vector to appropriate Genotype::encode_genotype() function before passing it to this function
+   * @note Does not support genotypes with phased alleles
+   * @note Less efficient than moving the genotype into the builder
    */
   VariantBuilder& set_genotype(const uint32_t sample_index, const std::vector<int32_t>& genotype);
 
   /**
+   * @brief Set the genotypes (GT) field for a single sample by sample index, moving the genotype into the builder and encoding in-place
+   *
+   * @param sample_index index of the sample whose genotype to set (from a header lookup)
+   * @param genotype genotype for the specified sample (see notes below)
+   *
+   * Examples: For genotype 0/1, create vector {0, 1}
+   *           For genotype 1/., create vector {1, -1}
+   *           For genotype ./., create vector {-1, -1}
+   *
+   * @note Does not support genotypes with phased alleles
+   */
+  VariantBuilder& set_genotype(const uint32_t sample_index, std::vector<int32_t>&& genotype);
+
+    /**
    * @brief Set a single-valued integer individual field for a single sample by field and sample name
    *
    * @param tag name of the individual field to set
