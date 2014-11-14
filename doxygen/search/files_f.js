@@ -7,6 +7,7 @@ var searchData=
   ['variant_5fbuilder_5findividual_5ffield_2eh',['variant_builder_individual_field.h',['../variant__builder__individual__field_8h.html',1,'']]],
   ['variant_5fbuilder_5findividual_5fregion_2ecpp',['variant_builder_individual_region.cpp',['../variant__builder__individual__region_8cpp.html',1,'']]],
   ['variant_5fbuilder_5findividual_5fregion_2eh',['variant_builder_individual_region.h',['../variant__builder__individual__region_8h.html',1,'']]],
+  ['variant_5fbuilder_5fmulti_5fsample_5fvector_2eh',['variant_builder_multi_sample_vector.h',['../variant__builder__multi__sample__vector_8h.html',1,'']]],
   ['variant_5fbuilder_5fshared_5fregion_2ecpp',['variant_builder_shared_region.cpp',['../variant__builder__shared__region_8cpp.html',1,'']]],
   ['variant_5fbuilder_5fshared_5fregion_2eh',['variant_builder_shared_region.h',['../variant__builder__shared__region_8h.html',1,'']]],
   ['variant_5ffield_5ftype_2ecpp',['variant_field_type.cpp',['../variant__field__type_8cpp.html',1,'']]],

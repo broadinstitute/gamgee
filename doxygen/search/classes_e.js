@@ -9,6 +9,7 @@ var searchData=
   ['variantbuildercorefield_3c_20int32_5ft_20_3e',['VariantBuilderCoreField&lt; int32_t &gt;',['../classgamgee_1_1_variant_builder_core_field.html',1,'gamgee']]],
   ['variantbuilderindividualfield',['VariantBuilderIndividualField',['../classgamgee_1_1_variant_builder_individual_field.html',1,'gamgee']]],
   ['variantbuilderindividualregion',['VariantBuilderIndividualRegion',['../classgamgee_1_1_variant_builder_individual_region.html',1,'gamgee']]],
+  ['variantbuildermultisamplevector',['VariantBuilderMultiSampleVector',['../classgamgee_1_1_variant_builder_multi_sample_vector.html',1,'gamgee']]],
   ['variantbuildersharedregion',['VariantBuilderSharedRegion',['../classgamgee_1_1_variant_builder_shared_region.html',1,'gamgee']]],
   ['variantfilters',['VariantFilters',['../classgamgee_1_1_variant_filters.html',1,'gamgee']]],
   ['variantfiltersiterator',['VariantFiltersIterator',['../classgamgee_1_1_variant_filters_iterator.html',1,'gamgee']]],

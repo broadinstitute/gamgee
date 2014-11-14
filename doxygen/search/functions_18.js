@@ -11,6 +11,7 @@ var searchData=
   ['_7evariantbuilder',['~VariantBuilder',['../classgamgee_1_1_variant_builder.html#ac288116a5f57f8d578435da482b3ca7b',1,'gamgee::VariantBuilder']]],
   ['_7evariantbuilderindividualfield',['~VariantBuilderIndividualField',['../classgamgee_1_1_variant_builder_individual_field.html#a54b792d17275413d9bea4ddb87f866c7',1,'gamgee::VariantBuilderIndividualField']]],
   ['_7evariantbuilderindividualregion',['~VariantBuilderIndividualRegion',['../classgamgee_1_1_variant_builder_individual_region.html#a0af9797da9d3bfd910e291faf80e7ee3',1,'gamgee::VariantBuilderIndividualRegion']]],
+  ['_7evariantbuildermultisamplevector',['~VariantBuilderMultiSampleVector',['../classgamgee_1_1_variant_builder_multi_sample_vector.html#a66884b4205f33ad8e84ffddccc2b2f0e',1,'gamgee::VariantBuilderMultiSampleVector']]],
   ['_7evariantbuildersharedregion',['~VariantBuilderSharedRegion',['../classgamgee_1_1_variant_builder_shared_region.html#a47587f63c91a36cadec7c07b5962aaf4',1,'gamgee::VariantBuilderSharedRegion']]],
   ['_7evariantheader',['~VariantHeader',['../classgamgee_1_1_variant_header.html#ac5d4c86162bb98f2e1a3d2b96ccc6055',1,'gamgee::VariantHeader']]]
 ];

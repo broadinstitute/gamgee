@@ -14,5 +14,6 @@ var searchData=
   ['num_5felements',['num_elements',['../classgamgee_1_1_sam_builder_data_field.html#a137090c63a7caed3157dc8d31a20f3fe',1,'gamgee::SamBuilderDataField']]],
   ['num_5fpresent_5ffields',['num_present_fields',['../classgamgee_1_1_variant_builder_individual_region.html#a75a7d10b222cd652584d64a83c476448',1,'gamgee::VariantBuilderIndividualRegion']]],
   ['num_5fpresent_5finfo_5ffields',['num_present_info_fields',['../classgamgee_1_1_variant_builder_shared_region.html#a3de9cc73ae0d337e686809a36f868fee',1,'gamgee::VariantBuilderSharedRegion']]],
+  ['num_5fsamples',['num_samples',['../classgamgee_1_1_variant_builder_multi_sample_vector.html#af1bf0c19490a1e3e6dfc7db56975b9e0',1,'gamgee::VariantBuilderMultiSampleVector']]],
   ['num_5fvalues',['num_values',['../classgamgee_1_1utils_1_1_short_value_optimized_storage.html#aa0d2a48c54905757c96aadc194a621c9',1,'gamgee::utils::ShortValueOptimizedStorage']]]
 ];
