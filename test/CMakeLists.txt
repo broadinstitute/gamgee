@@ -4,9 +4,11 @@ set(SOURCE_FILES
     fastq_test.cpp
     genotypes_test.cpp
     indexed_sam_reader_test.cpp
+    indexed_variant_reader_test.cpp
     interval_test.cpp
     main.cpp
     missing_test.cpp
+    multiple_variant_reader_test.cpp
     read_group_test.cpp
     reference_block_splitting_variant_reader_test.cpp
     reference_test.cpp
@@ -16,6 +18,8 @@ set(SOURCE_FILES
     sam_test.cpp
     select_if_test.cpp
     short_value_optimized_storage_test.cpp
+    synced_variant_reader_test.cpp
+    test_utils.h
     utils_test.cpp
     variant_builder_test.cpp
     variant_header_test.cpp
