@@ -107,70 +107,70 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegamgee.html">gamgee</a> {</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> ITERATOR&gt;</div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classgamgee_1_1_synced_variant_reader.html">   36</a></span>&#160;<span class="keyword">class </span><a class="code" href="classgamgee_1_1_synced_variant_reader.html">SyncedVariantReader</a> {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classgamgee_1_1_synced_variant_reader.html#a452759ee607f4a7cb8b197462190b5d7">   46</a></span>&#160;  <a class="code" href="classgamgee_1_1_synced_variant_reader.html#a452759ee607f4a7cb8b197462190b5d7">SyncedVariantReader</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; filenames, <span class="keyword">const</span> std::string&amp; interval_list) :</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    m_synced_readers {<a class="code" href="namespacegamgee_1_1utils.html#a53201a12479882cc6e6bb789a506109b">utils::make_shared_synced_variant_reader</a>(<a class="code" href="synced__bcf__reader_8h.html#a8f78e7c8c17774ca176626aab3c5caa6">bcf_sr_init</a>())}</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">auto</span> success = 0;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span> (interval_list.empty()) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      m_synced_readers-&gt;require_index = 1;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      success = <a class="code" href="synced__bcf__reader_8h.html#a7abdd5844cd30c039130fb0f8723a15d">bcf_sr_set_regions</a>(m_synced_readers.get(), interval_list.c_str(), 0);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <span class="keywordflow">if</span> (success != 0)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">throw</span> HtslibException(success);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; filename : filenames) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      success = <a class="code" href="synced__bcf__reader_8h.html#ae0ae3c1b34883116024305ef09537dfb">bcf_sr_add_reader</a>(m_synced_readers.get(), filename.c_str());</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="keywordflow">if</span> (success != 1) {        <span class="comment">// returns 1 on success to indicate 1 file added</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">throw</span> FileOpenException{filename};</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  SyncedVariantReader(SyncedVariantReader&amp;&amp; other) = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  SyncedVariantReader&amp; operator=(SyncedVariantReader&amp;&amp; other) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> ITERATOR&gt;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classgamgee_1_1_synced_variant_reader.html">   42</a></span>&#160;<span class="keyword">class </span><a class="code" href="classgamgee_1_1_synced_variant_reader.html">SyncedVariantReader</a> {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classgamgee_1_1_synced_variant_reader.html#a452759ee607f4a7cb8b197462190b5d7">   52</a></span>&#160;  <a class="code" href="classgamgee_1_1_synced_variant_reader.html#a452759ee607f4a7cb8b197462190b5d7">SyncedVariantReader</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; filenames, <span class="keyword">const</span> std::string&amp; interval_list) :</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    m_synced_readers {<a class="code" href="namespacegamgee_1_1utils.html#a53201a12479882cc6e6bb789a506109b">utils::make_shared_synced_variant_reader</a>(<a class="code" href="synced__bcf__reader_8h.html#a8f78e7c8c17774ca176626aab3c5caa6">bcf_sr_init</a>())}</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">auto</span> success = 0;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">if</span> (interval_list.empty()) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      m_synced_readers-&gt;require_index = 1;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      success = <a class="code" href="synced__bcf__reader_8h.html#a7abdd5844cd30c039130fb0f8723a15d">bcf_sr_set_regions</a>(m_synced_readers.get(), interval_list.c_str(), 0);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="keywordflow">if</span> (success != 0)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">throw</span> HtslibException(success);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; filename : filenames) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      success = <a class="code" href="synced__bcf__reader_8h.html#ae0ae3c1b34883116024305ef09537dfb">bcf_sr_add_reader</a>(m_synced_readers.get(), filename.c_str());</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <span class="keywordflow">if</span> (success != 1) {        <span class="comment">// returns 1 on success to indicate 1 file added</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">throw</span> FileOpenException{filename};</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  }</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  SyncedVariantReader(<span class="keyword">const</span> SyncedVariantReader&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  SyncedVariantReader&amp; operator=(<span class="keyword">const</span> SyncedVariantReader&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  SyncedVariantReader(SyncedVariantReader&amp;&amp; other) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  SyncedVariantReader&amp; operator=(SyncedVariantReader&amp;&amp; other) = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="classgamgee_1_1_synced_variant_reader.html#af6f8eb0338f2154d4264009ce1cdf40c">   85</a></span>&#160;  ITERATOR <a class="code" href="classgamgee_1_1_synced_variant_reader.html#af6f8eb0338f2154d4264009ce1cdf40c">begin</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">return</span> ITERATOR{m_synced_readers};</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classgamgee_1_1_synced_variant_reader.html#ac7d7e15e08ef75b7d903a3743cda7da3">   94</a></span>&#160;  ITERATOR <a class="code" href="classgamgee_1_1_synced_variant_reader.html#ac7d7e15e08ef75b7d903a3743cda7da3">end</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span> ITERATOR{};</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  std::shared_ptr&lt;bcf_srs_t&gt; m_synced_readers;          </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}  <span class="comment">// end namespace gamgee</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  SyncedVariantReader(<span class="keyword">const</span> SyncedVariantReader&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  SyncedVariantReader&amp; operator=(<span class="keyword">const</span> SyncedVariantReader&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="classgamgee_1_1_synced_variant_reader.html#af6f8eb0338f2154d4264009ce1cdf40c">   91</a></span>&#160;  ITERATOR <a class="code" href="classgamgee_1_1_synced_variant_reader.html#af6f8eb0338f2154d4264009ce1cdf40c">begin</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> ITERATOR{m_synced_readers};</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classgamgee_1_1_synced_variant_reader.html#ac7d7e15e08ef75b7d903a3743cda7da3">  100</a></span>&#160;  ITERATOR <a class="code" href="classgamgee_1_1_synced_variant_reader.html#ac7d7e15e08ef75b7d903a3743cda7da3">end</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> ITERATOR{};</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  }</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* gamgee__synced_variant_reader__guard */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  std::shared_ptr&lt;bcf_srs_t&gt; m_synced_readers;          </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;};</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}  <span class="comment">// end namespace gamgee</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* gamgee__synced_variant_reader__guard */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="synced__bcf__reader_8h_html"><div class="ttname"><a href="synced__bcf__reader_8h.html">synced_bcf_reader.h</a></div></div>
-<div class="ttc" id="classgamgee_1_1_synced_variant_reader_html"><div class="ttname"><a href="classgamgee_1_1_synced_variant_reader.html">gamgee::SyncedVariantReader</a></div><div class="ttdoc">Utility class to read multiple VCF/BCF files with an appropriate iterator in a for-each loop...</div><div class="ttdef"><b>Definition:</b> synced_variant_reader.h:36</div></div>
-<div class="ttc" id="classgamgee_1_1_synced_variant_reader_html_a452759ee607f4a7cb8b197462190b5d7"><div class="ttname"><a href="classgamgee_1_1_synced_variant_reader.html#a452759ee607f4a7cb8b197462190b5d7">gamgee::SyncedVariantReader::SyncedVariantReader</a></div><div class="ttdeci">SyncedVariantReader(const std::vector&lt; std::string &gt; &amp;filenames, const std::string &amp;interval_list)</div><div class="ttdoc">opens multiple files (vcf or bcf) and allows an iterator to parse them </div><div class="ttdef"><b>Definition:</b> synced_variant_reader.h:46</div></div>
+<div class="ttc" id="classgamgee_1_1_synced_variant_reader_html"><div class="ttname"><a href="classgamgee_1_1_synced_variant_reader.html">gamgee::SyncedVariantReader</a></div><div class="ttdoc">Utility class to read multiple VCF.GZ/BCF files with an appropriate iterator in a for-each loop...</div><div class="ttdef"><b>Definition:</b> synced_variant_reader.h:42</div></div>
+<div class="ttc" id="classgamgee_1_1_synced_variant_reader_html_a452759ee607f4a7cb8b197462190b5d7"><div class="ttname"><a href="classgamgee_1_1_synced_variant_reader.html#a452759ee607f4a7cb8b197462190b5d7">gamgee::SyncedVariantReader::SyncedVariantReader</a></div><div class="ttdeci">SyncedVariantReader(const std::vector&lt; std::string &gt; &amp;filenames, const std::string &amp;interval_list)</div><div class="ttdoc">opens multiple files (vcf or bcf) and allows an iterator to parse them </div><div class="ttdef"><b>Definition:</b> synced_variant_reader.h:52</div></div>
 <div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
 <div class="ttc" id="exceptions_8h_html"><div class="ttname"><a href="exceptions_8h.html">exceptions.h</a></div></div>
-<div class="ttc" id="classgamgee_1_1_synced_variant_reader_html_af6f8eb0338f2154d4264009ce1cdf40c"><div class="ttname"><a href="classgamgee_1_1_synced_variant_reader.html#af6f8eb0338f2154d4264009ce1cdf40c">gamgee::SyncedVariantReader::begin</a></div><div class="ttdeci">ITERATOR begin() const </div><div class="ttdoc">creates a ITERATOR pointing at the start of the input stream (needed by for-each loop) ...</div><div class="ttdef"><b>Definition:</b> synced_variant_reader.h:85</div></div>
+<div class="ttc" id="classgamgee_1_1_synced_variant_reader_html_af6f8eb0338f2154d4264009ce1cdf40c"><div class="ttname"><a href="classgamgee_1_1_synced_variant_reader.html#af6f8eb0338f2154d4264009ce1cdf40c">gamgee::SyncedVariantReader::begin</a></div><div class="ttdeci">ITERATOR begin() const </div><div class="ttdoc">creates a ITERATOR pointing at the start of the input stream (needed by for-each loop) ...</div><div class="ttdef"><b>Definition:</b> synced_variant_reader.h:91</div></div>
 <div class="ttc" id="synced__bcf__reader_8h_html_ae0ae3c1b34883116024305ef09537dfb"><div class="ttname"><a href="synced__bcf__reader_8h.html#ae0ae3c1b34883116024305ef09537dfb">bcf_sr_add_reader</a></div><div class="ttdeci">int bcf_sr_add_reader(bcf_srs_t *readers, const char *fname)</div><div class="ttdef"><b>Definition:</b> synced_bcf_reader.c:132</div></div>
 <div class="ttc" id="synced__bcf__reader_8h_html_a8f78e7c8c17774ca176626aab3c5caa6"><div class="ttname"><a href="synced__bcf__reader_8h.html#a8f78e7c8c17774ca176626aab3c5caa6">bcf_sr_init</a></div><div class="ttdeci">bcf_srs_t * bcf_sr_init(void)</div><div class="ttdef"><b>Definition:</b> synced_bcf_reader.c:245</div></div>
 <div class="ttc" id="synced__bcf__reader_8h_html_a7abdd5844cd30c039130fb0f8723a15d"><div class="ttname"><a href="synced__bcf__reader_8h.html#a7abdd5844cd30c039130fb0f8723a15d">bcf_sr_set_regions</a></div><div class="ttdeci">int bcf_sr_set_regions(bcf_srs_t *readers, const char *regions, int is_file)</div><div class="ttdef"><b>Definition:</b> synced_bcf_reader.c:104</div></div>
 <div class="ttc" id="namespacegamgee_html"><div class="ttname"><a href="namespacegamgee.html">gamgee</a></div><div class="ttdef"><b>Definition:</b> base_quals.cpp:11</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a53201a12479882cc6e6bb789a506109b"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a53201a12479882cc6e6bb789a506109b">gamgee::utils::make_shared_synced_variant_reader</a></div><div class="ttdeci">std::shared_ptr&lt; bcf_srs_t &gt; make_shared_synced_variant_reader(bcf_srs_t *synced_reader_ptr)</div><div class="ttdoc">wraps a pre-allocated bcf_srs_t in a shared_ptr with correct deleter </div><div class="ttdef"><b>Definition:</b> hts_memory.cpp:71</div></div>
 <div class="ttc" id="hts__memory_8h_html"><div class="ttname"><a href="hts__memory_8h.html">hts_memory.h</a></div></div>
-<div class="ttc" id="classgamgee_1_1_synced_variant_reader_html_ac7d7e15e08ef75b7d903a3743cda7da3"><div class="ttname"><a href="classgamgee_1_1_synced_variant_reader.html#ac7d7e15e08ef75b7d903a3743cda7da3">gamgee::SyncedVariantReader::end</a></div><div class="ttdeci">ITERATOR end() const </div><div class="ttdoc">creates a ITERATOR with a nullified input stream (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> synced_variant_reader.h:94</div></div>
+<div class="ttc" id="classgamgee_1_1_synced_variant_reader_html_ac7d7e15e08ef75b7d903a3743cda7da3"><div class="ttname"><a href="classgamgee_1_1_synced_variant_reader.html#ac7d7e15e08ef75b7d903a3743cda7da3">gamgee::SyncedVariantReader::end</a></div><div class="ttdeci">ITERATOR end() const </div><div class="ttdoc">creates a ITERATOR with a nullified input stream (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> synced_variant_reader.h:100</div></div>
 <div class="ttc" id="vcf_8h_html"><div class="ttname"><a href="vcf_8h.html">vcf.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 14 2014 21:53:25 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 14 2014 22:05:29 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
