@@ -15,6 +15,7 @@
 #include <boost/algorithm/string/join.hpp>
 #include <boost/iterator/zip_iterator.hpp>
 #include <stdexcept>
+#include <unordered_set>
 
 using namespace std;
 using namespace gamgee;
@@ -1053,12 +1054,22 @@ BOOST_AUTO_TEST_CASE( variant_reader_nonexistent_file ) {
 // MultipleVariantReader / MultipleVariantIterator
 // see also multiple_variant_reader_test
 
+auto truth_file_indices_3x5 = vector<unordered_set<uint32_t>> {{0,1,2},{0,1,2},{0,1,2},{0,1,2},{0,1,2},{0,1,2},{0,1,2}};
+
 BOOST_AUTO_TEST_CASE( multiple_variant_reader_test ) {
   auto truth_index = 0u;
   const auto reader = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants.bcf", "testdata/test_variants.vcf.gz"}, false};
   for (const auto& vec : reader) {
-    for (const auto& record : vec)
+    auto expected_file_indices = truth_file_indices_3x5[truth_index];
+    for (const auto& pair : vec) {
+      const auto& record = pair.first;
       check_all_apis(record, truth_index);
+
+      auto find_result = expected_file_indices.find(pair.second);
+      BOOST_CHECK(find_result != expected_file_indices.end());
+      expected_file_indices.erase(find_result);
+    }
+    BOOST_CHECK(expected_file_indices.empty());   // check that we've seen and erased all expected
     ++truth_index;
   }
 }
@@ -1071,9 +1082,11 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_move_test ) {
   auto record0 = reader0.begin().operator*();
   auto moved_record = moved.begin().operator*();
   auto truth_index = 0u;
-  for (auto vec : {record0, moved_record}) {
-    for (auto record : vec)
+  for (const auto& vec : {record0, moved_record}) {
+    for (const auto& pair : vec) {
+      const auto& record = pair.first;
       check_all_apis(record, truth_index);
+    }
   }
 }
 
@@ -1089,8 +1102,10 @@ BOOST_AUTO_TEST_CASE( multiple_variant_iterator_move_test ) {
   auto moved_record = *iter1;
   auto truth_index = 0u;
   for (auto vec : {record0, moved_record}) {
-    for (auto record : vec)
+    for (const auto& pair : vec) {
+      const auto& record = pair.first;
       check_all_apis(record, truth_index);
+    }
   }
 }
 

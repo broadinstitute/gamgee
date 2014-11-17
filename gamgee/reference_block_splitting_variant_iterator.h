@@ -58,14 +58,14 @@ class ReferenceBlockSplittingVariantIterator : public MultipleVariantIterator {
    *
    * @return a reference to the iterator's Variant vector
    */
-  std::vector<Variant>& operator*();
+  std::vector<VariantIndexPair>& operator*();
 
   /**
    * @brief advances the iterator, fetching the next vector
    *
    * @return a reference to the iterator's Variant vector
    */
-  std::vector<Variant>& operator++();
+  std::vector<VariantIndexPair>& operator++();
 
  private:
   // fetches the next reference-block-split Variant vector
@@ -79,10 +79,10 @@ class ReferenceBlockSplittingVariantIterator : public MultipleVariantIterator {
   inline void populate_split_variants();
 
   // holds the incoming reference-block variants before and during split operations
-  std::vector<Variant> m_pending_variants;
+  std::vector<VariantIndexPair> m_pending_variants;
 
   // caches next reference-block-split Variant vector
-  std::vector<Variant> m_split_variants;
+  std::vector<VariantIndexPair> m_split_variants;
 
   unsigned int m_pending_chrom = UINT_MAX;
   unsigned int m_pending_start = UINT_MAX;
