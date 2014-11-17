@@ -10,8 +10,8 @@ void test_short_value_storage( const uint32_t capacity, const uint32_t short_val
   auto storage = ShortValueOptimizedStorage<int32_t>{capacity, short_value_upper_bound};
 
   BOOST_CHECK_EQUAL(storage.capacity(), capacity);
-  BOOST_CHECK_EQUAL(storage.num_values(), 0);
-  BOOST_CHECK_EQUAL(storage.max_value_length(), 0);
+  BOOST_CHECK_EQUAL(storage.num_values(), 0u);
+  BOOST_CHECK_EQUAL(storage.max_value_length(), 0u);
 
   auto max_length = 0u;
   for ( auto i = 0u; i < storage.capacity(); ++i ) {
@@ -40,8 +40,8 @@ void test_short_value_storage( const uint32_t capacity, const uint32_t short_val
 
   storage.clear();
   BOOST_CHECK_EQUAL(storage.capacity(), capacity);
-  BOOST_CHECK_EQUAL(storage.num_values(), 0);
-  BOOST_CHECK_EQUAL(storage.max_value_length(), 0);
+  BOOST_CHECK_EQUAL(storage.num_values(), 0u);
+  BOOST_CHECK_EQUAL(storage.max_value_length(), 0u);
 }
 
 BOOST_AUTO_TEST_CASE( test_all_short_values ) {
@@ -72,18 +72,18 @@ BOOST_AUTO_TEST_CASE( test_set_by_vector ) {
   auto storage = ShortValueOptimizedStorage<int32_t>{5, 3};  // capacity of 5 arrays, short value defined as <= length 3
   auto mixed_values = vector<vector<int32_t>>{ {1, 2}, {3, 4, 5, 6, 7}, {8}, {9, 10}, {11, 12, 13, 14, 15, 16} };
 
-  BOOST_CHECK_EQUAL(storage.capacity(), 5);
-  BOOST_CHECK_EQUAL(storage.num_values(), 0);
-  BOOST_CHECK_EQUAL(storage.max_value_length(), 0);
+  BOOST_CHECK_EQUAL(storage.capacity(), 5u);
+  BOOST_CHECK_EQUAL(storage.num_values(), 0u);
+  BOOST_CHECK_EQUAL(storage.max_value_length(), 0u);
 
   for ( auto i = 0u; i < storage.capacity(); ++i ) {
     BOOST_CHECK(! storage.is_set(i));
     storage.set(i, mixed_values[i]);  // set by vector instead of by pointer
     BOOST_CHECK(storage.is_set(i));
-    BOOST_CHECK_EQUAL(storage.capacity(), 5);   // make sure capacity stays constant as we insert items
+    BOOST_CHECK_EQUAL(storage.capacity(), 5u);   // make sure capacity stays constant as we insert items
     BOOST_CHECK_EQUAL(storage.num_values(), i + 1);
     BOOST_CHECK_EQUAL(storage.value_length(i), mixed_values[i].size());
-    BOOST_CHECK_EQUAL(storage.max_value_length(), i < 1 ? 2 : (i < 4 ? 5 : 6));
+    BOOST_CHECK_EQUAL(storage.max_value_length(), i < 1 ? 2u : (i < 4 ? 5u : 6u));
   }
 
   for ( auto i = 0u; i < storage.capacity(); ++i ) {
@@ -96,18 +96,18 @@ BOOST_AUTO_TEST_CASE( test_set_by_vector ) {
   }
 
   storage.clear();
-  BOOST_CHECK_EQUAL(storage.capacity(), 5);
-  BOOST_CHECK_EQUAL(storage.num_values(), 0);
-  BOOST_CHECK_EQUAL(storage.max_value_length(), 0);
+  BOOST_CHECK_EQUAL(storage.capacity(), 5u);
+  BOOST_CHECK_EQUAL(storage.num_values(), 0u);
+  BOOST_CHECK_EQUAL(storage.max_value_length(), 0u);
 }
 
 BOOST_AUTO_TEST_CASE( test_set_empty_values ) {
   auto storage = ShortValueOptimizedStorage<int32_t>{4, 5};  // capacity of 4 arrays, short value defined as <= length 5
   auto values = vector<vector<int32_t>>{ {1}, {} };
 
-  BOOST_CHECK_EQUAL(storage.capacity(), 4);
-  BOOST_CHECK_EQUAL(storage.num_values(), 0);
-  BOOST_CHECK_EQUAL(storage.max_value_length(), 0);
+  BOOST_CHECK_EQUAL(storage.capacity(), 4u);
+  BOOST_CHECK_EQUAL(storage.num_values(), 0u);
+  BOOST_CHECK_EQUAL(storage.max_value_length(), 0u);
 
   // Attempting to set empty values should have no effect on the state of the storage
   storage.set(0, nullptr, 1);           // null pointer
@@ -117,13 +117,13 @@ BOOST_AUTO_TEST_CASE( test_set_empty_values ) {
   storage.set(2, values[1]);            // empty vector
   BOOST_CHECK(! storage.is_set(2));
 
-  BOOST_CHECK_EQUAL(storage.num_values(), 0);    // num values should be unchanged
-  BOOST_CHECK_EQUAL(storage.max_value_length(), 0);
+  BOOST_CHECK_EQUAL(storage.num_values(), 0u);    // num values should be unchanged
+  BOOST_CHECK_EQUAL(storage.max_value_length(), 0u);
 
   for ( auto i = 0u; i < storage.capacity(); ++i ) {
     auto val = storage.get(i);
     BOOST_CHECK(val.first == nullptr);
-    BOOST_CHECK_EQUAL(val.second, 0);
+    BOOST_CHECK_EQUAL(val.second, 0u);
   }
 }
 
