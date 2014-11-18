@@ -368,3 +368,16 @@ BOOST_AUTO_TEST_CASE( reference_block_problem_region_3 ) {
 
   BOOST_CHECK(truth_index == p3_block_starts.size());
 }
+
+BOOST_AUTO_TEST_CASE( test_mvi_for_empty_vcf )
+{
+  auto mvr = MultipleVariantReader<MultipleVariantIterator> { vector<string>{"testdata/var_hdr_merge/empty_vcf.vcf"}, false };
+  auto num_variants = 0u;
+  for(const auto& variant : mvr)
+    ++num_variants;
+  BOOST_CHECK_EQUAL(num_variants, 0u);
+  auto ref_split_mvr = GVCFReader { vector<string>{"testdata/var_hdr_merge/empty_vcf.vcf"}, false };
+  for(const auto& variant : ref_split_mvr)
+    ++num_variants;
+  BOOST_CHECK_EQUAL(num_variants, 0u);
+}

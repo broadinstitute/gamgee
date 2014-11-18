@@ -48,6 +48,13 @@ void MultipleVariantIterator::fetch_next_vector() {
     const auto top_iterator = top_queue_elem.first;
     const auto& variant = **top_iterator;
 
+    //top VariantIterator returns 'empty' Variant - no more variants in this VCF
+    if(variant.missing())
+    {
+      m_queue.pop();
+      continue;
+    }
+
     if (!m_variant_vector.empty() && !(variant.chromosome() == current_chrom && variant.alignment_start() == current_start))
       break;
     else {

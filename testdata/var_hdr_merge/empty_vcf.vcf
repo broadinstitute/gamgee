@@ -1,0 +1,22 @@
+##fileformat=VCFv4.1
+##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+##INFO=<ID=AN,Number=1,Type=Integer,Description="Total number of alleles in called genotypes">
+##INFO=<ID=VALIDATED,Number=0,Type=Flag,Description="Validated By Follow-up Experiment">
+##INFO=<ID=DESC,Number=.,Type=String,Description="Custom Description">
+##FILTER=<ID=PASS,Description=All filters passed>
+##FILTER=<ID=LOW_QUAL,Description=Low quality call>
+##FILTER=<ID=MISSED,Description=Missed by the variant caller>
+##FILTER=<ID=NOT_DEFINED,Description=Undefined filter>
+##contig=<ID=1,Length=300000000,Description=the first chromosome>
+##contig=<ID=20,Length=64000000>
+##contig=<ID=22,Length=120000000>
+##FORMAT=<ID=GT,Number=1,Type=String,Description=Genotype>
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description=Genotype quality>
+##FORMAT=<ID=PL,Number=G,Type=Integer,Description=Phred scaled relative Likelihoods of the genotypes>
+##FORMAT=<ID=AF,Number=2,Type=Float,Description=Arbitrary float field with 2 values (test purposes only)>
+##FORMAT=<ID=AS,Number=1,Type=String,Description=Arbitrary string field with 1 value (test purposes only)>
+##INFO=<ID=VLFLOAT,Number=.,Type=Float,Description=Arbitrary float vector with variable number of elements (test purposes only)>
+##INFO=<ID=VLINT,Number=.,Type=Integer,Description=Arbitrary integer vector with variable number of elements (test purposes only)>
+##FORMAT=<ID=VLFLOAT,Number=.,Type=Float,Description=Arbitrary float vector with variable number of elements (test purposes only)>
+##FORMAT=<ID=VLINT,Number=.,Type=Integer,Description=Arbitrary integer vector with variable number of elements (test purposes only)>
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	NA12878	NA12891	NA12892
