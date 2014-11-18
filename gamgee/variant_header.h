@@ -9,7 +9,9 @@
 #include <vector>
 
 namespace gamgee {
-  
+
+template<bool fields_forward_LUT_ordering, bool fields_reverse_LUT_ordering, bool samples_forward_LUT_ordering, bool samples_reverse_LUT_ordering>
+class VariantHeaderMerger;  //forward declaration to declare friendship in VariantHeader
 /**
  * @brief Utility class to hold a variant header
  *
@@ -150,6 +152,26 @@ class VariantHeader {
     return index >= 0 ? index : missing_values::int32;
   }
 
+  std::string get_field_name(const int32_t field_idx) const {
+    if(field_idx >= 0 && field_idx < m_header->n[BCF_DT_ID])
+    {
+      auto name_ptr = bcf_hdr_int2id(m_header.get(), BCF_DT_ID, field_idx);
+      if(name_ptr)
+	return name_ptr;
+    }
+    return "";
+  }
+
+  std::string get_sample_name(const int32_t sample_idx) const {
+    if(sample_idx >= 0 && sample_idx < m_header->n[BCF_DT_SAMPLE])
+    {
+      auto name_ptr= bcf_hdr_int2id(m_header.get(), BCF_DT_SAMPLE, sample_idx);
+      if(name_ptr)
+	return name_ptr;
+    }
+    return "";
+  }
+
  private:
   std::shared_ptr<bcf_hdr_t> m_header;
 
@@ -159,6 +181,8 @@ class VariantHeader {
   friend class VariantBuilder;       ///< builder needs access to the internals in order to build efficiently
   friend class VariantBuilderSharedRegion;
   friend class VariantBuilderIndividualRegion;
+  template<bool fields_forward_LUT_ordering, bool fields_reverse_LUT_ordering, bool samples_forward_LUT_ordering, bool samples_reverse_LUT_ordering>
+  friend class VariantHeaderMerger;  //to access m_header
 };
 
 }
