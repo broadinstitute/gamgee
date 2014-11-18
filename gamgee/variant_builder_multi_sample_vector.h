@@ -61,9 +61,9 @@ class VariantBuilderMultiSampleVector {
     }
   }
 
-  // Moveable but not copyable, with default destruction
-  VariantBuilderMultiSampleVector(const VariantBuilderMultiSampleVector& other) = delete;
-  VariantBuilderMultiSampleVector& operator=(const VariantBuilderMultiSampleVector& other) = delete;
+  // Both copyable and moveable, with default destruction
+  VariantBuilderMultiSampleVector(const VariantBuilderMultiSampleVector& other) = default;
+  VariantBuilderMultiSampleVector& operator=(const VariantBuilderMultiSampleVector& other) = default;
   VariantBuilderMultiSampleVector(VariantBuilderMultiSampleVector&& other) = default;
   VariantBuilderMultiSampleVector& operator=(VariantBuilderMultiSampleVector&& other) = default;
   ~VariantBuilderMultiSampleVector() = default;

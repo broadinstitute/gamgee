@@ -278,11 +278,14 @@ class Genotype{
 
   /**
    * @brief Converts a vector of allele indices representing a genotype into BCF-encoded
-   *        format suitable for passing to VariantBuilder::set_genotype(). No phasing
-   *        is added.
+   *        format suitable for passing to htslib. No phasing is added.
    *
-   *        Example: if you want to encode the genotype 0/1, create a vector with {0, 1}
-   *                 and then pass it to this function
+   * Example: if you want to BCF-encode the genotype 0/1, create a vector with {0, 1}
+   *          and then pass it to this function
+   *
+   * @note Do not call this function yourself before passing genotypes into VariantBuilder -- the builder
+   *       will call it for you as necessary. Unless you are working with low-level BCF data you
+   *       probably do not ever need to call this function.
    */
   static inline void encode_genotype(std::vector<int32_t>& alleles) {
     encode_genotype(alleles, false);
@@ -290,11 +293,14 @@ class Genotype{
 
   /**
    * @brief Converts a vector of allele indices representing a genotype into BCF-encoded
-   *        format suitable for passing to VariantBuilder::set_genotype(), and also
-   *        allows you to phase all alleles
+   *        format suitable for passing to htslib, and also allows you to phase all alleles
    *
-   *        Example: if you want to encode the genotype 0|1, create a vector with {0, 1}
-   *                 and then pass it to this function with phase_all_alleles set to true
+   * Example: if you want to BCF-encode the genotype 0|1, create a vector with {0, 1}
+   *          and then pass it to this function with phase_all_alleles set to true
+   *
+   * @note Do not call this function yourself before passing genotypes into VariantBuilder -- the builder
+   *       will call it for you as necessary. Unless you are working with low-level BCF data you
+   *       probably do not ever need to call this function.
    */
   static inline void encode_genotype(std::vector<int32_t>& alleles, bool phase_all_alleles) {
     for ( auto allele_index = 0u; allele_index < alleles.size(); ++allele_index ) {
@@ -311,11 +317,14 @@ class Genotype{
 
   /**
    * @brief Converts multiple vectors of allele indices representing genotypes into
-   *        BCF-encoded format suitable for passing to VariantBuilder::set_genotypes().
-   *        No phasing is added.
+   *        BCF-encoded format suitable for passing to htslib. No phasing is added.
    *
-   *        Example: if you want to encode the genotypes 0/1 and 1/1, create a vector
-   *                 with { {0, 1}, {1, 1} } and pass it to this function
+   * Example: if you want to BCF-encode the genotypes 0/1 and 1/1, create a vector
+   *          with { {0, 1}, {1, 1} } and pass it to this function
+   *
+   * @note Do not call this function yourself before passing genotypes into VariantBuilder -- the builder
+   *       will call it for you as necessary. Unless you are working with low-level BCF data you
+   *       probably do not ever need to call this function.
    */
   static inline void encode_genotypes(std::vector<std::vector<int32_t>>& multiple_genotypes) {
     for ( auto& genotype : multiple_genotypes ) {
@@ -325,8 +334,11 @@ class Genotype{
 
   /**
    * @brief Converts multiple genotypes stored in a VariantBuilderMultiSampleVector into
-   *        BCF-encoded format suitable for passing to VariantBuilder::set_genotypes().
-   *        No phasing is added.
+   *        BCF-encoded format suitable for passing to htslib. No phasing is added.
+   *
+   * @note Do not call this function yourself before passing genotypes into VariantBuilder -- the builder
+   *       will call it for you as necessary. Unless you are working with low-level BCF data you
+   *       probably do not ever need to call this function.
    */
   static inline void encode_genotypes(VariantBuilderMultiSampleVector<int32_t>& multiple_genotypes) {
     auto& genotypes_vector = const_cast<std::vector<int32_t>&>(multiple_genotypes.get_vector());
