@@ -192,16 +192,16 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a014bc9217f7c78d56ae017da672ceb2a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a">encode_genotype</a> (std::vector&lt; int32_t &gt; &amp;alleles)</td></tr>
-<tr class="memdesc:a014bc9217f7c78d56ae017da672ceb2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for passing to <a class="el" href="classgamgee_1_1_variant_builder.html#ab8fe52db4cc7f67fabd8a91610de9eaa" title="Set the genotypes (GT) field for a single sample by sample name. ">VariantBuilder::set_genotype()</a>. No phasing is added.  <a href="#a014bc9217f7c78d56ae017da672ceb2a">More...</a><br /></td></tr>
+<tr class="memdesc:a014bc9217f7c78d56ae017da672ceb2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for passing to htslib. No phasing is added.  <a href="#a014bc9217f7c78d56ae017da672ceb2a">More...</a><br /></td></tr>
 <tr class="separator:a014bc9217f7c78d56ae017da672ceb2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab68c9f3be8754d9aef2a6190f9ea1acf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#ab68c9f3be8754d9aef2a6190f9ea1acf">encode_genotype</a> (std::vector&lt; int32_t &gt; &amp;alleles, bool phase_all_alleles)</td></tr>
-<tr class="memdesc:ab68c9f3be8754d9aef2a6190f9ea1acf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for passing to <a class="el" href="classgamgee_1_1_variant_builder.html#ab8fe52db4cc7f67fabd8a91610de9eaa" title="Set the genotypes (GT) field for a single sample by sample name. ">VariantBuilder::set_genotype()</a>, and also allows you to phase all alleles.  <a href="#ab68c9f3be8754d9aef2a6190f9ea1acf">More...</a><br /></td></tr>
+<tr class="memdesc:ab68c9f3be8754d9aef2a6190f9ea1acf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for passing to htslib, and also allows you to phase all alleles.  <a href="#ab68c9f3be8754d9aef2a6190f9ea1acf">More...</a><br /></td></tr>
 <tr class="separator:ab68c9f3be8754d9aef2a6190f9ea1acf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac62b7ad602284c04a4f6e159471fb325"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#ac62b7ad602284c04a4f6e159471fb325">encode_genotypes</a> (std::vector&lt; std::vector&lt; int32_t &gt;&gt; &amp;multiple_genotypes)</td></tr>
-<tr class="memdesc:ac62b7ad602284c04a4f6e159471fb325"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts multiple vectors of allele indices representing genotypes into BCF-encoded format suitable for passing to <a class="el" href="classgamgee_1_1_variant_builder.html#a0d1a1436ac871c3ace750329e5ba74c8" title="Set the genotypes (GT) field for all samples at once using an efficient flattened (one-dimensional) v...">VariantBuilder::set_genotypes()</a>. No phasing is added.  <a href="#ac62b7ad602284c04a4f6e159471fb325">More...</a><br /></td></tr>
+<tr class="memdesc:ac62b7ad602284c04a4f6e159471fb325"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts multiple vectors of allele indices representing genotypes into BCF-encoded format suitable for passing to htslib. No phasing is added.  <a href="#ac62b7ad602284c04a4f6e159471fb325">More...</a><br /></td></tr>
 <tr class="separator:ac62b7ad602284c04a4f6e159471fb325"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad291a529f9aa4c80e833c53a91f0e871"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_genotype.html#ad291a529f9aa4c80e833c53a91f0e871">encode_genotypes</a> (<a class="el" href="classgamgee_1_1_variant_builder_multi_sample_vector.html">VariantBuilderMultiSampleVector</a>&lt; int32_t &gt; &amp;multiple_genotypes)</td></tr>
-<tr class="memdesc:ad291a529f9aa4c80e833c53a91f0e871"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts multiple genotypes stored in a <a class="el" href="classgamgee_1_1_variant_builder_multi_sample_vector.html" title="Class that allows you to efficiently prepare multi-sample data for setting individual fields in Varia...">VariantBuilderMultiSampleVector</a> into BCF-encoded format suitable for passing to <a class="el" href="classgamgee_1_1_variant_builder.html#a0d1a1436ac871c3ace750329e5ba74c8" title="Set the genotypes (GT) field for all samples at once using an efficient flattened (one-dimensional) v...">VariantBuilder::set_genotypes()</a>. No phasing is added.  <a href="#ad291a529f9aa4c80e833c53a91f0e871">More...</a><br /></td></tr>
+<tr class="memdesc:ad291a529f9aa4c80e833c53a91f0e871"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts multiple genotypes stored in a <a class="el" href="classgamgee_1_1_variant_builder_multi_sample_vector.html" title="Class that allows you to efficiently prepare multi-sample data for setting individual fields in Varia...">VariantBuilderMultiSampleVector</a> into BCF-encoded format suitable for passing to htslib. No phasing is added.  <a href="#ad291a529f9aa4c80e833c53a91f0e871">More...</a><br /></td></tr>
 <tr class="separator:ad291a529f9aa4c80e833c53a91f0e871"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -510,8 +510,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for passing to <a class="el" href="classgamgee_1_1_variant_builder.html#ab8fe52db4cc7f67fabd8a91610de9eaa" title="Set the genotypes (GT) field for a single sample by sample name. ">VariantBuilder::set_genotype()</a>. No phasing is added. </p>
-<p>Example: if you want to encode the genotype 0/1, create a vector with {0, 1} and then pass it to this function </p>
+<p>Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for passing to htslib. No phasing is added. </p>
+<p>Example: if you want to BCF-encode the genotype 0/1, create a vector with {0, 1} and then pass it to this function</p>
+<dl class="section note"><dt>Note</dt><dd>Do not call this function yourself before passing genotypes into <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a> &ndash; the builder will call it for you as necessary. Unless you are working with low-level BCF data you probably do not ever need to call this function. </dd></dl>
 
 </div>
 </div>
@@ -547,8 +548,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for passing to <a class="el" href="classgamgee_1_1_variant_builder.html#ab8fe52db4cc7f67fabd8a91610de9eaa" title="Set the genotypes (GT) field for a single sample by sample name. ">VariantBuilder::set_genotype()</a>, and also allows you to phase all alleles. </p>
-<p>Example: if you want to encode the genotype 0|1, create a vector with {0, 1} and then pass it to this function with phase_all_alleles set to true </p>
+<p>Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for passing to htslib, and also allows you to phase all alleles. </p>
+<p>Example: if you want to BCF-encode the genotype 0|1, create a vector with {0, 1} and then pass it to this function with phase_all_alleles set to true</p>
+<dl class="section note"><dt>Note</dt><dd>Do not call this function yourself before passing genotypes into <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a> &ndash; the builder will call it for you as necessary. Unless you are working with low-level BCF data you probably do not ever need to call this function. </dd></dl>
 
 </div>
 </div>
@@ -574,8 +576,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Converts multiple vectors of allele indices representing genotypes into BCF-encoded format suitable for passing to <a class="el" href="classgamgee_1_1_variant_builder.html#a0d1a1436ac871c3ace750329e5ba74c8" title="Set the genotypes (GT) field for all samples at once using an efficient flattened (one-dimensional) v...">VariantBuilder::set_genotypes()</a>. No phasing is added. </p>
-<p>Example: if you want to encode the genotypes 0/1 and 1/1, create a vector with { {0, 1}, {1, 1} } and pass it to this function </p>
+<p>Converts multiple vectors of allele indices representing genotypes into BCF-encoded format suitable for passing to htslib. No phasing is added. </p>
+<p>Example: if you want to BCF-encode the genotypes 0/1 and 1/1, create a vector with { {0, 1}, {1, 1} } and pass it to this function</p>
+<dl class="section note"><dt>Note</dt><dd>Do not call this function yourself before passing genotypes into <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a> &ndash; the builder will call it for you as necessary. Unless you are working with low-level BCF data you probably do not ever need to call this function. </dd></dl>
 
 </div>
 </div>
@@ -601,7 +604,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Converts multiple genotypes stored in a <a class="el" href="classgamgee_1_1_variant_builder_multi_sample_vector.html" title="Class that allows you to efficiently prepare multi-sample data for setting individual fields in Varia...">VariantBuilderMultiSampleVector</a> into BCF-encoded format suitable for passing to <a class="el" href="classgamgee_1_1_variant_builder.html#a0d1a1436ac871c3ace750329e5ba74c8" title="Set the genotypes (GT) field for all samples at once using an efficient flattened (one-dimensional) v...">VariantBuilder::set_genotypes()</a>. No phasing is added. </p>
+<p>Converts multiple genotypes stored in a <a class="el" href="classgamgee_1_1_variant_builder_multi_sample_vector.html" title="Class that allows you to efficiently prepare multi-sample data for setting individual fields in Varia...">VariantBuilderMultiSampleVector</a> into BCF-encoded format suitable for passing to htslib. No phasing is added. </p>
+<dl class="section note"><dt>Note</dt><dd>Do not call this function yourself before passing genotypes into <a class="el" href="classgamgee_1_1_variant_builder.html" title="VariantBuilder: construct Variant records from scratch (and, coming soon, from existing Variant recor...">VariantBuilder</a> &ndash; the builder will call it for you as necessary. Unless you are working with low-level BCF data you probably do not ever need to call this function. </dd></dl>
 
 </div>
 </div>
@@ -988,7 +992,7 @@ Static Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 17 2014 18:39:58 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 18 2014 13:17:59 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

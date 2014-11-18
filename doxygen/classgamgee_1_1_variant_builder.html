@@ -226,10 +226,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ada19d70b1b04effa3dae32c1ee9a01a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for all samples at once using an efficient flattened (one-dimensional) vector, MOVING the provided values.  <a href="#ada19d70b1b04effa3dae32c1ee9a01a2">More...</a><br /></td></tr>
 <tr class="separator:ada19d70b1b04effa3dae32c1ee9a01a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb2c97a4caccae8487520df149a7ef52"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#afb2c97a4caccae8487520df149a7ef52">set_genotypes</a> (const std::vector&lt; std::vector&lt; int32_t &gt;&gt; &amp;genotypes_for_all_samples)</td></tr>
-<tr class="memdesc:afb2c97a4caccae8487520df149a7ef52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for all samples at once by nested vector, copying the provided values.  <a href="#afb2c97a4caccae8487520df149a7ef52">More...</a><br /></td></tr>
+<tr class="memdesc:afb2c97a4caccae8487520df149a7ef52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for all samples at once by nested vector, COPYING the provided values.  <a href="#afb2c97a4caccae8487520df149a7ef52">More...</a><br /></td></tr>
 <tr class="separator:afb2c97a4caccae8487520df149a7ef52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa4697cf3394eafe427fed6d17a7a174"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#afa4697cf3394eafe427fed6d17a7a174">set_genotypes</a> (std::vector&lt; std::vector&lt; int32_t &gt;&gt; &amp;&amp;genotypes_for_all_samples)</td></tr>
-<tr class="memdesc:afa4697cf3394eafe427fed6d17a7a174"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for all samples at once by nested vector, moving the provided values.  <a href="#afa4697cf3394eafe427fed6d17a7a174">More...</a><br /></td></tr>
+<tr class="memdesc:afa4697cf3394eafe427fed6d17a7a174"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for all samples at once by nested vector, MOVING the provided values.  <a href="#afa4697cf3394eafe427fed6d17a7a174">More...</a><br /></td></tr>
 <tr class="separator:afa4697cf3394eafe427fed6d17a7a174"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab39b8ab240ea63afd5fd69309c9c6bac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ab39b8ab240ea63afd5fd69309c9c6bac">set_integer_individual_field</a> (const std::string &amp;tag, const <a class="el" href="classgamgee_1_1_variant_builder_multi_sample_vector.html">VariantBuilderMultiSampleVector</a>&lt; int32_t &gt; &amp;values_for_all_samples)</td></tr>
 <tr class="memdesc:ab39b8ab240ea63afd5fd69309c9c6bac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set an integer individual field for all samples at once by name using an efficient flattened (one-dimensional) vector, COPYING the provided values.  <a href="#ab39b8ab240ea63afd5fd69309c9c6bac">More...</a><br /></td></tr>
@@ -292,11 +292,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aab4c859786c762e8c8a91e61bbaf8cfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a string individual field for all samples at once by index, moving the provided values.  <a href="#aab4c859786c762e8c8a91e61bbaf8cfa">More...</a><br /></td></tr>
 <tr class="separator:aab4c859786c762e8c8a91e61bbaf8cfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8fe52db4cc7f67fabd8a91610de9eaa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ab8fe52db4cc7f67fabd8a91610de9eaa">set_genotype</a> (const std::string &amp;sample, const std::vector&lt; int32_t &gt; &amp;genotype)</td></tr>
-<tr class="memdesc:ab8fe52db4cc7f67fabd8a91610de9eaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for a single sample by sample name.  <a href="#ab8fe52db4cc7f67fabd8a91610de9eaa">More...</a><br /></td></tr>
+<tr class="memdesc:ab8fe52db4cc7f67fabd8a91610de9eaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for a single sample by sample name, copying the genotype before encoding.  <a href="#ab8fe52db4cc7f67fabd8a91610de9eaa">More...</a><br /></td></tr>
 <tr class="separator:ab8fe52db4cc7f67fabd8a91610de9eaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af64883ed26f97f9471b591b8bc400b2b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#af64883ed26f97f9471b591b8bc400b2b">set_genotype</a> (const std::string &amp;sample, std::vector&lt; int32_t &gt; &amp;&amp;genotype)</td></tr>
+<tr class="memdesc:af64883ed26f97f9471b591b8bc400b2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for a single sample by sample name, moving the genotype into the builder and encoding in-place.  <a href="#af64883ed26f97f9471b591b8bc400b2b">More...</a><br /></td></tr>
+<tr class="separator:af64883ed26f97f9471b591b8bc400b2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7998a9347ae72b97a607c6773a23f08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#ac7998a9347ae72b97a607c6773a23f08">set_genotype</a> (const uint32_t sample_index, const std::vector&lt; int32_t &gt; &amp;genotype)</td></tr>
-<tr class="memdesc:ac7998a9347ae72b97a607c6773a23f08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for a single sample by sample index.  <a href="#ac7998a9347ae72b97a607c6773a23f08">More...</a><br /></td></tr>
+<tr class="memdesc:ac7998a9347ae72b97a607c6773a23f08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for a single sample by sample index, copying the genotype before encoding.  <a href="#ac7998a9347ae72b97a607c6773a23f08">More...</a><br /></td></tr>
 <tr class="separator:ac7998a9347ae72b97a607c6773a23f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ff527e8ac6e0c5c19e2c3c372e67281"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#a9ff527e8ac6e0c5c19e2c3c372e67281">set_genotype</a> (const uint32_t sample_index, std::vector&lt; int32_t &gt; &amp;&amp;genotype)</td></tr>
+<tr class="memdesc:a9ff527e8ac6e0c5c19e2c3c372e67281"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the genotypes (GT) field for a single sample by sample index, moving the genotype into the builder and encoding in-place.  <a href="#a9ff527e8ac6e0c5c19e2c3c372e67281">More...</a><br /></td></tr>
+<tr class="separator:a9ff527e8ac6e0c5c19e2c3c372e67281"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6910634a94d22b99b9f5180f128af6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder.html#af6910634a94d22b99b9f5180f128af6b">set_integer_individual_field</a> (const std::string &amp;tag, const std::string &amp;sample, const int32_t value)</td></tr>
 <tr class="memdesc:af6910634a94d22b99b9f5180f128af6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a single-valued integer individual field for a single sample by field and sample name.  <a href="#af6910634a94d22b99b9f5180f128af6b">More...</a><br /></td></tr>
 <tr class="separator:af6910634a94d22b99b9f5180f128af6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -390,9 +396,7 @@ Public Member Functions</h2></td></tr>
 <p>Finally, pass your multi-sample vector into a setter function (favoring the functions that take field indices and use move semantics for high performance):</p>
 <p>builder.set_integer_individual_field(field_index, std::move(multi_sample_vector));</p>
 <p>The advantage of the <a class="el" href="classgamgee_1_1_variant_builder_multi_sample_vector.html" title="Class that allows you to efficiently prepare multi-sample data for setting individual fields in Varia...">VariantBuilderMultiSampleVector</a> approach is much greater efficiency in terms of data locality and memory allocations.</p>
-<p>-The <a class="el" href="classgamgee_1_1_genotype.html" title="Encodes a genotype. ">Genotype</a> setter functions require you to encode your genotype data with one of the <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a> functions before passing it in.</p>
-<p>For example, if you want to encode the genotype 0/1, create a vector with {0, 1}, pass it to <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a>, then pass it to the appropriate <a class="el" href="classgamgee_1_1_variant_builder.html#ab8fe52db4cc7f67fabd8a91610de9eaa" title="Set the genotypes (GT) field for a single sample by sample name. ">set_genotype()</a> function.</p>
-<p>Multi-sample collections of genotypes (either a <a class="el" href="classgamgee_1_1_variant_builder_multi_sample_vector.html" title="Class that allows you to efficiently prepare multi-sample data for setting individual fields in Varia...">VariantBuilderMultiSampleVector</a> or a vector&lt;vector&gt;) must also be encoded before passing them to the builder. Use <a class="el" href="classgamgee_1_1_genotype.html#ac62b7ad602284c04a4f6e159471fb325" title="Converts multiple vectors of allele indices representing genotypes into BCF-encoded format suitable f...">Genotype::encode_genotypes()</a> to encode them (note the plural). </p>
+<p>-The genotype setter functions DO NOT require you to encode your genotype data with one of the <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a> functions before passing it in &ndash; they will call the appropriate encode function for you. Pass your genotypes by rvalue (ie., use std::move()) if you want to avoid an extra copy during genotype encoding and don't need to re-use your genotype data. See the comments to the <a class="el" href="classgamgee_1_1_genotype.html" title="Encodes a genotype. ">Genotype</a> setter functions for examples of how to construct and pass in genotypes. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ace610039f04b4360626880dc9df306e1"></a>
 <div class="memitem">
@@ -1954,16 +1958,57 @@ Less efficient than setting using the field index </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Set the genotypes (GT) field for a single sample by sample name. </p>
+<p>Set the genotypes (GT) field for a single sample by sample name, copying the genotype before encoding. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sample</td><td>name of the sample whose genotype to set </td></tr>
-    <tr><td class="paramname">genotype</td><td>encoded genotype for the specified sample (see notes below)</td></tr>
+    <tr><td class="paramname">genotype</td><td>genotype for the specified sample (see notes below)</td></tr>
   </table>
   </dd>
 </dl>
-<p>Examples: For genotype 0/1, create vector {0, 1}, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a> For genotype 1/., create vector {1, -1}, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a> For genotype ./., create vector {-1, -1}, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a></p>
-<dl class="section note"><dt>Note</dt><dd>must pass vector to appropriate <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a> function before passing it to this function</dd>
+<p>Examples: For genotype 0/1, create vector {0, 1} For genotype 1/., create vector {1, -1} For genotype ./., create vector {-1, -1}</p>
+<dl class="section note"><dt>Note</dt><dd>Does not support genotypes with phased alleles </dd>
+<dd>
+Less efficient than moving the genotype into the builder </dd>
+<dd>
+Less efficient than setting using the sample index </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af64883ed26f97f9471b591b8bc400b2b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp; gamgee::VariantBuilder::set_genotype </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>sample</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int32_t &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>genotype</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the genotypes (GT) field for a single sample by sample name, moving the genotype into the builder and encoding in-place. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sample</td><td>name of the sample whose genotype to set </td></tr>
+    <tr><td class="paramname">genotype</td><td>genotype for the specified sample (see notes below)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Examples: For genotype 0/1, create vector {0, 1} For genotype 1/., create vector {1, -1} For genotype ./., create vector {-1, -1}</p>
+<dl class="section note"><dt>Note</dt><dd>Does not support genotypes with phased alleles </dd>
 <dd>
 Less efficient than setting using the sample index </dd></dl>
 
@@ -1993,16 +2038,55 @@ Less efficient than setting using the sample index </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Set the genotypes (GT) field for a single sample by sample index. </p>
+<p>Set the genotypes (GT) field for a single sample by sample index, copying the genotype before encoding. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sample_index</td><td>index of the sample whose genotype to set (from a header lookup) </td></tr>
-    <tr><td class="paramname">genotype</td><td>encoded genotype for the specified sample (see notes below)</td></tr>
+    <tr><td class="paramname">genotype</td><td>genotype for the specified sample (see notes below)</td></tr>
   </table>
   </dd>
 </dl>
-<p>Examples: For genotype 0/1, create vector {0, 1}, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a> For genotype 1/., create vector {1, -1}, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a> For genotype ./., create vector {-1, -1}, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a></p>
-<dl class="section note"><dt>Note</dt><dd>must pass vector to appropriate <a class="el" href="classgamgee_1_1_genotype.html#a014bc9217f7c78d56ae017da672ceb2a" title="Converts a vector of allele indices representing a genotype into BCF-encoded format suitable for pass...">Genotype::encode_genotype()</a> function before passing it to this function </dd></dl>
+<p>Examples: For genotype 0/1, create vector {0, 1} For genotype 1/., create vector {1, -1} For genotype ./., create vector {-1, -1}</p>
+<dl class="section note"><dt>Note</dt><dd>Does not support genotypes with phased alleles </dd>
+<dd>
+Less efficient than moving the genotype into the builder </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9ff527e8ac6e0c5c19e2c3c372e67281"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgamgee_1_1_variant_builder.html">VariantBuilder</a> &amp; gamgee::VariantBuilder::set_genotype </td>
+          <td>(</td>
+          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramname"><em>sample_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int32_t &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>genotype</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the genotypes (GT) field for a single sample by sample index, moving the genotype into the builder and encoding in-place. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sample_index</td><td>index of the sample whose genotype to set (from a header lookup) </td></tr>
+    <tr><td class="paramname">genotype</td><td>genotype for the specified sample (see notes below)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Examples: For genotype 0/1, create vector {0, 1} For genotype 1/., create vector {1, -1} For genotype ./., create vector {-1, -1}</p>
+<dl class="section note"><dt>Note</dt><dd>Does not support genotypes with phased alleles </dd></dl>
 
 </div>
 </div>
@@ -2023,20 +2107,21 @@ Less efficient than setting using the sample index </dd></dl>
 <p>Set the genotypes (GT) field for all samples at once using an efficient flattened (one-dimensional) vector, COPYING the provided values. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">genotypes_for_all_samples</td><td>encoded genotypes for all samples as a <a class="el" href="classgamgee_1_1_variant_builder_multi_sample_vector.html" title="Class that allows you to efficiently prepare multi-sample data for setting individual fields in Varia...">VariantBuilderMultiSampleVector</a> (see note below)</td></tr>
+    <tr><td class="paramname">genotypes_for_all_samples</td><td>genotypes for all samples as a <a class="el" href="classgamgee_1_1_variant_builder_multi_sample_vector.html" title="Class that allows you to efficiently prepare multi-sample data for setting individual fields in Varia...">VariantBuilderMultiSampleVector</a> (see note below)</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>must pass vector to appropriate <a class="el" href="classgamgee_1_1_genotype.html#ac62b7ad602284c04a4f6e159471fb325" title="Converts multiple vectors of allele indices representing genotypes into BCF-encoded format suitable f...">Genotype::encode_genotypes()</a> function before passing it to this function</dd>
-<dd>
-To create a multi-sample flattened vector for use with this function, first determine the number of samples and the maximum ploidy across all samples, then get a pre-initialized vector from the builder:</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>To create a multi-sample flattened vector for use with this function, first determine the number of samples and the maximum ploidy across all samples, then get a pre-initialized vector from the builder:</dd></dl>
 <p>auto multi_sample_vector = builder.get_genotype_multi_sample_vector(num_samples, max_ploidy);</p>
 <p>This vector will have missing values for all samples, with appropriate padding to the maximum ploidy.</p>
 <p>Then, fill in the values for each non-missing sample by invoking the set_sample_value() and/or set_sample_values() functions on your multi-sample vector (set_sample_value() is more efficient than set_sample_values() since it doesn't require a vector construction/destruction for each call). You don't have to worry about samples with no values, since all samples start out with missing values, however you should represent each no-call allele with -1.</p>
+<p>For example, to set sample 0's genotype to 0/1, you could call multi_sample_vector.set_sample_values(0, {0, 1}), or to set it to 1/., you could call multi_sample_vector.set_sample_values(0, {1, -1}). As noted above, setting one allele at a time via set_sample_value() will be more efficient than set_sample_values() since it doesn't require a vector allocation.</p>
 <p>Finally, pass your multi-sample vector into this function:</p>
 <p>builder.set_genotypes(multi_sample_vector);</p>
 <p>If this process is too inconvenient, or you can't know the maximum ploidy in advance, use a less-efficient function that takes a nested vector.</p>
-<dl class="section note"><dt>Note</dt><dd>Less efficient than moving the values into the builder </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Does not support genotypes with phased alleles </dd>
+<dd>
+Less efficient than moving the values into the builder </dd></dl>
 
 </div>
 </div>
@@ -2057,19 +2142,19 @@ To create a multi-sample flattened vector for use with this function, first dete
 <p>Set the genotypes (GT) field for all samples at once using an efficient flattened (one-dimensional) vector, MOVING the provided values. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">genotypes_for_all_samples</td><td>encoded genotypes for all samples as a <a class="el" href="classgamgee_1_1_variant_builder_multi_sample_vector.html" title="Class that allows you to efficiently prepare multi-sample data for setting individual fields in Varia...">VariantBuilderMultiSampleVector</a> (see note below)</td></tr>
+    <tr><td class="paramname">genotypes_for_all_samples</td><td>genotypes for all samples as a <a class="el" href="classgamgee_1_1_variant_builder_multi_sample_vector.html" title="Class that allows you to efficiently prepare multi-sample data for setting individual fields in Varia...">VariantBuilderMultiSampleVector</a> (see note below)</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>must pass vector to appropriate <a class="el" href="classgamgee_1_1_genotype.html#ac62b7ad602284c04a4f6e159471fb325" title="Converts multiple vectors of allele indices representing genotypes into BCF-encoded format suitable f...">Genotype::encode_genotypes()</a> function before passing it to this function</dd>
-<dd>
-To create a multi-sample flattened vector for use with this function, first determine the number of samples and the maximum ploidy across all samples, then get a pre-initialized vector from the builder:</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>To create a multi-sample flattened vector for use with this function, first determine the number of samples and the maximum ploidy across all samples, then get a pre-initialized vector from the builder:</dd></dl>
 <p>auto multi_sample_vector = builder.get_genotype_multi_sample_vector(num_samples, max_ploidy);</p>
 <p>This vector will have missing values for all samples, with appropriate padding to the maximum ploidy.</p>
 <p>Then, fill in the values for each non-missing sample by invoking the set_sample_value() and/or set_sample_values() functions on your multi-sample vector (set_sample_value() is more efficient than set_sample_values() since it doesn't require a vector construction/destruction for each call). You don't have to worry about samples with no values, since all samples start out with missing values, however you should represent each no-call allele with -1.</p>
+<p>For example, to set sample 0's genotype to 0/1, you could call multi_sample_vector.set_sample_values(0, {0, 1}), or to set it to 1/., you could call multi_sample_vector.set_sample_values(0, {1, -1}). As noted above, setting one allele at a time via set_sample_value() will be more efficient than set_sample_values() since it doesn't require a vector allocation.</p>
 <p>Finally, MOVE your multi-sample vector into this function:</p>
 <p>builder.set_genotypes(std::move(multi_sample_vector));</p>
-<p>If this process is too inconvenient, or you can't know the maximum ploidy in advance, use a less-efficient function that takes a nested vector. </p>
+<p>If this process is too inconvenient, or you can't know the maximum ploidy in advance, use a less-efficient function that takes a nested vector.</p>
+<dl class="section note"><dt>Note</dt><dd>Does not support genotypes with phased alleles </dd></dl>
 
 </div>
 </div>
@@ -2087,19 +2172,19 @@ To create a multi-sample flattened vector for use with this function, first dete
       </table>
 </div><div class="memdoc">
 
-<p>Set the genotypes (GT) field for all samples at once by nested vector, copying the provided values. </p>
+<p>Set the genotypes (GT) field for all samples at once by nested vector, COPYING the provided values. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">genotypes_for_all_samples</td><td>encoded genotypes for all samples in order of sample index, with one inner vector per sample (no padding necessary)</td></tr>
+    <tr><td class="paramname">genotypes_for_all_samples</td><td>genotypes for all samples in order of sample index, with one inner vector per sample (no padding necessary)</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>must pass vector to appropriate <a class="el" href="classgamgee_1_1_genotype.html#ac62b7ad602284c04a4f6e159471fb325" title="Converts multiple vectors of allele indices representing genotypes into BCF-encoded format suitable f...">Genotype::encode_genotypes()</a> function before passing it to this function</dd>
-<dd>
-With a nested vector, each inner vector represents the genotypes for the sample with the corresponding index. There is no need to manually pad to the maximum ploidy, but you do need to add a missing value (-1) for each missing/no-call allele.</dd></dl>
-<p>For example, if you had Sample1=0/1 Sample2=./. Sample3=. Sample4=0/1/2 you would need to create the following nested vector, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#ac62b7ad602284c04a4f6e159471fb325" title="Converts multiple vectors of allele indices representing genotypes into BCF-encoded format suitable f...">Genotype::encode_genotypes()</a>:</p>
+<dl class="section note"><dt>Note</dt><dd>With a nested vector, each inner vector represents the genotypes for the sample with the corresponding index. There is no need to manually pad to the maximum ploidy, but you do need to add a missing value (-1) for each missing/no-call allele.</dd></dl>
+<p>For example, if you had Sample1=0/1 Sample2=./. Sample3=. Sample4=0/1/2 you would need to create the following nested vector:</p>
 <p>{ {0, 1}, {-1, -1}, {}, {0, 1, 2} }</p>
-<dl class="section note"><dt>Note</dt><dd>Less efficient than using a flattened vector </dd>
+<dl class="section note"><dt>Note</dt><dd>Does not support genotypes with phased alleles </dd>
+<dd>
+Less efficient than using a flattened vector </dd>
 <dd>
 Less efficient than moving the values into the builder </dd></dl>
 
@@ -2119,19 +2204,19 @@ Less efficient than moving the values into the builder </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Set the genotypes (GT) field for all samples at once by nested vector, moving the provided values. </p>
+<p>Set the genotypes (GT) field for all samples at once by nested vector, MOVING the provided values. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">genotypes_for_all_samples</td><td>encoded genotypes for all samples in order of sample index, with one inner vector per sample (no padding necessary)</td></tr>
+    <tr><td class="paramname">genotypes_for_all_samples</td><td>genotypes for all samples in order of sample index, with one inner vector per sample (no padding necessary)</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>must pass vector to appropriate <a class="el" href="classgamgee_1_1_genotype.html#ac62b7ad602284c04a4f6e159471fb325" title="Converts multiple vectors of allele indices representing genotypes into BCF-encoded format suitable f...">Genotype::encode_genotypes()</a> function before passing it to this function</dd>
-<dd>
-With a nested vector, each inner vector represents the genotypes for the sample with the corresponding index. There is no need to manually pad to the maximum ploidy, but you do need to add a missing value (-1) for each missing/no-call allele.</dd></dl>
-<p>For example, if you had Sample1=0/1 Sample2=./. Sample3=. Sample4=0/1/2 you would need to create the following nested vector, then pass it to <a class="el" href="classgamgee_1_1_genotype.html#ac62b7ad602284c04a4f6e159471fb325" title="Converts multiple vectors of allele indices representing genotypes into BCF-encoded format suitable f...">Genotype::encode_genotypes()</a>:</p>
+<dl class="section note"><dt>Note</dt><dd>With a nested vector, each inner vector represents the genotypes for the sample with the corresponding index. There is no need to manually pad to the maximum ploidy, but you do need to add a missing value (-1) for each missing/no-call allele.</dd></dl>
+<p>For example, if you had Sample1=0/1 Sample2=./. Sample3=. Sample4=0/1/2 you would need to create the following nested vector:</p>
 <p>{ {0, 1}, {-1, -1}, {}, {0, 1, 2} }</p>
-<dl class="section note"><dt>Note</dt><dd>Less efficient than using a flattened vector </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Does not support genotypes with phased alleles </dd>
+<dd>
+Less efficient than using a flattened vector </dd></dl>
 
 </div>
 </div>
@@ -3166,7 +3251,7 @@ Less efficient than setting using the field index </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 17 2014 18:39:58 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 18 2014 13:18:00 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
