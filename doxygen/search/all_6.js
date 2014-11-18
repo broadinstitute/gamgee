@@ -43,6 +43,7 @@ var searchData=
   ['field_5ftype',['field_type',['../classgamgee_1_1_variant_builder_individual_field.html#a2896a3fa64d3e3943810d09d7c001453',1,'gamgee::VariantBuilderIndividualField::field_type()'],['../classgamgee_1_1_variant_header.html#ad4cfea3099357d3df38b8e299e9bc60f',1,'gamgee::VariantHeader::field_type(const std::string &amp;tag, const int32_t field_category) const '],['../classgamgee_1_1_variant_header.html#a451f09a5949db0dab2bb5eae99713e14',1,'gamgee::VariantHeader::field_type(const int32_t index, const int32_t field_category) const ']]],
   ['field_5fvalue',['field_value',['../classgamgee_1_1_variant_builder_core_field.html#a0e186eb35dd6f97efd1b24f1420021bf',1,'gamgee::VariantBuilderCoreField']]],
   ['fieldarith_2ec',['fieldarith.c',['../fieldarith_8c.html',1,'']]],
+  ['fieldorderedvariantheadermerger',['FieldOrderedVariantHeaderMerger',['../namespacegamgee.html#ae5d11e6636f1234780da7db8983ec77b',1,'gamgee']]],
   ['file',['file',['../struct__bcf__sr__regions__t.html#af284022bbcb23b03688d75ca3e6581aa',1,'_bcf_sr_regions_t::file()'],['../structbcf__sr__t.html#ae3952185458fe2227be046737a81a4ae',1,'bcf_sr_t::file()'],['../struct__bcf__sweep__t.html#aa9d4134426b5ce989b52e1286f10aa26',1,'_bcf_sweep_t::file()']]],
   ['file_5fdef',['file_def',['../structcram__fd.html#a39e6811bd07f97471be540651ebe713a',1,'cram_fd']]],
   ['file_5fexists',['file_exists',['../files_8c.html#addea274901e7b52d3b23a032d770e448',1,'files.c']]],

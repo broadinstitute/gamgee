@@ -22,6 +22,7 @@ var searchData=
   ['tbx_5freadrec',['tbx_readrec',['../tbx_8h.html#ad45d989f5dd4a82e353d5a409277d52d',1,'tbx_readrec(BGZF *fp, void *tbxv, void *sv, int *tid, int *beg, int *end):&#160;tbx.c'],['../tbx_8c.html#ad45d989f5dd4a82e353d5a409277d52d',1,'tbx_readrec(BGZF *fp, void *tbxv, void *sv, int *tid, int *beg, int *end):&#160;tbx.c']]],
   ['tbx_5fseqnames',['tbx_seqnames',['../tbx_8h.html#a8b065ad0f84f83cac5c20f842f7bda10',1,'tbx_seqnames(tbx_t *tbx, int *n):&#160;tbx.c'],['../tbx_8c.html#a8b065ad0f84f83cac5c20f842f7bda10',1,'tbx_seqnames(tbx_t *tbx, int *n):&#160;tbx.c']]],
   ['tbx_5fset_5fmeta',['tbx_set_meta',['../tbx_8c.html#aa2b6d94b996258cb5514a745e61219aa',1,'tbx.c']]],
+  ['test_5flut_5fbase',['test_lut_base',['../merged__vcf__lut_8h.html#adceb67c3ea486161b59f9acd85eb04f1',1,'merged_vcf_lut.h']]],
   ['tile_5fleft',['tile_left',['../classgamgee_1_1_interval.html#a9a697768a6abbb228d55ad3cdad4ac49',1,'gamgee::Interval']]],
   ['tile_5fright',['tile_right',['../classgamgee_1_1_interval.html#a7b4c98f6d065175d3322d4ebd7968afa',1,'gamgee::Interval']]],
   ['to_5fstring',['to_string',['../classgamgee_1_1_base_quals.html#a9fb2b6c9c98f1f9b0684ab78374496aa',1,'gamgee::BaseQuals::to_string()'],['../classgamgee_1_1_cigar.html#a2a2f18fe4bdf85b12f641b2d56dad656',1,'gamgee::Cigar::to_string()'],['../classgamgee_1_1_read_bases.html#af30b8f81073f583fd5e2cc38afd92876',1,'gamgee::ReadBases::to_string()']]],

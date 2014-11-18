@@ -16,6 +16,8 @@ var searchData=
   ['variantheader',['VariantHeader',['../classgamgee_1_1_variant_header.html',1,'gamgee']]],
   ['variantheaderbuilder',['VariantHeaderBuilder',['../classgamgee_1_1_variant_header_builder.html',1,'gamgee']]],
   ['variantheaderdeleter',['VariantHeaderDeleter',['../structgamgee_1_1utils_1_1_variant_header_deleter.html',1,'gamgee::utils']]],
+  ['variantheadermerger',['VariantHeaderMerger',['../singletongamgee_1_1_variant_header_merger.html',1,'gamgee']]],
+  ['variantheadermerger_3c_20true_2c_20true_2c_20true_2c_20true_20_3e',['VariantHeaderMerger&lt; true, true, true, true &gt;',['../singletongamgee_1_1_variant_header_merger.html',1,'gamgee']]],
   ['variantiterator',['VariantIterator',['../classgamgee_1_1_variant_iterator.html',1,'gamgee']]],
   ['variantreader',['VariantReader',['../classgamgee_1_1_variant_reader.html',1,'gamgee']]],
   ['variantwriter',['VariantWriter',['../classgamgee_1_1_variant_writer.html',1,'gamgee']]]

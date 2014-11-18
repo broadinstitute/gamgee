@@ -134,6 +134,7 @@ var searchData=
   ['snp',['snp',['../classgamgee_1_1_genotype.html#a3826cabaacce33beb30e8a1626cc8fee',1,'gamgee::Genotype']]],
   ['start',['start',['../classgamgee_1_1_interval.html#a94fed0996825250fdc78a3c6ef9bc9a0',1,'gamgee::Interval']]],
   ['stop',['stop',['../classgamgee_1_1_interval.html#ae00b92f0f6a3c7be2db07e379ed0296c',1,'gamgee::Interval']]],
+  ['store_5fmerged_5ffield_5fidx_5ffor_5fenum',['store_merged_field_idx_for_enum',['../singletongamgee_1_1_variant_header_merger.html#ac2275a2e7b5540346f3d20791a9dc007',1,'gamgee::VariantHeaderMerger']]],
   ['str',['str',['../classgamgee_1_1_interval.html#a71694d1130e81bdd74d8a58548ba67f2',1,'gamgee::Interval']]],
   ['string_5falloc',['string_alloc',['../string__alloc_8c.html#acb6c0f8f184329a96bb740cd5d20b6cf',1,'string_alloc(string_alloc_t *a_str, size_t length):&#160;string_alloc.c'],['../string__alloc_8h.html#acb6c0f8f184329a96bb740cd5d20b6cf',1,'string_alloc(string_alloc_t *a_str, size_t length):&#160;string_alloc.c']]],
   ['string_5fdup',['string_dup',['../string__alloc_8c.html#acecc5fe4d005f8660755f16ac7f57472',1,'string_dup(string_alloc_t *a_str, char *instr):&#160;string_alloc.c'],['../string__alloc_8h.html#acecc5fe4d005f8660755f16ac7f57472',1,'string_dup(string_alloc_t *a_str, char *instr):&#160;string_alloc.c']]],

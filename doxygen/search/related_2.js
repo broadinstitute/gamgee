@@ -1,9 +1,5 @@
 var searchData=
 [
-  ['variant',['Variant',['../classgamgee_1_1_variant_header.html#aa3577d92d98656c9a368b297edd5f320',1,'gamgee::VariantHeader']]],
-  ['variantbuilder',['VariantBuilder',['../classgamgee_1_1_variant.html#a2a1a240fa3d72570ffc9a9d426b0336c',1,'gamgee::Variant::VariantBuilder()'],['../classgamgee_1_1_variant_builder_multi_sample_vector.html#a2a1a240fa3d72570ffc9a9d426b0336c',1,'gamgee::VariantBuilderMultiSampleVector::VariantBuilder()'],['../classgamgee_1_1_variant_header.html#a2a1a240fa3d72570ffc9a9d426b0336c',1,'gamgee::VariantHeader::VariantBuilder()']]],
-  ['variantbuilderindividualregion',['VariantBuilderIndividualRegion',['../classgamgee_1_1_variant_header.html#a3dd250a54c6e5efa8fab0c238bf3df2c',1,'gamgee::VariantHeader']]],
-  ['variantbuildersharedregion',['VariantBuilderSharedRegion',['../classgamgee_1_1_variant_header.html#a9f2423bc44bf415a6f3c388d16d76497',1,'gamgee::VariantHeader']]],
-  ['variantheaderbuilder',['VariantHeaderBuilder',['../classgamgee_1_1_variant_header.html#af17dc6e3178d144772bce073ab1e773a',1,'gamgee::VariantHeader']]],
-  ['variantwriter',['VariantWriter',['../classgamgee_1_1_variant.html#a24da1ae869010cf623de7749910a86e2',1,'gamgee::Variant::VariantWriter()'],['../classgamgee_1_1_variant_header.html#a24da1ae869010cf623de7749910a86e2',1,'gamgee::VariantHeader::VariantWriter()']]]
+  ['sambuilder',['SamBuilder',['../classgamgee_1_1_base_quals.html#a894c01d44cb439141bca646766e23137',1,'gamgee::BaseQuals::SamBuilder()'],['../classgamgee_1_1_cigar.html#a894c01d44cb439141bca646766e23137',1,'gamgee::Cigar::SamBuilder()'],['../classgamgee_1_1_read_bases.html#a894c01d44cb439141bca646766e23137',1,'gamgee::ReadBases::SamBuilder()'],['../classgamgee_1_1_sam.html#a894c01d44cb439141bca646766e23137',1,'gamgee::Sam::SamBuilder()'],['../classgamgee_1_1_sam_header.html#a894c01d44cb439141bca646766e23137',1,'gamgee::SamHeader::SamBuilder()']]],
+  ['samwriter',['SamWriter',['../classgamgee_1_1_sam.html#aceb0e064174204e66199adc94aa54246',1,'gamgee::Sam::SamWriter()'],['../classgamgee_1_1_sam_header.html#aceb0e064174204e66199adc94aa54246',1,'gamgee::SamHeader::SamWriter()']]]
 ];

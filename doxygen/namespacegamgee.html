@@ -269,6 +269,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header_builder.html">VariantHeaderBuilder</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility class to build <a class="el" href="classgamgee_1_1_variant_header.html" title="Utility class to hold a variant header. ">VariantHeader</a> objects from scratch.  <a href="classgamgee_1_1_variant_header_builder.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="singletongamgee_1_1_variant_header_merger.html">VariantHeaderMerger</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_iterator.html">VariantIterator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility class to enable for-each style iteration in the <a class="el" href="classgamgee_1_1_variant_reader.html" title="Utility class to read a VCF/BCF file with an appropriate Variant iterator from a stream (e...">VariantReader</a> class.  <a href="classgamgee_1_1_variant_iterator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -291,6 +293,10 @@ Typedefs</h2></td></tr>
 <tr class="separator:aa7286f2e8ef592ae858c97b6f9045d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59662b9ac19e4dc28f4ea79e7566a348"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a59662b9ac19e4dc28f4ea79e7566a348">AlleleMask</a> = std::vector&lt; <a class="el" href="namespacegamgee.html#a2812b6cab5cc9468e453d345c548c11d">AlleleType</a> &gt;</td></tr>
 <tr class="separator:a59662b9ac19e4dc28f4ea79e7566a348"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1336358508a6dd7785c62955e30be1eb"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a1336358508a6dd7785c62955e30be1eb">InputOrderedVariantHeaderMerger</a> = <a class="el" href="singletongamgee_1_1_variant_header_merger.html">VariantHeaderMerger</a>&lt; true, true, true, true &gt;</td></tr>
+<tr class="separator:a1336358508a6dd7785c62955e30be1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5d11e6636f1234780da7db8983ec77b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#ae5d11e6636f1234780da7db8983ec77b">FieldOrderedVariantHeaderMerger</a> = <a class="el" href="singletongamgee_1_1_variant_header_merger.html">VariantHeaderMerger</a>&lt; false, false, false, false &gt;</td></tr>
+<tr class="separator:ae5d11e6636f1234780da7db8983ec77b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fb9354407ff91cd6b2a1e748b985891"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee.html#a9fb9354407ff91cd6b2a1e748b985891">SingleVariantReader</a> = <a class="el" href="classgamgee_1_1_variant_reader.html">VariantReader</a>&lt; <a class="el" href="classgamgee_1_1_variant_iterator.html">VariantIterator</a> &gt;</td></tr>
 <tr class="separator:a9fb9354407ff91cd6b2a1e748b985891"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -432,12 +438,36 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae5d11e6636f1234780da7db8983ec77b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespacegamgee.html#ae5d11e6636f1234780da7db8983ec77b">gamgee::FieldOrderedVariantHeaderMerger</a> = typedef <a class="el" href="singletongamgee_1_1_variant_header_merger.html">VariantHeaderMerger</a>&lt;false,false,false,false&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="ad57cad9569e33a2a0708f90784652a38"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">using <a class="el" href="namespacegamgee.html#ad57cad9569e33a2a0708f90784652a38">gamgee::IndexedSingleSamReader</a> = typedef <a class="el" href="classgamgee_1_1_indexed_sam_reader.html">IndexedSamReader</a>&lt;<a class="el" href="classgamgee_1_1_indexed_sam_iterator.html">IndexedSamIterator</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1336358508a6dd7785c62955e30be1eb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespacegamgee.html#a1336358508a6dd7785c62955e30be1eb">gamgee::InputOrderedVariantHeaderMerger</a> = typedef <a class="el" href="singletongamgee_1_1_variant_header_merger.html">VariantHeaderMerger</a>&lt;true,true,true,true&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1140,7 +1170,7 @@ template&lt;class VALUE &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 18 2014 13:17:59 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 18 2014 17:41:45 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

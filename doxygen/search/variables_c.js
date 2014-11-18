@@ -8,6 +8,8 @@ var searchData=
   ['m_5ffmt',['m_fmt',['../structbcf__dec__t.html#ac778065ffa445e0e016bdf1d76fb2a71',1,'bcf_dec_t']]],
   ['m_5fid',['m_id',['../structbcf__dec__t.html#a6c796269aa0d0249b25721b137925b83',1,'bcf_dec_t']]],
   ['m_5finfo',['m_info',['../structbcf__dec__t.html#ab13a73de294be5f251df99cb1aaafa35',1,'bcf_dec_t']]],
+  ['m_5fnum_5finput_5fvcfs',['m_num_input_vcfs',['../classgamgee_1_1utils_1_1_merged_v_c_f_l_u_t_base.html#aec776cc6ad3c7b5d73e4e1554a864d92',1,'gamgee::utils::MergedVCFLUTBase']]],
+  ['m_5fnum_5fmerged_5ffields',['m_num_merged_fields',['../classgamgee_1_1utils_1_1_merged_v_c_f_l_u_t_base.html#a387c13108bde93c8d4262cb2f571f483',1,'gamgee::utils::MergedVCFLUTBase']]],
   ['m_5fvariant_5ffile_5fptr',['m_variant_file_ptr',['../classgamgee_1_1_variant_iterator.html#af73c3d98399b4a6ab950c2d47c45fbac',1,'gamgee::VariantIterator']]],
   ['m_5fvariant_5fheader_5fptr',['m_variant_header_ptr',['../classgamgee_1_1_variant_iterator.html#aa97ec226db2093779a1119fc18933b1a',1,'gamgee::VariantIterator']]],
   ['m_5fvariant_5frecord',['m_variant_record',['../classgamgee_1_1_variant_iterator.html#aa82ee96fa2f302844ff2d6e09d273899',1,'gamgee::VariantIterator']]],

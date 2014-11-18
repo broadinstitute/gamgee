@@ -132,6 +132,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a38335aed90579cc4fb9c9b066788c881"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_reader.html#a38335aed90579cc4fb9c9b066788c881">combined_header</a> () const </td></tr>
 <tr class="memdesc:a38335aed90579cc4fb9c9b066788c881"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a combined header for the files being read  <a href="#a38335aed90579cc4fb9c9b066788c881">More...</a><br /></td></tr>
 <tr class="separator:a38335aed90579cc4fb9c9b066788c881"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe40c36044b5595abcb1eb7817e39e77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegamgee.html#a1336358508a6dd7785c62955e30be1eb">InputOrderedVariantHeaderMerger</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_reader.html#abe40c36044b5595abcb1eb7817e39e77">get_variant_header_merger</a> ()</td></tr>
+<tr class="memdesc:abe40c36044b5595abcb1eb7817e39e77"><td class="mdescLeft">&#160;</td><td class="mdescRight">return <a class="el" href="singletongamgee_1_1_variant_header_merger.html">VariantHeaderMerger</a> object  <a href="#abe40c36044b5595abcb1eb7817e39e77">More...</a><br /></td></tr>
+<tr class="separator:abe40c36044b5595abcb1eb7817e39e77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e8753f2b040b209d19b28bf9b225eab"><td class="memItemLeft" align="right" valign="top">const std::vector<br class="typebreak" />
+&lt; std::shared_ptr&lt; <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_reader.html#a2e8753f2b040b209d19b28bf9b225eab">get_input_vcf_headers</a> () const </td></tr>
+<tr class="memdesc:a2e8753f2b040b209d19b28bf9b225eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">return vector of input VCF headers  <a href="#a2e8753f2b040b209d19b28bf9b225eab">More...</a><br /></td></tr>
+<tr class="separator:a2e8753f2b040b209d19b28bf9b225eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class ITERATOR&gt;<br />
@@ -391,6 +398,62 @@ template&lt;class ITERATOR &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a2e8753f2b040b209d19b28bf9b225eab"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ITERATOR &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;std::shared_ptr&lt;<a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a>&gt; &gt;&amp; <a class="el" href="classgamgee_1_1_multiple_variant_reader.html">gamgee::MultipleVariantReader</a>&lt; ITERATOR &gt;::get_input_vcf_headers </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>return vector of input VCF headers </p>
+<dl class="section return"><dt>Returns</dt><dd>vector of input VCF headers </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="abe40c36044b5595abcb1eb7817e39e77"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ITERATOR &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacegamgee.html#a1336358508a6dd7785c62955e30be1eb">InputOrderedVariantHeaderMerger</a>&amp; <a class="el" href="classgamgee_1_1_multiple_variant_reader.html">gamgee::MultipleVariantReader</a>&lt; ITERATOR &gt;::get_variant_header_merger </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>return <a class="el" href="singletongamgee_1_1_variant_header_merger.html">VariantHeaderMerger</a> object </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="singletongamgee_1_1_variant_header_merger.html">VariantHeaderMerger</a> object for the headers of the vcf files being considered </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a6ded7fb8dd5c8530ed1588bdd0455c8f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -494,7 +557,7 @@ template&lt;class ITERATOR &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 18 2014 13:18:00 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 18 2014 17:41:45 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

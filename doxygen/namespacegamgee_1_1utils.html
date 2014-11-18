@@ -89,6 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
@@ -114,6 +115,12 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_i_f_stream_deleter.html">IFStreamDeleter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete an ifstream  <a href="structgamgee_1_1utils_1_1_i_f_stream_deleter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1utils_1_1_merged_v_c_f_alleles_idx_l_u_t.html">MergedVCFAllelesIdxLUT</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">LUT class for storing mappings between allele vectors in the merged file and input VCF files Since the #alleles per site is expected to be small, this class sets the number of fields to 10. This makes any subsequent re-allocations unlikely. The function <a class="el" href="classgamgee_1_1utils_1_1_merged_v_c_f_alleles_idx_l_u_t.html#a2520a01225652511d2f059855760e0ba">resize_luts_if_needed()</a> will almost always return immediately after failing the if condition.  <a href="classgamgee_1_1utils_1_1_merged_v_c_f_alleles_idx_l_u_t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1utils_1_1_merged_v_c_f_l_u_t_base.html">MergedVCFLUTBase</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class to store look up information between fields of merged header and input headers.  <a href="classgamgee_1_1utils_1_1_merged_v_c_f_l_u_t_base.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_sam_body_deleter.html">SamBodyDeleter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a <a class="el" href="structbam1__t.html">bam1_t</a> pointer  <a href="structgamgee_1_1utils_1_1_sam_body_deleter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,6 +138,11 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgamgee_1_1utils_1_1_variant_header_deleter.html">VariantHeaderDeleter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a functor object to delete a <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> pointer  <a href="structgamgee_1_1utils_1_1_variant_header_deleter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:afa0d11f80d0d00dfa89fd53787b7e08e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegamgee_1_1utils.html#afa0d11f80d0d00dfa89fd53787b7e08e">CombineAllelesLUT</a> = <a class="el" href="classgamgee_1_1utils_1_1_merged_v_c_f_alleles_idx_l_u_t.html">MergedVCFAllelesIdxLUT</a>&lt; true, true &gt;</td></tr>
+<tr class="separator:afa0d11f80d0d00dfa89fd53787b7e08e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -331,7 +343,20 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>utility functions for the gamgee library </p>
 <p>This namespace includes typical functors and templates for DNA sequence manipulation as well as low level routines for htslib memory management </p>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+</div><h2 class="groupheader">Typedef Documentation</h2>
+<a class="anchor" id="afa0d11f80d0d00dfa89fd53787b7e08e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespacegamgee_1_1utils.html#afa0d11f80d0d00dfa89fd53787b7e08e">gamgee::utils::CombineAllelesLUT</a> = typedef <a class="el" href="classgamgee_1_1utils_1_1_merged_v_c_f_alleles_idx_l_u_t.html">MergedVCFAllelesIdxLUT</a>&lt;true,true&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
 <a class="anchor" id="a04f2f42b3960b33e4edc7478ce6039ec"></a>
 <div class="memitem">
 <div class="memproto">
@@ -2107,7 +2132,7 @@ template&lt;typename... T&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 18 2014 13:18:00 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 18 2014 17:41:45 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

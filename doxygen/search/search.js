@@ -16,7 +16,7 @@ var indexSectionsWithContent =
   6: "abcfhiklmprstuv",
   7: "abcdhisv",
   8: "abcdefghilmnoprstuvx",
-  9: "rsv",
+  9: "grsv",
   10: "_abcdefghiklmnprstvxz",
   11: "rt"
 };

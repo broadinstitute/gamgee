@@ -211,6 +211,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa40424a94361625d46fb9a19a149ec35"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#aa40424a94361625d46fb9a19a149ec35">sample_index</a> (const std::string &amp;sample) const </td></tr>
 <tr class="memdesc:aa40424a94361625d46fb9a19a149ec35"><td class="mdescLeft">&#160;</td><td class="mdescRight">looks up the index of a particular sample, enabling subsequent O(1) random-access lookups for that sample throughout the iteration.  <a href="#aa40424a94361625d46fb9a19a149ec35">More...</a><br /></td></tr>
 <tr class="separator:aa40424a94361625d46fb9a19a149ec35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff9caa4c885f4ab02428f23f0ecca0ea"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#aff9caa4c885f4ab02428f23f0ecca0ea">get_field_name</a> (const int32_t field_idx) const </td></tr>
+<tr class="separator:aff9caa4c885f4ab02428f23f0ecca0ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2694132e8cedbca1058508a6b7a729c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#ad2694132e8cedbca1058508a6b7a729c">get_sample_name</a> (const int32_t sample_idx) const </td></tr>
+<tr class="separator:ad2694132e8cedbca1058508a6b7a729c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -227,6 +231,9 @@ Friends</h2></td></tr>
 <tr class="separator:a9f2423bc44bf415a6f3c388d16d76497"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3dd250a54c6e5efa8fab0c238bf3df2c"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a3dd250a54c6e5efa8fab0c238bf3df2c">VariantBuilderIndividualRegion</a></td></tr>
 <tr class="separator:a3dd250a54c6e5efa8fab0c238bf3df2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab562363e30ed354781dc57fe46491d54"><td class="memTemplParams" colspan="2">template&lt;bool fields_forward_LUT_ordering, bool fields_reverse_LUT_ordering, bool samples_forward_LUT_ordering, bool samples_reverse_LUT_ordering&gt; </td></tr>
+<tr class="memitem:ab562363e30ed354781dc57fe46491d54"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#ab562363e30ed354781dc57fe46491d54">VariantHeaderMerger</a></td></tr>
+<tr class="separator:ab562363e30ed354781dc57fe46491d54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utility class to hold a variant header. </p>
@@ -487,6 +494,54 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 </div><div class="memdoc">
 
 <p>builds a vector with the filters </p>
+
+</div>
+</div>
+<a class="anchor" id="aff9caa4c885f4ab02428f23f0ecca0ea"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gamgee::VariantHeader::get_field_name </td>
+          <td>(</td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>field_idx</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad2694132e8cedbca1058508a6b7a729c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gamgee::VariantHeader::get_sample_name </td>
+          <td>(</td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>sample_idx</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -1247,6 +1302,28 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 
 </div>
 </div>
+<a class="anchor" id="ab562363e30ed354781dc57fe46491d54"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;bool fields_forward_LUT_ordering, bool fields_reverse_LUT_ordering, bool samples_forward_LUT_ordering, bool samples_reverse_LUT_ordering&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="singletongamgee_1_1_variant_header_merger.html">VariantHeaderMerger</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a24da1ae869010cf623de7749910a86e2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1274,7 +1351,7 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 18 2014 13:18:00 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 18 2014 17:41:45 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
