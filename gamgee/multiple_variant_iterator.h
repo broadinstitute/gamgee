@@ -11,6 +11,9 @@
 
 namespace gamgee {
 
+using VariantIteratorIndexPair = std::pair<std::shared_ptr<VariantIterator>, uint32_t>;
+using VariantIndexPair = std::pair<Variant, uint32_t>;
+
 /**
  * @brief Utility class to enable for-each style iteration in the MultipleVariantReader class
  */
@@ -20,7 +23,7 @@ class MultipleVariantIterator {
   /**
    * @brief creates an empty iterator (used for the end() method) 
    */
-  MultipleVariantIterator();
+  MultipleVariantIterator() = default;
 
   /**
    * @brief initializes a new iterator based on a vector of input files (vcf or bcf)
@@ -59,14 +62,14 @@ class MultipleVariantIterator {
    *
    * @return a reference to the iterator's Variant vector
    */
-  std::vector<Variant>& operator*();
+  std::vector<VariantIndexPair>& operator*();
 
   /**
    * @brief advances the iterator, fetching the next vector
    *
    * @return a reference to the iterator's Variant vector
    */
-  std::vector<Variant>& operator++();
+  std::vector<VariantIndexPair>& operator++();
 
  private:
   // fetches the next Variant vector
@@ -75,14 +78,14 @@ class MultipleVariantIterator {
   // comparison class for genomic locations in the priority queue
   class Comparator {
    public:
-    bool operator()(const std::shared_ptr<VariantIterator>& left, const std::shared_ptr<VariantIterator>& right);
+    bool operator()(const VariantIteratorIndexPair& left, const VariantIteratorIndexPair& right);
   };
 
   // the individual file iterators
-  std::priority_queue<std::shared_ptr<VariantIterator>, std::vector<std::shared_ptr<VariantIterator>>, Comparator> m_queue;
+  std::priority_queue<VariantIteratorIndexPair, std::vector<VariantIteratorIndexPair>, Comparator> m_queue;
 
   // caches next Variant vector
-  std::vector<Variant> m_variant_vector;
+  std::vector<VariantIndexPair> m_variant_vector;
 };
 
 }  // end namespace gamgee

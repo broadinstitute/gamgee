@@ -5,6 +5,7 @@
 #include "test_utils.h"
 
 #include <boost/test/unit_test.hpp>
+#include <unordered_set>
 
 using namespace std;
 using namespace gamgee;
@@ -34,20 +35,28 @@ const auto multi_diff_truth_alignment_starts  = vector<uint32_t>{10000000, 10001
 const auto multi_diff_truth_ref               = vector<string>{"T", "GG", "TAGTGQA", "TAGTGQA", "A", "GAT", "GAT", "GAT"};
 const auto multi_diff_truth_n_alleles         = vector<uint32_t>{2, 2, 2, 2, 2, 3, 3, 3};
 const auto multi_diff_truth_id                = vector<string>{"db2342", "rs837472", ".", ".", ".", ".", ".", "."};
+auto truth_file_indices_mult_alt = vector<unordered_multiset<uint32_t>> {{0,1,1,1},{0},{1},{0},{0,1},{0},{0},{0}};
 
 BOOST_AUTO_TEST_CASE( multiple_variant_reader_difference_test ) {
   auto truth_index = 0u;
   const auto reader = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants_multiple_alt.vcf"}, false};
   for (const auto& vec : reader) {
+    auto expected_file_indices = truth_file_indices_mult_alt[truth_index];
     BOOST_CHECK_EQUAL(vec.size(), multi_diff_truth_record_count[truth_index]);
-    for (const auto& record : vec) {
+    for (const auto& pair : vec) {
+      const auto& record = pair.first;
       BOOST_CHECK_EQUAL(record.chromosome(), multi_diff_truth_chromosome[truth_index]);
       BOOST_CHECK_EQUAL(record.alignment_start(), multi_diff_truth_alignment_starts[truth_index]);
       BOOST_CHECK_EQUAL(record.ref(), multi_diff_truth_ref[truth_index]);
       BOOST_CHECK_EQUAL(record.n_alleles(), multi_diff_truth_n_alleles[truth_index]);
       BOOST_CHECK_EQUAL(record.n_samples(), 3u);
       BOOST_CHECK_EQUAL(record.id(), multi_diff_truth_id[truth_index]);
+
+      auto find_result = expected_file_indices.find(pair.second);
+      BOOST_CHECK(find_result != expected_file_indices.end());
+      expected_file_indices.erase(find_result);
     }
+    BOOST_CHECK(expected_file_indices.empty());   // check that we've seen and erased all expected
     ++truth_index;
   }
   BOOST_CHECK_EQUAL(truth_index, 8u);
@@ -82,6 +91,8 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_excluding )
   multiple_variant_reader_sample_test(vector<string>{"NA12891", "NA12878"}, false, 1);  // exclude both these samples
 }
 
+auto truth_file_indices_mvr_hdr = vector<unordered_set<uint32_t>> {{0,1},{0,1},{0,1},{0,1},{0},{0},{1},{1}};
+
 BOOST_AUTO_TEST_CASE( multiple_variant_reader_headers_test ) {
   const auto file1 = "testdata/mvr_hdr/test1.vcf";
   const auto file2 = "testdata/mvr_hdr/test2.vcf";
@@ -90,16 +101,25 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_headers_test ) {
   auto header2 = SingleVariantReader{file2}.header();
   auto combined_header = VariantHeaderBuilder{header1}.merge(header2).build();
 
+  auto truth_index = 0u;
   const auto reader = MultipleVariantReader<MultipleVariantIterator>{{file1, file2}};
   BOOST_CHECK(reader.combined_header() != header1);
   BOOST_CHECK(reader.combined_header() != header2);
   BOOST_CHECK(reader.combined_header() == combined_header);
-  for (auto vec : reader) {
-    for (auto variant : vec) {
+  for (const auto& vec : reader) {
+    auto expected_file_indices = truth_file_indices_mvr_hdr[truth_index];
+    for (const auto& pair : vec) {
+      const auto& variant = pair.first;
       BOOST_CHECK(variant.header() != combined_header);
       // order is determined by priority queue - hard to predict
       BOOST_CHECK(variant.header() == header1 || variant.header() == header2);
+
+      auto find_result = expected_file_indices.find(pair.second);
+      BOOST_CHECK(find_result != expected_file_indices.end());
+      expected_file_indices.erase(find_result);
     }
+    ++truth_index;
+    BOOST_CHECK(expected_file_indices.empty());   // check that we've seen and erased all expected
   }
 }
 
@@ -109,12 +129,15 @@ const auto gvcf_truth_alignment_starts  = vector<uint32_t>{10000000, 20000000, 1
 const auto gvcf_truth_alignment_stops   = vector<uint32_t>{10000000, 20000123, 10001001};
 const auto gvcf_truth_n_alleles         = vector<uint32_t>{2, 2, 2};
 const auto gvcf_truth_id                = vector<string>{"db2342", ".", "rs837472"};
+auto truth_file_indices_gvcf = vector<unordered_set<uint32_t>> {{0,1},{0,1},{0,1}};
 
 BOOST_AUTO_TEST_CASE( gvcf_test_multiple ) {
   auto truth_index = 0u;
   const auto reader = MultipleVariantReader<MultipleVariantIterator>{vector<string>{"testdata/test.g.vcf", "testdata/test.g.bcf"}};
   for (const auto& vec : reader) {
-    for (const auto& record : vec) {
+    auto expected_file_indices = truth_file_indices_gvcf[truth_index];
+    for (const auto& pair : vec) {
+      const auto& record = pair.first;
       BOOST_CHECK_EQUAL(record.ref(), gvcf_truth_ref[truth_index]);
       BOOST_CHECK_EQUAL(record.chromosome(), gvcf_truth_chromosome[truth_index]);
       BOOST_CHECK_EQUAL(record.alignment_start(), gvcf_truth_alignment_starts[truth_index]);
@@ -122,8 +145,13 @@ BOOST_AUTO_TEST_CASE( gvcf_test_multiple ) {
       BOOST_CHECK_EQUAL(record.n_alleles(), gvcf_truth_n_alleles[truth_index]);
       BOOST_CHECK_EQUAL(record.n_samples(), 3u);
       BOOST_CHECK_EQUAL(record.id(), gvcf_truth_id[truth_index]);
+
+      auto find_result = expected_file_indices.find(pair.second);
+      BOOST_CHECK(find_result != expected_file_indices.end());
+      expected_file_indices.erase(find_result);
     }
     ++truth_index;
+    BOOST_CHECK(expected_file_indices.empty());   // check that we've seen and erased all expected
   }
 }
 

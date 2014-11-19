@@ -3,6 +3,8 @@
 
 #include "test_utils.h"
 
+#include <unordered_set>
+
 #include <boost/test/unit_test.hpp>
 
 using namespace std;
@@ -17,21 +19,30 @@ const auto truth_block_starts = vector<uint32_t>{1, 20, 41, 42, 50, 61, 81, 101,
 const auto truth_block_stops = vector<uint32_t>{19, 40, 41, 49, 60, 80, 100, 101, 102, 150, 200, 299, 400, 500, 649, 700, 750, 11};
 // note: final block is not a ref block, but the block ends at start + 1 because the reference allele length is 2
 const auto truth_refs = vector<string>{"A", "C", "G", "T", "A", "N", "N", "C", "G", "T", "N", "N", "A", "N", "C", "T", "N", "GG"};
+auto truth_file_indices_split = vector<unordered_set<uint32_t>> {{0,2,3},{0,2,3,4},{0,2,3,4},{0,2,3,4},{0,1,2,3,4},{0,1,3,4},{0,1,3},{0,1,3},{0,1,3},{0,1,3},
+        {0,3},{3},{1,3},{3},{4},{2,4},{2},{0,1,2,3,4}};
 
 BOOST_AUTO_TEST_CASE( split_reference_blocks )
 {
   auto reader = GVCFReader{test_files, false};
-  auto position_counter = 0u;
+  auto truth_index = 0u;
   for (const auto& vec : reader) {
-    for (const auto& record : vec) {
-      BOOST_CHECK_EQUAL(record.chromosome(), truth_contigs[position_counter]);
-      BOOST_CHECK_EQUAL(record.alignment_start(), truth_block_starts[position_counter]);
-      BOOST_CHECK_EQUAL(record.alignment_stop(), truth_block_stops[position_counter]);
-      BOOST_CHECK_EQUAL(record.ref(), truth_refs[position_counter]);
+    auto expected_file_indices = truth_file_indices_split[truth_index];
+    for (const auto& pair : vec) {
+      const auto& record = pair.first;
+      BOOST_CHECK_EQUAL(record.chromosome(), truth_contigs[truth_index]);
+      BOOST_CHECK_EQUAL(record.alignment_start(), truth_block_starts[truth_index]);
+      BOOST_CHECK_EQUAL(record.alignment_stop(), truth_block_stops[truth_index]);
+      BOOST_CHECK_EQUAL(record.ref(), truth_refs[truth_index]);
+
+      auto find_result = expected_file_indices.find(pair.second);
+      BOOST_CHECK(find_result != expected_file_indices.end());
+      expected_file_indices.erase(find_result);
     }
-    ++position_counter;
+    BOOST_CHECK(expected_file_indices.empty());   // check that we've seen and erased all expected
+    ++truth_index;
   }
-  BOOST_CHECK_EQUAL(position_counter, truth_contigs.size());
+  BOOST_CHECK_EQUAL(truth_index, truth_contigs.size());
 }
 
 template<bool v1, bool v2>
@@ -268,8 +279,9 @@ BOOST_AUTO_TEST_CASE( reference_block_iterator_move_test ) {
   auto record0 = *iter0;
   auto moved_record = *iter1;
   const auto position_counter = 0;
-  for (const auto vec : {record0, moved_record}) {
-    for (const auto record : vec) {
+  for (const auto& vec : {record0, moved_record}) {
+    for (const auto& pair : vec) {
+      const auto& record = pair.first;
       BOOST_CHECK_EQUAL(record.chromosome(), truth_contigs[position_counter]);
       BOOST_CHECK_EQUAL(record.alignment_start(), truth_block_starts[position_counter]);
       BOOST_CHECK_EQUAL(record.alignment_stop(), truth_block_stops[position_counter]);
@@ -286,17 +298,18 @@ const auto p1_block_starts = vector<uint32_t>{11140505, 11140610, 11140611, 1114
 const auto p1_block_stops = vector<uint32_t>{11140609, 11140610, 11140619, 11140628, 11140628, 11140628, 11140658, 11141021};
 
 BOOST_AUTO_TEST_CASE( reference_block_problem_region_1 ) {
-  auto counter = 0u;
+  auto truth_index = 0u;
   auto reader = GVCFReader{{p1_file}};
   for (const auto& vec : reader) {
     BOOST_CHECK(vec.size() == 1u);
-    for (const auto& record : vec) {
-      BOOST_CHECK(record.alignment_start() == p1_block_starts[counter]);
-      BOOST_CHECK(record.alignment_stop() == p1_block_stops[counter]);
-      counter++;
+    for (const auto& pair : vec) {
+      const auto& record = pair.first;
+      BOOST_CHECK(record.alignment_start() == p1_block_starts[truth_index]);
+      BOOST_CHECK(record.alignment_stop() == p1_block_stops[truth_index]);
+      truth_index++;
     }
   }
-  BOOST_CHECK(counter == 8u);
+  BOOST_CHECK(truth_index == 8u);
 }
 
 const auto p2_files = vector<string>{"testdata/ref_block/problem2_file1.vcf", "testdata/ref_block/problem2_file2.vcf"};
@@ -304,20 +317,27 @@ const auto p2_block_starts = vector<uint32_t>{3319304, 3319319, 3319404, 3319407
   3319413, 3319433, 3319447, 3319558, 3319565, 3319577, 3319599, 3319600, 3319601, 3319602};
 const auto p2_block_stops = vector<uint32_t>{3319318, 3319403, 3319406, 3319409, 3319412,
   3319432, 3319446, 3319557, 3319564, 3319576, 3319598, 3319599, 3319600, 3319601, 3319614};
+auto truth_file_indices_p2 = vector<unordered_set<uint32_t>> {{0,1},{0,1},{0,1},{0,1},{0,1},{0,1},{0,1},{0,1},{0,1},{0,1},{0,1},{0,1},{0,1},{0,1},{1}};
 
 BOOST_AUTO_TEST_CASE( reference_block_problem_region_2 ) {
-  auto counter = 0u;
+  auto truth_index = 0u;
   auto reader = GVCFReader{p2_files};
   for (const auto& vec : reader) {
-    for (const auto& record : vec) {
-      BOOST_CHECK(record.alignment_start() == p2_block_starts[counter]);
+    auto expected_file_indices = truth_file_indices_p2[truth_index];
+    for (const auto& pair : vec) {
+      const auto& record = pair.first;
+      BOOST_CHECK(record.alignment_start() == p2_block_starts[truth_index]);
       if (record.alt().size() == 1)
-        BOOST_CHECK(record.alignment_stop() == p2_block_stops[counter]);
+        BOOST_CHECK(record.alignment_stop() == p2_block_stops[truth_index]);
+      auto find_result = expected_file_indices.find(pair.second);
+      BOOST_CHECK(find_result != expected_file_indices.end());
+      expected_file_indices.erase(find_result);
     }
-    counter++;
+    BOOST_CHECK(expected_file_indices.empty());   // check that we've seen and erased all expected
+    truth_index++;
   }
 
-  BOOST_CHECK(counter == p2_block_starts.size());
+  BOOST_CHECK(truth_index == p2_block_starts.size());
 }
 
 const auto p3_files = vector<string>{"testdata/ref_block/problem3_file1.vcf", "testdata/ref_block/problem3_file2.vcf"};
@@ -325,18 +345,26 @@ const auto p3_block_starts = vector<uint32_t>{3319304, 3319319, 3319404, 3319407
   3319413, 3319433, 3319447, 3319558, 3319565, 3319577, 3319599, 3319600};
 const auto p3_block_stops = vector<uint32_t>{3319318, 3319403, 3319406, 3319409, 3319412,
   3319432, 3319446, 3319557, 3319564, 3319576, 3319598, 3319599, 3319600};
+auto truth_file_indices_p3 = vector<unordered_set<uint32_t>> {{0,1},{0,1},{0,1},{0,1},{0,1},{0,1},{0,1},{0,1},{0,1},{0,1},{0,1},{0,1},{0}};
 
 BOOST_AUTO_TEST_CASE( reference_block_problem_region_3 ) {
-  auto counter = 0u;
+  auto truth_index = 0u;
   auto reader = GVCFReader{p3_files};
   for (const auto& vec : reader) {
-    for (const auto& record : vec) {
-      BOOST_CHECK(record.alignment_start() == p3_block_starts[counter]);
+    auto expected_file_indices = truth_file_indices_p3[truth_index];
+    for (const auto& pair : vec) {
+      const auto& record = pair.first;
+      BOOST_CHECK(record.alignment_start() == p3_block_starts[truth_index]);
       if (record.alt().size() == 1)
-        BOOST_CHECK(record.alignment_stop() == p3_block_stops[counter]);
+        BOOST_CHECK(record.alignment_stop() == p3_block_stops[truth_index]);
+
+      auto find_result = expected_file_indices.find(pair.second);
+      BOOST_CHECK(find_result != expected_file_indices.end());
+      expected_file_indices.erase(find_result);
     }
-    counter++;
+    BOOST_CHECK(expected_file_indices.empty());   // check that we've seen and erased all expected
+    truth_index++;
   }
 
-  BOOST_CHECK(counter == p3_block_starts.size());
+  BOOST_CHECK(truth_index == p3_block_starts.size());
 }
