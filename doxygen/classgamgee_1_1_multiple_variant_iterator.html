@@ -114,9 +114,9 @@ Inheritance diagram for gamgee::MultipleVariantIterator:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afc06be010061f3b2fea15dac17d286f0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#afc06be010061f3b2fea15dac17d286f0">MultipleVariantIterator</a> ()</td></tr>
-<tr class="memdesc:afc06be010061f3b2fea15dac17d286f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates an empty iterator (used for the end() method)  <a href="#afc06be010061f3b2fea15dac17d286f0">More...</a><br /></td></tr>
-<tr class="separator:afc06be010061f3b2fea15dac17d286f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9ece2b16a7f2e9cb750d2fa2ec90b86"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#af9ece2b16a7f2e9cb750d2fa2ec90b86">MultipleVariantIterator</a> ()=default</td></tr>
+<tr class="memdesc:af9ece2b16a7f2e9cb750d2fa2ec90b86"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates an empty iterator (used for the end() method)  <a href="#af9ece2b16a7f2e9cb750d2fa2ec90b86">More...</a><br /></td></tr>
+<tr class="separator:af9ece2b16a7f2e9cb750d2fa2ec90b86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad36d6eff9a8fd3ca59edac1929dcdd27"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#ad36d6eff9a8fd3ca59edac1929dcdd27">MultipleVariantIterator</a> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structhts_file.html">htsFile</a> &gt;&gt; &amp;variant_files, const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structbcf__hdr__t.html">bcf_hdr_t</a> &gt;&gt; &amp;variant_headers)</td></tr>
 <tr class="memdesc:ad36d6eff9a8fd3ca59edac1929dcdd27"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes a new iterator based on a vector of input files (vcf or bcf)  <a href="#ad36d6eff9a8fd3ca59edac1929dcdd27">More...</a><br /></td></tr>
 <tr class="separator:ad36d6eff9a8fd3ca59edac1929dcdd27"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,19 +133,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7d945e028d26616ae3d51181ea75d64b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#a7d945e028d26616ae3d51181ea75d64b">operator!=</a> (const <a class="el" href="classgamgee_1_1_multiple_variant_iterator.html">MultipleVariantIterator</a> &amp;rhs)</td></tr>
 <tr class="memdesc:a7d945e028d26616ae3d51181ea75d64b"><td class="mdescLeft">&#160;</td><td class="mdescRight">pseudo-inequality operator (needed by for-each loop)  <a href="#a7d945e028d26616ae3d51181ea75d64b">More...</a><br /></td></tr>
 <tr class="separator:a7d945e028d26616ae3d51181ea75d64b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c80d49abf8b402e9df02e7000a099e2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classgamgee_1_1_variant.html">Variant</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#a2c80d49abf8b402e9df02e7000a099e2">operator*</a> ()</td></tr>
-<tr class="memdesc:a2c80d49abf8b402e9df02e7000a099e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">dereference operator (needed by for-each loop)  <a href="#a2c80d49abf8b402e9df02e7000a099e2">More...</a><br /></td></tr>
-<tr class="separator:a2c80d49abf8b402e9df02e7000a099e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e508940eb0d39b7ebc75c7abc256573"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classgamgee_1_1_variant.html">Variant</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#a6e508940eb0d39b7ebc75c7abc256573">operator++</a> ()</td></tr>
-<tr class="memdesc:a6e508940eb0d39b7ebc75c7abc256573"><td class="mdescLeft">&#160;</td><td class="mdescRight">advances the iterator, fetching the next vector  <a href="#a6e508940eb0d39b7ebc75c7abc256573">More...</a><br /></td></tr>
-<tr class="separator:a6e508940eb0d39b7ebc75c7abc256573"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8004c830e3ea5b29ceab0379e75763a1"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="namespacegamgee.html#a4eed5186f534f70971cb415ed1297936">VariantIndexPair</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#a8004c830e3ea5b29ceab0379e75763a1">operator*</a> ()</td></tr>
+<tr class="memdesc:a8004c830e3ea5b29ceab0379e75763a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">dereference operator (needed by for-each loop)  <a href="#a8004c830e3ea5b29ceab0379e75763a1">More...</a><br /></td></tr>
+<tr class="separator:a8004c830e3ea5b29ceab0379e75763a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50acbf6d4995a6e2c3f2bb1a0032a60d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="namespacegamgee.html#a4eed5186f534f70971cb415ed1297936">VariantIndexPair</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_multiple_variant_iterator.html#a50acbf6d4995a6e2c3f2bb1a0032a60d">operator++</a> ()</td></tr>
+<tr class="memdesc:a50acbf6d4995a6e2c3f2bb1a0032a60d"><td class="mdescLeft">&#160;</td><td class="mdescRight">advances the iterator, fetching the next vector  <a href="#a50acbf6d4995a6e2c3f2bb1a0032a60d">More...</a><br /></td></tr>
+<tr class="separator:a50acbf6d4995a6e2c3f2bb1a0032a60d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utility class to enable for-each style iteration in the <a class="el" href="classgamgee_1_1_multiple_variant_reader.html" title="Utility class to read multiple VCF/BCF files with an appropriate iterator in a for-each loop...">MultipleVariantReader</a> class. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="afc06be010061f3b2fea15dac17d286f0"></a>
+<a class="anchor" id="af9ece2b16a7f2e9cb750d2fa2ec90b86"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">gamgee::MultipleVariantIterator::MultipleVariantIterator </td>
@@ -154,6 +157,11 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>creates an empty iterator (used for the end() method) </p>
@@ -274,12 +282,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2c80d49abf8b402e9df02e7000a099e2"></a>
+<a class="anchor" id="a8004c830e3ea5b29ceab0379e75763a1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="classgamgee_1_1_variant.html">Variant</a> &gt; &amp; gamgee::MultipleVariantIterator::operator* </td>
+          <td class="memname">std::vector&lt; <a class="el" href="namespacegamgee.html#a4eed5186f534f70971cb415ed1297936">VariantIndexPair</a> &gt; &amp; gamgee::MultipleVariantIterator::operator* </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -292,12 +300,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6e508940eb0d39b7ebc75c7abc256573"></a>
+<a class="anchor" id="a50acbf6d4995a6e2c3f2bb1a0032a60d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="classgamgee_1_1_variant.html">Variant</a> &gt; &amp; gamgee::MultipleVariantIterator::operator++ </td>
+          <td class="memname">std::vector&lt; <a class="el" href="namespacegamgee.html#a4eed5186f534f70971cb415ed1297936">VariantIndexPair</a> &gt; &amp; gamgee::MultipleVariantIterator::operator++ </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -365,7 +373,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 18 2014 17:41:45 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 19 2014 18:33:06 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
