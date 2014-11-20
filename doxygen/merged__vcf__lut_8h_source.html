@@ -98,8 +98,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vcf_8h.html">htslib/vcf.h</a>&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="variant__header_8h.html">variant_header.h</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="missing_8h.html">missing.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../variant_header.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;../missing.h&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//forward declaration for friend function of MergedVCFLUTBase</span></div>
@@ -273,7 +273,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classgamgee_1_1utils_1_1_merged_v_c_f_l_u_t_base_html"><div class="ttname"><a href="classgamgee_1_1utils_1_1_merged_v_c_f_l_u_t_base.html">gamgee::utils::MergedVCFLUTBase</a></div><div class="ttdoc">Base class to store look up information between fields of merged header and input headers...</div><div class="ttdef"><b>Definition:</b> merged_vcf_lut.h:59</div></div>
 <div class="ttc" id="classgamgee_1_1utils_1_1_merged_v_c_f_l_u_t_base_html_ad4474e326974a49286336e5135bd5440"><div class="ttname"><a href="classgamgee_1_1utils_1_1_merged_v_c_f_l_u_t_base.html#ad4474e326974a49286336e5135bd5440">gamgee::utils::MergedVCFLUTBase::reset_input_idx_for_merged</a></div><div class="ttdeci">void reset_input_idx_for_merged(unsigned inputGVCFIdx, int mergedIdx)</div><div class="ttdoc">reset/invalidate the input field index for input VCF inputGVCFIdx for merged field mergedIdx ...</div><div class="ttdef"><b>Definition:</b> merged_vcf_lut.h:134</div></div>
 <div class="ttc" id="singletongamgee_1_1_variant_header_merger_html"><div class="ttname"><a href="singletongamgee_1_1_variant_header_merger.html">gamgee::VariantHeaderMerger</a></div><div class="ttdef"><b>Definition:</b> merged_vcf_lut.h:20</div></div>
-<div class="ttc" id="missing_8h_html"><div class="ttname"><a href="missing_8h.html">missing.h</a></div></div>
 <div class="ttc" id="classgamgee_1_1utils_1_1_merged_v_c_f_l_u_t_base_html_a4a40591b20aeee64423be1c0dbb2ce8a"><div class="ttname"><a href="classgamgee_1_1utils_1_1_merged_v_c_f_l_u_t_base.html#a4a40591b20aeee64423be1c0dbb2ce8a">gamgee::utils::MergedVCFLUTBase::get_input_idx_for_merged</a></div><div class="ttdeci">int get_input_idx_for_merged(unsigned inputGVCFIdx, int mergedIdx) const </div><div class="ttdoc">Get field idx for input VCF inputGVCFIdx corresponding to field idx mergedIdx in the mergedVCF file...</div><div class="ttdef"><b>Definition:</b> merged_vcf_lut.h:100</div></div>
 <div class="ttc" id="classgamgee_1_1utils_1_1_merged_v_c_f_alleles_idx_l_u_t_html_a180c023922731483e66837054bfb8dad"><div class="ttname"><a href="classgamgee_1_1utils_1_1_merged_v_c_f_alleles_idx_l_u_t.html#a180c023922731483e66837054bfb8dad">gamgee::utils::MergedVCFAllelesIdxLUT::MergedVCFAllelesIdxLUT</a></div><div class="ttdeci">MergedVCFAllelesIdxLUT(unsigned numInputGVCFs)</div><div class="ttdef"><b>Definition:</b> merged_vcf_lut.h:281</div></div>
 <div class="ttc" id="merged__vcf__lut_8h_html_adceb67c3ea486161b59f9acd85eb04f1"><div class="ttname"><a href="merged__vcf__lut_8h.html#adceb67c3ea486161b59f9acd85eb04f1">test_lut_base</a></div><div class="ttdeci">void test_lut_base()</div></div>
@@ -294,11 +293,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classgamgee_1_1utils_1_1_merged_v_c_f_alleles_idx_l_u_t_html"><div class="ttname"><a href="classgamgee_1_1utils_1_1_merged_v_c_f_alleles_idx_l_u_t.html">gamgee::utils::MergedVCFAllelesIdxLUT</a></div><div class="ttdoc">LUT class for storing mappings between allele vectors in the merged file and input VCF files Since th...</div><div class="ttdef"><b>Definition:</b> merged_vcf_lut.h:275</div></div>
 <div class="ttc" id="classgamgee_1_1utils_1_1_merged_v_c_f_alleles_idx_l_u_t_html_a2520a01225652511d2f059855760e0ba"><div class="ttname"><a href="classgamgee_1_1utils_1_1_merged_v_c_f_alleles_idx_l_u_t.html#a2520a01225652511d2f059855760e0ba">gamgee::utils::MergedVCFAllelesIdxLUT::resize_luts_if_needed</a></div><div class="ttdeci">void resize_luts_if_needed(unsigned numMergedAlleles)</div><div class="ttdef"><b>Definition:</b> merged_vcf_lut.h:285</div></div>
 <div class="ttc" id="vcf_8h_html"><div class="ttname"><a href="vcf_8h.html">vcf.h</a></div></div>
-<div class="ttc" id="variant__header_8h_html"><div class="ttname"><a href="variant__header_8h.html">variant_header.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 19 2014 18:33:05 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 20 2014 18:49:47 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
