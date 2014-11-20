@@ -5,8 +5,8 @@
 
 #include "htslib/vcf.h"
 #include <vector>
-#include "variant_header.h"
-#include "missing.h"
+#include "../variant_header.h"
+#include "../missing.h"
 
 
 //forward declaration for friend function of MergedVCFLUTBase
