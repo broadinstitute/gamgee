@@ -27,10 +27,10 @@ namespace gamgee
     void MergedVCFLUTBase<inputs_2_merged_LUT_is_input_ordered, merged_2_inputs_LUT_is_input_ordered>::clear()
     {
       for(auto& vec : m_inputs_2_merged_lut)
-	vec.clear();
+        vec.clear();
       m_inputs_2_merged_lut.clear();
       for(auto& vec : m_merged_2_inputs_lut)
-	vec.clear();
+        vec.clear();
       m_merged_2_inputs_lut.clear();
     }
 
@@ -38,7 +38,7 @@ namespace gamgee
     void MergedVCFLUTBase<inputs_2_merged_LUT_is_input_ordered, merged_2_inputs_LUT_is_input_ordered>::reset_vector(vector<int>& vec, unsigned from)
     {
       for(auto i=from;i<vec.size();++i)
-	vec[i] = gamgee::missing_values::int32;
+        vec[i] = gamgee::missing_values::int32;
     }
 
     template<bool inputs_2_merged_LUT_is_input_ordered, bool merged_2_inputs_LUT_is_input_ordered>
@@ -47,8 +47,8 @@ namespace gamgee
       auto old_size = vec.size();
       if(new_size > old_size)
       {
-	vec.resize(new_size);
-	reset_vector(vec, old_size);
+        vec.resize(new_size);
+        reset_vector(vec, old_size);
       }
     }
 
@@ -59,21 +59,21 @@ namespace gamgee
       auto old_lut_size = lut.size();
       if(new_lut_size > old_lut_size)
       {
-	lut.resize(new_lut_size);
-	numRowsVar = new_lut_size;
+        lut.resize(new_lut_size);
+        numRowsVar = new_lut_size;
       }
       auto old_vector_size = (lut.size() > 0u) ? lut[0].size() : 0u;
       //Begin resizing of vectors at start_idx
       auto start_idx = old_lut_size;
-      if(new_vector_size > old_vector_size)	//every vector needs to be resized
+      if(new_vector_size > old_vector_size)     //every vector needs to be resized
       {
-	start_idx = 0u;
-	numColsVar = new_vector_size;
+        start_idx = 0u;
+        numColsVar = new_vector_size;
       }
       else
-	new_vector_size = old_vector_size;	//new vector size is smaller, don't bother reducing the size of existing rows
+        new_vector_size = old_vector_size;      //new vector size is smaller, don't bother reducing the size of existing rows
       for(auto i=start_idx;i<new_lut_size;++i)
-	resize_and_reset_vector(lut[i], new_vector_size);
+        resize_and_reset_vector(lut[i], new_vector_size);
     }
     //explicit initialization to avoid link errors
     template class MergedVCFLUTBase<true,true>;

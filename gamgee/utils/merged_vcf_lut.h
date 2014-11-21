@@ -68,10 +68,10 @@ namespace gamgee
        */
       inline void reset_luts()
       {
-	for(auto& vec : m_inputs_2_merged_lut)
-	  reset_vector(vec);
-	for(auto& vec : m_merged_2_inputs_lut)
-	  reset_vector(vec);
+        for(auto& vec : m_inputs_2_merged_lut)
+          reset_vector(vec);
+        for(auto& vec : m_merged_2_inputs_lut)
+          reset_vector(vec);
       }
 
       /*
@@ -83,8 +83,8 @@ namespace gamgee
        */
       inline void add_input_merged_idx_pair(unsigned inputGVCFIdx, int inputIdx, int mergedIdx)
       {
-	set_merged_idx_for_input(inputGVCFIdx, inputIdx, mergedIdx);
-	set_input_idx_for_merged(inputGVCFIdx, inputIdx, mergedIdx);
+        set_merged_idx_for_input(inputGVCFIdx, inputIdx, mergedIdx);
+        set_input_idx_for_merged(inputGVCFIdx, inputIdx, mergedIdx);
       }
 
       /**
@@ -125,14 +125,14 @@ namespace gamgee
        * @param inputIdx index of the field in the input VCF file
        */
       inline void reset_merged_idx_for_input(unsigned inputGVCFIdx, int inputIdx)
-      {	set_merged_idx_for_input(inputGVCFIdx, inputIdx, gamgee::missing_values::int32); }
+      { set_merged_idx_for_input(inputGVCFIdx, inputIdx, gamgee::missing_values::int32); }
       /**
        * @brief reset/invalidate the input field index for input VCF inputGVCFIdx for merged field mergedIdx
        * @param inputGVCFIdx index of the input VCF file
        * @param mergedIdx index of the field in the merged VCF file
        */
       inline void reset_input_idx_for_merged(unsigned inputGVCFIdx, int mergedIdx)
-      {	set_input_idx_for_merged(inputGVCFIdx, gamgee::missing_values::int32, mergedIdx); }
+      { set_input_idx_for_merged(inputGVCFIdx, gamgee::missing_values::int32, mergedIdx); }
 
       protected:
       //Only inherited classes should call constructor,destructor etc
@@ -156,27 +156,27 @@ namespace gamgee
        */
       template <bool M = inputs_2_merged_LUT_is_input_ordered, typename std::enable_if<M>::type* = nullptr>
       void resize_inputs_2_merged_lut_if_needed(unsigned numInputGVCFs, unsigned numMergedFields)
-      {	resize_and_reset_lut(m_inputs_2_merged_lut, numInputGVCFs, numMergedFields, m_num_input_vcfs, m_num_merged_fields); }
+      { resize_and_reset_lut(m_inputs_2_merged_lut, numInputGVCFs, numMergedFields, m_num_input_vcfs, m_num_merged_fields); }
 
       template <bool M = inputs_2_merged_LUT_is_input_ordered, typename std::enable_if<!M>::type* = nullptr>
       void resize_inputs_2_merged_lut_if_needed(unsigned numInputGVCFs, unsigned numMergedFields)
-      {	resize_and_reset_lut(m_inputs_2_merged_lut, numMergedFields, numInputGVCFs, m_num_merged_fields, m_num_input_vcfs); }
+      { resize_and_reset_lut(m_inputs_2_merged_lut, numMergedFields, numInputGVCFs, m_num_merged_fields, m_num_input_vcfs); }
 
       template <bool M = merged_2_inputs_LUT_is_input_ordered, typename std::enable_if<M>::type* = nullptr>
       void resize_merged_2_inputs_lut_if_needed(unsigned numInputGVCFs, unsigned numMergedFields)
-      {	resize_and_reset_lut(m_merged_2_inputs_lut, numInputGVCFs, numMergedFields, m_num_input_vcfs, m_num_merged_fields); }
+      { resize_and_reset_lut(m_merged_2_inputs_lut, numInputGVCFs, numMergedFields, m_num_input_vcfs, m_num_merged_fields); }
 
       template <bool M = merged_2_inputs_LUT_is_input_ordered, typename std::enable_if<!M>::type* = nullptr>
       void resize_merged_2_inputs_lut_if_needed(unsigned numInputGVCFs, unsigned numMergedFields)
-      {	resize_and_reset_lut(m_merged_2_inputs_lut, numMergedFields, numInputGVCFs, m_num_merged_fields, m_num_input_vcfs); }
+      { resize_and_reset_lut(m_merged_2_inputs_lut, numMergedFields, numInputGVCFs, m_num_merged_fields, m_num_input_vcfs); }
 
       /*
        * @brief wrapper around single LUT resize functions
        */
       void resize_luts_if_needed(unsigned numInputGVCFs, unsigned numMergedFields)
       {
-	resize_merged_2_inputs_lut_if_needed(numInputGVCFs, numMergedFields);
-	resize_inputs_2_merged_lut_if_needed(numInputGVCFs, numMergedFields);
+        resize_merged_2_inputs_lut_if_needed(numInputGVCFs, numMergedFields);
+        resize_inputs_2_merged_lut_if_needed(numInputGVCFs, numMergedFields);
       }
       private:
       //why not unordered_map? because I feel the need, the need for speed
@@ -210,11 +210,11 @@ namespace gamgee
        */
       inline int get_lut_value(const std::vector<std::vector<int>>& lut, int rowIdx, int columnIdx) const
       {
-	assert(rowIdx >= 0);
-	assert(rowIdx < static_cast<int>(lut.size()));
-	assert(columnIdx >= 0);
-	assert(columnIdx < static_cast<int>(lut[rowIdx].size()));
-	return lut[rowIdx][columnIdx];
+        assert(rowIdx >= 0);
+        assert(rowIdx < static_cast<int>(lut.size()));
+        assert(columnIdx >= 0);
+        assert(columnIdx < static_cast<int>(lut[rowIdx].size()));
+        return lut[rowIdx][columnIdx];
       }
 
       /**
@@ -227,11 +227,11 @@ namespace gamgee
        */
       inline void set_lut_value(std::vector<std::vector<int>>& lut, int rowIdx, int columnIdx, int value)
       {
-	assert(rowIdx >= 0);
-	assert(rowIdx < static_cast<int>(lut.size()));
-	assert(columnIdx >= 0);
-	assert(columnIdx < static_cast<int>(lut[rowIdx].size()));
-	lut[rowIdx][columnIdx] = value;
+        assert(rowIdx >= 0);
+        assert(rowIdx < static_cast<int>(lut.size()));
+        assert(columnIdx >= 0);
+        assert(columnIdx < static_cast<int>(lut[rowIdx].size()));
+        lut[rowIdx][columnIdx] = value;
       }
 
       /**
@@ -276,23 +276,23 @@ namespace gamgee
     : public MergedVCFLUTBase<inputs_2_merged_LUT_is_input_ordered, merged_2_inputs_LUT_is_input_ordered>
     {
       private:
-	static const auto m_DEFAULT_INIT_NUM_ALLELES=10u;
+        static const auto m_DEFAULT_INIT_NUM_ALLELES=10u;
       public:
-	MergedVCFAllelesIdxLUT(unsigned numInputGVCFs)
-	  : MergedVCFLUTBase<inputs_2_merged_LUT_is_input_ordered, merged_2_inputs_LUT_is_input_ordered>(numInputGVCFs,
-	      m_DEFAULT_INIT_NUM_ALLELES)
-	  { m_max_num_alleles = m_DEFAULT_INIT_NUM_ALLELES; }
-	inline void resize_luts_if_needed(unsigned numMergedAlleles)
-	{
-	  if(numMergedAlleles > m_max_num_alleles)
-	  {
-	    MergedVCFLUTBase<inputs_2_merged_LUT_is_input_ordered, merged_2_inputs_LUT_is_input_ordered>::resize_luts_if_needed(
-		MergedVCFLUTBase<inputs_2_merged_LUT_is_input_ordered, merged_2_inputs_LUT_is_input_ordered>::m_num_input_vcfs, numMergedAlleles); 
-	    m_max_num_alleles = numMergedAlleles;
-	  }
-	}
+        MergedVCFAllelesIdxLUT(unsigned numInputGVCFs)
+          : MergedVCFLUTBase<inputs_2_merged_LUT_is_input_ordered, merged_2_inputs_LUT_is_input_ordered>(numInputGVCFs,
+              m_DEFAULT_INIT_NUM_ALLELES)
+          { m_max_num_alleles = m_DEFAULT_INIT_NUM_ALLELES; }
+        inline void resize_luts_if_needed(unsigned numMergedAlleles)
+        {
+          if(numMergedAlleles > m_max_num_alleles)
+          {
+            MergedVCFLUTBase<inputs_2_merged_LUT_is_input_ordered, merged_2_inputs_LUT_is_input_ordered>::resize_luts_if_needed(
+                MergedVCFLUTBase<inputs_2_merged_LUT_is_input_ordered, merged_2_inputs_LUT_is_input_ordered>::m_num_input_vcfs, numMergedAlleles); 
+            m_max_num_alleles = numMergedAlleles;
+          }
+        }
       private:
-	unsigned m_max_num_alleles;
+        unsigned m_max_num_alleles;
     };
 
     /*NOTE: Needs explicit instantiation in .cpp file to use this type alias*/
