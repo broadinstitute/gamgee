@@ -23,34 +23,78 @@ Gamgee is licensed under the [MIT License](http://www.google.com.br/url?sa=t&rct
 
 ### Quick start
 
-*if you need detailed instructions, read our [blog post](http://broadinstitute.github.io/gamgee/setup/20140924-setting-up-your-development-environment/) on how to set up your development environment*.
+*If you need detailed instructions, read our [blog post](http://broadinstitute.github.io/gamgee/setup/20140924-setting-up-your-development-environment/) on how to set up your development environment*.
 
 You'll need the latest version of [Boost](http://www.boost.org/) installed in your system.
 
     $ hub clone broadinstitute/gamgee         # simple git clone also works here
-    $ git submodule update --init --recursive # so you can get the submodules we depend on
+    
+Building Gamgee
+----------------
+Gamgee is configured to use CMake for better integration with the [CLion](https://www.jetbrains.com/clion/) IDE. We recommend an out-of-source build. From your Gamgee root directory, create a build directory:
 
-Every time you do a pull (or fetch/rebase) and notice that the *.gitmodule* file has changed, you need to update your submodules accordingly like so:
+    $ mkdir build/
 
-    $ git submodule update --recursive
+Navigate to that directory to complete the initial CMake setup:
 
-You can now build simply by running:
+    $ cd build/
+    $ cmake ..
 
-    $ b2
+If building on the Broad servers, you will need extra arguments:
 
-The binary is produced in *bin/&lt;toolset&gt;/&lt;variant&gt;/gamgee*, where toolset will be the compiler used and variant is either debug or release. Here are two examples:
+    $ cmake .. -DCMAKE_C_COMPILER=`which gcc` -DCMAKE_CXX_COMPILER=`which g++`
 
-    bin/clang-darwin-4.2.1/debug/gamgee
-    bin/gcc-4.9.0/release/gamgee
+After the setup of the build configuration and makefiles, build Gamgee by executing make from the build/ directory:
 
+    $ make
 
+By default, CMake will execute the most recent explicitly specified build configuration (release/debug). To specify a build configuration use:
+
+    $ make release
+
+or
+
+    $ make debug
+
+for the release or debug configurations, respectively.
+
+### Building Tips
+ 
+* To clean your build, use 
+
+    ```
+    $ make clean
+    ```
+* If building on the Broad cluster you will need these dotkits
+ 
+    ```
+reuse -q .boost-1.55.0
+reuse -q .fftw-3.3.4
+reuse -q GCC-4.9
+reuse -q CMake
+    ```
+NOTE: the CMake dotkit is only availble for systems running RHEL 6 or higher.  For other systems, you will have to compile your own version of CMake from the latest [source](http://www.cmake.org/download/)
+
+Testing Gamgee
+---------------
 Gamgee comes with an extensive suite of unit tests. To run all tests simply do:
 
-    $ b2 test
+    $ make run_test
 
-The test binary is produced in *test/bin/&lt;toolset&gt;/&lt;variant&gt;/gamgee*, where toolset will be the compiler used and variant is either debug or release. Here are two examples:
+Setting up CLion
+----------------
+1. Download the latest version of the CLion IDE from [here](https://www.jetbrains.com/clion/)
 
-    test/bin/clang-darwin-4.2.1/debug/run
-    test/bin/gcc-4.9.0/release/run
+2. Click through the walk-through and set up your preferences as desired.
 
-You can run your test manually if you want to see any outputs from debug information you have inserted in your tests, or if you want to change the input files. The tests are run automatically every time you compile them with b2 test.
+3. At the startup menu, select "Import Project From Sources"
+
+4. Navigate to the Gamgee repo directory and select it.
+
+5. CLion will inform you that "Directory gamgee contains CMakeLists.txt".  Choose "Open Project".
+
+6. CLion may not recognize all of the namespaces in the code until you execute a build from the IDE.  Select "Build" from the Run menu or click the build button in the upper right (green down arrow with ones and zeros).
+
+7. If CLion still can't find all dependencies, go to File > Invalidate Caches / Restart...  This will restart CLion. Reindexing files and references may take a minute or two.
+
+NOTE: Using CMake from CLion uses a different build directory than using CMake from the command line.
