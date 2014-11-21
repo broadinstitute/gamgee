@@ -130,12 +130,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a82807e6d6342467aa9121c1a7c888934"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a649ab8fbe0d532ab590c94ab520fd3a5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a649ab8fbe0d532ab590c94ab520fd3a5">operator!=</a> (const <a class="el" href="classgamgee_1_1_variant_header.html">VariantHeader</a> &amp;rhs) const </td></tr>
 <tr class="separator:a649ab8fbe0d532ab590c94ab520fd3a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9903aa559390cfda45ae2e645005b667"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a9903aa559390cfda45ae2e645005b667">filters</a> () const </td></tr>
-<tr class="memdesc:a9903aa559390cfda45ae2e645005b667"><td class="mdescLeft">&#160;</td><td class="mdescRight">builds a vector with the filters  <a href="#a9903aa559390cfda45ae2e645005b667">More...</a><br /></td></tr>
-<tr class="separator:a9903aa559390cfda45ae2e645005b667"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a048e865fc28aab75ba178f7886146582"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a048e865fc28aab75ba178f7886146582">n_filters</a> () const </td></tr>
-<tr class="memdesc:a048e865fc28aab75ba178f7886146582"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of filters declared in this header  <a href="#a048e865fc28aab75ba178f7886146582">More...</a><br /></td></tr>
-<tr class="separator:a048e865fc28aab75ba178f7886146582"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fbed78411ee02cf1ce5fc2aa6115fac"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a6fbed78411ee02cf1ce5fc2aa6115fac">samples</a> () const </td></tr>
 <tr class="memdesc:a6fbed78411ee02cf1ce5fc2aa6115fac"><td class="mdescLeft">&#160;</td><td class="mdescRight">builds a vector with the names of the samples  <a href="#a6fbed78411ee02cf1ce5fc2aa6115fac">More...</a><br /></td></tr>
 <tr class="separator:a6fbed78411ee02cf1ce5fc2aa6115fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,18 +141,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4f56418c02bb7f5fa7158a3a75f6f8e4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a4f56418c02bb7f5fa7158a3a75f6f8e4">n_chromosomes</a> () const </td></tr>
 <tr class="memdesc:a4f56418c02bb7f5fa7158a3a75f6f8e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of chromosomes declared in this header  <a href="#a4f56418c02bb7f5fa7158a3a75f6f8e4">More...</a><br /></td></tr>
 <tr class="separator:a4f56418c02bb7f5fa7158a3a75f6f8e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1068a7fdb23dc67166a8df908cdc2116"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a1068a7fdb23dc67166a8df908cdc2116">shared_fields</a> () const </td></tr>
-<tr class="memdesc:a1068a7fdb23dc67166a8df908cdc2116"><td class="mdescLeft">&#160;</td><td class="mdescRight">builds a vector with the info fields  <a href="#a1068a7fdb23dc67166a8df908cdc2116">More...</a><br /></td></tr>
-<tr class="separator:a1068a7fdb23dc67166a8df908cdc2116"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad84c1e78e6cc703eab805c5f4ab956e4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#ad84c1e78e6cc703eab805c5f4ab956e4">field_index_end</a> () const </td></tr>
+<tr class="memdesc:ad84c1e78e6cc703eab805c5f4ab956e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the last valid field index + 1, to indicate the end of field iteration  <a href="#ad84c1e78e6cc703eab805c5f4ab956e4">More...</a><br /></td></tr>
+<tr class="separator:ad84c1e78e6cc703eab805c5f4ab956e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a048e865fc28aab75ba178f7886146582"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a048e865fc28aab75ba178f7886146582">n_filters</a> () const </td></tr>
+<tr class="memdesc:a048e865fc28aab75ba178f7886146582"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of filters declared in this header  do not use for iteration over filter indices &ndash; use <a class="el" href="classgamgee_1_1_variant_header.html#ad84c1e78e6cc703eab805c5f4ab956e4" title="returns the last valid field index + 1, to indicate the end of field iteration ">field_index_end()</a> instead  <a href="#a048e865fc28aab75ba178f7886146582">More...</a><br /></td></tr>
+<tr class="separator:a048e865fc28aab75ba178f7886146582"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9903aa559390cfda45ae2e645005b667"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a9903aa559390cfda45ae2e645005b667">filters</a> () const </td></tr>
+<tr class="memdesc:a9903aa559390cfda45ae2e645005b667"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a vector of filter names  <a href="#a9903aa559390cfda45ae2e645005b667">More...</a><br /></td></tr>
+<tr class="separator:a9903aa559390cfda45ae2e645005b667"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd4f851d98b9f249f19f84634647cadf"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#acd4f851d98b9f249f19f84634647cadf">n_shared_fields</a> () const </td></tr>
-<tr class="memdesc:acd4f851d98b9f249f19f84634647cadf"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of shared fields declared in this header  <a href="#acd4f851d98b9f249f19f84634647cadf">More...</a><br /></td></tr>
+<tr class="memdesc:acd4f851d98b9f249f19f84634647cadf"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of shared fields declared in this header  do not use for iteration over filter indices &ndash; use <a class="el" href="classgamgee_1_1_variant_header.html#ad84c1e78e6cc703eab805c5f4ab956e4" title="returns the last valid field index + 1, to indicate the end of field iteration ">field_index_end()</a> instead  <a href="#acd4f851d98b9f249f19f84634647cadf">More...</a><br /></td></tr>
 <tr class="separator:acd4f851d98b9f249f19f84634647cadf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab91f74aac68c2909aa4539fe3dc4edbe"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#ab91f74aac68c2909aa4539fe3dc4edbe">individual_fields</a> () const </td></tr>
-<tr class="memdesc:ab91f74aac68c2909aa4539fe3dc4edbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">builds a vector with the format fields  <a href="#ab91f74aac68c2909aa4539fe3dc4edbe">More...</a><br /></td></tr>
-<tr class="separator:ab91f74aac68c2909aa4539fe3dc4edbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1068a7fdb23dc67166a8df908cdc2116"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a1068a7fdb23dc67166a8df908cdc2116">shared_fields</a> () const </td></tr>
+<tr class="memdesc:a1068a7fdb23dc67166a8df908cdc2116"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a vector of shared field names  <a href="#a1068a7fdb23dc67166a8df908cdc2116">More...</a><br /></td></tr>
+<tr class="separator:a1068a7fdb23dc67166a8df908cdc2116"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a442f087369cbeafa35e17199802c009e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a442f087369cbeafa35e17199802c009e">n_individual_fields</a> () const </td></tr>
-<tr class="memdesc:a442f087369cbeafa35e17199802c009e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of individual fields declared in this header  <a href="#a442f087369cbeafa35e17199802c009e">More...</a><br /></td></tr>
+<tr class="memdesc:a442f087369cbeafa35e17199802c009e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of individual fields declared in this header  do not use for iteration over filter indices &ndash; use <a class="el" href="classgamgee_1_1_variant_header.html#ad84c1e78e6cc703eab805c5f4ab956e4" title="returns the last valid field index + 1, to indicate the end of field iteration ">field_index_end()</a> instead  <a href="#a442f087369cbeafa35e17199802c009e">More...</a><br /></td></tr>
 <tr class="separator:a442f087369cbeafa35e17199802c009e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab91f74aac68c2909aa4539fe3dc4edbe"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#ab91f74aac68c2909aa4539fe3dc4edbe">individual_fields</a> () const </td></tr>
+<tr class="memdesc:ab91f74aac68c2909aa4539fe3dc4edbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a vector of individual field names  <a href="#ab91f74aac68c2909aa4539fe3dc4edbe">More...</a><br /></td></tr>
+<tr class="separator:ab91f74aac68c2909aa4539fe3dc4edbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ba704b46548ae45fedc3231de1b712e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a6ba704b46548ae45fedc3231de1b712e">shared_field_type</a> (const std::string &amp;tag) const </td></tr>
 <tr class="memdesc:a6ba704b46548ae45fedc3231de1b712e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the type of this shared (INFO) field  <a href="#a6ba704b46548ae45fedc3231de1b712e">More...</a><br /></td></tr>
 <tr class="separator:a6ba704b46548ae45fedc3231de1b712e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -237,7 +240,14 @@ Friends</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utility class to hold a variant header. </p>
-<p>It can be used to read headers from a VCF/BCF file, but to create one from scratch you want to use the <a class="el" href="classgamgee_1_1_variant_header_builder.html" title="Utility class to build VariantHeader objects from scratch. ">VariantHeaderBuilder</a> </p>
+<p>It can be used to read headers from a VCF/BCF file, but to create one from scratch you want to use the <a class="el" href="classgamgee_1_1_variant_header_builder.html" title="Utility class to build VariantHeader objects from scratch. ">VariantHeaderBuilder</a></p>
+<p>Note: filters, shared fields, and individual fields all occupy the same index space, and users must be careful to access these values appropriately. As an example, consider one possible indexing scheme for a simple header with two of each:</p>
+<p>0 FILTER_1 1 SHARED_FIELD_1 2 SHARED_FIELD_2 3 INDIVIDUAL_FIELD_1 4 FILTER_2 5 INDIVIDUAL_FIELD_2</p>
+<p>Counters and string accessors work intuitively:</p>
+<p><a class="el" href="classgamgee_1_1_variant_header.html#a048e865fc28aab75ba178f7886146582" title="returns the number of filters declared in this header  do not use for iteration over filter indices â€...">n_filters()</a> returns 2 <a class="el" href="classgamgee_1_1_variant_header.html#acd4f851d98b9f249f19f84634647cadf" title="returns the number of shared fields declared in this header  do not use for iteration over filter ind...">n_shared_fields()</a> returns 2 <a class="el" href="classgamgee_1_1_variant_header.html#a442f087369cbeafa35e17199802c009e" title="returns the number of individual fields declared in this header  do not use for iteration over filter...">n_individual_fields()</a> returns 2 <a class="el" href="classgamgee_1_1_variant_header.html#a9903aa559390cfda45ae2e645005b667" title="returns a vector of filter names ">filters()</a> returns { "FILTER_1", "FILTER_2" } <a class="el" href="classgamgee_1_1_variant_header.html#a1068a7fdb23dc67166a8df908cdc2116" title="returns a vector of shared field names ">shared_fields()</a> returns { "SHARED_FIELD_1", "SHARED_FIELD_2" } <a class="el" href="classgamgee_1_1_variant_header.html#ab91f74aac68c2909aa4539fe3dc4edbe" title="returns a vector of individual field names ">individual_fields()</a> returns { "INDIVIDUAL_FIELD_1", "INDIVIDUAL_FIELD_2" }</p>
+<p>Iterating through these filters/fields requires more care. While it's possible to use the string vectors for this, use of those strings to retrieve fields will require an expensive field index lookup. The counters are not usable because they don't tell you which indices are for your desired type.</p>
+<p>Instead, use <a class="el" href="classgamgee_1_1_variant_header.html#ad84c1e78e6cc703eab805c5f4ab956e4" title="returns the last valid field index + 1, to indicate the end of field iteration ">field_index_end()</a> and the <a class="el" href="classgamgee_1_1_variant_header.html#a115b748d92f8e3e3ffa5c647ff6886c0" title="checks whether the given filter is present given the filter name ">has_filter()</a> / has_*_field() method appropriate for the type on each index.</p>
+<p>Sample usage: for (auto idx = 0u; idx &lt; header.field_index_end(); ++idx) if (header.has_individual_field(idx)) do_something_with_field(variant.integer_individual_field(idx)); </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8e4336135a8000b86991821cb37ad254"></a>
 <div class="memitem">
@@ -408,6 +418,32 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 
 </div>
 </div>
+<a class="anchor" id="ad84c1e78e6cc703eab805c5f4ab956e4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gamgee::VariantHeader::field_index_end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>returns the last valid field index + 1, to indicate the end of field iteration </p>
+<p>Sample usage: for (auto idx = 0u; idx &lt; header.field_index_end(); ++idx) if (header.has_individual_field(idx)) do_something_with_field(variant.integer_individual_field(idx)); </p>
+
+</div>
+</div>
 <a class="anchor" id="ad4cfea3099357d3df38b8e299e9bc60f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -493,7 +529,7 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
       </table>
 </div><div class="memdoc">
 
-<p>builds a vector with the filters </p>
+<p>returns a vector of filter names </p>
 
 </div>
 </div>
@@ -892,7 +928,7 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
       </table>
 </div><div class="memdoc">
 
-<p>builds a vector with the format fields </p>
+<p>returns a vector of individual field names </p>
 
 </div>
 </div>
@@ -926,7 +962,7 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
       </table>
 </div><div class="memdoc">
 
-<p>returns the number of filters declared in this header </p>
+<p>returns the number of filters declared in this header  do not use for iteration over filter indices &ndash; use <a class="el" href="classgamgee_1_1_variant_header.html#ad84c1e78e6cc703eab805c5f4ab956e4" title="returns the last valid field index + 1, to indicate the end of field iteration ">field_index_end()</a> instead </p>
 
 </div>
 </div>
@@ -943,7 +979,7 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
       </table>
 </div><div class="memdoc">
 
-<p>returns the number of individual fields declared in this header </p>
+<p>returns the number of individual fields declared in this header  do not use for iteration over filter indices &ndash; use <a class="el" href="classgamgee_1_1_variant_header.html#ad84c1e78e6cc703eab805c5f4ab956e4" title="returns the last valid field index + 1, to indicate the end of field iteration ">field_index_end()</a> instead </p>
 
 </div>
 </div>
@@ -983,7 +1019,7 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
       </table>
 </div><div class="memdoc">
 
-<p>returns the number of shared fields declared in this header </p>
+<p>returns the number of shared fields declared in this header  do not use for iteration over filter indices &ndash; use <a class="el" href="classgamgee_1_1_variant_header.html#ad84c1e78e6cc703eab805c5f4ab956e4" title="returns the last valid field index + 1, to indicate the end of field iteration ">field_index_end()</a> instead </p>
 
 </div>
 </div>
@@ -1195,7 +1231,7 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
       </table>
 </div><div class="memdoc">
 
-<p>builds a vector with the info fields </p>
+<p>returns a vector of shared field names </p>
 
 </div>
 </div>
@@ -1351,7 +1387,7 @@ template&lt;bool fields_forward_LUT_ordering, bool fields_reverse_LUT_ordering, 
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 21 2014 19:06:23 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 21 2014 19:34:42 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
