@@ -1,7 +1,10 @@
-#include <boost/test/unit_test.hpp>
 #include "test_utils.h"
 #include "variant_header_builder.h"
 #include "missing.h"
+
+#include <set>
+
+#include <boost/test/unit_test.hpp>
 
 using namespace std;
 using namespace gamgee;
@@ -277,3 +280,43 @@ BOOST_AUTO_TEST_CASE( variant_header_file_and_construct ) {
   BOOST_CHECK(builder_from_scratch.build() == header3);
 }
 
+const auto filter_truth = vector<bool> { true, true, true, false, false, false, false, false };
+const auto shared_truth = vector<bool> { false, false, false, true, true, true, false, false };
+const auto individual_truth = vector<bool> { false, false, false, true, false, false, true, true };
+
+// remove duplicate names: assign the same index
+
+void add_to_index_names(const vector<string>& new_names, set<string>& index_name_set, vector<string>& index_name_vector) {
+  for (const auto& name : new_names) {
+    const auto& finder = index_name_set.find(name);
+    if (finder == index_name_set.end()) {
+      index_name_set.insert(name);
+      index_name_vector.push_back(name);
+    }
+  }
+}
+
+BOOST_AUTO_TEST_CASE( variant_header_field_index_iteration ) {
+  auto header = simple_builder().build();
+
+  auto index_name_set = set<string>{};
+  auto index_name_vector = vector<string>{};
+
+  // the PASS filter is always index 0
+  add_to_index_names({"PASS"}, index_name_set, index_name_vector);
+  add_to_index_names(filters, index_name_set, index_name_vector);
+  add_to_index_names(shareds, index_name_set, index_name_vector);
+  add_to_index_names(individuals, index_name_set, index_name_vector);
+
+  const auto& name_truth = index_name_vector;
+  const auto end_truth = index_name_vector.size();
+
+  BOOST_CHECK_EQUAL(header.field_index_end(), end_truth);
+
+  for (auto idx = 0u; idx < header.field_index_end(); ++idx) {
+    BOOST_CHECK_EQUAL(header.has_filter(idx), filter_truth[idx]);
+    BOOST_CHECK_EQUAL(header.has_shared_field(idx), shared_truth[idx]);
+    BOOST_CHECK_EQUAL(header.has_individual_field(idx), individual_truth[idx]);
+    BOOST_CHECK_EQUAL(header.get_field_name(idx), name_truth[idx]);
+  }
+}
