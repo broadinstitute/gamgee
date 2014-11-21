@@ -18,18 +18,18 @@ namespace gamgee
       auto curr_id = &(curr_header->id[BCF_DT_ID][j]);
       for(auto bcf_hl_type : { BCF_HL_FLT, BCF_HL_INFO, BCF_HL_FMT })
       {
-	//id has been deleted - ignore
-	if(!bcf_hdr_idinfo_exists(curr_header, bcf_hl_type, j))
-	  continue;
-	bcf_hrec_t* hrec = bcf_hdr_id2hrec(curr_header, BCF_DT_ID, bcf_hl_type, j);
-	if(hrec) //not deleted
-	{
-	  const char* key = curr_id->key;
-	  auto merged_idx = bcf_hdr_id2int(m_merged_vcf_header_ptr.get(), BCF_DT_ID, key);
-	  assert(merged_idx >= 0 && merged_idx < m_merged_vcf_header_ptr->n[BCF_DT_ID]);
-	  assert(bcf_hdr_idinfo_exists(m_merged_vcf_header_ptr, bcf_hl_type, merged_idx));
-	  m_header_fields_LUT.add_input_merged_idx_pair(input_vcf_idx, j, merged_idx);
-	}
+        //id has been deleted - ignore
+        if(!bcf_hdr_idinfo_exists(curr_header, bcf_hl_type, j))
+          continue;
+        bcf_hrec_t* hrec = bcf_hdr_id2hrec(curr_header, BCF_DT_ID, bcf_hl_type, j);
+        if(hrec) //not deleted
+        {
+          const char* key = curr_id->key;
+          auto merged_idx = bcf_hdr_id2int(m_merged_vcf_header_ptr.get(), BCF_DT_ID, key);
+          assert(merged_idx >= 0 && merged_idx < m_merged_vcf_header_ptr->n[BCF_DT_ID]);
+          assert(bcf_hdr_idinfo_exists(m_merged_vcf_header_ptr, bcf_hl_type, merged_idx));
+          m_header_fields_LUT.add_input_merged_idx_pair(input_vcf_idx, j, merged_idx);
+        }
       }
     }
   }
@@ -43,15 +43,15 @@ namespace gamgee
     {
       if(curr_header->samples[j] && bcf_hdr_id2int(curr_header, BCF_DT_SAMPLE, curr_header->samples[j]) >= 0)
       {
-	if(m_sample2idx_merged.find(curr_header->samples[j]) == m_sample2idx_merged.end())
-	{
-	  auto curr_size = m_sample2idx_merged.size();
-	  m_sample2idx_merged[curr_header->samples[j]] = curr_size;
-	}
-	m_samples_LUT.add_input_merged_idx_pair(input_vcf_idx, j, m_sample2idx_merged[curr_header->samples[j]]);
+        if(m_sample2idx_merged.find(curr_header->samples[j]) == m_sample2idx_merged.end())
+        {
+          auto curr_size = m_sample2idx_merged.size();
+          m_sample2idx_merged[curr_header->samples[j]] = curr_size;
+        }
+        m_samples_LUT.add_input_merged_idx_pair(input_vcf_idx, j, m_sample2idx_merged[curr_header->samples[j]]);
       }
       else
-	m_samples_LUT.reset_merged_idx_for_input(input_vcf_idx, j);
+        m_samples_LUT.reset_merged_idx_for_input(input_vcf_idx, j);
     }
   }
 
@@ -106,7 +106,7 @@ namespace gamgee
   resize_luts_if_needed()
   {
     if(m_num_merged_fields_allocated < static_cast<unsigned>(m_merged_vcf_header_ptr->n[BCF_DT_ID]))
-      m_num_merged_fields_allocated = m_merged_vcf_header_ptr->n[BCF_DT_ID] + 20;	//why 20, no particular reason
+      m_num_merged_fields_allocated = m_merged_vcf_header_ptr->n[BCF_DT_ID] + 20;       //why 20, no particular reason
     if(m_input_vcf_headers.size() < m_num_input_vcfs_allocated)
       m_num_input_vcfs_allocated = 2*m_input_vcf_headers.size();
     if(m_num_merged_samples_allocated < static_cast<unsigned>(bcf_hdr_nsamples(m_merged_vcf_header_ptr)))

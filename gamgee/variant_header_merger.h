@@ -84,63 +84,63 @@ namespace gamgee
        * @brief empty constructor, initialize 'large' LUTs
        */
       VariantHeaderMerger()
-	: m_header_fields_LUT{ m_DEFAULT_INIT_NUM_INPUT_VCFS,  m_DEFAULT_INIT_NUM_FIELDS },
-	m_samples_LUT { m_DEFAULT_INIT_NUM_INPUT_VCFS, m_DEFAULT_INIT_NUM_SAMPLES },
-	m_merged_field_idx_enum_lut { 1u, m_DEFAULT_INIT_NUM_FIELDS }
+        : m_header_fields_LUT{ m_DEFAULT_INIT_NUM_INPUT_VCFS,  m_DEFAULT_INIT_NUM_FIELDS },
+        m_samples_LUT { m_DEFAULT_INIT_NUM_INPUT_VCFS, m_DEFAULT_INIT_NUM_SAMPLES },
+        m_merged_field_idx_enum_lut { 1u, m_DEFAULT_INIT_NUM_FIELDS }
       {
-	reset();
-	m_num_input_vcfs_allocated = m_DEFAULT_INIT_NUM_INPUT_VCFS;
-	m_num_merged_fields_allocated = m_DEFAULT_INIT_NUM_FIELDS;
-	m_num_merged_samples_allocated = m_DEFAULT_INIT_NUM_SAMPLES;
-	m_num_enums_allocated = m_DEFAULT_INIT_NUM_FIELDS;
+        reset();
+        m_num_input_vcfs_allocated = m_DEFAULT_INIT_NUM_INPUT_VCFS;
+        m_num_merged_fields_allocated = m_DEFAULT_INIT_NUM_FIELDS;
+        m_num_merged_samples_allocated = m_DEFAULT_INIT_NUM_SAMPLES;
+        m_num_enums_allocated = m_DEFAULT_INIT_NUM_FIELDS;
       }
       /**
        * @brief Constructor with a single input VCF header as input 
        * @param input_vcf_header header of input VCF
        */
       VariantHeaderMerger(const std::shared_ptr<bcf_hdr_t>& input_vcf_header)
-	: VariantHeaderMerger() 
+        : VariantHeaderMerger() 
       {
-	add_header(input_vcf_header);
+        add_header(input_vcf_header);
       }
       /**
        * @brief Constructor with a single input VCF header as input 
        * @param input_vcf_header header of input VCF
        */
       VariantHeaderMerger(const VariantHeader& input_vcf_header)
-	: VariantHeaderMerger(input_vcf_header.m_header) 
+        : VariantHeaderMerger(input_vcf_header.m_header) 
       { }
       /**
        * @brief Constructor with a vector of input VCF headers to be merged
        * @param input_vcf_headers vector of headers of input VCFs which are being merged
        */
       VariantHeaderMerger(const std::vector<std::shared_ptr<bcf_hdr_t>>& input_vcf_headers)
-	: m_header_fields_LUT{ static_cast<unsigned>(input_vcf_headers.size()),  m_DEFAULT_INIT_NUM_FIELDS },
-	m_samples_LUT { static_cast<unsigned>(input_vcf_headers.size()), m_DEFAULT_INIT_NUM_SAMPLES },
-	m_merged_field_idx_enum_lut { 1u, m_DEFAULT_INIT_NUM_FIELDS }
+        : m_header_fields_LUT{ static_cast<unsigned>(input_vcf_headers.size()),  m_DEFAULT_INIT_NUM_FIELDS },
+        m_samples_LUT { static_cast<unsigned>(input_vcf_headers.size()), m_DEFAULT_INIT_NUM_SAMPLES },
+        m_merged_field_idx_enum_lut { 1u, m_DEFAULT_INIT_NUM_FIELDS }
       {
-	reset();
-	m_num_input_vcfs_allocated = input_vcf_headers.size();
-	m_num_merged_fields_allocated = m_DEFAULT_INIT_NUM_FIELDS;
-	m_num_merged_samples_allocated = m_DEFAULT_INIT_NUM_SAMPLES;
-	m_num_enums_allocated = m_DEFAULT_INIT_NUM_FIELDS;
-	add_headers(input_vcf_headers);
+        reset();
+        m_num_input_vcfs_allocated = input_vcf_headers.size();
+        m_num_merged_fields_allocated = m_DEFAULT_INIT_NUM_FIELDS;
+        m_num_merged_samples_allocated = m_DEFAULT_INIT_NUM_SAMPLES;
+        m_num_enums_allocated = m_DEFAULT_INIT_NUM_FIELDS;
+        add_headers(input_vcf_headers);
       }
       /**
        * @brief Constructor with a vector of input VCF headers to be merged
        * @param input_vcf_headers vector of headers of input VCFs which are being merged
        */
       VariantHeaderMerger(const std::vector<VariantHeader>& input_vcf_headers)
-	: m_header_fields_LUT{ static_cast<unsigned>(input_vcf_headers.size()),  m_DEFAULT_INIT_NUM_FIELDS },
-	m_samples_LUT { static_cast<unsigned>(input_vcf_headers.size()), m_DEFAULT_INIT_NUM_SAMPLES },
-	m_merged_field_idx_enum_lut { 1u, m_DEFAULT_INIT_NUM_FIELDS }
+        : m_header_fields_LUT{ static_cast<unsigned>(input_vcf_headers.size()),  m_DEFAULT_INIT_NUM_FIELDS },
+        m_samples_LUT { static_cast<unsigned>(input_vcf_headers.size()), m_DEFAULT_INIT_NUM_SAMPLES },
+        m_merged_field_idx_enum_lut { 1u, m_DEFAULT_INIT_NUM_FIELDS }
       {
-	reset();
-	m_num_input_vcfs_allocated = input_vcf_headers.size();
-	m_num_merged_fields_allocated = m_DEFAULT_INIT_NUM_FIELDS;
-	m_num_merged_samples_allocated = m_DEFAULT_INIT_NUM_SAMPLES;
-	m_num_enums_allocated = m_DEFAULT_INIT_NUM_FIELDS;
-	add_headers(input_vcf_headers);
+        reset();
+        m_num_input_vcfs_allocated = input_vcf_headers.size();
+        m_num_merged_fields_allocated = m_DEFAULT_INIT_NUM_FIELDS;
+        m_num_merged_samples_allocated = m_DEFAULT_INIT_NUM_SAMPLES;
+        m_num_enums_allocated = m_DEFAULT_INIT_NUM_FIELDS;
+        add_headers(input_vcf_headers);
       }
       /*
        * @brief No anticipated use of a deep copy for VariantHeaderMerger
@@ -159,26 +159,26 @@ namespace gamgee
        */
       void reset()
       {
-	m_input_vcf_headers.clear();
-	m_sample2idx_merged.clear();
-	m_merged_vcf_header_ptr = nullptr;
-	m_num_merged_fields_allocated = 0u;
-	m_num_merged_samples_allocated = 0u;
-	m_num_input_vcfs_allocated = 0u;
-	m_num_enums_allocated = 0u;
-	m_header_fields_LUT.reset_luts();
-	m_samples_LUT.reset_luts();
-	m_merged_field_idx_enum_lut.reset_luts();
+        m_input_vcf_headers.clear();
+        m_sample2idx_merged.clear();
+        m_merged_vcf_header_ptr = nullptr;
+        m_num_merged_fields_allocated = 0u;
+        m_num_merged_samples_allocated = 0u;
+        m_num_input_vcfs_allocated = 0u;
+        m_num_enums_allocated = 0u;
+        m_header_fields_LUT.reset_luts();
+        m_samples_LUT.reset_luts();
+        m_merged_field_idx_enum_lut.reset_luts();
       }
       /**
        * @brief: resets all mappings, de-allocates LUT memory
        */
       void clear()
       {
-	reset();
-	m_header_fields_LUT.clear();
-	m_samples_LUT.clear();
-	m_merged_field_idx_enum_lut.clear();
+        reset();
+        m_header_fields_LUT.clear();
+        m_samples_LUT.clear();
+        m_merged_field_idx_enum_lut.clear();
       }
       /**
        * @brief add a new header into the merged header and update LUTs
@@ -274,11 +274,11 @@ namespace gamgee
       void store_merged_field_idx_for_enum(const std::string& field, unsigned field_enum_idx);
       inline int get_merged_field_idx_for_enum(unsigned field_enum_idx) const
       {
-	return m_merged_field_idx_enum_lut.get_merged_idx_for_input(0u, field_enum_idx);
+        return m_merged_field_idx_enum_lut.get_merged_idx_for_input(0u, field_enum_idx);
       }
       inline int get_enum_for_merged_field_idx(int merged_field_idx) const
       {
-	return m_merged_field_idx_enum_lut.get_input_idx_for_merged(0u, merged_field_idx);
+        return m_merged_field_idx_enum_lut.get_input_idx_for_merged(0u, merged_field_idx);
       }
     private:
       /**
