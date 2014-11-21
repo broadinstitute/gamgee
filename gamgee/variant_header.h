@@ -17,6 +17,36 @@ class VariantHeaderMerger;  //forward declaration to declare friendship in Varia
  *
  * It can be used to read headers from a VCF/BCF file, but to create one from scratch 
  * you want to use the VariantHeaderBuilder
+ *
+ * Note: filters, shared fields, and individual fields all occupy the same index space, and users must be careful to access
+ * these values appropriately.  As an example, consider one possible indexing scheme for a simple header with two of each:
+ *
+ * 0 FILTER_1
+ * 1 SHARED_FIELD_1
+ * 2 SHARED_FIELD_2
+ * 3 INDIVIDUAL_FIELD_1
+ * 4 FILTER_2
+ * 5 INDIVIDUAL_FIELD_2
+ *
+ * Counters and string accessors work intuitively:
+ *
+ * n_filters() returns 2
+ * n_shared_fields() returns 2
+ * n_individual_fields() returns 2
+ * filters() returns { "FILTER_1", "FILTER_2" }
+ * shared_fields() returns { "SHARED_FIELD_1", "SHARED_FIELD_2" }
+ * individual_fields() returns { "INDIVIDUAL_FIELD_1", "INDIVIDUAL_FIELD_2" }
+ *
+ * Iterating through these filters/fields requires more care.  While it's possible to use the string vectors for this,
+ * use of those strings to retrieve fields will require an expensive field index lookup.  The counters are not usable
+ * because they don't tell you which indices are for your desired type.
+ *
+ * Instead, use field_index_end() and the has_filter() / has_*_field() method appropriate for the type on each index.
+ *
+ * Sample usage:
+ * for (auto idx = 0u; idx < header.field_index_end(); ++idx)
+ *   if (header.has_individual_field(idx))
+ *     do_something_with_field(variant.integer_individual_field(idx));
  */
 class VariantHeader {
  public:
@@ -37,16 +67,41 @@ class VariantHeader {
   bool operator==(const VariantHeader& rhs) const;
   bool operator!=(const VariantHeader& rhs) const { return !operator==(rhs); }
 
-  std::vector<std::string> filters() const;           ///< @brief builds a vector with the filters
-  uint32_t n_filters() const;                         ///< @brief returns the number of filters declared in this header
   std::vector<std::string> samples() const;           ///< @brief builds a vector with the names of the samples
   uint32_t n_samples() const { return uint32_t(bcf_hdr_nsamples(m_header.get())); };  ///< @brief returns the number of samples in the header  @note much faster than getting the actual list of samples
   std::vector<std::string> chromosomes() const;       ///< @brief builds a vector with the contigs
   uint32_t n_chromosomes() const;                     ///< @brief returns the number of chromosomes declared in this header
-  std::vector<std::string> shared_fields() const;     ///< @brief builds a vector with the info fields
-  uint32_t n_shared_fields() const;                   ///< @brief returns the number of shared fields declared in this header
-  std::vector<std::string> individual_fields() const; ///< @brief builds a vector with the format fields
-  uint32_t n_individual_fields() const;               ///< @brief returns the number of individual fields declared in this header
+
+  /**
+  * @brief returns the last valid field index + 1, to indicate the end of field iteration
+  *
+  * Sample usage:
+  * for (auto idx = 0u; idx < header.field_index_end(); ++idx)
+  *   if (header.has_individual_field(idx))
+  *     do_something_with_field(variant.integer_individual_field(idx));
+  */
+  uint32_t field_index_end() const { return static_cast<uint32_t>(m_header->n[BCF_DT_ID]); };
+
+  /**
+  * @brief returns the number of filters declared in this header
+  * @warn do not use for iteration over filter indices -- use field_index_end() instead
+  */
+  uint32_t n_filters() const;
+  std::vector<std::string> filters() const;           ///< @brief returns a vector of filter names
+
+  /**
+  * @brief returns the number of shared fields declared in this header
+  * @warn do not use for iteration over filter indices -- use field_index_end() instead
+  */
+  uint32_t n_shared_fields() const;
+  std::vector<std::string> shared_fields() const;     ///< @brief returns a vector of shared field names
+
+  /**
+  * @brief returns the number of individual fields declared in this header
+  * @warn do not use for iteration over filter indices -- use field_index_end() instead
+  */
+  uint32_t n_individual_fields() const;
+  std::vector<std::string> individual_fields() const; ///< @brief returns a vector of individual field names
 
   // type checking functions: returns BCF_HT_FLAG, BCF_HT_INT, BCF_HT_REAL, BCF_HT_STR from htslib/vcf.h
   uint8_t shared_field_type(const std::string& tag) const { return field_type(field_index(tag), BCF_HL_INFO); }     ///< @brief returns the type of this shared (INFO) field  @note must check whether the field exists before calling this function, as it doesn't check for you
