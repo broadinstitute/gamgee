@@ -234,8 +234,25 @@ BOOST_AUTO_TEST_CASE( variant_header_merger_test )
 {
   auto diff_hdr_test_files = vector<string>{ "testdata/ref_block/problem2_file2.vcf", "testdata/ref_block/test2.vcf",
     "testdata/var_hdr_merge/test1.vcf" };
+  auto many_hdr_test_files = vector<string>{
+    "testdata/ref_block/test2.vcf",
+    "testdata/var_hdr_merge/test1.vcf",
+    "testdata/ref_block/problem2_file1.vcf",
+    "testdata/ref_block/problem2_file2.vcf",
+    "testdata/mvr_hdr/test1.vcf",
+    "testdata/ref_block/problem2_file2.vcf",
+    "testdata/var_hdr_merge/test3.vcf",
+    "testdata/ref_block/test2.vcf",
+    "testdata/var_hdr_merge/test1.vcf",
+    "testdata/ref_block/problem2_file2.vcf",
+    "testdata/ref_block/test2.vcf",
+    "testdata/var_hdr_merge/test1.vcf",
+    "testdata/ref_block/problem2_file2.vcf",
+    "testdata/ref_block/test2.vcf",
+    "testdata/var_hdr_merge/test1.vcf"
+  };
   auto variant_header_merger_test_path_counters = vector<unsigned>(TOTAL_NUM_VARIANT_HEADER_MERGER_TEST_PATHS, 0u);
-  for(auto const & multi_reader : { GVCFReader{test_files, false}, GVCFReader{diff_hdr_test_files, false}  })
+  for(auto const & multi_reader : { GVCFReader{test_files, false}, GVCFReader{diff_hdr_test_files, false}, GVCFReader{many_hdr_test_files, false} })
   {
     const vector<shared_ptr<bcf_hdr_t>>& header_vec = multi_reader.get_input_vcf_headers();
     const VariantHeader& combined_header = multi_reader.combined_header();

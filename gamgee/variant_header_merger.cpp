@@ -107,7 +107,7 @@ namespace gamgee
   {
     if(m_num_merged_fields_allocated < static_cast<unsigned>(m_merged_vcf_header_ptr->n[BCF_DT_ID]))
       m_num_merged_fields_allocated = m_merged_vcf_header_ptr->n[BCF_DT_ID] + 20;       //why 20, no particular reason
-    if(m_input_vcf_headers.size() < m_num_input_vcfs_allocated)
+    if(m_num_input_vcfs_allocated < m_input_vcf_headers.size())
       m_num_input_vcfs_allocated = 2*m_input_vcf_headers.size();
     if(m_num_merged_samples_allocated < static_cast<unsigned>(bcf_hdr_nsamples(m_merged_vcf_header_ptr)))
       m_num_merged_samples_allocated = 2*bcf_hdr_nsamples(m_merged_vcf_header_ptr);
