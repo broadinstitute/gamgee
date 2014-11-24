@@ -128,3 +128,22 @@ BOOST_AUTO_TEST_CASE( test_float_multi_sample_vector_multiple_samples ) {
     }
   }
 }
+
+BOOST_AUTO_TEST_CASE( test_multi_sample_vector_zero_samples_and_values ) {
+  // Ensure that we don't crash when creating empty vectors with num_samples or max_values_per_sample equal to 0
+
+  // 0 samples, max of 0 values per sample
+  auto vec = VariantBuilderMultiSampleVector<int32_t>{0u, 0u, bcf_int32_missing, bcf_int32_vector_end};
+  BOOST_CHECK_EQUAL(vec.num_samples(), 0u);
+  BOOST_CHECK_EQUAL(vec.max_values_per_sample(), 0u);
+
+  // 4 samples, max of 0 values per sample
+  vec = VariantBuilderMultiSampleVector<int32_t>{4u, 0u, bcf_int32_missing, bcf_int32_vector_end};
+  BOOST_CHECK_EQUAL(vec.num_samples(), 4u);
+  BOOST_CHECK_EQUAL(vec.max_values_per_sample(), 0u);
+
+  // 0 samples, max of 4 values per sample
+  vec = VariantBuilderMultiSampleVector<int32_t>{0u, 4u, bcf_int32_missing, bcf_int32_vector_end};
+  BOOST_CHECK_EQUAL(vec.num_samples(), 0u);
+  BOOST_CHECK_EQUAL(vec.max_values_per_sample(), 4u);
+}
