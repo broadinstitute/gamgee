@@ -161,13 +161,13 @@ void VariantBuilderIndividualRegion::remove_field(const int32_t field_index) {
   }
 }
 
-void VariantBuilderIndividualRegion::validate_individual_field(const int32_t field_index, const uint32_t provided_type) const {
+void VariantBuilderIndividualRegion::validate_individual_field(const int32_t field_index, const uint32_t provided_type, const bool allow_gt) const {
   validate_individual_field_existence(field_index);
 
   // Special-case the GT field when doing type checking, since its nominal type in the header will be BCF_HT_STR,
-  // but we require integer data to encode it
+  // but we require integer data encoded via one of the genotype setter functions
   if ( field_index == m_gt_field_index ) {
-    if ( provided_type != BCF_HT_INT ) throw invalid_argument(string{"Type mismatch for GT field: integer data required"});
+    if ( ! allow_gt || provided_type != BCF_HT_INT ) throw invalid_argument(string{"Type mismatch for GT field: must set GT using a genotype-specific setter function, and provide integer data"});
   }
   else if ( m_header.individual_field_type(field_index) != provided_type ) {
     throw invalid_argument(string{"Type mismatch for individual field with index "} + to_string(field_index));
@@ -176,8 +176,8 @@ void VariantBuilderIndividualRegion::validate_individual_field(const int32_t fie
   // TODO: validate cardinality of the fields (must be done at build time, and could be expensive...)
 }
 
-void VariantBuilderIndividualRegion::validate_individual_field(const int32_t field_index, const int32_t sample_index, const uint32_t provided_type) const {
-  validate_individual_field(field_index, provided_type);
+void VariantBuilderIndividualRegion::validate_individual_field(const int32_t field_index, const int32_t sample_index, const uint32_t provided_type, const bool allow_gt) const {
+  validate_individual_field(field_index, provided_type, allow_gt);
 
   if ( ! m_header.has_sample(sample_index) ) {
     throw invalid_argument(string{"No sample with index "} + to_string(sample_index) + " found in builder's header");
