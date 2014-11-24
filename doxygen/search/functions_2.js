@@ -183,6 +183,7 @@ var searchData=
   ['boolean_5fshared_5ffield',['boolean_shared_field',['../classgamgee_1_1_variant.html#a7cd6de76888701290861b2ecfa53abc0',1,'gamgee::Variant::boolean_shared_field(const std::string &amp;tag) const '],['../classgamgee_1_1_variant.html#ae1210be862e6ab1952a7289a0fcdf380',1,'gamgee::Variant::boolean_shared_field(const int32_t index) const ']]],
   ['build',['build',['../classgamgee_1_1_sam_builder.html#ad26dba489fbed0205248ceb3705a1064',1,'gamgee::SamBuilder::build()'],['../classgamgee_1_1_variant_builder.html#a9af2780b3ef03762f437b435cf277a65',1,'gamgee::VariantBuilder::build()'],['../classgamgee_1_1_variant_header_builder.html#ad681c411de36e1d8b728e81c448aa1fb',1,'gamgee::VariantHeaderBuilder::build()']]],
   ['bulk_5fset_5ffloat_5ffield',['bulk_set_float_field',['../classgamgee_1_1_variant_builder_individual_region.html#a41d170ed729381c89db8a9f844a02925',1,'gamgee::VariantBuilderIndividualRegion']]],
+  ['bulk_5fset_5fgenotype_5ffield',['bulk_set_genotype_field',['../classgamgee_1_1_variant_builder_individual_region.html#a048c1a0ead76abe1f433f678078ee7ea',1,'gamgee::VariantBuilderIndividualRegion']]],
   ['bulk_5fset_5finteger_5ffield',['bulk_set_integer_field',['../classgamgee_1_1_variant_builder_individual_region.html#a405b718fb9e666964c62a3169f3a9cb9',1,'gamgee::VariantBuilderIndividualRegion']]],
   ['bulk_5fset_5fstring_5ffield',['bulk_set_string_field',['../classgamgee_1_1_variant_builder_individual_region.html#a93e6fda4e71a2ba702ded9abcdc14667',1,'gamgee::VariantBuilderIndividualRegion']]]
 ];

@@ -124,6 +124,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a75a7d10b222cd652584d64a83c476448"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7eb53d17f62993b48b1d0ffabae50a9c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_individual_region.html#a7eb53d17f62993b48b1d0ffabae50a9c">modified</a> () const </td></tr>
 <tr class="separator:a7eb53d17f62993b48b1d0ffabae50a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a048c1a0ead76abe1f433f678078ee7ea"><td class="memTemplParams" colspan="2">template&lt;class FIELD_ID_TYPE , class BULK_FIELD_VALUES_TYPE &gt; </td></tr>
+<tr class="memitem:a048c1a0ead76abe1f433f678078ee7ea"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_individual_region.html#a048c1a0ead76abe1f433f678078ee7ea">bulk_set_genotype_field</a> (const FIELD_ID_TYPE &amp;field_id, BULK_FIELD_VALUES_TYPE &amp;&amp;field_values)</td></tr>
+<tr class="separator:a048c1a0ead76abe1f433f678078ee7ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a405b718fb9e666964c62a3169f3a9cb9"><td class="memTemplParams" colspan="2">template&lt;class FIELD_ID_TYPE , class BULK_FIELD_VALUES_TYPE &gt; </td></tr>
 <tr class="memitem:a405b718fb9e666964c62a3169f3a9cb9"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_individual_region.html#a405b718fb9e666964c62a3169f3a9cb9">bulk_set_integer_field</a> (const FIELD_ID_TYPE &amp;field_id, BULK_FIELD_VALUES_TYPE &amp;&amp;field_values)</td></tr>
 <tr class="separator:a405b718fb9e666964c62a3169f3a9cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,6 +136,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a93e6fda4e71a2ba702ded9abcdc14667"><td class="memTemplParams" colspan="2">template&lt;class FIELD_ID_TYPE , class BULK_FIELD_VALUES_TYPE &gt; </td></tr>
 <tr class="memitem:a93e6fda4e71a2ba702ded9abcdc14667"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_individual_region.html#a93e6fda4e71a2ba702ded9abcdc14667">bulk_set_string_field</a> (const FIELD_ID_TYPE &amp;field_id, BULK_FIELD_VALUES_TYPE &amp;&amp;field_values)</td></tr>
 <tr class="separator:a93e6fda4e71a2ba702ded9abcdc14667"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9276d76cbbfd985bde0813295bcfd85"><td class="memTemplParams" colspan="2">template&lt;class FIELD_ID_TYPE , class SAMPLE_ID_TYPE , class FIELD_VALUE_TYPE &gt; </td></tr>
+<tr class="memitem:ab9276d76cbbfd985bde0813295bcfd85"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_individual_region.html#ab9276d76cbbfd985bde0813295bcfd85">set_genotype_field_by_sample</a> (const FIELD_ID_TYPE &amp;field_id, const SAMPLE_ID_TYPE &amp;sample_id, const FIELD_VALUE_TYPE *field_values, const uint32_t num_field_values)</td></tr>
+<tr class="separator:ab9276d76cbbfd985bde0813295bcfd85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7e3b295e8b67d780c9697ebbee6f1dd"><td class="memTemplParams" colspan="2">template&lt;class FIELD_ID_TYPE , class SAMPLE_ID_TYPE , class FIELD_VALUE_TYPE &gt; </td></tr>
 <tr class="memitem:af7e3b295e8b67d780c9697ebbee6f1dd"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_builder_individual_region.html#af7e3b295e8b67d780c9697ebbee6f1dd">set_integer_field_by_sample</a> (const FIELD_ID_TYPE &amp;field_id, const SAMPLE_ID_TYPE &amp;sample_id, const FIELD_VALUE_TYPE *field_values, const uint32_t num_field_values)</td></tr>
 <tr class="separator:af7e3b295e8b67d780c9697ebbee6f1dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -276,6 +282,42 @@ template&lt;class FIELD_ID_TYPE , class BULK_FIELD_VALUES_TYPE &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void gamgee::VariantBuilderIndividualRegion::bulk_set_float_field </td>
+          <td>(</td>
+          <td class="paramtype">const FIELD_ID_TYPE &amp;&#160;</td>
+          <td class="paramname"><em>field_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">BULK_FIELD_VALUES_TYPE &amp;&amp;&#160;</td>
+          <td class="paramname"><em>field_values</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a048c1a0ead76abe1f433f678078ee7ea"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class FIELD_ID_TYPE , class BULK_FIELD_VALUES_TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gamgee::VariantBuilderIndividualRegion::bulk_set_genotype_field </td>
           <td>(</td>
           <td class="paramtype">const FIELD_ID_TYPE &amp;&#160;</td>
           <td class="paramname"><em>field_id</em>, </td>
@@ -640,6 +682,54 @@ template&lt;class FIELD_ID_TYPE , class SAMPLE_ID_TYPE , class FIELD_VALUE_TYPE 
 
 </div>
 </div>
+<a class="anchor" id="ab9276d76cbbfd985bde0813295bcfd85"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class FIELD_ID_TYPE , class SAMPLE_ID_TYPE , class FIELD_VALUE_TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gamgee::VariantBuilderIndividualRegion::set_genotype_field_by_sample </td>
+          <td>(</td>
+          <td class="paramtype">const FIELD_ID_TYPE &amp;&#160;</td>
+          <td class="paramname"><em>field_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const SAMPLE_ID_TYPE &amp;&#160;</td>
+          <td class="paramname"><em>sample_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const FIELD_VALUE_TYPE *&#160;</td>
+          <td class="paramname"><em>field_values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramname"><em>num_field_values</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="af7e3b295e8b67d780c9697ebbee6f1dd"></a>
 <div class="memitem">
 <div class="memproto">
@@ -743,7 +833,7 @@ template&lt;class FIELD_ID_TYPE , class SAMPLE_ID_TYPE , class FIELD_VALUE_TYPE 
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 24 2014 16:31:26 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 24 2014 20:40:18 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
