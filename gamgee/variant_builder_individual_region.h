@@ -36,7 +36,14 @@ class VariantBuilderIndividualRegion {
   bool modified() const { return m_num_present_fields > 0; }
 
   template<class FIELD_ID_TYPE, class BULK_FIELD_VALUES_TYPE>
+  void bulk_set_genotype_field(const FIELD_ID_TYPE& field_id, BULK_FIELD_VALUES_TYPE&& field_values) {
+    // Set boolean parameter in bulk_set_field() to true to indicate that we should allow GT to be set
+    bulk_set_field(field_id, std::forward<BULK_FIELD_VALUES_TYPE>(field_values), BCF_HT_INT, m_int_fields, true);
+  }
+
+  template<class FIELD_ID_TYPE, class BULK_FIELD_VALUES_TYPE>
   void bulk_set_integer_field(const FIELD_ID_TYPE& field_id, BULK_FIELD_VALUES_TYPE&& field_values) {
+    // Final boolean parameter to bulk_set_field() is kept as its default false here to disallow GT to be set as a regular int field
     bulk_set_field(field_id, std::forward<BULK_FIELD_VALUES_TYPE>(field_values), BCF_HT_INT, m_int_fields);
   }
 
@@ -51,7 +58,14 @@ class VariantBuilderIndividualRegion {
   }
 
   template<class FIELD_ID_TYPE, class SAMPLE_ID_TYPE, class FIELD_VALUE_TYPE>
+  void set_genotype_field_by_sample(const FIELD_ID_TYPE& field_id, const SAMPLE_ID_TYPE& sample_id, const FIELD_VALUE_TYPE* field_values, const uint32_t num_field_values) {
+    // Set boolean parameter in set_field_by_sample() to true to indicate that we should allow GT to be set
+    set_field_by_sample(field_id, sample_id, field_values, num_field_values, BCF_HT_INT, m_int_fields, true);
+  }
+
+  template<class FIELD_ID_TYPE, class SAMPLE_ID_TYPE, class FIELD_VALUE_TYPE>
   void set_integer_field_by_sample(const FIELD_ID_TYPE& field_id, const SAMPLE_ID_TYPE& sample_id, const FIELD_VALUE_TYPE* field_values, const uint32_t num_field_values) {
+    // Final boolean parameter to set_field_by_sample() is kept as its default false here to disallow GT to be set as a regular int field
     set_field_by_sample(field_id, sample_id, field_values, num_field_values, BCF_HT_INT, m_int_fields);
   }
 
@@ -101,10 +115,10 @@ class VariantBuilderIndividualRegion {
   void build_lookup_tables();
 
   template<class FIELD_ID_TYPE, class BULK_FIELD_VALUES_TYPE, class FIELD_TYPE>
-  void bulk_set_field(const FIELD_ID_TYPE& field_id, BULK_FIELD_VALUES_TYPE&& field_values, const int32_t provided_type, std::vector<FIELD_TYPE>& fields_of_type) {
+  void bulk_set_field(const FIELD_ID_TYPE& field_id, BULK_FIELD_VALUES_TYPE&& field_values, const int32_t provided_type, std::vector<FIELD_TYPE>& fields_of_type, const bool allow_gt = false) {
     const auto field_idx = field_index(field_id);
     if ( m_enable_validation ) {
-      validate_individual_field(field_idx, provided_type);
+      validate_individual_field(field_idx, provided_type, allow_gt);
       validate_multi_sample_vector_length(field_values);
     }
 
@@ -126,11 +140,11 @@ class VariantBuilderIndividualRegion {
   }
 
   template<class FIELD_ID_TYPE, class SAMPLE_ID_TYPE, class FIELD_VALUE_TYPE, class FIELD_TYPE>
-  void set_field_by_sample(const FIELD_ID_TYPE& field_id, const SAMPLE_ID_TYPE& sample_id, const FIELD_VALUE_TYPE* field_values, const uint32_t num_field_values, const int32_t provided_type, std::vector<FIELD_TYPE>& fields_of_type) {
+  void set_field_by_sample(const FIELD_ID_TYPE& field_id, const SAMPLE_ID_TYPE& sample_id, const FIELD_VALUE_TYPE* field_values, const uint32_t num_field_values, const int32_t provided_type, std::vector<FIELD_TYPE>& fields_of_type, const bool allow_gt = false) {
     const auto field_idx = field_index(field_id);
     const auto sample_idx = sample_index(sample_id);
     if ( m_enable_validation ) {
-      validate_individual_field(field_idx, sample_idx, provided_type);
+      validate_individual_field(field_idx, sample_idx, provided_type, allow_gt);
     }
 
     auto& field = fields_of_type[m_field_lookup_table[field_idx]];
@@ -153,8 +167,8 @@ class VariantBuilderIndividualRegion {
   int32_t sample_index(const std::string& sample_id) const { return m_header.sample_index(sample_id); }
   int32_t sample_index(const uint32_t sample_id) const { return int32_t(sample_id); }
 
-  void validate_individual_field(const int32_t field_index, const uint32_t provided_type) const;
-  void validate_individual_field(const int32_t field_index, const int32_t sample_index, const uint32_t provided_type) const;
+  void validate_individual_field(const int32_t field_index, const uint32_t provided_type, const bool allow_gt) const;
+  void validate_individual_field(const int32_t field_index, const int32_t sample_index, const uint32_t provided_type, const bool allow_gt) const;
   void validate_individual_field_existence(const int32_t field_index) const;
 
   template<class ELEMENT_TYPE>

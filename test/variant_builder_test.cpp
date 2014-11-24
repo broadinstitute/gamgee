@@ -1280,6 +1280,16 @@ BOOST_AUTO_TEST_CASE( bulk_set_individual_field_type_mismatch ) {
   BOOST_CHECK_THROW(builder.set_string_individual_field(header.field_index("ZIFMT"), {"a", "b", "c"}), invalid_argument);
 }
 
+BOOST_AUTO_TEST_CASE( bulk_set_gt_using_generic_integer_setters ) {
+  auto header = SingleVariantReader{"testdata/test_variants_for_variantbuilder.vcf"}.header();
+  auto builder = VariantBuilder{header};
+  builder.set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
+
+  // Setting GT using a generic integer field bulk setter should throw
+  BOOST_CHECK_THROW(builder.set_integer_individual_field("GT", vector<vector<int32_t>>{{1, 0}, {0, 1}, {1, 1}}), invalid_argument);
+  BOOST_CHECK_THROW(builder.set_integer_individual_field(header.field_index("GT"), vector<vector<int32_t>>{{1, 0}, {0, 1}, {1, 1}}), invalid_argument);
+}
+
 BOOST_AUTO_TEST_CASE( bulk_set_individual_field_bad_field_id ) {
   auto header = SingleVariantReader{"testdata/test_variants_for_variantbuilder.vcf"}.header();
   auto builder = VariantBuilder{header};
@@ -1724,6 +1734,16 @@ BOOST_AUTO_TEST_CASE( set_individual_field_by_sample_type_mismatch ) {
   BOOST_CHECK_THROW(builder.set_integer_individual_field("AF", sample_names[0], {1, 2}), invalid_argument);
   BOOST_CHECK_THROW(builder.set_float_individual_field("ZIFMT", sample_names[0], {1.5f, 2.5f}), invalid_argument);
   BOOST_CHECK_THROW(builder.set_string_individual_field("AF", sample_names[0], "abc"), invalid_argument);
+}
+
+BOOST_AUTO_TEST_CASE( set_genotype_field_by_sample_using_integer_setter ) {
+  auto header = SingleVariantReader{"testdata/test_variants_for_variantbuilder.vcf"}.header();
+  auto builder = VariantBuilder{header};
+  builder.set_chromosome(0).set_alignment_start(5).set_ref_allele("A");
+
+  // Attempting to set GT using a generic integer field setter should throw
+  BOOST_CHECK_THROW(builder.set_integer_individual_field("GT", "NA12878", vector<int32_t>{0, 1}), invalid_argument);
+  BOOST_CHECK_THROW(builder.set_integer_individual_field(header.field_index("GT"), 0, vector<int32_t>{0, 1}), invalid_argument);
 }
 
 BOOST_AUTO_TEST_CASE( set_individual_fields_both_in_bulk_and_by_sample ) {
