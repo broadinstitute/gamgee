@@ -1,6 +1,6 @@
 #include <boost/test/unit_test.hpp>
 
-#include "indexed_sam_reader.h"
+#include "sam/indexed_sam_reader.h"
 #include "test_utils.h"
 
 

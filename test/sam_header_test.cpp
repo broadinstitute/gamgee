@@ -1,6 +1,6 @@
 #include <boost/test/unit_test.hpp>
 
-#include "sam_reader.h"
+#include "sam/sam_reader.h"
 #include "test_utils.h"
 
 using namespace std;

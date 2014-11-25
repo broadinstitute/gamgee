@@ -1,7 +1,7 @@
-#include "variant.h"
-#include "variant_header_builder.h"
-#include "multiple_variant_reader.h"
-#include "multiple_variant_iterator.h"
+#include "variant/variant.h"
+#include "variant/variant_header_builder.h"
+#include "variant/multiple_variant_reader.h"
+#include "variant/multiple_variant_iterator.h"
 #include "test_utils.h"
 
 #include <boost/test/unit_test.hpp>

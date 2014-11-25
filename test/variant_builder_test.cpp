@@ -1,7 +1,7 @@
-#include "variant_builder.h"
-#include "variant_reader.h"
+#include "variant/variant_builder.h"
+#include "variant/variant_reader.h"
 #include "missing.h"
-#include "genotype.h"
+#include "variant/genotype.h"
 #include "htslib/vcf.h"
 
 #include <boost/test/unit_test.hpp>

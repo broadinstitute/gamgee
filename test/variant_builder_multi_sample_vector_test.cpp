@@ -1,5 +1,5 @@
-#include "variant_builder_multi_sample_vector.h"
-#include "variant.h"
+#include "variant/variant_builder_multi_sample_vector.h"
+#include "variant/variant.h"
 
 #include <boost/test/unit_test.hpp>
 #include <stdexcept>

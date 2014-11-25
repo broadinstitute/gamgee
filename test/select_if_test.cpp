@@ -1,7 +1,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/dynamic_bitset.hpp>
-#include "variant_reader.h"
-#include "variant.h"
+#include "variant/variant_reader.h"
+#include "variant/variant.h"
 
 
 using namespace std;

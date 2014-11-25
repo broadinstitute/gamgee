@@ -1,6 +1,6 @@
-#include "variant.h"
-#include "indexed_variant_reader.h"
-#include "indexed_variant_iterator.h"
+#include "variant/variant.h"
+#include "variant/indexed_variant_reader.h"
+#include "variant/indexed_variant_iterator.h"
 #include "test_utils.h"
 
 #include <boost/test/unit_test.hpp>

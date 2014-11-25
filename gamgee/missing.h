@@ -1,7 +1,7 @@
 #ifndef gamgee__missing__guard
 #define gamgee__missing__guard
 
-#include "sam_tag.h"
+#include "sam/sam_tag.h"
 #include "utils/utils.h"
 #include "htslib/vcf.h"
 

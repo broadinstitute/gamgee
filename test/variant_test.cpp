@@ -1,7 +1,7 @@
 #include <boost/test/unit_test.hpp>
-#include "variant_reader.h"
-#include "variant.h"
-#include "variant_builder.h"
+#include "variant/variant_reader.h"
+#include "variant/variant.h"
+#include "variant/variant_builder.h"
 #include "missing.h"
 #include "utils/variant_utils.h"
 

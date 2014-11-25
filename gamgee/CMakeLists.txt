@@ -1,8 +1,8 @@
 set(SOURCE_FILES
-    base_quals.cpp
-    base_quals.h
-    cigar.cpp
-    cigar.h
+    sam/base_quals.cpp
+    sam/base_quals.h
+    sam/cigar.cpp
+    sam/cigar.h
     exceptions.h
     fastq.cpp
     fastq.h
@@ -11,57 +11,57 @@ set(SOURCE_FILES
     fastq_reader.cpp
     fastq_reader.h
     gamgee.h
-    genotype.cpp
-    genotype.h
-    indexed_sam_iterator.cpp
-    indexed_sam_iterator.h
-    indexed_sam_reader.h
-    indexed_variant_iterator.cpp
-    indexed_variant_iterator.h
-    indexed_variant_reader.h
-    individual_field.h
-    individual_field_iterator.h
-    individual_field_value.h
-    individual_field_value_iterator.h
+    variant/genotype.cpp
+    variant/genotype.h
+    sam/indexed_sam_iterator.cpp
+    sam/indexed_sam_iterator.h
+    sam/indexed_sam_reader.h
+    variant/indexed_variant_iterator.cpp
+    variant/indexed_variant_iterator.h
+    variant/indexed_variant_reader.h
+    variant/individual_field.h
+    variant/individual_field_iterator.h
+    variant/individual_field_value.h
+    variant/individual_field_value_iterator.h
     interval.cpp
     interval.h
     missing.h
-    multiple_variant_iterator.cpp
-    multiple_variant_iterator.h
-    multiple_variant_reader.h
-    variant_header_merger.h
-    variant_header_merger.cpp
-    read_bases.cpp
-    read_bases.h
-    read_group.cpp
-    read_group.h
-    reference_block_splitting_variant_iterator.cpp
-    reference_block_splitting_variant_iterator.h
+    variant/multiple_variant_iterator.cpp
+    variant/multiple_variant_iterator.h
+    variant/multiple_variant_reader.h
+    variant/variant_header_merger.h
+    variant/variant_header_merger.cpp
+    sam/read_bases.cpp
+    sam/read_bases.h
+    sam/read_group.cpp
+    sam/read_group.h
+    variant/reference_block_splitting_variant_iterator.cpp
+    variant/reference_block_splitting_variant_iterator.h
     reference_iterator.cpp
     reference_iterator.h
     reference_map.cpp
     reference_map.h
-    sam_builder.cpp
-    sam_builder_data_field.cpp
-    sam_builder_data_field.h
-    sam_builder.h
-    sam.cpp
-    sam.h
-    sam_header.cpp
-    sam_header.h
-    sam_iterator.cpp
-    sam_iterator.h
-    sam_pair_iterator.cpp
-    sam_pair_iterator.h
-    sam_reader.h
-    sam_tag.h
-    sam_writer.cpp
-    sam_writer.h
-    shared_field.h
-    shared_field_iterator.h
-    synced_variant_iterator.cpp
-    synced_variant_iterator.h
-    synced_variant_reader.h
+    sam/sam_builder.cpp
+    sam/sam_builder_data_field.cpp
+    sam/sam_builder_data_field.h
+    sam/sam_builder.h
+    sam/sam.cpp
+    sam/sam.h
+    sam/sam_header.cpp
+    sam/sam_header.h
+    sam/sam_iterator.cpp
+    sam/sam_iterator.h
+    sam/sam_pair_iterator.cpp
+    sam/sam_pair_iterator.h
+    sam/sam_reader.h
+    sam/sam_tag.h
+    sam/sam_writer.cpp
+    sam/sam_writer.h
+    variant/shared_field.h
+    variant/shared_field_iterator.h
+    variant/synced_variant_iterator.cpp
+    variant/synced_variant_iterator.h
+    variant/synced_variant_reader.h
     utils/file_utils.cpp
     utils/file_utils.h
     utils/genotype_utils.cpp
@@ -77,27 +77,27 @@ set(SOURCE_FILES
     utils/variant_utils.h
     utils/merged_vcf_lut.h
     utils/merged_vcf_lut.cpp
-    variant_builder.cpp
-    variant_builder.h
-    variant_builder_individual_field.h
-    variant_builder_individual_region.cpp
-    variant_builder_individual_region.h
-    variant_builder_multi_sample_vector.h
-    variant_builder_shared_region.cpp
-    variant_builder_shared_region.h
-    variant.cpp
-    variant_filters.h
-    variant_filters_iterator.h
-    variant.h
-    variant_header_builder.cpp
-    variant_header_builder.h
-    variant_header.cpp
-    variant_header.h
-    variant_iterator.cpp
-    variant_iterator.h
-    variant_reader.h
-    variant_writer.cpp
-    variant_writer.h
+    variant/variant_builder.cpp
+    variant/variant_builder.h
+    variant/variant_builder_individual_field.h
+    variant/variant_builder_individual_region.cpp
+    variant/variant_builder_individual_region.h
+    variant/variant_builder_multi_sample_vector.h
+    variant/variant_builder_shared_region.cpp
+    variant/variant_builder_shared_region.h
+    variant/variant.cpp
+    variant/variant_filters.h
+    variant/variant_filters_iterator.h
+    variant/variant.h
+    variant/variant_header_builder.cpp
+    variant/variant_header_builder.h
+    variant/variant_header.cpp
+    variant/variant_header.h
+    variant/variant_iterator.cpp
+    variant/variant_iterator.h
+    variant/variant_reader.h
+    variant/variant_writer.cpp
+    variant/variant_writer.h
     zip.h
     )
 

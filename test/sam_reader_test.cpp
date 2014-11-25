@@ -1,5 +1,5 @@
-#include "sam_reader.h"
-#include "indexed_sam_reader.h"
+#include "sam/sam_reader.h"
+#include "sam/indexed_sam_reader.h"
 #include "exceptions.h"
 
 #include "test_utils.h"
