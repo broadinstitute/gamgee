@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <cassert>
 
 namespace gamgee {
 
@@ -78,10 +79,13 @@ class VariantBuilderMultiSampleVector {
    * @note MUCH more efficient than set_sample_values() below, since it doesn't require a vector
    *       construction/destruction for each call.
    *
-   * @warning NO bounds checking is performed (for the sake of performance), so be sure that sample_index
+   * @warning Bounds checking is performed only in debug builds (for the sake of performance), so be sure that sample_index
    *          is < num_samples and value_index < max_values_per_sample
    */
   inline void set_sample_value(const uint32_t sample_index, const uint32_t value_index, const ELEMENT_TYPE value) {
+    assert(sample_index < m_num_samples);
+    assert(value_index < m_max_values_per_sample);
+
     m_multi_sample_values[sample_index * m_max_values_per_sample + value_index] = value;
   }
 
@@ -94,10 +98,13 @@ class VariantBuilderMultiSampleVector {
    * @note LESS efficient than setting one value at a time using set_sample_value(), since this function
    *       involves creating/destroying a vector for each sample.
    *
-   * @warning NO bounds checking is performed (for the sake of performance), so be sure that sample_index
+   * @warning Bounds checking is performed only in debug builds (for the sake of performance), so be sure that sample_index
    *          is < num_samples and values.size() <= max_values_per_sample
    */
   inline void set_sample_values(const uint32_t sample_index, const std::vector<ELEMENT_TYPE>& values) {
+    assert(sample_index < m_num_samples);
+    assert(values.size() <= m_max_values_per_sample);
+
     const auto sample_start = sample_index * m_max_values_per_sample;
     for ( auto value_index = 0u; value_index < values.size(); ++value_index ) {
       m_multi_sample_values[sample_start + value_index] = values[value_index];
