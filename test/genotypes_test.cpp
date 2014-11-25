@@ -1,8 +1,8 @@
 #include <boost/test/unit_test.hpp>
 
-#include "variant_reader.h"
-#include "variant.h"
-#include "genotype.h"
+#include "variant/variant_reader.h"
+#include "variant/variant.h"
+#include "variant/genotype.h"
 
 #include <boost/dynamic_bitset.hpp>
 #include <algorithm>

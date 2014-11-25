@@ -1,5 +1,5 @@
-#include "multiple_variant_reader.h"
-#include "reference_block_splitting_variant_iterator.h"
+#include "variant/multiple_variant_reader.h"
+#include "variant/reference_block_splitting_variant_iterator.h"
 
 #include "test_utils.h"
 

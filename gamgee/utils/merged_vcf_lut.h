@@ -5,7 +5,7 @@
 
 #include "htslib/vcf.h"
 #include <vector>
-#include "../variant_header.h"
+#include "../variant/variant_header.h"
 #include "../missing.h"
 
 

@@ -1,5 +1,5 @@
-#include "sam_builder.h"
-#include "sam_reader.h"
+#include "sam/sam_builder.h"
+#include "sam/sam_reader.h"
 
 #include <boost/test/unit_test.hpp>
 #include <stdexcept>

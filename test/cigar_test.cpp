@@ -1,6 +1,6 @@
 #include <boost/test/unit_test.hpp>
 
-#include "cigar.h"
+#include "sam/cigar.h"
 
 using namespace std;
 using namespace gamgee;

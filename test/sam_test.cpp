@@ -1,8 +1,8 @@
 #include <boost/test/unit_test.hpp>
 
-#include "sam.h"
-#include "sam_reader.h"
-#include "sam_builder.h"
+#include "sam/sam.h"
+#include "sam/sam_reader.h"
+#include "sam/sam_builder.h"
 #include "missing.h"
 
 #include "test_utils.h"

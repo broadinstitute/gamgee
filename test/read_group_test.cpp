@@ -2,7 +2,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "read_group.h"
+#include "sam/read_group.h"
 
 
 using namespace std;
