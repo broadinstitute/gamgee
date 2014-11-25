@@ -96,104 +96,103 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sam__iterator_8h.html">sam_iterator.h</a>&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sam__pair__iterator_8h.html">sam_pair_iterator.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="hts__memory_8h.html">utils/hts_memory.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="exceptions_8h.html">exceptions.h</a>&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html">htslib/sam.h</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegamgee.html">gamgee</a> {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> ITERATOR&gt;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classgamgee_1_1_sam_reader.html">   45</a></span>&#160;<span class="keyword">class </span><a class="code" href="classgamgee_1_1_sam_reader.html">SamReader</a> {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">   54</a></span>&#160;    <a class="code" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a>(<span class="keyword">const</span> std::string&amp; filename) :</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      m_sam_file_ptr {},</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      m_sam_header_ptr {}</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      init_reader(filename);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classgamgee_1_1_sam_reader.html#a43bc7ead164784faf257a64e2d63b46c">   67</a></span>&#160;    <a class="code" href="classgamgee_1_1_sam_reader.html#a43bc7ead164784faf257a64e2d63b46c">SamReader</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; filenames) :</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      m_sam_file_ptr {},</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      m_sam_header_ptr {}</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="keywordflow">if</span> (filenames.size() &gt; 1)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">throw</span> SingleInputException{<span class="stringliteral">&quot;filenames&quot;</span>, filenames.size()};</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="keywordflow">if</span> (!filenames.empty())</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        init_reader(filenames.front());</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a>&amp; other) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a>&amp; <a class="code" href="classgamgee_1_1_sam_reader.html#abb7258047a4928fec69a5d08a6fcb219">operator=</a>(<span class="keyword">const</span> SamIterator&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a>(<a class="code" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a>&amp; <a class="code" href="classgamgee_1_1_sam_reader.html#abb7258047a4928fec69a5d08a6fcb219">operator=</a>(<a class="code" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="classgamgee_1_1_sam_reader.html#aa830226459a7e6ebd1fbfcf3d7b5bb0f">   95</a></span>&#160;    ITERATOR <a class="code" href="classgamgee_1_1_sam_reader.html#aa830226459a7e6ebd1fbfcf3d7b5bb0f">begin</a>() {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <span class="keywordflow">return</span> ITERATOR{m_sam_file_ptr, m_sam_header_ptr};</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classgamgee_1_1_sam_reader.html#ad83ea34dc8c04c684f6e06687da24e60">  104</a></span>&#160;    ITERATOR <a class="code" href="classgamgee_1_1_sam_reader.html#ad83ea34dc8c04c684f6e06687da24e60">end</a>() {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      <span class="keywordflow">return</span> ITERATOR{};</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="classgamgee_1_1_sam_reader.html#a26871d833999deee363e5619476801ea">  108</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a> <a class="code" href="classgamgee_1_1_sam_reader.html#a26871d833999deee363e5619476801ea">header</a>() { <span class="keywordflow">return</span> <a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a>{m_sam_header_ptr}; }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    std::shared_ptr&lt;htsFile&gt; m_sam_file_ptr;     </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    std::shared_ptr&lt;bam_hdr_t&gt; m_sam_header_ptr; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordtype">void</span> init_reader (<span class="keyword">const</span> std::string&amp; filename) {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      <span class="keyword">auto</span>* file_ptr = <a class="code" href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html#ad4cbab226b6ba9ec24ed7ff2d3804206">sam_open</a>(filename.empty() ? <span class="stringliteral">&quot;-&quot;</span> : filename.c_str(), <span class="stringliteral">&quot;r&quot;</span>);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      <span class="keywordflow">if</span> ( file_ptr == <span class="keyword">nullptr</span> ) {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classgamgee_1_1_file_open_exception.html">FileOpenException</a>{filename};</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      }</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      m_sam_file_ptr  = <a class="code" href="namespacegamgee_1_1utils.html#a50116d5da2ab23b2963b0e1f95eca489">utils::make_shared_hts_file</a>(file_ptr);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <span class="keyword">auto</span>* header_ptr = <a class="code" href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html#a502f4c523935231218a3be0948138e88">sam_hdr_read</a>(file_ptr);</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <span class="keywordflow">if</span> ( header_ptr == <span class="keyword">nullptr</span> ) {</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">throw</span> HeaderReadException{filename};</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      }</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      m_sam_header_ptr = <a class="code" href="namespacegamgee_1_1utils.html#a72ad0cc418281effcdb1abd1a077761e">utils::make_shared_sam_header</a>(header_ptr);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    }</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;};</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="namespacegamgee.html#a16ea322e9da7062215c1e9512baa49eb">  134</a></span>&#160;<span class="keyword">using</span> <a class="code" href="classgamgee_1_1_sam_reader.html">SingleSamReader</a> = <a class="code" href="classgamgee_1_1_sam_reader.html">SamReader&lt;SamIterator&gt;</a>;</div>
-<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="namespacegamgee.html#aa7286f2e8ef592ae858c97b6f9045d0c">  135</a></span>&#160;<span class="keyword">using</span> <a class="code" href="classgamgee_1_1_sam_reader.html">PairSamReader</a> = <a class="code" href="classgamgee_1_1_sam_reader.html">SamReader&lt;SamPairIterator&gt;</a>;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}  <span class="comment">// end of namespace</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* defined(gamgee__sam_reader__guard) */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../exceptions.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../utils/hts_memory.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html">htslib/sam.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegamgee.html">gamgee</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> ITERATOR&gt;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classgamgee_1_1_sam_reader.html">   46</a></span>&#160;<span class="keyword">class </span><a class="code" href="classgamgee_1_1_sam_reader.html">SamReader</a> {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">   55</a></span>&#160;    <a class="code" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a>(<span class="keyword">const</span> std::string&amp; filename) :</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      m_sam_file_ptr {},</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      m_sam_header_ptr {}</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      init_reader(filename);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classgamgee_1_1_sam_reader.html#a43bc7ead164784faf257a64e2d63b46c">   68</a></span>&#160;    <a class="code" href="classgamgee_1_1_sam_reader.html#a43bc7ead164784faf257a64e2d63b46c">SamReader</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; filenames) :</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      m_sam_file_ptr {},</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      m_sam_header_ptr {}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keywordflow">if</span> (filenames.size() &gt; 1)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">throw</span> SingleInputException{<span class="stringliteral">&quot;filenames&quot;</span>, filenames.size()};</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <span class="keywordflow">if</span> (!filenames.empty())</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        init_reader(filenames.front());</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a>(<span class="keyword">const</span> <a class="code" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a>&amp; other) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a>&amp; <a class="code" href="classgamgee_1_1_sam_reader.html#abb7258047a4928fec69a5d08a6fcb219">operator=</a>(<span class="keyword">const</span> SamIterator&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a>(<a class="code" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a>&amp; <a class="code" href="classgamgee_1_1_sam_reader.html#abb7258047a4928fec69a5d08a6fcb219">operator=</a>(<a class="code" href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">SamReader</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classgamgee_1_1_sam_reader.html#aa830226459a7e6ebd1fbfcf3d7b5bb0f">   96</a></span>&#160;    ITERATOR <a class="code" href="classgamgee_1_1_sam_reader.html#aa830226459a7e6ebd1fbfcf3d7b5bb0f">begin</a>() {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <span class="keywordflow">return</span> ITERATOR{m_sam_file_ptr, m_sam_header_ptr};</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classgamgee_1_1_sam_reader.html#ad83ea34dc8c04c684f6e06687da24e60">  105</a></span>&#160;    ITERATOR <a class="code" href="classgamgee_1_1_sam_reader.html#ad83ea34dc8c04c684f6e06687da24e60">end</a>() {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      <span class="keywordflow">return</span> ITERATOR{};</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="classgamgee_1_1_sam_reader.html#a26871d833999deee363e5619476801ea">  109</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a> <a class="code" href="classgamgee_1_1_sam_reader.html#a26871d833999deee363e5619476801ea">header</a>() { <span class="keywordflow">return</span> <a class="code" href="classgamgee_1_1_sam_header.html">SamHeader</a>{m_sam_header_ptr}; }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    std::shared_ptr&lt;htsFile&gt; m_sam_file_ptr;     </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    std::shared_ptr&lt;bam_hdr_t&gt; m_sam_header_ptr; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">void</span> init_reader (<span class="keyword">const</span> std::string&amp; filename) {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      <span class="keyword">auto</span>* file_ptr = <a class="code" href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html#ad4cbab226b6ba9ec24ed7ff2d3804206">sam_open</a>(filename.empty() ? <span class="stringliteral">&quot;-&quot;</span> : filename.c_str(), <span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      <span class="keywordflow">if</span> ( file_ptr == <span class="keyword">nullptr</span> ) {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classgamgee_1_1_file_open_exception.html">FileOpenException</a>{filename};</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      m_sam_file_ptr  = <a class="code" href="namespacegamgee_1_1utils.html#a50116d5da2ab23b2963b0e1f95eca489">utils::make_shared_hts_file</a>(file_ptr);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <span class="keyword">auto</span>* header_ptr = <a class="code" href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html#a502f4c523935231218a3be0948138e88">sam_hdr_read</a>(file_ptr);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      <span class="keywordflow">if</span> ( header_ptr == <span class="keyword">nullptr</span> ) {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">throw</span> HeaderReadException{filename};</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      m_sam_header_ptr = <a class="code" href="namespacegamgee_1_1utils.html#a72ad0cc418281effcdb1abd1a077761e">utils::make_shared_sam_header</a>(header_ptr);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;};</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="namespacegamgee.html#a16ea322e9da7062215c1e9512baa49eb">  135</a></span>&#160;<span class="keyword">using</span> <a class="code" href="classgamgee_1_1_sam_reader.html">SingleSamReader</a> = <a class="code" href="classgamgee_1_1_sam_reader.html">SamReader&lt;SamIterator&gt;</a>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="namespacegamgee.html#aa7286f2e8ef592ae858c97b6f9045d0c">  136</a></span>&#160;<span class="keyword">using</span> <a class="code" href="classgamgee_1_1_sam_reader.html">PairSamReader</a> = <a class="code" href="classgamgee_1_1_sam_reader.html">SamReader&lt;SamPairIterator&gt;</a>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}  <span class="comment">// end of namespace</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* defined(gamgee__sam_reader__guard) */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="sam__iterator_8h_html"><div class="ttname"><a href="sam__iterator_8h.html">sam_iterator.h</a></div></div>
 <div class="ttc" id="classgamgee_1_1_sam_header_html"><div class="ttname"><a href="classgamgee_1_1_sam_header.html">gamgee::SamHeader</a></div><div class="ttdoc">Utility class to hold the header of a sam file. </div><div class="ttdef"><b>Definition:</b> sam_header.h:16</div></div>
-<div class="ttc" id="classgamgee_1_1_sam_reader_html_ad83ea34dc8c04c684f6e06687da24e60"><div class="ttname"><a href="classgamgee_1_1_sam_reader.html#ad83ea34dc8c04c684f6e06687da24e60">gamgee::SamReader::end</a></div><div class="ttdeci">ITERATOR end()</div><div class="ttdoc">creates a ITERATOR with a nullified input stream (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> sam_reader.h:104</div></div>
+<div class="ttc" id="classgamgee_1_1_sam_reader_html_ad83ea34dc8c04c684f6e06687da24e60"><div class="ttname"><a href="classgamgee_1_1_sam_reader.html#ad83ea34dc8c04c684f6e06687da24e60">gamgee::SamReader::end</a></div><div class="ttdeci">ITERATOR end()</div><div class="ttdoc">creates a ITERATOR with a nullified input stream (needed by for-each loop) </div><div class="ttdef"><b>Definition:</b> sam_reader.h:105</div></div>
 <div class="ttc" id="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h_html_a502f4c523935231218a3be0948138e88"><div class="ttname"><a href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html#a502f4c523935231218a3be0948138e88">sam_hdr_read</a></div><div class="ttdeci">bam_hdr_t * sam_hdr_read(samFile *fp)</div><div class="ttdef"><b>Definition:</b> sam.c:633</div></div>
 <div class="ttc" id="classgamgee_1_1_file_open_exception_html"><div class="ttname"><a href="classgamgee_1_1_file_open_exception.html">gamgee::FileOpenException</a></div><div class="ttdoc">Exception for the case where there is an error opening a file for reading/writing. </div><div class="ttdef"><b>Definition:</b> exceptions.h:14</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a50116d5da2ab23b2963b0e1f95eca489"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a50116d5da2ab23b2963b0e1f95eca489">gamgee::utils::make_shared_hts_file</a></div><div class="ttdeci">shared_ptr&lt; htsFile &gt; make_shared_hts_file(htsFile *hts_file_ptr)</div><div class="ttdoc">wraps a pre-allocated htsFile in a shared_ptr with correct deleter </div><div class="ttdef"><b>Definition:</b> hts_memory.cpp:15</div></div>
-<div class="ttc" id="exceptions_8h_html"><div class="ttname"><a href="exceptions_8h.html">exceptions.h</a></div></div>
-<div class="ttc" id="classgamgee_1_1_sam_reader_html"><div class="ttname"><a href="classgamgee_1_1_sam_reader.html">gamgee::SamReader</a></div><div class="ttdoc">Utility class to read a SAM/BAM/CRAM file with an appropriate Sam iterator from a stream (e...</div><div class="ttdef"><b>Definition:</b> sam_reader.h:45</div></div>
+<div class="ttc" id="classgamgee_1_1_sam_reader_html"><div class="ttname"><a href="classgamgee_1_1_sam_reader.html">gamgee::SamReader</a></div><div class="ttdoc">Utility class to read a SAM/BAM/CRAM file with an appropriate Sam iterator from a stream (e...</div><div class="ttdef"><b>Definition:</b> sam_reader.h:46</div></div>
 <div class="ttc" id="namespacegamgee_1_1utils_html_a72ad0cc418281effcdb1abd1a077761e"><div class="ttname"><a href="namespacegamgee_1_1utils.html#a72ad0cc418281effcdb1abd1a077761e">gamgee::utils::make_shared_sam_header</a></div><div class="ttdeci">shared_ptr&lt; bam_hdr_t &gt; make_shared_sam_header(bam_hdr_t *sam_header_ptr)</div><div class="ttdoc">wraps a pre-allocated bam_hdr_t in a shared_ptr with correct deleter </div><div class="ttdef"><b>Definition:</b> hts_memory.cpp:47</div></div>
-<div class="ttc" id="classgamgee_1_1_sam_reader_html_a26871d833999deee363e5619476801ea"><div class="ttname"><a href="classgamgee_1_1_sam_reader.html#a26871d833999deee363e5619476801ea">gamgee::SamReader::header</a></div><div class="ttdeci">SamHeader header()</div><div class="ttdef"><b>Definition:</b> sam_reader.h:108</div></div>
+<div class="ttc" id="classgamgee_1_1_sam_reader_html_a26871d833999deee363e5619476801ea"><div class="ttname"><a href="classgamgee_1_1_sam_reader.html#a26871d833999deee363e5619476801ea">gamgee::SamReader::header</a></div><div class="ttdeci">SamHeader header()</div><div class="ttdef"><b>Definition:</b> sam_reader.h:109</div></div>
 <div class="ttc" id="classgamgee_1_1_sam_reader_html_abb7258047a4928fec69a5d08a6fcb219"><div class="ttname"><a href="classgamgee_1_1_sam_reader.html#abb7258047a4928fec69a5d08a6fcb219">gamgee::SamReader::operator=</a></div><div class="ttdeci">SamReader &amp; operator=(const SamIterator &amp;)=delete</div></div>
 <div class="ttc" id="namespacegamgee_html"><div class="ttname"><a href="namespacegamgee.html">gamgee</a></div><div class="ttdef"><b>Definition:</b> exceptions.h:9</div></div>
-<div class="ttc" id="classgamgee_1_1_sam_reader_html_aa830226459a7e6ebd1fbfcf3d7b5bb0f"><div class="ttname"><a href="classgamgee_1_1_sam_reader.html#aa830226459a7e6ebd1fbfcf3d7b5bb0f">gamgee::SamReader::begin</a></div><div class="ttdeci">ITERATOR begin()</div><div class="ttdoc">creates a ITERATOR pointing at the start of the input stream (needed by for-each loop) ...</div><div class="ttdef"><b>Definition:</b> sam_reader.h:95</div></div>
-<div class="ttc" id="hts__memory_8h_html"><div class="ttname"><a href="hts__memory_8h.html">hts_memory.h</a></div></div>
-<div class="ttc" id="classgamgee_1_1_sam_reader_html_ae9fa8e1b6cf3dccac5b8c0c0f8da1b84"><div class="ttname"><a href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">gamgee::SamReader::SamReader</a></div><div class="ttdeci">SamReader(const std::string &amp;filename)</div><div class="ttdoc">reads through all records in a file ( or sam) parsing them into Sam objects </div><div class="ttdef"><b>Definition:</b> sam_reader.h:54</div></div>
-<div class="ttc" id="classgamgee_1_1_sam_reader_html_a43bc7ead164784faf257a64e2d63b46c"><div class="ttname"><a href="classgamgee_1_1_sam_reader.html#a43bc7ead164784faf257a64e2d63b46c">gamgee::SamReader::SamReader</a></div><div class="ttdeci">SamReader(const std::vector&lt; std::string &gt; &amp;filenames)</div><div class="ttdoc">reads through all records in a file ( or sam) parsing them into Sam objects </div><div class="ttdef"><b>Definition:</b> sam_reader.h:67</div></div>
+<div class="ttc" id="classgamgee_1_1_sam_reader_html_aa830226459a7e6ebd1fbfcf3d7b5bb0f"><div class="ttname"><a href="classgamgee_1_1_sam_reader.html#aa830226459a7e6ebd1fbfcf3d7b5bb0f">gamgee::SamReader::begin</a></div><div class="ttdeci">ITERATOR begin()</div><div class="ttdoc">creates a ITERATOR pointing at the start of the input stream (needed by for-each loop) ...</div><div class="ttdef"><b>Definition:</b> sam_reader.h:96</div></div>
+<div class="ttc" id="classgamgee_1_1_sam_reader_html_ae9fa8e1b6cf3dccac5b8c0c0f8da1b84"><div class="ttname"><a href="classgamgee_1_1_sam_reader.html#ae9fa8e1b6cf3dccac5b8c0c0f8da1b84">gamgee::SamReader::SamReader</a></div><div class="ttdeci">SamReader(const std::string &amp;filename)</div><div class="ttdoc">reads through all records in a file ( or sam) parsing them into Sam objects </div><div class="ttdef"><b>Definition:</b> sam_reader.h:55</div></div>
+<div class="ttc" id="classgamgee_1_1_sam_reader_html_a43bc7ead164784faf257a64e2d63b46c"><div class="ttname"><a href="classgamgee_1_1_sam_reader.html#a43bc7ead164784faf257a64e2d63b46c">gamgee::SamReader::SamReader</a></div><div class="ttdeci">SamReader(const std::vector&lt; std::string &gt; &amp;filenames)</div><div class="ttdoc">reads through all records in a file ( or sam) parsing them into Sam objects </div><div class="ttdef"><b>Definition:</b> sam_reader.h:68</div></div>
 <div class="ttc" id="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h_html_ad4cbab226b6ba9ec24ed7ff2d3804206"><div class="ttname"><a href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html#ad4cbab226b6ba9ec24ed7ff2d3804206">sam_open</a></div><div class="ttdeci">#define sam_open(fn, mode)</div><div class="ttdef"><b>Definition:</b> sam.h:317</div></div>
 <div class="ttc" id="sam__pair__iterator_8h_html"><div class="ttname"><a href="sam__pair__iterator_8h.html">sam_pair_iterator.h</a></div></div>
 <div class="ttc" id="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h_html"><div class="ttname"><a href="build_2contrib_2htslib_2src_2htslib_2htslib_2sam_8h.html">sam.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 25 2014 17:53:13 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 25 2014 18:49:57 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
