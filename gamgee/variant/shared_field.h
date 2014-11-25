@@ -2,7 +2,8 @@
 #define gamgee__shared_field__guard
 
 #include "shared_field_iterator.h"
-#include "utils/utils.h"
+
+#include "../utils/utils.h"
 
 #include "htslib/vcf.h"
 

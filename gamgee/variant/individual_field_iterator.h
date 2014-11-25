@@ -1,7 +1,7 @@
 #ifndef gamgee__individual_field_iterator__guard
 #define gamgee__individual_field_iterator__guard 
 
-#include "utils/utils.h"
+#include "../utils/utils.h"
 
 #include "htslib/vcf.h"
 

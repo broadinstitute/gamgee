@@ -4,10 +4,11 @@
 #include "htslib/vcf.h"
 
 #include "variant_header.h"
-#include "utils/hts_memory.h"
-#include "utils/variant_utils.h"
-#include "exceptions.h"
 #include "variant_header_merger.h"
+
+#include "../exceptions.h"
+#include "../utils/hts_memory.h"
+#include "../utils/variant_utils.h"
 
 namespace gamgee {
 

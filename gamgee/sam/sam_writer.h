@@ -7,7 +7,7 @@
 #include "sam.h"
 #include "sam_header.h"
 
-#include "utils/hts_memory.h"
+#include "../utils/hts_memory.h"
 
 #include "htslib/sam.h"
 

@@ -2,7 +2,8 @@
 #define gamgee__variant_header__guard
 
 #include "htslib/vcf.h"
-#include "missing.h"
+
+#include "../missing.h"
 
 #include <memory>
 #include <string>

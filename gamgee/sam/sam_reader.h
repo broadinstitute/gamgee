@@ -3,8 +3,9 @@
 
 #include "sam_iterator.h"
 #include "sam_pair_iterator.h"
-#include "utils/hts_memory.h"
-#include "exceptions.h"
+
+#include "../exceptions.h"
+#include "../utils/hts_memory.h"
 
 #include "htslib/sam.h"
 

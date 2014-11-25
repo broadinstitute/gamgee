@@ -3,7 +3,7 @@
 
 #include "variant_iterator.h"
 
-#include "utils/hts_memory.h"
+#include "../utils/hts_memory.h"
 
 #include "htslib/vcf.h"
 

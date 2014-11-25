@@ -1,9 +1,11 @@
 #ifndef gamgee__variant_builder_shared_region__guard
 #define gamgee__variant_builder_shared_region__guard
 
-#include "utils/hts_memory.h"
+#include "../utils/hts_memory.h"
+
 #include "htslib/kstring.h"
 #include "htslib/vcf.h"
+
 #include "variant.h"
 
 #include <string>

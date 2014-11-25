@@ -1,6 +1,7 @@
 #include "indexed_sam_iterator.h"
 #include "sam.h"
-#include "utils/hts_memory.h"
+
+#include "../utils/hts_memory.h"
 
 using namespace std;
 

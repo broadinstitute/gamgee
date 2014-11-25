@@ -1,6 +1,7 @@
 #include "variant_iterator.h"
 #include "variant.h"
-#include "utils/hts_memory.h"
+
+#include "../utils/hts_memory.h"
 
 using namespace std;
 

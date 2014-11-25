@@ -1,6 +1,7 @@
 #include "variant_header_merger.h"
-#include "utils/variant_utils.h"
-#include "utils/hts_memory.h"
+
+#include "../utils/variant_utils.h"
+#include "../utils/hts_memory.h"
 
 using namespace std;
 

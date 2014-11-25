@@ -1,6 +1,7 @@
 #include "variant_header_builder.h"
-#include "utils/hts_memory.h"
-#include "utils/variant_utils.h"
+
+#include "../utils/hts_memory.h"
+#include "../utils/variant_utils.h"
 
 #include "htslib/vcf.h"
 

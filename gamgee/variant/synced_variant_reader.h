@@ -4,8 +4,8 @@
 #include "htslib/vcf.h"
 #include "htslib/synced_bcf_reader.h"
 
-#include "exceptions.h"
-#include "utils/hts_memory.h"
+#include "../exceptions.h"
+#include "../utils/hts_memory.h"
 
 #include <string>
 #include <iostream>

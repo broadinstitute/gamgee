@@ -4,8 +4,9 @@
 #include <iostream>
 
 #include "individual_field_iterator.h"
-#include "utils/hts_memory.h"
-#include "utils/utils.h"
+
+#include "../utils/hts_memory.h"
+#include "../utils/utils.h"
 
 #include "htslib/vcf.h"
 

@@ -1,6 +1,7 @@
 #include "base_quals.h"
-#include "utils/hts_memory.h"
-#include "utils/utils.h"
+
+#include "../utils/hts_memory.h"
+#include "../utils/utils.h"
 
 #include <string>
 #include <stdexcept>

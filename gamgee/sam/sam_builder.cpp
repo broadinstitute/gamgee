@@ -1,6 +1,7 @@
 #include "sam_builder.h"
 #include "cigar.h"
-#include "utils/hts_memory.h"
+
+#include "../utils/hts_memory.h"
 
 #include <algorithm>
 #include <sstream>
