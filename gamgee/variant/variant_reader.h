@@ -3,10 +3,10 @@
 
 #include "variant_header.h"
 #include "variant_iterator.h"
-#include "exceptions.h"
 
-#include "utils/hts_memory.h"
-#include "utils/variant_utils.h"
+#include "../exceptions.h"
+#include "../utils/hts_memory.h"
+#include "../utils/variant_utils.h"
 
 #include "htslib/vcf.h"
 

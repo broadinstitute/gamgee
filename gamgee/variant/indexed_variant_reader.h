@@ -2,8 +2,9 @@
 #define gamgee__indexed_variant_reader__guard
 
 #include "indexed_variant_iterator.h"
-#include "utils/hts_memory.h"
-#include "exceptions.h"
+
+#include "../exceptions.h"
+#include "../utils/hts_memory.h"
 
 #include "htslib/vcf.h"
 

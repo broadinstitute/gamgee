@@ -7,7 +7,8 @@
 #include "shared_field.h"
 #include "variant_filters.h"
 #include "genotype.h"
-#include "utils/variant_utils.h"
+
+#include "../utils/variant_utils.h"
 
 #include "htslib/sam.h"
 #include "boost/dynamic_bitset.hpp"

@@ -4,8 +4,8 @@
 #include "variant_header.h"
 #include "variant_reader.h"
 
-#include "utils/utils.h"
-#include "utils/hts_memory.h"
+#include "../utils/utils.h"
+#include "../utils/hts_memory.h"
 
 #include "htslib/vcf.h"
 

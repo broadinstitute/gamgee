@@ -2,8 +2,9 @@
 #define gamgee__indexed_sam_reader__guard
 
 #include "indexed_sam_iterator.h"
-#include "utils/hts_memory.h"
-#include "exceptions.h"
+
+#include "../exceptions.h"
+#include "../utils/hts_memory.h"
 
 #include "htslib/sam.h"
 

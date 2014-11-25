@@ -3,6 +3,7 @@
 
 #include "variant.h"
 #include "variant_builder_individual_field.h"
+
 #include "htslib/kstring.h"
 #include "htslib/vcf.h"
 

@@ -1,7 +1,7 @@
 #ifndef gamgee__individual_field_value_iterator__guard
 #define gamgee__individual_field_value_iterator__guard
 
-#include "utils/variant_field_type.h"
+#include "../utils/variant_field_type.h"
 
 #include "htslib/vcf.h"
 

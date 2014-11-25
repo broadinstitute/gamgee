@@ -2,7 +2,8 @@
 #define gamgee__variant_filters_iterator__guard
 
 #include "variant_filters.h"
-#include "utils/hts_memory.h"
+
+#include "../utils/hts_memory.h"
 
 #include "htslib/vcf.h"
 

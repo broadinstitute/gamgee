@@ -2,10 +2,11 @@
 #define gamgee__individual_field_value__guard
 
 #include "individual_field_value_iterator.h"
-#include "utils/hts_memory.h"
-#include "utils/utils.h"
-#include "utils/variant_field_type.h"
-#include "missing.h"
+
+#include "../missing.h"
+#include "../utils/hts_memory.h"
+#include "../utils/utils.h"
+#include "../utils/variant_field_type.h"
 
 #include "htslib/vcf.h"
 

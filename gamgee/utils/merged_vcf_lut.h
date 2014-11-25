@@ -1,13 +1,13 @@
 #ifndef __gamgee_merged_vcf_lut__
 #define __gamgee_merged_vcf_lut__
 
-#include<assert.h>
+#include <assert.h>
+#include <vector>
 
 #include "htslib/vcf.h"
-#include <vector>
-#include "../variant/variant_header.h"
-#include "../missing.h"
 
+#include "../missing.h"
+#include "../variant/variant_header.h"
 
 //forward declaration for friend function of MergedVCFLUTBase
 template<bool inputs_2_merged_LUT_is_input_ordered, bool merged_2_inputs_LUT_is_input_ordered>

@@ -2,8 +2,9 @@
 #include "individual_field.h"
 #include "individual_field_value.h"
 #include "shared_field.h"
-#include "utils/hts_memory.h"
-#include "utils/utils.h"
+
+#include "../utils/hts_memory.h"
+#include "../utils/utils.h"
 
 #include "htslib/vcf.h"
 

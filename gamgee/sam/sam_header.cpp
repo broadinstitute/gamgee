@@ -1,5 +1,6 @@
 #include "sam_header.h"
-#include "utils/hts_memory.h"
+
+#include "../utils/hts_memory.h"
 
 using namespace std;
 

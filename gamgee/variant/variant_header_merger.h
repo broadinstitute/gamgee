@@ -4,7 +4,8 @@
 #include <boost/shared_ptr.hpp>
 #include <string>
 #include <unordered_map>
-#include "utils/merged_vcf_lut.h"
+
+#include "../utils/merged_vcf_lut.h"
 
 namespace gamgee
 {

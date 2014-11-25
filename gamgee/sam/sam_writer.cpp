@@ -1,6 +1,6 @@
 #include "sam_writer.h"
 
-#include "utils/hts_memory.h"
+#include "../utils/hts_memory.h"
 
 namespace gamgee {
 

@@ -1,13 +1,13 @@
 #ifndef gamgee__genotype__guard
 #define gamgee__genotype__guard
 
-#include "utils/variant_utils.h"
-
-#include "utils/hts_memory.h"
-#include "utils/utils.h"
-#include "utils/variant_field_type.h"
-#include "utils/genotype_utils.h"
 #include "variant_builder_multi_sample_vector.h"
+
+#include "../utils/genotype_utils.h"
+#include "../utils/hts_memory.h"
+#include "../utils/utils.h"
+#include "../utils/variant_field_type.h"
+#include "../utils/variant_utils.h"
 
 #include <memory>
 #include <utility>

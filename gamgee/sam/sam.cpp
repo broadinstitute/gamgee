@@ -1,8 +1,10 @@
 #include "sam.h"
 #include "cigar.h"
-#include "utils/hts_memory.h"
+
 #include "htslib/sam.h"
-#include "missing.h"
+
+#include "../missing.h"
+#include "../utils/hts_memory.h"
 
 #include <iostream>
 #include <string>

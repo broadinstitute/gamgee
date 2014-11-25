@@ -1,11 +1,12 @@
 #ifndef gamgee__variant_builder_individual_field__guard
 #define gamgee__variant_builder_individual_field__guard
 
-#include "utils/hts_memory.h"
-#include "utils/short_value_optimized_storage.h"
 #include "htslib/kstring.h"
 #include "htslib/vcf.h"
-#include "missing.h"
+
+#include "../missing.h"
+#include "../utils/hts_memory.h"
+#include "../utils/short_value_optimized_storage.h"
 
 #include <string>
 #include <vector>

@@ -1,6 +1,6 @@
 #include "variant_writer.h"
 
-#include "utils/hts_memory.h"
+#include "../utils/hts_memory.h"
 
 #include <zlib.h>
 

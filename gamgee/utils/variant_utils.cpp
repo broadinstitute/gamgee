@@ -1,7 +1,8 @@
 #include "variant_utils.h"
 
-#include "../exceptions.h"
 #include "hts_memory.h"
+
+#include "../exceptions.h"
 
 #include "htslib/vcf.h"
 

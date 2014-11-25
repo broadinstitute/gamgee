@@ -3,6 +3,7 @@
 
 #include "sam/sam_tag.h"
 #include "utils/utils.h"
+
 #include "htslib/vcf.h"
 
 #include <vector>
