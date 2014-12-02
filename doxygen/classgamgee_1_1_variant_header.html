@@ -178,6 +178,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad4cfea3099357d3df38b8e299e9bc60f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a451f09a5949db0dab2bb5eae99713e14"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a451f09a5949db0dab2bb5eae99713e14">field_type</a> (const int32_t index, const int32_t field_category) const </td></tr>
 <tr class="separator:a451f09a5949db0dab2bb5eae99713e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22dce783f06435bcde52a51993a16f61"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a22dce783f06435bcde52a51993a16f61">field_length_descriptor</a> (const std::string &amp;tag, const int32_t field_category) const </td></tr>
+<tr class="separator:a22dce783f06435bcde52a51993a16f61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a576ed562632198c9f4cd8876fcf0e57d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a576ed562632198c9f4cd8876fcf0e57d">field_length_descriptor</a> (const int32_t index, const int32_t field_category) const </td></tr>
+<tr class="separator:a576ed562632198c9f4cd8876fcf0e57d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb414078f64cb0f34d61d91cddc78c9c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#adb414078f64cb0f34d61d91cddc78c9c">field_length</a> (const std::string &amp;tag, const int32_t field_category) const </td></tr>
+<tr class="separator:adb414078f64cb0f34d61d91cddc78c9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6d99eedbd9ea362abca04a3f53140f3"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#aa6d99eedbd9ea362abca04a3f53140f3">field_length</a> (const int32_t index, const int32_t field_category) const </td></tr>
+<tr class="separator:aa6d99eedbd9ea362abca04a3f53140f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a115b748d92f8e3e3ffa5c647ff6886c0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgamgee_1_1_variant_header.html#a115b748d92f8e3e3ffa5c647ff6886c0">has_filter</a> (const std::string &amp;filter_name) const </td></tr>
 <tr class="memdesc:a115b748d92f8e3e3ffa5c647ff6886c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks whether the given filter is present given the filter name  <a href="#a115b748d92f8e3e3ffa5c647ff6886c0">More...</a><br /></td></tr>
 <tr class="separator:a115b748d92f8e3e3ffa5c647ff6886c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -441,6 +449,148 @@ if multiple fields (e.g. shared and individual) have the same tag (e.g. "DP"), t
 
 <p>returns the last valid field index + 1, to indicate the end of field iteration </p>
 <p>Sample usage: for (auto idx = 0u; idx &lt; header.field_index_end(); ++idx) if (header.has_individual_field(idx)) do_something_with_field(variant.integer_individual_field(idx)); </p>
+
+</div>
+</div>
+<a class="anchor" id="adb414078f64cb0f34d61d91cddc78c9c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gamgee::VariantHeader::field_length </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>field_category</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>returns number of values for the field with the specified name and category (one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT), 0xfffff for variable length fields</p>
+<dl class="section note"><dt>Note</dt><dd>must check whether the field exists before calling this function, as it doesn't check for you </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa6d99eedbd9ea362abca04a3f53140f3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gamgee::VariantHeader::field_length </td>
+          <td>(</td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>field_category</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>returns number of values for the field with the specified index and category (one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT), 0xfffff for variable length fields</p>
+<dl class="section note"><dt>Note</dt><dd>must check whether the field exists before calling this function, as it doesn't check for you </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a22dce783f06435bcde52a51993a16f61"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gamgee::VariantHeader::field_length_descriptor </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>field_category</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a576ed562632198c9f4cd8876fcf0e57d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gamgee::VariantHeader::field_length_descriptor </td>
+          <td>(</td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>field_category</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>returns one of BCF_VL_* values for the field with the specified index and category (one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT)</p>
+<dl class="section note"><dt>Note</dt><dd>must check whether the field exists before calling this function, as it doesn't check for you </dd></dl>
 
 </div>
 </div>
@@ -1387,7 +1537,7 @@ template&lt;bool fields_forward_LUT_ordering, bool fields_reverse_LUT_ordering, 
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 25 2014 21:07:09 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 2 2014 04:06:11 for Gamgee by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
