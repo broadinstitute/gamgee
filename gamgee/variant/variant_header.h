@@ -123,7 +123,30 @@ class VariantHeader {
    * @note must check whether the field exists before calling this function, as it doesn't check for you
    */
   uint8_t field_type(const int32_t index, const int32_t field_category) const { return bcf_hdr_id2type(m_header.get(), field_category, index); }
-
+  /*
+   * returns one of BCF_VL_* values for field with the specified name and category (one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT)
+   *
+   * @note must check whether the field exists before calling this function, as it doesn't check for you
+   */
+  uint32_t field_length_descriptor(const std::string& tag, const int32_t field_category) const { return field_length_descriptor(field_index(tag), field_category); }
+  /**
+   * returns one of BCF_VL_* values for the field with the specified index and category (one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT)
+   *
+   * @note must check whether the field exists before calling this function, as it doesn't check for you
+   */
+  uint32_t field_length_descriptor(const int32_t index, const int32_t field_category) const { return bcf_hdr_id2length(m_header.get(), field_category, index); }
+  /**
+   * returns number of values for the field with the specified name and category (one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT), 0xfffff for variable length fields
+   *
+   * @note must check whether the field exists before calling this function, as it doesn't check for you
+   */
+  uint32_t field_length(const std::string& tag, const int32_t field_category) const { return field_length(field_index(tag), field_category); }
+  /**
+   * returns number of values for the field with the specified index and category (one of BCF_HL_FMT, BCF_HL_INFO, or BCF_HL_FLT), 0xfffff for variable length fields
+   *
+   * @note must check whether the field exists before calling this function, as it doesn't check for you
+   */
+  uint32_t field_length(const int32_t index, const int32_t field_category) const { return bcf_hdr_id2number(m_header.get(), field_category, index); }
   /**
    * @brief checks whether the given filter is present given the filter name
    */

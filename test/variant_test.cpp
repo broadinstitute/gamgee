@@ -112,3 +112,19 @@ BOOST_AUTO_TEST_CASE( test_missing_string_individual_field_values ) {
   BOOST_CHECK(missing(variant.string_individual_field("AS")[1]));
   BOOST_CHECK(! missing(variant.string_individual_field("AS")[2]));
 }
+
+BOOST_AUTO_TEST_CASE( test_field_lengths ) {
+  auto header = SingleVariantReader{"testdata/test_variants.vcf"}.header();
+  BOOST_CHECK_EQUAL(header.field_length_descriptor("AF", BCF_HL_INFO), static_cast<uint32_t>(BCF_VL_A));
+  BOOST_CHECK_EQUAL(header.field_length_descriptor("AF", BCF_HL_FMT), static_cast<uint32_t>(BCF_VL_FIXED));
+  BOOST_CHECK_EQUAL(header.field_length_descriptor("PL", BCF_HL_FMT), static_cast<uint32_t>(BCF_VL_G));
+  BOOST_CHECK_EQUAL(header.field_length_descriptor("AS", BCF_HL_FMT), static_cast<uint32_t>(BCF_VL_FIXED));
+  BOOST_CHECK_EQUAL(header.field_length_descriptor("VLINT", BCF_HL_FMT), static_cast<uint32_t>(BCF_VL_VAR));
+  
+  BOOST_CHECK_EQUAL(header.field_length("AF", BCF_HL_INFO), 0xfffffu);
+  BOOST_CHECK_EQUAL(header.field_length("AF", BCF_HL_FMT), 2u);
+  BOOST_CHECK_EQUAL(header.field_length("PL", BCF_HL_FMT), 0xfffffu);
+  BOOST_CHECK_EQUAL(header.field_length("AS", BCF_HL_FMT), 1u);
+  BOOST_CHECK_EQUAL(header.field_length("VLINT", BCF_HL_FMT), 0xfffffu);
+}
+
