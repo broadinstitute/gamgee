@@ -3,6 +3,13 @@
 [![Issue Stats](http://issuestats.com/github/broadinstitute/gamgee/badge/pr)](http://issuestats.com/github/broadinstitute/gamgee)
 [![Issue Stats](http://issuestats.com/github/broadinstitute/gamgee/badge/issue)](http://issuestats.com/github/broadinstitute/gamgee)
 
+# NOTE: gamgee is no longer under active development.  We are leaving the code available as-is, but we have no plans to support or maintain it.
+
+Our development is now focused on the [Hellbender project](https://github.com/broadinstitute/hellbender), and we welcome your contributions.
+
+Thank you for your interest in gamgee.
+
+
 Gamgee
 ======
 
