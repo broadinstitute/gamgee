@@ -30,17 +30,6 @@ class Genotype{
   Genotype(const std::shared_ptr<bcf1_t>& body, const bcf_fmt_t* const format_ptr, const uint8_t* data_ptr);
 
   /**
-   * @brief copying of the Genotype object is not allowed.
-   */
-  Genotype(const Genotype& other) = delete;
-
-  /**
-   * @brief copying of the Genotype object is not allowed.
-   * @param other Other genotype.
-   */
-  Genotype& operator=(const Genotype& other) = delete;
-
-  /**
    * @brief Explicit default as recommended by many threads on stackoverflow.
    * @param other Other genotype.
    */
