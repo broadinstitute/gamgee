@@ -201,8 +201,6 @@ BOOST_AUTO_TEST_CASE( variant_header_builder_chained ) {
     .add_individual_field("PL", "13", "Float", "nothing", "goat=shank")
     .add_individual_field("DP", "13", "Float", "nothing", "goat=shank");
 
-  for (const auto& sample : samples)
-    builder.add_sample(sample);
   for (const auto& filter : filters)
     builder.add_filter(filter, "anything", "deer=vanison");
   for (const auto& shared : shareds)
@@ -233,11 +231,6 @@ BOOST_AUTO_TEST_CASE( variant_header_merge_test ) {
   auto built = builder.build();
   BOOST_CHECK(built != header1);
   BOOST_CHECK(built != header2);
-  BOOST_CHECK(built == header3);
-
-  // the contents of header 3 are already present so it should do nothing
-
-  built = builder.merge(header3).build();
   BOOST_CHECK(built == header3);
 }
 

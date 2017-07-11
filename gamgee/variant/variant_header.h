@@ -251,6 +251,12 @@ class VariantHeader {
     return "";
   }
 
+  std::vector<bcf_hrec_t*> advanced_all_header_fields()
+      const;  ///< Retrieve all the header fields with all its key/value
+              ///parings. Lifetime of the pointers is the same as this header
+              ///object. This is an advanced API option, if you are using it you
+              ///should know what you are doing.
+
  private:
   std::shared_ptr<bcf_hdr_t> m_header;
 

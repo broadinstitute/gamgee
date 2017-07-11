@@ -15,7 +15,6 @@ namespace gamgee {
 
 namespace utils {
 
-using namespace std;
 
   /**
    * @brief Counts the genotype alleles.
@@ -69,7 +68,7 @@ using namespace std;
     case BCF_BT_INT32:
       return allele_key<int32_t>(data_ptr, allele_index, bcf_int32_missing, bcf_int32_vector_end);
     default:
-      throw invalid_argument("unknown GT field type: " + to_string(format_ptr->type));
+      throw std::invalid_argument("unknown GT field type: " + std::to_string(format_ptr->type));
     }
   }
 
@@ -81,7 +80,7 @@ using namespace std;
    * @return The genotype allele keys.
    * @warning Only int8_t GT fields have been tested.
    */
-  vector<int32_t> allele_keys(const std::shared_ptr<bcf1_t>& body, const bcf_fmt_t* const format_ptr, const uint8_t* data_ptr);
+  std::vector<int32_t> allele_keys(const std::shared_ptr<bcf1_t>& body, const bcf_fmt_t* const format_ptr, const uint8_t* data_ptr);
 
   /**
    * @brief Returns the genotype allele strings.
@@ -91,7 +90,7 @@ using namespace std;
    * @return The genotype allele strings.
    * @warning Only int8_t GT fields have been tested.
    */
-  vector<string> allele_strings(const std::shared_ptr<bcf1_t>& body,
+  std::vector<std::string> allele_strings(const std::shared_ptr<bcf1_t>& body,
       const bcf_fmt_t* const format_ptr, const uint8_t* data_ptr); // returns the actual alleles (e.g. A/T or TG/C or T/T/C or T/T/T/T/T ... )
 
   /**
@@ -101,7 +100,7 @@ using namespace std;
    * @return The genotype allele string from this line.
    * @warning Only int8_t GT fields have been tested.
    */
-  string allele_key_to_string(const std::shared_ptr<bcf1_t>& body, const int32_t key_index);
+  std::string allele_key_to_string(const std::shared_ptr<bcf1_t>& body, const int32_t key_index);
 }
 
 }

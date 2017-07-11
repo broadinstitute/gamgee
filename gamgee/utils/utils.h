@@ -5,7 +5,7 @@
 #include <memory>
 #include <vector>
 #include <sstream>
-#include "htslib/vcf.h" 
+#include "htslib/vcf.h"
 
 namespace gamgee {
 
@@ -75,7 +75,11 @@ inline void check_max_boundary(const uint32_t index, const uint32_t size, const 
  * @exception throws an out_of_bounds exception if index is out of limits
  */
 inline void check_max_boundary(const uint32_t index, const uint32_t size) {
-  check_max_boundary(index, size, "");
+  if (index >= size) {
+    std::stringstream error_message {};  ///< @todo update this to auto when gcc-4.9 is available on travis-ci
+    error_message << "Index:  " << index << " must be less than " << size << std::endl;
+    throw std::out_of_range(error_message.str());
+  }
 }
 /**
  * @brief - Check whether two values from VCF fields of primitive types (for which the == operator is defined) * are equal
@@ -133,6 +137,30 @@ const uint8_t* cache_and_advance_to_end_if_necessary(const uint8_t* current_ptr,
     return end_ptr;
   return current_ptr;
 }
+
+/**
+ * A special version of starts_with for specific tag search.
+ *
+ * Shared utility function for ReadGroup and Program classes to parse SamHeader
+ * raw input. Useful to check if the result of std::string::find caught a token
+ * of interest.
+ */
+inline bool starts_with(const std::string& token, const char tag[2]) {
+    return token[0] == tag[0] && token[1] == tag[1];
+}
+
+/**
+ * @brief Store the input integer value in little-endian byte order
+ */
+template<class TYPE>
+inline uint8_t* to_little_endian(const TYPE& value, uint8_t *buffer) {
+  for (std::size_t i = 0 ; i < sizeof(TYPE) ; ++i) {
+      *buffer++ = (uint8_t) ((value >> (i * 8)) & 0xff);
+   }
+   return buffer;
+}
+
+
 
 
 } // end utils namespace

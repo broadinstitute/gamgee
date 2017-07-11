@@ -184,7 +184,7 @@ class IndividualFieldValue {
   std::shared_ptr<bcf1_t> m_body;
   const bcf_fmt_t* m_format_ptr;
   uint8_t* m_data_ptr;
-  uint8_t m_num_bytes;
+  uint32_t m_num_bytes;
 
   VALUE_TYPE convert_from_byte_array(int index) const;
 };

@@ -122,7 +122,7 @@ bool Genotype::deletion(const AlleleMask& mask) const {
 bool Genotype::indel(const AlleleMask& mask) const {
   const auto keys = allele_keys();
   auto found_type = false;
-  const auto result = std::all_of(keys.begin(), keys.end(), [&mask,&found_type](const auto& k) {
+  const auto result = std::all_of(keys.begin(), keys.end(), [&mask,&found_type](const int32_t& k) {
       if (mask[k] == AlleleType::INSERTION || mask[k] == AlleleType::DELETION) {
         found_type = true;
         return true;
@@ -134,23 +134,23 @@ bool Genotype::indel(const AlleleMask& mask) const {
 
 bool Genotype::biallelic() const {
   const auto keys = allele_keys();
-  const auto first_it = find_if(keys.begin(), keys.end(), [](const auto& k){return k != 0;}); // 0 = reference key
+  const auto first_it = find_if(keys.begin(), keys.end(), [](const int32_t& k){return k != 0;}); // 0 = reference key
   if (first_it == keys.end()) 
     return true;
-  return all_of(first_it, keys.end(), [&first_it](const auto& k){return k == 0 || k == *first_it;});
+  return all_of(first_it, keys.end(), [&first_it](const int32_t& k){return k == 0 || k == *first_it;});
 }
 
 bool Genotype::mixed() const {
   const auto keys = allele_keys();
-  const auto first_it = find_if(keys.begin(), keys.end(), [](const auto& k){return k != 0;}); // 0 = reference key
+  const auto first_it = find_if(keys.begin(), keys.end(), [](const int32_t& k){return k != 0;}); // 0 = reference key
   if (first_it == keys.end()) 
     return false;
-  return keys.end() != find_if(first_it, keys.end(), [&first_it](const auto& k){return k != 0 && k != *first_it;});
+  return keys.end() != find_if(first_it, keys.end(), [&first_it](const int32_t& k){return k != 0 && k != *first_it;});
 }
 
 bool Genotype::allele_is_type_or_ref(const AlleleType& type, const std::vector<int32_t>& keys, const AlleleMask& mask) const {
   auto found_type = false;
-  const auto result = std::all_of(keys.begin(), keys.end(), [&type,&mask,&found_type](const auto& k) {
+  const auto result = std::all_of(keys.begin(), keys.end(), [&type,&mask,&found_type](const int32_t& k) {
       if (mask[k] == type) {
         found_type = true;
         return true;

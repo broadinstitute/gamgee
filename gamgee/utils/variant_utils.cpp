@@ -21,7 +21,7 @@ void subset_variant_samples(bcf_hdr_t* hdr_ptr, const std::vector<std::string>& 
 
   else { // select some samples
     auto sample_list = include ? std::string{} : std::string{"^"};
-    std::for_each(samples.begin(), samples.end(), [&sample_list](const auto& s) { sample_list += s + ","; });
+    std::for_each(samples.begin(), samples.end(), [&sample_list](const std::string& s) { sample_list += s + ","; });
     sample_list.erase(sample_list.size() - 1);
     bcf_hdr_set_samples(hdr_ptr, sample_list.c_str(), false);
   }
@@ -30,16 +30,13 @@ void subset_variant_samples(bcf_hdr_t* hdr_ptr, const std::vector<std::string>& 
 }
 
 void merge_variant_headers(const std::shared_ptr<bcf_hdr_t>& dest_hdr_ptr, const std::shared_ptr<bcf_hdr_t>& src_hdr_ptr) {
-  auto success = bcf_hdr_combine(dest_hdr_ptr.get(), src_hdr_ptr.get());
-  if (success != 0)
-    throw HtslibException(success);
-
+  bcf_hdr_merge(dest_hdr_ptr.get(), src_hdr_ptr.get());
   // TODO: there is probably a more efficient way
   for (auto sample_counter = 0; sample_counter < bcf_hdr_nsamples(src_hdr_ptr.get()); ++sample_counter) {
-    // don't check for error code because the only "error" is ignoring a duplicate sample, not an error for us
+    // Note: bcf_hdr_add_sample aborts if there are duplicated sample names.
     bcf_hdr_add_sample(dest_hdr_ptr.get(), src_hdr_ptr->samples[sample_counter]);
   }
-  
+
   bcf_hdr_sync(dest_hdr_ptr.get());
 }
 

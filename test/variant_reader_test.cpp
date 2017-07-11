@@ -239,8 +239,8 @@ bool bcf_compare_float(const float v1, const float v2, const float threshold)
 boost::dynamic_bitset<> high_qual_hets(const Variant& record) {  // filter all hets that have GQ > 20
   const auto genotypes = record.genotypes(); // a "vector-like" with the genotypes of all samples in this record
   const auto gqs = record.integer_individual_field("GQ"); // a "vector-like" with all the GQs of all samples in this record
-  const auto hets = Variant::select_if(genotypes.begin(), genotypes.end(), [](const auto& g) { return g.het(); }); // returns a bit set with all hets marked with 1's
-  const auto pass_gqs = Variant::select_if(gqs.begin(), gqs.end(), [](const auto& gq) { return gq[0] > 20; }); // returns a bit set with every sample with gq > 20 marked with 1's
+  const auto hets = Variant::select_if(genotypes.begin(), genotypes.end(), [](const Genotype& g) { return g.het(); }); // returns a bit set with all hets marked with 1's
+  const auto pass_gqs = Variant::select_if(gqs.begin(), gqs.end(), [](const IndividualFieldValue<int32_t>& gq) { return gq[0] > 20; }); // returns a bit set with every sample with gq > 20 marked with 1's
   return hets & pass_gqs; // returns a bit set with all the samples that are het and have gq > 20
 }
 
@@ -276,7 +276,7 @@ void check_filters_api(const Variant& record, const uint32_t truth_index) {
   const auto filters = record.filters(); 
   BOOST_CHECK_EQUAL(filters.size(), truth_filter_size[truth_index]); // checking size member function
   BOOST_CHECK_EQUAL(filters[0], truth_filter_name[truth_index]);  // checking random access
-  BOOST_CHECK_EQUAL(count_if(filters.begin(), filters.end(), [](const auto x){return x == x;}), truth_filter_size[truth_index]); // checking iteration in functional style
+  BOOST_CHECK_EQUAL(count_if(filters.begin(), filters.end(), [](const string& x){return x == x;}), truth_filter_size[truth_index]); // checking iteration in functional style
 }
 
 void check_genotype_quals_api(const Variant& record, const uint32_t truth_index) {
@@ -297,7 +297,7 @@ void check_phred_likelihoods_api(const Variant& record, const uint32_t truth_ind
       BOOST_CHECK_EQUAL(pls[i][j], truth_pl[truth_index][i][j]);
   // functional style access
   for(const auto& sample_pl : pls) { // testing for-each iteration at the samples level
-    BOOST_CHECK_EQUAL(1, count_if(sample_pl.begin(), sample_pl.end(), [](const auto& x) { return x == 0; })); // testing std library functional call at the sample value level
+    BOOST_CHECK_EQUAL(1, count_if(sample_pl.begin(), sample_pl.end(), [](const int x) { return x == 0; })); // testing std library functional call at the sample value level
     for(const auto& value_pl : sample_pl)  // testing for-each iteration at the sample value level
       BOOST_CHECK_EQUAL(value_pl, value_pl); // I just want to make sure that this level of iteration is supported, the values don't matter anymore at this point
   }
@@ -1058,7 +1058,9 @@ auto truth_file_indices_3x5 = vector<unordered_set<uint32_t>> {{0,1,2},{0,1,2},{
 
 BOOST_AUTO_TEST_CASE( multiple_variant_reader_test ) {
   auto truth_index = 0u;
-  const auto reader = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants.bcf", "testdata/test_variants.vcf.gz"}, false};
+  const auto reader = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf",
+                                                                      "testdata/mvar_rdr/test_variants.bcf",
+                                                                      "testdata/mvar_rdr/test_variants.vcf.gz"}, false};
   for (const auto& vec : reader) {
     auto expected_file_indices = truth_file_indices_3x5[truth_index];
     for (const auto& pair : vec) {
@@ -1075,8 +1077,8 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_test ) {
 }
 
 BOOST_AUTO_TEST_CASE( multiple_variant_reader_move_test ) {
-  auto reader0 = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants.bcf"}, false};;
-  auto reader1 = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants.bcf"}, false};;
+  auto reader0 = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/mvar_rdr/test_variants.bcf"}, false};;
+  auto reader1 = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/mvar_rdr/test_variants.bcf"}, false};;
   auto moved = check_move_constructor(reader1);
 
   auto record0 = reader0.begin().operator*();
@@ -1091,10 +1093,10 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_move_test ) {
 }
 
 BOOST_AUTO_TEST_CASE( multiple_variant_iterator_move_test ) {
-  auto reader0 = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants.bcf"}, false};
+  auto reader0 = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/mvar_rdr/test_variants.bcf"}, false};
   auto iter0 = reader0.begin();
 
-  auto reader1 = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/test_variants.bcf"}, false};
+  auto reader1 = MultipleVariantReader<MultipleVariantIterator>{{"testdata/test_variants.vcf", "testdata/mvar_rdr/test_variants.bcf"}, false};
   auto iter1 = reader1.begin();
   auto moved = check_move_constructor(iter1);
 

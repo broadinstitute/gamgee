@@ -2,6 +2,8 @@
 #include "sam/sam_reader.h"
 
 #include <boost/test/unit_test.hpp>
+#include <limits>
+#include<float.h>
 #include <stdexcept>
 
 using namespace std;
@@ -110,6 +112,26 @@ BOOST_AUTO_TEST_CASE( set_cigar_from_existing ) {
   BOOST_CHECK(modified_read.base_quals() == starting_read.base_quals());
   BOOST_CHECK_EQUAL(modified_read.chromosome(), starting_read.chromosome());
   BOOST_CHECK_EQUAL(modified_read.alignment_start(), starting_read.alignment_start());
+}
+
+BOOST_AUTO_TEST_CASE( set_empty_cigar ) {
+  auto original_read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  auto original_read_cigar = original_read.cigar().to_string();
+  auto builder = SamBuilder{original_read};
+
+  // Verify that set_cigar worked, for empty cigar string (e.g. in case of
+  // unmapped read).
+  auto modified_read_1 = builder.set_unmapped().set_cigar("").build();
+  BOOST_CHECK_EQUAL(modified_read_1.cigar().to_string(), "");
+  // Verify that original read is unaffected.
+  BOOST_CHECK_EQUAL(original_read.cigar().to_string(), original_read_cigar);
+
+  // Verify that set_cigar worked, for empty cigar string (e.g. in case of
+  // unmapped read).
+  auto modified_read_2 = builder.set_unmapped().set_cigar({}).build();
+  BOOST_CHECK_EQUAL(modified_read_2.cigar().to_string(), "");
+  // Verify that original read is unaffected.
+  BOOST_CHECK_EQUAL(original_read.cigar().to_string(), original_read_cigar);
 }
 
 BOOST_AUTO_TEST_CASE( set_bases_by_vector ) {
@@ -271,6 +293,113 @@ BOOST_AUTO_TEST_CASE( set_multiple_data_fields ) {
   BOOST_CHECK_EQUAL(modified_read.alignment_start(), original_read.alignment_start());
 }
 
+BOOST_AUTO_TEST_CASE( add_tag ) {
+  auto original_read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  auto original_read_tags = original_read.all_tag_types();
+  auto builder = SamBuilder{original_read};
+  // construct numeric arrays
+  std::vector<int64_t> int_array_values = {USHRT_MAX, 1, 2, 3 , 4};
+  const auto numeric_uint16_array_tag =
+    SamNumericArrayTag(SamTagType::UINTEGER16ARRAY, int_array_values);
+  int_array_values.resize(5);
+  for ( int i = 0; i < 5; i++ ) int_array_values[i] = -i;
+  const auto numeric_int8_array_tag_2 =
+    SamNumericArrayTag(SamTagType::INTEGER8ARRAY, int_array_values);
+  std::vector<float> float_array_values = {-1, -2, -3 , -4, -5};
+  const auto numeric_float_array_tag =
+      SamNumericArrayTag(SamTagType::FLOATARRAY, float_array_values);
+
+  auto modified_read = builder.clear_tags().
+      add_char_tag("aa", 'C').
+      add_integer_tag("bb", INT_MAX).
+      add_integer_tag("cc", INT_MIN).
+      add_integer_tag("dd", UINT_MAX).
+      add_float_tag("ee", FLT_MAX).
+      add_float_tag("ff", FLT_MIN).
+      add_double_tag("gg", DBL_MAX).
+      add_double_tag("hh", DBL_MIN).
+      add_string_tag("ii", "string tag.").
+      add_string_tag("jj", "second string tag.").
+      // An example of byte array [0x1a, 0xe3, 0x1]
+      add_byte_array_tag("kk", "1AE301").
+      add_numeric_array_tag("ll", numeric_uint16_array_tag).
+      add_numeric_array_tag("mm", numeric_int8_array_tag_2).
+      add_numeric_array_tag("nn", numeric_float_array_tag).
+      build();
+
+  // Verify that add_*_tag worked, and that the original read is unaffected
+  BOOST_CHECK_EQUAL(modified_read.all_tag_types().size(), 14);
+  BOOST_CHECK_EQUAL(modified_read.char_tag("aa").value(), 'C');
+  BOOST_CHECK_EQUAL(modified_read.integer_tag("bb").value(), INT_MAX);
+  BOOST_CHECK_EQUAL(modified_read.integer_tag("cc").value(), INT_MIN);
+  BOOST_CHECK_EQUAL(modified_read.integer_tag("dd").value(), UINT_MAX);
+  BOOST_CHECK_EQUAL(modified_read.double_tag("ee").value(), FLT_MAX);
+  BOOST_CHECK_EQUAL(modified_read.double_tag("ff").value(), FLT_MIN);
+  BOOST_CHECK_EQUAL(modified_read.double_tag("gg").value(), DBL_MAX);
+  BOOST_CHECK_EQUAL(modified_read.double_tag("hh").value(), DBL_MIN);
+  BOOST_CHECK_EQUAL(modified_read.string_tag("ii").value(), "string tag.");
+  BOOST_CHECK_EQUAL(modified_read.string_tag("jj").value(), "second string tag.");
+  BOOST_CHECK_EQUAL(modified_read.byte_array_tag("kk").value(), "1AE301");
+  BOOST_CHECK(modified_read.numeric_array_tag("ll").value() == numeric_uint16_array_tag);
+  BOOST_CHECK(modified_read.numeric_array_tag("mm").value() == numeric_int8_array_tag_2);
+  BOOST_CHECK(modified_read.numeric_array_tag("nn").value() == numeric_float_array_tag);
+  BOOST_CHECK(original_read.all_tag_types() == original_read_tags);
+
+  // Verify that other fields were inherited from the original read
+  BOOST_CHECK(modified_read.name() == original_read.name());
+  BOOST_CHECK(modified_read.bases() == original_read.bases());
+  BOOST_CHECK(modified_read.base_quals() == original_read.base_quals());
+  BOOST_CHECK(modified_read.cigar() == original_read.cigar());
+  BOOST_CHECK_EQUAL(modified_read.chromosome(), original_read.chromosome());
+  BOOST_CHECK_EQUAL(modified_read.alignment_start(), original_read.alignment_start());
+}
+
+BOOST_AUTO_TEST_CASE( set_tag_from_existing ) {
+  auto original_read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  for ( auto read : SingleSamReader{"testdata/test_paired.bam"} ) {
+    if (original_read.all_tag_types().size() > 0) break;
+    original_read = read;
+  }
+  const auto original_read_tags = original_read.all_tag_types();
+  // Test requires an alignemnt with aux tags.
+  BOOST_CHECK(original_read_tags.size() != 0);
+  auto builder = SamBuilder{original_read};
+  auto modified_read = builder.add_integer_tag("aa", 1).build();
+
+  // Verify that set_sam_tags worked, and that the original read is unaffected
+  BOOST_CHECK_EQUAL(modified_read.integer_tag("aa").value(), 1);
+  BOOST_CHECK_EQUAL(modified_read.all_tag_types().size(), original_read_tags.size() + 1);
+  for (const auto& tag : original_read_tags) {
+    switch (tag.second) {
+      case SamTagType::INTEGER:
+        BOOST_CHECK_EQUAL(modified_read.integer_tag(tag.first).value(),
+                          original_read.integer_tag(tag.first).value());
+        break;
+      case SamTagType::DOUBLE:
+        BOOST_CHECK_EQUAL(modified_read.double_tag(tag.first).value(),
+                          original_read.double_tag(tag.first).value());
+        break;
+      case SamTagType::CHAR:
+        BOOST_CHECK_EQUAL(modified_read.char_tag(tag.first).value(),
+                          original_read.char_tag(tag.first).value());
+        break;
+      case SamTagType::STRING:
+        BOOST_CHECK(modified_read.string_tag(tag.first).value() ==
+                    original_read.string_tag(tag.first).value());
+        break;
+    }
+
+  }
+
+  // Verify that other fields were inherited from the original read
+  BOOST_CHECK(modified_read.name() == original_read.name());
+  BOOST_CHECK(modified_read.bases() == original_read.bases());
+  BOOST_CHECK(modified_read.base_quals() == original_read.base_quals());
+  BOOST_CHECK(modified_read.cigar() == original_read.cigar());
+  BOOST_CHECK_EQUAL(modified_read.chromosome(), original_read.chromosome());
+  BOOST_CHECK_EQUAL(modified_read.alignment_start(), original_read.alignment_start());
+}
+
 BOOST_AUTO_TEST_CASE( set_multiple_data_fields_one_time_build ) {
   auto original_read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
   auto original_read_cigar = original_read.cigar().to_string();
@@ -379,11 +508,27 @@ BOOST_AUTO_TEST_CASE( build_multiple_reads ) {
   BOOST_CHECK_EQUAL(second_read.alignment_start(), 142u);
   BOOST_CHECK_EQUAL(second_read.mate_alignment_start(), 199u);
 }
+
 BOOST_AUTO_TEST_CASE( set_illegal_base_quals ) {
   auto header = SingleSamReader{"testdata/test_simple.bam"}.header();
   auto builder = SamBuilder{header};
   builder.set_name("foo").set_bases("ACT").set_cigar("3M");
   BOOST_CHECK_THROW(builder.set_base_quals({2, 255, 256}), invalid_argument); // 256 is too big for a quality score
+}
+
+BOOST_AUTO_TEST_CASE( set_illegal_tag ) {
+  auto read = *(SingleSamReader{"testdata/test_simple.bam"}.begin());
+  auto builder = SamBuilder{read};
+
+  // Should throw an exception, since tag name is invalid
+  BOOST_CHECK_THROW(builder.clear_tags().add_integer_tag("abc", 1).build(), invalid_argument);
+  builder = SamBuilder{read};
+  BOOST_CHECK_THROW(builder.clear_tags().add_double_tag("abc", 1.0).build(), invalid_argument);
+  BOOST_CHECK_THROW(builder.clear_tags().add_char_tag("abc", 'A').build(), invalid_argument);
+  BOOST_CHECK_THROW(builder.clear_tags().add_string_tag("abc", "A").build(), invalid_argument);
+
+  // Integer tag has range of [-INT32, UINT32]
+  BOOST_CHECK_THROW(builder.clear_tags().add_integer_tag("aa", LONG_MAX).build(), invalid_argument);
 }
 
 BOOST_AUTO_TEST_CASE( set_illegal_cigar ) {
@@ -393,7 +538,6 @@ BOOST_AUTO_TEST_CASE( set_illegal_cigar ) {
 
   // Should throw an exception, since the cigar is invalid
   BOOST_CHECK_THROW(builder.set_cigar("3F"), invalid_argument);// F is not a cigar operator
-  BOOST_CHECK_THROW(builder.set_cigar(""), invalid_argument);  // empty cigar
   BOOST_CHECK_THROW(builder.set_cigar("3"), invalid_argument); // missing operator
   BOOST_CHECK_THROW(builder.set_cigar("M3"), invalid_argument);// operator in front of the element length
   BOOST_CHECK_THROW(builder.set_cigar("3í"), invalid_argument);// operator is > 128 in ascii table

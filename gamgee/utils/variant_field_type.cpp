@@ -8,7 +8,7 @@
 namespace gamgee {
 namespace utils {
 
-int32_t convert_data_to_integer(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const VariantFieldType& type) {
+int32_t convert_data_to_integer(const uint8_t* data_ptr, const int index, const uint32_t num_bytes_per_value, const VariantFieldType& type) {
   auto return_val = -1;
   const auto p = data_ptr + (index * num_bytes_per_value);
   auto end_val = -1;
@@ -38,7 +38,7 @@ int32_t convert_data_to_integer(const uint8_t* data_ptr, const int index, const 
     return return_val;
 }
 
-float convert_data_to_float(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const VariantFieldType& type) {
+float convert_data_to_float(const uint8_t* data_ptr, const int index, const uint32_t num_bytes_per_value, const VariantFieldType& type) {
   auto return_val = -1;
   auto end_val = -1;
   const auto p = data_ptr + (index * num_bytes_per_value);
@@ -74,7 +74,7 @@ float convert_data_to_float(const uint8_t* data_ptr, const int index, const uint
     return return_val;
 }
 
-std::string convert_data_to_string(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const VariantFieldType& type) {
+std::string convert_data_to_string(const uint8_t* data_ptr, const int index, const uint32_t num_bytes_per_value, const VariantFieldType& type) {
   auto result = std::string{};
   const auto p = data_ptr + (index * num_bytes_per_value);
   switch (type) {
@@ -99,7 +99,7 @@ std::string convert_data_to_string(const uint8_t* data_ptr, const int index, con
   }
 }
 
-uint8_t size_for_type(const VariantFieldType& type, const bcf_fmt_t* const format_ptr) {
+uint32_t size_for_type(const VariantFieldType& type, const bcf_fmt_t* const format_ptr) {
   switch (type) {
     case VariantFieldType::NIL:
     case VariantFieldType::INT8: 
@@ -115,7 +115,7 @@ uint8_t size_for_type(const VariantFieldType& type, const bcf_fmt_t* const forma
   }
 }
 
-uint8_t size_for_type(const VariantFieldType& type, const bcf_info_t* const info_ptr) {
+uint32_t size_for_type(const VariantFieldType& type, const bcf_info_t* const info_ptr) {
   switch (type) {
     case VariantFieldType::NIL:
     case VariantFieldType::INT8: 

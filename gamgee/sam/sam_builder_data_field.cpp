@@ -67,8 +67,14 @@ SamBuilderDataField& SamBuilderDataField::operator=(SamBuilderDataField&& other)
  * @note any previous value of m_data is destroyed via the unique_ptr assignment
  */
 void SamBuilderDataField::update(const void* copy_source, const uint32_t bytes_to_copy, const uint32_t num_elements) {
-  m_data = unique_ptr<uint8_t[]>{ new uint8_t[bytes_to_copy] };
-  memcpy(m_data.get(), copy_source, bytes_to_copy);
+  if (num_elements == 0) {
+    if (bytes_to_copy != 0)
+      throw invalid_argument(string("Non-zero bytes_to_copy for empty cigar."));
+    m_data = unique_ptr<uint8_t[]>{ new uint8_t[bytes_to_copy] };
+  } else {
+    m_data = unique_ptr<uint8_t[]>{ new uint8_t[bytes_to_copy] };
+    memcpy(m_data.get(), copy_source, bytes_to_copy);
+  }
   m_num_bytes = bytes_to_copy;
   m_num_elements = num_elements;
 }

@@ -9,9 +9,13 @@ set(SOURCE_FILES
     main.cpp
     missing_test.cpp
     multiple_variant_reader_test.cpp
+    header_comment_test.cpp
+    header_line_test.cpp
     read_group_test.cpp
+    program_test.cpp
     reference_block_splitting_variant_reader_test.cpp
     reference_test.cpp
+    sam_header_builder_test.cpp
     sam_builder_test.cpp
     sam_header_test.cpp
     sam_reader_test.cpp
@@ -30,7 +34,7 @@ set(SOURCE_FILES
 add_executable(gamgee_test EXCLUDE_FROM_ALL ${SOURCE_FILES})
 
 target_compile_definitions(gamgee_test PUBLIC -DBOOST_TEST_DYN_LINK)
-target_link_libraries(gamgee_test gamgee ${htslib_LIB} ${Boost_LIBRARIES} pthread z)
+target_link_libraries(gamgee_test gamgee ${htslib_LIB} ${Boost_LIBRARIES} pthread z bz2 lzma)
 add_dependencies(gamgee_test htslib)
 
 add_custom_target(run_test COMMAND ${CMAKE_BINARY_DIR}/test/gamgee_test DEPENDS gamgee_test WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})

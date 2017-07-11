@@ -19,7 +19,7 @@
 ##FORMAT=<ID=AD,Number=.,Type=Integer,Description="Allelic depths for the ref and alt alleles in the order listed">
 ##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Approximate read depth (reads with MQ=255 or with bad mates are filtered)">
 ##FORMAT=<ID=MIN_DP,Number=1,Type=Integer,Description="Minimum DP observed within the GVCF block">
-#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	NA12878	NA12891	NA12892
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	NA12878_g	NA12891_g	NA12892_g
 1	10000000	db2342	T	C	80	PASS	AF=0.5;AN=6;VALIDATED;DESC=Test1,Test2	GT:GQ:PL:AF:AS	0/1:25:10,0,100:3.1,2.2:ABA	0/0:12:0,10,1000:3.1,2.2:CA	1/1:650:10,100,0:3.1,2.2:XISPAFORRO
 1	20000000	.	C	<NON_REF>	.	.	END=20000123	GT:DP:GQ:MIN_DP:PL	0/0:0:0:0:0,0,0	0/0:0:0:0:0,0,0	0/0:0:0:0:0,0,0
 20	10001000	rs837472	GG	AA	8.4	PASS	AF=0.5;AN=6	GT:GQ:PL:AF:AS	0/1:35:10,0,100:3.1,2.2:ABA	0/0:35:0,10,100:3.1,2.2:ABA	1/1:35:10,100,0:3.1,2.2:ABA

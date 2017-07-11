@@ -29,29 +29,29 @@ enum class VariantFieldType {NIL = 0, INT8 = 1, INT16 = 2, INT32 = 3, FLOAT = 5,
   * @exception Will throw std::invalid_argument exception if trying to create a string out of a numeric format or 
   * vice-versa. All numeric type conversions are internally truncated or expanded accordingly.
   */
-int32_t convert_data_to_integer(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const VariantFieldType& type);
+int32_t convert_data_to_integer(const uint8_t* data_ptr, const int index, const uint32_t num_bytes_per_value, const VariantFieldType& type);
 
 /**
  * @brief converts the value in an index from the byte array into float
  * @copydetails convert_data_to_integer(int, const uint8_t, const VariantFieldType&)
  */
-float convert_data_to_float(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const VariantFieldType& type);
+float convert_data_to_float(const uint8_t* data_ptr, const int index, const uint32_t num_bytes_per_value, const VariantFieldType& type);
 
 /**
  * @brief converts the value in an index from the byte array into string
  * @copydetails convert_data_to_integer(int, const uint8_t, const VariantFieldType&)
  */
-std::string convert_data_to_string(const uint8_t* data_ptr, const int index, const uint8_t num_bytes_per_value, const VariantFieldType& type);
+std::string convert_data_to_string(const uint8_t* data_ptr, const int index, const uint32_t num_bytes_per_value, const VariantFieldType& type);
 
 /**
  * @brief returns the number of bytes for a given VariantFieldType
  */
-uint8_t size_for_type(const VariantFieldType& type, const bcf_fmt_t* const format_ptr);
+uint32_t size_for_type(const VariantFieldType& type, const bcf_fmt_t* const format_ptr);
 
 /**
  * @brief returns the number of bytes for a given VariantFieldType
  */
-uint8_t size_for_type(const VariantFieldType& type, const bcf_info_t* const info_ptr);
+uint32_t size_for_type(const VariantFieldType& type, const bcf_info_t* const info_ptr);
 
 /**
  * @brief - check if type is of type string

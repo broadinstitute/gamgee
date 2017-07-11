@@ -31,16 +31,24 @@ set(SOURCE_FILES
     variant/multiple_variant_reader.h
     variant/variant_header_merger.h
     variant/variant_header_merger.cpp
+    sam/header_comment.cpp
+    sam/header_comment.h
+    sam/header_line.cpp
+    sam/header_line.h
     sam/read_bases.cpp
     sam/read_bases.h
     sam/read_group.cpp
     sam/read_group.h
+    sam/program.cpp
+    sam/program.h
     variant/reference_block_splitting_variant_iterator.cpp
     variant/reference_block_splitting_variant_iterator.h
     reference_iterator.cpp
     reference_iterator.h
     reference_map.cpp
     reference_map.h
+    sam/sam_header_builder.cpp
+    sam/sam_header_builder.h
     sam/sam_builder.cpp
     sam/sam_builder_data_field.cpp
     sam/sam_builder_data_field.h
@@ -54,6 +62,7 @@ set(SOURCE_FILES
     sam/sam_pair_iterator.cpp
     sam/sam_pair_iterator.h
     sam/sam_reader.h
+    sam/sam_tag.cpp
     sam/sam_tag.h
     sam/sam_writer.cpp
     sam/sam_writer.h
@@ -68,6 +77,8 @@ set(SOURCE_FILES
     utils/genotype_utils.h
     utils/hts_memory.cpp
     utils/hts_memory.h
+    utils/sam_tag_utils.cpp
+    utils/sam_tag_utils.h
     utils/short_value_optimized_storage.h
     utils/utils.cpp
     utils/utils.h

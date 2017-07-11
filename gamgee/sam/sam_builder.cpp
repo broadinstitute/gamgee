@@ -1,9 +1,15 @@
 #include "sam_builder.h"
 #include "cigar.h"
 
+#include "htslib/sam.h"
+
+#include "sam_tag.h"
 #include "../utils/hts_memory.h"
+#include "../utils/sam_tag_utils.h"
+#include "../utils/utils.h"
 
 #include <algorithm>
+#include <limits>
 #include <sstream>
 #include <stdexcept>
 #include <stdlib.h>
@@ -24,7 +30,13 @@ SamBuilder::SamBuilder(const SamHeader& header, const bool validate_on_build) :
   m_cigar {},
   m_bases {},
   m_base_quals {},
-  m_tags {},
+  m_char_tags {},
+  m_int_tags {},
+  m_float_tags {},
+  m_double_tags {},
+  m_string_tags {},
+  m_byte_array_tags {},
+  m_numeric_array_tags {},
   m_validate_on_build { validate_on_build }
 {}
 
@@ -40,9 +52,11 @@ SamBuilder::SamBuilder(const Sam& starting_read, const bool validate_on_build) :
   m_cigar { bam_get_cigar(starting_read.m_body.get()), uint32_t(starting_read.m_body.get()->core.n_cigar << 2), uint32_t(starting_read.m_body.get()->core.n_cigar) },
   m_bases { bam_get_seq(starting_read.m_body.get()), uint32_t((starting_read.m_body.get()->core.l_qseq + 1) >> 1), uint32_t(starting_read.m_body.get()->core.l_qseq) },
   m_base_quals { bam_get_qual(starting_read.m_body.get()), uint32_t(starting_read.m_body.get()->core.l_qseq), uint32_t(starting_read.m_body.get()->core.l_qseq) },
-  m_tags { bam_get_aux(starting_read.m_body.get()), uint32_t(bam_get_l_aux(starting_read.m_body.get())), 0 },
   m_validate_on_build { validate_on_build }
-{}
+{
+  clear_tags();
+  add_sam_tags(bam_get_aux(starting_read.m_body.get()), bam_get_l_aux(starting_read.m_body.get()));
+}
 
 /**
  * @brief create a Sam starting with an existing read, and manually set the header to a custom value
@@ -56,9 +70,11 @@ SamBuilder::SamBuilder(const SamHeader& header, const Sam& starting_read, const 
   m_cigar { bam_get_cigar(starting_read.m_body.get()), uint32_t(starting_read.m_body.get()->core.n_cigar << 2), uint32_t(starting_read.m_body.get()->core.n_cigar) },
   m_bases { bam_get_seq(starting_read.m_body.get()), uint32_t((starting_read.m_body.get()->core.l_qseq + 1) >> 1), uint32_t(starting_read.m_body.get()->core.l_qseq) },
   m_base_quals { bam_get_qual(starting_read.m_body.get()), uint32_t(starting_read.m_body.get()->core.l_qseq), uint32_t(starting_read.m_body.get()->core.l_qseq) },
-  m_tags { bam_get_aux(starting_read.m_body.get()), uint32_t(bam_get_l_aux(starting_read.m_body.get())), 0 },
   m_validate_on_build { validate_on_build }
-{}
+{
+  clear_tags();
+  add_sam_tags(bam_get_aux(starting_read.m_body.get()), bam_get_l_aux(starting_read.m_body.get()));
+}
 
 /**
  * @brief set the read's QNAME to the specified value
@@ -85,7 +101,11 @@ SamBuilder& SamBuilder::set_cigar(const Cigar& new_cigar) {
  * @note copies the contents of the vector
  */
 SamBuilder& SamBuilder::set_cigar(const std::vector<CigarElement>& new_cigar) {
-  m_cigar.update(&(new_cigar[0]), new_cigar.size() * sizeof(CigarElement), new_cigar.size());
+  if (new_cigar.empty()) {
+    m_cigar.update(nullptr, new_cigar.size() * sizeof(CigarElement), new_cigar.size());
+  } else {
+    m_cigar.update(&(new_cigar[0]), new_cigar.size() * sizeof(CigarElement), new_cigar.size());
+  }
   return *this;
 }
 
@@ -107,8 +127,10 @@ SamBuilder& SamBuilder::set_cigar(const std::initializer_list<CigarElement> new_
  * @note this is the least efficient way to set a cigar
  */
 SamBuilder& SamBuilder::set_cigar(const std::string& new_cigar) {
-  if ( new_cigar.length() == 0 )
-    throw invalid_argument("Empty cigar passed to set_cigar()");
+  if ( new_cigar.length() == 0 ) {
+    m_cigar.update(nullptr, 0, 0);
+    return *this;
+  }
 
   // Find the number of operators by counting non-digits
   auto num_cigar_elements = new_cigar.length() - count_if(new_cigar.begin(), new_cigar.end(), ::isdigit);
@@ -248,6 +270,168 @@ SamBuilder& SamBuilder::set_base_quals(const std::initializer_list<int> new_base
 }
 
 /**
+ * @brief clear aux tags
+ *
+ */
+SamBuilder& SamBuilder::clear_tags() {
+  m_char_tags.clear();
+  m_int_tags.clear();
+  m_float_tags.clear();
+  m_double_tags.clear();
+  m_string_tags.clear();
+  m_byte_array_tags.clear();
+  m_numeric_array_tags.clear();
+  return *this;
+}
+
+/**
+ * @brief add sam tags from hstlib-encoded array
+ *
+ * @note input tag is added to the list of previously set tags.
+ *
+ */
+SamBuilder& SamBuilder::add_sam_tags(uint8_t* buffer, const int& len) {
+  auto tags = utils::parse_encoded_tags(buffer, len);
+  for ( const auto& tag : tags ) {
+    const auto type = reinterpret_cast<unsigned char>(*tag.second);
+    switch (type) {
+      case CHAR_SAM_TAG_TYPE_CODE:
+        add_char_tag(tag.first, bam_aux2A(tag.second));
+        break;
+      case INT8_SAM_TAG_TYPE_CODE: case UINT8_SAM_TAG_TYPE_CODE:
+      case INT16_SAM_TAG_TYPE_CODE: case UINT16_SAM_TAG_TYPE_CODE:
+      case INT32_SAM_TAG_TYPE_CODE: case UINT32_SAM_TAG_TYPE_CODE:
+        add_integer_tag(tag.first, bam_aux2i(tag.second));
+        break;
+      case FLOAT_SAM_TAG_TYPE_CODE:
+        add_float_tag(tag.first, bam_aux2f(tag.second));
+        break;
+      case DOUBLE_SAM_TAG_TYPE_CODE:
+        add_double_tag(tag.first, bam_aux2f(tag.second));
+        break;
+      case STRING_SAM_TAG_TYPE_CODE:
+        add_string_tag(tag.first, std::string{bam_aux2Z(tag.second)});
+        break;
+      case BYTE_ARRAY_SAM_TAG_TYPE_CODE:
+        add_byte_array_tag(tag.first, std::string{bam_aux2Z(tag.second)});
+        break;
+      case NUMERIC_ARRAY_SAM_TAG_TYPE_CODE:
+      {
+        const auto array_type = reinterpret_cast<unsigned char>(*(tag.second + 1));
+        const auto array_len = bam_auxB_len(tag.second);
+        switch (array_type) {
+          case INT8_SAM_TAG_TYPE_CODE: case UINT8_SAM_TAG_TYPE_CODE:
+          case INT16_SAM_TAG_TYPE_CODE: case UINT16_SAM_TAG_TYPE_CODE:
+          case INT32_SAM_TAG_TYPE_CODE: case UINT32_SAM_TAG_TYPE_CODE:
+          {
+            std::vector<int64_t> array_values(array_len);
+            for ( uint32_t i = 0; i < array_len; ++i ) {
+              array_values[i] = bam_auxB2i(tag.second, i);
+            }
+            add_numeric_array_tag(
+                tag.first,
+                SamNumericArrayTag(utils::numeric_array_tag_type(array_type), array_values));
+          } break;
+          case FLOAT_SAM_TAG_TYPE_CODE:
+          {
+            std::vector<float> array_values(array_len);
+            for ( uint32_t i = 0; i < array_len; ++i ) {
+              array_values[i] = bam_auxB2i(tag.second, i);
+            }
+            add_numeric_array_tag(
+                tag.first, SamNumericArrayTag(SamTagType::FLOATARRAY, array_values));
+          } break;
+          default:
+            throw invalid_argument("Unsupported sam numeric array tag type: " +
+                                   std::to_string(array_type));
+        }
+      } break;
+      default:
+        throw invalid_argument("Unsupported sam tag type: " +
+                               std::to_string(type));
+    }
+  }
+  return *this;
+}
+
+/**
+ * @brief add char-valued tag
+ *
+ * @note input tag is added to the list of previously set tags.
+ *
+ */
+SamBuilder& SamBuilder::add_char_tag(const std::string& name, const char& value) {
+  m_char_tags[name] = value;
+  return *this;
+}
+
+/**
+ * @brief add integer-valued tag
+ *
+ * @note input tag is added to the list of previously set tags.
+ *
+ */
+SamBuilder& SamBuilder::add_integer_tag(const std::string& name, const int64_t& value) {
+  m_int_tags[name] = value;
+  return *this;
+}
+
+/**
+ * @brief add float-valued tag
+ *
+ * @note input tag is added to the list of previously set tags.
+ *
+ */
+SamBuilder& SamBuilder::add_float_tag(const std::string& name, const float& value) {
+  m_float_tags[name] = value;
+  return *this;
+}
+
+/**
+ * @brief add double-valued tag
+ *
+ * @note input tag is added to the list of previously set tags.
+ *
+ */
+SamBuilder& SamBuilder::add_double_tag(const std::string& name, const double& value) {
+  m_double_tags[name] = value;
+  return *this;
+}
+
+/**
+ * @brief add string-valued tag
+ *
+ * @note input tag is added to the list of previously set tags.
+ *
+ */
+SamBuilder& SamBuilder::add_string_tag(const std::string& name, const string& value) {
+  m_string_tags[name] = value;
+  return *this;
+}
+
+/**
+ * @brief add byte array tag
+ *
+ * @note input tag is added to the list of previously set tags.
+ *
+ */
+SamBuilder& SamBuilder::add_byte_array_tag(const std::string& name, const string& value) {
+  m_byte_array_tags[name] = value;
+  return *this;
+}
+
+/**
+ * @brief add numeric array tag
+ *
+ * @note input tag is added to the list of previously set tags.
+ *
+ */
+SamBuilder& SamBuilder::add_numeric_array_tag(const std::string& name, const SamNumericArrayTag& value) {
+  m_numeric_array_tags[name] = value;
+  return *this;
+}
+
+/**
  * @brief build a Sam record using the current state of the builder
  *
  * @note this version of build() can be called repeatedly to build multiple Sam objects with
@@ -268,9 +452,6 @@ Sam SamBuilder::build() const {
 
   // Calculate the bin using the same method as htslib
   sam_body_ptr->core.bin = hts_reg2bin(sam_body_ptr->core.pos, sam_body_ptr->core.pos + sam_body_ptr->core.l_qseq, 14, 5);
-  // Always set the TLEN field to 0 (which in the SAM spec means that the information is unavailable),
-  // since we generally can't calculate this
-  sam_body_ptr->core.isize = 0;
 
   return Sam{ m_core_read.m_header, new_sam_body };
 }
@@ -292,9 +473,6 @@ Sam SamBuilder::one_time_build() {
 
   // Calculate the bin using the same method as htslib
   sam_body_ptr->core.bin = hts_reg2bin(sam_body_ptr->core.pos, sam_body_ptr->core.pos + sam_body_ptr->core.l_qseq, 14, 5);
-  // Always set the TLEN field to 0 (which in the SAM spec means that the information is unavailable),
-  // since we generally can't calculate this
-  sam_body_ptr->core.isize = 0;
 
   // Move m_core_read itself out to the caller, invalidating this builder
   return move(m_core_read);
@@ -305,16 +483,51 @@ Sam SamBuilder::one_time_build() {
  */
 void SamBuilder::validate() const {
   // Make sure required data fields have been set
-  if ( m_name.empty() || m_cigar.empty() || m_bases.empty() || m_base_quals.empty() )
-    throw logic_error("Missing one or more required data fields (name, cigar, bases, or base qualities)");
+  if ( m_name.empty() || m_bases.empty() || m_base_quals.empty() )
+    throw logic_error("Missing one or more required data fields (name, bases, or base qualities)");
 
-  // Make sure the sequence length implied by the cigar matches the actual sequence length
-  if ( bam_cigar2qlen(m_cigar.num_elements(), (const uint32_t*)m_cigar.raw_data_ptr()) != static_cast<int32_t>(m_bases.num_elements()) )
-    throw logic_error("Cigar operations and number of bases do not match");
+  if (!m_core_read.unmapped()) {
+    if ( m_cigar.empty() )
+      throw logic_error("Missing cigar field");
+
+    // Make sure the sequence length implied by the cigar matches the actual sequence length
+    if ( bam_cigar2qlen(m_cigar.num_elements(), (const uint32_t*)m_cigar.raw_data_ptr()) != static_cast<int32_t>(m_bases.num_elements()) )
+      throw logic_error("Cigar operations and number of bases do not match");
+  }
 
   // Make sure the number of base qualities matches the number of bases
   if ( m_base_quals.num_elements() != m_bases.num_elements() )
     throw logic_error("Number of bases and number of base qualities do not match");
+
+  // Make sure tag names are 2-character strings
+  for ( const auto& tag : m_char_tags ) {
+    if (tag.first.length() != SAM_TAG_NAME_LENGTH)
+      throw invalid_argument("Tag name should be a " + std::to_string(SAM_TAG_NAME_LENGTH) + "-character string.");
+  }
+  for ( const auto& tag : m_int_tags ) {
+    if (tag.first.length() != SAM_TAG_NAME_LENGTH)
+      throw invalid_argument("Tag name should be a " + std::to_string(SAM_TAG_NAME_LENGTH) + "-character string.");
+  }
+  for ( const auto& tag : m_float_tags ) {
+    if (tag.first.length() != SAM_TAG_NAME_LENGTH)
+      throw invalid_argument("Tag name should be a " + std::to_string(SAM_TAG_NAME_LENGTH) + "-character string.");
+  }
+  for ( const auto& tag : m_double_tags ) {
+    if (tag.first.length() != SAM_TAG_NAME_LENGTH)
+      throw invalid_argument("Tag name should be a " + std::to_string(SAM_TAG_NAME_LENGTH) + "-character string.");
+  }
+  for ( const auto& tag : m_string_tags ) {
+    if (tag.first.length() != SAM_TAG_NAME_LENGTH)
+      throw invalid_argument("Tag name should be a " + std::to_string(SAM_TAG_NAME_LENGTH) + "-character string.");
+  }
+  for ( const auto& tag : m_byte_array_tags ) {
+    if (tag.first.length() != SAM_TAG_NAME_LENGTH)
+      throw invalid_argument("Tag name should be a " + std::to_string(SAM_TAG_NAME_LENGTH) + "-character string.");
+  }
+  for ( const auto& tag : m_numeric_array_tags ) {
+    if (tag.first.length() != SAM_TAG_NAME_LENGTH)
+      throw invalid_argument("Tag name should be a " + std::to_string(SAM_TAG_NAME_LENGTH) + "-character string.");
+  }
 
   // TODO: add additional validation of the core (non-data) fields
 }
@@ -323,7 +536,10 @@ void SamBuilder::validate() const {
  * @brief helper function that constructs the concatenated htslib-encoded data array
  */
 void SamBuilder::build_data_array(bam1_t* sam) const {
-  const auto data_array_bytes = m_name.num_bytes() + m_cigar.num_bytes() + m_bases.num_bytes() + m_base_quals.num_bytes() + m_tags.num_bytes();
+  // Build tags array
+  auto tags = SamBuilderDataField();
+  build_tags_array(tags);
+  const auto data_array_bytes = m_name.num_bytes() + m_cigar.num_bytes() + m_bases.num_bytes() + m_base_quals.num_bytes() + tags.num_bytes();
   // use malloc() instead of new so that htslib can free this memory
   auto data_array = (uint8_t*)malloc(data_array_bytes);
   auto data_array_ptr = data_array;
@@ -332,7 +548,7 @@ void SamBuilder::build_data_array(bam1_t* sam) const {
   data_array_ptr = m_cigar.copy_into(data_array_ptr);
   data_array_ptr = m_bases.copy_into(data_array_ptr);
   data_array_ptr = m_base_quals.copy_into(data_array_ptr);
-  data_array_ptr = m_tags.copy_into(data_array_ptr);
+  data_array_ptr = tags.copy_into(data_array_ptr);
 
   sam->data = data_array;
   sam->l_data = data_array_bytes;
@@ -340,6 +556,236 @@ void SamBuilder::build_data_array(bam1_t* sam) const {
   sam->core.l_qname = m_name.num_bytes();
   sam->core.l_qseq = m_bases.num_elements();
   sam->core.n_cigar = m_cigar.num_elements();
+}
+
+/**
+ * @brief updates name and type fileds in a htslib-encoded tag array
+ */
+static uint8_t* update_tag_name_and_type(const std::string& tag_name,
+                                         const char& tag_type,
+                                         uint8_t* buffer) {
+  *buffer++ = tag_name[0];
+  *buffer++ = tag_name[1];
+  *buffer++ = tag_type;
+  return buffer;
+}
+
+/**
+ * @brief return the size of numeric array values.
+ */
+static uint32_t numeric_array_value_size(const SamTagType& type) {
+  switch (type) {
+    case SamTagType::INTEGER8ARRAY:   return sizeof(int8_t);
+    case SamTagType::UINTEGER8ARRAY:  return sizeof(uint8_t);
+    case SamTagType::INTEGER16ARRAY:  return sizeof(int16_t);
+    case SamTagType::UINTEGER16ARRAY: return sizeof(uint16_t);
+    case SamTagType::INTEGER32ARRAY:  return sizeof(int32_t);
+    case SamTagType::UINTEGER32ARRAY: return sizeof(uint32_t);
+    case SamTagType::FLOATARRAY:      return sizeof(float);
+    default: throw invalid_argument("Unsupported sam numeric array tag type.");
+  }
+}
+
+/**
+ * @brief helper function that constructs the htslib-encoded tags array
+ */
+void SamBuilder::build_tags_array(SamBuilderDataField& tags) const {
+  // Get number of tags
+  const auto num_tags = m_char_tags.size() + m_int_tags.size() + m_float_tags.size() +
+      m_double_tags.size() + m_string_tags.size() +
+      m_byte_array_tags.size() + m_numeric_array_tags.size();
+
+  auto max_num_bytes = num_tags * ( SAM_TAG_NAME_LENGTH + SAM_TAG_TYPE_LENGTH );
+  max_num_bytes += m_char_tags.size() * sizeof(char);
+  max_num_bytes += m_int_tags.size() * sizeof(int32_t);
+  max_num_bytes += m_float_tags.size() * sizeof(float);
+  max_num_bytes += m_double_tags.size() * sizeof(double);
+  for ( const auto& tag: m_string_tags )
+    max_num_bytes += tag.second.length() + 1;
+  for ( const auto& tag: m_byte_array_tags )
+    max_num_bytes += tag.second.length() + 1;
+  for ( const auto& tag: m_numeric_array_tags ) {
+    auto value_size = numeric_array_value_size(tag.second.type());
+    max_num_bytes += (tag.second.size() * value_size) +
+        // Also, stores type and size of the array.
+        sizeof(char) + sizeof(uint32_t);
+  }
+
+  auto encoded_tags = std::unique_ptr<uint8_t[]>{ new uint8_t[max_num_bytes] };
+  auto encoded_tags_ptr = (uint8_t*) encoded_tags.get();
+  // Integer-valued tags could be saved as 1,2,4-byte values depending on
+  // their range. "max_num_bytes" reserves the maximum size of 4-byte, but num_bytes
+  // adjust the value with the actual number of bytes they are stored at.
+  auto num_bytes = max_num_bytes;
+
+  // Append char tags
+  // For consistency, append in alphabetical order.
+  std::map<std::string, char> ordered_char_tags(
+      m_char_tags.cbegin(), m_char_tags.cend());
+  for ( const auto& tag : ordered_char_tags ) {
+    encoded_tags_ptr = update_tag_name_and_type(tag.first,
+                                                CHAR_SAM_TAG_TYPE_CODE,
+                                                encoded_tags_ptr);
+    *encoded_tags_ptr++ = tag.second;
+  }
+
+  // Append integer-valued tags
+  // For consistency, append in alphabetical order.
+  std::map<std::string, int64_t> ordered_int_tags(
+      m_int_tags.cbegin(), m_int_tags.cend());
+  for ( const auto& tag : ordered_int_tags ) {
+    if ( tag.second >= 0 ) {
+      if ( tag.second <= CHAR_MAX ) {
+        encoded_tags_ptr = update_tag_name_and_type(
+            tag.first, UINT8_SAM_TAG_TYPE_CODE, encoded_tags_ptr);
+        encoded_tags_ptr = utils::to_little_endian(uint8_t(tag.second), encoded_tags_ptr);
+        num_bytes -= sizeof(int32_t) - sizeof(uint8_t);
+      } else if ( tag.second <= USHRT_MAX ) {
+        encoded_tags_ptr = update_tag_name_and_type(
+            tag.first, UINT16_SAM_TAG_TYPE_CODE, encoded_tags_ptr);
+        encoded_tags_ptr = utils::to_little_endian(uint16_t(tag.second), encoded_tags_ptr);
+        num_bytes -= sizeof(int32_t) - sizeof(uint16_t);
+      } else if ( tag.second <= UINT_MAX ) {
+        encoded_tags_ptr = update_tag_name_and_type(
+            tag.first, UINT32_SAM_TAG_TYPE_CODE, encoded_tags_ptr);
+        encoded_tags_ptr = utils::to_little_endian(uint32_t(tag.second), encoded_tags_ptr);
+        num_bytes -= sizeof(int32_t) - sizeof(uint32_t);
+      } else throw invalid_argument("Out of range value for an integer tag.");
+    } else {
+      if ( tag.second >= SCHAR_MIN ) {
+        encoded_tags_ptr = update_tag_name_and_type(
+            tag.first, INT8_SAM_TAG_TYPE_CODE, encoded_tags_ptr);
+        encoded_tags_ptr = utils::to_little_endian(uint8_t(tag.second), encoded_tags_ptr);
+        num_bytes -= sizeof(int32_t) - sizeof(int8_t);
+      } else if ( tag.second >= SHRT_MIN ) {
+        encoded_tags_ptr = update_tag_name_and_type(
+            tag.first, INT16_SAM_TAG_TYPE_CODE, encoded_tags_ptr);
+        encoded_tags_ptr = utils::to_little_endian(uint16_t(tag.second), encoded_tags_ptr);
+        num_bytes -= sizeof(int32_t) - sizeof(int16_t);
+      } else if ( tag.second >= INT_MIN ) {
+        encoded_tags_ptr = update_tag_name_and_type(
+            tag.first, INT32_SAM_TAG_TYPE_CODE, encoded_tags_ptr);
+        encoded_tags_ptr = utils::to_little_endian(uint32_t(tag.second), encoded_tags_ptr);
+        num_bytes -= sizeof(int32_t) - sizeof(int32_t);
+      } else throw invalid_argument("Out of range value for an integer tag.");
+    }
+  }
+
+  // Append float-valued tags
+  // For consistency, append in alphabetical order.
+  std::map<std::string, float> ordered_float_tags(
+      m_float_tags.cbegin(), m_float_tags.cend());
+  for ( const auto& tag : ordered_float_tags ) {
+    encoded_tags_ptr = update_tag_name_and_type(tag.first,
+                                                FLOAT_SAM_TAG_TYPE_CODE,
+                                                encoded_tags_ptr);
+    encoded_tags_ptr = utils::to_little_endian(
+        *reinterpret_cast<const uint32_t*>(&tag.second),
+        encoded_tags_ptr);
+  }
+
+  // Append double-valued tags
+  // For consistency, append in alphabetical order.
+  std::map<std::string, double> ordered_double_tags(
+      m_double_tags.cbegin(), m_double_tags.cend());
+  for ( const auto& tag : ordered_double_tags ) {
+    encoded_tags_ptr = update_tag_name_and_type(tag.first,
+                                                DOUBLE_SAM_TAG_TYPE_CODE,
+                                                encoded_tags_ptr);
+    encoded_tags_ptr = utils::to_little_endian(
+        *reinterpret_cast<const uint64_t*>(&tag.second),
+        encoded_tags_ptr);
+  }
+
+  // Append string tags
+  // For consistency, append in alphabetical order.
+  std::map<std::string, string> ordered_string_tags(
+      m_string_tags.cbegin(), m_string_tags.cend());
+  for ( const auto& tag : ordered_string_tags ) {
+    encoded_tags_ptr = update_tag_name_and_type(tag.first,
+                                                STRING_SAM_TAG_TYPE_CODE,
+                                                encoded_tags_ptr);
+    memcpy(encoded_tags_ptr, tag.second.c_str(), tag.second.length());
+    // Add the null terminator character.
+    encoded_tags_ptr[tag.second.length()] = '\0';
+    encoded_tags_ptr += tag.second.length() + 1;
+  }
+
+  // Append byte array tags
+  // For consistency, append in alphabetical order.
+  std::map<std::string, string> ordered_byte_array_tags(
+      m_byte_array_tags.cbegin(), m_byte_array_tags.cend());
+  for ( const auto& tag : ordered_byte_array_tags ) {
+    encoded_tags_ptr = update_tag_name_and_type(tag.first,
+                                                BYTE_ARRAY_SAM_TAG_TYPE_CODE,
+                                                encoded_tags_ptr);
+    memcpy(encoded_tags_ptr, tag.second.c_str(), tag.second.length());
+    encoded_tags_ptr[tag.second.length()] = '\0';
+    encoded_tags_ptr += tag.second.length() + 1;
+  }
+
+  // Append numeric array tags
+  // For consistency, append in alphabetical order.
+  std::map<std::string, SamNumericArrayTag> ordered_numeric_array_tags(
+      m_numeric_array_tags.cbegin(), m_numeric_array_tags.cend());
+  for ( const auto& tag : ordered_numeric_array_tags ) {
+    uint32_t array_len = tag.second.size();
+    encoded_tags_ptr = update_tag_name_and_type(tag.first,
+                                                NUMERIC_ARRAY_SAM_TAG_TYPE_CODE,
+                                                encoded_tags_ptr);
+    *encoded_tags_ptr++ = utils::numeric_array_tag_type(tag.second.type());
+    encoded_tags_ptr = utils::to_little_endian(array_len, encoded_tags_ptr);
+    switch (tag.second.type()) {
+      case SamTagType::INTEGER8ARRAY:
+        for ( uint32_t i = 0; i < array_len; ++i ) {
+          encoded_tags_ptr = utils::to_little_endian(int8_t(tag.second.int_value(i)),
+                                                     encoded_tags_ptr);
+        }
+        break;
+      case SamTagType::UINTEGER8ARRAY:
+        for ( uint32_t i = 0; i < array_len; ++i ) {
+          encoded_tags_ptr = utils::to_little_endian(uint8_t(tag.second.int_value(i)),
+                                                     encoded_tags_ptr);
+        }
+        break;
+      case SamTagType::INTEGER16ARRAY:
+        for ( uint32_t i = 0; i < array_len; ++i ) {
+          encoded_tags_ptr = utils::to_little_endian(int16_t(tag.second.int_value(i)),
+                                                     encoded_tags_ptr);
+        }
+        break;
+      case SamTagType::UINTEGER16ARRAY:
+        for ( uint32_t i = 0; i < array_len; ++i ) {
+          encoded_tags_ptr = utils::to_little_endian(uint16_t(tag.second.int_value(i)),
+                                                     encoded_tags_ptr);
+        }
+        break;
+      case SamTagType::INTEGER32ARRAY:
+        for ( uint32_t i = 0; i < array_len; ++i ) {
+          encoded_tags_ptr = utils::to_little_endian(int32_t(tag.second.int_value(i)),
+                                                     encoded_tags_ptr);
+        }
+        break;
+      case SamTagType::UINTEGER32ARRAY:
+        for ( uint32_t i = 0; i < array_len; ++i) {
+          encoded_tags_ptr = utils::to_little_endian(uint32_t(tag.second.int_value(i)),
+                                                     encoded_tags_ptr);
+        }
+        break;
+      case SamTagType::FLOATARRAY:
+        for ( uint32_t i = 0; i < array_len; ++i ) {
+          float value = tag.second.float_value(i);
+          encoded_tags_ptr = utils::to_little_endian(
+              *reinterpret_cast<const uint32_t*>(&value),
+              encoded_tags_ptr);
+        }
+        break;
+      default:
+        throw invalid_argument("Invalid sam numeric array tag type.");
+    }
+  }
+
+  tags.update(move(encoded_tags), num_bytes, num_tags);
 }
 
 }

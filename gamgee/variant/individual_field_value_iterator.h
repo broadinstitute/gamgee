@@ -41,7 +41,7 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
    * @note this constructor is probably only used by IndividualFieldValue::begin() and
    * IndividualFieldValue::end()
    */
-  explicit IndividualFieldValueIterator(const std::shared_ptr<bcf1_t>& body, uint8_t* data_ptr, uint8_t* end_ptr, const uint8_t num_bytes, const utils::VariantFieldType& type) :
+  explicit IndividualFieldValueIterator(const std::shared_ptr<bcf1_t>& body, uint8_t* data_ptr, uint8_t* end_ptr, const uint32_t num_bytes, const utils::VariantFieldType& type) :
     m_body {body},
     m_current_data_ptr {data_ptr},
     m_original_data_ptr {data_ptr},
@@ -269,7 +269,7 @@ class IndividualFieldValueIterator : public std::iterator<std::random_access_ite
   const uint8_t* m_current_data_ptr;
   const uint8_t* m_original_data_ptr;
   const uint8_t* m_end_data_ptr;
-  uint8_t m_num_bytes;
+  uint32_t m_num_bytes;
   utils::VariantFieldType m_type;
   VALUE_TYPE m_current_data_value;
   bool m_is_current_pointee_cached;

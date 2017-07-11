@@ -80,7 +80,7 @@ BOOST_AUTO_TEST_CASE( het_alternate_ploidy_test ){
     dynamic_bitset<>(string("001")),
     dynamic_bitset<>(string("000"))};
 
-  select_if_test(truth, multi_ploidy, [](const auto& g) {return g.het(); });
+  select_if_test(truth, multi_ploidy, [](const Genotype& g) {return g.het(); });
 }
 
 BOOST_AUTO_TEST_CASE( het_snp_is_true ) {
