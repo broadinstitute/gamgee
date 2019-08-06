@@ -63,7 +63,7 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_difference_test ) {
 }
 
 void multiple_variant_reader_sample_test(const vector<string> samples, const bool include, const uint desired_samples) {
-  auto filenames = vector<string>{"testdata/test_variants.vcf", "testdata/test_variants.bcf"};
+  auto filenames = vector<string>{"testdata/mvar_rdr/test_variants.vcf", "testdata/mvar_rdr/test_variants.bcf"};
 
   auto reader = MultipleVariantReader<MultipleVariantIterator>{filenames, false, samples, include};
   BOOST_CHECK_EQUAL(reader.combined_header().n_samples(), desired_samples);
@@ -76,7 +76,7 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_sites_only )
 
 BOOST_AUTO_TEST_CASE( multiple_variant_reader_include_all_samples )
 {
-  multiple_variant_reader_sample_test(vector<string>{}, false, 3);  // include all samples by setting include == false and passing an empty list
+  multiple_variant_reader_sample_test(vector<string>{}, false, 6);  // include all samples by setting include == false and passing an empty list
 }
 
 BOOST_AUTO_TEST_CASE( multiple_variant_reader_including )
@@ -87,8 +87,8 @@ BOOST_AUTO_TEST_CASE( multiple_variant_reader_including )
 
 BOOST_AUTO_TEST_CASE( multiple_variant_reader_excluding )
 {
-  multiple_variant_reader_sample_test(vector<string>{"NA12891"}, false, 2);  // exclude only NA12891
-  multiple_variant_reader_sample_test(vector<string>{"NA12891", "NA12878"}, false, 1);  // exclude both these samples
+  multiple_variant_reader_sample_test(vector<string>{"NA12891"}, false, 5);  // exclude only NA12891
+  multiple_variant_reader_sample_test(vector<string>{"NA12891", "NA12878_bcf"}, false, 4);  // exclude both these samples
 }
 
 auto truth_file_indices_mvr_hdr = vector<unordered_set<uint32_t>> {{0,1},{0,1},{0,1},{0,1},{0},{0},{1},{1}};

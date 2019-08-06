@@ -56,21 +56,21 @@ class SamWriter {
    * @brief Adds a record to the file stream
    * @param body the record
    */
-  void add_record(const Sam& body);
+  int add_record(const Sam& body);
 
   /**
    * @brief Adds a header to the file stream.
    * @param header the header
    * @note the header is a requirement to add records
    */
-  void add_header(const SamHeader& header);
+  int add_header(const SamHeader& header);
 
  private:
   std::unique_ptr<htsFile, utils::HtsFileDeleter> m_out_file;  ///< the file or stream to write out to ("-" means stdout)
   SamHeader m_header;                   ///< holds a copy of the header throughout the production of the output (necessary for every record that gets added)
 
   static htsFile* open_file(const std::string& output_fname, const std::string& binary);
-  void write_header() const;
+  int write_header() const;
 
 };
 

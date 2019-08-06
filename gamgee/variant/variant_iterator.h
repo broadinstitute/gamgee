@@ -19,6 +19,7 @@ class VariantIterator {
    * @brief creates an empty iterator (used for the end() method) 
    */
   VariantIterator() = default;
+  virtual ~VariantIterator() = default;
 
   /**
    * @brief initializes a new iterator based on an input stream (e.g. a vcf/bcf file, stdin, ...)

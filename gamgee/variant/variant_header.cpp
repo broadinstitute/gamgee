@@ -125,4 +125,8 @@ uint32_t VariantHeader::n_individual_fields() const {
   return count_fields_of_type(m_header.get(), BCF_HL_FMT);
 }
 
+vector<bcf_hrec_t*> VariantHeader::advanced_all_header_fields() const {
+  return vector<bcf_hrec_t*>(m_header->hrec, m_header->hrec + m_header->nhrec);
+}
+
 }

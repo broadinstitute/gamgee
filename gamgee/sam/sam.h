@@ -11,6 +11,7 @@
 
 #include <string>
 #include <memory>
+#include <unordered_map>
 
 namespace gamgee {
 
@@ -21,7 +22,7 @@ class Sam {
  public:
   /**
    * @brief initializes a null Sam.
-   * @note this is only used internally by the iterators 
+   * @note this is only used internally by the iterators
    * @warning if you need to create a Sam from scratch, use the builder instead
    */
   Sam() = default;
@@ -66,7 +67,7 @@ class Sam {
    *
    * @return a newly created SamHeader object every time it's called but the htslib memory used by the header is the same (no new allocations).
    */
-  SamHeader header() { 
+  SamHeader header() const { 
     return SamHeader{m_header}; 
   }
 
@@ -270,12 +271,16 @@ class Sam {
   BaseQuals base_quals() const { return BaseQuals{m_body}; }                    ///< @brief returns the base qualities. @warning the objects returned by this member function will share underlying htslib memory with this object. @warning creates an object but doesn't copy the underlying values.
 
   // getters for tagged values within the aux part of the data field
-  SamTag<int32_t> integer_tag(const std::string& tag_name) const;    ///< @brief retrieve an integer-valued tag by name. @warning creates an object but doesn't copy the underlying values.
-  SamTag<double> double_tag(const std::string& tag_name) const;      ///< @brief retrieve an double/float-valued tag by name. @warning creates an object but doesn't copy the underlying values.
   SamTag<char> char_tag(const std::string& tag_name) const;          ///< @brief retrieve a char-valued tag by name. @warning creates an object but doesn't copy the underlying values.
+  SamTag<int64_t> integer_tag(const std::string& tag_name) const;    ///< @brief retrieve an integer-valued tag by name. @warning creates an object but doesn't copy the underlying values.
+  SamTag<double> double_tag(const std::string& tag_name) const;      ///< @brief retrieve an double/float-valued tag by name. @warning creates an object but doesn't copy the underlying values.
   SamTag<std::string> string_tag(const std::string& tag_name) const; ///< @brief retrieve a string-valued tag by name. @warning creates an object but doesn't copy the underlying values.
+  SamTag<std::string> byte_array_tag(const std::string& tag_name) const;     ///< @brief retrieve a byte array tag by name. @warning creates an object but doesn't copy the underlying values.
+  SamTag<SamNumericArrayTag> numeric_array_tag(const std::string& tag_name) const; ///< @brief retrieve a numeric array tag by name. @warning creates an object but doesn't copy the underlying values.
+  std::unordered_map<std::string, SamTagType> all_tags() const; ///< @brief retrieve all tag names and types available in this record
+  std::unordered_map<std::string, SamTagType> all_tag_types() const;      ///< @brief retrieve all tag names and types available in this record
 
-  // getters for flags 
+  // getters for flags
   bool paired() const { return m_body->core.flag & BAM_FPAIRED;        }          ///< @brief whether or not this read is paired
   bool properly_paired() const { return m_body->core.flag & BAM_FPROPER_PAIR;   } ///< @brief whether or not this read is properly paired (see definition in BAM spec)
   bool unmapped() const { return m_body->core.flag & BAM_FUNMAP;         }        ///< @brief whether or not this read is unmapped
@@ -290,8 +295,10 @@ class Sam {
   bool supplementary() const { return m_body->core.flag & BAM_FSUPPLEMENTARY; }   ///< @brief whether or not this read is a supplementary alignment (see definition in the BAM spec)
 
   // modify flags
-  void set_paired()            { m_body->core.flag |= BAM_FPAIRED;         } 
+  void set_paired()            { m_body->core.flag |= BAM_FPAIRED;         }
   void set_not_paired()        { m_body->core.flag &= ~BAM_FPAIRED;        }
+  void set_properly_paired()     { m_body->core.flag |= BAM_FPROPER_PAIR;  }
+  void set_not_properly_paired() { m_body->core.flag &= ~BAM_FPROPER_PAIR; }
   void set_unmapped()          { m_body->core.flag |= BAM_FUNMAP;          }
   void set_not_unmapped()      { m_body->core.flag &= ~BAM_FUNMAP;         }
   void set_mate_unmapped()     { m_body->core.flag |= BAM_FMUNMAP;         }

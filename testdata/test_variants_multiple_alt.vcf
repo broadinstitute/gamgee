@@ -15,7 +15,7 @@
 ##FORMAT=<ID=PL,Number=G,Type=Integer,Description=Phred scaled relative Likelihoods of the genotypes>
 ##FORMAT=<ID=AF,Number=2,Type=Float,Description=Arbitrary float field with 2 values (test purposes only)>
 ##FORMAT=<ID=AS,Number=1,Type=String,Description=Arbitrary string field with 1 value (test purposes only)>
-#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	NA12878	NA12891	NA12892
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	NA12878_m_alt	NA12891_m_alt	NA12892_m_alt
 1	10000000	db2342	T	C	80	PASS	AF=0.5;AN=6;VALIDATED;DESC=Test1,Test2	GT:GQ:PL:AF:AS	0/1:25:10,0,100:3.1,2.2:ABA	./.	./.
 1	10000000	db2342	T	G	80	PASS	AF=0.5;AN=6;VALIDATED;DESC=Test1,Test2	GT:GQ:PL:AF:AS	./.	0/0:12:0,10,1000:3.1,2.2:CA	./.
 1	10000000	db2342	T	A	80	PASS	AF=0.5;AN=6;VALIDATED;DESC=Test1,Test2	GT:GQ:PL:AF:AS	./.	./.	1/1:650:10,100,0:3.1,2.2:XISPAFORRO

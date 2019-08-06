@@ -11,7 +11,7 @@
 ##FORMAT=<ID=SB,Number=4,Type=Integer,Description="Per-sample component statistics which comprise the Fisher's Exact Test to detect strand bias.">
 ##contig=<ID=1,length=249250621>
 ##reference=Homo_sapiens_assembly19.fasta
-#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	PROBLEM_SAMPLE
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	PROBLEM_SAMPLE1
 1	11140505	.	C	<NON_REF>	.	.	END=11140609	GT:DP:GQ:MIN_DP:PL	0/0:102:99:64:0,117,1755
 1	11140610	.	G	<NON_REF>	.	.	END=11140610	GT:DP:GQ:MIN_DP:PL	0/0:65:0:65:0,0,1851
 1	11140611	.	A	<NON_REF>	.	.	END=11140619	GT:DP:GQ:MIN_DP:PL	0/0:83:69:82:0,60,900

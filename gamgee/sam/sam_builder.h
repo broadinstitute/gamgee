@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <unordered_map>
 
 namespace gamgee {
 
@@ -89,10 +90,14 @@ class SamBuilder {
   // Setters for core fields: these pass through to the implementations in Sam
   SamBuilder& set_chromosome(const uint32_t chr)              { m_core_read.set_chromosome(chr); return *this;              } ///< @brief simple setter for the chromosome index. Index is 0-based.
   SamBuilder& set_alignment_start(const uint32_t start)       { m_core_read.set_alignment_start(start); return *this;       } ///< @brief simple setter for the alignment start. @warning You should use (1-based and inclusive) alignment but internally this is stored 0-based to simplify BAM conversion.
+  SamBuilder& set_mapping_qual(const uint32_t qual)        { m_core_read.set_mapping_qual(qual); return *this;        } ///< @brief simple setter for the mapping quality of the read.
+  SamBuilder& set_insert_size(const uint32_t isize)        { m_core_read.set_insert_size(isize); return *this;        } ///< @brief simple setter for the mapping quality of the read.
   SamBuilder& set_mate_chromosome(const uint32_t mchr)        { m_core_read.set_mate_chromosome(mchr); return *this;        } ///< @brief simple setter for the mate's chromosome index. Index is 0-based.
   SamBuilder& set_mate_alignment_start(const uint32_t mstart) { m_core_read.set_mate_alignment_start(mstart); return *this; } ///< @brief simple setter for the mate's alignment start. @warning You should use (1-based and inclusive) alignment but internally this is stored 0-based to simplify BAM conversion.
   SamBuilder& set_paired()            { m_core_read.set_paired(); return *this;            }
   SamBuilder& set_not_paired()        { m_core_read.set_not_paired(); return *this;        }
+  SamBuilder& set_properly_paired()            { m_core_read.set_properly_paired(); return *this;            }
+  SamBuilder& set_not_properly_paired()        { m_core_read.set_not_properly_paired(); return *this;        }
   SamBuilder& set_unmapped()          { m_core_read.set_unmapped(); return *this;          }
   SamBuilder& set_not_unmapped()      { m_core_read.set_not_unmapped(); return *this;      }
   SamBuilder& set_mate_unmapped()     { m_core_read.set_mate_unmapped(); return *this;     }
@@ -114,6 +119,16 @@ class SamBuilder {
   SamBuilder& set_supplementary()     { m_core_read.set_supplementary(); return *this;     }
   SamBuilder& set_not_supplementary() { m_core_read.set_not_supplementary(); return *this; }
 
+  SamBuilder& clear_tags();                                ///< @brief clear aux tags.
+  SamBuilder& add_sam_tags(uint8_t* buffer, const int& len); ///< @brief add tags from hstlib-encoded record.
+  SamBuilder& add_char_tag(const std::string& name, const char& value);          ///< @brief add a char-valued tag.
+  SamBuilder& add_integer_tag(const std::string& name, const int64_t& value);    ///< @brief add an integer-valued tag.
+  SamBuilder& add_float_tag(const std::string& name, const float& value);        ///< @brief add a float-valued tag.
+  SamBuilder& add_double_tag(const std::string& name, const double& value);      ///< @brief add a double-valued tag.
+  SamBuilder& add_byte_array_tag(const std::string& name, const std::string& value);    ///< @brief add byte array tag.
+  SamBuilder& add_string_tag(const std::string& name, const std::string& value);        ///< @brief add a string-valued tag.
+  SamBuilder& add_numeric_array_tag(const std::string& name, const SamNumericArrayTag& value); ///< @brief add a numeric array tag.
+
   Sam build() const;    ///< build a Sam (can be called repeatedly)
   Sam one_time_build(); ///< build a Sam more efficiently by moving the builder's data out of it and invalidating future builds
 
@@ -123,10 +138,17 @@ class SamBuilder {
   SamBuilderDataField m_cigar;      ///< htslib encoded cigar for eventual inclusion in the data field
   SamBuilderDataField m_bases;      ///< htslib encoded bases for eventual inclusion in the data field
   SamBuilderDataField m_base_quals; ///< htslib encoded base qualities for eventual inclusion in the data field
-  SamBuilderDataField m_tags;       ///< htslib encoded aux data (tags) for eventual inclusion in the data field
+  std::unordered_map<std::string, char> m_char_tags;          ////< aux character-valued tags
+  std::unordered_map<std::string, int64_t> m_int_tags;        ////< aux integer-valued tags
+  std::unordered_map<std::string, float> m_float_tags;        ////< aux float-valued tags
+  std::unordered_map<std::string, double> m_double_tags;      ////< aux double-valued tags
+  std::unordered_map<std::string, std::string> m_string_tags; ////< aux string-valued tags
+  std::unordered_map<std::string, std::string> m_byte_array_tags;           ////< aux byte array tags
+  std::unordered_map<std::string, SamNumericArrayTag> m_numeric_array_tags; ////< aux numeric array tags
   bool m_validate_on_build;         ///< should we validate the state of the Sam record at build time?
 
   void validate() const;                    ///< @brief performs pre-build validation of the state of the Sam record under construction
+  void build_tags_array(SamBuilderDataField& tags) const; ///< @brief helper function that constructs the htslib-encoded tags array
   void build_data_array(bam1_t* sam) const; ///< @brief helper function that constructs the concatenated htslib-encoded data array
 };
 

@@ -232,23 +232,10 @@ void test_variant_header_merger(VariantHeaderMergerTy& merger, const VariantHead
 
 BOOST_AUTO_TEST_CASE( variant_header_merger_test )
 {
-  auto diff_hdr_test_files = vector<string>{ "testdata/ref_block/problem2_file2.vcf", "testdata/ref_block/test2.vcf",
-    "testdata/var_hdr_merge/test1.vcf" };
+  auto diff_hdr_test_files = vector<string>{ "testdata/ref_block/problem2_file2.vcf", "testdata/ref_block/test2.vcf" };
   auto many_hdr_test_files = vector<string>{
-    "testdata/ref_block/test2.vcf",
-    "testdata/var_hdr_merge/test1.vcf",
     "testdata/ref_block/problem2_file1.vcf",
-    "testdata/ref_block/problem2_file2.vcf",
-    "testdata/mvr_hdr/test1.vcf",
-    "testdata/ref_block/problem2_file2.vcf",
-    "testdata/var_hdr_merge/test3.vcf",
-    "testdata/ref_block/test2.vcf",
-    "testdata/var_hdr_merge/test1.vcf",
-    "testdata/ref_block/problem2_file2.vcf",
-    "testdata/ref_block/test2.vcf",
-    "testdata/var_hdr_merge/test1.vcf",
-    "testdata/ref_block/problem2_file2.vcf",
-    "testdata/ref_block/test2.vcf",
+    "testdata/mvr_hdr/test2.vcf",
     "testdata/var_hdr_merge/test1.vcf"
   };
   auto variant_header_merger_test_path_counters = vector<unsigned>(TOTAL_NUM_VARIANT_HEADER_MERGER_TEST_PATHS, 0u);
@@ -268,21 +255,24 @@ BOOST_AUTO_TEST_CASE( variant_header_merger_test )
     {
       //Merged header should contain every sample and header field in input header
       for(auto i=0u;i<header->n[BCF_DT_ID];++i)
-	for(auto field_type : {BCF_HL_FLT, BCF_HL_INFO, BCF_HL_FMT})
-	  if(bcf_hdr_idinfo_exists(header,field_type, i) && bcf_hdr_id2hrec(header,BCF_DT_ID,field_type,i))
-	    BOOST_CHECK(combined_header.has_field(bcf_hdr_int2id(header,BCF_DT_ID,i), field_type));
+        for(auto field_type : {BCF_HL_FLT, BCF_HL_INFO, BCF_HL_FMT})
+          if(bcf_hdr_idinfo_exists(header,field_type, i) && bcf_hdr_id2hrec(header,BCF_DT_ID,field_type,i))
+              BOOST_CHECK(combined_header.has_field(bcf_hdr_int2id(header,BCF_DT_ID,i), field_type));
       for(auto i=0u;i<header->n[BCF_DT_SAMPLE];++i)
-	if(header->samples[i] && bcf_hdr_id2int(header.get(), BCF_DT_SAMPLE, header->samples[i]) == i)
-	  BOOST_CHECK(combined_header.has_sample(header->samples[i]));
-      test_variant_header_merger<InputOrderedVariantHeaderMerger>(input_ordered_merger, combined_header, header, input_vcf_idx,
-	  variant_header_merger_test_path_counters);
-      test_variant_header_merger<FieldOrderedVariantHeaderMerger>(field_ordered_merger, duplicate_combined_header, header, input_vcf_idx,
-	  variant_header_merger_test_path_counters);
+        if(header->samples[i] && bcf_hdr_id2int(header.get(), BCF_DT_SAMPLE, header->samples[i]) == i)
+          BOOST_CHECK(combined_header.has_sample(header->samples[i]));
+      test_variant_header_merger<InputOrderedVariantHeaderMerger>(
+          input_ordered_merger, combined_header, header, input_vcf_idx,
+          variant_header_merger_test_path_counters);
+      test_variant_header_merger<FieldOrderedVariantHeaderMerger>(
+          field_ordered_merger, duplicate_combined_header, header, input_vcf_idx,
+          variant_header_merger_test_path_counters);
       ++input_vcf_idx;
     }
   }
-  for(auto i=0u;i<variant_header_merger_test_path_counters.size();++i)
+  for(auto i=0u;i<variant_header_merger_test_path_counters.size();++i) {
     BOOST_CHECK_MESSAGE(variant_header_merger_test_path_counters[i] > 0u, "VariantHeaderMerger test path corresponding to "<<i<<" was not exercised\n");
+  }
 }
 
 BOOST_AUTO_TEST_CASE( reference_block_iterator_move_test ) {
@@ -390,11 +380,11 @@ BOOST_AUTO_TEST_CASE( test_mvi_for_empty_vcf )
 {
   auto mvr = MultipleVariantReader<MultipleVariantIterator> { vector<string>{"testdata/var_hdr_merge/empty_vcf.vcf"}, false };
   auto num_variants = 0u;
-  for(const auto& variant : mvr)
+  for(auto it = mvr.begin(); it !=  mvr.end(); ++it)
     ++num_variants;
   BOOST_CHECK_EQUAL(num_variants, 0u);
   auto ref_split_mvr = GVCFReader { vector<string>{"testdata/var_hdr_merge/empty_vcf.vcf"}, false };
-  for(const auto& variant : ref_split_mvr)
+  for(auto it = ref_split_mvr.begin(); it !=  ref_split_mvr.end(); ++it)
     ++num_variants;
   BOOST_CHECK_EQUAL(num_variants, 0u);
 }

@@ -150,7 +150,7 @@ class SharedField {
  private:
   std::shared_ptr<bcf1_t> m_body;
   const bcf_info_t* m_info_ptr;
-  uint8_t m_bytes_per_value;
+  uint32_t m_bytes_per_value;
 
   TYPE convert_from_byte_array(int index) const;
 };

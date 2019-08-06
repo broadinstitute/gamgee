@@ -122,13 +122,13 @@ BOOST_AUTO_TEST_CASE( interval_equality )
 }
 
 BOOST_AUTO_TEST_CASE( interval_copy_and_move_constructors ) {
-  auto i0 = Interval {"A", 1'000, 2'000};
+  auto i0 = Interval {"A", 1000, 2000};
   auto copies = check_copy_constructor(i0);
   auto c2 = get<1>(copies);
   BOOST_CHECK(i0 ==  get<0>(copies));
   BOOST_CHECK(i0 == c2);
   BOOST_CHECK(i0 == get<2>(copies));
-  c2.set_start(1'500);
+  c2.set_start(1500);
   BOOST_CHECK(i0 != c2);
   BOOST_CHECK(c2 != get<0>(copies));
   BOOST_CHECK(c2 != get<1>(copies));

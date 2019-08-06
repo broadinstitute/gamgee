@@ -50,10 +50,10 @@ BOOST_AUTO_TEST_CASE( select_if_shared_field ) {
   auto truth_index = 0u;
   for (const auto& record : SingleVariantReader{"testdata/test_variants.vcf"}) {
     const auto an = record.integer_shared_field("AN");
-    const auto r1 = Variant::select_if(an.begin(), an.end(), [](const auto& v) { return v == 6; });
+    const auto r1 = Variant::select_if(an.begin(), an.end(), [](const int v) { return v == 6; });
     BOOST_CHECK_EQUAL(r1.count(), truth_an_counts[truth_index]);
     const auto af = record.float_shared_field("AF");
-    const auto r2 = Variant::select_if(af.begin(), af.end(), [](const auto& v) { return v < 0.5; });
+    const auto r2 = Variant::select_if(af.begin(), af.end(), [](const float v) { return v < 0.5; });
     BOOST_CHECK_EQUAL(r2.count(), truth_af_counts[truth_index++]);
   }
 }

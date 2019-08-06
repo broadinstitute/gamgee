@@ -18,8 +18,8 @@ endif()
 set(htslib_PREFIX ${CMAKE_BINARY_DIR}/contrib/htslib)
 ExternalProject_Add(htslib
     PREFIX ${htslib_PREFIX}
-    GIT_REPOSITORY "https://github.com/broadinstitute/htslib.git"
-    GIT_TAG broad
+    GIT_REPOSITORY "https://github.com/samtools/htslib.git"
+    GIT_TAG 49fdfbda20acbd73303df3c7fef84f2d972c5f8d # Version 1.5
     BUILD_IN_SOURCE 1
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ${MAKE_COMMAND} lib-static
